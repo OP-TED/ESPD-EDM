@@ -74,15 +74,13 @@ public class CommonValidation {
 	 * Method that gets the XSL-T to transform the XML reports to HTML.
 	 */
 	protected void toHTML() {
-		if (isServlet) {
-			String xsltFile = path + properties.getProperty("xml_to_html_path");
-			System.out.println("- Path: " + path);
-			System.out.println("- Validation path: " + validationPath);
-			System.out.println("- final: " + xsltFile);
+		String xsltFile = path + properties.getProperty("xml_to_html_path");
+		System.out.println("- Path: " + path);
+		System.out.println("- Validation path: " + validationPath);
+		System.out.println("- final: " + xsltFile);
 
-			Report.generateHTMLReports(isServlet, outputPath, xsltFile, properties.getProperty("upload_xml_path"),
-					properties.getProperty("upload_html_path"));
-		}
+		Report.generateHTMLReports(isServlet, outputPath, xsltFile, properties.getProperty("upload_xml_path"),
+				properties.getProperty("upload_html_path"));
 	}
 
 	/**

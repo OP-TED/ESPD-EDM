@@ -44,9 +44,11 @@ public class XSDTransformer {
 			validator.validate(xmlFile);
 
 		} catch (SAXException e) {
+			result = e.getLocalizedMessage();
 			System.out.println(e.getLocalizedMessage());
 
 		} catch (IOException e) {
+			result = e.getLocalizedMessage();
 			System.out.println(e.getLocalizedMessage());
 		}
 
