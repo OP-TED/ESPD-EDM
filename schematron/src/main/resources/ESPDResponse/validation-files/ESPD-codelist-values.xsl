@@ -3,6 +3,7 @@
                  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
                  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                  xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1"
+                 xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1"
                  version="2.0"><!--Importing stylesheet additions-->
     <axsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" method="xml"/><!--Implementers: please note that overriding process-prolog or process-root is
     the preferred method for meta-stylesheets to use where possible. -->
@@ -227,7 +228,6 @@
                 </svrl:failed-assert>
             </axsl:otherwise>
         </axsl:choose>
-        <axsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M0"/>
     </axsl:template>
 
     <!--RULE -->
@@ -253,7 +253,6 @@
                 </svrl:failed-assert>
             </axsl:otherwise>
         </axsl:choose>
-        <axsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M0"/>
     </axsl:template>
 
     <!--RULE -->
@@ -279,7 +278,6 @@
                 </svrl:failed-assert>
             </axsl:otherwise>
         </axsl:choose>
-        <axsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M0"/>
     </axsl:template>
 
     <!--RULE -->
