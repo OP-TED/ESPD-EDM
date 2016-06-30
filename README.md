@@ -15,4 +15,4 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 ## Use
 The ESPD-EDM is made publicly available through Github. 
 * If you just want to browse or access the model, you don't need to be registered in Github.
-* If you want to create issues concerning the ESPD-EDM you have to be a registered user in Github.  
+* If you want to create issues concerning the ESPD-EDM you have to be a registered user in Github. Please assign all issues in this repository to paulakeen
