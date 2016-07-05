@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>espd-data-model</artifactId>
+        <groupId>eu.europa.ec.grow.espd</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>exchange-model</artifactId>
+    <packaging>jar</packaging>
+
+    <name>exchange-model</name>
+    <description>The ESPD Exchange Data Model is the technical representation of the legal European Single Procurement
+        Document.
+        It is used to support interoperability between ESPD services provided all over Europe.
+    </description>
+    <url>https://github.com/ESPD/ESPD-EDM</url>
+
+    <licenses>
+        <license>
+            <name>EUPL, Version 1.1</name>
+            <url>https://joinup.ec.europa.eu/community/eupl/og_page/eupl</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Virgiliu Ratoi</name>
+            <email>Virgiliu.RATOI@ext.ec.europa.eu</email>
+            <organization>European Commission DG Growth</organization>
+            <organizationUrl>http://ec.europa.eu/growth/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Alexey Lukashov</name>
+            <email>Alexey.LUKASHOV@ext.ec.europa.eu</email>
+            <organization>European Commission DG Growth</organization>
+            <organizationUrl>http://ec.europa.eu/growth/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:ESPD/ESPD-EDM.git</connection>
+        <developerConnection>scm:git:git@github.com:ESPD/ESPD-EDM.git</developerConnection>
+        <url>git@github.com:ESPD/ESPD-EDM</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jaxb2-basics-runtime.version>0.9.5</jaxb2-basics-runtime.version>
+        <joda-time.version>2.9</joda-time.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics-runtime</artifactId>
+            <version>${jaxb2-basics-runtime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+        <!-- Consider using this if we want to override the JAXB runtime -->
+        <!--<dependency>-->
+        <!--<groupId>org.glassfish.jaxb</groupId>-->
+        <!--<artifactId>jaxb-runtime</artifactId>-->
+        <!--</dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.3</version>
+                <configuration>
+                    <extension>true</extension>
+                    <schemaDirectory>src/main/resources/schema/maindoc</schemaDirectory>
+                    <generateDirectory>src/main/generated</generateDirectory>
+                    <removeOldOutput>true</removeOldOutput>
+                    <args>
+                        <arg>-XtoString</arg>
+                        <arg>-Xequals</arg>
+                        <arg>-XhashCode</arg>
+                        <arg>-Xnamespace-prefix</arg>
+                    </args>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics</artifactId>
+                            <version>${jaxb2-basics-runtime.version}</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!-- Allows us to customize the namespace names of the generated XML elements -->
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-namespace-prefix</artifactId>
+                        <version>1.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
