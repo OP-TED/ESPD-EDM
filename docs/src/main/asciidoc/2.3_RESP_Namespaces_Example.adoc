@@ -1,0 +1,84 @@
+[.text-left]
+The example below shows how these namespaces and prefixes are specified schemas of the  in the ESPDResponse XSD Schema, as well as how the different layers of schemas specified in 
+the ESPD-EDM data architecture are imported (see line 2 in ESPDResponse-1.0.xsd):
+
+[.text-left]
+[source,xml]
+.Namespaces and prefixes in the ESPDResponse-1.0.xsd Schema
+----
+
+<xsd:schema xmlns="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" <!--1-->
+xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" <!--2-->
+xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" <!--3-->
+xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" <!--4-->
+xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" <!--5-->
+xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" <!--6-->
+xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" <!--7-->
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" <!--8-->
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0"> <!--9-->
+	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" schemaLocation="../common/ESPD-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" schemaLocation="../common/ESPD-CommonBasicComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" schemaLocation="../common/CCV-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" schemaLocation="../common/UBL-CommonAggregateComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="../common/UBL-CommonBasicComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" schemaLocation="../common/UBL-CommonExtensionComponents-2.1.xsd"/>
+	<xsd:element name="ESPDResponse" type="ESPDResponseType"/>
+	<xsd:complexType name="ESPDResponseType">
+		<xsd:sequence>
+			<xsd:element ref="ext:UBLExtensions" minOccurs="0"/>
+----
+<1> "espd", default prefix representing the document ESPDResponse
+<2> "espd-cac", prefix for the Common Aggregate Components defined by COM for the ESPD, e.g. "espd-cac:EconomicOperatorParty" 
+<3> "espd-cbc", prefix for the Common Basic Components defined by COM for the ESP, e.g. "espd-cbc:SMEIndicator"
+<4> "ccv", prefix for the Core Criterion Vocabulary elements, e.g. "ccv:Criterion" (elements belonging to the Core Evidence Vocabulary are used by 
+<5> "cac", prefix for the Common Aggregate Components defined in UBL-2.1, e.g. "cac:ContractingParty"
+<6> "cbc", prefix for the Common Basic Component ddefined in UBL-2.1, e.g. "cbc:TypeCode"
+<7> "ext", default prefix defined in UBL-2.1 for non-standard extensions of the schema (see OASIS UBL-TC documentation)
+<8> targetNamespace matching to the default schema namespace, aligned to UBL practice 
+<9> use of "qualified", "unqualified" and "version" defaults aligned to the best practices, as in UBL
+  
+[.text-left]
+This other example below illustrates the header of an ESPD Response XML document instance that implements the namespaces of the above schema: 
+
+[.text-left]
+[source,xml]
+.Declaration of the namespaces and prefixes in the ESPD Response XML document instance
+----
+
+<espd:ESPDResponse 
+xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1"
+xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1">
+xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" 
+xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" 
+xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" 
+xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" 
+xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" <!--1-->
+xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"> 
+
+<cac:ContractingParty> 
+      <cac:Party>
+         <cac:PartyName>
+            <cbc:Name>Executive Agency ...
+
+<ccv:Requirement responseDataType="EVIDENCE_URL">
+	<cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+	<cbc:Description>URL</cbc:Description>
+	<ccv:Response> 
+	   <cev:Evidence> <!--1-->
+	      <cev:EvidenceDocumentReference>
+	         <cbc:ID>6e9aa856-836e-4c9e-a74b-b7c63cba91b8</cbc:ID>
+	         <cac:Attachment>
+	            <cac:ExternalReference>
+	               <cbc:URI>http://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?lang=en&amp;nummer=0825+811+478&amp;actionLu=Zoek</cbc:URI>
+	            </cac:ExternalReference>
+	         </cac:Attachment>
+	      </cev:EvidenceDocumentReference>
+	   </cev:Evidence>
+	</ccv:Response>
+</ccv:Requirement>
+----
+
+<1> Notice that in the XML instance namespaces that are not referred to in the XSD schema of the ESPDResponse document are needed as they instantiate elements from other inner schemata of the data architecture, e.g. "cev:Evidence"

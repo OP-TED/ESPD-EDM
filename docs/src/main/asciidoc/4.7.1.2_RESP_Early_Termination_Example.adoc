@@ -1,0 +1,67 @@
+The piece of XML below is a fragment of an ESPD Response XML document. 
+This fragment shows the implementation of the criterion ''Early termination'':
+
+[source,xml]
+.XML example of an ''Early termination'' exclusion criterion
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3293e92b-7f3e-42f1-bee6-a7641bb04251</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.EARLY_TERMINATION</cbc:TypeCode>
+        <cbc:Name>Early termination, damages or other comparable sanctions</cbc:Name>
+        <cbc:Description>Has the economic operator experienced that a prior public contract, a prior contract with a contracting entity or a prior concession contract was terminated early, or that damages or other comparable sanctions were imposed in connection with that prior contract?</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>Directive 2014/24/EU</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>57(4)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">67362ec7-cec3-4cb8-a38e-5d7a2a31e6d8</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">974c8196-9d1c-419c-9ca9-45bb9f5fd59a</cbc:ID>
+                <cbc:Description>Your answer?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">2cbcf978-765c-40aa-996b-b1d082485cef</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e098da8e-4717-4500-965f-f882d5b4e1ad</cbc:ID>
+                    <cbc:Description>Please describe them</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>Learn about the disability and how you can help. Get to know the person and the caregiver.&#xD;
+Show compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.&#xD;
+Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5f9f09f7-f701-432c-9fdc-c22c124a74c9</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
+                        <cbc:Description>Have you taken measures to demonstrate your reliability (&quot;Self-Cleaning&quot;)?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">74e6c7b4-757b-4b40-ada6-fad6a997c310</cbc:ID>
+                        <ccv:Requirement responseDataType="DESCRIPTION">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
+                            <cbc:Description>Please describe them</cbc:Description>
+                            <ccv:Response>
+<cbc:Description>Early termination, damages or other comparable sanctions  descr</cbc:Description>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+</ccv:Criterion>
+----
+
+include::4.2.5_CMMN_NOTICE_THAT.adoc[]
+;
+
+	* As for the group of ''social' criteria no evidence is herein required.

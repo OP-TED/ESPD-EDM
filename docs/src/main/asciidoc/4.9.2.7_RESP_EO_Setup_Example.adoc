@@ -1,0 +1,37 @@
+The fragment of XML below shows the implementation of this criterion ''Set up of economic operator'' in the ESPD Service: 
+
+[source,xml]
+.XML example of the Setup of economic operator criterion (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP) 
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">77f481ce-ffb6-483f-8e2b-c78db5e68292</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP</cbc:TypeCode>
+        <cbc:Name>Set up of economic operator</cbc:Name>
+        <cbc:Description>In case the information concerning turnover (general or specific) is not available for the entire period required, please state the date on which the economic operator was set up or started trading:</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(3)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e9aa7763-c167-4352-8060-1a3d7d3e2662</cbc:ID>
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a18b2c98-8552-45ca-9751-d4c94c05847a</cbc:ID>
+                <cbc:Description>Please specify</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="YEAR">2014</cbc:Quantity><!--1-->
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+<1> The EO specified the year of its set up
+
+*NOTICE* that:
+
+	* The expected data type is ''QUANTITY_YEAR''. i.e. a year is expected expressed as a quantity, as in 2014. As for turnovers, 
+	where each turnover year was required, remember that the element used in the response MUST be ''cbc:QuantityType''. This element, taken 
+	from the OASIS UBL-2.1 specification provide an attribute named ''unitCode''. In the ESPD Response, the responses of type QUANTITY_YEAR *MUST* 
+	specify the value ''YEAR'' for the attribute ''cbc:unitCode'' of cbc:QuantityType.

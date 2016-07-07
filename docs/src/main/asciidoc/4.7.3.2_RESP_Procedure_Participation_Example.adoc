@@ -1,0 +1,33 @@
+The piece of XML below is a fragment of an ESPD Response XML document. This fragment shows the implementation of the conflict of interest criterion ''Conflict of 
+interest due to its participation in the procurement procedure'' (file Example1-ESPDResponse-total fake-Wayne Enterprises.xml):
+
+[source,xml]
+.XML example for the criterion ''conflict of interest due to participation in the procurement procedure''
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b1b5ac18-f393-4280-9659-1367943c1a2e</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.PROCEDURE_PARTICIPATION</cbc:TypeCode>
+        <cbc:Name>Conflict of interest due to its participation in the procurement procedure</cbc:Name>
+        <cbc:Description>Is the economic operator aware of any conflict of interest, as indicated in national law, the relevant notice or the procurement documents due to its participation in the procurement procedure?</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>Directive 2014/24/EU</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>57(4)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">30450436-f559-4dfa-98ba-f0842ed9d2a0</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">974c8196-9d1c-419c-9ca9-45bb9f5fd59a</cbc:ID>
+                <cbc:Description>Your answer?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+
+include::4.2.5_CMMN_NOTICE_THAT.adoc[]
+.

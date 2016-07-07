@@ -1,0 +1,45 @@
+[.text-left]
+==== Requirement
+
+[.text-center]
+[[Requirement_XSD]]
+.XSD Diagram of the class Requirement
+image::Requirement_XSD.png[align="center" alt="EO details, UML", width="1000", height="900"]
+
+[.text-left]
+.Class ccv:Requirement
+|===
+
+5+^|"_A class to associate a specific requirement that must be fulfilled through a response by the Economic Operator (EO)_"
+
+5+^|*Attributes*
+
+|*pi*
+|Processing Instruction. Reserved for non-standard processing of the class  
+|
+|OPTIONAL  (0..1)
+|`*Comment*: This attribute is defined in the ESPDRequest XSD Schema. The ESPD Service does not make any use of this attribute`
+
+|*responseDataType*
+|Type of response expected for this requirement; e.g. Indicator, Date, Description, etc.  
+|
+|MANDATORY (1..1)
+|`*Rule*: Compulsory use of the code list link:.\code_lists_v1.0.2\PDF\EPROC-ResponseDataType-060716-0951-32-v1.0.2.pdf[ResponseDataType]`
+
+5+^|Properties
+
+|*cbc:ID*
+|A language-independent token, e.g., a number, that allows to identify a Requirement
+a|
+[source,xml]
+----
+----
+|MANDATORY (1..1) 
+|`*Rule*: Compulsory use of the UUIDs from the table link:.\code_lists_v1.0.2\CriteriaTaxonomy-1.0.2.xlsx[Criteria]`
+
+|*cbc:Description*
+|Short textual description of the requirement
+|OPTIONAL (0..1) 
+|`*Comment*: The ESPD Service does not use this property` 
+
+|===

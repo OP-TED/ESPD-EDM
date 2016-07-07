@@ -1,0 +1,37 @@
+[.text-left]
+The fragment of XML below shows the implementation of this criterion in the ESPD Service:
+
+[source,xml]
+.XML example of a criterion ''Allowance of checks'' criterion (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL. CHECKS.ALLOWANCE_OF_CHECKS)
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c8809aa1-29b6-4f27-ae2f-27e612e394db</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS</cbc:TypeCode>
+        <cbc:Name>Allowance of checks</cbc:Name>
+        <cbc:Description>For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks  to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(4)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">d7721546-9106-43a7-8d31-2fe08a862b00</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">23a27c0e-c4f7-42cd-b0fd-a7cedfbf77a7</cbc:ID>
+                <cbc:Description>Do you allow checks?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator><!--1-->
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+<1> The EO allows for checks
+
+*NOTICE that:*
+
+	* This type of criteria does not follow the general rules 1 and 3.
+	* Therefore, *data is expected in any case* (a simple ''yes'' or ''no'', in this case; other selection criteria do also use this very 
+	simple structure, see  the ''suitability enrolment'' group of criteria, for example).

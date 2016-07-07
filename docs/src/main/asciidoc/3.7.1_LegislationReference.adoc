@@ -1,0 +1,109 @@
+[.text-left]
+==== Legislation Reference
+
+[.text-center]
+[[LegislationReference]]
+.LegislationReference XSD Diagram
+image::LegislationReference.png[alt="UML_representation", width="1200", height="1000"]
+
+
+[.text-left]
+.Class ccv:LegislationReference
+|===
+
+5+^|"_The specific piece(s) of Legislation(s) where the criterion is defined or mentioned_"
+
+5+^|*Attributes*
+
+|*langID*
+|Language of the textual data provided for this reference to a legislation
+a|
+[source,xml]
+-----
+<ccv:
+LegislationReference 
+langID="en"> ... 
+</ccv:LegislationReference>
+-----
+|OPTIONAL (0..1)
+|`*Comment*: If not specified defaults to `en` (English)`
+
+5+^|*Properties*
+
+|*ccv-cbc:
+LegislationTitle*
+|Title of the legislation as published in an official gazette or portal
+a|
+[source,xml]
+----
+<ccv-cbc:Title>
+DIRECTIVE 2014/24/EU 
+OF THE EUROPEAN PARLIAMENT 
+AND OF THE COUNCIL of 
+26 February 2014 on 
+public procurement and 
+repealing 
+Directive 2004/18/EC
+</ccv-cbc:Title>
+----
+|**MANDATORY** (1..1) 
+|`*Rule*:The complete title of the legislation provided  in the original legal text MUST be provided`
+
+|*Cbc:Description*
+|Reminder label or short description of the Legislation
+a|
+[source,xml]
+----
+<cbc:Description>
+Directive 2014/24/EU
+</cbc:Description>
+----
+|OPTIONAL (0..1)
+|
+
+|*ccv-cbc:
+JurisdictionLevelCode*
+|Jurisdictional level of a particular Legislation
+a|
+[source,xml]
+----
+<ccv-cbc:
+JurisdictionLevelCode 
+listID=
+"CriterionJurisdictionLevelCode" 
+listAgencyID="EU-COM-GROW" 
+listVersionID="1.0">
+EU_DIRECTIVE
+</ccv-cbc:JurisdictionLevelCode>
+----
+|*MANDATORY* (0..1) 
+|`*Rule*: Compulsory use of the code list link:.\code_lists_v1.0.2\PDF\EPROC-CriterionJurisdictionLevel-060716-0945-14-v1.0.2.pdf[CriterionJurisdictionLevel]`
+
+|*ccv-cbc:Article*
+|Textual description of the article of the Legislation; e.g. ''Article 61''
+a|
+[source,xml]
+----
+<ccv-cbc:Article>
+57(1)
+</ccv-cbc:Article>
+----
+|*MANDATORY* (1..1) 
+|`*Comment*: Other articles where the Criterion is referred to SHOULD also be provided`
+
+|*ccv-cbc:URIID*
+|URI that points at the text of a particular Legislation
+a|
+[source,xml]
+----
+<cbc:URI>
+http://eur-lex.europa.eu/
+legal-content/EN/TXT/
+?uri=celex:32014L0024
+</cbc:URI>
+----
+|*MANDATORY* (1..1) 
+|`*Comment*: In the case of European legislation, the URL MUST point at the multilingual 
+EUR-LEX web-page; e.g. http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024[Directive 2014/24/EU]`
+
+|===

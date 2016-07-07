@@ -1,0 +1,168 @@
+[.text-left]
+The fragment of XML below shows the implementation of both in the ESPD Service:
+
+[source,xml]
+.Example of an EO that breached its obligations relating to the payment of taxes 
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.EXCLUSION.CONTRIBUTIONS.PAYMENT_OF_TAXES</cbc:TypeCode>
+        <cbc:Name>Payment of taxes</cbc:Name>
+        <cbc:Description>Has the economic operator breached its obligations relating to the payment of taxes, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>Directive 2014/24/EU</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>57(2)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">098fd3cc-466e-4233-af1a-affe09471bce</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">974c8196-9d1c-419c-9ca9-45bb9f5fd59a</cbc:ID>
+                <cbc:Description>Your answer?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator><!--1-->
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f8499787-f9f8-4355-95e2-9784426f4d7b</cbc:ID>
+                <ccv:Requirement responseDataType="CODE_COUNTRY">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6c87d3d4-e8eb-4253-b385-6373020ab886</cbc:ID>
+                    <cbc:Description>Country or member state concerned</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code listID="ISO 3166-1" listAgencyID="ISO" listVersionID="1.0">FR</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="AMOUNT">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9052cc59-cfe5-41c6-a314-02a7f378ffe8</cbc:ID>
+                    <cbc:Description>Amount concerned</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Amount currencyID="EUR">300.0</cbc:Amount><!--2-->
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9b4497e6-a166-46f9-8581-7fc39ff975c4</cbc:ID>
+                        <cbc:Description>Has this breach of obligations been established by means other than a judicial or administrative decision?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator><!--3-->
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3cb7abf1-662a-4756-b61c-7bc716c1fafc</cbc:ID>
+                        <ccv:Requirement responseDataType="DESCRIPTION">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">201f11c3-1fa2-4464-acc0-f021266fd881</cbc:ID>
+                            <cbc:Description>Please describe which means were used</cbc:Description>
+                            <ccv:Response>
+<cbc:Description>how compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.&#xD;
+Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c882afa4-6971-4b00-8970-0c283eb122cc</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">08b0c984-c5e6-4143-8493-868c39745637</cbc:ID>
+                        <cbc:Description>If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>false</ccv-cbc:Indicator><!--4-->
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">815422d6-f8a1-418a-8bf0-3524f7c8f721</cbc:ID>
+                        <ccv:Requirement responseDataType="DATE">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
+                            <cbc:Description>Date of conviction</cbc:Description>
+                            <ccv:Response/>
+                        </ccv:Requirement>
+                        <ccv:Requirement responseDataType="PERIOD">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8</cbc:ID>
+                            <cbc:Description>Length of the period of exclusion</cbc:Description>
+                            <ccv:Response/>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">fc57e473-d63e-4a04-b589-dcf81cab8052</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">70f8697b-8953-411a-a489-4ff62e5250d2</cbc:ID>
+                        <cbc:Description>Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6c3609e1-9add-4fa9-9409-62ce72ae4548</cbc:ID>
+                        <ccv:Requirement responseDataType="DESCRIPTION">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">55905dd0-38f0-4f93-8c74-5ae05a21afc5</cbc:ID>
+                            <cbc:Description>Please describe them</cbc:Description>
+                            <ccv:Response>
+<cbc:Description>how compassion, sensitivity, and sincerity by respecting the individual’s wishes. Maintain a balance between helping and allowing the individual to grow by providing for himself or herself.&#xD;
+Prepare to accommodate individuals with a physical disability before Church meetings and activities begin. This may include providing ramps, seating accommodations, access to all facilities (including the pulpit), and media equipment. Facilities should be accessible to those who use wheelchairs, braces, artificial limbs, other assistive devices, or assistive animals.</cbc:Description>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup><!--5-->
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c1347b74-1872-4060-a6db-f4044edcd7c4</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f4313bb6-21b6-499e-bdff-debe10e11d2c</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+<cbc:ID>782b543f-f852-49e8-a1ab-76e4c63a8c1e</cbc:ID>
+<cac:Attachment>
+    <cac:ExternalReference>
+        <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+    </cac:ExternalReference>
+</cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1f1cd18e-3e01-4ca2-af4c-e2981924ba8d</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>Payment of taxes code</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+<1> The EO answers affirmatively, therefore it is, in principle, breaching an exclusion criterion and will have to motivate it by providing responses to the inner criterion requirements.
+<2> Notice how the currency is specified.
+<3> As the EO answers "no" (false) to this question it has not to provide data related to this inner requirement.
+<4> Again, as the EO answers "yes" to this other inner requirement it has also to provide the required data (date of the conviction and the period of exclusion)
+<5> In this case, the EO does not provide any online evidence (see other examples further on for this).
+
+*NOTICE* that:
+
+* The first group contains the requirements requesting data about the payment of taxes;
+
+* The second group (available online information) is identical to the second group showed in the previous case (convictions); it requests references to evidences, a structure that repeats in practically all the ESPD criteria;
+
+* The first group of requirements contain ''sub-groups'' of requirements. 
+This is consistent with the model and the XSD Schema. Each sub-group starts with another 
+''decision point''. As for the Criterion question, a ''yes'' answer in a sub-group indicates 
+that a sub-group of data will have to be provided by the EO. 
+It is important to always respect this approach in order to keep the conformance with the ESPD Service. 
+Bear in mind that at validation time  the data provided by the Economic Operator in the 
+ESPDResponse.xml instance will be checked against the required responseDataType attribute 
+specified in each requirement of the ESPDRequest.xml.
