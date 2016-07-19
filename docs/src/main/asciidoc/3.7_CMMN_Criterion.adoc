@@ -60,13 +60,13 @@ affirmative answer the EO is required to provide some more specific data about t
 conviction.
 
 [IMPORTANT]
-In principle, practically all the elements in the UML class and the XSD Schema are in principle optional. 
+In principle, practically all the elements in the UML class and the XSD Schema are optional.
 However *this does not mean that an ESPD conformant Service will accept that 
 certain data are not provided (or all of them for that matter)*. The compulsoriness of the ESPD Service documents 
 elements is not controlled solely by the XSD Schema. Instead the cardinality of the elements is also validated based on ''rules''. 
 These rules are assertions about the restrictions that affect an element,  an attribute or the 
 relationship between classes.footnote:[The ESPD Service confirms the presence of an element that in the schema is optional using the ISO Schematron validation method. The reason why the cardinality of the XSD schema is kept optional for most of the elements is to provide a model that is flexible enough so as to be used in other contexts different to the ESPD Service, e.g. for procurement projects at national or subnational levels where the value of the contracts are below the threshold; or for its use in systems where the ID of the instantiated objects is considered enough to identify a Criterion or a Requirement. For details about Schematron see http://www.schematron.com/spec.html.].
-In the tables below, describing each class, the optionallity or compulsoriness is indicated in respect of the ESPD Service needs, and 
+In the tables below, describing each class, the optionality or compulsoriness is indicated in respect of the ESPD Service needs, and
 regardless of the XSD cardinality.   
 
 [.text-left]
@@ -85,9 +85,10 @@ of the ESPDRequest schema these rules MUST be thoroughly respected if the XML in
 to be ESPD Service-conformant.
 
 Remember that the prefixes (ccv:, cbc: cac:, etc.) are representatives of the namespaces used in the 
-XSD Schema (see "Table Table 1. Schemas, namespaces and prefixes used by the ESPResponse").
+XSD Schema (see "Table 1. Schemas, namespaces and prefixes used by the ESPDResponse").
 
-	NOTICE that, except for the ccv:Response element, the rest of the data is already present in the ESPDRequest XML Document. The ESPDResponse copies the ESPDRequest and extends it with the Response of the EO. 
+[NOTE]
+Except for the ccv:Response element, the rest of the data is already present in the ESPDRequest XML Document. The ESPDResponse copies the ESPDRequest and extends it with the Response of the EO.
 
 [.text-left]
 .Class ccv:Criterion

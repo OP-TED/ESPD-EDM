@@ -145,23 +145,24 @@ The fragment of XML below shows the implementation of the
 <7> Amount corresponding to year 2014
 <8> etc.
 
-*NOTICE* that:
-
-	* The XML structure and elements reproduce quite faithfully the text of the Annex to the Implementing Regulation 2016/7
-	relating to the turnovers; 
-	* The general rule number 3 is respected (use of the sentence ''Your answer'' to respond the Criterion);
-	* In case the answer is ''yes'' three subgroups of requirements requesting year and amount 
-	will have to be completed by the Economic Operator;
-	* The type of data expected in the ESPDResponse.xml file are ''YEAR'' and  ''AMOUNT''. 
+[NOTE]
+====
+* The XML structure and elements reproduce quite faithfully the text of the Annex to the Implementing Regulation 2016/7
+relating to the turnovers;
+* The general rule number 3 is respected (use of the sentence ''Your answer'' to respond the Criterion);
+* In case the answer is ''yes'' three subgroups of requirements requesting year and amount
+will have to be completed by the Economic Operator;
+* The types of data expected in the ESPDResponse.xml file are ''YEAR'' and  ''AMOUNT''.
 	Beware of the following:
-		** In the case of ''YEAR'' the expected type of data is ''QUANTITY_YEAR''. The element used in the response MUST be ''cbc:QuantityType''. This element, taken from 
-		the OASIS UBL-2.1 specification provide an attribute named ''unitCode''. In the ESPD Response, the responses of type QUANTITY_YEAR MUST specify the value ''YEAR'' 
-		for the attribute ''cbc:unitCode'' of cbc:QuantityType;
-		** In the case of the data type ''AMOUNT'', the element used in the response MUST be ''cbc:AmountType''. This element, defined in the OASIS  UBL-2.1 specification, 
-		provides an attribute named ''currencyID''. In the ESPD Response, all the responses with amounts MUST always specify the currency in the
-		cbc:AmountType attribute;
-	* The XML maps the structures illustrated in the figures above related to the selection turnover category of criteria.
-	* The current version of the ESPD Service only supports a fixed number of yearly turnovers. 
-	This will be improved in the future.
+	** In the case of ''YEAR'' the expected type of data is ''QUANTITY_YEAR''. The element used in the response MUST be ''cbc:QuantityType''. This element, taken from
+	the OASIS UBL-2.1 specification provide an attribute named ''unitCode''. In the ESPD Response, the responses of type QUANTITY_YEAR MUST specify the value ''YEAR''
+	for the attribute ''cbc:unitCode'' of cbc:QuantityType;
+	** In the case of the data type ''AMOUNT'', the element used in the response MUST be ''cbc:AmountType''. This element, defined in the OASIS  UBL-2.1 specification,
+	provides an attribute named ''currencyID''. In the ESPD Response, all the responses with amounts MUST always specify the currency in the
+	cbc:AmountType attribute;
+* The XML maps the structures illustrated in the figures above related to the selection turnover category of criteria.
+* The current version of the ESPD Service only supports a fixed number of yearly turnovers.
+This will be improved in the future.
+====
 	
 

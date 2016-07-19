@@ -30,14 +30,14 @@ image::3_RESP_ESPDResponse_XSD_diagram.png[alt="ESPDRequest XSD diagram"]
 According to the UML Diagram an ESPDResponse XML document is represented by the class `espd:ESPDResponse`.
 This ''root'' class aggregates other classes (which in turn aggregate sub-classes). 
 The list below summarises the use of each of these classes. Further on, in this document, 
-each class is analised and illustrated in more detail:
+each class is analysed and illustrated in more detail:
 
 [.text-left]
 . The `cac:ContractingParty`, defined in UBL-2.1,  is used to specify data relating the Contracting Authority, Body or Entity. All ESPD Requests MUST provide some basic data about 
 the Contracting Body. 
 
 . The `espd:EconomicOperator` class is defined by COM as a placeholder for all the data related to the 
-Economic Operator. This class aggregates a espd:RepresentativeNaturalPerson class intended to gather 
+Economic Operator. This class aggregates an espd:RepresentativeNaturalPerson class intended to gather
 the data of the legal representatives of the EO. It also reuses the UBL-2.1 cac:Party class.  
 
 . The `cac:ProcurementProjectLot` class was also defined in UBL-2.1 to hold data about the Lots in which a Procurement Project has been divided. The ESPD Request XML documents MUST use 
