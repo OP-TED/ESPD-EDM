@@ -4,6 +4,10 @@
 
 The ESPD Exchange Data Model is the technical representation of the legal European Single Procurement Document. It is used to support interoperability between ESPD services provided all over Europe.
 
+## Documentation
+
+* [Latest version](https://espd.github.io/ESPD-EDM/)
+
 ## Roadmap
 
 * **Current version 1.0.1**: Version 1.0.1 is used since December 2015. This version is based on UBL 2.1.
