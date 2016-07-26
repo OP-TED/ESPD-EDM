@@ -1,0 +1,57 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+The ESPD Exchange Data Model (ESPD-EDM) is flexible enough so as to implement XML documents with different structures. Concretely, the 
+possibility of nesting groups of requirements inside groups of requirements can end up in complex XML instances that may not resemble
+amongst them thus hindering the mapping of data, their presentation and the interoperability between systems.   
+
+[.text-left]
+Hence the need of establishing of a minimum set of rules about how to build up such data structures. To keep conformance with
+the ESPD Services the rules are simple:
+
+[.text-left]
+.General rule 2: How to structure an ESPD Service Criterion
+[NOTE]
+====
+[.text-left]
+. Respect the structure proposed by the ESPD Service for each Criterion, as shown in this document or as in the XML structures of
+the documents exported by the ESPD Service. For the time being these structures are fixed (immutable). In future releases of the 
+ESPD Service the structures will be "dynamic"  and will map the criteria as defined in e-Certis2;
+. Reserve the first requirement of a group to ask a question for which the response MUST be "Yes" or "No".
+. Use the attribute `pi` of the `RequirementGroup` element to set whether the ESPD Service MUST take into account the content 
+of the group or not. The ESPD Service accepts three possibilities: 
+	* *GROUP_FULFILLED.ON_TRUE* means that the requirement group which contains this attribute value is displayed when, in the response, 
+	the corresponding INDICATOR is set to 'Yes' (set to true). This is the case for all the Exclusion criteria.
+	* *GROUP_FULFILLED.ON_FALSE* the requirement group which contains this attribute value is displayed when its corresponding indicator 
+	is set to 'No' (set to false). See examples amongst the Selection criteria.
+	* If it is missing then the requirement group will always be displayed
+====
+
+[.text-left]
+The flow-chart below illustrates this principle for any exclusion conviction criterion:
+
+[.text-center]
+[[data_struct_design]]
+.General data-structure design rule for criteria and requirements with a ''yes'' or ''no'' answer"
+image::DS_CRITERION.EXCLUSION.CONVICTIONS.png[alt="data_flow_design", width="900"]
+
+[.text-center]
+[[data_struct_design_legend]]
+.Legend
+image::DS_CRITERION.EXCLUSION.CONVICTIONS_legend.png[alt="data_flow_design", width="900"]
+
+[.text-left]
+The interpretation of this diagram could be as follows:
+
+[.text-left]
+* This criterion has two main groups of requirements  (G1: _Breach?_ and G2: _Online Evidence_);
+* The first group of requirements has one requirement and one sub-group or requirements;
+* If the response to the requirement is "Yes" (ON TRUE footnote:[In the XML this is the attribute `GROUP_FULFILLED.ON_TRUE` of the element `RequirementGroup`]) 
+then the ESPD Service application will show four data fields and a new subgroup with an additional question. Thus (on True) the EO will have to provide the date of the conviction, 
+the reason, who was convicted and for how long.  If the response is "No", then the EO will proceed providing data about whether there's online evidence or not 
+regarding to the absence of conviction (if that is possible).
+* This behaviour repeats per each subgroup of requirements: the deepest subgroup of the structure for the group 1 will have to be shown by the ESPD Service (and filled by the EO) in case an
+imported ESPDRequirement XML has a "Yes" in the response to the requirement _Self-Cleaning_.
+  
+[.text-left]
+In the next sections this principle is used to structure the Exclusion and Selection Criteria. See also the examples provided all along the document.

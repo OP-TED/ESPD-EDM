@@ -1,0 +1,93 @@
+ifndef::imagesdir[:imagesdir: images]
+
+The fragment of XML below shows the implementation of criterion ''Financial Ratio'' in the ESPD Service:
+
+[source,xml]
+.XML example of a ''Financial ratio'' criterion (CRITERION.SUITABILITY.ECONOMIC_FINANCIAL_STANDING. TURNOVER.RATIO)  
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.FINANCIAL_RATIO</cbc:TypeCode>
+        <cbc:Name>Financial ratio</cbc:Name>
+        <cbc:Description>Concerning the financial ratios  specified in the relevant notice, the procurement documents or the ESPD, the economic operator declares that the actual values for the required ratios are as follows:</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(3)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">cf00f7bb-c2cf-4565-91bb-221d78d8dd2f</cbc:ID>
+            <ccv:Requirement responseDataType="DESCRIPTION">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3a6fefd4-f458-4d43-97fb-0725fce5dce2</cbc:ID>
+                <cbc:Description>Please provide the requested data below</cbc:Description>
+                <ccv:Response/>
+            </ccv:Requirement>
+            <ccv:RequirementGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">096686e1-82ca-4de0-8710-d74d90da0f0c</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ab05ff3b-f3e1-4441-9b43-ee9912e29e92</cbc:ID>
+                    <cbc:Description>Description</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>TEST_1</cbc:Description><!--1-->
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="QUANTITY">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5461b973-7067-457e-93cc-8338da2c3eef</cbc:ID>
+                    <cbc:Description>Ratio</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Quantity>1.0</cbc:Quantity><!--2-->
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+            <ccv:RequirementGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ce5a61e7-0b0d-4c8b-ac55-2a457743022a</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">927def36-1fa3-4018-8b45-7ee2c5b1e0af</cbc:ID>
+                    <cbc:Description>Description</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>TEST_2</cbc:Description><!--3-->
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="QUANTITY">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">295d82b7-5ee6-4977-8aea-bac4acf6ecdf</cbc:ID>
+                    <cbc:Description>Ratio</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Quantity>2.0</cbc:Quantity><!--4-->
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+            <ccv:RequirementGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">3d0734f0-8f9b-4218-a245-c535e3773bc5</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e6ca4034-cfee-499a-9a47-c4f2862ef4d0</cbc:ID>
+                    <cbc:Description>Description</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>TEST_3</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="QUANTITY">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">2b792afb-87ba-47b5-a80c-aee76a6f2cc8</cbc:ID>
+                    <cbc:Description>Ratio</cbc:Description><!--5-->
+                    ...
+----
+<1> Description for the first ratio
+<2> Amount for the first ratio 
+<3> Description for the second ratio
+<4> Amount for the second ratio
+<5> etc...more tuples (Ratio, Amount)
+
+[NOTE]
+====
+* The XML structure and elements reproduces quite faithfully the fragment of text in the Implementing Regulation 2016/7 related
+to the financial ratio criterion;
+* Conversely to the criteria studied up to now, *the general rules number 1 and 3 are treated differently* (use of the sentence
+''please provide the requested data	below)'' to respond the Criterion);
+* Therefore *data is expected in any case*;
+* The types of data expected in the ESPDResponse XML file are ''DESCRIPTION'' (a text) and ''QUANTITY''. The element in the
+response corresponding to this ''QUANTITY'' MUST be of type ''cbc:QuantityType''. This element, defined in the OASIS  UBL-2.1 specification,
+provides an attribute named	''unitCode''. In the case of the Ratio Criterion a value for this attribute MAY NOT be provided;
+* The XML maps the structures illustrated in the figures above related to the selection financial ratio criterion.
+====
+	

@@ -1,0 +1,104 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== Contracting Party
+
+The class `cac:ContractingParty` was defined in UBL-2.1 (hence the prefix `cac:`).  
+This UBL class is a specialisation of the very rich UBL-2.1 aggregate component `cac:Party`.
+The ESPDResponse only uses a reduced subset of its data, although the XSD Schema imports it in 
+all of its richness (so you could use it for your own purposes beyond the ones expected by the 
+ESPD Service). See the http://docs.oasis-open.org/ubl/UBL-2.1.html[UBL-2.1] specification for all 
+the details about the `cac:Party` Common Aggregate Component.
+
+[.text-center]
+[[CMM_ContractingParty]]
+.ContractingParty XSD diagram details
+image::CMM_ContractingParty.png[align="center" alt="EO details, XSD", width="600", height="500"]
+
+[.text-left]
+==== Class cac:ContractingParty
+
+The table below lists the attributes and associated classes expected in an XML conformant 
+to the ESPD Service. 
+
+[.text-left]
+.Class cac:ContractingParty, elements expected by the ESPD Service  
+|===
+
+5+^|"_A class representing the contracting authority or contracting entity who is buying supplies,
+services or public works using a tendering procedure as described in the applicable directive 
+(Directives 2014/24/EU, 2014/25/EU)_" footnote:[Source: http://www.cenbii.eu/deliverables/cen-wsbii-3/[CEN/BII-WS3]]
+
+|*Elements*|*Description*|*Example*|*Mandatory?*|*Rules & comments*
+
+|*cac:PartyName*
+|The name of the contracting body  
+a|
+[source,xml] 
+----
+<cac:Party>
+ <cac:PartyName>
+  <cbc:Name>
+ 	Executive Agency for Small 
+ 	and Medium-sized Enterprises 
+ 	(EASME)
+  </cbc:Name>
+ </cac:PartyName>
+ ... <!--1-->
+</cac:Party>
+----
+|*MANDATORY* 
+|`*Rule*: The name of the contracting body MUST always be specified`
+
+|*cac:Country*
+|The country of the contracting body  
+a|
+[source,xml] 
+----
+<cac:Party>
+ ... <!--2-->
+ <cac:PostalAddress>
+  <cac:Country>
+   <cbc:IdentificationCode 
+   listAgencyID="ISO" 
+   listName="ISO 3166-1" 
+   listVersionID="1.0">
+   BE
+   </cbc:IdentificationCode>
+  </cac:Country>
+ </cac:PostalAddress>
+</cac:Party>
+----
+|*MANDATORY* - (Although in the XSD Schema the cardinality is 0..n)
+|`*Rule*: The country of the contracting body MUST always be specified. Compulsory use of the 
+code list link:./code_lists/PDF/CountryCodeIdentifier.pdf[CountryCodeIdentifier]`
+
+|===
+<1> The name of the Contracting Body is mandatory but has been removed from this example to simplify the example
+<2> the country of Contracting Body is mandatory but has been removed from this example to simplify the example
+
+A complete example about the `cac:Party` elements of the `cac:ContractingParty` expected by the ESPD 
+Service follows: 
+
+[source,xml]
+.Elements re-used from `cac:Party` to identify the contracting body  
+----
+  <cac:ContractingParty>
+      <cac:Party>
+         <cac:PartyName>
+            <cbc:Name>Executive Agency for Small and Medium-sized Enterprises (EASME)</cbc:Name>
+         </cac:PartyName>
+         <cac:PostalAddress>
+            <cac:Country>
+               <cbc:IdentificationCode 
+               listAgencyID="ISO" 
+               listName="ISO 3166-1" 
+               listVersionID="1.0">
+               BE
+               </cbc:IdentificationCode>
+            </cac:Country>
+         </cac:PostalAddress>
+         <cac:Contact/>
+      </cac:Party>
+   </cac:ContractingParty>
+----

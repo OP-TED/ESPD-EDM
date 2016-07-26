@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	eDocument		:	CCV-CommonBasicComponents. Syntax Binding based on OASIS UBL-2.1
+	Version				:	1.0
+	Last update		: 	20151001Th
+	Author				:	enric.staromiejski.torregrosa@everis.com
+	Project Owner	: 	DG GROW, European Commission, Unit G4 - Innovative and E-Procurement 
+	Project Officers	:	Ivo.Locatelli@ec.europa.eu; Marc-Christopher.SCHMIDT@ec.europa.eu
+	-->
+<xsd:schema xmlns="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1"
+            xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                schemaLocation="UBL-CommonBasicComponents-2.1.xsd"/>
+    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+                schemaLocation="UBL-UnqualifiedDataTypes-2.1.xsd"/>
+    <!-- Element declaration -->
+    <xsd:element name="Article" type="cbc:TextType"/>
+    <xsd:element name="Code" type="cbc:TypeCodeType"/>
+    <xsd:element name="Indicator" type="IndicatorType"/>
+    <xsd:element name="JurisdictionLevelCode" type="cbc:TypeCodeType"/>
+    <xsd:element name="Title" type="cbc:TextType"/>
+    <!-- Element definition -->
+    <xsd:complexType name="IndicatorType">
+        <xsd:simpleContent>
+            <xsd:extension base="udt:IndicatorType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+</xsd:schema>

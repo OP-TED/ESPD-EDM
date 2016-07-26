@@ -1,0 +1,19 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+==== Ratio
+
+For the time being the only  type of ratio referred to in the ESPD is ''Financial Ratio'' 
+(thus its inclusion under the Economic and Financial category of criteria). 
+The structure of this criterion is identical to the one for turnovers. The only difference between them 
+lies in the tuple of values required, (Description, Ratio) instead of (Year, Amount).
+
+[.text-left]
+The simplified data structure illustrates this idea of iterative tuples (Description, Quantity). The ''...'' symbol means that the subgroup is repeated as many times as required in the tender documents:
+
+The corresponding data-structure diagram would be this one. Notice that each tuple (Description, Quantity) is treated as a subgroup of two requirements:
+
+[.text-center]
+[[Ratio]]
+.Detailed data-structure representation for turnovers (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.*)
+image::Ratio_struct.png[alt="selection_economic_financial_turnovers", width="600"]

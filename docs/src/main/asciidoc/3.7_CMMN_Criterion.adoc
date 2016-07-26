@@ -1,0 +1,202 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== Criterion
+
+Criteria are at the core of the ESPD. The two main groups of Criteria relevant for the ESPD are the ones 
+required in the Directive, Exclusion and Selection criteria. This section gives a detailed view on how 
+to specify each of those criteria. Its content is aligned to the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0007[Annex to the Regulation 2016/7] 
+establishing the standard form for the European Single Procurement Document.     
+
+Additionally to the Exclusion and Selection Criteria, the ESPD EDM treat some data related to the
+Economic Operator also as criteria. This is covered further on under Section "Other Criteria". 
+
+[.text-left]
+==== Core Criterion and Core Evidence Data Models and Vocabularies
+
+This document differentiates between _Data Model_ (referring to the UML conceptual diagrams) and 
+_Vocabulary_ (referring to the XSD schemas). Thus the CCV and CEV abbreviations refer to the 
+Core Criterion and Core Evidence XSD Schemata that implement the conceptual 
+Data Models (represented as UML diagrams). 
+
+The UML diagram below shows in detail the classes of the Core Criterion and Core 
+Evidence Data Models used in the ESPDResponse XML document. 
+
+[.text-center]
+[[CCEV_UML]]
+.UML diagram for the CC and CE Data Models used in the ESPDResponse XML documents
+image::CCEV_UML.png[alt="UML_representation", width="1000", height="900"]
+
+As far as the ESPD Service is concerned the above UML diagram SHOULD be interpreted as follows:
+
+* One Criterion contains one or more Groups of Requirements
+* One Criterion MAY have sub-Criteria 
+* One Criterion MAY be linked to a specific Legislation
+* One Group of Requirements contains one or More Requirements
+* One or more Response MUST be provided (by the EO) for each Requirement
+* The Response MUST be of one, and +++<u>only one</u>+++, type of data
+* The type of data in a Response can be either an Indicator (a boolean value), a Code (representing a concept), an Amount (an economic value expressed as a specific currency type), a Date, a Percent, a Quantity or a Period  
+* One Response MAY refer to one or more Evidences
+* The Response MAY also refer to a Party that is somehow related to the Response  
+* An Evidence MAY refer to the issuer of that Evidence
+* The Evidence MAY refer to an attached DocumentReference, i.e. to a URL pointing at a document; the document could also be embedded into the cev:Evidence element, although the ESPD Service does not use this UBL feature  
+
+ 
+In the ESPD documents a +++<u>Criterion</u>+++ takes the form of a ''question or statement about a specific subject that may lead to the exclusion or selection of an Economic Operator in a 
+Procurement Project''. An example of Criterion in the ESPD would be a question like this:
+
+[.text-center] 
+"_Has the economic operator itself or any person who is a member of its administrative, management or 
+supervisory body or has powers of representation, decision or control therein been the subject of 
+a conviction by final judgement for participation in a criminal organisation, by a conviction rendered 
+at the most five years ago or in which an exclusion period set out directly in the conviction 
+continues to be applicable?_"
+
+[.text-left]
+''+++<u>Requirements</u>+++'', in turn, relates to the way the Economic Operator has to answer one 
+specific Criterion. In the case of the exclusion Criterion above mentioned, the Contracting 
+Authority requires the Economic Operator (EO) to answer ''yes or no'', and in the case of an 
+affirmative answer the EO is required to provide some more specific data about the 
+conviction.
+
+[IMPORTANT]
+In principle, practically all the elements in the UML class and the XSD Schema are optional.
+However *this does not mean that an ESPD conformant Service will accept that 
+certain data are not provided (or all of them for that matter)*. The compulsoriness of the ESPD Service documents 
+elements is not controlled solely by the XSD Schema. Instead the cardinality of the elements is also validated based on ''rules''. 
+These rules are assertions about the restrictions that affect an element,  an attribute or the 
+relationship between classes.footnote:[The ESPD Service confirms the presence of an element that in the schema is optional using the ISO Schematron validation method. The reason why the cardinality of the XSD schema is kept optional for most of the elements is to provide a model that is flexible enough so as to be used in other contexts different to the ESPD Service, e.g. for procurement projects at national or subnational levels where the value of the contracts are below the threshold; or for its use in systems where the ID of the instantiated objects is considered enough to identify a Criterion or a Requirement. For details about Schematron see http://www.schematron.com/spec.html.].
+In the tables below, describing each class, the optionality or compulsoriness is indicated in respect of the ESPD Service needs, and
+regardless of the XSD cardinality.   
+
+[.text-left]
+The next figure shows the "collapsed" (i.e. abbreviated) XSD Schema corresponding to the Criterion element: 
+
+[.text-center]
+[[CCEV_XSD]]
+.XSD diagram for the CCV and CEV used in the ESPDResponse XML documents
+image::CCEV_XSD.png[alt="UML_representation", width="600", height="500"]
+
+
+The tables below list and describe each class of the Core Criterion Vocabulary and Core Evidence 
+Vocabulary used in the ESPDResponse XML document. They also provide the rules specific to each 
+class, properties and elements within the class, as mentioned above. When implementing XML instances 
+of the ESPDRequest schema these rules MUST be thoroughly respected if the XML instance is intended 
+to be ESPD Service-conformant.
+
+Remember that the prefixes (ccv:, cbc: cac:, etc.) are representatives of the namespaces used in the 
+XSD Schema (see "Table 1. Schemas, namespaces and prefixes used by the ESPDResponse").
+
+[NOTE]
+Except for the ccv:Response element, the rest of the data is already present in the ESPDRequest XML Document. The ESPDResponse copies the ESPDRequest and extends it with the Response of the EO.
+
+[.text-left]
+.Class ccv:Criterion
+|===
+
+5+^|"_A class to associate a condition that the economic has to fulfil in order to not be excluded and be selected as a candidate for awarding in a procurement procedure_"
+
+5+^|*Attributes*
+
+|*pi*
+|Processing Instruction. Reserved for non-standard processing of the class; e.g. for hiding or showing elements in a user interface  
+|
+|OPTIONAL (0..1) 
+|`*Comment*: This attribute is defined in the ESPDRequest XSD Schema. In the case of the Criterion element the ESPD Service is currently 
+not using this attribute, but see below how the ESPD Service uses it in the case of the RequirementGroup element.` 
+
+5+^|*Properties*
+
+|*cbc:ID*
+|A language-independent token, e.g., a number, that allows to identify a criterion uniquely as 
+well as allows to reference the criterion in other documents
+a|
+[source,xml] 
+----
+<cbc:ID 
+schemeID="CriteriaID" 
+schemeAgencyID="EU-COM-GROW" 
+schemeVersionID="1.0">
+005eb9ed-1347-4ca3-bb29-9bc0db64e1ab
+</cbc:ID>
+----
+|*MANDATORY* (1..1) 
+|`*Rule*: Compulsory use of the UUIDs from the table link:./code_lists/CriteriaTaxonomy.xlsx[Criteria]`
+
+|*ccv-cbc:
+FulfillmentIndicator*
+|Indicates whether the economic operator states that it fulfills the specific criterion (true) or not (false)
+|
+|OPTIONAL (0..1) - Currently not used by the ESPD Service
+|
+
+|*ccv-cbc:
+FulfillmentIndicatorType*
+|Codifies the type of indicator used to state whether the Criterion is met or not 
+|
+|OPTIONAL (0..1) - Currently not used by the ESPD Service
+|
+
+|*cbc:TypeCode*
+|Code specifying the type of Criterion
+a|
+[source,xml] 
+----
+<cbc:TypeCode 
+listID="CriteriaTypeCode" 
+listAgencyID="EU-COM-GROW" 
+listVersionID="1.0">
+CRITERION.EXCLUSION.CONVICTIONS.
+PARTICIPATION_IN_CRIMINAL_ORGANISATION
+</cbc:TypeCode>
+----
+|*MANDATORY* (1..1) 
+|`*Rule*: Compulsory use of the code list link:./code_lists/PDF/CriteriaTypeCode.pdf[CriteriaTypeCode]`
+
+|*cbc:Name*
+|A short and descriptive name for a criterion
+a|
+[source,xml]
+----
+<cbc:Name>
+Child labour and other forms 
+of trafficking in human beings
+</cbc:Name>
+----
+|*MANDATORY* (1..1)
+|`*Comment*: The names of the criteria can be obtained from the table link:./code_lists/CriteriaTaxonomy.xlsx[Criteria]`  
+
+|*cbc:Description*
+|An extended description of the criterion
+a|
+[source,xml]
+----
+<cbc:Description>
+Has the economic operator itself 
+or any person who is a member 
+of its administrative, 
+management or supervisory body ...
+</cbc:Description>
+----
+|*MANDATORY* (1..1) 
+|`*Comment*: The descriptions of the criteria can be obtained from the table link:./code_lists/CriteriaTaxonomy.xlsx[Criteria]`  
+
+5+^|*Associated classes*
+
+|*LegislationReference*
+|The specific piece(s) of Legislation(s) where the criterion is defined or mentioned
+|
+|*MANDATORY* (1..n)  
+|`*Comment*: See details below`
+
+|*SubCriterion*
+|Specialised criterion derived from a higher classified Criterion
+|
+|OPTIONAL (0..n)
+|`*Comment*: An example could be a criterion defined to specify concrete
+requirements that are applied at the national or sub-national level; e.g. a 
+very specific national professional misconduct criterion that is more specific 
+than the ones defined in the 
+link:./code_lists/CriteriaTaxonomy.xlsx[EU Exclusion Criteria]`  
+
+|===

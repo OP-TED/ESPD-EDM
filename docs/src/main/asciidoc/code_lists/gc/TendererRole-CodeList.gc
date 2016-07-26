@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gc:CodeList xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:fn="http://www.w3.org/2005/xpath-functions"
+             xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+             xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+   <Identification>
+      <ShortName>TendererRole</ShortName>
+      <LongName xml:lang="en">TENDERER ROLE</LongName>
+      <Version>1.0</Version>
+      <CanonicalUri>Placeholder</CanonicalUri>
+      <CanonicalVersionUri>Placeholder</CanonicalVersionUri>
+      <Agency>
+         <LongName xml:lang="en">BII</LongName>
+         <Identifier>BII</Identifier>
+      </Agency>
+   </Identification>
+   <ColumnSet>
+      <Column Id="code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="name" Use="optional">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="en"/>
+      </Column>
+      <Key Id="codeKey">
+         <ShortName>CodeKey</ShortName>
+         <ColumnRef Ref="code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>MT</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Main tenderer</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>SC</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Subcontractor</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>CL</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Consortium leader</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>CM</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Consortium member</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>JV</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Joint Venture</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>SME</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>SME</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>OTH</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Other</SimpleValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gc:CodeList>

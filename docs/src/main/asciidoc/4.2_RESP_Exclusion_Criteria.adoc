@@ -1,0 +1,41 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== 1. *EXCLUSION CRITERIA*
+
+For Procurement Projects where the value of the contract is above the threshold, all 
+ESPDRespone XML documents MUST specify all the exclusion criteria defined in the Directive. Thus the following general rule:
+
+include::4.2.0_GENERAL_RULE_3.adoc[]
+
+[.text-left]
+Criteria may be grouped in several different categories. The figure below is 
+intended to identify and list these categories for the Exclusion criteria (branches in text boxes), and specific subgroups 
+within each category (leaves in text without boxes):
+
+[.text-center]
+[[exclusion_criteria_taxonomy]]
+.Exclusion criteria taxonomy
+image::exclusion_criteria_taxonomy.png[alt="exclusion_criteria", width="800", height="1200"]
+
+[.text-left]
+Each of these categories has its own particular data structure, which can be represented as 
+flow diagrams like the one in the figure above (see Figure 21. ''General data-structure design rule for criteria and requirements with a _yes_ or _no_ answer''). 
+Thus the data structures below represent how the data is organised for each exclusion criterion used in the ESPD. 
+
+[.text-left]
+[NOTE]
+====
+The exclusion criteria have been drafted ''from a negative perspective''. Thus a criterion like `Payment of Taxes`
+is drafted like follows:
+
+_Has the economic operator breached its obligations relating to the payment of taxes, both in the 
+country in which it is established and in Member State of the contracting authority or contracting 
+entity if other than the country of establishment?_
+
+If the Economic Operator answers ''no'' then it has nothing to justify or motivate. On the 
+contrary if it answers ''yes'' it will have to provide additional data and evidences to prove 
+that the criterion is satisfied.
+
+The ESPD Service applies this approach as much as possible.
+====

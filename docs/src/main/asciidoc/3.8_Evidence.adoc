@@ -1,0 +1,75 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== Evidence
+
+The `ccv:Evidence` class is used by the economic operator to refer to a trusted source of proofs that 
+supports the stated response to a criterion requirement. 
+
+In the ESPD Exchange Data Model (ESPD EDM) the Evidence class is part of the Response to a Requirement, as 
+shown in the XSD diagram below:
+
+[.text-center]
+[[Evidence_XSD]]
+.XSD diagram for class cev:Evidence
+image::Evidence_XSD.png[alt="UML_representation", width="1000", height="900"]
+
+[.text-left]
+.Class ccv:Evidence
+|===
+
+5+^|"_A class used by the economic operator to refer to a trusted source of proofs that 
+supports the stated response to a criterion requirement_"
+
+5+^|*Properties*
+
+|*cev-cbc:EvidenceName*
+|The name of an evidence
+|
+|OPTIONAL (0..1)
+|`*Comment*: The ESPD Service does not use this property for the time being`
+
+|*cev-cbc:
+EmbeddedEvidenceIndicator*
+|Indicates whether the Evidence is embedded in the XML document (_True_) 
+|
+|OPTIONAL (0..1)
+|`*Comment*: The ESPD Service does not use this feature as it always refers to it through a URL. Other
+solutions could need it (e.g. the e-Sens Virtual Company Dossier, VCD). The UBL-2.1 component allows for both embedding the evidence and referring to it via a URL`
+
+5+^|*Associated classes*
+
+|*EvidenceIssuerParty*
+|A UBL-2.1 Party class to refer to the (trusted) Party responsible for issuing the Evidence  
+|
+|OPTIONAL (0..1)
+|`*Comment*: The ESPD Service does not use this element for the time being`
+
+|*EvidenceDocumentReference*
+|A UBL-2.1 DocumentReference class to hold the data about the reference to the Evidence
+|(See example below)
+|OPTIONAL (0..1)
+|`*Comment*: The URL is currently the only property used by the ESPD`
+
+|===
+
+[source,xml]
+.Use of the Evidence element by the ESPD Service
+----
+<ccv:Requirement responseDataType="EVIDENCE_URL">
+ <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+  <cbc:Description>URL</cbc:Description>
+   <ccv:Response>
+    <cev:Evidence>
+     <cev:EvidenceDocumentReference>
+      <cbc:ID>6a5818a9-7908-44d0-9847-086b4b7a1444</cbc:ID>
+       <cac:Attachment>
+        <cac:ExternalReference>
+         <cbc:URI>http://www.eurodb.be/scriptsPublic/arianeweb.dll/e/m_mkt_rech</cbc:URI>
+        </cac:ExternalReference>
+       </cac:Attachment>
+      </cev:EvidenceDocumentReference>
+     </cev:Evidence>
+    </ccv:Response>
+</ccv:Requirement>
+----

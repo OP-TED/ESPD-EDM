@@ -1,0 +1,79 @@
+ifndef::imagesdir[:imagesdir: images]
+
+The fragment of XML below shows the implementation of this criterion ''Professional risk indemnity insurance'' in the ESPD Service:
+
+[source,xml]
+.XML example of a risk indemnity insurance (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE) criterion 
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7604bd40-4462-4086-8763-a50da51a869c</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE</cbc:TypeCode>
+        <cbc:Name>Professional risk indemnity insurance</cbc:Name>
+        <cbc:Description>The insured amount in its professional risk indemnity insurance is the following:</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(3)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42dc8062-974d-4201-91ba-7f2ea90338fd</cbc:ID>
+            <ccv:Requirement responseDataType="AMOUNT">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42db0eaa-d2dd-48cb-83ac-38d73cab9b50</cbc:ID>
+                <cbc:Description>Amount</cbc:Description>
+                <ccv:Response>
+                    <cbc:Amount currencyID="EUR">3000000000000000</cbc:Amount><!--1-->
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup><!--2-->
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dae5670-cb75-4c97-901b-96ddac5a633a</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+<cbc:ID>cf195bb0-48ba-409f-9a90-77e0ef1a8f5c</cbc:ID>
+<cac:Attachment>
+    <cac:ExternalReference>
+        <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+    </cac:ExternalReference>
+</cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>Professional risk indemnity insurance code</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+<1> The EO provides an amount 
+<2> The EO does not provide an evidence
+
+[NOTE]
+====
+* Conversely to the criteria studied up to now, the general rules number 1 and 3 are treated differently: no question is asked,
+a direct request for data is issued instead. Therefore an amount is always expected in this case;
+* The expected data type is ''AMOUNT''. In the case of the data type ''AMOUNT'', the element used in the response will have to be
+''cbc:AmountType''. Keep in mind that this element provides an attribute named ''currencyID'' and that, in the ESPDResponse XML document,
+all the responses with amounts MUST always specify the currency;
+* The XML maps the above data-structure diagram.
+====

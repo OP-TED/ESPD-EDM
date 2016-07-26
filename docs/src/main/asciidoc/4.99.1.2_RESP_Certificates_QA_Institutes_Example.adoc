@@ -1,0 +1,80 @@
+ifndef::imagesdir[:imagesdir: images]
+
+The fragment of XML below shows the implementation of this criterion in the ESPD Service:
+
+[source,xml]
+.XML example of a criterion ''Certificates by institutes about quality assurance standards'' criterion (data structure of type CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.*)
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">a7669d7d-9297-43e1-9d10-691a1660187c</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INSTITUTES_CERTIFICATE</cbc:TypeCode>
+        <cbc:Name>For supply contracts: certificates by quality control institutes</cbc:Name>
+        <cbc:Description>Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the procurement documents?</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(4)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">4887c3d7-05fc-4e3e-b066-f338910f0c4c</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">15335c12-ad77-4728-b5ad-3c06a60d65a4</cbc:ID>
+                <cbc:Description>Your answer?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator><!--1-->
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_FALSE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">83f2f79e-0455-4918-89ff-d7829e8bf758</cbc:ID>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b9dec4cb-2f6f-47d7-a023-e9099b19b338</cbc:ID>
+                    <cbc:Description>If not, please explain why and state which other means of proof can be provided:</cbc:Description>
+                    <ccv:Response/>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dae5670-cb75-4c97-901b-96ddac5a633a</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator><!--2-->
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+<cbc:ID>9f5c1c17-60c8-4b24-8149-5b5399ee918d</cbc:ID>
+<cac:Attachment>
+    <cac:ExternalReference>
+        <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+    </cac:ExternalReference>
+</cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>For supply contracts: certificates by quality control institutes code</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+<1> The EO states that it will produce certificates about quality assurance standards issued by institutes; 
+<2> The EO provide a possible source of online evidences for these certificates. 
+
+
+	

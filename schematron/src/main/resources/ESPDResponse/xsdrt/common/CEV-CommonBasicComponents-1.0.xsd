@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by everis Spain, S.L. (everis Spain, S.L.) -->
+<!--
+	eDocument		:	CCV-CommonBasicComponents. Syntax Binding based on OASIS UBL-2.1
+	version				:	1.0
+	Last update		: 	20151001Th
+	Author				:	enric.staromiejski.torregrosa@everis.com
+	Project Owner	: 	DG GROW, European Commission, Unit G4 - Innovative and E-Procurement 
+	Project Officers	:	Ivo.Locatelli@ec.europa.eu; Marc-Christopher.SCHMIDT@ec.europa.eu
+	-->
+<xsd:schema xmlns="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1"
+            xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1"
+            elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+                schemaLocation="UBL-UnqualifiedDataTypes-2.1.xsd"/>
+    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                schemaLocation="UBL-CommonBasicComponents-2.1.xsd"/>
+    <!-- Element declaration -->
+    <xsd:element name="EmbeddedEvidenceIndicator" type="IndicatorType"/>
+    <xsd:element name="EvidenceID" type="cbc:IDType"/>
+    <xsd:element name="EvidenceTypeCode" type="cbc:TypeCodeType"/>
+    <xsd:element name="EvidenceName" type="cbc:NameType"/>
+    <xsd:element name="EvidenceDescription" type="cbc:DescriptionType"/>
+    <!-- Elements definition -->
+    <xsd:complexType name="IndicatorType">
+        <xsd:simpleContent>
+            <xsd:extension base="udt:IndicatorType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+</xsd:schema>
