@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
+<!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by everis Spain, S.L. (everis Spain, S.L.) -->
+<!--
+	eDocument		:	ESPDResponse. Syntax Binding based on OASIS UBL-2.1
+	version				:	1.0.2
+	Last update		: 	20160726Tu
+	Author				:	enric.staromiejski.torregrosa@everis.com
+	Project Owner	: 	DG GROW, European Commission, Unit G4 - Innovative and E-Procurement 
+	Project Officers	:	Ivo.Locatelli@ec.europa.eu; Marc-Christopher.SCHMIDT@ec.europa.eu
+	-->
+<xsd:schema xmlns="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.2">
+	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" schemaLocation="../common/ESPD-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" schemaLocation="../common/ESPD-CommonBasicComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" schemaLocation="../common/CCV-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" schemaLocation="../common/UBL-CommonAggregateComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="../common/UBL-CommonBasicComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" schemaLocation="../common/UBL-CommonExtensionComponents-2.1.xsd"/>
+	<xsd:element name="ESPDResponse" type="ESPDResponseType"/>
+	<xsd:complexType name="ESPDResponseType">
+		<xsd:sequence>
+			<xsd:element ref="ext:UBLExtensions" minOccurs="0"/>
+			<xsd:element ref="cbc:UBLVersionID" minOccurs="0"/>
+			<xsd:element ref="cbc:CustomizationID" minOccurs="0"/>
+			<xsd:element ref="cbc:ProfileID" minOccurs="0"/>
+			<xsd:element ref="cbc:ProfileExecutionID" minOccurs="0"/>
+			<xsd:element ref="cbc:ID"/>
+			<xsd:element ref="cbc:CopyIndicator" minOccurs="0"/>
+			<xsd:element ref="cbc:UUID" minOccurs="0"/>
+			<xsd:element ref="cbc:VersionID" minOccurs="0"/>
+			<xsd:element ref="cbc:PreviousVersionID" minOccurs="0"/>
+			<xsd:element ref="cbc:IssueDate"/>
+			<xsd:element ref="cbc:IssueTime" minOccurs="0"/>
+			<xsd:element ref="cbc:ContractFolderID"/>
+			<xsd:element ref="espd-cbc:EconomicOperatorGroupName" minOccurs="0"/>
+			<xsd:element ref="cac:ContractingParty"/>
+			<xsd:element ref="espd-cac:EconomicOperatorParty"/>
+			<xsd:element ref="cac:ProcurementProjectLot" maxOccurs="unbounded"/>
+			<xsd:element ref="ccv:Criterion" maxOccurs="unbounded"/>
+			<xsd:element ref="cac:ServiceProviderParty" minOccurs="0"/>
+			<xsd:element ref="cac:Signature" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="cac:AdditionalDocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

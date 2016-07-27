@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
+<!--
+	eDocument		:	CCV-CommonAggregateComponents. Syntax Binding based on OASIS UBL-2.1
+	version				:	1.0.2
+	Last update		: 	20160726Tu
+	Author				:	enric.staromiejski.torregrosa@everis.com
+	Project Owner	: 	DG GROW, European Commission, Unit G4 - Innovative and E-Procurement 
+	Project Officers	:	Ivo.Locatelli@ec.europa.eu; Marc-Christopher.SCHMIDT@ec.europa.eu
+	-->
+<xsd:schema xmlns="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:cev-cac="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.2">
+	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" schemaLocation="CCV-CommonBasicComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" schemaLocation="CEV-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" schemaLocation="UBL-CommonAggregateComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="UBL-CommonBasicComponents-2.1.xsd"/>
+	<!-- Element declaration -->
+	<xsd:element name="Criterion" type="CriterionType"/>
+	<xsd:element name="Evidence" type="cev-cac:EvidenceType"/>
+	<xsd:element name="EvidenceDocumentReference" type="cac:DocumentReferenceType"/>
+	<xsd:element name="IssuerParty" type="cac:PartyType"/>
+	<xsd:element name="LegislationReference" type="ccv:LegislationType"/>
+	<xsd:element name="RelatedParty" type="cac:PartyType"/>
+	<xsd:element name="RequirementGroup" type="RequirementGroupType"/>
+	<xsd:element name="Requirement" type="RequirementType"/>
+	<xsd:element name="Response" type="ResponseType"/>
+	<xsd:element name="SubCriterion" type="CriterionType"/>
+	<xsd:element name="Period" type="cac:PeriodType"/>
+	<!-- Element definition -->
+	<xsd:complexType name="CriterionType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ID" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:FulfillmentIndicator" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:FulfillmentIndicatorType" minOccurs="0"/>
+			<xsd:element ref="cbc:TypeCode" minOccurs="0"/>
+			<xsd:element ref="cbc:Name" minOccurs="0"/>
+			<xsd:element ref="cbc:Description" minOccurs="0"/>
+			<xsd:element ref="LegislationReference" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="RequirementGroup" maxOccurs="unbounded"/>
+			<xsd:element ref="SubCriterion" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="RequirementGroupType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ID" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:FulfillmentIndicator" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:FulfillmentIndicatorType" minOccurs="0"/>
+			<xsd:element ref="cbc:Name" minOccurs="0"/>
+			<xsd:element ref="cbc:Description" minOccurs="0"/>
+			<xsd:element ref="cbc:TypeCode" minOccurs="0"/>
+			<xsd:element ref="Requirement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="RequirementGroup" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="RequirementType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ID" minOccurs="0"/>
+			<xsd:element ref="cbc:Description" minOccurs="0"/>
+			<xsd:element ref="Response" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
+		<xsd:attribute name="responseDataType" type="xsd:normalizedString" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="ResponseType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ID" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:Indicator" minOccurs="0"/>
+			<xsd:element ref="cbc:Description" minOccurs="0"/>
+			<xsd:element ref="cbc:Amount" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:Code" minOccurs="0"/>
+			<xsd:element ref="cbc:Date" minOccurs="0"/>
+			<xsd:element ref="cbc:Percent" minOccurs="0"/>
+			<xsd:element ref="cbc:Quantity" minOccurs="0"/>
+			<xsd:element ref="cac:Period" minOccurs="0"/>
+			<xsd:element ref="cev-cac:Evidence" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="RelatedParty" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="pi" type="xsd:normalizedString" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="LegislationType">
+		<xsd:sequence>
+			<xsd:element ref="ccv-cbc:Title" minOccurs="0"/>
+			<xsd:element ref="cbc:Description" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:JurisdictionLevelCode" minOccurs="0"/>
+			<xsd:element ref="ccv-cbc:Article" minOccurs="0"/>
+			<xsd:element ref="cbc:URI" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="langID" type="xsd:normalizedString" use="optional"/>
+	</xsd:complexType>
+</xsd:schema>

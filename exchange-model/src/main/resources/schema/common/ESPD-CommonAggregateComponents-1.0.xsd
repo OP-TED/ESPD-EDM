@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~
+  ~ Copyright 2016 EUROPEAN COMMISSION
+  ~
+  ~ Licensed under the EUPL, Version 1.1 or – as soon they
+  ~ will be approved by the European Commission - subsequent
+  ~ versions of the EUPL (the "Licence");
+  ~
+  ~ You may not use this work except in compliance with the Licence.
+  ~
+  ~ You may obtain a copy of the Licence at:
+  ~
+  ~ https://joinup.ec.europa.eu/community/eupl/og_page/eupl
+  ~
+  ~ Unless required by applicable law or agreed to in
+  ~ writing, software distributed under the Licence is
+  ~ distributed on an "AS IS" basis,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+  ~ express or implied.
+  ~ See the Licence for the specific language governing
+  ~ permissions and limitations under the Licence.
+  ~
+  -->
+<!--
+	eDocument		:	ESPD-CommonAggregateComponents. Syntax Binding based on OASIS UBL-2.1
+	version				:	1.0.2
+	Last update		: 	20160726Tu
+	Author				:	enric.staromiejski.torregrosa@everis.com
+	Project Owner	: 	DG GROW, European Commission, Unit G4 - Innovative and E-Procurement 
+	Project Officers	:	Ivo.Locatelli@ec.europa.eu; Marc-Christopher.SCHMIDT@ec.europa.eu
+	-->
+<xsd:schema xmlns="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" targetNamespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.2">
+	<xsd:import namespace="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" schemaLocation="ESPD-CommonBasicComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" schemaLocation="UBL-CommonAggregateComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="UBL-CommonBasicComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" schemaLocation="CCV-CommonAggregateComponents-1.0.xsd"/>
+	<!-- Element declaration -->
+	<xsd:element name="Criterion" type="ccv:CriterionType"/>
+	<xsd:element name="EconomicOperatorParty" type="EconomicOperatorPartyType"/>
+	<xsd:element name="RepresentativeNaturalPerson" type="NaturalPersonType"/>
+	<xsd:element name="PostalAddress" type="cac:AddressType"/>
+	<xsd:element name="ProcurementProjectLot" type="cac:ProcurementProjectLotType"/>
+	<xsd:element name="ServiceProviderParty" type="cac:PartyType"/>
+	<!-- Element definition -->
+	<xsd:complexType name="EconomicOperatorPartyType">
+		<xsd:sequence>
+			<xsd:element ref="espd-cbc:EconomicOperatorRoleCode" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:EconomicOperatorRoleDescription" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:NationalDataBaseURIID" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:NationalDatabaseAccessCredentials" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:SMEIndicator" minOccurs="0"/>
+			<xsd:element ref="RepresentativeNaturalPerson" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="cac:Party" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NaturalPersonType">
+		<xsd:sequence>
+			<xsd:element ref="espd-cbc:NaturalPersonRoleCode" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:NaturalPersonRoleDescription" minOccurs="0"/>
+			<xsd:element ref="espd-cbc:NaturalPersonRegistrationCountryCode" minOccurs="0"/>
+			<xsd:element ref="cac:PowerOfAttorney" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
