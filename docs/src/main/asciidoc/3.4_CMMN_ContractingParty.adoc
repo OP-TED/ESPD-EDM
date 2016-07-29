@@ -59,11 +59,11 @@ a|
  ... <!--2-->
  <cac:PostalAddress>
   <cac:Country>
-   <cbc:IdentificationCode 
-   listAgencyID="ISO" 
-   listName="ISO 3166-1" 
-   listVersionID="1.0">
-   BE
+   <cbc:IdentificationCode
+     listID="CountryCodeIdentifier"
+     listAgencyID="EU-COM-GROW"
+     listName="CountryCodeIdentifier"
+     listVersionID="1.0.2">BE
    </cbc:IdentificationCode>
   </cac:Country>
  </cac:PostalAddress>
@@ -71,7 +71,7 @@ a|
 ----
 |*MANDATORY* - (Although in the XSD Schema the cardinality is 0..n)
 |`*Rule*: The country of the contracting body MUST always be specified. Compulsory use of the 
-code list link:./code_lists/PDF/CountryCodeIdentifier.pdf[CountryCodeIdentifier]`
+code list link:./code_lists/pdf/CountryCodeIdentifier.pdf[CountryCodeIdentifier]`
 
 |===
 <1> The name of the Contracting Body is mandatory but has been removed from this example to simplify the example
@@ -83,22 +83,17 @@ Service follows:
 [source,xml]
 .Elements re-used from `cac:Party` to identify the contracting body  
 ----
-  <cac:ContractingParty>
-      <cac:Party>
-         <cac:PartyName>
-            <cbc:Name>Executive Agency for Small and Medium-sized Enterprises (EASME)</cbc:Name>
-         </cac:PartyName>
-         <cac:PostalAddress>
-            <cac:Country>
-               <cbc:IdentificationCode 
-               listAgencyID="ISO" 
-               listName="ISO 3166-1" 
-               listVersionID="1.0">
-               BE
-               </cbc:IdentificationCode>
-            </cac:Country>
-         </cac:PostalAddress>
-         <cac:Contact/>
-      </cac:Party>
-   </cac:ContractingParty>
+<cac:ContractingParty>
+  <cac:Party>
+    <cac:PartyName>
+      <cbc:Name>Executive Agency for Small and Medium-sized Enterprises (EASME)</cbc:Name>
+    </cac:PartyName>
+    <cac:PostalAddress>
+      <cac:Country>
+        <cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listName="CountryCodeIdentifier" listVersionID="1.0.2">BE</cbc:IdentificationCode>
+      </cac:Country>
+    </cac:PostalAddress>
+    <cac:Contact/>
+  </cac:Party>
+</cac:ContractingParty>
 ----

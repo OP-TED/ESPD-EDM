@@ -16,13 +16,23 @@ You need to have [Java Development Kit 7+](http://www.oracle.com/technetwork/jav
 
 ## Installation
 
-To include the ESPD Exchange Model classes inside your Java project just declare the following Maven dependency
-in your POM file:
+The recommended way to get started using the `exchange-model` in your Java project is with a dependency management system.
+
+### With Maven
 
 ```xml
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
   <artifactId>exchange-model</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
+
+### With Gradle
+
+```groovy
+dependencies {
+    compile("eu.europa.ec.grow.espd:exchange-model:1.0.2")
+}
+```
+

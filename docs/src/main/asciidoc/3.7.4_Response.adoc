@@ -13,7 +13,7 @@ the contracting body.
 The XSD Schema defines multiple types of data for the response (Indicator, Amount, Date, etc.), 
 only one response data MUST be provided. And the data provided in the response MUST match the one specified in the attribute of the class ccv:Requirement.
 
-The economic operator MUST use the code list link:./code_lists/PDF/ResponseDataType.pdf[ResponseDataType] and make sure that the data provided is of the same type that the
+The economic operator MUST use the code list link:./code_lists/pdf/ResponseDataType.pdf[ResponseDataType] and make sure that the data provided is of the same type that the
 one expected by the contracting authority (See the column ''Type of value expected by the
 current version of the ESPD Service'').
 ====
@@ -87,7 +87,7 @@ responseDataType="AMOUNT">
 </ccv:Requirement>
 ----
 |OPTIONAL (0..1)
-|`*Rule*: The currencyID attribute is MANDATORY (e.g. "EUR"). Compulsory use of the code list link:./code_lists/PDF/CountryCodeIdentifier.pdf[CountryCodeIdentifier]. BEWARE that amounts can use decimal separators (e.g. 14134,95 but not hundred or thousand separators)`
+|`*Rule*: The currencyID attribute is MANDATORY (e.g. "EUR"). Compulsory use of the code list link:./code_lists/pdf/CountryCodeIdentifier.pdf[CountryCodeIdentifier]. BEWARE that amounts can use decimal separators (e.g. 14134,95 but not hundred or thousand separators)`
 
 |*ccv-cbc:Code*
 |A code pointing at a definition of a concept as the answer to the Requirement
@@ -175,7 +175,7 @@ responseDataType="QUANTITY_YEAR">
 ----
 |OPTIONAL (0..1)
 |`*Comment*: BEWARE that different types of Quantities can be required, some of them with a special attribute. See the column "Type of value expected by the
-current version of the ESPD Service" of the code list link:./code_lists/PDF/ResponseDataType.pdf[ResponseDataType]. See also the note
+current version of the ESPD Service" of the code list link:./code_lists/pdf/ResponseDataType.pdf[ResponseDataType]. See also the note
 below about "Quantities"`
 
 5+^|*Associated classes*
@@ -227,7 +227,7 @@ specified (e.g. number of workers); (2) QUANTITY_YEAR, a non-negative integer
 (3) QUANTITY, a number representing a generic quantity with no unit specified (e.g. a ratio).
 
 Beware that in the case of QUANTITY_INTEGER and QUANTITY_YEAR the attribute *_unitCode_* MUST be always 
-specified (See code list link:./code_lists/PDF/ResponseDataType.pdf[ResponseDataType]). 
+specified (See code list link:./code_lists/pdf/ResponseDataType.pdf[ResponseDataType]).
 
 [[About_Quantities]]
 image::About_Quantities.png[caption="Figure XXX: ", title="The ResponseDataType code list", width="1000", height="900"]
