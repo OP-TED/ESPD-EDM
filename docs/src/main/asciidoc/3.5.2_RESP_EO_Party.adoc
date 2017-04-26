@@ -27,7 +27,10 @@ a|
 <cac:PartyIdentification>
  <cbc:ID 
  schemeAgencyID= <!--1-->
- "ES-TAX-AGENCY">
+ "ES-TAX-AGENCY"
+ schemeID= <!--2-->
+ "VAT_Number"
+ >
  B20779081
  </cbc:ID> 
 </cac:PartyIdentification>
@@ -93,6 +96,8 @@ a|
 
 |===
 <1> The data provider SHOULD specify who is the issuer of the EO's ID
+<2> The `schemeID` attribute specifies if it is a VAT number or another national number. The
+possible values are: `VAT_Number` and `National_Number`.
 
 A complete example about the EO's Party elements expected by the ESPD Service follows: 
 
