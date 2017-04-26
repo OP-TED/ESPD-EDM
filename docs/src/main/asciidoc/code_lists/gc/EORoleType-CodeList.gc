@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gc:CodeList xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:fn="http://www.w3.org/2005/xpath-functions"
+             xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+             xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+   <Identification>
+      <ShortName>EORoleType</ShortName>
+      <LongName xml:lang="en">ECONOMIC OPERATOR ROLE TYPE</LongName>
+      <Version>2.0.0</Version>
+      <CanonicalUri>Placeholder</CanonicalUri>
+      <CanonicalVersionUri>Placeholder</CanonicalVersionUri>
+      <Agency>
+         <LongName xml:lang="en">DG GROW (European Commission)</LongName>
+         <Identifier>EU-COM-GROW</Identifier>
+      </Agency>
+   </Identification>
+   <ColumnSet>
+      <Column Id="code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="name" Use="optional">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="en"/>
+      </Column>
+      <Key Id="codeKey">
+         <ShortName>CodeKey</ShortName>
+         <ColumnRef Ref="code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>SCLE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Sole contractor / Lead entity</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>GM</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Group member</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>OERON</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Other entity (relied upon)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>OENRON</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>Other entity (not relied upon)</SimpleValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gc:CodeList>

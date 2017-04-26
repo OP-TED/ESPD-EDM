@@ -6,7 +6,7 @@
    <Identification>
       <ShortName>ResponseDataType</ShortName>
       <LongName xml:lang="en">Type of data expected in the response for a criterion requirement</LongName>
-      <Version>1.0.2</Version>
+      <Version>2.0.0</Version>
       <CanonicalUri>Placeholder</CanonicalUri>
       <CanonicalVersionUri>Placeholder</CanonicalVersionUri>
       <Agency>
@@ -123,6 +123,22 @@
          </Value>
          <Value ColumnRef="name">
             <SimpleValue>A number representing a generic quantity with no unit specified.</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>NONE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>No response is expected. This may be the case when a contracting authority wants to set specific requirements (e.g. requirements on lots) and the answer is calculated out of the responses to other criteria.</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="name">
+            <SimpleValue>An identifier for a person, entity or object (e.g. a Party, a Lot, etc.)</SimpleValue>
          </Value>
       </Row>
    </SimpleCodeList>
