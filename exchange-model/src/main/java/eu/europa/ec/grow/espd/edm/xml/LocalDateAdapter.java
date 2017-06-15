@@ -22,34 +22,33 @@
  *
  */
 
-package eu.europa.ec.grow.espd.xml;
+package eu.europa.ec.grow.espd.edm.xml;
 
-import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author vigi
  */
 public final class LocalDateAdapter {
 
-	private static final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("YYYY-MM-dd");
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ISO_LOCAL_DATE;
 
-	private LocalDateAdapter() {
+    private LocalDateAdapter() {
 
-	}
+    }
 
-	public static LocalDate unmarshal(String v) {
-		if (v == null || v.trim().isEmpty()) {
-			return null;
-		}
-		return LocalDate.parse(v, DATE_FORMAT);
-	}
+    public static LocalDate unmarshal(String v) {
+        if (v == null || v.trim().isEmpty()) {
+            return null;
+        }
+        return LocalDate.parse(v, DATE_FORMAT);
+    }
 
-	public static String marshal(LocalDate v) {
-		if (v == null) {
-			return null;
-		}
-		return v.toString(DATE_FORMAT);
-	}
+    public static String marshal(LocalDate v) {
+        if (v == null) {
+            return null;
+        }
+        return v.format(DATE_FORMAT);
+    }
 }
