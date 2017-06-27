@@ -47,9 +47,28 @@ dependencies {
 ```xml
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
-  <artifactId>exchange-model</artifactId>
+  <artifactId>exchange-model2</artifactId>
   <version>2.0.0-SNAPSHOT</version>
 </dependency>
+```
+
+Version 2 of the `Exchange Model` has a different `artifactId`, i.e. `exchange-model2`, in order to support 
+the usage of both versions at the same time inside a `Java` `Maven` project.
+
+In order to use the snapshot version, you might have to enable the `Maven` snapshot repository in your `pom.xml`.
+
+
+```xml
+<repositories>
+  <repository>
+    <id>oss-sonatype</id>
+    <name>oss-sonatype</name>
+    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
 ```
 
 ## Use
