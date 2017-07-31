@@ -1,0 +1,33 @@
+
+=== Procurement Procedure: Regulated ESPD
+
+[cols="<1,<5"]
+|===
+|*REQUIREMENT* 
+|*The contracting authority must be able to provide basic data about the Procurement Procedure*
+|===
+
+There are some important differences between the data collected for a Regulated ESPD Request and the data that can be required in a Self-contained ESPD Request.
+
+==== Mock-up
+
+For the Regulated ESDP REquest only three basic data are required: the title, a short description and the file (i.e. case) reference number attributed by the Contracting Authority to the procurement procedure.
+
+The mock-up below shows a possible way of collecting this data:
+
+.Procurement Procedure, data collected in a Regulated ESPD
+image::Procurement_Procedure_Regulated_ESPD-mockup.png[Procurement Procedure in a Regulated ESPD, alt="Procurement Procedure in a Regulated ESPD", align="center"]
+
+==== XSD Schema
+
+The figure below is a fragment of the QualificationApplicationRequest XSD Schema. The placeholders for the data expected in the Regulated ESPD Request have been highlighted (`cbc:ContractFolderID` and `cac:ProcuementProject`).
+
+.Procurement Procedure (Regulated ESPD). XSD Schema
+image::Procurement_Procedure_Regulated_ESPD-XSD.png[Procurement Procedure-Regulated ESPD-XSD, alt="Procurement Procedure-Regulated ESPD-XSD", align="center"]
+
+.Class cac:ProcurementProject (elements used in the Regulated ESPD). XSD Schema
+image::ProcurementProject_XSD.png[ProcurementProject, alt="ProcurementProject", align="center"]
+
+
+
+
