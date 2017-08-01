@@ -1,0 +1,39 @@
+
+
+=== Contracting Body
+
+[cols="<1,<5"]
+|===
+|*REQUIREMENT http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-001[_tbr070-001_]*|*The CA must be able to provide information about the procurer.*
+|===
+
+==== Mock-up
+
+In principle, the ESPD-EDM asks for a few data about the procurer (i.e. the contracting authority, body or entity). The  essential (compulsory) data for the contracting body are namely the one aimed to identify it, i.e. its official name and the country. The figure below represents a possible GUI interface for these two data. However the UBL specification provides many other data elements some of which may be interesting to include in the ESPD, notably data about the means to contact the contracting body (see below the list of elements possible in the ESPD). 
+
+Therefore software applications may take leverage of the richness of UBL-2.2 to collect also data about the contracting authority contact, end-point, and other data possible in the ESPD.
+
+.Data about the procurer, mock-up
+image::Procurer-mocukp.png[Procurer identification, alt="Procurer identification", align="center"]
+ 
+==== XSD Schema
+The UBL-2.2 model provides a component that fits the purpose of holding data about the procurer: the common aggregate component `cac:ContractingParty`.
+
+.cac:ContractingParty XSD Schema, global vision
+image::ContractingParty.png[ContractingParty, alt="ContractingParty", align="center"]
+
+The `cac:ContractingParty` class  is a specialisation of `cac:Party`. Hence, the main data about the procurer is in this associated `cac:Party` component:
+
+.cac:Party XSD Schema, global vision
+image::Party.png[Party, alt="Party", align="center"]
+
+The `cac:Party` class in turn associates a very rich class that holds the data about the Party address, including the country (see the UBL-2.2 specification for the complete list of fields):
+
+.cac:PostalAddress, XSD Schema
+image::PostalAddress.png[PostalAddress, alt="PostalAddress", align="center"]
+
+Notice also that the class associated to cac:Party to place the data about how to contact the contracting body:
+
+.cac:Contact, XSD Schema
+image::Contact_XSD.png[Contact, alt="Contact", align="center"]
+
