@@ -1,0 +1,71 @@
+
+==== Expected elements
+
+.Legislation, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:Legislation
+|*Definition*: |A class to make reference to the legislation related to the criterion.
+
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-013[_tbr070-013_]
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:|/QualificationApplicationRequest/cac:TenderingCriterion/cac:Legislation	
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:LegislationTitle*
+|Text
+|1..n
+|Title of the legislation.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-013[_tbr070-013_]. 
+
+*Rule*: The complete title of the legislation provided as in the original legal text. At a later stage it might be provided by e-CERTIS (e.g.'DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014
+on public procurement and repealing Directive 2004/18/EC'). Can be provided in several languages, but if `LanguageID`not specified it defaults to `en` (English).
+
+|*cbc:Description*
+|Code
+|0..n
+|Textual short description of the legislation.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-013[_tbr070-013_] 
+
+*Rule*: The description of the legislation provided in the original legal text SHOULD be provided. At a later stage they might be provided by e-CERTIS. Can be provided in several languages, but if `LanguageID`not specified it defaults to `en` (English).
+
+|*cbc:JurisdictionLevel*
+|Text
+|0..n
+|Jurisdictional level of a particular legislation.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-013[_tbr070-013_] 
+
+*Rule*: Compulsory use of the description in Code List `LegislationType`. Can be provided in several languages, but if `LanguageID`not specified it defaults to `en` (English).
+
+|*cbc:Article*
+|Text
+|0..n
+|Textual description of the article of the legislation.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-013[_tbr070-013_] 
+
+*Rule*: Other articles where the Criterion is referred to SHOULD also be provided. At a later stage they might be provided by eCERTIS. Can be provided in several languages, but if `LanguageID`not specified it defaults to `en` (English).
+
+|*cbc:URI*
+|Identifier
+|0..1
+|URI that points to a legislation related to this criterion.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-013[_tbr070-013_] 
+
+*Rule*: In the case of European legislation, the URL MUST point at the multilingual EUR-LEX web-page; e.g. http://eur-lex.europa.eu/legal-content/ES/TXT/?uri=celex%3A32014L0024[Directive 2014/24/EU].
+
+|===
+
+==== XML Examples
+
+See examples in sections about exclusion and selection criteria.
+
+
+
