@@ -1,0 +1,98 @@
+
+==== Self-contained ESPD Request Contributions data structure
+
+.Self-contained 'Contributions' criterion data structure 
+image::Selfcontained_ESPDRequest_Contributions_Data_Structure.png[Self-contained 'Contributions' criterion data structure, alt="Self-contained 'Contributions' criterion data structure", align="center"]
+
+==== XML Example
+
+.Self-contained Payment of Taxes (PoT)
+[source,xml]
+----
+<!-- Criterion:Payment of taxes -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.EXCLUSION.CONTRIBUTIONS.PAYMENT_OF_TAXES</cbc:CriterionTypeCode>
+	<cbc:Name>Payment of taxes</cbc:Name>
+	<cbc:Description>Has the economic operator breached its obligations relating to the payment of taxes, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?</cbc:Description>
+	
+	<--1-->	
+	<!-- National Payment of Taxes criterion -->
+	<cac:SubTenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+		<cbc:Name>I. Payment of taxes ( Act on public procurement 1397/2016 81 Section 1 )</cbc:Name>
+		<cbc:Description>The contracting entity may decide to exclude from competitive tendering a candidate or tenderer that the contracting entity can prove, otherwise than by legally final decision or judgement, to have defaulted on a duty to pay the taxes or social security contributions of Finland or of its country of establishment;</cbc:Description>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">cde9df2e-1b89-443c-8946-c047f45c8935</cbc:ID>
+				<cbc:Description>1. Extract from Tax Debt Register</cbc:Description>
+				<cbc:Description>Issued By: Finnish Tax Administration</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">52bcfe2c-53a5-4c57-986e-957dba43ce7e</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Your Answer</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:TenderingCriterionPropertyGroup>
+	</cac:SubTenderingCriterion>
+	
+	<--2-->
+	<!-- Reference to the EU Legislation -->	
+	<cac:Legislation>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4ea7a10a-643e-4022-b67e-e06573b28ff5</cbc:ID>
+		<cbc:Title languageID="en">DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</cbc:Title>
+		<cbc:Description languageID="en">Directive 2014/24/EU</cbc:Description>
+		<cbc:JurisdictionLevel languageID="en">EU Directive</cbc:JurisdictionLevel>
+		<cbc:Article>Article 57(2)</cbc:Article>
+		<cbc:URI>http://eur-lex.europa.eu/legal-content/ES/TXT/?uri=celex%3A32014L0024</cbc:URI>
+	</cac:Legislation>	
+	
+	<--3-->
+<!-- *For this SELFCONTAINED ESPD Request Payment of Taxes criterion, the Member State defined in e-Certis a national REQUIREMENT consisting in the specification of the threshold amount of debt that an economic operator have with the national Tax Agency (50 Euros in this example)*-->
+
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">53c9aad8-dc80-48f8-85d9-755c2aab8e95</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">dee7927f-97f5-420d-8322-87db310ba383</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Threshold</cbc:Description>
+			<--4-->
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+			<--5-->
+			<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
+			<--6-->
+			<cbc:ExpectedAmount currencyID="EUR">50</cbc:ExpectedAmount>
+		</cac:TenderingCriterionProperty>
+		<--7-->
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">2cf66882-d242-4eb1-a136-196f34ec137d</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Additional Information</cbc:Description>
+			<--8-->
+			<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+			<cbc:ExpectedDescription>Beware that the national Tax Agency won't permit the existence of a debt, even if minimial, for two consecutive years.</cbc:ExpectedDescription>
+		</cac:TenderingCriterionProperty>
+	</cac:TenderingCriterionPropertyGroup>
+
+	<!-- ... THE REST OF THE CRITERION IS IDENTICAL AS IN THE REGULATED PAYMENT OF TAXES CRITERION. See the previous example ... -->
+</cac:TenderingCriterion>
+<!-- rest of the document removed for brevity -->
+----
+<1> The MS defined this national 'Payment of Taxes' criterion in e-Certis. See also previous example for the REGULATED Payment of taxes (the behavior is identical for all exclusion criteria).
+<2> Refernece to the EU Legislation. This reusable structure is identical for all the exclusion criteria.
+<3> For this *SELFCONTAINED ESPD Request Payment of Taxes* criterion, the Member State defined in e-Certis a *national REQUIREMENT* consisting in the specification of the '_threshold amount of debt that an economic operator have with the national Tax Agency_' (50 Euros in this example)
+<4> Notice that type of property used is REQUIREMENT. This entails that: (i) the ESPDRequest is of type SELFCONTAINED (REGULATED ESPDs does not work with REQUIREMENTs); (ii) a `cbc:ValueDataType` will be present indicating the type of value the contracting authority uses for this REQUIREMENT (e.g. AMOUNT, INDICATOR, DESCRIPTION, etc.; see the link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[Code List `ResponseDataType`], the values are the same for contracting authorities REQUIREMENTs than for economic operator response values).
+<5> Beware that No answer is expected here from the economic operator (do not get confused by the presence of the `cbc:ValueDataType`, as said it is used by both the CA and the EO.
+<6> The value supplied by the contracting authority for this requirement (50 Euros, in this example). Notice that the currency is specified in the attibute `currencyID` of the `cbc:Amount` component.
+<7> The MS also allows the contracting authority the possibility of adding multiple additional textual requirements (in this case the CA uses this to explain that ''Beware that the national Tax Agency won't permit the existence of a debt, even if minimial, for two consecutive years''). 
+<8> Again, no answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority.
