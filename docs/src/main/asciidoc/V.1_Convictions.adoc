@@ -146,7 +146,7 @@ The fragment of XML code below illustrates how a 'Convictions' criterion XML ins
 			</cac:TenderingCriterionProperty>
 			<cac:TenderingCriterionProperty>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">15ceed20-2df7-45a8-9ba0-69329d4c6ecb</cbc:ID>
-				<cbc:Description>Issuer</cbc:Description>
+				<cbc:Description>Issuer</cbc:Description> <--20-->
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
 			</cac:TenderingCriterionProperty>
@@ -177,3 +177,11 @@ The fragment of XML code below illustrates how a 'Convictions' criterion XML ins
 <18> Data structures defined by GROW are *re-usable*. This is specially the case (but not uniquelly) of the structure 'Is this information available at no cost to the authorities from an EU Member State database?' Notice that the UUID that identifies this structure is always the same in all the criteria that include it. Similarly structures that are reused in different criteria do have the same UUID (as they are the same).
 <19> This 'verification code' is used in some countries (e.g. Spain) to check that the document is authentic. If a verification code is supplied you can use an official *'end-point'* to retrieve an image (or a PDF) and check that the evidence is authentic.
 <20> Beware that the expected data about the evidence are treated in the ESPD Request as DESCRIPTIONs. However the ESPD Response uses the complex element `cac:Evidence` to place all this data (and many more if necessary). See the section `ESPD Response` for more details on this. See also the XML examples.
+
+.Note for the future: Cross-border/cross-sector codes
+[NOTE]
+====
+Some relevant trans-European initiatives like ECRIS, BRIS, EESSI, and other, have defined Code Lists and other reference data that could be used in e-Procurement, and specifically by the ESPD. This would enhance the cross-border and cross-sector semantic and technical interoperability.
+
+Thus, in the case of Convictions, a new requirement could be introduced in G1 (see figures above) asking for the ECRIS Code corresponding to the offence that will be specified in the Response in case the Economic Operator answered ''yes'' to the first Requirement. The ECRIS Codes can be consulted in the Annex to the COUNCIL DECISION 2009/316/JHA of 6 April 2009 on the establishment of the European Criminal Records Information System (ECRIS) in application of Article 11 of Framework Decision 2009/315/JHA footnote:[http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32009D0316].
+====
