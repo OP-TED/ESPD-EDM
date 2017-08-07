@@ -13,7 +13,7 @@ image::Self-contained_Suitability_NOLOTS_CA_mockup.png[Self-contained 'Suitabili
 
 This other mock-up represents the same situation when the procurement procedure is *divided into lots*. 
 
-Notice that one set of lots per register: The contracting authority may request that the economic operator is registered in one or multiple registers. Per each one it specifies to which Lots this make sense. This behaviour of “one set of lots per *group of properties* is regular for all those selection criteria where the allocation of lots to a set of 'criterion properties' make sense;
+The contracting authority (CA) may request that the economic operator is registered in one or multiple registers. Per each register the CA specifies to which Lots this make sense. This behaviour of “one set of lots per *group of properties* is regular for all those selection criteria where the allocation of lots to a set of 'criterion properties' make sense (e.g. see the section "References").
 
 .Self-contained 'Suitability' criterion with Lots (CA perspective)' 
 image::Self-contained_Suitability_LOTS_CA_mockup.png[Self-contained 'Suitability' criterion (CA perspective), alt="Self-contained 'Suitability' criterion (CA perspective)", align="center"]
@@ -33,9 +33,9 @@ image::Self-contained_Suitability_LOTS_EO_mockup.png[Self-contained 'Suitability
 
 ==== Data Structure - Self-contained
 
-Notice that this data structure is quite different from the Regulated ESPD:
+This data structure is quite different from the Regulated ESPD:
 
-. It allows the defines of multiple national subcriteria (to be retrieved from e-Certis): cardinality "0..n" of the SUBCRITERION group;
+. It allows the definition of multiple national sub-criteria (to be retrieved from e-Certis): cardinality "0..n" of the SUBCRITERION group;
 
 . It also allows the contracting authority to speciy multiple groups of REQUIREMENTs (in this case to specify which registers the economic operator should be registered in). 
 
@@ -48,7 +48,7 @@ image::Self-contained_Suitability_Data_Structure.png[Self-contained 'Suitability
 
 ==== XML Example - Self-contained (with Lots)
 
-The following XML example illustrates how to solve the more complex situation, when the Lots are specified. If the procurement procedure is not divided into Lots, the XML would be identical, except that all the elements related to Lots would not be present in the XML document.
+The following XML example illustrates how to solve the more complex situation, when the Lots are specified. If the procurement procedure is not divided into Lots, the XML would be identical, except that all the elements related to Lots would not be present.
 
 .Self-contained 'Enrolment in a relevant professional register' suitability criterion
 [source,xml]
