@@ -1,37 +1,42 @@
 
-=== VI.1.1 Regulated yearly turnovers
+=== VI.2.5 Regulated specific yearly turnover
 
-==== Mock-ups - contracting authority perspective
-The mock-up below shows the perspective of the contracting authority (CA) when preparing a new ESPD Requests. Notice that the CA may select the type of turnover. The economic operator, while preparing the ESPD Response, should only see these turnovers, and not the unselected ones. 
+==== Mock-up - contracting authority perspective
 
-.Regulated 'yearly turnover' CA mock-up 
-image::Regulated_Yearly_Turnover_CA_mock-up.png[Regulated 'yearly turnover' CA mock-up, alt="Regulated 'yearly turnover' CA mock-up", align="center"]
+In this case the contracting authority (CA) requires only a *specific average turnover*. You will notice that this case is identical to the Regulated *general average turnover*. The only difference between both is the wording of the criterion. The difference between "general" and "specific" lies in the fact that for the second one the CA specifies that the turnover must relate to the *specific business area covered by the contract*.
 
-==== Mock-ups - economic operator perspective
+.Regulated 'specific yearly turnover' CA mock-up 
+image::Regulated_Specific_Yearly_Turnover_CA_mock-up.png[Regulated 'specific yearly turnover' CA mock-up, alt="Regulated 'specific yearly turnover' CA mock-up", align="center"]
 
-.Regulated 'yearly turnover' EO mock-up 
-image::Regulated_Yearly_Turnover_EO_mock-up.png[Regulated 'yearly turnover' EO mock-up, alt="Regulated 'yearly turnover' EO mock-up", align="center"]
+==== Mock-up - economic operator perspective
+
+Notice that in the *Regulated ESPD* the MS defined up to five groups of turnovers for the past recent 5 years. This is also visible in the data structure below. The *Self-contained ESPD* allows the CA to specify the number of turnovers for the procurement document.
+
+.Regulated 'specific yearly turnover' EO mock-up 
+image::Regulated_Specific_Yearly_Turnover_EO_mock-up.png[Regulated 'specific yearly turnover' EO mock-up, alt="Regulated 'specific yearly turnover' EO mock-up", align="center"]
 
 ==== Data Structure - Regulated
 
-.Regulated 'yearly turnover' criterion data structure 
-image::Regulated_Yearly_Turnover_Data_Structure.png[Regulated 'yearly turnover' criterion data structure, alt="Regulated 'yearly turnover' criterion data structure",align="center"]
+The figure below how the structure of the five groups of turnovers specified by the MS are organised:
+
+.Regulated 'specific yearly turnover' criterion data structure 
+image::Regulated_Specific_Yearly_Turnover_Data_Structure.png[Regulated 'specific yearly turnover' criterion data structure, alt="Regulated 'specific yearly ' criterion data structure",align="center"]
 
 ==== XML Example - Regulated
 
-.Regulated 'yearly turnover'
+.Regulated 'specific yearly turnover'
 [source,xml]
 ----
 <!... header elements removed for brevity -->
 
-<!-- Criterion:General yearly turnover -->
+<!-- Criterion:Specific yearly turnover -->
 <cac:TenderingCriterion>
-	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">499efc97-2ac1-4af2-9e84-323c2ca67747</cbc:ID>
-	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.GENERAL_YEARLY</cbc:CriterionTypeCode>
-	<cbc:Name>General yearly turnover</cbc:Name>
-	<cbc:Description>Its general yearly turnover for the number of financial years required in the relevant notice, the in the ESPD, the relevant notice or or the ESPD is as follows:</cbc:Description>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">074f6031-55f9-4e99-b9a4-c4363e8bc315</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY</cbc:CriterionTypeCode>
+	<cbc:Name>Specific yearly turnover</cbc:Name>
+	<cbc:Description>Its specific yearly turnover in the business area covered by the contract for the number of financial years required in the relevant notice, the in the ESPD, the relevant notice or or the ESPD is as follows:</cbc:Description>
 	<cac:Legislation>
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">407bee98-3854-47e1-b5d4-0889b228ced2</cbc:ID>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">869f2572-9738-484e-97e0-1edeec929dc7</cbc:ID>
 		<cbc:Title>[Legislation title]</cbc:Title>
 		<cbc:Description>[Legislation description]</cbc:Description>
 		<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
@@ -45,14 +50,14 @@ image::Regulated_Yearly_Turnover_Data_Structure.png[Regulated 'yearly turnover' 
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d56401a0-fa87-48b7-84cf-91da64a35187</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">49c44bbb-071c-4ee6-ab50-e8fedeab0d49</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Amount</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">706c1c66-d996-4302-a8d9-08b533bc8db4</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b4da0891-57f7-4fbd-a23a-db291cb81d52</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Start Date; End Date</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
@@ -63,14 +68,14 @@ image::Regulated_Yearly_Turnover_Data_Structure.png[Regulated 'yearly turnover' 
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">9084b737-3824-40f6-b9b0-764ce98d1ade</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e3f45c47-d2e1-4e8e-a8e6-22d66dc75817</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Amount</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d2206179-2919-4fc7-a2e9-89919cbaff0b</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4d2428bd-5f88-455e-80f2-0f5b42267abb</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Start Date; End Date</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
@@ -81,14 +86,14 @@ image::Regulated_Yearly_Turnover_Data_Structure.png[Regulated 'yearly turnover' 
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d808faf7-079b-4b1b-ab1e-a062e653af4e</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">02e4183d-1a96-4369-afda-4e3f4b14738d</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Amount</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">7fb0de31-e38f-49ba-9986-67f30e3d25a4</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d3855af4-c0d5-47e3-b6e7-79b48d7a276b</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Start Date; End Date</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
@@ -99,14 +104,14 @@ image::Regulated_Yearly_Turnover_Data_Structure.png[Regulated 'yearly turnover' 
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b22cae56-fb55-4478-b24c-91f592a07c83</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d5b14e2c-6fe5-437c-bf1b-98dd5b84a093</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Amount</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">0055cc0c-65d7-4f75-ac40-ed9948c951c5</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">a4705528-cb31-4687-968c-7731acd4bdee</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Start Date; End Date</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
@@ -117,14 +122,14 @@ image::Regulated_Yearly_Turnover_Data_Structure.png[Regulated 'yearly turnover' 
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4a4b0eb2-bf96-4f68-b1b4-1fe04f636352</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e57fc2ae-9782-46df-b39e-4106e872e6cc</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Amount</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">ddd483da-3275-4149-ab9d-f831e82c8f5f</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">2680b6c0-005b-41cf-9d85-95d13f432f26</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Start Date; End Date</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
@@ -135,3 +140,7 @@ image::Regulated_Yearly_Turnover_Data_Structure.png[Regulated 'yearly turnover' 
 
 <!... rest of elements removed for brevity -->
 ----
+
+
+
+

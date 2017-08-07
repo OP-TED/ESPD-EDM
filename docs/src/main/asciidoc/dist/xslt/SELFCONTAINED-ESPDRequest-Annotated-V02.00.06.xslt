@@ -17,7 +17,7 @@
 	</xsl:template>
 	
 	<xsl:template match="office:spreadsheet/table:table">
-		<xsl:if test="@table:name='SC-Yearly_Turnovers'">
+		<xsl:if test="@table:name='SC-Specific_Turnover'">
 		<xsl:apply-templates select="table:table-row/table:table-cell"/>
 		</xsl:if>		
 	</xsl:template>
