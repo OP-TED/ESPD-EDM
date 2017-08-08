@@ -684,6 +684,19 @@ table.CodeRay td.code>pre{padding:0}
 <li>
 <p>In the <strong>SELF-CONTAINED</strong>, the CA is able to specify the name of the register or the organisation the EO must be part of, and the URL. Additionally, the CA can specify Lots.</p>
 </li>
+<li>
+<p>For both versions (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>), the category ''Suitability'' covers two groups of identical data structures with these classification codes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(Enrolments) CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT, and CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT: ''Enrolment in a relevant professional register'' and ''Enrolment in a trade register'';</p>
+</li>
+<li>
+<p>(Authorisations and memberships) CRITERION.SELECTION.SUITABILITY.AUTHORISATION, and CRITERION.SELECTION.SUITABILITY.MEMBERSHIP: ''For service contracts: authorisation of particular organisation needed'', and ''For service contracts: membership of particular organisation needed''.</p>
+</li>
+</ul>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -1045,10 +1058,30 @@ table.CodeRay td.code>pre{padding:0}
 <p>Specific turnovers refer to the turnover of the economic operator resulting from the activity of the economic operator in the business area covered by the contract;</p>
 </li>
 <li>
+<p>As far as the data structures are concerned, they can be classified in two groups 'yearly' and 'average':</p>
+<div class="ulist">
+<ul>
+<li>
 <p>For general and specific yearly turnovers the economic operator specifies a turnover amount (and currency) per year, e.g. one amount for 2016, one amount for 2015, one amount for 2014, etc.</p>
 </li>
 <li>
 <p>For general and specific average turnovers, given the <strong>n</strong> last years (specified in the ESPD, notices or procurement documents) the economic operator adds all the yearly turnovers of those <strong>n</strong> years, divides the sum by <strong>n</strong> and provides the resulting amount.</p>
+</li>
+<li>
+<p>The classification codes for the different turnovers are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(Yearly) CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.GENERAL_YEARLY, CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY;</p>
+</li>
+<li>
+<p>(Average) CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.AVERAGE_YEARLY, CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
@@ -2390,7 +2423,135 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="vi-3-eo-setup"><a class="anchor" href="#vi-3-eo-setup"></a>VI.3 EO setup</h3>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-2"><a class="anchor" href="#differences-between-regulated-and-self-contained-2"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For both versions, <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the structure of the QUESTION criterion is identical and very simple. It only asks for a year: in the criterion description the Contracting Authority is requiring that in case the information concerning turnover (general or specific) is not available for the entire period required, the Economic Operator states the date on which it was set up or started trading. Thus the only criterion defined under this data structure is classified with the code:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <strong>SELF-CONTAINED</strong> is able to keep in the XML documents the national sub-criteria defined by the MS in e-Certis.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mock-up-contracting-authority-perspective-9"><a class="anchor" href="#mock-up-contracting-authority-perspective-9"></a>Mock-up - contracting authority perspective</h4>
+<div class="paragraph">
+<p>In this case the contracting authority has selected the option <strong>Set up of economic operator</strong> just in case the other <strong>specific average turnover</strong> is not available:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/EO_Setup_CA_mock-up.png" alt="'Economic operator setup'CA mock-up" width="CA mock-up">
+</div>
+<div class="title">Figure 33. 'Economic operator setup&#8217;CA mock-up</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mock-up-economic-operator-perspective-9"><a class="anchor" href="#mock-up-economic-operator-perspective-9"></a>Mock-up - economic operator perspective</h4>
+<div class="paragraph">
+<p>And in case the economic operator could not provide the specific average turnover will have to specify a date as a response to the QUESTION:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/EO_Setup_EO_mock-up.png" alt="'Economic operator setup' EO mock-up" width="EO mock-up">
+</div>
+<div class="title">Figure 34. 'Economic operator setup&#8217;EO mock-up</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-structure-regulated-6"><a class="anchor" href="#data-structure-regulated-6"></a>Data Structure - Regulated</h4>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Regulated_EO_Setup_Data_Structure.png" alt="'Economic operator setup' criterion data structure" width="criterion data structure">
+</div>
+<div class="title">Figure 35. 'Economic operator setup' criterion (<strong>REGULATED</strong>) data structure</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-structure-self-contained-6"><a class="anchor" href="#data-structure-self-contained-6"></a>Data Structure - Self-contained</h4>
+<div class="paragraph">
+<p>The data structure for the <strong>SELF-CONTAINED</strong> version is identical to the one in the <strong>REGULATED</strong> version, except for the fact that the XML instance is able to keep the national sub-criteria defined by the Member State in e-Certis.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Selfcontained_EO_Setup_Data_Structure.png" alt="'Economic operator setup' criterion data structure" width="criterion data structure">
+</div>
+<div class="title">Figure 36. 'Economic operator setup' criterion (<strong>SELF-CONTAINED</strong>) data structure</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xml-example-self-contained-5"><a class="anchor" href="#xml-example-self-contained-5"></a>XML Example - Self-contained</h4>
+<div class="listingblock">
+<div class="title">'Economic operator setup' criterion</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>!... header elements removed for brevity --<span class="error">&gt;</span>
 
+<span class="comment">&lt;!-- Criterion:Set up of economic operator --&gt;</span>
+<span class="tag">&lt;cac:TenderingCriterion&gt;</span>
+        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>77f481ce-ffb6-483f-8e2b-c78db5e68292<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
+        <span class="tag">&lt;cbc:Name&gt;</span>Set up of economic operator<span class="tag">&lt;/cbc:Name&gt;</span>
+        <span class="tag">&lt;cbc:Description&gt;</span>In case the information concerning turnover (general or specific) is not available for the entire period required, please state the date on which the economic operator was set up or started trading:<span class="tag">&lt;/cbc:Description&gt;</span>
+        <span class="tag">&lt;cac:SubTenderingCriterion&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e6b21867-95b5-4549-8180-f4673219b179<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:Name&gt;</span>[Name of the National Criterion]<span class="tag">&lt;/cbc:Name&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>[Description of the National Criterion ]<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8c39b505-8abe-44fa-a3e0-f2d78b9d8224<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8cb78467-9d4c-4990-a41f-0131dc639cd8<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Name</span><span class="tag">/&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>[Additional information; e.g. no evidences online]<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>b97a9061-409c-4fb7-977e-33e64c1db6a2<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Name</span><span class="tag">/&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Your Answer<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>INDICATOR<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
+        <span class="tag">&lt;/cac:SubTenderingCriterion&gt;</span>
+        <span class="tag">&lt;cac:Legislation&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>c753a2c5-59e6-4970-b6eb-27224e96bf76<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:Title&gt;</span>[Legislation title]<span class="tag">&lt;/cbc:Title&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>[Legislation description]<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cbc:JurisdictionLevel&gt;</span>EU<span class="tag">&lt;/cbc:JurisdictionLevel&gt;</span>
+                <span class="tag">&lt;cbc:Article&gt;</span>[Article, e.g. Article 2.I.a]<span class="tag">&lt;/cbc:Article&gt;</span>
+                <span class="tag">&lt;cbc:URI&gt;</span>http://eur-lex.europa.eu/<span class="tag">&lt;/cbc:URI&gt;</span>
+                <span class="tag">&lt;cac:Language&gt;</span>
+                        <span class="tag">&lt;cbc:LocaleCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LanguageCodeEU</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>EN<span class="tag">&lt;/cbc:LocaleCode&gt;</span>
+                <span class="tag">&lt;/cac:Language&gt;</span>
+        <span class="tag">&lt;/cac:Legislation&gt;</span>
+        <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e9aa7763-c167-4352-8060-1a3d7d3e2662<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>23c7e5bb-8ef6-4119-a1e9-183debf7b9c3<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:Name</span><span class="tag">/&gt;</span>
+                        <span class="tag">&lt;cbc:Description&gt;</span>Please specify<span class="tag">&lt;/cbc:Description&gt;</span>
+                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>DESCRIPTION<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+        <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
+<span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
+
+<span class="error">&lt;</span>!... rest of elements removed for brevity --<span class="error">&gt;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="vi-4-financial-ratios"><a class="anchor" href="#vi-4-financial-ratios"></a>VI.4 Financial ratios</h3>
@@ -2404,7 +2565,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 33. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 37. Regulated 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2413,16 +2574,16 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 34. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 38. Regulated 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-regulated-6"><a class="anchor" href="#data-structure-regulated-6"></a>Data Structure - Regulated</h4>
+<h4 id="data-structure-regulated-7"><a class="anchor" href="#data-structure-regulated-7"></a>Data Structure - Regulated</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
 </div>
-<div class="title">Figure 35. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 39. Regulated 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -2446,7 +2607,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 36. Self-contained 'XXX_CA_mockup'</div>
+<div class="title">Figure 40. Self-contained 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2455,20 +2616,20 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 37. Self-contained 'XXX_EO_mockup'</div>
+<div class="title">Figure 41. Self-contained 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-self-contained-6"><a class="anchor" href="#data-structure-self-contained-6"></a>Data Structure - Self-contained</h4>
+<h4 id="data-structure-self-contained-7"><a class="anchor" href="#data-structure-self-contained-7"></a>Data Structure - Self-contained</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Self-contained_XX_Data_Structure.png" alt="Self-contained 'XX' criterion data structure">
 </div>
-<div class="title">Figure 38. Self-contained 'XX' criterion data structure</div>
+<div class="title">Figure 42. Self-contained 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-example-self-contained-5"><a class="anchor" href="#xml-example-self-contained-5"></a>XML Example - Self-contained</h4>
+<h4 id="xml-example-self-contained-6"><a class="anchor" href="#xml-example-self-contained-6"></a>XML Example - Self-contained</h4>
 <div class="listingblock">
 <div class="title">Self-contained XX</div>
 <div class="content">
@@ -2500,7 +2661,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 39. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 43. Regulated 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2509,16 +2670,16 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 40. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 44. Regulated 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-regulated-7"><a class="anchor" href="#data-structure-regulated-7"></a>Data Structure - Regulated</h4>
+<h4 id="data-structure-regulated-8"><a class="anchor" href="#data-structure-regulated-8"></a>Data Structure - Regulated</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
 </div>
-<div class="title">Figure 41. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 45. Regulated 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -2542,7 +2703,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 42. Self-contained 'XXX_CA_mockup'</div>
+<div class="title">Figure 46. Self-contained 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2551,20 +2712,20 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 43. Self-contained 'XXX_EO_mockup'</div>
+<div class="title">Figure 47. Self-contained 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-self-contained-7"><a class="anchor" href="#data-structure-self-contained-7"></a>Data Structure - Self-contained</h4>
+<h4 id="data-structure-self-contained-8"><a class="anchor" href="#data-structure-self-contained-8"></a>Data Structure - Self-contained</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Self-contained_XX_Data_Structure.png" alt="Self-contained 'XX' criterion data structure">
 </div>
-<div class="title">Figure 44. Self-contained 'XX' criterion data structure</div>
+<div class="title">Figure 48. Self-contained 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-example-self-contained-6"><a class="anchor" href="#xml-example-self-contained-6"></a>XML Example - Self-contained</h4>
+<h4 id="xml-example-self-contained-7"><a class="anchor" href="#xml-example-self-contained-7"></a>XML Example - Self-contained</h4>
 <div class="listingblock">
 <div class="title">Self-contained XX</div>
 <div class="content">
@@ -2588,7 +2749,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 45. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 49. Regulated 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2597,16 +2758,16 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 46. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 50. Regulated 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-regulated-8"><a class="anchor" href="#data-structure-regulated-8"></a>Data Structure - Regulated</h4>
+<h4 id="data-structure-regulated-9"><a class="anchor" href="#data-structure-regulated-9"></a>Data Structure - Regulated</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
 </div>
-<div class="title">Figure 47. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 51. Regulated 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -2630,7 +2791,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 48. Self-contained 'XXX_CA_mockup'</div>
+<div class="title">Figure 52. Self-contained 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2639,20 +2800,20 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 49. Self-contained 'XXX_EO_mockup'</div>
+<div class="title">Figure 53. Self-contained 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-self-contained-8"><a class="anchor" href="#data-structure-self-contained-8"></a>Data Structure - Self-contained</h4>
+<h4 id="data-structure-self-contained-9"><a class="anchor" href="#data-structure-self-contained-9"></a>Data Structure - Self-contained</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Self-contained_XX_Data_Structure.png" alt="Self-contained 'XX' criterion data structure">
 </div>
-<div class="title">Figure 50. Self-contained 'XX' criterion data structure</div>
+<div class="title">Figure 54. Self-contained 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-example-self-contained-7"><a class="anchor" href="#xml-example-self-contained-7"></a>XML Example - Self-contained</h4>
+<h4 id="xml-example-self-contained-8"><a class="anchor" href="#xml-example-self-contained-8"></a>XML Example - Self-contained</h4>
 <div class="listingblock">
 <div class="title">Self-contained XX</div>
 <div class="content">
@@ -2676,7 +2837,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 51. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 55. Regulated 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2685,16 +2846,16 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 52. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 56. Regulated 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-regulated-9"><a class="anchor" href="#data-structure-regulated-9"></a>Data Structure - Regulated</h4>
+<h4 id="data-structure-regulated-10"><a class="anchor" href="#data-structure-regulated-10"></a>Data Structure - Regulated</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
 </div>
-<div class="title">Figure 53. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 57. Regulated 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -2718,7 +2879,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 54. Self-contained 'XXX_CA_mockup'</div>
+<div class="title">Figure 58. Self-contained 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2727,20 +2888,20 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 55. Self-contained 'XXX_EO_mockup'</div>
+<div class="title">Figure 59. Self-contained 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-self-contained-9"><a class="anchor" href="#data-structure-self-contained-9"></a>Data Structure - Self-contained</h4>
+<h4 id="data-structure-self-contained-10"><a class="anchor" href="#data-structure-self-contained-10"></a>Data Structure - Self-contained</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Self-contained_XX_Data_Structure.png" alt="Self-contained 'XX' criterion data structure">
 </div>
-<div class="title">Figure 56. Self-contained 'XX' criterion data structure</div>
+<div class="title">Figure 60. Self-contained 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-example-self-contained-8"><a class="anchor" href="#xml-example-self-contained-8"></a>XML Example - Self-contained</h4>
+<h4 id="xml-example-self-contained-9"><a class="anchor" href="#xml-example-self-contained-9"></a>XML Example - Self-contained</h4>
 <div class="listingblock">
 <div class="title">Self-contained XX</div>
 <div class="content">
@@ -2764,7 +2925,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 57. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 61. Regulated 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2773,16 +2934,16 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 58. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 62. Regulated 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-regulated-10"><a class="anchor" href="#data-structure-regulated-10"></a>Data Structure - Regulated</h4>
+<h4 id="data-structure-regulated-11"><a class="anchor" href="#data-structure-regulated-11"></a>Data Structure - Regulated</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
 </div>
-<div class="title">Figure 59. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 63. Regulated 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -2806,7 +2967,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 60. Self-contained 'XXX_CA_mockup'</div>
+<div class="title">Figure 64. Self-contained 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -2815,20 +2976,20 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 61. Self-contained 'XXX_EO_mockup'</div>
+<div class="title">Figure 65. Self-contained 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structure-self-contained-10"><a class="anchor" href="#data-structure-self-contained-10"></a>Data Structure - Self-contained</h4>
+<h4 id="data-structure-self-contained-11"><a class="anchor" href="#data-structure-self-contained-11"></a>Data Structure - Self-contained</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Self-contained_XX_Data_Structure.png" alt="Self-contained 'XX' criterion data structure">
 </div>
-<div class="title">Figure 62. Self-contained 'XX' criterion data structure</div>
+<div class="title">Figure 66. Self-contained 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="xml-example-self-contained-9"><a class="anchor" href="#xml-example-self-contained-9"></a>XML Example - Self-contained</h4>
+<h4 id="xml-example-self-contained-10"><a class="anchor" href="#xml-example-self-contained-10"></a>XML Example - Self-contained</h4>
 <div class="listingblock">
 <div class="title">Self-contained XX</div>
 <div class="content">
