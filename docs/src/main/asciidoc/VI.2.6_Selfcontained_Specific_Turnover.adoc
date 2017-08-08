@@ -22,9 +22,9 @@ Notice that in this example:
 
 . The contracting authority required specific yearly turnovers for the past five years (circle numbered as 1);
 
-. The area covered by the contract is classified via three CPV codes. The software application retrieved the descriptions of the CPV taxonomy (probably from the EU Publications Office https://simap.ted.europa.eu/en/web/simap/cpv[SIMAP] or http://publications.europa.eu/mdr/index.html[MDR]    services) and shows them in the next to the caption "Business domain description";
+. The area covered by the contract is classified via three CPV codes. The software application may retrieve the descriptions of the CPV taxonomy (probably from the EU Publications Office https://simap.ted.europa.eu/en/web/simap/cpv[SIMAP] or http://publications.europa.eu/mdr/index.html[MDR] services) and show them in the next to the caption "Business domain description". The contracting authority may change those descriptions manually;
 
-. The minimum amount required by the contracting authority, and the currency for that amount (the EO should be able to express an identical or greater economic value in a different currency). 
+. The minimum amount required by the contracting authority, and the currency for that amount (the EO should be able to express an identical or greater economic value in a different currency); 
 
 . The software application has produced up to five groups of properties for each of the last five Fiscal Years (FY1 to FY5);
 
@@ -42,6 +42,8 @@ Notice that:
 . The contracting authority is able to specify the *number of fiscal years* (REQUIREMENT 'Number of fiscal years');
 
 . The contracting authority can specify one or more *CPV* to delimit the area covered by the contract (the REQUIREMENT 'CPV Code' has cardinality 1..n);
+
+. The description of the business area could be pre-filled with the descriptions coming from the CPV taxonomy or manually introduced;
 
 . The contracting authority does also specifies the *minimum amount* required for this specific turnover.
 
@@ -72,14 +74,14 @@ image::Selfcontained_Specific_Yearly_Turnover_Data_Structure.png[Self-contained 
 			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
 			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">8ab66813-032d-4643-9a2e-2c4f24db9f61</cbc:ID>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">3050f9bb-1541-4c4d-afd3-62d6755f0f4e</cbc:ID>
 				<cbc:Name/>
 				<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
 				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
 			</cac:TenderingCriterionProperty>
 			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b9140b20-89b7-40e8-85dd-77d8f62f9226</cbc:ID>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e380ff85-e749-4a54-89e4-25d32e01951a</cbc:ID>
 				<cbc:Name/>
 				<cbc:Description>Your Answer</cbc:Description>
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
@@ -88,7 +90,7 @@ image::Selfcontained_Specific_Yearly_Turnover_Data_Structure.png[Self-contained 
 		</cac:TenderingCriterionPropertyGroup>
 	</cac:SubTenderingCriterion>
 	<cac:Legislation>
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">699603e2-56fe-4549-be3f-fb8cfda349c8</cbc:ID>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">cad272a6-69f9-4be5-bcba-9215d0bf7182</cbc:ID>
 		<cbc:Title>[Legislation title]</cbc:Title>
 		<cbc:Description>[Legislation description]</cbc:Description>
 		<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
@@ -102,26 +104,26 @@ image::Selfcontained_Specific_Yearly_Turnover_Data_Structure.png[Self-contained 
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">5ca58d66-3ef1-4145-957c-45d5b18a837f</cbc:ID>
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d9f4eb52-54ea-4278-9b92-a849ac2103bd</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">ce103845-a9b3-4651-b24b-17d2b1917ba9</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Number of fiscal years</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
 			<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
-			<cbc:ExpectedAmount currencyID="EUR">5</cbc:ExpectedAmount>
+			<cbc:ExpectedAmount currencyID="EUR">3</cbc:ExpectedAmount>
 		</cac:TenderingCriterionProperty>
 		<cac:SubsidiaryTenderingCriterionPropertyGroup>
 			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">6d87673d-af3f-4c39-b0e4-fbef046bd435</cbc:ID>
 			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c8973a07-87b7-4545-819a-2c2d6e290d53</cbc:ID>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">9c4a6643-225f-4db9-b2d3-3f1af2d94629</cbc:ID>
 				<cbc:Name/>
 				<cbc:Description>CPVs:</cbc:Description>
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
 				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
 			</cac:TenderingCriterionProperty>
 			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">31ebd9ff-9235-417a-8fe9-41f86bef8ddc</cbc:ID>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d343c5b1-1e3d-4468-814e-e84a32681c54</cbc:ID>
 				<cbc:Name/>
 				<cbc:Description>CPV Code</cbc:Description>
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
@@ -131,7 +133,16 @@ image::Selfcontained_Specific_Yearly_Turnover_Data_Structure.png[Self-contained 
 			</cac:TenderingCriterionProperty>
 		</cac:SubsidiaryTenderingCriterionPropertyGroup>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">682cf8ec-b1cc-487e-890d-412eb7259a98</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">5665ed79-c3d6-4402-9e6c-56799bd2cdb0</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Business domain description</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CODE</cbc:ValueDataTypeCode>
+			<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+			<cbc:ExpectedCode>IT consulting / development of semantic interoperability solutions</cbc:ExpectedCode>
+		</cac:TenderingCriterionProperty>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">14f56765-a7ae-495b-b1be-6b0855b51257</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Minimum requirement</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
@@ -144,14 +155,14 @@ image::Selfcontained_Specific_Yearly_Turnover_Data_Structure.png[Self-contained 
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c0af3132-15c6-41c1-ae73-bf67c98d68ac</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">2eecaf23-845a-4d6a-9ab7-e54b86ebc8f3</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Start date; End date</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">PERIOD</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b87b7568-3c98-4727-9060-4261535ef43a</cbc:ID>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">df26966f-5201-4e9c-87df-4ad0dcaf5451</cbc:ID>
 			<cbc:Name/>
 			<cbc:Description>Amount</cbc:Description>
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
