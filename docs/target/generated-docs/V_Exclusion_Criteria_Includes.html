@@ -619,9 +619,31 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-1-convictions"><a class="anchor" href="#v-1-convictions"></a>V.1 Convictions</h3>
+<div class="sect3">
+<h4 id="related-information-requirements"><a class="anchor" href="#related-information-requirements"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>The label ''Convictions'' groups all the criteria related to the offences for which an Economic Operator may have been convicted .foonote:[This notation CRITERION.EXCLUSION.CONVICTION.* is to be read as ''it applies to all the selection criteria, which are part of the exclusion criteria group''. See, for instance, the <a href="./dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V02.00.00.ods">Self-contained criteria taxonomy spreadsheet</a> for the complete taxonomy of criteria and each criterion code label.]</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained"><a class="anchor" href="#differences-between-regulated-and-self-contained"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The only difference between <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> concerning conviction criteria is that the <strong>SELF-CONTAINED</strong> version allow Member States to link national sub-criteria to the EU conviction criterion. Thus:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <strong>REGULATED</strong> ESPDs the XML file <strong>will not</strong> contain the national criteria specified in e-Certis. See the figure showing the data structure for Regulated ESPDs.</p>
+</li>
+<li>
+<p>For <strong>SELF-CONTAINED</strong> ESPDs the XML will contain the national criteria and also the QUESTION for the economic operator to answer whether it fulfills the national criterion or not. See the figure showing the data structure for Self-contained ESPDs below.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The label ''Convictions'' groups all the criteria with identical data structures classified as:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -629,16 +651,6 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>In an ESPD Request XML document all these criteria share the same structure. However notice that:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>For Regulated ESPDs the XML file <strong>will not</strong> contain the national criteria specified in e-Certis. See the figure showing the data structure for Regulated ESPDs.</p>
-</li>
-<li>
-<p>For Self-contained ESPDs the XML will contain the national criteria and also the QUESTION for the economic operator to answer whether it fulfills the national criterion or not. See the figure showing the data structure for Self-contained ESPDs below.</p>
 </li>
 </ol>
 </div>
@@ -656,6 +668,7 @@ table.CodeRay td.code>pre{padding:0}
 </td>
 </tr>
 </table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-economic-operator-perspective"><a class="anchor" href="#mock-ups-economic-operator-perspective"></a>Mock-ups - economic operator perspective</h4>
@@ -998,15 +1011,34 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-2-contributions"><a class="anchor" href="#v-2-contributions"></a>V.2 Contributions</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-2"><a class="anchor" href="#related-information-requirements-2"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>The category ''Contributions'' encompasses two criteria:</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-2"><a class="anchor" href="#differences-between-regulated-and-self-contained-2"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</li>
+<li>
+<p>In the <strong>SELF-CONTAINED</strong> version the contracting authority can specify the minimum debt an economic operator can  maintain related to unpaid taxes or social security contributions.</p>
+</li>
+<li>
+<p>For both <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the category ''Contributions'' encompasses two criteria with identical data structures:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>CRITERION.EXCLUSION.CONTRIBUTIONS.*: ''payment of taxes'' and ''social security contributions''.</p>
 </li>
 </ul>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1721,14 +1753,31 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-3-environment-social-labour-law"><a class="anchor" href="#v-3-environment-social-labour-law"></a>V.3 Environment, Social, Labour Law</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-3"><a class="anchor" href="#related-information-requirements-3"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>The ''Social'' group of criteria refers to breaching of social obligations like the ones related to social laws:</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
 </div>
-<div class="paragraph">
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-3"><a class="anchor" href="#differences-between-regulated-and-self-contained-3"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</li>
+<li>
+<p>For both <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the category ''Social'' encompasses criteria with identical data structures, classified as:</p>
+<div class="ulist">
+<ul>
+<li>
 <p>CRITERION.EXCLUSION.SOCIAL.*: ''breaching of obligations in the fields of environmental law'', ''breaching of obligations in the fields of social law'' and ''breaching of obligations in the fields of labour law''.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>All these criteria are specified based on the same data structure:</p>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-3"><a class="anchor" href="#mock-ups-contracting-authority-perspective-3"></a>Mock-ups - contracting authority perspective</h4>
@@ -1894,9 +1943,21 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-4-business"><a class="anchor" href="#v-4-business"></a>V.4 Business</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-4"><a class="anchor" href="#related-information-requirements-4"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>The category ''Business'' encompasses the following group of criteria:</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-4"><a class="anchor" href="#differences-between-regulated-and-self-contained-4"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</li>
+<li>
+<p>For both <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the category ''Business'' encompasses the following group of criteria with the same data structures and classified as:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1904,8 +1965,9 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>All these criteria are specified based on the same data structure:</p>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-4"><a class="anchor" href="#mock-ups-contracting-authority-perspective-4"></a>Mock-ups - contracting authority perspective</h4>
@@ -2092,9 +2154,21 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-5-misconduct"><a class="anchor" href="#v-5-misconduct"></a>V.5 Misconduct</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-5"><a class="anchor" href="#related-information-requirements-5"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>The category ''Misconduct'' encompasses two criteria that share the same structure as the one used for the ''social'' group of criteria (see sub-section ''How to specify ''social'' related criteria, above).[17]</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-5"><a class="anchor" href="#differences-between-regulated-and-self-contained-5"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</li>
+<li>
+<p>For both <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the category ''Misconduct'' encompasses two criteria that share the same structure as the one used for the ''social'' group of criteria (see sub-section ''How to specify ''social'' related criteria, above).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2102,8 +2176,12 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p>All these criteria are specified based on the same data structure:</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-5"><a class="anchor" href="#mock-ups-contracting-authority-perspective-5"></a>Mock-ups - contracting authority perspective</h4>
@@ -2269,14 +2347,26 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-6-conflict-of-interest"><a class="anchor" href="#v-6-conflict-of-interest"></a>V.6 Conflict of interest</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-6"><a class="anchor" href="#related-information-requirements-6"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>The category ''Conflicts of Interest'' encompasses different exclusion criteria which are more heterogeneous than the ones described until now.</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-6"><a class="anchor" href="#differences-between-regulated-and-self-contained-6"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</li>
+<li>
+<p>For both <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the category ''Conflicts of Interest'' encompasses different exclusion criteria which are more heterogeneous than the ones described until now.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>We have divided the conflict of interest criteria in two groups, this first group is composed of two criteria with the same structure (see ''Early termination'' below to see the second group of 'conflict of interest' criteria).</p>
-</div>
-<div class="paragraph">
-<p>Three different data structures are used in the ESPD Service to describe different conflict of interest criteria:</p>
+<p>We have divided the conflict of interest criteria in two groups, this first group is composed of two criteria with the same structure:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2287,6 +2377,10 @@ table.CodeRay td.code>pre{padding:0}
 <p>CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.PROCEDURE_PARTICIPATION: Conflict of interest due to ''participation in the procurement procedure''.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The second group, named ''Early termination'', is explained in a different section. See section "Early termination).</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-6"><a class="anchor" href="#mock-ups-contracting-authority-perspective-6"></a>Mock-ups - contracting authority perspective</h4>
@@ -2430,15 +2524,31 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-7-early-termination"><a class="anchor" href="#v-7-early-termination"></a>V.7 Early termination</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-7"><a class="anchor" href="#related-information-requirements-7"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>The 'Conflict of interest' criteria have this other second group of structures, too:</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-7"><a class="anchor" href="#differences-between-regulated-and-self-contained-7"></a>Differences between Regulated and Self-contained</h4>
+<div class="paragraph">
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For both <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the category 'Early termination' refers to only one criterion with a specific (simple) data structure classified as:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.EARLY_TERMINATION: Conflict of interest due to ''early termination, damages or other comparable sanctions''.</p>
 </li>
 </ul>
+</div>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-7"><a class="anchor" href="#mock-ups-contracting-authority-perspective-7"></a>Mock-ups - contracting authority perspective</h4>
@@ -2604,8 +2714,31 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-8-misinterpretation"><a class="anchor" href="#v-8-misinterpretation"></a>V.8 Misinterpretation</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-8"><a class="anchor" href="#related-information-requirements-8"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>Finally the third group of 'Conflict of interest' criteria group has this other structure for the criterion 'Misinterpreation', which is differente from the other two groups of 'Conflict of Interest' structures.</p>
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-8"><a class="anchor" href="#differences-between-regulated-and-self-contained-8"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</li>
+<li>
+<p>For both <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, the category 'Misinterpreation', another type of 'Conflict of Interest', share the same data structure, and is classified as:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-8"><a class="anchor" href="#mock-ups-contracting-authority-perspective-8"></a>Mock-ups - contracting authority perspective</h4>
@@ -2680,8 +2813,8 @@ table.CodeRay td.code>pre{padding:0}
 
 <span class="comment">&lt;!-- Criterion:Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure --&gt;</span>
 <span class="tag">&lt;cac:TenderingCriterion&gt;</span>
-        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3293e92b-7f3e-42f1-bee6-a7641bb04251<span class="tag">&lt;/cbc:ID&gt;</span>
-        <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.EARLY_TERMINATION<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
+        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>696a75b2-6107-428f-8b74-82affb67e184<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
         <span class="tag">&lt;cbc:Name&gt;</span>Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure<span class="tag">&lt;/cbc:Name&gt;</span>
         <span class="tag">&lt;cbc:Description&gt;</span>Can the economic operator confirm that:<span class="tag">&lt;/cbc:Description&gt;</span>
         <span class="tag">&lt;cac:SubTenderingCriterion&gt;</span>
@@ -2692,14 +2825,14 @@ table.CodeRay td.code>pre{padding:0}
                         <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8c39b505-8abe-44fa-a3e0-f2d78b9d8224<span class="tag">&lt;/cbc:ID&gt;</span>
                         <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
                         <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>48511d93-36c6-4860-8811-7dca7894bb9f<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0934d941-9680-447c-b2ca-af1f0fce53fd<span class="tag">&lt;/cbc:ID&gt;</span>
                                 <span class="tag">&lt;cbc:Name</span><span class="tag">/&gt;</span>
                                 <span class="tag">&lt;cbc:Description&gt;</span>[Additional information; e.g. no evidences online]<span class="tag">&lt;/cbc:Description&gt;</span>
                                 <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
                                 <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
                         <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
                         <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2b6f8eb9-c2db-4c4b-9dc1-777cd8c9db5f<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7dfc567f-1429-4ed3-a299-39f2451e69c2<span class="tag">&lt;/cbc:ID&gt;</span>
                                 <span class="tag">&lt;cbc:Name</span><span class="tag">/&gt;</span>
                                 <span class="tag">&lt;cbc:Description&gt;</span>Your Answer<span class="tag">&lt;/cbc:Description&gt;</span>
                                 <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
@@ -2708,7 +2841,7 @@ table.CodeRay td.code>pre{padding:0}
                 <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
         <span class="tag">&lt;/cac:SubTenderingCriterion&gt;</span>
         <span class="tag">&lt;cac:Legislation&gt;</span>
-                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ff14cafa-556d-41e3-a224-a761a2402bb9<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e26648ec-ba40-46d4-a4d0-79833b7da551<span class="tag">&lt;/cbc:ID&gt;</span>
                 <span class="tag">&lt;cbc:Title&gt;</span>[Legislation title]<span class="tag">&lt;/cbc:Title&gt;</span>
                 <span class="tag">&lt;cbc:Description&gt;</span>[Legislation description]<span class="tag">&lt;/cbc:Description&gt;</span>
                 <span class="tag">&lt;cbc:JurisdictionLevel&gt;</span>EU<span class="tag">&lt;/cbc:JurisdictionLevel&gt;</span>
@@ -2722,7 +2855,7 @@ table.CodeRay td.code>pre{padding:0}
                 <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f3a6836d-2de2-4cd1-81ca-fb06178d05c5<span class="tag">&lt;/cbc:ID&gt;</span>
                 <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
                 <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e91191bf-b9be-4a54-a485-fb97d1661a91<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f838769c-5869-4f55-b9cb-089d9331bbf5<span class="tag">&lt;/cbc:ID&gt;</span>
                         <span class="tag">&lt;cbc:Name</span><span class="tag">/&gt;</span>
                         <span class="tag">&lt;cbc:Description&gt;</span>Your answer<span class="tag">&lt;/cbc:Description&gt;</span>
                         <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
@@ -2730,6 +2863,7 @@ table.CodeRay td.code>pre{padding:0}
                 <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
         <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
 <span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
+
 <span class="comment">&lt;!-- ... the rest of elements in the QualificationApplicationRequest document omitted for brevity --&gt;</span></code></pre>
 </div>
 </div>
@@ -2737,6 +2871,14 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="v-9-purely-national-criteria"><a class="anchor" href="#v-9-purely-national-criteria"></a>V.9 Purely national criteria</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-9"><a class="anchor" href="#related-information-requirements-9"></a>Related information requirements</h4>
+<div class="paragraph">
+<p>See formal requirements related to exclusion grounds criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>, and more specifically <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009"><em>tbr070-009</em></a>, <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004"><em>tbr070-004</em></a>, and <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013"><em>tbr070-013</em></a>.</p>
+</div>
+<div class="paragraph">
+<p>Ohter requirements related specifically to purely national criteria are:</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -2763,6 +2905,27 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 <div class="paragraph">
 <p>These two requirements are introduced by the new Self-contained ESPD-EDM V02.00.00. Therefore you will see that there is an  essential difference between the Regulated and the Self-contained ESPDs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-9"><a class="anchor" href="#differences-between-regulated-and-self-contained-9"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <strong>SELF-CONTAINED</strong> version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;</p>
+</li>
+<li>
+<p>The data structure for the <strong>SELF-CONTAINED</strong> versions is quite different from the <strong>REGULATED</strong> due to the new information requirements requested by the Membere States. See the sub-sections below on <strong>Regulated purely national</strong> and <strong>Self-contained purely national</strong> criteria below for details on the differences. The classification code fore this criterion is:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CRITERION.EXCLUSION.NATIONAL.OTHER</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
