@@ -522,39 +522,78 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="vi-4-1-regulated-financial-ratios"><a class="anchor" href="#vi-4-1-regulated-financial-ratios"></a>VI.4.1 Regulated financial ratios</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective"><a class="anchor" href="#mock-ups-contracting-authority-perspective"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-up-contracting-authority-perspective"><a class="anchor" href="#mock-up-contracting-authority-perspective"></a>Mock-up - contracting authority perspective</h4>
+<div class="paragraph">
+<p>The contracting authority has selected the financial ratio as one of the selection  criteria that will go into the ESPD Request document:</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
+<img src="./images/Selfcontained_Financial_ratio_CA_mockup.png" alt="Self-contained 'financial ratio' CA mock-up">
 </div>
-<div class="title">Figure 1. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 1. Self-contained 'financial ratio' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective"><a class="anchor" href="#mock-ups-economic-operator-perspective"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-up-economic-operator-perspective"><a class="anchor" href="#mock-up-economic-operator-perspective"></a>Mock-up - economic operator perspective</h4>
+<div class="paragraph">
+<p>The economic operator has to respond with the numeric value corresponding to the financial ratio and with a description to identify the type of ratio:</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
+<img src="./images/Regulated_Financial_Ratio_EO_mockup.png" alt="Regulated 'financial ratio' CA mock-up">
 </div>
-<div class="title">Figure 2. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 2. Regulated 'financial ratio' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="data-structure-regulated"><a class="anchor" href="#data-structure-regulated"></a>Data Structure - Regulated</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
+<img src="./images/Regulated_Financial_Ratio_Data_Structure.png" alt="Regulated 'financial ratio' criterion data structure">
 </div>
-<div class="title">Figure 3. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 3. Regulated 'financial ratio' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="xml-example-regulated"><a class="anchor" href="#xml-example-regulated"></a>XML Example - Regulated</h4>
 <div class="listingblock">
-<div class="title">Regulated XX</div>
+<div class="title">Regulated Regulated 'financial ratio' criterion</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>!... header elements removed for brevity --<span class="error">&gt;</span>
 
+<span class="comment">&lt;!-- Criterion:Financial ratio --&gt;</span>
+        <span class="tag">&lt;cac:TenderingCriterion&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.FINANCIAL_RATIO<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
+                <span class="tag">&lt;cbc:Name&gt;</span>Financial ratio<span class="tag">&lt;/cbc:Name&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Concerning the financial ratios specified in the relevant notice, the in the ESPD, the relevant notice or or the ESPD, the economic operator declares that the actual values for the required ratios are as follows:<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cac:Legislation&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7a182b9e-4c3f-4087-a3ae-9a3791ecd713<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:Title&gt;</span>[Legislation title]<span class="tag">&lt;/cbc:Title&gt;</span>
+                        <span class="tag">&lt;cbc:Description&gt;</span>[Legislation description]<span class="tag">&lt;/cbc:Description&gt;</span>
+                        <span class="tag">&lt;cbc:JurisdictionLevel&gt;</span>EU<span class="tag">&lt;/cbc:JurisdictionLevel&gt;</span>
+                        <span class="tag">&lt;cbc:Article&gt;</span>[Article, e.g. Article 2.I.a]<span class="tag">&lt;/cbc:Article&gt;</span>
+                        <span class="tag">&lt;cbc:URI&gt;</span>http://eur-lex.europa.eu/<span class="tag">&lt;/cbc:URI&gt;</span>
+                        <span class="tag">&lt;cac:Language&gt;</span>
+                                <span class="tag">&lt;cbc:LocaleCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LanguageCodeEU</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>EN<span class="tag">&lt;/cbc:LocaleCode&gt;</span>
+                        <span class="tag">&lt;/cac:Language&gt;</span>
+                <span class="tag">&lt;/cac:Legislation&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>83e3dcc4-c9b3-47e5-9fb8-ffd8386679f1<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                        <span class="tag">&lt;cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e9aa7763-c167-4352-8060-1a3d7d3e2662<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>a749f03a-abde-4e95-b999-fed640ff96e4<span class="tag">&lt;/cbc:ID&gt;</span>
+                                        <span class="tag">&lt;cbc:Name</span><span class="tag">/&gt;</span>
+                                        <span class="tag">&lt;cbc:Description&gt;</span>Please provide your ratios<span class="tag">&lt;/cbc:Description&gt;</span>
+                                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>DESCRIPTION<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;/cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
+                <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
+        <span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
 
 <span class="error">&lt;</span>!... rest of elements removed for brevity --<span class="error">&gt;</span></code></pre>
 </div>
@@ -564,7 +603,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-06 07:26:01 CEST
+Last updated 2017-08-08 10:38:48 CEST
 </div>
 </div>
 </body>
