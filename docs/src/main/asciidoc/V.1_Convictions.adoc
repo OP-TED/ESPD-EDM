@@ -1,15 +1,21 @@
 
 === V.1 Convictions
 
-The label ''Convictions'' groups all the criteria related to the offences for which an Economic Operator may have been convicted .foonote:[This notation CRITERION.EXCLUSION.CONVICTION.* is to be read as ''it applies to all the selection criteria, which are part of the exclusion criteria group''. See, for instance, the link:./dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V02.00.00.ods[Self-contained criteria taxonomy spreadsheet] for the complete taxonomy of criteria and each criterion code label.]
+==== Related information requirements
 
-* CRITERION.EXCLUSION.CONVICTIONS.*: ''participation in a criminal organisation'', ''corruption'', ''fraud'', ''terrorist offences linked to terrorist activities'', ''money laundering or terrorist financing'', ''child labour and other forms of trafficking in human beings''.
+See formal requirements related to exclusion grounds criteria in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)], and more specifically http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009[_tbr070-009_], http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004[_tbr070-004_], and http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013[_tbr070-013_].
 
-In an ESPD Request XML document all these criteria share the same structure. However notice that:
+==== Differences between Regulated and Self-contained
 
-. For Regulated ESPDs the XML file *will not* contain the national criteria specified in e-Certis. See the figure showing the data structure for Regulated ESPDs.
+.  The only difference between *REGULATED* and *SELF-CONTAINED* concerning conviction criteria is that the *SELF-CONTAINED* version allow Member States to link national sub-criteria to the EU conviction criterion. Thus:
 
-. For Self-contained ESPDs the XML will contain the national criteria and also the QUESTION for the economic operator to answer whether it fulfills the national criterion or not. See the figure showing the data structure for Self-contained ESPDs below. 
+** For *REGULATED* ESPDs the XML file *will not* contain the national criteria specified in e-Certis. See the figure showing the data structure for Regulated ESPDs.
+
+** For *SELF-CONTAINED* ESPDs the XML will contain the national criteria and also the QUESTION for the economic operator to answer whether it fulfills the national criterion or not. See the figure showing the data structure for Self-contained ESPDs below. 
+
+. The label ''Convictions'' groups all the criteria with identical data structures classified as:
+
+** CRITERION.EXCLUSION.CONVICTIONS.*: ''participation in a criminal organisation'', ''corruption'', ''fraud'', ''terrorist offences linked to terrorist activities'', ''money laundering or terrorist financing'', ''child labour and other forms of trafficking in human beings''.
 
 .Note about the ESPD Service
 [IMPORTANT]
