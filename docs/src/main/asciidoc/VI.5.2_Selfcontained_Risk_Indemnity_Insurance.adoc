@@ -1,0 +1,220 @@
+
+=== VI.5.2 Self-contained risk indemnity insurance
+
+==== Mock-ups - contracting authority perspective
+
+The contracting authority has selected the option *Professional risk indemnity insurance* for its inclusion in the ESPD Request. Notice that the Member State (Finland) defined in e-Certis a specific national criterion related to the risk indemnity insurance. This national criterion *will be* saved into the exported XML instance, as this is a *SELF-CONTAINED* version of the ESPD.
+
+.'Self-contained risk indemnity insurance' CA mock-up 
+image::Selfcontained_Risk_Indemnity_Insurance_CA_mock-up.png[Self-contained 'risk indemnity insurance' CA mock-up, alt="Self-contained 'risk indemnity insurance' CA mock-up", align="center"]
+
+Additionally the contracting authority can specify REQUIREMENTs specific to the procurement procedure. There are two situations that need to be distinguished here, when the procurement procedure is divided into Lots and when it is not.
+
+For both situations (Lots and not Lots): The contracting authority can require data from the economic operator in relation to up to four types of insurances. Software applications should control that: no more groups of amount an currency data are presented to the economic operator; and that there are not two amounts referring to the same type of insurance;
+
+.'Self-contained risk indemnity insurance' CA REQUIREMENTS edition (Procedure without Lots)
+image::Selfcontained_Risk_Indemnity_Insurance_CA_NOLOTS_mock-up.png[Self-contained 'risk indemnity insurance' CA mock-up, alt="Self-contained 'risk indemnity insurance' CA mock-up", align="center"]
+
+When the procedure is divided into Lots: The contracting authority can specify the Lots one particular insurance applies to.
+
+.'Self-contained risk indemnity insurance' CA REQUIREMENTs edition (Procedure divided into Lots).
+image::Selfcontained_Risk_Indemnity_Insurance_CA_LOTS_mock-up.png[Self-contained 'risk indemnity insurance' CA mock-up, alt="Self-contained 'risk indemnity insurance' CA mock-up", align="center"]
+
+==== Mock-up - economic operator perspective
+
+The only data the economic operator needs to provide is the amount covered by the insurance and the currency for that amount:
+
+.'Economic operator setup'EO mock-up 
+image::Selfcontained_Risk_Indemnity_Insurance_EO_mock-up.png['Self-contained 'risk indemnity insurance' EO mock-up, alt="'Self-contained 'risk indemnity insurance' EO mock-up", align="center"]
+
+==== Data Structure - Self-contained
+This structure is quite particular. Notice that:
+
+. Multiple national sub-criteria can be defined (as for the rest of criteria); but
+
+. Multiple groups of REQUIREMENTs and QUESTIONs can be defined by the contracting authority (CA):
+
+** One group asking optionally for Lots: observe that the lots are in a specific sub-groups, so a list of LotIDs can be built up; and
+
+** An additional sub-group for the type of insurance and the minimum amount required by the CA.
+
+** A sub-group of three QUESTIONs for the economic operator to answer (amount, and two questions to be answered as "Yes" or "No"; and 
+
+** The possibility of attaching an evidence per each insurance.
+
+The XML example below illustrates all this. The values used in the example are the same as the ones in the spread-sheet.
+
+.Self-contained 'risk indemnity insurance' criterion data structure 
+image::Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png[Self-contained 'risk indemnity insurance' criterion data structure, alt="Self-contained 'risk indemnity insurance' criterion data structure",align="center"]
+
+==== XML Example - Self-contained
+
+.Self-contained 'risk indemnity insurance' criterion (*Procedure with Lots*)
+[source,xml]
+----
+<!... header elements removed for brevity -->
+
+<!-- Criterion:Professional risk indemnity insurance -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">7604bd40-4462-4086-8763-a50da51a869c</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE</cbc:CriterionTypeCode>
+	<cbc:Name>Professional risk indemnity insurance</cbc:Name>
+	<cbc:Description>The insured amount in its professional risk indemnity insurance is the following:</cbc:Description>
+	<cac:SubTenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+		<cbc:Name>[Name of the National Criterion]</cbc:Name>
+		<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">86fdb3ce-c54f-4ac0-9649-e204e209ee48</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">02282771-709d-48d6-b43a-a754e0ab6192</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Your Answer</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:TenderingCriterionPropertyGroup>
+	</cac:SubTenderingCriterion>
+	<cac:Legislation>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">2df5ec1a-462c-4064-8bc5-d9c1feefe505</cbc:ID>
+		<cbc:Title>[Legislation title]</cbc:Title>
+		<cbc:Description>[Legislation description]</cbc:Description>
+		<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+		<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+		<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+		<cac:Language>
+			<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">EN</cbc:LocaleCode>
+		</cac:Language>
+	</cac:Legislation>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">83e3dcc4-c9b3-47e5-9fb8-ffd8386679f1</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">f6d006ca-a598-4df5-954e-d926a79aa6bc</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description/>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">cc1da737-6c4e-4f4e-821d-c260029058f6</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4b293826-9125-45cf-bbca-bee4fd4ba3fb</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Lots the requirement applies to</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">cc1da737-6c4e-4f4e-821d-c260029058f6</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">792b4dfd-adea-45b3-a35d-99f714c736f9</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>Lot ID</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00"/>
+				<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00"/>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">3b35ff7b-ac33-45e9-ae4c-b628a076f1f1</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>Type of insurance</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CODE</cbc:ValueDataTypeCode>
+					<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+					<cbc:ExpectedCode>Professional risk indemnity insurance</cbc:ExpectedCode>
+				</cac:TenderingCriterionProperty>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">85241259-6316-40e7-b510-9ab16812ac0a</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>Minimum amount</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
+					<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+					<cbc:ExpectedAmount currencyID="EUR">50000</cbc:ExpectedAmount>
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">42dc8062-974d-4201-91ba-7f2ea90338fd</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">35f573e9-1ce1-4ba4-a2da-e1635864b9fe</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Amount</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">AMOUNT</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">3c2c194b-9854-4354-b87c-9952dfb7c9bb</cbc:ID>
+				<cbc:Name>As an EO I will commit to obtain the minimum amount required</cbc:Name>
+				<cbc:Description>true</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00"/>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b6dc43a6-edf0-49e5-a21a-6f58cdc0d39d</cbc:ID>
+				<cbc:Name>I am exempt</cbc:Name>
+				<cbc:Description>true</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00"/>
+			</cac:TenderingCriterionProperty>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c235b5fb-f512-416a-b264-7fe7a4241524</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Is this information available at no cost to the authorities from an EU Member State database?</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">66ff5c5a-e801-46ab-b976-625e5b464969</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>URL</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_URL</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4fe2d057-ddf8-462b-a30b-6f068b59df65</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>Verification code</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d71fabb8-c445-4d97-8272-4972c41aac4c</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>Issuer</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+
+<!... rest of elements removed for brevity -->
+----
+
+
+
+
