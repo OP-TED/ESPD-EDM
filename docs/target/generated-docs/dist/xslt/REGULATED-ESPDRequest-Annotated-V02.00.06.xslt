@@ -17,7 +17,7 @@
 	</xsl:template>
 	
 	<xsl:template match="office:spreadsheet/table:table">
-		<xsl:if test="@table:name='SC-Professional_risk_insurance'">
+		<xsl:if test="@table:name='SC-Other_economic_or_financial'">
 		<xsl:apply-templates select="table:table-row/table:table-cell"/>
 		</xsl:if>		
 	</xsl:template>

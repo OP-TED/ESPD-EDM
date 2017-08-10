@@ -3,7 +3,7 @@
 
 ==== Mock-ups - contracting authority perspective
 
-The contracting authority has selected the option *Professional risk indemnity insurance* for its inclusion in the ESPD Request. Notice that the Member State (Finland) defined in e-Certis a specific national criterion related to the risk indemnity insurance. This national criterion *will be* saved into the exported XML instance, as this is a *SELF-CONTAINED* version of the ESPD.
+The contracting authority has selected the option *professional risk indemnity insurance* for its inclusion in the ESPD Request. Notice that the Member State (Finland, in this case) defined in e-Certis a specific national criterion related to the risk indemnity insurance. This national criterion *will be* saved into the exported XML instance, as this is a *SELF-CONTAINED* version of the ESPD.
 
 .'Self-contained risk indemnity insurance' CA mock-up 
 image::Selfcontained_Risk_Indemnity_Insurance_CA_mock-up.png[Self-contained 'risk indemnity insurance' CA mock-up, alt="Self-contained 'risk indemnity insurance' CA mock-up", align="center"]
@@ -30,11 +30,11 @@ image::Selfcontained_Risk_Indemnity_Insurance_EO_mock-up.png['Self-contained 'ri
 ==== Data Structure - Self-contained
 This structure is quite particular. Notice that:
 
-. Multiple national sub-criteria can be defined (as for the rest of criteria); but
+. Multiple national sub-criteria can be defined (as for the rest of criteria); and additionally
 
 . Multiple groups of REQUIREMENTs and QUESTIONs can be defined by the contracting authority (CA):
 
-** One group asking optionally for Lots: observe that the lots are in a specific sub-groups, so a list of LotIDs can be built up; and
+** One group asking optionally for Lots: observe that the cardinality of the Lot IDs is 1..n and have their own sub-group, so a list of LotIDs can be built up; and
 
 ** An additional sub-group for the type of insurance and the minimum amount required by the CA.
 
