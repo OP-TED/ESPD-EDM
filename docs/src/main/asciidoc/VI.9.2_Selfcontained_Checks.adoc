@@ -2,28 +2,110 @@
 === VI.9.2 Self-contained checks
 
 ==== Mock-ups - contracting authority perspective
+The contracting authority has selected the 'allowance of checks' option in a ESPD Request builder software application GUI. This software application will create a criterion of this in the ESPD Request XML instance with zero, one or more REQUIREMENTs by the EO. 
 
-.Self-contained 'XXX_CA_mockup' 
-image::XXX_CA_mockup.png[XXX_CA, alt="XXX_CA", width="800" align="center"]
+.Self-contained 'allowance of checks' CA mock-up 
+image::Selfcontained_Checks_CA_mockup.png[Self-contained 'Checks' CA mock-up, alt="Self-contained 'Checks' CA mock-up", align="center"]
+
+The contracting authority (CA) can specify none, one or several REQUIREMENTs. In this case a REQUIREMENT is a descriptive text provided by the CA where the criterion is better explained or where certain conditions relating to the criterion. In this example the CA is specifying which type of premises it wants to check and for which reasons.
+
+.Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up 
+image::Selfcontained_Checks_CA_REQUIREMENT_mockup.png[Self-contained 'Checks' CA REQUIREMENT mock-up, alt="Self-contained 'Checks' CA REQUIREMENT mock-up", align="center"]
 
 ==== Mock-ups - economic operator perspective
 
-.Self-contained 'XXX_EO_mockup' 
-image::XXX_EO_mockup.png[XXX_EO, alt="XXX_EO", width="800" align="center"]
+The EO should see as many boxes (groups) of REQUIREMENT + QUESTION as REQUIREMENTs specified by the CA. In this case the economic operator (EO) sees one REQUIREMENT associated to one QUESTION. The expected answer is *Yes* or *No*. 
+
+.Self-contained 'allowance of hecks' EO mock-up 
+image::Selfcontained_Checks_EO_mockup.png[Self-contained 'Checks' CA mock-up, alt="Self-contained 'Checks' CA mock-up", align="center"]
 
 ==== Data Structure - Self-contained
 
-.Self-contained 'XX' criterion data structure 
-image::Self-contained_XX_Data_Structure.png[Self-contained 'XX' criterion data structure, alt="Self-contained 'XX' criterion data structure",align="center"]
+The data structure below shows how this criterion is organised. Notice the following: 
+
+. The Member State can associate one or more national criteria to this EU criterion (element sub-criterion, cardinality 0..n). 
+
+. The criterion can be associated to one or more pieces of legislation (this spread-sheet does not focus on the edition of the legislation element; the transformation style-sheet will generate dummy values for this element).
+
+. At least one REQUIREMENT group will always be created. If the CA specified more than one REQUIREMENTs, more groups of REQUIREMENT + QUESTION would be added to the ESPD Request XML instance.
+
+. If not specific REQUIREMENT is issued by the CA, the REQUIREMENT group should equally be created and the REQUIREMENT value should be replaced with a literal (e.g. 'No specific requirements'). 
+
+(Some columns have been hidden to enhance the readability of the image).
+
+.Self-contained 'allowance of checks' criterion data structure 
+image::Self-contained_Checks_Data_Structure.png[Self-contained 'Checks' criterion data structure, alt="Self-contained 'Checks' criterion data structure",align="center"]
+
 
 ==== XML Example - Self-contained
 
-.Self-contained XX
+.Self-contained allowance of checks criterion
 [source,xml]
 ----
-<!... header elements removed for brevity -->
+<!-- header elements removed for brevity -->
 
+<!-- Criterion:Allowance of checks -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c8809aa1-29b6-4f27-ae2f-27e612e394db</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS</cbc:CriterionTypeCode>
+	<cbc:Name>Allowance of checks</cbc:Name>
+	<cbc:Description>For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.</cbc:Description>
+	<cac:SubTenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+		<cbc:Name>[Name of the National Criterion]</cbc:Name>
+		<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">9f7e914c-6abc-495e-9f97-3770635237f7</cbc:ID>
+				<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">ef9f4d52-17ea-4dca-8863-a74b7ded2fc3</cbc:ID>
+				<cbc:Description>Your Answer</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:TenderingCriterionPropertyGroup>
+	</cac:SubTenderingCriterion>
+	<cac:Legislation>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">0172a27e-7f97-4d62-8356-81358cf8d795</cbc:ID>
+		<cbc:Title>[Legislation title]</cbc:Title>
+		<cbc:Description>[Legislation description]</cbc:Description>
+		<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+		<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+		<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+		<cac:Language>
+			<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">EN</cbc:LocaleCode>
+		</cac:Language>
+	</cac:Legislation>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">10822ddd-9ba6-42d5-9339-de0845aeafc9</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">570c19ca-80f2-4477-a4c2-7d9b6781c31c</cbc:ID>
+			<cbc:Description>Requirement</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+			<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+			<cbc:ExpectedDescription>The EO will allow the CA to visit the premises where the development is performed(upon pre-agreed calendar) in order to check the security measures undertaken by the EO.</cbc:ExpectedDescription>
+		</cac:TenderingCriterionProperty>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">a3410620-8ed3-47f9-ab90-b5b1aeeff6a5</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">f20fee9c-f374-4dc7-b88f-8428cec5a4b3</cbc:ID>
+				<cbc:Description>Do you allow checks?</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
 
-<!... rest of elements removed for brevity -->
+<!-- rest of elements removed for brevity -->
 ----
 

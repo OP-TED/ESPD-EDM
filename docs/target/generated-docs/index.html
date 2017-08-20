@@ -11265,46 +11265,115 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 <div class="sect2">
 <h3 id="vi-9-abilities-checks-ii"><a class="anchor" href="#vi-9-abilities-checks-ii"></a>VI.9 Abilities Checks (II)</h3>
-
+<div class="sect3">
+<h4 id="related-information-requirements-18"><a class="anchor" href="#related-information-requirements-18"></a>Related information requirements</h4>
+<div class="paragraph">
+<p>See formal requirements related to selection criteria in the <a href="http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916">BIS 41 - European Single Procurement Document (Version 2.0.0)</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained-17"><a class="anchor" href="#differences-between-regulated-and-self-contained-17"></a>Differences between Regulated and Self-contained</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>REGULATED</strong> the contracting authority cannot specify REQUIREMENTs. The text of the Criterion is a QUESTION, retrieved from e-Certis, that needs to be answered with <strong>Yes</strong> or *No+ by the economic operator.</p>
+</li>
+<li>
+<p>In the <strong>SELF-CONTAINED</strong> version the contracting authority can provide as many REQUIREMENTs as needed. These requirements are free-text fields that need to ask a 'binary' QUESTION.</p>
+</li>
+<li>
+<p>In the <strong>SELF-CONTAINED</strong> the economic operator (EO) sees the REQUIREMENTs specified by the CA and, per each  REQUIREMENT the EO answers with <strong>Yes</strong> or <strong>No</strong>.</p>
+</li>
+<li>
+<p>The <strong>SELF-CONTAINED</strong> is able to keep in the XML documents national sub-criteria defined by the MS in e-Certis.</p>
+</li>
+<li>
+<p>For both versions, <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>, there is only one criterion with a particular (simple) data structure:</p>
+<div class="literalblock">
+<div class="content">
+<pre>**CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="vi-9-1-regulated-checks"><a class="anchor" href="#vi-9-1-regulated-checks"></a>VI.9.1 Regulated checks</h3>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-18"><a class="anchor" href="#mock-ups-contracting-authority-perspective-18"></a>Mock-ups - contracting authority perspective</h4>
+<div class="paragraph">
+<p>The contracting authority has selected the 'allowance of checks' option in a ESPD Request builder software application GUI. This criterion will be included in the ESDP Request XML instance.</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
+<img src="./images/Regulated_Checks_CA_mockup.png" alt="Regulated 'checks' CA mock-up">
 </div>
-<div class="title">Figure 150. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 150. Regulated 'checks' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-economic-operator-perspective-16"><a class="anchor" href="#mock-ups-economic-operator-perspective-16"></a>Mock-ups - economic operator perspective</h4>
+<div class="paragraph">
+<p>The economic operator has only to answer <strong>Yes</strong> or <strong>No</strong> in response.</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
+<img src="./images/Regulated_Checks_EO_mockup.png" alt="Regulated 'checks' EO mock-up">
 </div>
-<div class="title">Figure 151. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 151. Regulated 'checks' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="data-structure-regulated-21"><a class="anchor" href="#data-structure-regulated-21"></a>Data Structure - Regulated</h4>
+<div class="paragraph">
+<p>The data structure for this criterion is quite straightforward, it only contains a group of one QUESTION which has to be answered with <strong>Yes</strong> or <strong>No</strong>, thus the expected property data type <code>INDICATOR</code>. Columns 8 to 17 have been hidden to enhance the readability of the image).</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
+<img src="./images/Regulated_Checks_Data_Structure.png" alt="Regulated 'checks' criterion data structure criterion data structure">
 </div>
-<div class="title">Figure 152. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 152. Regulated 'checks' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="xml-example-regulated-13"><a class="anchor" href="#xml-example-regulated-13"></a>XML Example - Regulated</h4>
 <div class="listingblock">
-<div class="title">Regulated XX</div>
+<div class="title">Regulated 'checks' XML example</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>!... header elements removed for brevity --<span class="error">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- header elements removed for brevity --&gt;</span>
 
+<span class="comment">&lt;!-- Criterion:Allowance of checks --&gt;</span>
+<span class="tag">&lt;cac:TenderingCriterion&gt;</span>
+        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>c8809aa1-29b6-4f27-ae2f-27e612e394db<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
+        <span class="tag">&lt;cbc:Name&gt;</span>Allowance of checks<span class="tag">&lt;/cbc:Name&gt;</span>
+        <span class="tag">&lt;cbc:Description&gt;</span>For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.<span class="tag">&lt;/cbc:Description&gt;</span>
+        <span class="tag">&lt;cac:Legislation&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3905a69e-4893-4d52-9650-c144d405ecba<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:Title&gt;</span>[Legislation title]<span class="tag">&lt;/cbc:Title&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>[Legislation description]<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cbc:JurisdictionLevel&gt;</span>EU<span class="tag">&lt;/cbc:JurisdictionLevel&gt;</span>
+                <span class="tag">&lt;cbc:Article&gt;</span>[Article, e.g. Article 2.I.a]<span class="tag">&lt;/cbc:Article&gt;</span>
+                <span class="tag">&lt;cbc:URI&gt;</span>http://eur-lex.europa.eu/<span class="tag">&lt;/cbc:URI&gt;</span>
+                <span class="tag">&lt;cac:Language&gt;</span>
+                        <span class="tag">&lt;cbc:LocaleCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LanguageCodeEU</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>EN<span class="tag">&lt;/cbc:LocaleCode&gt;</span>
+                <span class="tag">&lt;/cac:Language&gt;</span>
+        <span class="tag">&lt;/cac:Legislation&gt;</span>
+        <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>d7721546-9106-43a7-8d31-2fe08a862b00<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>6250e2c6-9309-42ea-a969-d2599c0159be<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:Description&gt;</span>Do you allow checks?<span class="tag">&lt;/cbc:Description&gt;</span>
+                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>INDICATOR<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+        <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
+<span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
 
-<span class="error">&lt;</span>!... rest of elements removed for brevity --<span class="error">&gt;</span></code></pre>
+<span class="comment">&lt;!-- rest of elements removed for brevity --&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -11313,40 +11382,135 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <h3 id="vi-9-2-self-contained-checks"><a class="anchor" href="#vi-9-2-self-contained-checks"></a>VI.9.2 Self-contained checks</h3>
 <div class="sect3">
 <h4 id="mock-ups-contracting-authority-perspective-19"><a class="anchor" href="#mock-ups-contracting-authority-perspective-19"></a>Mock-ups - contracting authority perspective</h4>
+<div class="paragraph">
+<p>The contracting authority has selected the 'allowance of checks' option in a ESPD Request builder software application GUI. This software application will create a criterion of this in the ESPD Request XML instance with zero, one or more REQUIREMENTs by the EO.</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
+<img src="./images/Selfcontained_Checks_CA_mockup.png" alt="Self-contained 'Checks' CA mock-up">
 </div>
-<div class="title">Figure 153. Self-contained 'XXX_CA_mockup'</div>
+<div class="title">Figure 153. Self-contained 'allowance of checks' CA mock-up</div>
+</div>
+<div class="paragraph">
+<p>The contracting authority (CA) can specify none, one or several REQUIREMENTs. In this case a REQUIREMENT is a descriptive text provided by the CA where the criterion is better explained or where certain conditions relating to the criterion. In this example the CA is specifying which type of premises it wants to check and for which reasons.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Selfcontained_Checks_CA_REQUIREMENT_mockup.png" alt="Self-contained 'Checks' CA REQUIREMENT mock-up">
+</div>
+<div class="title">Figure 154. Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="mock-ups-economic-operator-perspective-17"><a class="anchor" href="#mock-ups-economic-operator-perspective-17"></a>Mock-ups - economic operator perspective</h4>
+<div class="paragraph">
+<p>The EO should see as many boxes (groups) of REQUIREMENT + QUESTION as REQUIREMENTs specified by the CA. In this case the economic operator (EO) sees one REQUIREMENT associated to one QUESTION. The expected answer is <strong>Yes</strong> or <strong>No</strong>.</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
+<img src="./images/Selfcontained_Checks_EO_mockup.png" alt="Self-contained 'Checks' CA mock-up">
 </div>
-<div class="title">Figure 154. Self-contained 'XXX_EO_mockup'</div>
+<div class="title">Figure 155. Self-contained 'allowance of hecks' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="data-structure-self-contained-21"><a class="anchor" href="#data-structure-self-contained-21"></a>Data Structure - Self-contained</h4>
+<div class="paragraph">
+<p>The data structure below shows how this criterion is organised. Notice the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The Member State can associate one or more national criteria to this EU criterion (element sub-criterion, cardinality 0..n).</p>
+</li>
+<li>
+<p>The criterion can be associated to one or more pieces of legislation (this spread-sheet does not focus on the edition of the legislation element; the transaformation style-sheet will generate dummy values for this element).</p>
+</li>
+<li>
+<p>At least one REQUIREMENT group will always be created. If the CA specified more than one REQUIREMENTs, more groups of REQUIREMENT + QUESTION would be added to the ESPD Request XML instance.</p>
+</li>
+<li>
+<p>If not specific REQUIREMENT is issued by the CA, the REQUIREMENT group should equally be created and the REQUIREMENT value should be replaced with a literal (e.g. 'No specific requirements'). UBL-2.2 NDRs recommend not having empty elements in the XML instance.</p>
+</li>
+</ol>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/Self-contained_XX_Data_Structure.png" alt="Self-contained 'XX' criterion data structure">
+<img src="./images/Self-contained_Checks_Data_Structure.png" alt="Self-contained 'Checks' criterion data structure">
 </div>
-<div class="title">Figure 155. Self-contained 'XX' criterion data structure</div>
+<div class="title">Figure 156. Self-contained 'allowance of checks' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="xml-example-self-contained-20"><a class="anchor" href="#xml-example-self-contained-20"></a>XML Example - Self-contained</h4>
 <div class="listingblock">
-<div class="title">Self-contained XX</div>
+<div class="title">Self-contained allowance of checks criterion</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="error">&lt;</span>!... header elements removed for brevity --<span class="error">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- header elements removed for brevity --&gt;</span>
 
+<span class="comment">&lt;!-- Criterion:Allowance of checks --&gt;</span>
+<span class="tag">&lt;cac:TenderingCriterion&gt;</span>
+        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>c8809aa1-29b6-4f27-ae2f-27e612e394db<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
+        <span class="tag">&lt;cbc:Name&gt;</span>Allowance of checks<span class="tag">&lt;/cbc:Name&gt;</span>
+        <span class="tag">&lt;cbc:Description&gt;</span>For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.<span class="tag">&lt;/cbc:Description&gt;</span>
+        <span class="tag">&lt;cac:SubTenderingCriterion&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e6b21867-95b5-4549-8180-f4673219b179<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:Name&gt;</span>[Name of the National Criterion]<span class="tag">&lt;/cbc:Name&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>[Description of the National Criterion ]<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8c39b505-8abe-44fa-a3e0-f2d78b9d8224<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>9f7e914c-6abc-495e-9f97-3770635237f7<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>[Additional information; e.g. no evidences online]<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ef9f4d52-17ea-4dca-8863-a74b7ded2fc3<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Your Answer<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>INDICATOR<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
+        <span class="tag">&lt;/cac:SubTenderingCriterion&gt;</span>
+        <span class="tag">&lt;cac:Legislation&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0172a27e-7f97-4d62-8356-81358cf8d795<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:Title&gt;</span>[Legislation title]<span class="tag">&lt;/cbc:Title&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>[Legislation description]<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cbc:JurisdictionLevel&gt;</span>EU<span class="tag">&lt;/cbc:JurisdictionLevel&gt;</span>
+                <span class="tag">&lt;cbc:Article&gt;</span>[Article, e.g. Article 2.I.a]<span class="tag">&lt;/cbc:Article&gt;</span>
+                <span class="tag">&lt;cbc:URI&gt;</span>http://eur-lex.europa.eu/<span class="tag">&lt;/cbc:URI&gt;</span>
+                <span class="tag">&lt;cac:Language&gt;</span>
+                        <span class="tag">&lt;cbc:LocaleCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">LanguageCodeEU</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>EN<span class="tag">&lt;/cbc:LocaleCode&gt;</span>
+                <span class="tag">&lt;/cac:Language&gt;</span>
+        <span class="tag">&lt;/cac:Legislation&gt;</span>
+        <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>10822ddd-9ba6-42d5-9339-de0845aeafc9<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>570c19ca-80f2-4477-a4c2-7d9b6781c31c<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:Description&gt;</span>Requirement<span class="tag">&lt;/cbc:Description&gt;</span>
+                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>REQUIREMENT<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>DESCRIPTION<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                        <span class="comment">&lt;!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority --&gt;</span>
+                        <span class="tag">&lt;cbc:ExpectedDescription&gt;</span>The EO will allow the CA to visit the premises where the development is performed(upon pre-agreed calendar) in order to check the security measures undertaken by the EO.<span class="tag">&lt;/cbc:ExpectedDescription&gt;</span>
+                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                <span class="tag">&lt;cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>a3410620-8ed3-47f9-ab90-b5b1aeeff6a5<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f20fee9c-f374-4dc7-b88f-8428cec5a4b3<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Do you allow checks?<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUESTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>INDICATOR<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                <span class="tag">&lt;/cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
+        <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
+<span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
 
-<span class="error">&lt;</span>!... rest of elements removed for brevity --<span class="error">&gt;</span></code></pre>
+<span class="comment">&lt;!-- rest of elements removed for brevity --&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -11363,7 +11527,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 156. Regulated 'XXX_CA_mockup'</div>
+<div class="title">Figure 157. Regulated 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -11372,7 +11536,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 157. Regulated 'XXX_EO_mockup'</div>
+<div class="title">Figure 158. Regulated 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -11381,7 +11545,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/XX_Data_Structure.png" alt="Regulated 'XX' criterion data structure">
 </div>
-<div class="title">Figure 158. Regulated 'XX' criterion data structure</div>
+<div class="title">Figure 159. Regulated 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11405,7 +11569,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/XXX_CA_mockup.png" alt="XXX_CA" width="800">
 </div>
-<div class="title">Figure 159. Self-contained 'XXX_CA_mockup'</div>
+<div class="title">Figure 160. Self-contained 'XXX_CA_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -11414,7 +11578,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/XXX_EO_mockup.png" alt="XXX_EO" width="800">
 </div>
-<div class="title">Figure 160. Self-contained 'XXX_EO_mockup'</div>
+<div class="title">Figure 161. Self-contained 'XXX_EO_mockup'</div>
 </div>
 </div>
 <div class="sect3">
@@ -11423,7 +11587,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_XX_Data_Structure.png" alt="Self-contained 'XX' criterion data structure">
 </div>
-<div class="title">Figure 161. Self-contained 'XX' criterion data structure</div>
+<div class="title">Figure 162. Self-contained 'XX' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
