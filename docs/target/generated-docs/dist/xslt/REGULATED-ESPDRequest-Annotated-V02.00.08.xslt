@@ -17,7 +17,7 @@
 	</xsl:template>
 	
 	<xsl:template match="office:spreadsheet/table:table">
-		<xsl:if test="@table:name='SC-Abilities_checks'">
+		<xsl:if test="@table:name='SC-Abilities_3'">
 			<xsl:apply-templates select="table:table-row/table:table-cell"/>
 		</xsl:if>				
 	</xsl:template>

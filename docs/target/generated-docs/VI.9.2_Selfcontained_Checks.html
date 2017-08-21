@@ -526,12 +526,6 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p>The contracting authority has selected the 'allowance of checks' option in a ESPD Request builder software application GUI. This software application will create a criterion of this in the ESPD Request XML instance with zero, one or more REQUIREMENTs by the EO.</p>
 </div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Selfcontained_Checks_CA_mockup.png" alt="Self-contained 'Checks' CA mock-up">
-</div>
-<div class="title">Figure 1. Self-contained 'allowance of checks' CA mock-up</div>
-</div>
 <div class="paragraph">
 <p>The contracting authority (CA) can specify none, one or several REQUIREMENTs. In this case a REQUIREMENT is a descriptive text provided by the CA where the criterion is better explained or where certain conditions relating to the criterion. In this example the CA is specifying which type of premises it wants to check and for which reasons.</p>
 </div>
@@ -539,7 +533,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/Selfcontained_Checks_CA_REQUIREMENT_mockup.png" alt="Self-contained 'Checks' CA REQUIREMENT mock-up">
 </div>
-<div class="title">Figure 2. Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 1. Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -551,7 +545,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/Selfcontained_Checks_EO_mockup.png" alt="Self-contained 'Checks' CA mock-up">
 </div>
-<div class="title">Figure 3. Self-contained 'allowance of hecks' EO mock-up</div>
+<div class="title">Figure 2. Self-contained 'allowance of hecks' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -565,21 +559,24 @@ table.CodeRay td.code>pre{padding:0}
 <p>The Member State can associate one or more national criteria to this EU criterion (element sub-criterion, cardinality 0..n).</p>
 </li>
 <li>
-<p>The criterion can be associated to one or more pieces of legislation (this spread-sheet does not focus on the edition of the legislation element; the transaformation style-sheet will generate dummy values for this element).</p>
+<p>The criterion can be associated to one or more pieces of legislation (this spread-sheet does not focus on the edition of the legislation element; the transformation style-sheet will generate dummy values for this element).</p>
 </li>
 <li>
 <p>At least one REQUIREMENT group will always be created. If the CA specified more than one REQUIREMENTs, more groups of REQUIREMENT + QUESTION would be added to the ESPD Request XML instance.</p>
 </li>
 <li>
-<p>If not specific REQUIREMENT is issued by the CA, the REQUIREMENT group should equally be created and the REQUIREMENT value should be replaced with a literal (e.g. 'No specific requirements'). UBL-2.2 NDRs recommend not having empty elements in the XML instance.</p>
+<p>If not specific REQUIREMENT is issued by the CA, the REQUIREMENT group should equally be created and the REQUIREMENT value should be replaced with a literal (e.g. 'No specific requirements').</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>(Some columns have been hidden to enhance the readability of the image).</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Self-contained_Checks_Data_Structure.png" alt="Self-contained 'Checks' criterion data structure">
 </div>
-<div class="title">Figure 4. Self-contained 'allowance of checks' criterion data structure</div>
+<div class="title">Figure 3. Self-contained 'allowance of checks' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -659,7 +656,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-19 23:28:49 CEST
+Last updated 2017-08-21 11:05:01 CEST
 </div>
 </div>
 </body>

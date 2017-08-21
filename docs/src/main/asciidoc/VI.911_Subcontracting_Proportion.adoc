@@ -1,2 +1,76 @@
 
 === VI.11 Subcontracting proportion
+
+==== Related information requirements
+
+See formal requirements related to selection criteria in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)].
+
+==== Differences between Regulated and Self-contained
+
+. For this criterion, the only difference between the *REGULATED* and *SELF-CONTAINED* versions lies in the fact that the *SELF-CONTAINED* XML instance is able to keep national sub-criteria defined by the Member State in e-Certis.
+
+. For both versions, *REGULATED* and *SELF-CONTAINED*, there is only one criterion with a simple data structure, classified as:
+
+	** CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.SUBCONTRACTING_PROPORTION
+
+==== Mock-ups - contracting authority perspective (*REGULATED* and *SELF-CONTAINED*)
+
+The contracting authority selects the criterion to be included in the ESPD Request:
+
+.'Subcontracting proportion' CA mock-up (REGULATED and SELF-CONTAINED) 
+image::Subcontracting_CA_mockup.png['Subcontracting proportion' CA mock-up, alt="'Subcontracting proportion' CA mock-up", align="center"]
+
+==== Mock-ups - economic operator perspective (*REGULATED* and *SELF-CONTAINED*)
+
+The economic operator has to provide a descriptive response in a free-text field:
+
+.'Subcontracting proportion' EO mock-up (*REGULATED* and *SELF-CONTAINED*)
+image::Subcontracting_EO_mockup.png['Subcontracting proportion' EO mock-up, alt="'Subcontracting proportion' EO mock-up", align="center"]
+
+==== Data Structure - Regulated
+
+The data structure is very simple, it only defines a group with one QUESTION:
+
+(Some columns have been hidden to enhance the readability of the image).
+
+.'Subcontracting proportion' criterion data structure (*REGULATED*) 
+image::Regulated_Subcontracting_Data_Structure.png[Regulated 'Subcontracting proportion' criterion data structure, alt="Regulated 'Subcontracting proportion' criterion data structure",align="center"]
+
+==== Data Structure - Self-contained
+
+The difference with the *Regulated* version is that the *Self-contained* is able to define and keep in the XML instance the national sub-criteria. But, as sub-criteria are optional, if the MS did not defined any national sub-criterion then the data structure would enn up being the same than for both cases.   
+
+(Some columns have been hidden to enhance the readability of the image).
+
+.'Subcontracting proportion' criterion data structure (*SELF-CONTAINED*)
+image::Selfcontained_Subcontracting_Data_Structure.png[Self-contained 'Subcontracting proportion' criterion data structure, alt="Self-contained 'Subcontracting proportion' criterion data structure",align="center"]
+
+==== XML Example - (*REGULATED* and *SELF-CONTAINED*)
+
+As in this case the MS (Finland, in this example), did not defined any national criterion associated to the EU criterion, the resulting XML instance is identical for both versions of the ESPD Request (Regulated and Self-contained).
+
+.'Subcontracting proportion' criterion 
+[source,xml]
+----
+<!-- header elements removed for brevity -->
+
+<!-- Criterion:Subcontracting proportion -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">612a1625-118d-4ea4-a6db-413184e7c0a8</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.SUBCONTRACTING_PROPORTION</cbc:CriterionTypeCode>
+	<cbc:Name>Subcontracting proportion</cbc:Name>
+	<cbc:Description>The economic operator intends possibly to subcontract the following proportion (i.e. percentage) of the contract. Please note that if the economic operator has decided to subcontract a part of the contract and relies on the subcontractor’s capacities to perform that part, then please fill in a separate ESPD for such subcontractors, see Part II, Section C above.</cbc:Description>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">575f7550-8a2d-4bad-b9d8-be07ab570076</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">48d527b0-ba49-4fbc-bfd3-3db487c47baf</cbc:ID>
+			<cbc:Description>Please specify</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+
+<!-- rest of elements removed for brevity -->
+----
