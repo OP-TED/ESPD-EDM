@@ -1,0 +1,108 @@
+
+=== VI.13.1 Regulated Quality Assurance schemes and environmental management standards
+
+==== Mock-ups - contracting authority perspective
+
+.Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up 
+image::Regulated_QA_CA_mockup.png[Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up, alt="Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up", align="center"]
+
+==== Mock-ups - economic operator perspective
+
+Notice that in the case where the economic operator answers *No* the box with the text "If not, please explain why and specify which other means ..." is shown. This box is not shown for the *Yes* answer. This behaviour can be controlled with the `ONFALSE` code of the sub-group of QUESTIONs (see data structure and XML example below, too).
+
+When the EO answers *Yes* it will be asked whether online evidences are available online or not. This is controlled by the code `ONTRUE` assigned to the sub-group of QUESTIONS about the evidence (see data structure and XML example). 
+
+.Regulated 'Quality Assurance schemes and environmental management standards' EO mock-up
+image::Regulated_QA_EO_mockup.png[Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up, alt="Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up", align="center"]
+
+==== Data Structure - Regulated
+
+Notice the `ONFALSE` code for the sub-group containing the sentence thats starts with 'If not, please explain why...'. The code means: if the answer to the previous question was *No* then this sub-group must be shown/processed.
+
+(Some columns have been hidden to enhance the readability of the image).
+
+.Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure 
+image::Regulated_QA_Data_Structure.png[Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure, alt="Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure",align="center"]
+
+==== XML Example - Regulated
+
+.Regulated 'certificates by independent bodies about quality assurance standards' criterion
+ 
+[source,xml]
+----
+<!-- header elements removed for brevity -->
+
+<!-- Criterion:Certificates by independent bodies about quality assurance standards -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d726bac9-e153-4e75-bfca-c5385587766d</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.CERTIFICATES.QUALITY_ASSURANCE.QA_INDEPENDENT_CERTIFICATE</cbc:CriterionTypeCode>
+	<cbc:Name>Certificates by independent bodies about quality assurance standards</cbc:Name>
+	<cbc:Description>Will the economic operator be able to produce certificates drawn up by independent bodies attesting that the economic operator complies with the required quality assurance standards, including accessibility for disabled persons?</cbc:Description>
+	<cac:Legislation>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b4585532-0e0b-4ed1-a72d-208030547060</cbc:ID>
+		<cbc:Title>[Legislation title]</cbc:Title>
+		<cbc:Description>[Legislation description]</cbc:Description>
+		<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+		<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+		<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+		<cac:Language>
+			<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">EN</cbc:LocaleCode>
+		</cac:Language>
+	</cac:Legislation>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4887c3d7-05fc-4e3e-b066-f338910f0c4c</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e11eba0e-66fd-4735-9aaa-614b006662fc</cbc:ID>
+			<cbc:Description>Your answer?</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ONTRUE</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">41e950d1-47fd-4db6-be18-cbe82e779391</cbc:ID>
+				<cbc:Description>Is this information available at no cost to the authorities from an EU Member State database?</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">c33cf7bb-85f0-4f85-990d-0e056c869b5b</cbc:ID>
+					<cbc:Description>URL</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_URL</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">e49a6fa7-0d6d-46a6-800e-0aa13fb8a7df</cbc:ID>
+					<cbc:Description>Verification code</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">65c08db2-2bc2-4061-b437-3743454815e4</cbc:ID>
+					<cbc:Description>Issuer</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">83f2f79e-0455-4918-89ff-d7829e8bf758</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ONFALSE</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d14b8965-e439-4d5c-8959-860b44ad38cb</cbc:ID>
+				<cbc:Description>If not, please explain why and state which other means of proof can be provided:</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+<!-- rest of elements removed for brevity -->
+----
+
+	

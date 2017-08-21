@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by everis Spain, S.L. (everis Spain, S.L.) -->
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:espd="urn:com:grow:espd:02.00.00" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:util="java:java.util.UUID">
-	<xsl:include href="./inc/REGULATED-RootElements-Annotated.xslt"/>
+	<xsl:include href="./inc/SELFCONTAINED-RootElements-Annotated.xslt"/>
 	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>
 	<xsl:include href="./inc/Legislation.xslt"/>
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+	<xsl:param name="tabName" select="*"/>
 	<xsl:template match="/">
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -17,7 +18,7 @@
 	</xsl:template>
 	
 	<xsl:template match="office:spreadsheet/table:table">
-		<xsl:if test="@table:name='SC-Abilities_checks'">
+		<xsl:if test="@table:name='SC-Quality_assurance'">
 			<xsl:apply-templates select="table:table-row/table:table-cell"/>
 		</xsl:if>				
 	</xsl:template>
