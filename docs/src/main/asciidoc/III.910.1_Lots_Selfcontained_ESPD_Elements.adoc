@@ -23,7 +23,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-008[_tbr070-008_]. 
 
-*Rule*: Compulsory use of schemeAgencyID attribute. If several lots are present check that the type of the `cbc:QualificationApplicationResponse` element is set to `SELFCONTAINED`; otherwise a warning should be thrown.
+*Rule*: Compulsory use of schemeAgencyID attribute. If several lots are present check that the type of the `cbc:QualificationApplicationResponse` element is set to `SELFCONTAINED`; otherwise a fatal exception should be thrown. As for the *Regulated* version, if only one Lot is specified its ID has to be set to '0' thus indicating that the procurement procedure is not divided into Lots.
 |===
 
 The rest of the data related to the Self-contained ESPD Request go in a `cac:TenderingCriterion` object. See the XML example below and read sections about exclusion and selection criteria for more details on this class.

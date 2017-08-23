@@ -525,6 +525,7 @@ table.CodeRay td.code>pre{padding:0}
 <p>In the example below the contracting authority has selected "No Lots", hence the Lot '0'.</p>
 </div>
 <div class="listingblock">
+<div class="title">Lots (<strong>REGULATED</strong> ESPD)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="tag">&lt;QualificationApplicationRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -554,7 +555,7 @@ table.CodeRay td.code>pre{padding:0}
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The type of ESPD is "REGULATED". If SELFCONTAINED was specified the presence of more than one lot should be checked and a warning should be thrown.</td>
+<td>The type of ESPD is "REGULATED". If SELFCONTAINED was specified the presence of more than one lot should be checked and a non-fatal warning should be thrown.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -566,7 +567,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-30 23:08:54 CEST
+Last updated 2017-08-23 10:11:20 CEST
 </div>
 </div>
 </body>

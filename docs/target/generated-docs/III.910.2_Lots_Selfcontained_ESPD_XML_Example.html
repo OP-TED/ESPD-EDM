@@ -522,9 +522,24 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect3">
 <h4 id="xml-example"><a class="anchor" href="#xml-example"></a>XML Example</h4>
 <div class="paragraph">
-<p>In the example below the contracting authority has selected "No Lots", hence the Lot '0'.</p>
+<p>In the example below the contracting authority has specified seven Lots, hence the seven instances of <code>ProcurementProjectLot</code> component.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Convention</strong>: Lots should always be identified with a sequential number, as in the examples: Lot1, Lot2, &#8230;&#8203; Lot7.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
+<div class="title">Lots (<strong>SEL-CONTAINED</strong> ESPD)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="tag">&lt;QualificationApplicationRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -614,7 +629,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-31 00:02:06 CEST
+Last updated 2017-08-23 09:49:35 CEST
 </div>
 </div>
 </body>

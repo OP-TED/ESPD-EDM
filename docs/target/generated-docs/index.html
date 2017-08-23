@@ -821,7 +821,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="sect2">
 <h3 id="ii-1-espd-distribution-package"><a class="anchor" href="#ii-1-espd-distribution-package"></a>II.1 ESPD Distribution package</h3>
 <div class="paragraph">
-<p>All the semantic assets needed to implement ESPD electronic documents are organised in a <a href="./dist/espd-edm-v02.00.00.zip">distribution package</a>. The content of this folder is organised as follows:</p>
+<p>All the semantic assets needed to implement ESPD electronic documents are organised in a <a href="./dist">distribution package</a>. The content of this folder is organised as follows:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -856,7 +856,7 @@ of a greater number of potential operators in public procurement procedures and 
 <p><strong>xsdrt</strong>: the UBL-2.2 XSD Schemas, runtime version;</p>
 </li>
 <li>
-<p><strong>xslt</strong>: transformation stylesheets used to generate basic sample XML instances from the criteria defined in spreadsheets <code>ESPDRequest-CriteriaTaxonomy-REGULATED-V02.00.00.ods</code> and <code>ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V02.00.00.ods</code> (see folder <strong>cl</strong>).</p>
+<p><strong>xslt</strong>: transformation stylesheets used to generate basic sample XML instances from the criteria defined in spreadsheets <a href="./dist/cl/ods/ESPDRequest-CriteriaTaxonomy-REGULATED-V02.00.00.ods"><strong>REGULATED</strong> ESPD Criteria Taxonomy</a> and <a href="./dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V02.00.00.ods"><strong>SELF-CONTAINED</strong> ESPD Criteria Taxonomy</a> (see folder <a href="./dist/cl">dist/cl</a>).</p>
 </li>
 </ol>
 </div>
@@ -1144,11 +1144,11 @@ of a greater number of potential operators in public procurement procedures and 
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Notice that for Codes, the three compulsory attributes are specified. For these codes. In this example the attributes are specifying that the code is maintained by DG GROW in a list named <code>ProcedureType</code> and that the version that has been used is version `02.00.00`which is distributed jointly with this ESPD-EDM V02.00.00 specification (in the <a href="./dist/espd-edm-v02.00.00.zip">distribution package</a>).</td>
+<td>Notice that for Codes, the three compulsory attributes are specified. For these codes. In this example the attributes are specifying that the code is maintained by DG GROW in a list named <code>ProcedureType</code> and that the version that has been used is version `02.00.00`which is distributed jointly with this ESPD-EDM V02.00.00 specification (in the <a href="./dist">distribution package</a>).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>Beware that the codes may be numbers, text or combinations of both. These code labels are the ones that are specified in the codelist spreadsheets and XML Genericode files distributed jointly with this specification (in the folder <code>dist/cl</code> of the <a href="./dist/espd-edm-v02.00.00.zip">distribution package</a>.</td>
+<td>Beware that the codes may be numbers, text or combinations of both. These code labels are the ones that are specified in the codelist spreadsheets and XML Genericode files distributed jointly with this specification (in the folder <code>dist/cl</code> of the <a href="./dist">distribution package</a>.</td>
 </tr>
 </table>
 </div>
@@ -1214,7 +1214,7 @@ of a greater number of potential operators in public procurement procedures and 
 </ol>
 </div>
 <div class="paragraph">
-<p>In order to control these constraints the ESPD-EDM uses <a href="http://schematron.com/">ISO Schematron</a> assertions. The ESPD-EDM V02.00.00 distribution package provides Schematron schemata and CVA files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> for the validation of the XML instances (folder <a href="./dist/espd-edm-v02.00.00.zip"><em>dist/val</em></a>).</p>
+<p>In order to control these constraints the ESPD-EDM uses <a href="http://schematron.com/">ISO Schematron</a> assertions. The ESPD-EDM V02.00.00 distribution package provides Schematron schemata and CVA files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> for the validation of the XML instances (folder <a href="./dist/val"><em>dist/val</em></a>).</p>
 </div>
 <div class="paragraph">
 <p>The European Commission (EC) <a href="https://ec.europa.eu/isa2/awards_en">ISA2 Programme</a> provides an <a href="https://joinup.ec.europa.eu/asset/itb/description">Interoperability Testbed</a> where Stakeholders can freely test these validation artefacts.</p>
@@ -2225,10 +2225,6 @@ of a greater number of potential operators in public procurement procedures and 
 <p>Differently to the previous version 1.0.2, the ESPD-EDM version 02.00.00 does not include the <code>cac:ServiceProvider</code> as a 'document root component'. Instead, it uses the UBL-2.2 <code>cac:ContractingParty/cac:Party</code> associated class <code>cac:ServiceProviderParty</code>.</p>
 </div>
 <div class="sect3">
-<h4 id="mock-up-3"><a class="anchor" href="#mock-up-3"></a>Mock-up</h4>
-
-</div>
-<div class="sect3">
 <h4 id="xsd-schema-3"><a class="anchor" href="#xsd-schema-3"></a>XSD Schema</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -2424,7 +2420,7 @@ of a greater number of potential operators in public procurement procedures and 
 <p>There are some important differences between the data collected for a Regulated ESPD Request and the data that can be required in a Self-contained ESPD Request.</p>
 </div>
 <div class="sect3">
-<h4 id="mock-up-4"><a class="anchor" href="#mock-up-4"></a>Mock-up</h4>
+<h4 id="mock-up-3"><a class="anchor" href="#mock-up-3"></a>Mock-up</h4>
 <div class="paragraph">
 <p>For the Regulated ESDP REquest only three basic data are required: the title, a short description and the file (i.e. case) reference number attributed by the Contracting Authority to the procurement procedure.</p>
 </div>
@@ -2632,7 +2628,7 @@ of a greater number of potential operators in public procurement procedures and 
 </ol>
 </div>
 <div class="sect3">
-<h4 id="mock-up-5"><a class="anchor" href="#mock-up-5"></a>Mock-up</h4>
+<h4 id="mock-up-4"><a class="anchor" href="#mock-up-4"></a>Mock-up</h4>
 <div class="paragraph">
 <p>The mock-up below show how this could be implemented in an GUI. Notice that more than one CPV code can be supplied by the contracting authority.</p>
 </div>
@@ -2646,7 +2642,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="sect3">
 <h4 id="xsd-schema-5"><a class="anchor" href="#xsd-schema-5"></a>XSD Schema</h4>
 <div class="paragraph">
-<p>For the Self-contained ESPD Request, the 'Object of the contract' needs to be expressed as a code. This code is located in the <code>cac:ProcurementProject</code> class. As a matter of fact, the class provides two codes that allow to further refine the object of the contract: the <code>cbc:ProcurementTypeCode</code> and the <code>cbc:ProcurementSubTypeCode</code>. Thus you can specify things like 'Services' and 'Maintenance and repair services, or Land transport services, including armoured car services, and courier services, except transport of mail, or other', for example (see Code List <code>ServicesProjectSubType</code> in the <a href="dist/cl/ESPD-CodeLists-V02.00.00.ods">Code Lists</a> file).</p>
+<p>For the Self-contained ESPD Request, the 'Object of the contract' needs to be expressed as a code. This code is located in the <code>cac:ProcurementProject</code> class. As a matter of fact, the class provides two codes that allow to further refine the object of the contract: the <code>cbc:ProcurementTypeCode</code> and the <code>cbc:ProcurementSubTypeCode</code>. Thus you can specify things like 'Services' and 'Maintenance and repair services, or Land transport services, including armoured car services, and courier services, except transport of mail, or other', for example (see Code List <code>ServicesProjectSubType</code> in the <a href="dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">Code Lists</a> file).</p>
 </div>
 <div class="paragraph">
 <p>The figure below shows the elements that can be used in a Self-contained ESPD. In blue those elements that are expected. See the UBL-2.2 XSD Schema for more elements in the <code>cac:ProcurementProject</code> class (e.g. the <code>cac:AdditionalCommodityClassification</code> class for other classifications beyond the CPV).</p>
@@ -2883,7 +2879,7 @@ of a greater number of potential operators in public procurement procedures and 
 <p>The Regulated ESPD does not cater for the specification of Lots. It only expects one Lot representing the procurement procedure.</p>
 </div>
 <div class="sect3">
-<h4 id="mock-up-6"><a class="anchor" href="#mock-up-6"></a>Mock-up</h4>
+<h4 id="mock-up-5"><a class="anchor" href="#mock-up-5"></a>Mock-up</h4>
 <div class="paragraph">
 <p>(No need for a mock-up, as no Lots are expected).</p>
 </div>
@@ -2950,7 +2946,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">A reference to one or more lots the economic operator is applying for. The original lot definition is part of the call for tender document. The Qualification instance only references the corresponding IDs in order to establish the connection to the call for tender information.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-008"><em>tbr070-008</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Check that the type of the <code>cbc:QualificationApplicationResponse</code> element is set to <code>REGULATED</code>. If more than one lot is present in the XML instance a warning should be thrown.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Check that the type of the <code>cbc:QualificationApplicationRequest</code> element is set to <code>REGULATED</code>. If more than one lot is present in the XML instance a non-fatal warning should be thrown.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2961,6 +2957,7 @@ of a greater number of potential operators in public procurement procedures and 
 <p>In the example below the contracting authority has selected "No Lots", hence the Lot '0'.</p>
 </div>
 <div class="listingblock">
+<div class="title">Lots (<strong>REGULATED</strong> ESPD)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="tag">&lt;QualificationApplicationRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -2990,7 +2987,7 @@ of a greater number of potential operators in public procurement procedures and 
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The type of ESPD is "REGULATED". If SELFCONTAINED was specified the presence of more than one lot should be checked and a warning should be thrown.</td>
+<td>The type of ESPD is "REGULATED". If SELFCONTAINED was specified the presence of more than one lot should be checked and a non-fatal warning should be thrown.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -3015,7 +3012,7 @@ of a greater number of potential operators in public procurement procedures and 
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="mock-up-7"><a class="anchor" href="#mock-up-7"></a>Mock-up</h4>
+<h4 id="mock-up-6"><a class="anchor" href="#mock-up-6"></a>Mock-up</h4>
 <div class="paragraph">
 <p>This mock-up shows how this could be implemented:</p>
 </div>
@@ -3029,7 +3026,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="sect3">
 <h4 id="xsd-schema-7"><a class="anchor" href="#xsd-schema-7"></a>XSD Schema</h4>
 <div class="paragraph">
-<p>For the identification of the Lots, the Self-contained ESPD uses the same component than for the Regulated ESPD:</p>
+<p><strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> ESPD documents share the same UBL-2.2 XSD Schemas (there are not two different sets of XSD Schemas). Thus, for the identification of the Lots, the Self-contained ESPD uses the same component than for the Regulated ESPD:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -3094,7 +3091,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">A reference to one or more lots the economic operator is applying for. The original lot definition is part of the call for tender document. The Qualification instance only references the corresponding IDs in order to establish the connection to the call for tender information.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-008"><em>tbr070-008</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. If several lots are present check that the type of the <code>cbc:QualificationApplicationResponse</code> element is set to <code>SELFCONTAINED</code>; otherwise a warning should be thrown.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. If several lots are present check that the type of the <code>cbc:QualificationApplicationResponse</code> element is set to <code>SELFCONTAINED</code>; otherwise a fatal exception should be thrown. As for the <strong>Regulated</strong> version, if only one Lot is specified its ID has to be set to '0' thus indicating that the procurement procedure is not divided into Lots.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3105,9 +3102,24 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="sect3">
 <h4 id="xml-example-9"><a class="anchor" href="#xml-example-9"></a>XML Example</h4>
 <div class="paragraph">
-<p>In the example below the contracting authority has selected "No Lots", hence the Lot '0'.</p>
+<p>In the example below the contracting authority has specified seven Lots, hence the seven instances of <code>ProcurementProjectLot</code> component.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Convention</strong>: Lots should always be identified with a sequential number, as in the examples: Lot1, Lot2, &#8230;&#8203; Lot7.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
+<div class="title">Lots (<strong>SEL-CONTAINED</strong> ESPD)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="tag">&lt;QualificationApplicationRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -3247,7 +3259,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">A reference to one or more lots the economic operator is applying for. The original lot definition is part of the call for tender document. The Qualification instance only references the corresponding IDs in order to establish the connection to the call for tender information.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-008"><em>tbr070-008</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. If several lots are present check that the type of the <code>cbc:QualificationApplicationResponse</code> element is set to <code>SELFCONTAINED</code>; otherwise a warning should be thrown.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. If several lots are present check that the type of the <code>cbc:QualificationApplicationResponse</code> element is set to <code>SELFCONTAINED</code>; otherwise a fatal exception should be thrown. As for the <strong>Regulated</strong> version, if only one Lot is specified its ID has to be set to '0' thus indicating that the procurement procedure is not divided into Lots.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3258,9 +3270,24 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="sect3">
 <h4 id="xml-example-10"><a class="anchor" href="#xml-example-10"></a>XML Example</h4>
 <div class="paragraph">
-<p>In the example below the contracting authority has selected "No Lots", hence the Lot '0'.</p>
+<p>In the example below the contracting authority has specified seven Lots, hence the seven instances of <code>ProcurementProjectLot</code> component.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Convention</strong>: Lots should always be identified with a sequential number, as in the examples: Lot1, Lot2, &#8230;&#8203; Lot7.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
+<div class="title">Lots (<strong>SEL-CONTAINED</strong> ESPD)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="tag">&lt;QualificationApplicationRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
