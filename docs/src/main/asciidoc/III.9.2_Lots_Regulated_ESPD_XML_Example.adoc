@@ -3,6 +3,7 @@
 
 In the example below the contracting authority has selected "No Lots", hence the Lot '0'.
 
+.Lots (*REGULATED* ESPD)
 [source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
@@ -28,5 +29,5 @@ In the example below the contracting authority has selected "No Lots", hence the
 	</cac:ProcurementProjectLot>
 </QualificationApplicationRequest>
 ----
-<1> The type of ESPD is "REGULATED". If SELFCONTAINED was specified the presence of more than one lot should be checked and a warning should be thrown.
+<1> The type of ESPD is "REGULATED". If SELFCONTAINED was specified the presence of more than one lot should be checked and a non-fatal warning should be thrown.
 <2> The Regulated ESPD requires the presence of one Lot, identified with a '0' to indicate that the procedure is not divided into Lots. Additional Lots may be specified, in which case each Lot needs to be identified differently.
