@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<title>III.2 ESPD Request cardinalities</title>
+<title>VIII. The ESPD Response document</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -513,56 +513,34 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#viii-the-espd-response-document">VIII. The ESPD Response document</a>
 <ul class="sectlevel2">
-<li><a href="#iii-2-espd-request-cardinalities">III.2 ESPD Request cardinalities</a></li>
+<li><a href="#business-requirements-specification">Business requirements specification</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect2 text-left">
-<h3 id="iii-2-espd-request-cardinalities"><a class="anchor" href="#iii-2-espd-request-cardinalities"></a>III.2 ESPD Request cardinalities</h3>
+<div class="sect1">
+<h2 id="viii-the-espd-response-document"><a class="anchor" href="#viii-the-espd-response-document"></a>VIII. The ESPD Response document</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="business-requirements-specification"><a class="anchor" href="#business-requirements-specification"></a>Business requirements specification</h3>
 <div class="paragraph">
-<p>As you can see the UBL-2.2 Schema is quite flexible as, except for a few cases practically all the elements are optional.</p>
-</div>
-<div class="paragraph">
-<p>The ESPD-EDM model, however, adds a few more restrictions regarding the cardinalities of some elements. These can be seen in  the diagram below, which presents the ESPD-EDM V02.00.00 structure for the ESPD Request with its own cardinality restrictions. Notice that ESPD-EDM does not change anything else from the UBL-2.2 Schema.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/ESPDRequest-UML-1stLevel.png" alt="QualificationApplicationRequest-UML" width="600">
-</div>
-<div class="title">Figure 1. ESPD-EDM 'QualificationApplicationRequest', UML diagram</div>
+<p>e-Sens uses the identifier <strong>Trdm092</strong> to refer to the business requirements regarding the ESPD Response transaction.</p>
 </div>
 <div class="paragraph">
-<p>If you compare both figures you will observe that:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The cardinalities of the root common basic components, such as <code>cbc:ID</code>, <code>cbc:UUID</code>, <code>ProcedureCode</code>, and <code>cbc:QualificationApplicationTypeCode</code> are different for the ESPD than for UBL-2.2;</p>
-</li>
-<li>
-<p>Similarly, the cardinalities of aggregate components like <code>cac:ContractingParty</code>, <code>cac:ProcurementProjectLot</code> and <code>cac:TenderingCriterion</code> are different to the UBL-2.2 ones.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The cardinality constraints added by the ESPD are not defined in the XSD Schema. In order to control these constraints the ESPD-EDM uses <a href="http://schematron.com/">ISO Schematron</a> assertions. The ESPD-EDM V02.00.00 distribution package provides Schematron schemata and CVA files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> for the validation of the XML instances (folder <a href="./dist/val"><em>dist/val</em></a>).</p>
-</div>
-<div class="paragraph">
-<p>The European Commission (EC) <a href="https://ec.europa.eu/isa2/awards_en">ISA2 Programme</a> provides an <a href="https://joinup.ec.europa.eu/asset/itb/description">Interoperability Testbed</a> where Stakeholders can freely test these validation artefacts.</p>
+<p>See formal information requirements related to the ESPD Response transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document+Version+2.0.0#BIS41-EuropeanSingleProcurementDocumentVersion2.0.0-BusinessRequirements:ESPDresponsetransaction(Trdm092)"><em>BIS 41 - European Single Procurement Document (Version 2.0.0)</em></a>, by e-Sens.</p>
 </div>
 </div>
 </div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a>. CVA files are used for the validation of Codes and Identifiers. See the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist">OASIS Genericode 1.0</a> specification and <a href="http://www.cranesoftwrights.com/bio/gkholman.htm#summary">CRANE SOFTWRIGHTS</a> site for more details
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-28 12:51:11 CEST
+Last updated 2017-08-28 12:44:44 CEST
 </div>
 </div>
 </body>

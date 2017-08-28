@@ -539,8 +539,9 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#iii-the-espd-request-document">III. The ESPD Request document</a>
 <ul class="sectlevel2">
+<li><a href="#business-requirements-specification">Business requirements specification</a></li>
 <li><a href="#iii-1-xsd-schema-global-view">III.1 XSD Schema, global view</a></li>
-<li><a href="#iii-2-espd-edm-cardinalities">III.2 ESPD-EDM Cardinalities</a></li>
+<li><a href="#iii-2-espd-request-cardinalities">III.2 ESPD Request cardinalities</a></li>
 <li><a href="#iii-3-root-elements">III.3 Root elements</a></li>
 <li><a href="#iii-4-eu-and-national-publications">III.4 EU and national publications</a></li>
 <li><a href="#iii-5-contracting-body">III.5 Contracting Body</a></li>
@@ -620,6 +621,14 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#vi-13-2-self-contained-quality-assurance-schemes-and-environmental-management-standards">VI.13.2 Self-contained Quality Assurance schemes and environmental management standards</a></li>
 </ul>
 </li>
+<li><a href="#viii-the-espd-response-document">VIII. The ESPD Response document</a>
+<ul class="sectlevel2">
+<li><a href="#business-requirements-specification-2">Business requirements specification</a></li>
+<li><a href="#viii-1-xsd-schema-global-view">VIII.1 XSD Schema, global view</a></li>
+<li><a href="#vii-2-espd-response-cardinalities">VII.2 ESPD Response cardinalities</a></li>
+<li><a href="#vii-3-root-elements">VII.3 Root elements</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -690,10 +699,10 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Formal requirements introduced in this guide are taken from (and point at) the requirements specified in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-010">"<em>BIS 41 - European Single Procurement Document</em>"</a>; whereas</p>
+<p>Formal requirements introduced in this guide are taken from (and point at) the requirements specified in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-010"><em>BIS 41 - European Single Procurement Document</em></a>; whereas</p>
 </li>
 <li>
-<p>Formal definitions are taken from the <a href="http://wiki.ds.unipi.gr/display/VCD/4.3+ESPD-VCD+Domain+Vocabulary">"<em>ESPD-VCD Domain Vocabulary</em>"</a></p>
+<p>Formal definitions are taken from the <a href="http://wiki.ds.unipi.gr/display/VCD/4.3+ESPD-VCD+Domain+Vocabulary"><em>ESPD-VCD Domain Vocabulary</em></a>.</p>
 </li>
 </ol>
 </div>
@@ -715,10 +724,10 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The Buyer (or ESDP requester) normally a governmental organisation like a contracting authority who prepares the procurement procedure requirements in a ESPDRequest (electronic document <code>QualificationApplicationRequest</code>); and</p>
+<p>The Buyer (or ESDP requester) normally a governmental organisation like a contracting authority who prepares the procurement procedure requirements in a ESPD Request (electronic document <code>QualificationApplicationRequest</code>); and</p>
 </li>
 <li>
-<p>The Supplier (i.e. economic operators), or ESPD Providers acting on behalf of them, who answer in an ESPDResponse (electronic document <code>QualificationApplicationResponse</code>).</p>
+<p>The Supplier (i.e. economic operators), or ESPD Providers acting on behalf of them, who answer in an ESPD Response (electronic document <code>QualificationApplicationResponse</code>).</p>
 </li>
 </ol>
 </div>
@@ -1159,10 +1168,19 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="sect1">
 <h2 id="iii-the-espd-request-document"><a class="anchor" href="#iii-the-espd-request-document"></a>III. The ESPD Request document</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="business-requirements-specification"><a class="anchor" href="#business-requirements-specification"></a>Business requirements specification</h3>
+<div class="paragraph">
+<p>e-Sens uses the identifier <strong>Trdm070</strong> to refer to the business requirements regarding the ESPD Request transaction.</p>
+</div>
+<div class="paragraph">
+<p>See formal information requirements related to the ESPD Request transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document+Version+2.0.0#BIS41-EuropeanSingleProcurementDocumentVersion2.0.0-BusinessRequirements:ESPDrequesttransaction(Trdm070)"><em>BIS 41 - European Single Procurement Document (Version 2.0.0)</em></a>, by e-Sens.</p>
+</div>
+</div>
 <div class="sect2 text-left">
 <h3 id="iii-1-xsd-schema-global-view"><a class="anchor" href="#iii-1-xsd-schema-global-view"></a>III.1 XSD Schema, global view</h3>
 <div class="paragraph">
-<p>The ESPD-EDM V02.00.00 uses the UBL-2.2 document named <code>QualificationApplicationRequest.xsd</code> XSD Schema. This schema can be found under the folder <code>dist/xsdrt/maindoc</code> (or the equivalent documented <code>xsd</code> folder).</p>
+<p>The ESPD-EDM V02.00.00 uses the UBL-2.2 document named <code>QualificationApplicationRequest.xsd</code> XSD Schema. This schema can be found under the folder <a href="./dist/xsdrt/maindoc">dist/xsdrt/maindoc</a> (or the equivalent documented <code>xsd</code> folder).</p>
 </div>
 <div class="paragraph">
 <p>The figure below shows the XSD Schema defined by UBL-2.2 for the document “Qualification Application Request”. This schema replaces the Schema for the “ESPD Request” document used in the previous versions of the ESPD-EDM.</p>
@@ -1187,12 +1205,12 @@ of a greater number of potential operators in public procurement procedures and 
 </div>
 </div>
 <div class="sect2 text-left">
-<h3 id="iii-2-espd-edm-cardinalities"><a class="anchor" href="#iii-2-espd-edm-cardinalities"></a>III.2 ESPD-EDM Cardinalities</h3>
+<h3 id="iii-2-espd-request-cardinalities"><a class="anchor" href="#iii-2-espd-request-cardinalities"></a>III.2 ESPD Request cardinalities</h3>
 <div class="paragraph">
-<p>As you can see the UBL-2.2 Schema is quite flexible as, except for two elements (<code>cbc:ContractFolderID</code> and <code>cac:ContractingParty</code>, the rest of elements are optional).</p>
+<p>As you can see the UBL-2.2 Schema is quite flexible as, except for a few cases practically all the elements are optional.</p>
 </div>
 <div class="paragraph">
-<p>The ESPD-EDM model, however, imposes a few restrictions regarding the cardinalities of some elements. These can be seen in  the diagram below, which presents the ESPD-EDM V02.00.00 structure with its own cardinality restrictions. Notice that ESPD-EDM does not change anything else from the UBL-2.2 Schema.</p>
+<p>The ESPD-EDM model, however, adds a few more restrictions regarding the cardinalities of some elements. These can be seen in  the diagram below, which presents the ESPD-EDM V02.00.00 structure for the ESPD Request with its own cardinality restrictions. Notice that ESPD-EDM does not change anything else from the UBL-2.2 Schema.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -1206,7 +1224,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The cardinalities of the root common basic components, such as <code>cbc:ID</code>, <code>cbc:UUID</code>, <code>ProcedureCode</code>, and other are different for the ESPD than for UBL-2.2;</p>
+<p>The cardinalities of the root common basic components, such as <code>cbc:ID</code>, <code>cbc:UUID</code>, <code>ProcedureCode</code>, and <code>cbc:QualificationApplicationTypeCode</code> are different for the ESPD than for UBL-2.2;</p>
 </li>
 <li>
 <p>Similarly, the cardinalities of aggregate components like <code>cac:ContractingParty</code>, <code>cac:ProcurementProjectLot</code> and <code>cac:TenderingCriterion</code> are different to the UBL-2.2 ones.</p>
@@ -1214,7 +1232,7 @@ of a greater number of potential operators in public procurement procedures and 
 </ol>
 </div>
 <div class="paragraph">
-<p>In order to control these constraints the ESPD-EDM uses <a href="http://schematron.com/">ISO Schematron</a> assertions. The ESPD-EDM V02.00.00 distribution package provides Schematron schemata and CVA files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> for the validation of the XML instances (folder <a href="./dist/val"><em>dist/val</em></a>).</p>
+<p>The cardinality constraints added by the ESPD are not defined in the XSD Schema. In order to control these constraints the ESPD-EDM uses <a href="http://schematron.com/">ISO Schematron</a> assertions. The ESPD-EDM V02.00.00 distribution package provides Schematron schemata and CVA files <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> for the validation of the XML instances (folder <a href="./dist/val"><em>dist/val</em></a>).</p>
 </div>
 <div class="paragraph">
 <p>The European Commission (EC) <a href="https://ec.europa.eu/isa2/awards_en">ISA2 Programme</a> provides an <a href="https://joinup.ec.europa.eu/asset/itb/description">Interoperability Testbed</a> where Stakeholders can freely test these validation artefacts.</p>
@@ -1223,7 +1241,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="sect2 text-left">
 <h3 id="iii-3-root-elements"><a class="anchor" href="#iii-3-root-elements"></a>III.3 Root elements</h3>
 <div class="paragraph">
-<p>The table below lists the elements that are expected in the ESPD-EDM V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
+<p>The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 5. Class QualificationApplicationRequest, components required by the ESPD-EDM V02.00.00</caption>
@@ -1244,7 +1262,7 @@ of a greater number of potential operators in public procurement procedures and 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dist/main/xsdrt/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./dist/xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">dist/xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1297,7 +1315,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator). An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator). The identifier enables positive referencing the document instance for various purposes including referencing between transactions that are part of the same process.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Use it to identify the organisation responsible for the document.</p></td>
@@ -1324,16 +1342,16 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ContractFolderID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which this Qualification document is delivered as a response.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which a Qualification request document and the delivered response documents are associated.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007"><em>tbr070-007</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Try always to use the reference number issued by the contracting authority. This number in combination with a registered contracting authority ID (e.g. the VAT number) results in a <strong>universally unique identifier of the procurement procedure</strong>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueDate</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the referred document was issued.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the document was issued by the contracting authority.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Format "YYYY-MM-DD".</p></td>
@@ -1342,7 +1360,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueTime</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Time when the document was issued.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time when the document was issued by the contracting authority.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Format "hh:mm:ss".</p></td>
@@ -1367,12 +1385,12 @@ of a greater number of potential operators in public procurement procedures and 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ProcedureCode</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The type of the procurement administrative procedure according to the EU Directives.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-02"><em>tbr070-02</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the codelist <code>ProcedureType</code>.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: <strong>Rule</strong>: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ProcedureType</a> (values: <code>Open</code>, <code>Restricted</code>, <code>Accelerated</code>, <code>Competitive dialogue</code>, etc.). Do not confound with the object of the procurement project (code list <code>ProjectType</code>: Works, Supplies, Services).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:QualificationApplicationTypeCode</strong></p></td>
@@ -1381,7 +1399,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">The type of European Single Procurement Document (ESPD).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-02"><em>tbr070-02</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the codelist <code>QualificationApplicationType</code>. Compulsory use of attributes listID, listAgencyName and listVersionID.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the code list <code>QualificationApplicationType</code>. Compulsory use of attributes listID, listAgencyName and listVersionID.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:ContractingParty</strong></p></td>
@@ -1407,7 +1425,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An overall definition of the procurement procedure.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001"><em>tbr92-001</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr70-002"><em>tbr70-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Use this component to identify and describe the procurement administrative procedure. If the procurement procedure is divided into lots use the <code>ProcurementProjectLot</code> component to provide details specific to the lot and reserve the <code>ProcurementProject</code> component to describe the global characteristics of the procedure.</p></td>
 </tr>
 <tr>
@@ -1416,14 +1434,14 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One of the procurement project lots into which this contract can be divided.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001"><em>tbr92-001</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr70-008"><em>tbr70-008</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: If there is only one single procurement project lot specified, the ESPD refers then to a procurement procedure without lots.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:TenderingCriterion</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1..n</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A tendering criterion describes a fact or a condition that is used by the contracting body to evaluate and compare tenders by economic operators and which will be used for the exclusion and the selection of candidate tenderers to the award decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A tendering criterion describes a rule or a condition that is used by the contracting body to evaluate and compare tenders by economic operators and which will be used for the exclusion and the selection of candidates to the award decision.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr70-003[_tbr70-003_], http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr70-009"><em>tbr70-009</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: (see examples further below in this document)</p></td>
@@ -5946,7 +5964,10 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-6"><a class="anchor" href="#mock-ups-contracting-authority-perspective-6"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong"><a class="anchor" href="#mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong"></a>Mock-ups - contracting authority perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
+<div class="paragraph">
+<p>This mock-up could be used for both versions, Regulated and Self-contained:</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Conflict_of_interest_CA_mock-up.png" alt="'Conflict of interest' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
@@ -5955,7 +5976,10 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-7"><a class="anchor" href="#mock-ups-economic-operator-perspective-7"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong"><a class="anchor" href="#mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong"></a>Mock-ups - economic operator perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
+<div class="paragraph">
+<p>This mock-up could be used for both versions, Regulated and Self-contained:</p>
+</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -6114,7 +6138,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-7"><a class="anchor" href="#mock-ups-contracting-authority-perspective-7"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-6"><a class="anchor" href="#mock-ups-contracting-authority-perspective-6"></a>Mock-ups - contracting authority perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Early_Termination_CA_mock-up.png" alt="'Early termination' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
@@ -6123,7 +6147,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-8"><a class="anchor" href="#mock-ups-economic-operator-perspective-8"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-7"><a class="anchor" href="#mock-ups-economic-operator-perspective-7"></a>Mock-ups - economic operator perspective</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -6304,7 +6328,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-8"><a class="anchor" href="#mock-ups-contracting-authority-perspective-8"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-7"><a class="anchor" href="#mock-ups-contracting-authority-perspective-7"></a>Mock-ups - contracting authority perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Misinterpretation_CA_mock-up.png" alt="'Misinterpretation' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
@@ -6313,7 +6337,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-9"><a class="anchor" href="#mock-ups-economic-operator-perspective-9"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-8"><a class="anchor" href="#mock-ups-economic-operator-perspective-8"></a>Mock-ups - economic operator perspective</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -6925,7 +6949,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-1-1-regulated-suitability"><a class="anchor" href="#vi-1-1-regulated-suitability"></a>VI.1.1 Regulated suitability</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-9"><a class="anchor" href="#mock-ups-contracting-authority-perspective-9"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-8"><a class="anchor" href="#mock-ups-contracting-authority-perspective-8"></a>Mock-ups - contracting authority perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Regulated_Suitability_CA_mockup.png" alt="Regulated 'Suitability' criterion (CA perspective)">
@@ -6934,7 +6958,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-10"><a class="anchor" href="#mock-ups-economic-operator-perspective-10"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-9"><a class="anchor" href="#mock-ups-economic-operator-perspective-9"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>Notice that, as for the exclusion criteria, for the selection criteria the MS can specify general national sub-criteria in e-Certis. Software applications can download these sub-criteria from e-Certis and shown them in their GUI. For each national sub-criteria, the economic operator will have to respond "Yes" or "No" to confirm that it fulfills them.</p>
 </div>
@@ -7025,7 +7049,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-1-2-self-contained-suitability"><a class="anchor" href="#vi-1-2-self-contained-suitability"></a>VI.1.2 Self-contained suitability</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-10"><a class="anchor" href="#mock-ups-contracting-authority-perspective-10"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-9"><a class="anchor" href="#mock-ups-contracting-authority-perspective-9"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>For each criteria regarding suitability, the CA should be able to provide: the register name, its URL and the Lots to which each requirement apply.</p>
 </div>
@@ -7052,7 +7076,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-11"><a class="anchor" href="#mock-ups-economic-operator-perspective-11"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-10"><a class="anchor" href="#mock-ups-economic-operator-perspective-10"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>Notice that:</p>
 </div>
@@ -8933,7 +8957,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-11"><a class="anchor" href="#mock-ups-contracting-authority-perspective-11"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-10"><a class="anchor" href="#mock-ups-contracting-authority-perspective-10"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <div class="title">Self-contained 'financial ratio' CA mock-up</div>
 <p>The contracting authority has selected the financial ratio as one of the selection  criteria that will go into the ESPD Request document:</p>
@@ -9400,7 +9424,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-5-2-self-contained-risk-indemnity-insurance"><a class="anchor" href="#vi-5-2-self-contained-risk-indemnity-insurance"></a>VI.5.2 Self-contained risk indemnity insurance</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-12"><a class="anchor" href="#mock-ups-contracting-authority-perspective-12"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-11"><a class="anchor" href="#mock-ups-contracting-authority-perspective-11"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>The contracting authority has selected the option <strong>professional risk indemnity insurance</strong> for its inclusion in the ESPD Request. Additionally the contracting authority can specify REQUIREMENTs specific to the procurement procedure. There are two situations that need to be distinguished here, when the procurement procedure is divided into Lots and when it is not.</p>
 </div>
@@ -9767,7 +9791,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-6-2-self-contained-other-economic-or-financial-requirements"><a class="anchor" href="#vi-6-2-self-contained-other-economic-or-financial-requirements"></a>VI.6.2 Self-contained other economic or financial requirements</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-13"><a class="anchor" href="#mock-ups-contracting-authority-perspective-13"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-12"><a class="anchor" href="#mock-ups-contracting-authority-perspective-12"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>The contracting authority has selected the option <strong>other economic or financial requirements</strong> for its inclusion in the ESPD Request.</p>
 </div>
@@ -10075,7 +10099,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-7-1-regulated-references"><a class="anchor" href="#vi-7-1-regulated-references"></a>VI.7.1 Regulated references</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-14"><a class="anchor" href="#mock-ups-contracting-authority-perspective-14"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-13"><a class="anchor" href="#mock-ups-contracting-authority-perspective-13"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>In this example the contracting authority requires references for the contract, the nature of which is about <strong>works</strong>. Notice that in this case the Member State (Finland in this example) did not define any national criterion linked to the performance of works.</p>
 </div>
@@ -10087,7 +10111,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-12"><a class="anchor" href="#mock-ups-economic-operator-perspective-12"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-11"><a class="anchor" href="#mock-ups-economic-operator-perspective-11"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>The economic operator can add or remove as many references as needed (buttons '+' and 'paper-bin'). For each reference it will have to provide a description of the reference, the amount of the contract of that referenced work, the period of execution and who where the recipients of the work.</p>
 </div>
@@ -10212,7 +10236,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-7-self-contained-references"><a class="anchor" href="#vi-7-self-contained-references"></a>VI.7 Self-contained references</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-15"><a class="anchor" href="#mock-ups-contracting-authority-perspective-15"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-14"><a class="anchor" href="#mock-ups-contracting-authority-perspective-14"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>As in the previous example, in this example about the self-contained references the contracting authority requires references for the contract, the nature of which is also about <strong>works</strong>.</p>
 </div>
@@ -10240,7 +10264,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-13"><a class="anchor" href="#mock-ups-economic-operator-perspective-13"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-12"><a class="anchor" href="#mock-ups-economic-operator-perspective-12"></a>Mock-ups - economic operator perspective</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -10612,7 +10636,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-8-1-regulated-abilities-i"><a class="anchor" href="#vi-8-1-regulated-abilities-i"></a>VI.8.1 Regulated Abilities (I)</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-16"><a class="anchor" href="#mock-ups-contracting-authority-perspective-16"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-15"><a class="anchor" href="#mock-ups-contracting-authority-perspective-15"></a>Mock-ups - contracting authority perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Regulated_Abilities_I_CA_mockup.png" alt="Regulated 'Abilities (I)' CA mock-up">
@@ -10621,7 +10645,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-14"><a class="anchor" href="#mock-ups-economic-operator-perspective-14"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-13"><a class="anchor" href="#mock-ups-economic-operator-perspective-13"></a>Mock-ups - economic operator perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Regulated_Abilities_I_EO_mockup.png" alt="Regulated 'Abilities (I)' EO mock-up">
@@ -10719,7 +10743,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-8-2-selfcontained-abilities-i"><a class="anchor" href="#vi-8-2-selfcontained-abilities-i"></a>VI.8.2 Selfcontained Abilities (I)</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-17"><a class="anchor" href="#mock-ups-contracting-authority-perspective-17"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-16"><a class="anchor" href="#mock-ups-contracting-authority-perspective-16"></a>Mock-ups - contracting authority perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Selfcontained_Abilities_1_CA_REQUIREMENT_Edition_mockup.png" alt="Self-contained 'Abilities (I)' CA REQUIREMENT mock-up">
@@ -10728,7 +10752,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-15"><a class="anchor" href="#mock-ups-economic-operator-perspective-15"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-14"><a class="anchor" href="#mock-ups-economic-operator-perspective-14"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>As you see from the mock-up below sthe economic operator can add and remove technicians and bodies associated to one CA&#8217;s REQUIREMENT. In this case the REQUIREMENT specified by the CA is the type of technical assistance the EO&#8217;s teams must provide.</p>
 </div>
@@ -11304,7 +11328,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-9-1-regulated-checks"><a class="anchor" href="#vi-9-1-regulated-checks"></a>VI.9.1 Regulated checks</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-18"><a class="anchor" href="#mock-ups-contracting-authority-perspective-18"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-17"><a class="anchor" href="#mock-ups-contracting-authority-perspective-17"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>The contracting authority has selected the 'allowance of checks' option in a ESPD Request builder software application GUI. This criterion will be included in the ESDP Request XML instance.</p>
 </div>
@@ -11316,7 +11340,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-16"><a class="anchor" href="#mock-ups-economic-operator-perspective-16"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-15"><a class="anchor" href="#mock-ups-economic-operator-perspective-15"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>The economic operator has only to answer <strong>Yes</strong> or <strong>No</strong> in response.</p>
 </div>
@@ -11386,7 +11410,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-9-2-self-contained-checks"><a class="anchor" href="#vi-9-2-self-contained-checks"></a>VI.9.2 Self-contained checks</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-19"><a class="anchor" href="#mock-ups-contracting-authority-perspective-19"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-18"><a class="anchor" href="#mock-ups-contracting-authority-perspective-18"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>The contracting authority has selected the 'allowance of checks' option in a ESPD Request builder software application GUI. This software application will create a criterion of this in the ESPD Request XML instance with zero, one or more REQUIREMENTs by the EO.</p>
 </div>
@@ -11401,7 +11425,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-17"><a class="anchor" href="#mock-ups-economic-operator-perspective-17"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-16"><a class="anchor" href="#mock-ups-economic-operator-perspective-16"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>The EO should see as many boxes (groups) of REQUIREMENT + QUESTION as REQUIREMENTs specified by the CA. In this case the economic operator (EO) sees one REQUIREMENT associated to one QUESTION. The expected answer is <strong>Yes</strong> or <strong>No</strong>.</p>
 </div>
@@ -11561,7 +11585,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-10-1-regulated-abilities-iii"><a class="anchor" href="#vi-10-1-regulated-abilities-iii"></a>VI.10.1 Regulated abilities (III)</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-20"><a class="anchor" href="#mock-ups-contracting-authority-perspective-20"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-19"><a class="anchor" href="#mock-ups-contracting-authority-perspective-19"></a>Mock-ups - contracting authority perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Regulated_Abilities_3_CA_mockup.png" alt="Regulated 'Abilities (III)' CA mock-up">
@@ -11570,7 +11594,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-18"><a class="anchor" href="#mock-ups-economic-operator-perspective-18"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-17"><a class="anchor" href="#mock-ups-economic-operator-perspective-17"></a>Mock-ups - economic operator perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Regulated_Abilities_3_EO_mockup.png" alt="Regulated 'Abilities (III)' CA mock-up">
@@ -11672,7 +11696,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-10-2-selfcontained-abilities-iii"><a class="anchor" href="#vi-10-2-selfcontained-abilities-iii"></a>VI.10.2 Selfcontained abilities (III)</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-21"><a class="anchor" href="#mock-ups-contracting-authority-perspective-21"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-20"><a class="anchor" href="#mock-ups-contracting-authority-perspective-20"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>In the Self-contained version the contracting authority (CA) can specify the minimum number of pairs 'year and number of staff' for the economic operator to fill-in. In the example of the mock-up below the CA specifies a minimum of three. The CA can additionally provide a descriptive text to refine the REQUIREMENT. This will create three instances of sub-groups 'Year + Number of staff' properties in the ESPD Request.</p>
 </div>
@@ -11684,7 +11708,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-19"><a class="anchor" href="#mock-ups-economic-operator-perspective-19"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-18"><a class="anchor" href="#mock-ups-economic-operator-perspective-18"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>Software applications assisting the economic operator to build the ESPD Response should be able to retrieve the minimum set of groups 'Year + Number of staff' (three in the example, circle #1), and allow the EO to add and remove additional ones. (In this example the circle #2 signals the absence of the descriptive requirement).</p>
 </div>
@@ -11895,7 +11919,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong"><a class="anchor" href="#mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong"></a>Mock-ups - contracting authority perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
+<h4 id="mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"><a class="anchor" href="#mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"></a>Mock-ups - contracting authority perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
 <div class="paragraph">
 <p>The contracting authority selects the criterion to be included in the ESPD Request:</p>
 </div>
@@ -11907,7 +11931,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong"><a class="anchor" href="#mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong"></a>Mock-ups - economic operator perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
+<h4 id="mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"><a class="anchor" href="#mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"></a>Mock-ups - economic operator perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
 <div class="paragraph">
 <p>The economic operator has to provide a descriptive response in a free-text field:</p>
 </div>
@@ -12013,7 +12037,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"><a class="anchor" href="#mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"></a>Mock-ups - contracting authority perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
+<h4 id="mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong-3"><a class="anchor" href="#mock-ups-contracting-authority-perspective-strong-regulated-strong-and-strong-self-contained-strong-3"></a>Mock-ups - contracting authority perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
 <div class="paragraph">
 <p>The contracting authority selects the criteria that have to be included in the ESPD Request, e.g.:</p>
 </div>
@@ -12025,7 +12049,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"><a class="anchor" href="#mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong-2"></a>Mock-ups - economic operator perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
+<h4 id="mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong-3"><a class="anchor" href="#mock-ups-economic-operator-perspective-strong-regulated-strong-and-strong-self-contained-strong-3"></a>Mock-ups - economic operator perspective (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</h4>
 <div class="paragraph">
 <p>The economic operator only has to answer <strong>Yes</strong> or <strong>No</strong>. The GUI does not react in any way either the EO clicks one or the other (which is not the case for other criteria, see for example the behaviour of the criteria about 'quality assurance' below in further sections).</p>
 </div>
@@ -12184,7 +12208,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-13-1-regulated-quality-assurance-schemes-and-environmental-management-standards"><a class="anchor" href="#vi-13-1-regulated-quality-assurance-schemes-and-environmental-management-standards"></a>VI.13.1 Regulated Quality Assurance schemes and environmental management standards</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-22"><a class="anchor" href="#mock-ups-contracting-authority-perspective-22"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-21"><a class="anchor" href="#mock-ups-contracting-authority-perspective-21"></a>Mock-ups - contracting authority perspective</h4>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Regulated_QA_CA_mockup.png" alt="Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up">
@@ -12193,7 +12217,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-20"><a class="anchor" href="#mock-ups-economic-operator-perspective-20"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-19"><a class="anchor" href="#mock-ups-economic-operator-perspective-19"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>Notice that in the case where the economic operator answers <strong>No</strong> the box with the text "If not, please explain why and specify which other means &#8230;&#8203;" is shown. This box is not shown for the <strong>Yes</strong> answer. This behaviour can be controlled with the <code>ONFALSE</code> code of the sub-group of QUESTIONs (see data structure and XML example below, too).</p>
 </div>
@@ -12307,7 +12331,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="sect2">
 <h3 id="vi-13-2-self-contained-quality-assurance-schemes-and-environmental-management-standards"><a class="anchor" href="#vi-13-2-self-contained-quality-assurance-schemes-and-environmental-management-standards"></a>VI.13.2 Self-contained Quality Assurance schemes and environmental management standards</h3>
 <div class="sect3">
-<h4 id="mock-ups-contracting-authority-perspective-23"><a class="anchor" href="#mock-ups-contracting-authority-perspective-23"></a>Mock-ups - contracting authority perspective</h4>
+<h4 id="mock-ups-contracting-authority-perspective-22"><a class="anchor" href="#mock-ups-contracting-authority-perspective-22"></a>Mock-ups - contracting authority perspective</h4>
 <div class="paragraph">
 <p>In the <strong>Self-contained</strong> version the contracting authority can specify a REQUIREMENT. In this example it provides the name of the ISO it expects the economic operator to be conformant to.</p>
 </div>
@@ -12319,7 +12343,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-economic-operator-perspective-21"><a class="anchor" href="#mock-ups-economic-operator-perspective-21"></a>Mock-ups - economic operator perspective</h4>
+<h4 id="mock-ups-economic-operator-perspective-20"><a class="anchor" href="#mock-ups-economic-operator-perspective-20"></a>Mock-ups - economic operator perspective</h4>
 <div class="paragraph">
 <p>Notice that, as for the <strong>Regulated</strong> version the economic operator (EO) has to answer <strong>Yes</strong> or <strong>No</strong>. In  the case the EO answers <strong>No</strong> the box with the text "If not, please explain why and specify which other means &#8230;&#8203;" is shown. This box is not shown for the <strong>Yes</strong> answer. This behaviour can be controlled with the <code>ONFALSE</code> code of the sub-group of QUESTIONs (see data structure and XML example below, too).</p>
 </div>
@@ -12449,6 +12473,342 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="viii-the-espd-response-document"><a class="anchor" href="#viii-the-espd-response-document"></a>VIII. The ESPD Response document</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="business-requirements-specification-2"><a class="anchor" href="#business-requirements-specification-2"></a>Business requirements specification</h3>
+<div class="paragraph">
+<p>e-Sens uses the identifier <strong>Trdm092</strong> to refer to the business requirements regarding the ESPD Response transaction.</p>
+</div>
+<div class="paragraph">
+<p>See formal information requirements related to the ESPD Response transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document+Version+2.0.0#BIS41-EuropeanSingleProcurementDocumentVersion2.0.0-BusinessRequirements:ESPDresponsetransaction(Trdm092)"><em>BIS 41 - European Single Procurement Document (Version 2.0.0)</em></a>, by e-Sens.</p>
+</div>
+</div>
+<div class="sect2 text-left">
+<h3 id="viii-1-xsd-schema-global-view"><a class="anchor" href="#viii-1-xsd-schema-global-view"></a>VIII.1 XSD Schema, global view</h3>
+<div class="paragraph">
+<p>For the ESPD Response, the ESPD-EDM V02.00.00 uses the UBL-2.2 document named <code>QualificationApplicationResponse.xsd</code> XSD Schema. This schema can be found under the folder <a href="./dist/xsdrt/maindoc">dist/xsdrt/maindoc</a> (or the equivalent documented <code>xsd</code> folder).</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows the XSD Schema defined by UBL-2.2 for this document, which replaces the Schema for the “ESPD Request” document used in the previous versions of the ESPD-EDM.</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the first level components of the schema are shown. The inner sub-elements and sub-classes are covered in  detail in the following sub-sections of this document. The ESPD Response share many elements with the ESPD Request. For those elements that have already been described in the ESPD Request please see the sections above in this document where those elements were explained.</p>
+</div>
+<div class="paragraph">
+<p>Notice that, in  the UBL-2.2 Schema there are only four mandatory elements: <code>cbc:IssueDate</code>, <code>ContractFolderID</code>, <code>cac:ContractingParty</code> (the contracting authority) and <code>cac:EconomicOperatorParty</code> (the economic operator).</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/QualificationApplicationResponse-XSD-Global-View.png" alt="QualificationApplicationResponse XSD Schema" width="600" height="400">
+</div>
+<div class="title">Figure 174. QualificationApplicationResponse XSD Schema, global view</div>
+</div>
+<div class="paragraph">
+<p><strong>LEGEND</strong>: The figure below enumerates the four different types of optionality and cardinality for the elements of the UBL-2.2 Schema:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/XSD-Schema-elements-Legend.png" alt="Legend: cardinalities" width="400">
+</div>
+<div class="title">Figure 175. Legend: QualificationApplicationRequest XSD Schema, possible cardinalities of the Schema elements</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vii-2-espd-response-cardinalities"><a class="anchor" href="#vii-2-espd-response-cardinalities"></a>VII.2 ESPD Response cardinalities</h3>
+<div class="paragraph">
+<p>As you can see the UBL-2.2 Schema is quite flexible as, except for a few cases practically all the elements are optional.</p>
+</div>
+<div class="paragraph">
+<p>The ESPD-EDM model, however, adds a few more restrictions regarding the cardinalities. These can be seen in  the diagram below, which presents the ESPD-EDM V02.00.00 structure for the ESPD Response with its own cardinality restrictions. Notice that ESPD-EDM does not change anything else from the UBL-2.2 Schema.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/ESPDResponse-UML-1stLevel.png" alt="QualificationApplicationResponse-UML" width="600">
+</div>
+<div class="title">Figure 176. ESPD-EDM 'QualificationApplicationResponse', UML diagram</div>
+</div>
+<div class="paragraph">
+<p>If you compare both figures you will observe that:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The cardinalities of the root common basic components, such as <code>cbc:ID</code>, <code>cbc:UUID</code>, <code>cbc:TendererRole</code>, <code>cbc:QualificationApplicationTypeCode</code>, <code>ProcedureCode</code>, and other are different for the ESPD than for UBL-2.2;</p>
+</li>
+<li>
+<p>Similarly, the cardinalities of aggregate components like <code>cac:ContractingParty</code>, <code>cac:ProcurementProjectLot</code> and <code>cac:TenderingCriterion</code> are different to the UBL-2.2 ones.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The cardinality constraints added by the ESPD are not defined in the XSD Schema. In order to control these constraints the ESPD-EDM uses <a href="http://schematron.com/">ISO Schematron</a> assertions. The ESPD-EDM V02.00.00 distribution package provides Schematron schemata and CVA files <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup> for the validation of the XML instances (folder <a href="./dist/val"><em>dist/val</em></a>).</p>
+</div>
+<div class="paragraph">
+<p>The European Commission (EC) <a href="https://ec.europa.eu/isa2/awards_en">ISA2 Programme</a> provides an <a href="https://joinup.ec.europa.eu/asset/itb/description">Interoperability Testbed</a> where Stakeholders can freely test these validation artefacts.</p>
+</div>
+</div>
+<div class="sect2 text-left">
+<h3 id="vii-3-root-elements"><a class="anchor" href="#vii-3-root-elements"></a>VII.3 Root elements</h3>
+<div class="paragraph">
+<p>The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 24. Class QualificationApplicationResponse, components required by the ESPD-EDM V02.00.00</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Document name</strong>:</th>
+<th class="tableblock halign-left valign-top">QualificationApplicationResponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"<em>A structured electronic business document for providing qualification information in a simplified way through an ESPD when responding to a Call for Tender.</em>" (source: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document+Version+2.0.0#BIS41-EuropeanSingleProcurementDocumentVersion2.0.0-BusinessRequirements:ESPDresponsetransaction(Trdm092)"><em>ESPD Response transaction (Trdm092)</em></a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="./dist/xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd">dist/xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:UBLVersionID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-020"><em>tbr92-020</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use the value "2.2". Use also "OASIS-UBL-TC" for the schemeAgencyID attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:CustomizationID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies a user-defined customization of UBL for a specific use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019"><em>tbr92-019</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm092:ver3.0”. Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ProfileID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identification of the specification containing the total set of rules regarding semantic content, cardinalities and business rules to which the data contained in the instance document conforms. The identification may include the version of the specification as well as any customizations applied.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019"><em>tbr92-019</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use the value "41". Use also "CEN-BII" for the scheme AgencyID attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator). The identifier enables positive referencing the document instance for various purposes including referencing between transactions that are part of the same process.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019"><em>tbr92-019</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Use it to identify the organisation responsible for the document.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:CopyIndicator</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether this document is a copy (true) or not (false).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019"><em>tbr92-019</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: It is a good practice to use the CopyIndicator component if the same document is forwarded several times to the same or to different destinations. Use it in combination with the UUID identifier: copies of an ESPD document should be identified with distinct UUIDs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:UUID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier that can be used to reference this ESPD document instance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019[<em>tbr92-019</em>].
+</p><p class="tableblock"><strong>Rule</strong>: Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ContractFolderID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which a Qualification request document and the delivered response documents are associated.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Try always to use the reference number issued by the contracting authority. This number in combination with a registered contracting authority ID (e.g. the VAT number) results in a <strong>universally unique identifier of the procurement procedure</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueDate</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the document was issued by the contracting authority.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019"><em>tbr92-019</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Format "YYYY-MM-DD".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueTime</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time when the document was issued by the contracting authority.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019"><em>tbr92-019</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Format "hh:mm:ss".</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:EconomicOperatorGroupName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the group that presents a tender to which this economic operator belongs (e.g. the name of a consortium, a joint venture, etc.).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-008"><em>tbr92-008</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: The leader of the group must take care of ensuring that the name of the group is identical in all the ESPDs of the tender.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:VersionID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The version identifying the content of this document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-020"><em>tbr92-020</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Changes in content should entail the modification of the version identifier and a reference to the previous version.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:PreviousVersionID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The version identifying the previous modification of the content of this document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-020"><em>tbr92-020</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ProcedureCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the procurement administrative procedure according to the EU Directives.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+</p><p class="tableblock"></p><p class="tableblock"><strong>Rule</strong>: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ProcedureType</a> (values: <code>Open</code>, <code>Restricted</code>, <code>Accelerated</code>, <code>Competitive dialogue</code>, etc.). Do not confound with the object of the procurement project (code list <code>ProjectType</code>: Works, Supplies, Services).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:QualificationApplicationTypeCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of European Single Procurement Document (ESPD).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019"><em>tbr92-019</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the codelist <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">QualificationApplicationType</a> (values 'REGULATED`, <code>SELFCONTAINED</code>). Compulsory use of attributes listID, listAgencyName and listVersionID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:ContractingParty</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The contracting authority or contracting entity who is buying supplies, services or public works using a tendering procedure as described in the applicable directive (Directives 2014/24/EU, 2014/25/EU).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-011"><em>tbr92-011</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: UBL-2.2 defines multiple cardinality ContractingParties presumably to allow <strong>joint procurements</strong>. However the ESPD only expects data about one buyer. The decision was made that in case of joint procurement the data collected in the ESPD would be about <strong>the leader</strong> of the joint procurement procedure.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:EconomicOperator</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any natural or legal person or public entity which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001"><em>tbr92-001</em></a>.
+<strong>Rule</strong>:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:ProcurementProject</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An overall definition of the procurement procedure.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use this component to identify and describe the procurement administrative procedure. If the procurement procedure is divided into lots use the <code>ProcurementProjectLot</code> component to provide details specific to the lot and reserve the <code>ProcurementProject</code> component to describe the global characteristics of the procedure.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:ProcurementProjectLot</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One of the procurement project lots into which this contract can be divided.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-014"><em>tbr92-014</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: If there is only one single procurement project lot specified, the ESPD refers then to a procurement procedure without lots.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:TenderingCriterion</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A tendering criterion describes a rule or a condition that is used by the contracting body to evaluate and compare tenders by economic operators and which will be used for the exclusion and the selection of candidates to the award decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr70-003[_tbr70-003_], http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-015,tbr92-016"><em>tbr92-015,tbr92-016</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: (see examples further below in this document)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:TenderingCriterionResponse</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Response of the economic operator to the requirements and questions issued by the contracting authority in the ESPD Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr70-003[_tbr70-003_], http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-br92-018,tbr92-007,tbr92-005,tbr92-006"><em>br92-018, tbr92-007, tbr92-005, tbr92-006</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: (see examples further below in this document)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:AdditionalDocumentReference</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A reference to an additional document associated with this document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: <strong>For procurement procedures above the threshold it is compulsory to make reference to the Contract Notice of the procedure published in TED</strong>. See section "Reference to the Contract Notice" for a complete example.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Evidence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A reference to an online document available for free in a national or EU database.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-017,tbr92-007,tbr92-006"><em>tbr92-017, tbr92-007, tbr92-006</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Signature</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A signature applied to this document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: None. ESPD does not specify how to deal with the signatures.
+</p><p class="tableblock"><strong>Rule</strong>: None. For examples see UBL-2.2 practices, namely the ones related to the eInvoice.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The figure below shows a global view of an ESPD XML instance (all nodes have been 'collapsed' to simplify the view):</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/ESPDRequest-XML-Instance_Global_View.png" alt="ESPD XML instance">
+</div>
+<div class="title">Figure 177. An ESPD XML instance (global view)</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footnotes">
 <hr>
@@ -12461,10 +12821,13 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="footnote" id="_footnote_3">
 <a href="#_footnoteref_3">3</a>. Add the '.zip' extension the 'ods' file and unzip it to get the content.xml file
 </div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. CVA files are used for the validation of Codes and Identifiers. See the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist">OASIS Genericode 1.0</a> specification and <a href="http://www.cranesoftwrights.com/bio/gkholman.htm#summary">CRANE SOFTWRIGHTS</a> site for more details
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-06 06:10:18 CEST
+Last updated 2017-08-27 21:26:22 CEST
 </div>
 </div>
 </body>
