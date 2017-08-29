@@ -534,13 +534,31 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p>See formal information requirements related to the ESPD Response transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document+Version+2.0.0#BIS41-EuropeanSingleProcurementDocumentVersion2.0.0-BusinessRequirements:ESPDresponsetransaction(Trdm092)"><em>BIS 41 - European Single Procurement Document (Version 2.0.0)</em></a>, by e-Sens.</p>
 </div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BUSINESS REQUIREMENT</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>The ESPD Response document must include all the criteria that are present in the ESPD Request. For certain *selection</strong> criteria the economic operator can add additional properties to the criteria so it can include in the ESPD Response more responses than the minimum required by the contracting authority.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This last requirement has a technical reason: each response of an economic operator needs to be linked to one, and only one, property of a criterion (this is explained and illustrated in the sections below). Therefore for those cases when the contracting authority requires a minimum number of data but gives the flexibility to the economic operator for adding more the economic operator (the software it uses) will have to add properties to the criterion.</p>
+</div>
+<div class="paragraph">
+<p>Examples: the CA requires a minimum of 3 references to works similar to the ones being procured, but the EO decides to add 5. The ESPD REquest will contain a criterion "For works contracts: performance of works of the specified type" with the structure prepared for three references. The ESPD Response will add two more structures to contain the additional references to that criterion. The ESPD will add (at the end of the file) five responses related to the same criterion, each response will point at five different properties of the criterion. This is described and illustrated in more detail in the section "Providing additional responses" below.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-28 12:44:44 CEST
+Last updated 2017-08-29 09:51:32 CEST
 </div>
 </div>
 </body>

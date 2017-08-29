@@ -834,18 +834,18 @@ table.CodeRay td.code>pre{padding:0}
 </tbody>
 </table>
 <div class="paragraph">
-<p>The figure below shows a global view of an ESPD XML instance (all nodes have been 'collapsed' to simplify the view):</p>
+<p>The figure below shows a global view of an ESPD Request XML instance (all nodes have been 'collapsed' to simplify the view):</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/ESPDRequest-XML-Instance_Global_View.png" alt="ESPD XML instance">
+<img src="./images/ESPDRequest-XML-Instance_Global_View.png" alt="ESPD Request XML instance">
 </div>
-<div class="title">Figure 4. An ESPD XML instance (global view)</div>
+<div class="title">Figure 4. An ESPD Request XML instance (global view)</div>
 </div>
 <div class="sect3">
 <h4 id="xml-example"><a class="anchor" href="#xml-example"></a>XML example</h4>
 <div class="paragraph">
-<p>The XML snippet below shows how the beginning of an ESPDRequest XML instance looks like</p>
+<p>The XML snippet below shows how the beginning of an ESPD Request XML instance looks like</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -853,8 +853,11 @@ table.CodeRay td.code>pre{padding:0}
 <span class="tag">&lt;QualificationApplicationRequest</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;cbc:UBLVersionID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OASIS-UBL-TC</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.2<span class="tag">&lt;/cbc:UBLVersionID&gt;</span>
         <span class="tag">&lt;cbc:CustomizationID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CEN-BII</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>urn:www.cenbii.eu:transaction:biitrdm070:ver3.0<span class="tag">&lt;/cbc:CustomizationID&gt;</span>
+        <span class="comment">&lt;!-- The transactional profile where the ESPD is used. ESPD-EDM-V02.00.00 refers to the CEN profile --&gt;</span>
         <span class="tag">&lt;cbc:ProfileID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CEN-BII</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>41<span class="tag">&lt;/cbc:ProfileID&gt;</span>
+        <span class="comment">&lt;!-- The identifier of this document provided by the contracing authority system --&gt;</span>
         <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DGPE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ESPDREQ-DGPE-3b5755dfb8<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="comment">&lt;!-- Indicator of whether this document is an original or a copy. In this case the document is the original --&gt;</span>
         <span class="tag">&lt;cbc:CopyIndicator&gt;</span>false<span class="tag">&lt;/cbc:CopyIndicator&gt;</span>
         <span class="tag">&lt;cbc:UUID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ISO/IEC 9834-8:2008</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">4</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0fddbf2d-1e33-4267-b04f-52b59b72ccb6<span class="tag">&lt;/cbc:UUID&gt;</span>
         <span class="tag">&lt;cbc:ContractFolderID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DGPE</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>PP.20170419.1024-9<span class="tag">&lt;/cbc:ContractFolderID&gt;</span>
@@ -1146,7 +1149,7 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>In this case the code <code>NOJCN</code> means 'Contract Notice (CN) published on a National Government Official Journal' (see file <code>dist/cl/CodeLists-V02.00.00</code>) in the distribution package.</td>
+<td>In this case the code <code>NOJCN</code> means 'Contract Notice (CN) published on a National Government Official Journal' (see file <a href="./dist/cl/CodeLists-V02.00.00">CodeLists-V02.00.00</a>) in the distribution package.</td>
 </tr>
 </table>
 </div>
@@ -1154,18 +1157,12 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="iii-5-contracting-body"><a class="anchor" href="#iii-5-contracting-body"></a>III.5 Contracting Body</h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIREMENT <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-001"><em>tbr070-001</em></a></strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>The CA must be able to provide information about the procurer.</strong></p></td>
-</tr>
-</tbody>
-</table>
+<div class="sect3">
+<h4 id="related-information-requirements"><a class="anchor" href="#related-information-requirements"></a>Related information requirements</h4>
+<div class="paragraph">
+<p>See formal requirements related to the contracting authorities in the e-Sens site: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-001"><em>tbr070-001</em></a>*</p>
+</div>
+</div>
 <div class="sect3">
 <h4 id="mock-up-2"><a class="anchor" href="#mock-up-2"></a>Mock-up</h4>
 <div class="paragraph">
@@ -2393,7 +2390,7 @@ table.CodeRay td.code>pre{padding:0}
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIREMENT</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The contracting authority needs to be able to specify the following information: (i) The maximum number of Lots into which the procedure is divided; (ii) To which lots the tenders may be submitted (all lots, maximum number of lots, only one lot); and (iii) The maximum number of lots that may be awarded to one tenderer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The contracting authority needs to be able to specify the following information: (i) The Lots into which the procedure is divided; (ii) To which lots the tenders may be submitted (all lots, maximum number of lots, only one lot); and (iii) The maximum number of lots that may be awarded to one tenderer.</p></td>
 </tr>
 </tbody>
 </table>

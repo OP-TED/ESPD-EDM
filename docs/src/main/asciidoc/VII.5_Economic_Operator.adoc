@@ -1,0 +1,71 @@
+
+=== VII.5 Economic Operator
+
+
+==== Related information requirements
+
+See formal requirements related to the economic operators in the e-Sens site: from http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr092-001[(_tbr092-001, _tbr092-008_)].
+
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*|*One ESPD Response per economic operator*. The ESPD-EDM-02.00.00, as all the previous versions of the ESPD, requires that every economic operator that participates in one tender provide its own ESDP Response document. This affects sole traders that rely on other entities for the execution of the contract (e.g. subcontractors) and groups of economic operators, e.g. a Joint Venture or a Consortium, and all the sub-contractors on which each economic operator of the group relies on to meet the selection criteria.
+|===
+
+Thus:
+
+* One tender submitted by a sole trader that relies on two sub-contractors will have to include three ESPD Requests, one for the sole trader and one per each of the sub-contracted entity. 
+
+* One tender submitted by a Consortium composed of three economic operators, two of which rely on two sub-contracted entities and the third one relies on five sub-contracted entities, will have to include 3 + 2 + 5 (ten) ESPD Requests.  
+
+As you will see next, the information required about the economic operators varies depending on several factors:
+
+. Is the economic operator a sole trader or does it belong to a group?
+
+. If it belongs to a group, is the economic operator the leader of the group, a member or another entity (see the different types of 'roles' below);
+
+. Does the economic operator rely on other entities to fulfill the selection criteria? 
+
+. Is the procurement procedure divided into lots?
+
+==== Mock-ups (1/5): the simplest case
+
+The mock-up below shows the set of data required about the economic operator when:
+
+** The economic operator (EO) is a sole contractor
+
+** The EO does not rely on other entities
+
+** The procurement procedure is not divided into lots
+
+.Data about the economic operator, mock-up (sole contractor, no sub-contractors and no lots)
+image::Economic_Operator_Mock-up_1_Simple_case.png[Economic operator-simplest case, alt="Economic operator-simplest case", align="center"]
+ 
+*Notice the following*:
+
+. *Sole contractor*. We know that this is a sole contractor because:
+	
+** The role specified is 'Sole contractor / Lead entity' (first field of the mock-up); (circle #1)
+
+** The EO states that it does not participate together with others; (circle #2)
+
+** The EO states that it does not participate in a group (last field of the mock-up); (circle #3) 
+
+. *Not an SME*. The EO is a large company. The definition of what is an SME is provided in the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361[EU recommendation 2003/361]footnote:[The Commission is preparing for an http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en[evaluation and possible revision] of some aspects of the SME Definition. A public consultation on the topic will be launched soon.]. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees).  
+
+. *No lots*. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request. 
+
+==== Mock-ups (2/5): Lots (contracting authority perspective)
+
+The economic operator should be able to specify to which Lots it tenders. Thus, if the procurement procedure is divided into Lots, the software application should show the list with all the Lots the contracted authority (CA) specified for the economic operator select one or more Lots. See the section link:#iii-10-lots-selfcontained-espd[III.10 Lots - Self-contained ESPD] for details on how the CA specifies Lots.  The mock-up below shows the requirements established by the contracting authorities about the Lots of the procurement procedure.
+
+.Selection of Lots by the CA, mock-up
+image::Lots-Selfcontained.png[Lots-Selfcontained ESPD, alt="Lots-Selfcontained ESPD", align="center"]
+
+==== Mock-ups (3/5): Lots (economic operator perspective)
+
+The economic operator should then be able to select the Lots it will tender to. However the software application should control that the requirements established by the contracting authority (CA) are respected (see mock-up 2 above). Thus, for example, if the CA established that the economic operator can only tender to one lot the application should block the economic operator from selecting more than one lot.
+
+.Selection of Lots by the EO, mock-up
+image::Economic_Operator_Mock-up_1_Lots.png[Lots-Selfcontained ESPD, alt="Lots-Selfcontained ESPD", align="center"]
+ 
+
