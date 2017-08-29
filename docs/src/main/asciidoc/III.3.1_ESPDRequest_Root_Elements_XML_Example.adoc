@@ -1,6 +1,6 @@
 ==== XML example
 
-The XML snippet below shows how the beginning of an ESPDRequest XML instance looks like
+The XML snippet below shows how the beginning of an ESPD Request XML instance looks like
 
 [source,xml]
 ----
@@ -8,8 +8,11 @@ The XML snippet below shows how the beginning of an ESPDRequest XML instance loo
 <QualificationApplicationRequest xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:02.00.00"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
 	<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
 	<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrdm070:ver3.0</cbc:CustomizationID>
+	<!-- The transactional profile where the ESPD is used. ESPD-EDM-V02.00.00 refers to the CEN profile -->
 	<cbc:ProfileID schemeAgencyID="CEN-BII">41</cbc:ProfileID>
+	<!-- The identifier of this document provided by the contracing authority system -->
 	<cbc:ID schemeAgencyID="DGPE">ESPDREQ-DGPE-3b5755dfb8</cbc:ID>
+	<!-- Indicator of whether this document is an original or a copy. In this case the document is the original -->
 	<cbc:CopyIndicator>false</cbc:CopyIndicator>
 	<cbc:UUID schemeID="ISO/IEC 9834-8:2008" schemeAgencyID="EU-COM-GROW" schemeVersionID="4">0fddbf2d-1e33-4267-b04f-52b59b72ccb6</cbc:UUID>
 	<cbc:ContractFolderID schemeAgencyID="DGPE">PP.20170419.1024-9</cbc:ContractFolderID>
