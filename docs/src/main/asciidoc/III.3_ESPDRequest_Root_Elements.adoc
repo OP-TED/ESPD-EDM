@@ -1,4 +1,4 @@
-[.text-left]
+º[.text-left]
 === III.3 Root elements
 
 The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.
@@ -66,12 +66,12 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 
 |*cbc:UUID*
 |Identifier
-|0..1
+|1
 |A universally unique identifier that can be used to reference this ESPD document instance.
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002[_tbr070-002_]. 
 
-*Rule*: Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID. Compulsory use of schemeAgencyID attribute. 
+*Rule*: This UUID will be used to link the ESPD Response to its corresponding ESPD Request (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute. 
 
 |*cbc:ContractFolderID*
 |Identifier

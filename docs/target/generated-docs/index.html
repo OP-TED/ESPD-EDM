@@ -542,7 +542,6 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#business-requirements-specification">Business requirements specification</a></li>
 <li><a href="#iii-1-xsd-schema-global-view">III.1 XSD Schema, global view</a></li>
 <li><a href="#iii-2-espd-request-cardinalities">III.2 ESPD Request cardinalities</a></li>
-<li><a href="#iii-3-root-elements">III.3 Root elements</a></li>
 <li><a href="#iii-4-eu-and-national-publications">III.4 EU and national publications</a></li>
 <li><a href="#iii-5-contracting-body">III.5 Contracting Body</a></li>
 <li><a href="#iii-6-service-provider">III.6 Service Provider</a></li>
@@ -1239,9 +1238,10 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="paragraph">
 <p>The European Commission (EC) <a href="https://ec.europa.eu/isa2/awards_en">ISA2 Programme</a> provides an <a href="https://joinup.ec.europa.eu/asset/itb/description">Interoperability Testbed</a> where Stakeholders can freely test these validation artefacts.</p>
 </div>
+<div class="paragraph">
+<p>º[.text-left]
+=== III.3 Root elements</p>
 </div>
-<div class="sect2 text-left">
-<h3 id="iii-3-root-elements"><a class="anchor" href="#iii-3-root-elements"></a>III.3 Root elements</h3>
 <div class="paragraph">
 <p>The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
 </div>
@@ -1334,11 +1334,11 @@ of a greater number of potential operators in public procurement procedures and 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:UUID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier that can be used to reference this ESPD document instance.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002"><em>tbr070-002</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: This UUID will be used to link the ESPD Response to its corresponding ESPD Request (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ContractFolderID</strong></p></td>
@@ -12659,7 +12659,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier that can be used to reference this ESPD document instance.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-019[<em>tbr92-019</em>].
-</p><p class="tableblock"><strong>Rule</strong>: Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Other documents, e.g. the tender, might refer to the ESPD Response using this identifier (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ContractFolderID</strong></p></td>
@@ -12934,9 +12934,80 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>One relevant aspect is the <strong>Role</strong> of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information provided by each role varies:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Sole contractor / Lead entity</strong>: Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group. In this case:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The sole contractor or leader will have to produce a complete ESDP;</p>
+</li>
+<li>
+<p>The sole contractor or leader will also have to identify the rest of the procurers (in the case of a group);</p>
+</li>
+<li>
+<p>The sole contractor or leader will have to identify the entities upon which it relies (and about those on which the entities it relies on rely).</p>
+</li>
+<li>
+<p>The sole contractor or leader will have to identify the entities upon which it does not relies.</p>
+</li>
+<li>
+<p>The sole contractor or leader will have to specify the subcontracted proportion of the group (in the selection criteria "Subcontracted Proportion" of the ESPD).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Group member</strong>:	 Member (not leader) of the Consortium, Joint Venture or other type of group. In this case:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The member of the group will have to produce a complete ESPD;</p>
+</li>
+<li>
+<p>The member of the group does not have to identifier the rest of the procurers or entities.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other entity (relied upon)</strong>:	Entity on which the main contractor, the group or another subcontractor relies in order to meet the selection criteria. In this case:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The entity will have to produce an ESPD</p>
+</li>
+<li>
+<p>The entity will not have have to identify the rest of the procurers or entities. Beware that an entity could have again another entity which it relies on or a a sub-contractor: in this case those entities and sub-contractors the package of documents sumitted with the tender shall contain also an ESPD for each of them. This is for the sole contractor or the leader of the group to coordinate and identify all these entities in its own ESPD Response.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other entity (not relied upon)</strong>:	Entity on which the main contractor, the group or another subcontractor does not rely in order to meet the selection criteria. In this case:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The entity will have to produce an ESPD</p>
+</li>
+<li>
+<p>The entity does not have to provide information about the selection criteria</p>
+</li>
+<li>
+<p>The entity does not have to provide information about the reduction of the number of qualified candidates <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-1-5-the-simplest-case"><a class="anchor" href="#mock-ups-1-5-the-simplest-case"></a>Mock-ups (1/5): the simplest case</h4>
+<h4 id="mock-ups-1-7-the-simplest-case"><a class="anchor" href="#mock-ups-1-7-the-simplest-case"></a>Mock-ups (1/7): the simplest case</h4>
 <div class="paragraph">
 <p>The mock-up below shows the set of data required about the economic operator when:</p>
 </div>
@@ -12981,7 +13052,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </li>
 <li>
-<p><strong>Not an SME</strong>. The EO is a large company. The definition of what is an SME is provided in the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">EU recommendation 2003/361</a><sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees).</p>
+<p><strong>Not an SME</strong>. The EO is a large company. The definition of what is an SME is provided in the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">EU recommendation 2003/361</a><sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees).</p>
 </li>
 <li>
 <p><strong>No lots</strong>. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request.</p>
@@ -12990,7 +13061,22 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-2-5-lots-contracting-authority-perspective"><a class="anchor" href="#mock-ups-2-5-lots-contracting-authority-perspective"></a>Mock-ups (2/5): Lots (contracting authority perspective)</h4>
+<h4 id="mock-ups-2-7-eo-registered-in-a-pre-qualification-system"><a class="anchor" href="#mock-ups-2-7-eo-registered-in-a-pre-qualification-system"></a>Mock-ups (2/7): EO registered in a Pre-Qualification System</h4>
+<div class="paragraph">
+<p>One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in.</p>
+</div>
+<div class="paragraph">
+<p>The pre-qualification system the EO is registered on will be kep (and retrieved from) from e-Certis. In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Economic_Operator_Mock-up_Registered.png" alt="EO registered in a PQS">
+</div>
+<div class="title">Figure 179. EO registered in PQS, mock-up</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mock-ups-3-7-lots-contracting-authority-perspective"><a class="anchor" href="#mock-ups-3-7-lots-contracting-authority-perspective"></a>Mock-ups (3/7): Lots (contracting authority perspective)</h4>
 <div class="paragraph">
 <p>The economic operator should be able to specify to which Lots it tenders. Thus, if the procurement procedure is divided into Lots, the software application should show the list with all the Lots the contracted authority (CA) specified for the economic operator select one or more Lots. See the section <a href="#iii-10-lots-selfcontained-espd">III.10 Lots - Self-contained ESPD</a> for details on how the CA specifies Lots.  The mock-up below shows the requirements established by the contracting authorities about the Lots of the procurement procedure.</p>
 </div>
@@ -12998,11 +13084,11 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Lots-Selfcontained.png" alt="Lots-Selfcontained ESPD">
 </div>
-<div class="title">Figure 179. Selection of Lots by the CA, mock-up</div>
+<div class="title">Figure 180. Selection of Lots by the CA, mock-up</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="mock-ups-3-5-lots-economic-operator-perspective"><a class="anchor" href="#mock-ups-3-5-lots-economic-operator-perspective"></a>Mock-ups (3/5): Lots (economic operator perspective)</h4>
+<h4 id="mock-ups-4-7-lots-economic-operator-perspective"><a class="anchor" href="#mock-ups-4-7-lots-economic-operator-perspective"></a>Mock-ups (4/7): Lots (economic operator perspective)</h4>
 <div class="paragraph">
 <p>The economic operator should then be able to select the Lots it will tender to. However the software application should control that the requirements established by the contracting authority (CA) are respected (see mock-up 2 above). Thus, for example, if the CA established that the economic operator can only tender to one lot the application should block the economic operator from selecting more than one lot.</p>
 </div>
@@ -13010,7 +13096,56 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Economic_Operator_Mock-up_1_Lots.png" alt="Lots-Selfcontained ESPD">
 </div>
-<div class="title">Figure 180. Selection of Lots by the EO, mock-up</div>
+<div class="title">Figure 181. Selection of Lots by the EO, mock-up</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mock-ups-5-7-roles-of-the-economic-operator"><a class="anchor" href="#mock-ups-5-7-roles-of-the-economic-operator"></a>Mock-ups (5/7): Roles of the economic operator</h4>
+<div class="paragraph">
+<p>Depending on its role the data that the economic operator (EO) will have to provide is different. The mock-up below represent the situation where the role is the Leader of a consortium. In this case:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The EO is the Leader of a Consortium it also had to select <strong>Yes</strong> to the question on whether it participates in a group. To this the software application reacts displaying a new field for the EO to provide the name of the Consortium (the rest of the members and entities related to this Consortium will have also to provide <strong>exactly</strong> the same name in their ESPDs).</p>
+</li>
+<li>
+<p>As it is the Leader this EO will have to identify the rest of procurers and entities. The rest of members and entities participating in the tender shall not be requested to provide this information.</p>
+</li>
+<li>
+<p>The Leader will also have to identify the entities it relies on and on those it does not rely on (this would also the case for the Sole Contractor). See the two next mock-ups below for the data to be provided on these two entities.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Economic_Operator_Mock-up_1_Roles_Complete.png" alt="EO Roles">
+</div>
+<div class="title">Figure 182. EO Roles, mock-up</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mock-ups-6-7-information-about-reliance-on-the-capacities-of-the-other-entities"><a class="anchor" href="#mock-ups-6-7-information-about-reliance-on-the-capacities-of-the-other-entities"></a>Mock-ups (6/7): Information about reliance on the capacities of the other entities</h4>
+<div class="paragraph">
+<p>As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V02.00.00 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Subcontractor_relied_on_mockup.png" alt="EO Roles-entities relied on" width="600">
+</div>
+<div class="title">Figure 183. EO Roles-entities relied on, mock-up</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mock-ups-7-7"><a class="anchor" href="#mock-ups-7-7"></a>Mock-ups (7/7):</h4>
+<div class="paragraph">
+<p>The Sole contractor or the Leader of a group will have also to provide information about subcontractors on whose capacity the economic operator does not rely. Remember that this information does not need to be supplied by the members of a group or other entities.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Subcontractor_not_relied_on_mockup.png" alt="EO Roles-entities not relied on" width="600">
+</div>
+<div class="title">Figure 184. EO Roles-entities not relied on, mock-up</div>
 </div>
 </div>
 </div>
@@ -13032,7 +13167,10 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <a href="#_footnoteref_4">4</a>. CVA files are used for the validation of Codes and Identifiers. See the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist">OASIS Genericode 1.0</a> specification and <a href="http://www.cranesoftwrights.com/bio/gkholman.htm#summary">CRANE SOFTWRIGHTS</a> site for more details
 </div>
 <div class="footnote" id="_footnote_5">
-<a href="#_footnoteref_5">5</a>. The Commission is preparing for an <a href="http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en">evaluation and possible revision</a> of some aspects of the SME Definition. A public consultation on the topic will be launched soon.
+<a href="#_footnoteref_5">5</a>. The Annex 2 fo the Commission Implementing Regulation (EU) No 2016/7 refers to these two as Part IV and Part V
+</div>
+<div class="footnote" id="_footnote_6">
+<a href="#_footnoteref_6">6</a>. The Commission is preparing for an <a href="http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en">evaluation and possible revision</a> of some aspects of the SME Definition. A public consultation on the topic will be launched soon.
 </div>
 </div>
 <div id="footer">
