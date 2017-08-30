@@ -519,7 +519,6 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#business-requirements-specification">Business requirements specification</a></li>
 <li><a href="#iii-1-xsd-schema-global-view">III.1 XSD Schema, global view</a></li>
 <li><a href="#iii-2-espd-request-cardinalities">III.2 ESPD Request cardinalities</a></li>
-<li><a href="#iii-3-root-elements">III.3 Root elements</a></li>
 <li><a href="#iii-4-eu-and-national-publications">III.4 EU and national publications</a></li>
 <li><a href="#iii-5-contracting-body">III.5 Contracting Body</a></li>
 <li><a href="#iii-6-service-provider">III.6 Service Provider</a></li>
@@ -605,9 +604,10 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p>The European Commission (EC) <a href="https://ec.europa.eu/isa2/awards_en">ISA2 Programme</a> provides an <a href="https://joinup.ec.europa.eu/asset/itb/description">Interoperability Testbed</a> where Stakeholders can freely test these validation artefacts.</p>
 </div>
+<div class="paragraph">
+<p>º[.text-left]
+=== III.3 Root elements</p>
 </div>
-<div class="sect2 text-left">
-<h3 id="iii-3-root-elements"><a class="anchor" href="#iii-3-root-elements"></a>III.3 Root elements</h3>
 <div class="paragraph">
 <p>The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
 </div>
@@ -700,11 +700,11 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:UUID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier that can be used to reference this ESPD document instance.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002"><em>tbr070-002</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: This UUID will be used to link the ESPD Response to its corresponding ESPD Request (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ContractFolderID</strong></p></td>

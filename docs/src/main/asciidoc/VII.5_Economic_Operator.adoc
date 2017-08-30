@@ -1,7 +1,6 @@
 
 === VII.5 Economic Operator
 
-
 ==== Related information requirements
 
 See formal requirements related to the economic operators in the e-Sens site: from http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr092-001[(_tbr092-001, _tbr092-008_)].
@@ -27,7 +26,34 @@ As you will see next, the information required about the economic operators vari
 
 . Is the procurement procedure divided into lots?
 
-==== Mock-ups (1/5): the simplest case
+One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information provided by each role varies:
+
+. *Sole contractor / Lead entity*: Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group. In this case:
+
+** The sole contractor or leader will have to produce a complete ESDP; 
+** The sole contractor or leader will also have to identify the rest of the procurers (in the case of a group); 
+** The sole contractor or leader will have to identify the entities upon which it relies (and about those on which the entities it relies on rely).
+** The sole contractor or leader will have to identify the entities upon which it does not relies.
+ ** The sole contractor or leader will have to specify the subcontracted proportion of the group (in the selection criteria "Subcontracted Proportion" of the ESPD). 
+
+. *Group member*:	 Member (not leader) of the Consortium, Joint Venture or other type of group. In this case:
+
+** The member of the group will have to produce a complete ESPD;
+** The member of the group does not have to identifier the rest of the procurers or entities.
+
+. *Other entity (relied upon)*:	Entity on which the main contractor, the group or another subcontractor relies in order to meet the selection criteria. In this case:
+
+** The entity will have to produce an ESPD 
+** The entity will not have have to identify the rest of the procurers or entities. Beware that an entity could have again another entity which it relies on or a a sub-contractor: in this case those entities and sub-contractors the package of documents sumitted with the tender shall contain also an ESPD for each of them. This is for the sole contractor or the leader of the group to coordinate and identify all these entities in its own ESPD Response.
+  
+
+. *Other entity (not relied upon)*:	Entity on which the main contractor, the group or another subcontractor does not rely in order to meet the selection criteria. In this case:
+
+** The entity will have to produce an ESPD 
+** The entity does not have to provide information about the selection criteria 
+** The entity does not have to provide information about the reduction of the number of qualified candidates footnote:[The Annex 2 fo the Commission Implementing Regulation (EU) No 2016/7 refers to these two as Part IV and Part V].
+
+==== Mock-ups (1/7): the simplest case
 
 The mock-up below shows the set of data required about the economic operator when:
 
@@ -54,18 +80,61 @@ image::Economic_Operator_Mock-up_1_Simple_case.png[Economic operator-simplest ca
 
 . *No lots*. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request. 
 
-==== Mock-ups (2/5): Lots (contracting authority perspective)
+==== Mock-ups (2/7): EO registered in a Pre-Qualification System
+
+One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in.
+
+The pre-qualification system the EO is registered on will be kep (and retrieved from) from e-Certis. In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.
+
+.EO registered in PQS, mock-up
+image::Economic_Operator_Mock-up_Registered.png[EO registered in a PQS, alt="EO registered in a PQS", align="center"]
+
+
+==== Mock-ups (3/7): Lots (contracting authority perspective)
 
 The economic operator should be able to specify to which Lots it tenders. Thus, if the procurement procedure is divided into Lots, the software application should show the list with all the Lots the contracted authority (CA) specified for the economic operator select one or more Lots. See the section link:#iii-10-lots-selfcontained-espd[III.10 Lots - Self-contained ESPD] for details on how the CA specifies Lots.  The mock-up below shows the requirements established by the contracting authorities about the Lots of the procurement procedure.
 
 .Selection of Lots by the CA, mock-up
 image::Lots-Selfcontained.png[Lots-Selfcontained ESPD, alt="Lots-Selfcontained ESPD", align="center"]
 
-==== Mock-ups (3/5): Lots (economic operator perspective)
+==== Mock-ups (4/7): Lots (economic operator perspective)
 
 The economic operator should then be able to select the Lots it will tender to. However the software application should control that the requirements established by the contracting authority (CA) are respected (see mock-up 2 above). Thus, for example, if the CA established that the economic operator can only tender to one lot the application should block the economic operator from selecting more than one lot.
 
 .Selection of Lots by the EO, mock-up
 image::Economic_Operator_Mock-up_1_Lots.png[Lots-Selfcontained ESPD, alt="Lots-Selfcontained ESPD", align="center"]
  
+==== Mock-ups (5/7): Roles of the economic operator
+
+Depending on its role the data that the economic operator (EO) will have to provide is different. The mock-up below represent the situation where the role is the Leader of a consortium. In this case:
+
+* The EO is the Leader of a Consortium it also had to select *Yes* to the question on whether it participates in a group. To this the software application reacts displaying a new field for the EO to provide the name of the Consortium (the rest of the members and entities related to this Consortium will have also to provide *exactly* the same name in their ESPDs).
+
+* As it is the Leader this EO will have to identify the rest of procurers and entities. The rest of members and entities participating in the tender shall not be requested to provide this information.
+
+* The Leader will also have to identify the entities it relies on and on those it does not rely on (this would also the case for the Sole Contractor). See the two next mock-ups below for the data to be provided on these two entities.
+
+.EO Roles, mock-up
+image::Economic_Operator_Mock-up_1_Roles_Complete.png[EO Roles, alt="EO Roles", align="center"]
+
+==== Mock-ups (6/7): Information about reliance on the capacities of the other entities
+
+As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V02.00.00 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
+
+.EO Roles-entities relied on, mock-up
+
+image::Subcontractor_relied_on_mockup.png[EO Roles-entities relied on, alt="EO Roles-entities relied on", width="600", align="center"]
+==== Mock-ups (7/7): 
+The Sole contractor or the Leader of a group will have also to provide information about subcontractors on whose capacity the economic operator does not rely. Remember that this information does not need to be supplied by the members of a group or other entities.
+ 
+.EO Roles-entities not relied on, mock-up
+image::Subcontractor_not_relied_on_mockup.png[EO Roles-entities not relied on, alt="EO Roles-entities not relied on", width="600", align="center"]
+
+
+
+
+ 
+
+
+
 
