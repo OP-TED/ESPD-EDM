@@ -5,14 +5,20 @@
 For the ESPD Response, the ESPD-EDM V02.00.00 uses the UBL-2.2 document named `QualificationApplicationResponse.xsd` XSD Schema. This schema can be found under the folder link:./dist/xsdrt/maindoc[dist/xsdrt/maindoc] (or the equivalent documented `xsd` folder).
 
 The figure below shows the XSD Schema defined by UBL-2.2 for this document, which replaces the Schema for the “ESPD Request” document used in the previous versions of the ESPD-EDM.
-
 The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the first level components of the schema are shown. The inner sub-elements and sub-classes are covered in  detail in the following sub-sections of this document. The ESPD Response share many elements with the ESPD Request. For those elements that have already been described in the ESPD Request please see the sections above in this document where those elements were explained.
+
 
 Notice that, in  the UBL-2.2 Schema there are only four mandatory elements: `cbc:IssueDate`, `ContractFolderID`, `cac:ContractingParty` (the contracting authority) and `cac:EconomicOperatorParty` (the economic operator).
 
-.QualificationApplicationResponse XSD Schema, global view
-image::QualificationApplicationResponse-XSD-Global-View.png[QualificationApplicationResponse XSD Schema, alt="QualificationApplicationResponse XSD Schema", width="600", height="400" align="center"]
+[NOTE]
+===
+This section about the ESPD Response does not cover those information elements that were already described in the ESPD Request, unless a characteristic related to the ESPD Response needs to be clarified. Thus for details about elements like `cac:ContractingAuthorityParty`, `ProcurementProject`, `ProcurementProjectLot` and `AdditionalDocumentReference` refer to the section *III. The ESPD Request document*.
 
+===
+
+.QualificationApplicationResponse XSD Schema, global view
+
+image::QualificationApplicationResponse-XSD-Global-View.png[QualificationApplicationResponse XSD Schema, alt="QualificationApplicationResponse XSD Schema", width="600", height="400" align="center"]
 *LEGEND*: The figure below enumerates the four different types of optionality and cardinality for the elements of the UBL-2.2 Schema:
 
 .Legend: QualificationApplicationRequest XSD Schema, possible cardinalities of the Schema elements

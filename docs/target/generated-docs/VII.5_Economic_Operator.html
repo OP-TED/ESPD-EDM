@@ -571,7 +571,7 @@ table.CodeRay td.code>pre{padding:0}
 </ol>
 </div>
 <div class="paragraph">
-<p>One relevant aspect is the <strong>Role</strong> of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information provided by each role varies:</p>
+<p>One relevant aspect is the <strong>Role</strong> of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information to be provided by each role varies:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -676,19 +676,19 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>The role specified is 'Sole contractor / Lead entity' (first field of the mock-up); (circle #1)</p>
+<p>The role specified is 'Sole contractor / Lead entity' (first field of the mock-up); and (circle #1)</p>
 </li>
 <li>
-<p>The EO states that it does not participate together with others; (circle #2)</p>
+<p>The EO states that it does not participate together with others; and (circle #18)</p>
 </li>
 <li>
-<p>The EO states that it does not participate in a group (last field of the mock-up); (circle #3)</p>
+<p>The EO states that it does not participate in a group (last field of the mock-up); (circle #19)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Not an SME</strong>. The EO is a large company. The definition of what is an SME is provided in the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">EU recommendation 2003/361</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees).</p>
+<p><strong>Not an SME</strong>. The EO is a large company (circle #13). The definition of what is an SME is provided in the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">EU recommendation 2003/361</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees).</p>
 </li>
 <li>
 <p><strong>No lots</strong>. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request.</p>
@@ -699,10 +699,10 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect3">
 <h4 id="mock-ups-2-7-eo-registered-in-a-pre-qualification-system"><a class="anchor" href="#mock-ups-2-7-eo-registered-in-a-pre-qualification-system"></a>Mock-ups (2/7): EO registered in a Pre-Qualification System</h4>
 <div class="paragraph">
-<p>One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in.</p>
+<p>One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System, circle #17). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in.</p>
 </div>
 <div class="paragraph">
-<p>The pre-qualification system the EO is registered on will be kep (and retrieved from) from e-Certis. In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.</p>
+<p>The pre-qualification system the EO is registered on will be kept (and retrieved from) from e-Certis. In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -784,6 +784,132 @@ table.CodeRay td.code>pre{padding:0}
 <div class="title">Figure 7. EO Roles-entities not relied on, mock-up</div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="xsd-schema"><a class="anchor" href="#xsd-schema"></a>XSD Schema</h4>
+<div class="paragraph">
+<p>The information that the economic operator (EO) has to provide is relatively abundant, especially if the EO is the lead entity of a group. UBL does provide a class cac:EconomicOperator with sufficient data elements to identify the economic operator, its role, its representatives, physical location, officially registered address and other.</p>
+</div>
+<div class="paragraph">
+<p>Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes (such as the number of employees and general turnover); or to ensure the transparency of the procurement procedure (the general methodology used for the weighting); or to link all the ESPDs that belong to one single tender (through the identification of the members of the group in the case of Joint Venture or Consortium and its sub-contracted entities).</p>
+</div>
+<div class="paragraph">
+<p>Therefore in the ESPD-EDM-02.00.00 the information about the economic operator is spread in two different places:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The UBL-2.2 <code>cac:EconomicOperatorParty</code> component; and</p>
+</li>
+<li>
+<p>Following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, REGISTERED_IN_OFFICIAL_LIST, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both data structures (the <strong>cac:EconomicOperatorParty</strong> one and the criteria containing <strong>the other data about economic operator</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The UBL-2.2 <code>cac:EconomicOperatorParty</code> has three common aggregate components, the XSD Schema looks like this:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Economic_Operator_XSD.png" alt="cac:EconomicOperatorParty XSD, global view" width="global view">
+</div>
+<div class="title">Figure 8. cac:EconomicOperatorParty XSD, global view</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>cac:QualifyingParty</strong>: is used to place the data about pre-qualification systems or registers that keep classification information about the economic operator (circle #13);</p>
+</li>
+<li>
+<p><strong>cac:EconomicOperatorRole</strong>: use to place the role of the economic operator (circle #1);</p>
+</li>
+<li>
+<p><strong>cac:Party</strong>: used to place the data to identify the EO and its contact (circles #2 to #12).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cac-qualifyingparty"><a class="anchor" href="#cac-qualifyingparty"></a>cac:QualifyingParty</h4>
+<div class="paragraph">
+<p>The diagram below shows the XSD element that will hold the data required by the ESPD (see mock-up 1/7, too). Beware that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Identifier assigned by the register or (pre)qualification system of the economic operator is placed in the element <code>/cac:EconomicOperatorParty/cac:Party/cac:PartyIdentification</code> (more details on this below and in the XML example);</p>
+</li>
+<li>
+<p>The Identifier and name of the register or (pre)qualification system (captured automatically from e-Certis) will be placed into the element <code>/cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party</code>;</p>
+</li>
+<li>
+<p>The references, the classification obtained in the official list and the answer to the QUESTION 'Does the registration or certification cover all the required selection criteria goes in a criterion of the type CRITERION.OTHER.EO_DATA.* (see below data structure <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code> and XML example).</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Note for the future</div>
+<div class="paragraph">
+<p>Advanced software application can take leverage of the fact that the UBL-2.2 component <code>cac:QualifyingParty/cac:BusinessClassificationScheme</code> to structure hierarchical classifications, as some (pre)qualification system do organise their classification as taxonomies. For the time being, though, this information is expected in the criterion data stucture <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/QualifyinParty_XSD.png" alt="cac:QualifyingParty element-XSD">
+</div>
+<div class="title">Figure 9. cac:QualifyingParty element, XSD</div>
+</div>
+<div class="paragraph">
+<p>For the identification of the economic operator with the registration number assigned by the (pre)qualification system the <code>cac:/EconomicOperatorParty/cac:Party/PartyIdentifier</code> is used. Notice that this element has multiple cardinality, which is very convenient to identify parties with identifiers issued by different authorities. Each Identification element specifies which is the Agency -the (pre)qualification system, in this case- that issued the identifier (see XML example below to grasp how this is implemented).</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/PartyIdentification.png" alt="PartyIdentifier element with multiple cardinality">
+</div>
+<div class="title">Figure 10. cac:PartyIdentification element, XSD</div>
+</div>
+<div class="paragraph">
+<p>The QUESTIONs relating to the rest of information on the PQS are structured in the criterion <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code>:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/OTHER_EO_PQS_DS.png" alt="PQS data structure">
+</div>
+<div class="title">Figure 11. Data structure for the data about the (pre)qualification system</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cac-economicoperatorrole"><a class="anchor" href="#cac-economicoperatorrole"></a>cac:EconomicOperatorRole</h4>
+<div class="paragraph">
+<p>The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair code + description (see Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EORoleType</a> for the codes and descriptions; see also the XML example below).</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/EO_Role_XSD.png" alt="EO Role">
+</div>
+<div class="title">Figure 12. Role of the economic operator</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cac-party"><a class="anchor" href="#cac-party"></a>cac:Party</h4>
+<div class="paragraph">
+<p>The XSD diagram below shows (in blue) the elements for which data are expected in the ESPD Response for the cac:Party element of the economic operator.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/EconomicOperatorPartyParty.png" alt="EO Party">
+</div>
+<div class="title">Figure 13. The Party of the economic party</div>
+</div>
+</div>
 </div>
 </div>
 <div id="footnotes">
@@ -797,7 +923,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-30 08:16:12 CEST
+Last updated 2017-08-31 11:27:47 CEST
 </div>
 </div>
 </body>
