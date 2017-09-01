@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Library:           UBL Pre-award Development Test Version csd02wd01pa01
-  Release Date:      13 April 2017
+  Library:           UBL Pre-award Development Test Version csd02wd01pa02
+  Release Date:      19 April 2017
   Module:            UBL-xmldsig11-schema-2.2.xsd
   Generated on:      2016-06-24 19:50(UTC)
  
@@ -22,7 +22,8 @@
 #
 -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:dsig11="http://www.w3.org/2009/xmldsig11#" targetNamespace="http://www.w3.org/2009/xmldsig11#" elementFormDefault="qualified" version="0.1">
-	<import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="UBL-xmldsig-core-schema-2.2.xsd"/>
+	<!-- Beware this import is not the original one. We had to tamper for XML to work properly -->
+	<import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="UBL-xmldsig1-schema-2.2.xsd"/>
 	<element name="ECKeyValue" type="dsig11:ECKeyValueType"/>
 	<complexType name="ECKeyValueType">
 		<sequence>

@@ -6,7 +6,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## Documentation
 
-* [Version 2.0.0 - in progress (covers both Regulated and Self-Contained ESPD)](https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/index.adoc)
+* [ESPD Exchange Data Model Implementation Guide V02.00.00](https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/xml_guide.adoc)
 * [Latest stable version v1.0.2](https://espd.github.io/ESPD-EDM/)
 * [v1.0.1](https://github.com/ESPD/ESPD-EDM/blob/1.0.1/docs/src/main/asciidoc/index.adoc)
 

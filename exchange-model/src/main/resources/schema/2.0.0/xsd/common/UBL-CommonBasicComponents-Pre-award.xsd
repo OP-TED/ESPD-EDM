@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Library:           UBL Pre-award Development Test
-  Release Date:      19 April 2017
+  Release Date:      19 July 2017
   Module:            xsd/common/UBL-CommonBasicComponents-Pre-award.xsd
-  Generated on:      2017-04-19 22:54z
+  Generated on:      2017-07-19 21:20z
   Copyright (c) OASIS Open 2017. All Rights Reserved.
 -->
 <xsd:schema xmlns="urn:X-test:UBL:Pre-award:CommonBasic"
@@ -226,7 +226,6 @@
    <xsd:element name="CreditNoteTypeCode" type="CreditNoteTypeCodeType"/>
    <xsd:element name="CreditedQuantity" type="CreditedQuantityType"/>
    <xsd:element name="CrewQuantity" type="CrewQuantityType"/>
-   <xsd:element name="CriteriaGroupTypeCode" type="CriteriaGroupTypeCodeType"/>
    <xsd:element name="CriterionTypeCode" type="CriterionTypeCodeType"/>
    <xsd:element name="CurrencyCode" type="CurrencyCodeType"/>
    <xsd:element name="CurrentChargeType" type="CurrentChargeTypeType"/>
@@ -338,7 +337,9 @@
    <xsd:element name="ExecutionRequirementCode" type="ExecutionRequirementCodeType"/>
    <xsd:element name="ExemptionReason" type="ExemptionReasonType"/>
    <xsd:element name="ExemptionReasonCode" type="ExemptionReasonCodeType"/>
+   <xsd:element name="ExpectedAmount" type="ExpectedAmountType"/>
    <xsd:element name="ExpectedCode" type="ExpectedCodeType"/>
+   <xsd:element name="ExpectedDescription" type="ExpectedDescriptionType"/>
    <xsd:element name="ExpectedID" type="ExpectedIDType"/>
    <xsd:element name="ExpectedOperatorQuantity" type="ExpectedOperatorQuantityType"/>
    <xsd:element name="ExpectedQuantity" type="ExpectedQuantityType"/>
@@ -448,7 +449,6 @@
    <xsd:element name="Justification" type="JustificationType"/>
    <xsd:element name="JustificationDescription" type="JustificationDescriptionType"/>
    <xsd:element name="Keyword" type="KeywordType"/>
-   <xsd:element name="Language" type="LanguageType"/>
    <xsd:element name="LanguageID" type="LanguageIDType"/>
    <xsd:element name="LastRevisionDate" type="LastRevisionDateType"/>
    <xsd:element name="LastRevisionTime" type="LastRevisionTimeType"/>
@@ -736,6 +736,7 @@
    <xsd:element name="ProfileStatusCode" type="ProfileStatusCodeType"/>
    <xsd:element name="ProgressPercent" type="ProgressPercentType"/>
    <xsd:element name="PromotionalEventTypeCode" type="PromotionalEventTypeCodeType"/>
+   <xsd:element name="PropertyGroupTypeCode" type="PropertyGroupTypeCodeType"/>
    <xsd:element name="ProtocolID" type="ProtocolIDType"/>
    <xsd:element name="ProviderTypeCode" type="ProviderTypeCodeType"/>
    <xsd:element name="PublicPartyIndicator" type="PublicPartyIndicatorType"/>
@@ -824,6 +825,7 @@
    <xsd:element name="ResponseNumeric" type="ResponseNumericType"/>
    <xsd:element name="ResponseQuantity" type="ResponseQuantityType"/>
    <xsd:element name="ResponseTime" type="ResponseTimeType"/>
+   <xsd:element name="ResponseURI" type="ResponseURIType"/>
    <xsd:element name="RetailEventName" type="RetailEventNameType"/>
    <xsd:element name="RetailEventStatusCode" type="RetailEventStatusCodeType"/>
    <xsd:element name="ReturnabilityIndicator" type="ReturnabilityIndicatorType"/>
@@ -1051,8 +1053,8 @@
    <xsd:element name="ValidateProcess" type="ValidateProcessType"/>
    <xsd:element name="ValidateTool" type="ValidateToolType"/>
    <xsd:element name="ValidateToolVersion" type="ValidateToolVersionType"/>
-   <xsd:element name="ValidatedCriterionRequirementID"
-                type="ValidatedCriterionRequirementIDType"/>
+   <xsd:element name="ValidatedCriterionPropertyID"
+                type="ValidatedCriterionPropertyIDType"/>
    <xsd:element name="ValidationDate" type="ValidationDateType"/>
    <xsd:element name="ValidationResultCode" type="ValidationResultCodeType"/>
    <xsd:element name="ValidationTime" type="ValidationTimeType"/>
@@ -2050,11 +2052,6 @@
          <xsd:restriction base="udt:QuantityType"/>
       </xsd:simpleContent>
    </xsd:complexType>
-   <xsd:complexType name="CriteriaGroupTypeCodeType">
-      <xsd:simpleContent>
-         <xsd:restriction base="udt:CodeType"/>
-      </xsd:simpleContent>
-   </xsd:complexType>
    <xsd:complexType name="CriterionTypeCodeType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:CodeType"/>
@@ -2510,9 +2507,19 @@
          <xsd:restriction base="udt:TextType"/>
       </xsd:simpleContent>
    </xsd:complexType>
+   <xsd:complexType name="ExpectedAmountType">
+      <xsd:simpleContent>
+         <xsd:restriction base="udt:AmountType"/>
+      </xsd:simpleContent>
+   </xsd:complexType>
    <xsd:complexType name="ExpectedCodeType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:CodeType"/>
+      </xsd:simpleContent>
+   </xsd:complexType>
+   <xsd:complexType name="ExpectedDescriptionType">
+      <xsd:simpleContent>
+         <xsd:restriction base="udt:TextType"/>
       </xsd:simpleContent>
    </xsd:complexType>
    <xsd:complexType name="ExpectedIDType">
@@ -3033,11 +3040,6 @@
    <xsd:complexType name="LanguageIDType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:IdentifierType"/>
-      </xsd:simpleContent>
-   </xsd:complexType>
-   <xsd:complexType name="LanguageType">
-      <xsd:simpleContent>
-         <xsd:restriction base="udt:TextType"/>
       </xsd:simpleContent>
    </xsd:complexType>
    <xsd:complexType name="LastRevisionDateType">
@@ -4345,6 +4347,11 @@
          <xsd:restriction base="udt:CodeType"/>
       </xsd:simpleContent>
    </xsd:complexType>
+   <xsd:complexType name="PropertyGroupTypeCodeType">
+      <xsd:simpleContent>
+         <xsd:restriction base="udt:CodeType"/>
+      </xsd:simpleContent>
+   </xsd:complexType>
    <xsd:complexType name="ProtocolIDType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:IdentifierType"/>
@@ -4748,6 +4755,11 @@
    <xsd:complexType name="ResponseType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:TextType"/>
+      </xsd:simpleContent>
+   </xsd:complexType>
+   <xsd:complexType name="ResponseURIType">
+      <xsd:simpleContent>
+         <xsd:restriction base="udt:IdentifierType"/>
       </xsd:simpleContent>
    </xsd:complexType>
    <xsd:complexType name="RetailEventNameType">
@@ -5730,7 +5742,7 @@
          <xsd:restriction base="udt:TextType"/>
       </xsd:simpleContent>
    </xsd:complexType>
-   <xsd:complexType name="ValidatedCriterionRequirementIDType">
+   <xsd:complexType name="ValidatedCriterionPropertyIDType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:IdentifierType"/>
       </xsd:simpleContent>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Library:           UBL Pre-award Development Test
-  Release Date:      19 April 2017
+  Release Date:      19 July 2017
   Module:            xsd/common/UBL-CommonAggregateComponents-Pre-award.xsd
-  Generated on:      2017-04-19 22:54z
+  Generated on:      2017-07-19 21:20z
   Copyright (c) OASIS Open 2017. All Rights Reserved.
 -->
 <xsd:schema xmlns="urn:X-test:UBL:Pre-award:CommonAggregate"
@@ -20599,22 +20599,6 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:Language" minOccurs="0" maxOccurs="unbounded">
-            <xsd:annotation>
-               <xsd:documentation>
-                  <ccts:Component>
-                     <ccts:ComponentType>BBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>Legislation. Language. Text</ccts:DictionaryEntryName>
-                     <ccts:Definition>The textual description of the legislation.</ccts:Definition>
-                     <ccts:Cardinality>0..n</ccts:Cardinality>
-                     <ccts:ObjectClass>Legislation</ccts:ObjectClass>
-                     <ccts:PropertyTerm>Language</ccts:PropertyTerm>
-                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
-                     <ccts:DataType>Text. Type</ccts:DataType>
-                  </ccts:Component>
-               </xsd:documentation>
-            </xsd:annotation>
-         </xsd:element>
          <xsd:element ref="cbc:JurisdictionLevel" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
@@ -20659,6 +20643,22 @@
                      <ccts:PropertyTerm>URI</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Identifier</ccts:RepresentationTerm>
                      <ccts:DataType>Identifier. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cac:Language" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Legislation. Language</ccts:DictionaryEntryName>
+                     <ccts:Definition>The language of the legislation.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Legislation</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Language</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Language</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Language</ccts:RepresentationTerm>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -30245,6 +30245,22 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cbc:ResponseURI" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Response Value. Response URI. Identifier</ccts:DictionaryEntryName>
+                     <ccts:Definition>A URI to the response</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Response Value</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Response URI</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Identifier</ccts:RepresentationTerm>
+                     <ccts:DataType>Identifier. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="ResultOfVerificationType">
@@ -37322,7 +37338,7 @@
             <ccts:Component>
                <ccts:ComponentType>ABIE</ccts:ComponentType>
                <ccts:DictionaryEntryName>Tendering Criterion Property. Details</ccts:DictionaryEntryName>
-               <ccts:Definition>A class to describe the criterion requirement.</ccts:Definition>
+               <ccts:Definition>A class to describe the criterion properties.</ccts:Definition>
                <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
             </ccts:Component>
          </xsd:documentation>
@@ -37334,7 +37350,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Property. Identifier</ccts:DictionaryEntryName>
-                     <ccts:Definition>An identifier to refer to the crterion requirement.</ccts:Definition>
+                     <ccts:Definition>An identifier to refer to the criterion property.</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
                      <ccts:PropertyTerm>Identifier</ccts:PropertyTerm>
@@ -37350,7 +37366,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Property. Name</ccts:DictionaryEntryName>
-                     <ccts:Definition>The name of the criterion requirement</ccts:Definition>
+                     <ccts:Definition>The name of the criterion property.</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
                      <ccts:PropertyTerm>Name</ccts:PropertyTerm>
@@ -37366,12 +37382,28 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Property. Description. Text</ccts:DictionaryEntryName>
-                     <ccts:Definition>A description of the criterion requirement</ccts:Definition>
+                     <ccts:Definition>A description of the criterion property.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
                      <ccts:PropertyTerm>Description</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
                      <ccts:DataType>Text. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:TypeCode" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Tendering Criterion Property. Type Code. Code</ccts:DictionaryEntryName>
+                     <ccts:Definition>A mutually agreed code signifying the type of the property.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Type Code</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
+                     <ccts:DataType>Code. Type</ccts:DataType>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -37426,6 +37458,23 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cbc:ExpectedAmount" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Tendering Criterion Property. Expected_ Amount. Amount</ccts:DictionaryEntryName>
+                     <ccts:Definition>The expected amount that the responder has to provide in the criterion response.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Expected</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Amount</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Amount</ccts:RepresentationTerm>
+                     <ccts:DataType>Amount. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
          <xsd:element ref="cbc:ExpectedID" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
@@ -37473,6 +37522,57 @@
                      <ccts:PropertyTerm>Value</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Numeric</ccts:RepresentationTerm>
                      <ccts:DataType>Numeric. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:ExpectedDescription" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Tendering Criterion Property. Expected_ Description. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>The description of the of the expected </ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Expected</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Description</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:MaximumAmount" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Tendering Criterion Property. Maximum_ Amount. Amount</ccts:DictionaryEntryName>
+                     <ccts:Definition>The maximum amount the response must have.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Maximum</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Amount</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Amount</ccts:RepresentationTerm>
+                     <ccts:DataType>Amount. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:MinimumAmount" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Tendering Criterion Property. Minimum_ Amount. Amount</ccts:DictionaryEntryName>
+                     <ccts:Definition>The minimum amount the response must have.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Minimum</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Amount</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Amount</ccts:RepresentationTerm>
+                     <ccts:DataType>Amount. Type</ccts:DataType>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -37535,7 +37635,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Property. Certification Level Description. Text</ccts:DictionaryEntryName>
-                     <ccts:Definition>The level of Certification Description</ccts:Definition>
+                     <ccts:Definition>The description of the level of the expected certification</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
                      <ccts:PropertyTerm>Certification Level Description</ccts:PropertyTerm>
@@ -37567,7 +37667,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Property. Applicable_ Period. Period</ccts:DictionaryEntryName>
-                     <ccts:Definition>The period to which this criterion requirement shall apply.</ccts:Definition>
+                     <ccts:Definition>The period to which this criterion property shall apply.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Applicable</ccts:PropertyTermQualifier>
@@ -37584,7 +37684,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Property. Template_ Evidence. Evidence</ccts:DictionaryEntryName>
-                     <ccts:Definition>An evidence that can be used to meet this criterion requirement.</ccts:Definition>
+                     <ccts:Definition>An evidence that can be used to meet this criterion property.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Property</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Template</ccts:PropertyTermQualifier>
@@ -37657,16 +37757,16 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:CriteriaGroupTypeCode" minOccurs="0" maxOccurs="1">
+         <xsd:element ref="cbc:PropertyGroupTypeCode" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>Tendering Criterion Property Group. Criteria Group Type Code. Code</ccts:DictionaryEntryName>
-                     <ccts:Definition>A code signifying the type of group</ccts:Definition>
+                     <ccts:DictionaryEntryName>Tendering Criterion Property Group. Property Group Type Code. Code</ccts:DictionaryEntryName>
+                     <ccts:Definition>A code signifying the type of the property group</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Property Group</ccts:ObjectClass>
-                     <ccts:PropertyTerm>Criteria Group Type Code</ccts:PropertyTerm>
+                     <ccts:PropertyTerm>Property Group Type Code</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
                      <ccts:DataType>Code. Type</ccts:DataType>
                   </ccts:Component>
@@ -37750,7 +37850,7 @@
             <ccts:Component>
                <ccts:ComponentType>ABIE</ccts:ComponentType>
                <ccts:DictionaryEntryName>Tendering Criterion Response. Details</ccts:DictionaryEntryName>
-               <ccts:Definition>A class to describe a response to a criterion requirement.</ccts:Definition>
+               <ccts:Definition>A class to describe a response to a criterion property.</ccts:Definition>
                <ccts:ObjectClass>Tendering Criterion Response</ccts:ObjectClass>
             </ccts:Component>
          </xsd:documentation>
@@ -37762,7 +37862,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Response. Identifier</ccts:DictionaryEntryName>
-                     <ccts:Definition>An identifier for this criterion requirement response.</ccts:Definition>
+                     <ccts:Definition>An identifier for this criterion property response.</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Response</ccts:ObjectClass>
                      <ccts:PropertyTerm>Identifier</ccts:PropertyTerm>
@@ -37778,7 +37878,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Response. Name</ccts:DictionaryEntryName>
-                     <ccts:Definition>The name of the criterion requirement response</ccts:Definition>
+                     <ccts:Definition>The name of the criterion property response</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Response</ccts:ObjectClass>
                      <ccts:PropertyTerm>Name</ccts:PropertyTerm>
@@ -37804,18 +37904,16 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:ValidatedCriterionRequirementID"
-                      minOccurs="0"
-                      maxOccurs="1">
+         <xsd:element ref="cbc:ValidatedCriterionPropertyID" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>Tendering Criterion Response. Validated Criterion Requirement Identifier. Identifier</ccts:DictionaryEntryName>
+                     <ccts:DictionaryEntryName>Tendering Criterion Response. Validated Criterion Property Identifier. Identifier</ccts:DictionaryEntryName>
                      <ccts:Definition>An identifier for this item of criterion support.</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Response</ccts:ObjectClass>
-                     <ccts:PropertyTerm>Validated Criterion Requirement Identifier</ccts:PropertyTerm>
+                     <ccts:PropertyTerm>Validated Criterion Property Identifier</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Identifier</ccts:RepresentationTerm>
                      <ccts:DataType>Identifier. Type</ccts:DataType>
                   </ccts:Component>
@@ -37844,7 +37942,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Response. Response Value</ccts:DictionaryEntryName>
-                     <ccts:Definition>The criterion requirement response values.</ccts:Definition>
+                     <ccts:Definition>The criterion requirement property values.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Response</ccts:ObjectClass>
                      <ccts:PropertyTerm>Response Value</ccts:PropertyTerm>
@@ -37860,7 +37958,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Response. Applicable_ Period. Period</ccts:DictionaryEntryName>
-                     <ccts:Definition>The period to which this criterion requirement response applies.</ccts:Definition>
+                     <ccts:Definition>The period to which this criterion property response applies.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Response</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Applicable</ccts:PropertyTermQualifier>
@@ -37877,7 +37975,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tendering Criterion Response. Evidence Supplied</ccts:DictionaryEntryName>
-                     <ccts:Definition>The evidence supporting this criterion requirement response.</ccts:Definition>
+                     <ccts:Definition>A reference to the evidence supporting this criterion property response.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tendering Criterion Response</ccts:ObjectClass>
                      <ccts:PropertyTerm>Evidence Supplied</ccts:PropertyTerm>

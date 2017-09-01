@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Library:           UBL Pre-award Development Test
-  Release Date:      19 April 2017
+  Release Date:      19 July 2017
   Module:            xsdrt/common/UBL-CommonAggregateComponents-Pre-award.xsd
-  Generated on:      2017-04-19 22:54z
+  Generated on:      2017-07-19 21:20z
   Copyright (c) OASIS Open 2017. All Rights Reserved.
 -->
 <xsd:schema xmlns="urn:X-test:UBL:Pre-award:CommonAggregate"
@@ -2497,10 +2497,10 @@
          <xsd:element ref="cbc:ID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Title" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cbc:Description" minOccurs="0" maxOccurs="unbounded"/>
-         <xsd:element ref="cbc:Language" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cbc:JurisdictionLevel" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cbc:Article" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cbc:URI" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element ref="cac:Language" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cac:JurisdictionRegionAddress"
                       minOccurs="0"
                       maxOccurs="unbounded"/>
@@ -3341,6 +3341,7 @@
          <xsd:element ref="cbc:ResponseNumeric" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ResponseQuantity" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ResponseTime" minOccurs="0" maxOccurs="1"/>
+         <xsd:element ref="cbc:ResponseURI" minOccurs="0" maxOccurs="1"/>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="ResultOfVerificationType">
@@ -3975,12 +3976,17 @@
          <xsd:element ref="cbc:ID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Name" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Description" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element ref="cbc:TypeCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ValueDataTypeCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ValueUnitCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ValueCurrencyCode" minOccurs="0" maxOccurs="1"/>
+         <xsd:element ref="cbc:ExpectedAmount" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ExpectedID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ExpectedCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ExpectedValueNumeric" minOccurs="0" maxOccurs="1"/>
+         <xsd:element ref="cbc:ExpectedDescription" minOccurs="0" maxOccurs="1"/>
+         <xsd:element ref="cbc:MaximumAmount" minOccurs="0" maxOccurs="1"/>
+         <xsd:element ref="cbc:MinimumAmount" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:MaximumValueNumeric" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:MinimumValueNumeric" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:TranslationTypeCode" minOccurs="0" maxOccurs="1"/>
@@ -3997,7 +4003,7 @@
          <xsd:element ref="cbc:ID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Name" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Description" minOccurs="0" maxOccurs="unbounded"/>
-         <xsd:element ref="cbc:CriteriaGroupTypeCode" minOccurs="0" maxOccurs="1"/>
+         <xsd:element ref="cbc:PropertyGroupTypeCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:FulfilmentIndicator" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:FulfilmentIndicatorTypeCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cac:TenderingCriterionProperty"
@@ -4013,9 +4019,7 @@
          <xsd:element ref="cbc:ID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Name" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Description" minOccurs="0" maxOccurs="unbounded"/>
-         <xsd:element ref="cbc:ValidatedCriterionRequirementID"
-                      minOccurs="0"
-                      maxOccurs="1"/>
+         <xsd:element ref="cbc:ValidatedCriterionPropertyID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ConfidentialityLevelCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cac:ResponseValue" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cac:ApplicablePeriod" minOccurs="0" maxOccurs="unbounded"/>
