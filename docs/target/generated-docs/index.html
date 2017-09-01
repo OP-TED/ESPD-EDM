@@ -626,7 +626,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#viii-1-xsd-schema-global-view">VIII.1 XSD Schema, global view</a></li>
 <li><a href="#vii-2-espd-response-cardinalities">VII.2 ESPD Response cardinalities</a></li>
 <li><a href="#vii-3-root-elements">VII.3 Root elements</a></li>
-<li><a href="#vii-4-eu-and-national-publications">VII.4 EU and national publications</a></li>
+<li><a href="#vii-4-reference-to-publications-and-to-the-espd-request">VII.4 Reference to publications and to the ESPD Request</a></li>
 <li><a href="#vii-5-economic-operator">VII.5 Economic Operator</a></li>
 </ul>
 </li>
@@ -1588,6 +1588,10 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationRequest/cac:AdditionalReferenceDocument</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Context of Use</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In this case this reference points at a document published on the Supplement of the European Official Journal or on a national journal.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
@@ -1615,7 +1619,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">The identifier for the referenced document, generally issued by the entity responsible for the document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007"><em>tbr070-007</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137).</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). If at the time of drafting the ESPD document the Publication Office has not published yet the Contract Notice the value 0000/S 000-000000 value must be used to indicate that a temporary identifier is being used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:DocumentTypeCode</strong></p></td>
@@ -1633,7 +1637,7 @@ of a greater number of potential operators in public procurement procedures and 
 <td class="tableblock halign-left valign-top"><p class="tableblock">The type of document being referenced, expressed as text.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007"><em>tbr070-007</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Use the attribute languageID to indicate the language of the text. Use the Code List <code>LanguageCodeEU</code> for the value of the languageID attribute.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Optionally use the attribute languageID to indicate the language of the text. Use the Code List <code>LanguageCodeEU</code> for the value of the languageID attribute.</p></td>
 </tr>
 </tbody>
 </table>
@@ -12807,7 +12811,9 @@ This section about the ESPD Response does not cover those information elements t
 <td class="tableblock halign-left valign-top"><p class="tableblock">A reference to an additional document associated with this document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: <strong>For procurement procedures above the threshold it is compulsory to make reference to the Contract Notice of the procedure published in TED</strong>. See section "Reference to the Contract Notice" for a complete example.</p></td>
+</p><p class="tableblock"><strong>Rules</strong>: At least two instances of the AdditionalDocumentReference are expected:
+</p><p class="tableblock"><strong> For procurement procedures above the threshold it is compulsory to make reference to the Contract Notice of the procedure published in TED*. See section "Reference to the Contract Notice" for a complete example.
+</p><p class="tableblock"></strong> In the ESPD Response it is also compulsory to make reference to the ESPD Request document.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Evidence</strong></p></td>
@@ -12840,12 +12846,12 @@ This section about the ESPD Response does not cover those information elements t
 <div class="sect3">
 <h4 id="xml-example-12"><a class="anchor" href="#xml-example-12"></a>XML example</h4>
 <div class="paragraph">
-<p>The XML snippet below shows how the beginning of an ESPD Response XML instance looks like</p>
+<p>The XML snippet below shows how the beginning of an ESPD Response XML instance looks like. For a complete instance of an ESPD Response XML document see the the example files in the <code>dist/xml</code> folder: <a href=".dist/xml/REGULATED-ESPDResponse-02.00.00.xml">REGULATED-ESPDResponse-02.00.00.xml</a> or <a href=".dist/xml/SELFCONTAINED-ESPDResponse-02.00.00.xml">SELFCONTAINED-ESPDResponse-02.00.00.xml</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="tag">&lt;QualificationApplicationResponse</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationResponse</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:fn</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2005/xpath-functions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:office</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:office:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:style:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:table:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:text</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:text:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:util</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java:java.util.UUID</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:xs</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationResponse ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;QualificationApplicationResponse</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationResponse</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cac</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonAggregate</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:cbc</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:CommonBasic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:espd</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:com:grow:espd:02.00.00</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:fn</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2005/xpath-functions</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:office</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:office:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:style:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:table</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:table:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:text</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:oasis:names:tc:opendocument:xmlns:text:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:util</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java:java.util.UUID</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:xs</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:X-test:UBL:Pre-award:QualificationApplicationResponse ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
         <span class="comment">&lt;!-- The ESPD-EDM-V02.00.00 is entirely based on OASIS UBL-2.2 --&gt;</span>
         <span class="tag">&lt;cbc:UBLVersionID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">OASIS-UBL-TC</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2.2<span class="tag">&lt;/cbc:UBLVersionID&gt;</span>
         <span class="comment">&lt;!-- How ESPD-EDM-V02.00.00 uses the UBL-2.2 schemas whilst keeping conformance --&gt;</span>
@@ -12877,7 +12883,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2 text-left">
-<h3 id="vii-4-eu-and-national-publications"><a class="anchor" href="#vii-4-eu-and-national-publications"></a>VII.4 EU and national publications</h3>
+<h3 id="vii-4-reference-to-publications-and-to-the-espd-request"><a class="anchor" href="#vii-4-reference-to-publications-and-to-the-espd-request"></a>VII.4 Reference to publications and to the ESPD Request</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -12885,16 +12891,211 @@ This section about the ESPD Response does not cover those information elements t
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>BUSINESS REQUIREMENT</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIREMENT</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>The economic operator must include int its ESPD Response document the information from the ESPD Request about the official journals or gazettes where the procurement procedure is announced. For procurement projects above the threshold it is compulsory to refer to the Contract Notice published in <a href="http://ted.europa.eu/TED/misc/chooseLanguage.do">TED</a> by the contracting authority.</strong></p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>ESPD conformant software applications should either pre-fill this information in the ESPD Response from the importation of the ESPD Request or provide the means for the user capture the information included in the ESPD Request and add it to the ESPD Response.</p>
+<p>For EU and national publications that need to be included in the ESPD Response sSee the section "III.4 EU and national publications" where this information is presented in detail and illustrated with examples.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIREMENT</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>The economic operator must include in its ESPD Response document a reference to the ESPD Request. For this, the values of the two identifiers <code>cbc:ID</code> and <code>cbc:UUID</code> of the ESPD Request must be used as the values for the <code>cbc:ID</code> and <code>cbc:UUID</code> in the ESPD Response (in the reference to ESDP Request).</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Thus the ESPD Response must also make reference to the ESPD Request that is being responded by the economic operator. The XSD diagram below shows (in blue) which elements are expected for this reference. See also the list of expected elements (and rules) and the XML example beneath the XSD diagram.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Reference_To_ESPDRequest.png" alt="Reference to ESPD Request">
+</div>
+<div class="title">Figure 178. Elements expected to reference the ESPD Request from the ESPD Response</div>
 </div>
 <div class="paragraph">
-<p>See the section "III.4 EU and national publications" where this information about the publications on TED and national journals is presented in detail and illustrated with examples.</p>
+<p>If the contracting authority publishes the ESPD Request on a public journal, the economic operator must specify the URI from where the ESPD Response was downloaded to draft its ESPD Response (see for instance how this is done for the publications on the TED or national journals; and see also the XML example below).</p>
+</div>
+<div class="paragraph">
+<p>This URI should be specified in the field <code>cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalRefernce/cbc:URI</code>:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Reference_To_ESPDRequest_URI.png" alt="Reference to ESPD Request">
+</div>
+<div class="title">Figure 179. URI of the ESPD Request</div>
+</div>
+<div class="paragraph">
+<p>In the ESPD Response you may also add references to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Evidences that are global for the whole Response. This is not recommended though. Evidences should be as much particular of the Criterion as possible.</p>
+</li>
+<li>
+<p>Other documents, e.g. maps, diagrams, or descriptive documents to complement the references about works, supplies or services.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="expected-elements-13"><a class="anchor" href="#expected-elements-13"></a>Expected elements</h4>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 25. Reference to the ESPD Request, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:AdditionalDocumentReference</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A reference to an additional document associated with this document.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:AdditionalReferenceDocument</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Context of Use</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In this case this reference points at the ESPD Request XML instance that was used to produce the ESPD Response XML document.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier for the referenced document, generally issued by the entity responsible for the document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use the same value that was used in the <strong>cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:UUID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier that can be used to reference this ESPD document instance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use the same value that was used in the <strong>cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:DocumentTypeCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of document being referenced, expressed as a code.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: For the ESDP-EDM it is compulsory use of the value <code>ESPD_REQUEST</code> from the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods"><em>DocRefContentType</em></a>. See also the XML example below on how to specify the ESPD Request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:DocumentType</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of document being referenced, expressed as text.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Optionally use the attribute languageID to indicate the language of the text. Use the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods"><em>LanguageCodeEU</em></a> for the value of the languageID attribute.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Beware that the ESPD document does not embed the content of referenced documents but instead make a reference to its source. Thus the class DocumentReference aggregates a `cac:Attachment`class that allows for making reference to an external source of the content, which is the preferred way in the ESPD-EDM (see XSD schema above).</p>
+</div>
+<div class="paragraph">
+<p>In the case of the reference to the ESPD Request from the ESPD Response, the only data expected here is the URI where the ESPD Request XML instance was published:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 26. External Reference</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Component name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:ExternalReference</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A reference to the authentic source of content of this document.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:AdditionalReferenceDocument/cac:Attachment/cac:ExternalReference</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Context of use</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to the URI location where the ESPD Request XML instance can be downloaded from.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:URI</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Uniform Resource Identifier (URI) that identifies where the document is located.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -13042,7 +13243,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Economic_Operator_Mock-up_1_Simple_case.png" alt="Economic operator-simplest case">
 </div>
-<div class="title">Figure 178. Data about the economic operator, mock-up (sole contractor, no sub-contractors and no lots)</div>
+<div class="title">Figure 180. Data about the economic operator, mock-up (sole contractor, no sub-contractors and no lots)</div>
 </div>
 <div class="paragraph">
 <p><strong>Notice the following</strong>:</p>
@@ -13086,7 +13287,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Economic_Operator_Mock-up_Registered.png" alt="EO registered in a PQS">
 </div>
-<div class="title">Figure 179. EO registered in PQS, mock-up</div>
+<div class="title">Figure 181. EO registered in PQS, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -13098,7 +13299,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Lots-Selfcontained.png" alt="Lots-Selfcontained ESPD">
 </div>
-<div class="title">Figure 180. Selection of Lots by the CA, mock-up</div>
+<div class="title">Figure 182. Selection of Lots by the CA, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -13110,7 +13311,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Economic_Operator_Mock-up_1_Lots.png" alt="Lots-Selfcontained ESPD">
 </div>
-<div class="title">Figure 181. Selection of Lots by the EO, mock-up</div>
+<div class="title">Figure 183. Selection of Lots by the EO, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -13135,7 +13336,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Economic_Operator_Mock-up_1_Roles_Complete.png" alt="EO Roles">
 </div>
-<div class="title">Figure 182. EO Roles, mock-up</div>
+<div class="title">Figure 184. EO Roles, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -13147,7 +13348,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Subcontractor_relied_on_mockup.png" alt="EO Roles-entities relied on" width="600">
 </div>
-<div class="title">Figure 183. EO Roles-entities relied on, mock-up</div>
+<div class="title">Figure 185. EO Roles-entities relied on, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -13159,7 +13360,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Subcontractor_not_relied_on_mockup.png" alt="EO Roles-entities not relied on" width="600">
 </div>
-<div class="title">Figure 184. EO Roles-entities not relied on, mock-up</div>
+<div class="title">Figure 186. EO Roles-entities not relied on, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -13190,7 +13391,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Economic_Operator_XSD.png" alt="cac:EconomicOperatorParty XSD, global view" width="global view">
 </div>
-<div class="title">Figure 185. cac:EconomicOperatorParty XSD, global view</div>
+<div class="title">Figure 187. cac:EconomicOperatorParty XSD, global view</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -13243,7 +13444,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/QualifyinParty_XSD.png" alt="cac:QualifyingParty element-XSD">
 </div>
-<div class="title">Figure 186. cac:QualifyingParty element, XSD</div>
+<div class="title">Figure 188. cac:QualifyingParty element, XSD</div>
 </div>
 <div class="paragraph">
 <p>For the identification of the economic operator with the registration number assigned by the (pre)qualification system the <code>cac:/EconomicOperatorParty/cac:Party/PartyIdentifier</code> is used. Notice that this element has multiple cardinality, which is very convenient to identify parties with identifiers issued by different authorities. Each Identification element specifies which is the Agency -the (pre)qualification system, in this case- that issued the identifier (see XML example below to grasp how this is implemented).</p>
@@ -13252,7 +13453,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/PartyIdentification.png" alt="PartyIdentifier element with multiple cardinality">
 </div>
-<div class="title">Figure 187. cac:PartyIdentification element, XSD</div>
+<div class="title">Figure 189. cac:PartyIdentification element, XSD</div>
 </div>
 <div class="paragraph">
 <p>The QUESTIONs relating to the rest of information on the PQS are structured in the criterion <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code>:</p>
@@ -13261,7 +13462,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/OTHER_EO_PQS_DS.png" alt="PQS data structure">
 </div>
-<div class="title">Figure 188. Data structure for the data about the (pre)qualification system</div>
+<div class="title">Figure 190. Data structure for the data about the (pre)qualification system</div>
 </div>
 </div>
 <div class="sect3">
@@ -13273,7 +13474,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EO_Role_XSD.png" alt="EO Role">
 </div>
-<div class="title">Figure 189. Role of the economic operator</div>
+<div class="title">Figure 191. Role of the economic operator</div>
 </div>
 </div>
 <div class="sect3">
@@ -13285,7 +13486,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EconomicOperatorPartyParty.png" alt="EO Party">
 </div>
-<div class="title">Figure 190. The Party of the economic party</div>
+<div class="title">Figure 192. The Party of the economic party</div>
 </div>
 </div>
 </div>
