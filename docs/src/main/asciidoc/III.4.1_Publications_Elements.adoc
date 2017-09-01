@@ -12,6 +12,8 @@ As you can see from the XSD  Schema the `cac:DocumentReference` class has a rich
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:AdditionalReferenceDocument
+|*Context of Use*: 
+|In this case this reference points at a document published on the Supplement of the European Official Journal or on a national journal.
 |===
 [cols="<1,<1,<1,<2,<2"]
 |===
@@ -24,7 +26,7 @@ As you can see from the XSD  Schema the `cac:DocumentReference` class has a rich
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
 
-*Rule*: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). 
+*Rule*: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). If at the time of drafting the ESPD document the Publication Office has not published yet the Contract Notice the value 0000/S 000-000000 value must be used to indicate that a temporary identifier is being used. 
 
 |*cbc:DocumentTypeCode*
 |Code
@@ -42,8 +44,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
 
-*Rule*: Use the attribute languageID to indicate the language of the text. Use the Code List `LanguageCodeEU` for the value of the languageID attribute.
-
+*Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List `LanguageCodeEU` for the value of the languageID attribute.
 |===
 
 Beware that the ESPD document do not embed the content of referenced documents but instead make a reference to its source. Thus the class DocumentReference aggregates a `cac:Attachment`class that allows for embedding the content or making reference to an external source of the content, which is the preferred way in ESPD (see XSD schema above):
