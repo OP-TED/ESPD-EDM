@@ -959,7 +959,7 @@ This section about the ESPD Response does not cover those information elements t
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIREMENT</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>The economic operator must include in its ESPD Response document a reference to the ESPD Request. For this, the values of the two identifiers <code>cbc:ID</code> and <code>cbc:UUID</code> of the ESPD Request must be used as the values for the <code>cbc:ID</code> and <code>cbc:UUID</code> in the ESPD Response (in the reference to ESDP Request).</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>The economic operator must include in its ESPD Response document a reference to the ESPD Request. For this, the values of the two identifiers <code>cbc:ID</code> and <code>cbc:UUID</code> of the ESPD Request must be used as the values for the <code>cbc:ID</code> and <code>cbc:UUID</code> in the ESPD Response cac:AdditionalDocumentReference (to refer to that ESDP Request).</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -1082,6 +1082,24 @@ This section about the ESPD Response does not cover those information elements t
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Optionally use the attribute languageID to indicate the language of the text. Use the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods"><em>LanguageCodeEU</em></a> for the value of the languageID attribute.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueDate</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the document was issued by the contracting authority.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Format "YYYY-MM-DD". If available in the referenced document place here the data of publication by the contracting authority.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueTime</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time when the document was issued by the contracting authority.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002"><em>tbr92-013</em></a>.
+<strong>Rule</strong>: If available in the referenced document place here the time of publication by the contracting authority.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -1169,6 +1187,30 @@ This section about the ESPD Response does not cover those information elements t
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">About the definition of economic operator</div>
+<div class="paragraph">
+<p><strong>Beware</strong> that this ESPD-EDM V02.00.00 specification defines economic operator based on the one provided by the 2014 Directives, where an economic operator is "any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification".</p>
+</div>
+<div class="paragraph">
+<p>According to this definition one group of suppliers associated in a Joint Venture or in a Consortium, or any other type of undertaking is also an economic operator.</p>
+</div>
+<div class="paragraph">
+<p>However, due to the previous requirement establishing that each company participating in a tender must prepare its own ESPD Response document, the ESPD-EDM specification never uses the term "economic operator" to refer to a group of persons and/or companies but <strong>only to refer to each natural or legal person or public entity that participates in a tender</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, in the context of the ESPD the definition of economic operator has been rephrased as "any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification".</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Thus:</p>
 </div>
@@ -1319,7 +1361,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </li>
 <li>
-<p><strong>Not an SME</strong>. The EO is a large company (circle #13). The definition of what is an SME is provided in the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">EU recommendation 2003/361</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees).</p>
+<p><strong>Not an SME</strong>. The EO is a large company (circle #13). The definition of what is an SME is provided in the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">EU recommendation 2003/361</a><sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees). By the way, this datum (SME) is placed in the element <code>cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode</code>, using a value from the Code List link:.dist/cl/ods/ ESPD-CodeLists-V02.00.00.ods[EOIndustryClassificationCode]; see XSD diagram and XML example for <code>cac:QualifyinParty</code> and sub-components below).</p>
 </li>
 <li>
 <p><strong>No lots</strong>. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request.</p>
@@ -1330,10 +1372,13 @@ This section about the ESPD Response does not cover those information elements t
 <div class="sect3">
 <h4 id="mock-ups-2-7-eo-registered-in-a-pre-qualification-system"><a class="anchor" href="#mock-ups-2-7-eo-registered-in-a-pre-qualification-system"></a>Mock-ups (2/7): EO registered in a Pre-Qualification System</h4>
 <div class="paragraph">
-<p>One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System, circle #17). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in.</p>
+<p>One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System, circle #17). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in (see mock-up below).</p>
 </div>
 <div class="paragraph">
-<p>The pre-qualification system the EO is registered on will be kept (and retrieved from) from e-Certis. In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.</p>
+<p>Beware that the (pre)qualification system the EO is registered on must be know by the software application. One proposal is that each (pre)qualification systems is perfectly identified and registered in e-Certis so the applications can use trust it and download certificates from it footnote[This is part of the schema envisioned in the Once Only Principle].</p>
+</div>
+<div class="paragraph">
+<p>In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -1421,7 +1466,7 @@ This section about the ESPD Response does not cover those information elements t
 <p>The information that the economic operator (EO) has to provide is relatively abundant, especially if the EO is the lead entity of a group. UBL does provide a class cac:EconomicOperator with sufficient data elements to identify the economic operator, its role, its representatives, physical location, officially registered address and other.</p>
 </div>
 <div class="paragraph">
-<p>Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes (such as the number of employees and general turnover); or to ensure the transparency of the procurement procedure (the general methodology used for the weighting); or to link all the ESPDs that belong to one single tender (through the identification of the members of the group in the case of Joint Venture or Consortium and its sub-contracted entities).</p>
+<p>Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes; or to ensure the transparency of the procurement procedure; other.</p>
 </div>
 <div class="paragraph">
 <p>Therefore in the ESPD-EDM-02.00.00 the information about the economic operator is spread in two different places:</p>
@@ -1429,13 +1474,15 @@ This section about the ESPD Response does not cover those information elements t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The UBL-2.2 <code>cac:EconomicOperatorParty</code> component; and</p>
+<p>The UBL-2.2 <strong>cac:EconomicOperatorParty</strong> component; and</p>
 </li>
 <li>
-<p>Following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, REGISTERED_IN_OFFICIAL_LIST, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both data structures (the <strong>cac:EconomicOperatorParty</strong> one and the criteria containing <strong>the other data about economic operator</strong>.</p>
+<p>In <strong>criteria data structures</strong>: following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both.</p>
 </li>
 </ol>
 </div>
+<div class="sect4">
+<h5 id="cac-economicoperatorparty"><a class="anchor" href="#cac-economicoperatorparty"></a>cac:EconomicOperatorParty</h5>
 <div class="paragraph">
 <p>The UBL-2.2 <code>cac:EconomicOperatorParty</code> has three common aggregate components, the XSD Schema looks like this:</p>
 </div>
@@ -1448,7 +1495,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>cac:QualifyingParty</strong>: is used to place the data about pre-qualification systems or registers that keep classification information about the economic operator (circle #13);</p>
+<p><strong>cac:QualifyingParty</strong>: is used to place data about the economic operator that is available from an official list, tenderer register or (pre)qualification system, such as official classification schemes, certificates, the number of employees, references used for the classification, etc. (circle #13);</p>
 </li>
 <li>
 <p><strong>cac:EconomicOperatorRole</strong>: use to place the role of the economic operator (circle #1);</p>
@@ -1459,38 +1506,59 @@ This section about the ESPD Response does not cover those information elements t
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="cac-qualifyingparty"><a class="anchor" href="#cac-qualifyingparty"></a>cac:QualifyingParty</h4>
+<div class="sect4">
+<h5 id="cac-qualifyingparty"><a class="anchor" href="#cac-qualifyingparty"></a>cac:QualifyingParty</h5>
 <div class="paragraph">
 <p>The diagram below shows the XSD element that will hold the data required by the ESPD (see mock-up 1/7, too). Beware that:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The Identifier assigned by the register or (pre)qualification system of the economic operator is placed in the element <code>/cac:EconomicOperatorParty/cac:Party/cac:PartyIdentification</code> (more details on this below and in the XML example);</p>
+<p><strong>Identification of the economic operator</strong>: The Identifier assigned by the register or (pre)qualification system to the economic operator is placed in the element <code>/cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cac:PartyIdentification</code> (more details on this below and in the XML example);</p>
 </li>
 <li>
-<p>The Identifier and name of the register or (pre)qualification system (captured automatically from e-Certis) will be placed into the element <code>/cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party</code>;</p>
+<p><strong>(Pre)qualification system</strong>: The Identifier and name of the (pre)qualification system is captured from e-Certis. The only datum that is necessary to keep in the XML is the identifier of the system provided by e-Certis. This identifier will be used as the value for the attribute <code>schemeAgencyID</code> (always compulsory) of the element <code>/cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cac:PartyIdentification</code>. This way:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The (pre)qualification system is perfectly identified (and trusted, as it is registered in  eCertis); and</p>
 </li>
 <li>
-<p>The references, the classification obtained in the official list and the answer to the QUESTION 'Does the registration or certification cover all the required selection criteria goes in a criterion of the type CRITERION.OTHER.EO_DATA.* (see below data structure <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code> and XML example).</p>
+<p>The economic operator, identified with the number used in that (pre)qualification system, is linked inequivocally to that (pre)qualification system.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Note for the future</div>
-<div class="paragraph">
-<p>Advanced software application can take leverage of the fact that the UBL-2.2 component <code>cac:QualifyingParty/cac:BusinessClassificationScheme</code> to structure hierarchical classifications, as some (pre)qualification system do organise their classification as taxonomies. For the time being, though, this information is expected in the criterion data stucture <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code>.</p>
+</li>
+<li>
+<p><strong>References and classification</strong>: The references linked to the classification of the EO are place in the component <code>cac:QualifyingParty/cac:CompletedTask</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For this V02.00.00 of the ESPD the only expected data about the reference is a short description identifying the task as described in the (pre)qualification system. However if you take a look at this common aggregate component you will observe that it caters for other relevant data.</p>
+</li>
+<li>
+<p>Similarly, this V02.00.00 does not expect a complex representation of possible (optional) classification schemes. However the component <code>cac:BusinessClassificationScheme</code>, associated to cac:QualifyingParty allows complex hierarchical classifications.</p>
+</li>
+</ul>
 </div>
-</td>
-</tr>
-</table>
+</li>
+<li>
+<p><strong>SME and number of employees</strong>: The number of employees determine the classification of the company as Micro, Small, Medium or Large company. The cac:QualifyingParty component provides two place-holders that are used by this ESPD-EDM (see also mock-ups above) <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup>; see also footnote #6:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>cac:QualifyingParty/cbc:EmployeeQuantity</strong>, for the number of employees; and</p>
+</li>
+<li>
+<p><strong>cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode</strong> to indicate whether the EO is a micro, small, medium or large company (or simply an SME). This code is defined in the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EOIndustryClassificationCode</a>. See also sections "Expected Elements" and "XML example" for more details.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Turnover</strong>: For statistical purposes the ESPD-EDM asks this datum to reflect the financial capability of the economic operator (see mock-ups above). This datum is to be placed in <code>cac:QualifyingParty/cac:FinancialCapability/ValueAmount</code>.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -1498,39 +1566,21 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 <div class="title">Figure 15. cac:QualifyingParty element, XSD</div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="cac-economicoperatorrole"><a class="anchor" href="#cac-economicoperatorrole"></a>cac:EconomicOperatorRole</h5>
 <div class="paragraph">
-<p>For the identification of the economic operator with the registration number assigned by the (pre)qualification system the <code>cac:/EconomicOperatorParty/cac:Party/PartyIdentifier</code> is used. Notice that this element has multiple cardinality, which is very convenient to identify parties with identifiers issued by different authorities. Each Identification element specifies which is the Agency -the (pre)qualification system, in this case- that issued the identifier (see XML example below to grasp how this is implemented).</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/PartyIdentification.png" alt="PartyIdentifier element with multiple cardinality">
-</div>
-<div class="title">Figure 16. cac:PartyIdentification element, XSD</div>
-</div>
-<div class="paragraph">
-<p>The QUESTIONs relating to the rest of information on the PQS are structured in the criterion <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code>:</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/OTHER_EO_PQS_DS.png" alt="PQS data structure">
-</div>
-<div class="title">Figure 17. Data structure for the data about the (pre)qualification system</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="cac-economicoperatorrole"><a class="anchor" href="#cac-economicoperatorrole"></a>cac:EconomicOperatorRole</h4>
-<div class="paragraph">
-<p>The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair code + description (see Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EORoleType</a> for the codes and descriptions; see also the XML example below).</p>
+<p>The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair <strong>code + description</strong> (see Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EORoleType</a> for the codes and descriptions; see also the XML example below).</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/EO_Role_XSD.png" alt="EO Role">
 </div>
-<div class="title">Figure 18. Role of the economic operator</div>
+<div class="title">Figure 16. Role of the economic operator</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="cac-party"><a class="anchor" href="#cac-party"></a>cac:Party</h4>
+<div class="sect4">
+<h5 id="cac-party"><a class="anchor" href="#cac-party"></a>cac:Party</h5>
 <div class="paragraph">
 <p>The XSD diagram below shows (in blue) the elements for which data are expected in the ESPD Response for the cac:Party element of the economic operator.</p>
 </div>
@@ -1538,8 +1588,637 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EconomicOperatorPartyParty.png" alt="EO Party">
 </div>
-<div class="title">Figure 19. The Party of the economic party</div>
+<div class="title">Figure 17. The Party of the economic party</div>
 </div>
+<div class="paragraph">
+<p>The figures below show the <code>cac:QualifyingParty</code> sub-components <code>cac:BusinessClassificationScheme`and `FinancialCapability</code>, and <code>cac:CompletedTask</code> in a bit more of detail. At present, the ESPD-EDM only uses one field, <code>cbc:Description</code> for the references and classifications and `cbc:Amount`for the Turnover.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Business_Classification_Scheme.png" alt="Classification Scheme">
+</div>
+<div class="title">Figure 18. The rich structure of a UBL-2.2 'Classification Scheme' for the representation of taxonomies</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/FinancialCapabililty.png" alt="Capabilities">
+</div>
+<div class="title">Figure 19. The structure of UBL-2.2 'Capability'</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Completed_Task.png" alt="Completed task (reference)">
+</div>
+<div class="title">Figure 20. The structure of the UBL-2.2 Completed Task (used for references)</div>
+</div>
+<div class="paragraph">
+<p>UBL-2.2 provides a component to hold very specifically the data to identify the economic operator as it officially registered in a Business Register. This XSD diagram below shows the elements of this component <code>cac:LegalEntityParty</code>. This ESPD-EDM specification recommends to use it as an alternative (or supplementary) way to identify the economic party.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/LegalEntityParty.png" alt="Legal Entity Party">
+</div>
+<div class="title">Figure 21. The UBL-2.2 Legal Entity Party</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="expected-elements-2"><a class="anchor" href="#expected-elements-2"></a>Expected elements</h4>
+<div class="paragraph">
+<p>Please, remember that the elements <code>cac:ContractingAuthority</code>, <code>cac:ProcurementProject</code>, <code>cac:ProcurementProjectLot</code>, and <code>cac:AdditionalDocumentReference</code> are expected in the ESPD Request, too. However, for the sake of brevity, and as they are taken from the ESPD Request and 'copied' in the ESPD Response, they have not been re-explained in this section about the ESPD Response. Therefore for details on those elements please refer to the section <a href="#iii-the-espd-request-document">III. The ESPD Request document</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Economic operator, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:EconomicOperatorParty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:EconomicOperatorParty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Context of use</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ESPD Response document.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:QualifyingParty</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+</p><p class="tableblock"><strong>Rule</strong>: This element is compulsory in the ESPD-EDM V02.00.00 as it is the natural placeholder for several relevant data about the Economic Operator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:EconomnicOperatorRole</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The function of the economic operator when bidding from a consortium (Sole contractor / Lead entity, member of a group, etc.).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+</p><p class="tableblock"><strong>Rule</strong>: This element is compulsory in the ESPD-EDM V02.00.00 because depending on it different sets of data will be required or not, shown or hidden, processed or skipped.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Party</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Main set of data used to identify and contact the economic operator, such as official identifiers, name, address, contact person, representatives, etc.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+</p><p class="tableblock"><strong>Rule</strong>: (See expected elements and rules below in the table about this Party).</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 5. Qualifying Party, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:QualifyingParty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:QualifyingParty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Context of use</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Economic Operator in the ESPD Response document.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:EmployeeQuantity</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of people employed by the economic operator participating in the tender.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+</p><p class="tableblock"><strong>Rule</strong>: Integer value expected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:BusinessClassificationScheme/cbc:Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The text describing one official classification assigned by an official list or (pre)qualification system to the economic operator.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+</p><p class="tableblock"><strong>Rule</strong>: Only the 'Description' is expected, but the component cac:ClassificationScheme offers other rich possibilities (see the <a href="./dist/mod/UBL-Entities-2.2-Pre-award.ods">UBL-2.2 model in the distribution package</a> or in the <a href="https://www.oasis-open.org/committees/document.php?document_id=60554">original source</a> for more details).
+</p><p class="tableblock"><strong>Rule</strong>: Integer value expected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:FinancialCapability/cbc:ValueAmount</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A monetary amount as a measure of this capability.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+</p><p class="tableblock"><strong>Rule</strong>: Use it to place here the general Turnover of the EO (for statistical purposes). Compulsory assignment of a value to the attribute currency. The default value should be set to 'EUR'. Compulsory use of the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CurrencyCode</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:CompletedTask/cbc:Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text describing the works, supplies or services executed, delivered or performed in a procurement project (normally used as a reference for the classification of the economic operator.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+</p><p class="tableblock"><strong>Rule</strong>: Use it to place here the references that were used in the (pre)qualification system to get the specific classification related to those references.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Party/cac:PartyIdentifier/cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the economic operator in an official list, register or (pre)qualification system.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+</p><p class="tableblock"><strong>Rule</strong>: The attribute <code>schemeAgencyID</code> must hold the value retrieved from eCertis that identifies unequivocally the (pre)qualification system. If, for any reason, that value is not available use the default schemeAgencyID "EU-COM-GROW" and the <code>cac:EconomicOperatorParty/cac:PartyIdentificaton/cbc:ID</code> for the value of the identifier. Additionally you can use the data structure <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code> to specify an alternative or additional name, identifier and description.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 6. Economic operator role, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:EconomicOperatorRole</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The function of the economic operator when bidding from a consortium (Sole contractor / Lead entity, member of a group, etc.).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:EconomicOperatorRole</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Context of use</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Economic Operator in the ESPD Response document.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:RoleCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the role of the economic operator in the bid.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-008"><em>tbr92-008</em></a>
+<strong>Rule</strong>: Compulsory use of the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EORoleType</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:RoleDescription</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The text describing the role of the economic operator in the bid.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-008"><em>tbr92-008</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: Software applications should retrieve and reuse the description from the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EORoleType</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 7. (Qualifying) economic operator party, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:Party</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Main set of data used to identify and contact the economic operator, such as official identifiers, name, address, contact person, representatives, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PartyIdentification/cbc:Identifier</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier that identifies the economic operator, such as a the VAT number, the company registration number in a Business Register, other.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001"><em>tbr92-001</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: More than one identifier can be specified. Compulsory use of the attribute <code>schemeAgencyID</code> and highly recommended the use of the attribute schemeAgencyID. The preferred identifier is the national VAT number. Additional identifiers may be used. For a very complete way of identification of the Party it is highly recommended to, additionally to the <code>cac:Party/cac:Identification/cbc:ID</code>, use the UBL-2.2 component <code>cac:PartyLegalEntity</code>: this element is the perfect placeholder for the data officially registered in a Business Register (see UBL-2.2 model, and XSD diagram above).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:EndPointID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electronic address of the contracting body.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001"><em>tbr92-001</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the <code>cac:Party/cbc:WebsiteURI</code>). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PartyName/cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the economic operator.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001"><em>tbr92-001</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use the official name of the Party as officially registered. Be accurate in its spelling.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IndustryClassificationCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to indicate whether the company is a micro, small, medium or large enterprise.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-004"><em>tbr92-004</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Used only for statistical purposes. Compulsory use of parameters established by the <a href="http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en">EU Recommendation 2003/361</a> to determine whether the EO&#8217;s company is micro, small, medium or large. Beware that these parameters may change in the future.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:WebsiteURI</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The website of the economic operator.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 8. Economic operator postal address, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:PostalAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Postal address information.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:EconomicOperator/cac:Party/cac:PostalAddress</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:StreetName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The main address line in an address. Usually the street name and number or post office box.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:CityName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The common name of a city where the address is located.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:PostalZone</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier for an addressable group of properties according to the relevant postal service, such as a ZIP code or Post Code.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Country/cbc:IdentificationCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A code that identifies the country.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: The country of the contracting body must always be specified. Compulsory use of the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CountryCodeIdentifier</a> (ISO 3166-1 2A:2006).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Country/cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the country.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 9. Contact of the economic operator, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:Contact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to provide contacting information for a party in general or a person.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:Contact</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the contact point.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:Telephone</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A phone number for the contact point.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:Telefax</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A fax number for the contact point.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ElectronicMail</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An e-mail address for the contact point.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012"><em>tbr92-012</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Please see also the section III.6 Service Provider (for the ESPD Request) for other details and comparison with the previous version 1.0.2 of the ESPD-EDM.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 10. Service provider, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:ServiceProviderParty/cac:Party</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Main information about the service provider.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:ServiceProviderParty/cac:Party</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:WebsiteURI</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The website of the service provider.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021"><em>tbr070-021</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use it for the official web site of the service provider. Reserve the <code>EndPointID</code> for online services (e.g. web, REST, ftp services, etc.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:EndpointID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electronic address of the service provider.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021"><em>tbr070-021</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the <code>cac:Party/cbc:WebsiteURI</code>). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PartyIdentification/cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The national identifier of a service provider as it is legally registered (e.g. VAT identification).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021"><em>tbr070-021</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: An identifier for the service provider must always be provided. Compulsory use of the attribute <code>SchemeAgencyID</code>. When possible use the VAT identification of the service provider (see the VIES platform for a EU cross-border national VAT number verification system). See XML example below.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PartyName/cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the service provider.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021"><em>tbr070-021</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: The name of the service provider must always be specified. Supply the official registered name of the service provider.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PostalAddress/cac:Country/cbc:IdentificationCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The code that identifies the country of the service provider.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021"><em>tbr070-021</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>:  The country of the service provider must always be specified. Compulsory use of the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CountryCodeIdentifier</a> (ISO 3166-1 2A:2006).</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -1551,15 +2230,18 @@ This section about the ESPD Response does not cover those information elements t
 <a href="#_footnoteref_1">1</a>. CVA files are used for the validation of Codes and Identifiers. See the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist">OASIS Genericode 1.0</a> specification and <a href="http://www.cranesoftwrights.com/bio/gkholman.htm#summary">CRANE SOFTWRIGHTS</a> site for more details
 </div>
 <div class="footnote" id="_footnote_2">
-<a href="#_footnoteref_2">2</a>. The Annex 2 fo the Commission Implementing Regulation (EU) No 2016/7 refers to these two as Part IV and Part V
+<a href="#_footnoteref_2">2</a>. The Annex 2 of the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:JOL_2016_003_R_0004">Commission Implementing Regulation (EU) No 2016/7</a> refers to these two as Part IV and Part V
 </div>
 <div class="footnote" id="_footnote_3">
 <a href="#_footnoteref_3">3</a>. The Commission is preparing for an <a href="http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en">evaluation and possible revision</a> of some aspects of the SME Definition. A public consultation on the topic will be launched soon.
 </div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. *Remember that the ESPD-EDM specification uses the definition of SME provided by the EU <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">Recommendation 2003/361</a>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-29 06:03:15 CEST
+Last updated 2017-09-03 00:27:40 CEST
 </div>
 </div>
 </body>

@@ -10,6 +10,19 @@ See formal requirements related to the economic operators in the e-Sens site: fr
 |*REQUIREMENT*|*One ESPD Response per economic operator*. The ESPD-EDM-02.00.00, as all the previous versions of the ESPD, requires that every economic operator that participates in one tender provide its own ESDP Response document. This affects sole traders that rely on other entities for the execution of the contract (e.g. subcontractors) and groups of economic operators, e.g. a Joint Venture or a Consortium, and all the sub-contractors on which each economic operator of the group relies on to meet the selection criteria.
 |===
 
+.About the definition of economic operator
+[IMPORTANT]
+====
+*Beware* that this ESPD-EDM V02.00.00 specification defines economic operator based on the one provided by the 2014 Directives, where an economic operator is "any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification".
+
+According to this definition one group of suppliers associated in a Joint Venture or in a Consortium, or any other type of undertaking is also an economic operator.
+
+However, due to the previous requirement establishing that each company participating in a tender must prepare its own ESPD Response document, the ESPD-EDM specification never uses the term "economic operator" to refer to a group of persons and/or companies but *only to refer to each natural or legal person or public entity that participates in a tender*. 
+
+Therefore, in the context of the ESPD the definition of economic operator has been rephrased as "any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification".
+
+====
+
 Thus:
 
 * One tender submitted by a sole trader that relies on two sub-contractors will have to include three ESPD Requests, one for the sole trader and one per each of the sub-contracted entity. 
@@ -51,7 +64,7 @@ One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V02.00.
 
 ** The entity will have to produce an ESPD 
 ** The entity does not have to provide information about the selection criteria 
-** The entity does not have to provide information about the reduction of the number of qualified candidates footnote:[The Annex 2 fo the Commission Implementing Regulation (EU) No 2016/7 refers to these two as Part IV and Part V].
+** The entity does not have to provide information about the reduction of the number of qualified candidates footnote:[The Annex 2 of the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:JOL_2016_003_R_0004[Commission Implementing Regulation (EU) No 2016/7] refers to these two as Part IV and Part V].
 
 ==== Mock-ups (1/7): the simplest case
 
@@ -76,15 +89,17 @@ image::Economic_Operator_Mock-up_1_Simple_case.png[Economic operator-simplest ca
 
 ** The EO states that it does not participate in a group (last field of the mock-up); (circle #19) 
 
-. *Not an SME*. The EO is a large company (circle #13). The definition of what is an SME is provided in the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361[EU recommendation 2003/361]footnote:[The Commission is preparing for an http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en[evaluation and possible revision] of some aspects of the SME Definition. A public consultation on the topic will be launched soon.]. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees).  
+. *Not an SME*. The EO is a large company (circle #13). The definition of what is an SME is provided in the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361[EU recommendation 2003/361]footnote:[The Commission is preparing for an http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en[evaluation and possible revision] of some aspects of the SME Definition. A public consultation on the topic will be launched soon.]. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees). By the way, this datum (SME) is placed in the element `cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode`, using a value from the Code List link:.dist/cl/ods/ ESPD-CodeLists-V02.00.00.ods[EOIndustryClassificationCode]; see XSD diagram and XML example for `cac:QualifyinParty` and sub-components below). 
 
 . *No lots*. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request. 
 
 ==== Mock-ups (2/7): EO registered in a Pre-Qualification System
 
-One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System, circle #17). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in.
+One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System, circle #17). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in (see mock-up below).
 
-The pre-qualification system the EO is registered on will be kept (and retrieved from) from e-Certis. In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.
+Beware that the (pre)qualification system the EO is registered on must be know by the software application. One proposal is that each (pre)qualification systems is perfectly identified and registered in e-Certis so the applications can use trust it and download certificates from it footnote[This is part of the schema envisioned in the Once Only Principle]. 
+
+In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.
 
 .EO registered in PQS, mock-up
 image::Economic_Operator_Mock-up_Registered.png[EO registered in a PQS, alt="EO registered in a PQS", align="center"]
@@ -124,6 +139,7 @@ As explained above, the Sole contractor or the Leader of a group will have to pr
 .EO Roles-entities relied on, mock-up
 
 image::Subcontractor_relied_on_mockup.png[EO Roles-entities relied on, alt="EO Roles-entities relied on", width="600", align="center"]
+
 ==== Mock-ups (7/7): 
 The Sole contractor or the Leader of a group will have also to provide information about subcontractors on whose capacity the economic operator does not rely. Remember that this information does not need to be supplied by the members of a group or other entities.
  
@@ -134,64 +150,10 @@ image::Subcontractor_not_relied_on_mockup.png[EO Roles-entities not relied on, a
 
 The information that the economic operator (EO) has to provide is relatively abundant, especially if the EO is the lead entity of a group. UBL does provide a class cac:EconomicOperator with sufficient data elements to identify the economic operator, its role, its representatives, physical location, officially registered address and other.
 
-Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes (such as the number of employees and general turnover); or to ensure the transparency of the procurement procedure (the general methodology used for the weighting); or to link all the ESPDs that belong to one single tender (through the identification of the members of the group in the case of Joint Venture or Consortium and its sub-contracted entities).
+Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes; or to ensure the transparency of the procurement procedure; other.
 
 Therefore in the ESPD-EDM-02.00.00 the information about the economic operator is spread in two different places: 
 
-. The UBL-2.2 `cac:EconomicOperatorParty` component; and
+. The UBL-2.2 *cac:EconomicOperatorParty* component; and
 
-. Following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, REGISTERED_IN_OFFICIAL_LIST, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both data structures (the *cac:EconomicOperatorParty* one and the criteria containing *the other data about economic operator*.
-
-The UBL-2.2 `cac:EconomicOperatorParty` has three common aggregate components, the XSD Schema looks like this:
- 
-.cac:EconomicOperatorParty XSD, global view 
-image::Economic_Operator_XSD.png[cac:EconomicOperatorParty XSD, global view, alt="cac:EconomicOperatorParty XSD, global view", align="center"]
-
-. *cac:QualifyingParty*: is used to place the data about pre-qualification systems or registers that keep classification information about the economic operator (circle #13);
-
-. *cac:EconomicOperatorRole*: use to place the role of the economic operator (circle #1);
-
-. *cac:Party*: used to place the data to identify the EO and its contact (circles #2 to #12).
-
-==== cac:QualifyingParty
-
-The diagram below shows the XSD element that will hold the data required by the ESPD (see mock-up 1/7, too). Beware that:
-
-* The Identifier assigned by the register or (pre)qualification system of the economic operator is placed in the element `/cac:EconomicOperatorParty/cac:Party/cac:PartyIdentification` (more details on this below and in the XML example);
-
-* The Identifier and name of the register or (pre)qualification system (captured automatically from e-Certis) will be placed into the element `/cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party`;
-
-* The references, the classification obtained in the official list and the answer to the QUESTION 'Does the registration or certification cover all the required selection criteria goes in a criterion of the type CRITERION.OTHER.EO_DATA.* (see below data structure `CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST` and XML example). 
-
-.Note for the future
-[NOTE]
-====
-Advanced software application can take leverage of the fact that the UBL-2.2 component `cac:QualifyingParty/cac:BusinessClassificationScheme` to structure hierarchical classifications, as some (pre)qualification system do organise their classification as taxonomies. For the time being, though, this information is expected in the criterion data stucture `CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST`.
-====
-
-.cac:QualifyingParty element, XSD
-image::QualifyinParty_XSD.png[cac:QualifyingParty element-XSD, alt="cac:QualifyingParty element-XSD", align="center"]
-
-For the identification of the economic operator with the registration number assigned by the (pre)qualification system the `cac:/EconomicOperatorParty/cac:Party/PartyIdentifier` is used. Notice that this element has multiple cardinality, which is very convenient to identify parties with identifiers issued by different authorities. Each Identification element specifies which is the Agency -the (pre)qualification system, in this case- that issued the identifier (see XML example below to grasp how this is implemented). 
-
-.cac:PartyIdentification element, XSD
-image::PartyIdentification.png[PartyIdentifier element with multiple cardinality-XSD, alt="PartyIdentifier element with multiple cardinality", align="center"] 
-The QUESTIONs relating to the rest of information on the PQS are structured in the criterion `CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST`:
-
-.Data structure for the data about the (pre)qualification system
-image::OTHER_EO_PQS_DS.png[PQS data structure, alt="PQS data structure", align="center"]
-
-==== cac:EconomicOperatorRole
-
-The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair code + description (see Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EORoleType] for the codes and descriptions; see also the XML example below).
-
-.Role of the economic operator
-image::EO_Role_XSD.png[EO Role, alt="EO Role", align="center"]
-
-==== cac:Party
-
-The XSD diagram below shows (in blue) the elements for which data are expected in the ESPD Response for the cac:Party element of the economic operator.
-
-.The Party of the economic party
-image::EconomicOperatorPartyParty.png[EO Party, alt="EO Party", align="center"]
-
+. In *criteria data structures*: following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both.

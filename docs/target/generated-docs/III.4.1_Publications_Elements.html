@@ -581,6 +581,15 @@ table.CodeRay td.code>pre{padding:0}
 </p><p class="tableblock"><strong>Rule</strong>: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). If at the time of drafting the ESPD document the Publication Office has not published yet the Contract Notice the value 0000/S 000-000000 value must be used to indicate that a temporary identifier is being used.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:UUID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier that can be used to reference this ESPD document instance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: If the referenced document has a UUID to identify its particular instance refer to that UUID here.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:DocumentTypeCode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -597,6 +606,24 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Optionally use the attribute languageID to indicate the language of the text. Use the Code List <code>LanguageCodeEU</code> for the value of the languageID attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueDate</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date when the document was issued by the contracting authority.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013"><em>tbr92-013</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Format "YYYY-MM-DD". If available in the referenced document place here the data of publication by the contracting authority.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:IssueTime</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time when the document was issued by the contracting authority.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002"><em>tbr92-013</em></a>.
+<strong>Rule</strong>: If available in the referenced document place here the time of publication by the contracting authority.</p></td>
 </tr>
 </tbody>
 </table>
@@ -679,7 +706,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-01 00:39:03 CEST
+Last updated 2017-09-01 05:35:43 CEST
 </div>
 </div>
 </body>

@@ -1,24 +1,29 @@
 [.text-left]
+
 ==== Expected elements
+
+Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementProject`, `cac:ProcurementProjectLot`, and `cac:AdditionalDocumentReference` are expected in the ESPD Request, too. However, for the sake of brevity, and as they are taken from the ESPD Request and 'copied' in the ESPD Response, they have not been re-explained in this section about the ESPD Response. Therefore for details on those elements please refer to the section *III. The ESPD Request document*.
 
 .Economic operator, expected elements
 [cols="<1,<4"]
 |===
 |*Class name*:| cac:EconomicOperatorParty
-|*Definition*:|The contracting authority or contracting entity who is buying supplies, services or public works using a tendering procedure as described in the applicable directive (e.g. Directives 2014/24/EU, 2014/25/EU).
+|*Definition*:|Any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:ContractingParty
+|*Context of use*:|The ESPD Response document.
 |===
 [cols="<1,<1,<1,<2,<2"]
 |===
 |*Components*|*Type*|*Card*|*Description*|*Requirements*
 
-|*cbc:BuyerProfileURI*
-|Identifier
+|*cac:QualifyingParty*
+|Associated class
 |0..1
-|URL of the web section, in the contracting body web site, that contains information about the contracting body, the norms it applies when contracting, published calls for tenders, Prior Information Notices and Contract Notices as well as the related procurement documents, contract award notices, etc.
+|Official list, register or (pre)qualification system keeping data about the economic operator and able to issue certificates on its qualification.
+
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-001[_tbr070-001_].
 

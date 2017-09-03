@@ -12,7 +12,7 @@ For EU and national publications that need to be included in the ESPD Response s
 [cols="<1,<5"]
 |===
 |*REQUIREMENT*
-|*The economic operator must include in its ESPD Response document a reference to the ESPD Request. For this, the values of the two identifiers `cbc:ID` and `cbc:UUID` of the ESPD Request must be used as the values for the `cbc:ID` and `cbc:UUID` in the ESPD Response (in the reference to ESDP Request).*
+|*The economic operator must include in its ESPD Response document a reference to the ESPD Request. For this, the values of the two identifiers `cbc:ID` and `cbc:UUID` of the ESPD Request must be used as the values for the `cbc:ID` and `cbc:UUID` in the ESPD Response cac:AdditionalDocumentReference (to refer to that ESDP Request).*
 |===
 
 Thus the ESPD Response must also make reference to the ESPD Request that is being responded by the economic operator. The XSD diagram below shows (in blue) which elements are expected for this reference. See also the list of expected elements (and rules) and the XML example beneath the XSD diagram.
@@ -87,6 +87,23 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013[_tbr92-013_]. 
 
 *Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[_LanguageCodeEU_] for the value of the languageID attribute.
+
+|*cbc:IssueDate*
+|Date
+|0..1
+|Date when the document was issued by the contracting authority.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013[_tbr92-013_]. 
+
+*Rule*: Format "YYYY-MM-DD". If available in the referenced document place here the data of publication by the contracting authority.
+
+|*cbc:IssueTime*
+|Time
+|0..1
+|Time when the document was issued by the contracting authority.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002[_tbr92-013_]. 
+*Rule*: If available in the referenced document place here the time of publication by the contracting authority.
 
 |===
 
