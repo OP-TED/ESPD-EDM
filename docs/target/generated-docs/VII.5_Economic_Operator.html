@@ -538,6 +538,18 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIREMENT</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All economic operators belonging to a group (e.g. a Joint Venture, a Consortium, etc.) must specify the name of the group exactly with the same spelling (and respecting capital and lower cases, punctuation, and symbols) in each of their ESPD Responses.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -562,291 +574,34 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Thus:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>One tender submitted by a sole trader that relies on two sub-contractors will have to include three ESPD Requests, one for the sole trader and one per each of the sub-contracted entity.</p>
-</li>
-<li>
-<p>One tender submitted by a Consortium composed of three economic operators, two of which rely on two sub-contracted entities and the third one relies on five sub-contracted entities, will have to include 3 + 2 + 5 (ten) ESPD Requests.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>As you will see next, the information required about the economic operators varies depending on several factors:</p>
-</div>
+<div class="sect3">
+<h4 id="differences-between-regulated-and-self-contained"><a class="anchor" href="#differences-between-regulated-and-self-contained"></a>Differences between Regulated and Self-contained</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Is the economic operator a sole trader or does it belong to a group?</p>
+<p>Both, <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> versions use the same elements from the UBL-2.2 XSD Schema. Differently to version 1.0.2.</p>
 </li>
 <li>
-<p>If it belongs to a group, is the economic operator the leader of the group, a member or another entity (see the different types of 'roles' below);</p>
+<p>The <strong>REGULATED</strong> version expects the role as a <strong>text</strong>.The <strong>SELF-CONTAINED</strong> version allows for the specification of the role of the economic operator as a <strong>code</strong>. Depending on the role code the software applications can decide which sets of data show or hide in the GUI, validate or not, process or not.</p>
 </li>
 <li>
-<p>Does the economic operator rely on other entities to fulfill the selection criteria?</p>
+<p>The  <strong>REGULATED</strong> version expects the identification of members of a group as a <strong>text</strong>. In the <strong>SELF-CONTAINED</strong> version the members of the group are identified separately (name, ID and type of ID, and activity in the procedure).</p>
 </li>
 <li>
-<p>Is the procurement procedure divided into lots?</p>
+<p>In the <strong>SELF-CONTAINED</strong> version the information required about the entities upon which the economic operator relies on or not is richer and more structured than in the <strong>REGULATED</strong> version.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>One relevant aspect is the <strong>Role</strong> of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information to be provided by each role varies:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Sole contractor / Lead entity</strong>: Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group. In this case:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The sole contractor or leader will have to produce a complete ESDP;</p>
-</li>
-<li>
-<p>The sole contractor or leader will also have to identify the rest of the procurers (in the case of a group);</p>
-</li>
-<li>
-<p>The sole contractor or leader will have to identify the entities upon which it relies (and about those on which the entities it relies on rely).</p>
-</li>
-<li>
-<p>The sole contractor or leader will have to identify the entities upon which it does not relies.</p>
-</li>
-<li>
-<p>The sole contractor or leader will have to specify the subcontracted proportion of the group (in the selection criteria "Subcontracted Proportion" of the ESPD).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Group member</strong>:	 Member (not leader) of the Consortium, Joint Venture or other type of group. In this case:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The member of the group will have to produce a complete ESPD;</p>
-</li>
-<li>
-<p>The member of the group does not have to identifier the rest of the procurers or entities.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Other entity (relied upon)</strong>:	Entity on which the main contractor, the group or another subcontractor relies in order to meet the selection criteria. In this case:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The entity will have to produce an ESPD</p>
-</li>
-<li>
-<p>The entity will not have have to identify the rest of the procurers or entities. Beware that an entity could have again another entity which it relies on or a a sub-contractor: in this case those entities and sub-contractors the package of documents sumitted with the tender shall contain also an ESPD for each of them. This is for the sole contractor or the leader of the group to coordinate and identify all these entities in its own ESPD Response.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Other entity (not relied upon)</strong>:	Entity on which the main contractor, the group or another subcontractor does not rely in order to meet the selection criteria. In this case:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The entity will have to produce an ESPD</p>
-</li>
-<li>
-<p>The entity does not have to provide information about the selection criteria</p>
-</li>
-<li>
-<p>The entity does not have to provide information about the reduction of the number of qualified candidates <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
+<p>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="mock-ups-1-7-the-simplest-case"><a class="anchor" href="#mock-ups-1-7-the-simplest-case"></a>Mock-ups (1/7): the simplest case</h4>
-<div class="paragraph">
-<p>The mock-up below shows the set of data required about the economic operator when:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The economic operator (EO) is a sole contractor</p>
-</li>
-<li>
-<p>The EO does not rely on other entities</p>
-</li>
-<li>
-<p>The procurement procedure is not divided into lots</p>
-</li>
-</ul>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Economic_Operator_Mock-up_1_Simple_case.png" alt="Economic operator-simplest case">
-</div>
-<div class="title">Figure 1. Data about the economic operator, mock-up (sole contractor, no sub-contractors and no lots)</div>
-</div>
-<div class="paragraph">
-<p><strong>Notice the following</strong>:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Sole contractor</strong>. We know that this is a sole contractor because:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The role specified is 'Sole contractor / Lead entity' (first field of the mock-up); and (circle #1)</p>
-</li>
-<li>
-<p>The EO states that it does not participate together with others; and (circle #18)</p>
-</li>
-<li>
-<p>The EO states that it does not participate in a group (last field of the mock-up); (circle #19)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Not an SME</strong>. The EO is a large company (circle #13). The definition of what is an SME is provided in the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361">EU recommendation 2003/361</a><sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>. Based on this definition, software applications should be able to verify whether the statement of the EO is correct or not and issue a warning in the case the economic operator introduced data that contradicts the definition (e.g. the EO selected 'Yes' and states that it has 12,000 employees). By the way, this datum (SME) is placed in the element <code>cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode</code>, using a value from the Code List link:.dist/cl/ods/ ESPD-CodeLists-V02.00.00.ods[EOIndustryClassificationCode]; see XSD diagram and XML example for <code>cac:QualifyinParty</code> and sub-components below).</p>
-</li>
-<li>
-<p><strong>No lots</strong>. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mock-ups-2-7-eo-registered-in-a-pre-qualification-system"><a class="anchor" href="#mock-ups-2-7-eo-registered-in-a-pre-qualification-system"></a>Mock-ups (2/7): EO registered in a Pre-Qualification System</h4>
-<div class="paragraph">
-<p>One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System, circle #17). In the case the EO answers yes, the software application should ask the EO for this other data about which the evaluators may be interested in (see mock-up below).</p>
-</div>
-<div class="paragraph">
-<p>Beware that the (pre)qualification system the EO is registered on must be know by the software application. One proposal is that each (pre)qualification systems is perfectly identified and registered in e-Certis so the applications can use trust it and download certificates from it footnote[This is part of the schema envisioned in the Once Only Principle].</p>
-</div>
-<div class="paragraph">
-<p>In case the EO is registered on several pre-qualification systems, it will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Economic_Operator_Mock-up_Registered.png" alt="EO registered in a PQS">
-</div>
-<div class="title">Figure 2. EO registered in PQS, mock-up</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mock-ups-3-7-lots-contracting-authority-perspective"><a class="anchor" href="#mock-ups-3-7-lots-contracting-authority-perspective"></a>Mock-ups (3/7): Lots (contracting authority perspective)</h4>
-<div class="paragraph">
-<p>The economic operator should be able to specify to which Lots it tenders. Thus, if the procurement procedure is divided into Lots, the software application should show the list with all the Lots the contracted authority (CA) specified for the economic operator select one or more Lots. See the section <a href="#iii-10-lots-selfcontained-espd">III.10 Lots - Self-contained ESPD</a> for details on how the CA specifies Lots.  The mock-up below shows the requirements established by the contracting authorities about the Lots of the procurement procedure.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Lots-Selfcontained.png" alt="Lots-Selfcontained ESPD">
-</div>
-<div class="title">Figure 3. Selection of Lots by the CA, mock-up</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mock-ups-4-7-lots-economic-operator-perspective"><a class="anchor" href="#mock-ups-4-7-lots-economic-operator-perspective"></a>Mock-ups (4/7): Lots (economic operator perspective)</h4>
-<div class="paragraph">
-<p>The economic operator should then be able to select the Lots it will tender to. However the software application should control that the requirements established by the contracting authority (CA) are respected (see mock-up 2 above). Thus, for example, if the CA established that the economic operator can only tender to one lot the application should block the economic operator from selecting more than one lot.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Economic_Operator_Mock-up_1_Lots.png" alt="Lots-Selfcontained ESPD">
-</div>
-<div class="title">Figure 4. Selection of Lots by the EO, mock-up</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mock-ups-5-7-roles-of-the-economic-operator"><a class="anchor" href="#mock-ups-5-7-roles-of-the-economic-operator"></a>Mock-ups (5/7): Roles of the economic operator</h4>
-<div class="paragraph">
-<p>Depending on its role the data that the economic operator (EO) will have to provide is different. The mock-up below represent the situation where the role is the Leader of a consortium. In this case:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The EO is the Leader of a Consortium it also had to select <strong>Yes</strong> to the question on whether it participates in a group. To this the software application reacts displaying a new field for the EO to provide the name of the Consortium (the rest of the members and entities related to this Consortium will have also to provide <strong>exactly</strong> the same name in their ESPDs).</p>
-</li>
-<li>
-<p>As it is the Leader this EO will have to identify the rest of procurers and entities. The rest of members and entities participating in the tender shall not be requested to provide this information.</p>
-</li>
-<li>
-<p>The Leader will also have to identify the entities it relies on and on those it does not rely on (this would also the case for the Sole Contractor). See the two next mock-ups below for the data to be provided on these two entities.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Economic_Operator_Mock-up_1_Roles_Complete.png" alt="EO Roles">
-</div>
-<div class="title">Figure 5. EO Roles, mock-up</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mock-ups-6-7-information-about-reliance-on-the-capacities-of-the-other-entities"><a class="anchor" href="#mock-ups-6-7-information-about-reliance-on-the-capacities-of-the-other-entities"></a>Mock-ups (6/7): Information about reliance on the capacities of the other entities</h4>
-<div class="paragraph">
-<p>As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V02.00.00 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Subcontractor_relied_on_mockup.png" alt="EO Roles-entities relied on" width="600">
-</div>
-<div class="title">Figure 6. EO Roles-entities relied on, mock-up</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mock-ups-7-7"><a class="anchor" href="#mock-ups-7-7"></a>Mock-ups (7/7):</h4>
-<div class="paragraph">
-<p>The Sole contractor or the Leader of a group will have also to provide information about subcontractors on whose capacity the economic operator does not rely. Remember that this information does not need to be supplied by the members of a group or other entities.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./images/Subcontractor_not_relied_on_mockup.png" alt="EO Roles-entities not relied on" width="600">
-</div>
-<div class="title">Figure 7. EO Roles-entities not relied on, mock-up</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="xsd-schema"><a class="anchor" href="#xsd-schema"></a>XSD Schema</h4>
-<div class="paragraph">
-<p>The information that the economic operator (EO) has to provide is relatively abundant, especially if the EO is the lead entity of a group. UBL does provide a class cac:EconomicOperator with sufficient data elements to identify the economic operator, its role, its representatives, physical location, officially registered address and other.</p>
-</div>
-<div class="paragraph">
-<p>Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes; or to ensure the transparency of the procurement procedure; other.</p>
-</div>
-<div class="paragraph">
-<p>Therefore in the ESPD-EDM-02.00.00 the information about the economic operator is spread in two different places:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The UBL-2.2 <strong>cac:EconomicOperatorParty</strong> component; and</p>
-</li>
-<li>
-<p>In <strong>criteria data structures</strong>: following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a>. The Annex 2 of the <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:JOL_2016_003_R_0004">Commission Implementing Regulation (EU) No 2016/7</a> refers to these two as Part IV and Part V
-</div>
-<div class="footnote" id="_footnote_2">
-<a href="#_footnoteref_2">2</a>. The Commission is preparing for an <a href="http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en">evaluation and possible revision</a> of some aspects of the SME Definition. A public consultation on the topic will be launched soon.
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-02 23:55:21 CEST
+Last updated 2017-09-03 04:13:59 CEST
 </div>
 </div>
 </body>
