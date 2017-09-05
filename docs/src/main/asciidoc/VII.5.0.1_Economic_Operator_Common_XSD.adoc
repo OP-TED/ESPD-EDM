@@ -1,9 +1,19 @@
 
-==== XSD Schemas
+The information that the economic operator (EO) has to provide is relatively abundant, especially if the EO is the lead entity of a group. UBL does provide a class cac:EconomicOperator with sufficient data elements to identify the economic operator, its role, its representatives, physical location, officially registered address and other.
 
 As the whole ESDP-EDM V02.00.00 is based entirely on the UBL-2.2 XSD (W3C) Schemas, these schemas are to be used for both the *Regulated* and the *Self-contained* versions of the ESPD. 
 
 Remember that the backwards compatibility between ESPD-EDM V02.00.00 and ESDP-EDM V1.0.2 is only ensured for the *Regulated* version.
+
+Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes; or to ensure the transparency of the procurement procedure; other.
+
+Therefore in the ESPD-EDM-02.00.00, and for both the *REGULATED* and the *SELF-CONTAINED* versions, the information about the economic operator is spread in two different places: 
+
+. The UBL-2.2 *cac:EconomicOperatorParty* component; and
+
+. In *criteria data structures*: following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both.
+
+==== XSD Schemas
 
 ===== cac:EconomicOperatorParty 
 
