@@ -1,4 +1,194 @@
-*Representatives of the economic operator*. Notice that the economic operator may specify more than one representative.
+
+=== VII.6 Economic operator representatives 
+
+==== Related information requirements
+
+See formal requirements related to the representatives of the economic operator in the e-Sens site: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-021[_tbr92-021_].
+
+*Notice that the economic operator may specify more than one representative*.
+
+==== Differences between the Regulated and Self-contained versions
+ 
+There are no differences between the *REGULATED* and *SELF-CONTAINED* versions as far as the economic operator service provider is concerned. Thus, the mock-up, data structure and XML example proposed below are applicable to both cases.  
+
+==== Mock-up (REGULATED and SELF-CONTAINED)
 
 .EO representatives, mock-up 
-image::REGULATED_Economic_Operator_Registered_Mock-ups.png[EO registration on a (pre)qualified system, mock-up, alt="EO registration on a (pre)qualified system, mock-up", align="center"]
+image::EO_Representatives.png[EO representatives - mock-up, alt="EO representatives - mock-up, mock-up", align="center"]
+
+==== XSD Schema (REGULATED and SELF-CONTAINED)
+
+In the The ESPD-EDM V02.00.00 all the data regarding the representative of the economic operators is placed in the UBL-2.2 component `cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney`. In principle the elements expected by the ESPD-EDM are very few, only the ones represented in the mock-up above. However this UBL element provides other possibilities that may be used in the future or for other purposes (or as a national extension of the ESPD). 
+
+Thus, additionally to the expected elements the `cac:PowerOfAttorney` component caters also for, at least, two other data could be required at some point (see figure below):
+
+.The place of registration of the representative. The logic first element to look at is the place of birth (this is one of the expected elements). But other elements could be used complementarily: (i) `cac:IdentityDocumentReference` (A reference to a document that can precisely identify this person (e.g., a residence certificate), (ii) `cbc:NationalityID`, and/or `cbc:CitizenshipCountry`.       
+
+.Official documentation demonstrating that the person representing has an authentic mandate (e.g. a reference to a register where this mandate is located). For this the element cac:MandateDocumentReference should be used.   
+
+.EO representatives, XSD Schema
+image::EO_Representatives_XSD.png[EO representatives - XSD Schema, alt="EO representatives - XSD Schema", align="center"]
+
+Notice that the largest part of the data is held in the component `cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney/cac:AgentParty/cac:Person`. The figure below shows (in blue) the expected elements. See the table "Expecte Elements" and the XML example below for the details (e.g. how to use the `cac:Person/cac:Contact` element to contact the representative.
+
+.EO representatives - element Person, XSD Schema
+image::EO_PowerOfAttorneyPartyPerson.png[EO representatives - element Person - XSD Schema, alt="EO representatives - element Person - XSD Schema", align="center"]
+
+===== Expected Elements (REGULATED and SELF-CONTAINED)
+
+.Representatives of the economic operator, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:PowerOfAttorney
+|*Definition*:|Official or legal mandate issued by an authority (e.g. an attorney or a notary) to represent the economic operator as a representative of the economic operator in public procurement procedures.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney
+|*Context of use*:|The economic operator in the ESPD Response document. Use this element to refer to the natural persons that represent the economic operator. See requirement http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]. 
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FirstName*
+|Text
+|1
+|Name of the natural person.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FamilyName*
+|Text
+|1
+|Family Name of the natural person.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:Description*
+|Text
+|1
+|The short description for the role of the economic operator representative.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-010[_tbr92-010_]
+
+*Rule*: The UBL-2.2 `cbc:Description` element does always has cardinality 0..n. Use at least two `cac:Description` elements, the first one to place the role or position of the natural person representative and the second `cac:Description` element to hold the more detailed information on the representation.
+
+|===
+
+
+==== Data Structure (REGULATED or SELF-CONTAINED)
+
+*None*, all the data is placed in the UBL-2.2 component `cac:PowerOfAttorney`
+
+==== XML Example (REGULATED and SELF-CONTAINED)
+
+Notice that this XML example contains two representatives, as in the mock-up. 
+
+.Economic operator's representatives
+[source,xml]
+----
+
+<!-- Economic Operator Data -->
+
+<cac:EconomicOperatorParty>
+	<cac:QualifyingParty>
+		<cbc:EmployeeQuantity>12167</cbc:EmployeeQuantity>
+		<cac:FinancialCapability><cbc:ValueAmount currencyID="EUR">1203000000</cbc:ValueAmount></cac:FinancialCapability>
+		<cac:Party>
+			<!-- This EO company is NOT an SME -->
+			<cbc:IndustryClassificationCode listID="EOIndustryClassificationCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">LARGE</cbc:IndustryClassificationCode>
+			<!-- Notice that the ID and Name of the Pre-Qualification System is in the attributes. They would be captured from e-Certis. -->
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="VAT" schemeAgencyID="ROLECE" schemeAgencyName="Registro Oficial de Licitadores y Empresas Clasificadas del Estado">B82387770</cbc:ID>
+			</cac:PartyIdentification>
+		</cac:Party>
+	</cac:QualifyingParty>
+	<cac:EconomicOperatorRole>
+			<cbc:RoleCode listID="EORoleType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">SCLE</cbc:RoleCode>
+			<cbc:RoleDescription>Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group.</cbc:RoleDescription>
+	</cac:EconomicOperatorRole>
+	<cac:Party>
+		<cbc:WebsiteURI>http://everis.com/global/en</cbc:WebsiteURI>
+		<cac:PartyIdentification>
+			<cbc:ID schemeAgencyID="VAT" schemeAgencyName="EU-COM-GROW" schemeID="VIES" schemeURI="http://ec.europa.eu/taxation_customs/vies/vieshome.do?locale=es" schemeName="VAT number">B82387770</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyName><cbc:Name>Everis, Spain, S.L.U.</cbc:Name></cac:PartyName>
+		<cac:PostalAddress>
+		<cbc:CityName>Madrid</cbc:CityName>
+			<cbc:PostalZone>28050</cbc:PostalZone>
+			<cac:AddressLine>
+				<cbc:Line>Manoteras, 52</cbc:Line>
+		</cac:AddressLine>
+		<cac:Country>
+			<cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listVersionID="1.0">ES</cbc:IdentificationCode>
+			<cbc:Name>Spain</cbc:Name>
+		</cac:Country>
+		</cac:PostalAddress>
+		<cac:Contact>
+			<cbc:Name>Xavi Ker; Ruth Gomis; Miguel Verde</cbc:Name>
+			<cbc:Telephone>+34 91 749 00 00</cbc:Telephone>
+			<cbc:ElectronicMail>Spain.Proposals.Office@everis.com</cbc:ElectronicMail>
+		</cac:Contact>
+		
+		<!-- REPRESENTATIVES of the Economic Operator -->
+		<!-- Representative 1 -->
+		<cac:PowerOfAttorney>
+		<cbc:Description>Total powers to make decisions on behalf of the company.</cbc:Description>
+		<cbc:Description>Main legal representative with power to make decisions about any aspect related to public procurement contracts with public administrations.</cbc:Description>
+		<cac:AgentParty>
+			<cac:Person>
+				<cbc:FirstName>Mary A.</cbc:FirstName>
+				<cbc:FamilyName>Smith</cbc:FamilyName>
+				<cbc:BirthDate>1980-07-17</cbc:BirthDate>
+				<cbc:BirthplaceName>Brussels</cbc:BirthplaceName>
+				<cac:Contact>
+					<cbc:Telephone>+322124522</cbc:Telephone>
+					<cbc:ElectronicMail>masmith@everis.com</cbc:ElectronicMail>
+				</cac:Contact>
+				<cac:ResidenceAddress>
+					<cbc:PostalZone>1000</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">>BE</cbc:IdentificationCode>
+						<cbc:Name languageID="en">Belgium</cbc:Name>
+					</cac:Country>
+				</cac:ResidenceAddress>					
+			</cac:Person>
+		</cac:AgentParty>
+		</cac:PowerOfAttorney>
+		<!-- Representative 2 -->
+		<cac:PowerOfAttorney>
+		<cbc:Description>Public Sector Responsible Manager</cbc:Description>
+		<cbc:Description>Can sign contracts with the buyer on behalf of the Consortium.</cbc:Description>
+		<cac:AgentParty>
+			<cac:Person>
+				<cbc:FirstName>Sergi</cbc:FirstName>
+				<cbc:FamilyName>Mallol</cbc:FamilyName>
+				<cbc:BirthDate>1960-06-21</cbc:BirthDate>
+				<cbc:BirthplaceName>Barcelona</cbc:BirthplaceName>
+				<cac:Contact>
+					<cbc:Telephone>+34934947700</cbc:Telephone>
+					<cbc:ElectronicMail>sergi.mallol@everis.com</cbc:ElectronicMail>
+				</cac:Contact>
+				<cac:ResidenceAddress>
+					<cbc:PostalZone>08020</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">>ES</cbc:IdentificationCode>
+						<cbc:Name languageID="en">Spain</cbc:Name>
+					</cac:Country>
+				</cac:ResidenceAddress>					
+			</cac:Person>
+		</cac:AgentParty>
+		</cac:PowerOfAttorney>
+	</cac:Party>
+</cac:EconomicOperatorParty>
+
+<!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity -->
+
+----
+
+
+
+

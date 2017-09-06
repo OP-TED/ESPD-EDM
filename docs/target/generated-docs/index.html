@@ -630,6 +630,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#vii-5-economic-operator">VII.5 Economic Operator</a></li>
 <li><a href="#vii-5-1-regulated-economic-operator-party">VII.5.1 Regulated economic operator party</a></li>
 <li><a href="#vii-5-2-self-contained-economic-operator-party">VII.5.2 Self-contained economic operator party</a></li>
+<li><a href="#vii-6-economic-operator-representatives">VII.6 Economic operator representatives</a></li>
 </ul>
 </li>
 </ul>
@@ -15122,7 +15123,7 @@ This section about the ESPD Response does not cover those information elements t
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Role of the economic operator. The values are defined in the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EORoleType</a>. The selection of the value <code>SCL</code> determines whether the data about the relied-on and not-relied-on entities is instantiated in this XML. In this case, as the value is <code>SCL</code> these data is present in the XML document.</td>
+<td>Role of the economic operator. The values are defined in the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EORoleType</a>. The selection of the value <code>SCLE</code> determines whether the data about the relied-on and not-relied-on entities is instantiated in this XML. In this case, as the value is <code>SCLE</code> these data is present in the XML document.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -15276,6 +15277,246 @@ This section about the ESPD Response does not cover those information elements t
 <td>Activity of the subcontractor. Free-text field.</td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vii-6-economic-operator-representatives"><a class="anchor" href="#vii-6-economic-operator-representatives"></a>VII.6 Economic operator representatives</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-25"><a class="anchor" href="#related-information-requirements-25"></a>Related information requirements</h4>
+<div class="paragraph">
+<p>See formal requirements related to the representatives of the economic operator in the e-Sens site:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-021"><em>tbr92-021</em></a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Notice that the economic operator may specify more than one representative</strong>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-the-regulated-and-self-contained-versions"><a class="anchor" href="#differences-between-the-regulated-and-self-contained-versions"></a>Differences between the Regulated and Self-contained versions</h4>
+<div class="paragraph">
+<p>There are no differences between the <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> versions as far as the economic operator service provider is concerned. Thus, the mock-up, data structure and XML example proposed below are applicable to both cases.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mock-up-regulated-and-self-contained"><a class="anchor" href="#mock-up-regulated-and-self-contained"></a>Mock-up (REGULATED and SELF-CONTAINED)</h4>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/EO_Representatives.png" alt="EO representatives - mock-up, mock-up">
+</div>
+<div class="title">Figure 216. EO representatives, mock-up</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xsd-schema-regulated-and-self-contained"><a class="anchor" href="#xsd-schema-regulated-and-self-contained"></a>XSD Schema (REGULATED and SELF-CONTAINED)</h4>
+<div class="paragraph">
+<p>In the The ESPD-EDM V02.00.00 all the data regarding the representative of the economic operators is placed in the UBL-2.2 component <code>cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney</code>. In principle the elements expected by the ESPD-EDM are very few, only the ones represented in the mock-up above. However this UBL element provides other possibilities that may be used in the future or for other purposes (or as a national extension of the ESPD).</p>
+</div>
+<div class="paragraph">
+<p>Thus, additionally to the expected elements the <code>cac:PowerOfAttorney</code> component caters also for, at least, two other data could be required at some point (see figure below):</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/EO_Representatives_XSD.png" alt="EO representatives - XSD Schema">
+</div>
+<div class="title">Figure 217. EO representatives, XSD Schema</div>
+</div>
+<div class="paragraph">
+<p>Notice that the largest part of the data is held in the component <code>cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney/cac:AgentParty/cac:Person</code>. The figure below shows (in blue) the expected elements. See the table "Expecte Elements" and the XML example below for the details (e.g. how to use the <code>cac:Person/cac:Contact</code> element to contact the representative.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/EO_PowerOfAttorneyPartyPerson.png" alt="EO representatives - element Person - XSD Schema">
+</div>
+<div class="title">Figure 218. EO representatives - element Person, XSD Schema</div>
+</div>
+<div class="sect4">
+<h5 id="expected-elements-regulated-and-self-contained"><a class="anchor" href="#expected-elements-regulated-and-self-contained"></a>Expected Elements (REGULATED and SELF-CONTAINED)</h5>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 36. Representatives of the economic operator, expected elements</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:PowerOfAttorney</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Official or legal mandate issued by an authority (e.g. an attorney or a notary) to represent the economic operator as a representative of the economic operator in public procurement procedures.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Context of use</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The economic operator in the ESPD Response document. Use this element to refer to the natural persons that represent the economic operator. See requirement <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018"><em>tbr92-018</em></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Components</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Type</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Card</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Requirements</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FirstName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the natural person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FamilyName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Family Name of the natural person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The short description for the role of the economic operator representative.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-010"><em>tbr92-010</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: The UBL-2.2 <code>cbc:Description</code> element does always has cardinality 0..n. Use at least two <code>cac:Description</code> elements, the first one to place the role or position of the natural person representative and the second <code>cac:Description</code> element to hold the more detailed information on the representation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-structure-regulated-or-self-contained"><a class="anchor" href="#data-structure-regulated-or-self-contained"></a>Data Structure (REGULATED or SELF-CONTAINED)</h4>
+<div class="paragraph">
+<p><strong>None</strong>, all the data is placed in the UBL-2.2 component <code>cac:PowerOfAttorney</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xml-example-regulated-and-self-contained"><a class="anchor" href="#xml-example-regulated-and-self-contained"></a>XML Example (REGULATED and SELF-CONTAINED)</h4>
+<div class="paragraph">
+<p>Notice that this XML example contains two representatives, as in the mock-up.</p>
+</div>
+<div class="listingblock">
+<div class="title">Economic operator&#8217;s representatives</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="comment">&lt;!-- Economic Operator Data --&gt;</span>
+
+<span class="tag">&lt;cac:EconomicOperatorParty&gt;</span>
+        <span class="tag">&lt;cac:QualifyingParty&gt;</span>
+                <span class="tag">&lt;cbc:EmployeeQuantity&gt;</span>12167<span class="tag">&lt;/cbc:EmployeeQuantity&gt;</span>
+                <span class="tag">&lt;cac:FinancialCapability&gt;</span><span class="tag">&lt;cbc:ValueAmount</span> <span class="attribute-name">currencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EUR</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1203000000<span class="tag">&lt;/cbc:ValueAmount&gt;</span><span class="tag">&lt;/cac:FinancialCapability&gt;</span>
+                <span class="tag">&lt;cac:Party&gt;</span>
+                        <span class="comment">&lt;!-- This EO company is NOT an SME --&gt;</span>
+                        <span class="tag">&lt;cbc:IndustryClassificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EOIndustryClassificationCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>LARGE<span class="tag">&lt;/cbc:IndustryClassificationCode&gt;</span>
+                        <span class="comment">&lt;!-- Notice that the ID and Name of the Pre-Qualification System is in the attributes. They would be captured from e-Certis. --&gt;</span>
+                        <span class="tag">&lt;cac:PartyIdentification&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VAT</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ROLECE</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Registro Oficial de Licitadores y Empresas Clasificadas del Estado</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>B82387770<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;/cac:PartyIdentification&gt;</span>
+                <span class="tag">&lt;/cac:Party&gt;</span>
+        <span class="tag">&lt;/cac:QualifyingParty&gt;</span>
+        <span class="tag">&lt;cac:EconomicOperatorRole&gt;</span>
+                        <span class="tag">&lt;cbc:RoleCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EORoleType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>SCLE<span class="tag">&lt;/cbc:RoleCode&gt;</span>
+                        <span class="tag">&lt;cbc:RoleDescription&gt;</span>Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group.<span class="tag">&lt;/cbc:RoleDescription&gt;</span>
+        <span class="tag">&lt;/cac:EconomicOperatorRole&gt;</span>
+        <span class="tag">&lt;cac:Party&gt;</span>
+                <span class="tag">&lt;cbc:WebsiteURI&gt;</span>http://everis.com/global/en<span class="tag">&lt;/cbc:WebsiteURI&gt;</span>
+                <span class="tag">&lt;cac:PartyIdentification&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VAT</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VIES</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeURI</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://ec.europa.eu/taxation_customs/vies/vieshome.do?locale=es</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VAT number</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>B82387770<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;/cac:PartyIdentification&gt;</span>
+                <span class="tag">&lt;cac:PartyName&gt;</span><span class="tag">&lt;cbc:Name&gt;</span>Everis, Spain, S.L.U.<span class="tag">&lt;/cbc:Name&gt;</span><span class="tag">&lt;/cac:PartyName&gt;</span>
+                <span class="tag">&lt;cac:PostalAddress&gt;</span>
+                <span class="tag">&lt;cbc:CityName&gt;</span>Madrid<span class="tag">&lt;/cbc:CityName&gt;</span>
+                        <span class="tag">&lt;cbc:PostalZone&gt;</span>28050<span class="tag">&lt;/cbc:PostalZone&gt;</span>
+                        <span class="tag">&lt;cac:AddressLine&gt;</span>
+                                <span class="tag">&lt;cbc:Line&gt;</span>Manoteras, 52<span class="tag">&lt;/cbc:Line&gt;</span>
+                <span class="tag">&lt;/cac:AddressLine&gt;</span>
+                <span class="tag">&lt;cac:Country&gt;</span>
+                        <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ES<span class="tag">&lt;/cbc:IdentificationCode&gt;</span>
+                        <span class="tag">&lt;cbc:Name&gt;</span>Spain<span class="tag">&lt;/cbc:Name&gt;</span>
+                <span class="tag">&lt;/cac:Country&gt;</span>
+                <span class="tag">&lt;/cac:PostalAddress&gt;</span>
+                <span class="tag">&lt;cac:Contact&gt;</span>
+                        <span class="tag">&lt;cbc:Name&gt;</span>Xavi Ker; Ruth Gomis; Miguel Verde<span class="tag">&lt;/cbc:Name&gt;</span>
+                        <span class="tag">&lt;cbc:Telephone&gt;</span>+34 91 749 00 00<span class="tag">&lt;/cbc:Telephone&gt;</span>
+                        <span class="tag">&lt;cbc:ElectronicMail&gt;</span>Spain.Proposals.Office@everis.com<span class="tag">&lt;/cbc:ElectronicMail&gt;</span>
+                <span class="tag">&lt;/cac:Contact&gt;</span>
+
+                <span class="comment">&lt;!-- REPRESENTATIVES of the Economic Operator --&gt;</span>
+                <span class="comment">&lt;!-- Representative 1 --&gt;</span>
+                <span class="tag">&lt;cac:PowerOfAttorney&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Total powers to make decisions on behalf of the company.<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Main legal representative with power to make decisions about any aspect related to public procurement contracts with public administrations.<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cac:AgentParty&gt;</span>
+                        <span class="tag">&lt;cac:Person&gt;</span>
+                                <span class="tag">&lt;cbc:FirstName&gt;</span>Mary A.<span class="tag">&lt;/cbc:FirstName&gt;</span>
+                                <span class="tag">&lt;cbc:FamilyName&gt;</span>Smith<span class="tag">&lt;/cbc:FamilyName&gt;</span>
+                                <span class="tag">&lt;cbc:BirthDate&gt;</span>1980-07-17<span class="tag">&lt;/cbc:BirthDate&gt;</span>
+                                <span class="tag">&lt;cbc:BirthplaceName&gt;</span>Brussels<span class="tag">&lt;/cbc:BirthplaceName&gt;</span>
+                                <span class="tag">&lt;cac:Contact&gt;</span>
+                                        <span class="tag">&lt;cbc:Telephone&gt;</span>+322124522<span class="tag">&lt;/cbc:Telephone&gt;</span>
+                                        <span class="tag">&lt;cbc:ElectronicMail&gt;</span>masmith@everis.com<span class="tag">&lt;/cbc:ElectronicMail&gt;</span>
+                                <span class="tag">&lt;/cac:Contact&gt;</span>
+                                <span class="tag">&lt;cac:ResidenceAddress&gt;</span>
+                                        <span class="tag">&lt;cbc:PostalZone&gt;</span>1000<span class="tag">&lt;/cbc:PostalZone&gt;</span>
+                                        <span class="tag">&lt;cac:Country&gt;</span>
+                                                <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="error">&gt;</span>BE<span class="tag">&lt;/cbc:IdentificationCode&gt;</span>
+                                                <span class="tag">&lt;cbc:Name</span> <span class="attribute-name">languageID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Belgium<span class="tag">&lt;/cbc:Name&gt;</span>
+                                        <span class="tag">&lt;/cac:Country&gt;</span>
+                                <span class="tag">&lt;/cac:ResidenceAddress&gt;</span>
+                        <span class="tag">&lt;/cac:Person&gt;</span>
+                <span class="tag">&lt;/cac:AgentParty&gt;</span>
+                <span class="tag">&lt;/cac:PowerOfAttorney&gt;</span>
+                <span class="comment">&lt;!-- Representative 2 --&gt;</span>
+                <span class="tag">&lt;cac:PowerOfAttorney&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Public Sector Responsible Manager<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Can sign contracts with the buyer on behalf of the Consortium.<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cac:AgentParty&gt;</span>
+                        <span class="tag">&lt;cac:Person&gt;</span>
+                                <span class="tag">&lt;cbc:FirstName&gt;</span>Sergi<span class="tag">&lt;/cbc:FirstName&gt;</span>
+                                <span class="tag">&lt;cbc:FamilyName&gt;</span>Mallol<span class="tag">&lt;/cbc:FamilyName&gt;</span>
+                                <span class="tag">&lt;cbc:BirthDate&gt;</span>1960-06-21<span class="tag">&lt;/cbc:BirthDate&gt;</span>
+                                <span class="tag">&lt;cbc:BirthplaceName&gt;</span>Barcelona<span class="tag">&lt;/cbc:BirthplaceName&gt;</span>
+                                <span class="tag">&lt;cac:Contact&gt;</span>
+                                        <span class="tag">&lt;cbc:Telephone&gt;</span>+34934947700<span class="tag">&lt;/cbc:Telephone&gt;</span>
+                                        <span class="tag">&lt;cbc:ElectronicMail&gt;</span>sergi.mallol@everis.com<span class="tag">&lt;/cbc:ElectronicMail&gt;</span>
+                                <span class="tag">&lt;/cac:Contact&gt;</span>
+                                <span class="tag">&lt;cac:ResidenceAddress&gt;</span>
+                                        <span class="tag">&lt;cbc:PostalZone&gt;</span>08020<span class="tag">&lt;/cbc:PostalZone&gt;</span>
+                                        <span class="tag">&lt;cac:Country&gt;</span>
+                                                <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="error">&gt;</span>ES<span class="tag">&lt;/cbc:IdentificationCode&gt;</span>
+                                                <span class="tag">&lt;cbc:Name</span> <span class="attribute-name">languageID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Spain<span class="tag">&lt;/cbc:Name&gt;</span>
+                                        <span class="tag">&lt;/cac:Country&gt;</span>
+                                <span class="tag">&lt;/cac:ResidenceAddress&gt;</span>
+                        <span class="tag">&lt;/cac:Person&gt;</span>
+                <span class="tag">&lt;/cac:AgentParty&gt;</span>
+                <span class="tag">&lt;/cac:PowerOfAttorney&gt;</span>
+        <span class="tag">&lt;/cac:Party&gt;</span>
+<span class="tag">&lt;/cac:EconomicOperatorParty&gt;</span>
+
+<span class="comment">&lt;!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity --&gt;</span></code></pre>
+</div>
 </div>
 </div>
 </div>
