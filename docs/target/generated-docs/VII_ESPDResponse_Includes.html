@@ -3329,11 +3329,14 @@ This section about the ESPD Response does not cover those information elements t
 <div class="sect3">
 <h4 id="differences-between-the-regulated-and-self-contained-versions"><a class="anchor" href="#differences-between-the-regulated-and-self-contained-versions"></a>Differences between the Regulated and Self-contained versions</h4>
 <div class="paragraph">
-<p>There are no differences between the <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> versions as far as the economic operator service provider is concerned. Thus, the mock-up, data structure and XML example proposed below are applicable to both cases.</p>
+<p>There are no differences between the <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> versions as far as the economic operator representatives are concerned. Thus, the mock-up, data structure and XML example proposed below are applicable to both cases.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="mock-up-regulated-and-self-contained"><a class="anchor" href="#mock-up-regulated-and-self-contained"></a>Mock-up (REGULATED and SELF-CONTAINED)</h4>
+<div class="paragraph">
+<p><strong>In this example of mock-up the economic operator is specifying two representatives:</strong>.</p>
+</div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/EO_Representatives.png" alt="EO representatives - mock-up, mock-up">
@@ -3347,7 +3350,17 @@ This section about the ESPD Response does not cover those information elements t
 <p>In the The ESPD-EDM V02.00.00 all the data regarding the representative of the economic operators is placed in the UBL-2.2 component <code>cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney</code>. In principle the elements expected by the ESPD-EDM are very few, only the ones represented in the mock-up above. However this UBL element provides other possibilities that may be used in the future or for other purposes (or as a national extension of the ESPD).</p>
 </div>
 <div class="paragraph">
-<p>Thus, additionally to the expected elements the <code>cac:PowerOfAttorney</code> component caters also for, at least, two other data could be required at some point (see figure below):</p>
+<p>Thus, additionally to the expected elements, the <code>cac:PowerOfAttorney</code> component caters also for, at least, two other data could be required at some point (e.g. <code>cac:MandateDocumentReference</code>, see figure below):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The place of registration of the representative. The logic first element to look at is the place of birth (this is one of the expected elements). But other elements could be used complementarily: (i) <code>cac:Person/cac:IdentityDocumentReference</code> (A reference to a document that can precisely identify this person (e.g., a residence certificate), (ii) <code>cac:Person/cbc:NationalityID</code>, and/or <code>cac:Person/cbc:CitizenshipCountry</code>.</p>
+</li>
+<li>
+<p>Official documentation demonstrating that the person representing has an authentic mandate (e.g. a reference to a register where this mandate is located). For this the element <code>cac:/PowerOfAttorney/cac:MandateDocumentReference</code> should be used.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -3363,6 +3376,15 @@ This section about the ESPD Response does not cover those information elements t
 <img src="./images/EO_PowerOfAttorneyPartyPerson.png" alt="EO representatives - element Person - XSD Schema">
 </div>
 <div class="title">Figure 45. EO representatives - element Person, XSD Schema</div>
+</div>
+<div class="paragraph">
+<p>Contact elements, such as telephone and e-mail are in the <code>cac:Contact</code> associated to the the <code>cac:Person</code> information element:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/PartyPersonContact.png" alt="EO representatives - Contac - XSD Schema">
+</div>
+<div class="title">Figure 46. EO representatives - element Contact, inside Person, XSD Schema</div>
 </div>
 <div class="sect4">
 <h5 id="expected-elements-regulated-and-self-contained"><a class="anchor" href="#expected-elements-regulated-and-self-contained"></a>Expected Elements (REGULATED and SELF-CONTAINED)</h5>
@@ -3414,28 +3436,113 @@ This section about the ESPD Response does not cover those information elements t
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FirstName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:FirstName</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the natural person.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-009"><em>tbr92-009</em></a>
-</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+<strong>Rule</strong>: None.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FamilyName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:FamilyName</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Family Name of the natural person.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-009"><em>tbr92-009</em></a>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:BirthDate</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date of birth of the natural person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:BirthplaceName</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Place of birth of the natural person.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/cac:AddressLine</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The main address line in an address. Usually the street name and number or post office box.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: Use it to specify the street name and number of the building of the representative natural person in one line. <strong>Beware that specifying the address of a natural person might enter in conflict with the current Data Protection rules.</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/cbc:PostalZone</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier for an addressable group of properties according to the relevant postal service, such as a ZIP code or Post Code.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/cbc:CityName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The common name of a city where the address is located.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/
+cac:Country/cbc:IdentificationCode</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The short description for the role of the economic operator representative.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-010"><em>tbr92-010</em></a>
-</p><p class="tableblock"><strong>Rule</strong>: The UBL-2.2 <code>cbc:Description</code> element does always has cardinality 0..n. Use at least two <code>cac:Description</code> elements, the first one to place the role or position of the natural person representative and the second <code>cac:Description</code> element to hold the more detailed information on the representation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A code that identifies the country.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CountryCodeIdentifier</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/
+cac:Country/cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the country.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: Try to use the name provided in the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CountryCodeIdentifier</a> and in the language of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:Contact/cbc:ElectronicMail</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An e-mail address for the contact point.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A phone number for the contact point.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009"><em>tbr92-009</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:PowerOfAttorney/cbc:Description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The short description for the role of the economic operstors representative and other detailed information on the representation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-010"><em>tbr92-010</em></a>
+</p><p class="tableblock"><strong>Rule</strong>: Use line 1 of the description to describe the role of the representative. Use line 2 to provide detailed information on the representation (its forms, extent, purpose, etc.)</p></td>
 </tr>
 </tbody>
 </table>
@@ -3500,23 +3607,25 @@ This section about the ESPD Response does not cover those information elements t
                 <span class="comment">&lt;!-- REPRESENTATIVES of the Economic Operator --&gt;</span>
                 <span class="comment">&lt;!-- Representative 1 --&gt;</span>
                 <span class="tag">&lt;cac:PowerOfAttorney&gt;</span>
-                <span class="tag">&lt;cbc:Description&gt;</span>Total powers to make decisions on behalf of the company.<span class="tag">&lt;/cbc:Description&gt;</span>
-                <span class="tag">&lt;cbc:Description&gt;</span>Main legal representative with power to make decisions about any aspect related to public procurement contracts with public administrations.<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Total powers to make decisions on behalf of the company.<span class="tag">&lt;/cbc:Description&gt;</span><i class="conum" data-value="12"></i><b>(12)</b>
+                <span class="tag">&lt;cbc:Description&gt;</span>Main legal representative with power to make decisions about any aspect related to public procurement contracts with public administrations.<span class="tag">&lt;/cbc:Description&gt;</span><i class="conum" data-value="7"></i><b>(7)</b>
                 <span class="tag">&lt;cac:AgentParty&gt;</span>
                         <span class="tag">&lt;cac:Person&gt;</span>
-                                <span class="tag">&lt;cbc:FirstName&gt;</span>Mary A.<span class="tag">&lt;/cbc:FirstName&gt;</span>
-                                <span class="tag">&lt;cbc:FamilyName&gt;</span>Smith<span class="tag">&lt;/cbc:FamilyName&gt;</span>
-                                <span class="tag">&lt;cbc:BirthDate&gt;</span>1980-07-17<span class="tag">&lt;/cbc:BirthDate&gt;</span>
-                                <span class="tag">&lt;cbc:BirthplaceName&gt;</span>Brussels<span class="tag">&lt;/cbc:BirthplaceName&gt;</span>
+                                <span class="tag">&lt;cbc:FirstName&gt;</span>Mary A.<span class="tag">&lt;/cbc:FirstName&gt;</span><i class="conum" data-value="1"></i><b>(1)</b>
+                                <span class="tag">&lt;cbc:FamilyName&gt;</span>Smith<span class="tag">&lt;/cbc:FamilyName&gt;</span><i class="conum" data-value="8"></i><b>(8)</b>
+                                <span class="tag">&lt;cbc:BirthDate&gt;</span>1980-07-17<span class="tag">&lt;/cbc:BirthDate&gt;</span><i class="conum" data-value="2"></i><b>(2)</b>
+                                <span class="comment">&lt;!-- No element for &quot;street and number&quot; present. The user decided not to provide it --&gt;</span><i class="conum" data-value="3"></i><b>(3)</b>
+                                <span class="tag">&lt;cbc:BirthplaceName&gt;</span>Brussels<span class="tag">&lt;/cbc:BirthplaceName&gt;</span><i class="conum" data-value="9"></i><b>(9)</b>
                                 <span class="tag">&lt;cac:Contact&gt;</span>
-                                        <span class="tag">&lt;cbc:Telephone&gt;</span>+322124522<span class="tag">&lt;/cbc:Telephone&gt;</span>
-                                        <span class="tag">&lt;cbc:ElectronicMail&gt;</span>masmith@everis.com<span class="tag">&lt;/cbc:ElectronicMail&gt;</span>
+                                        <span class="tag">&lt;cbc:Telephone&gt;</span>+322124522<span class="tag">&lt;/cbc:Telephone&gt;</span><i class="conum" data-value="11"></i><b>(11)</b>
+                                        <span class="tag">&lt;cbc:ElectronicMail&gt;</span>masmith@everis.com<span class="tag">&lt;/cbc:ElectronicMail&gt;</span><i class="conum" data-value="10"></i><b>(10)</b>
                                 <span class="tag">&lt;/cac:Contact&gt;</span>
                                 <span class="tag">&lt;cac:ResidenceAddress&gt;</span>
-                                        <span class="tag">&lt;cbc:PostalZone&gt;</span>1000<span class="tag">&lt;/cbc:PostalZone&gt;</span>
+                                        <span class="tag">&lt;cbc:CityName&gt;</span>Brussels<span class="tag">&lt;/cbc:CityName&gt;</span><i class="conum" data-value="5"></i><b>(5)</b>
+                                        <span class="tag">&lt;cbc:PostalZone&gt;</span>1000<span class="tag">&lt;/cbc:PostalZone&gt;</span><i class="conum" data-value="4"></i><b>(4)</b>
                                         <span class="tag">&lt;cac:Country&gt;</span>
-                                                <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="error">&gt;</span>BE<span class="tag">&lt;/cbc:IdentificationCode&gt;</span>
-                                                <span class="tag">&lt;cbc:Name</span> <span class="attribute-name">languageID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Belgium<span class="tag">&lt;/cbc:Name&gt;</span>
+                                                <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="error">&gt;</span>BE<span class="tag">&lt;/cbc:IdentificationCode&gt;</span><i class="conum" data-value="6"></i><b>(6)</b>
+                                                <span class="tag">&lt;cbc:Name</span> <span class="attribute-name">languageID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Belgium<span class="tag">&lt;/cbc:Name&gt;</span><i class="conum" data-value="6"></i><b>(6)</b>
                                         <span class="tag">&lt;/cac:Country&gt;</span>
                                 <span class="tag">&lt;/cac:ResidenceAddress&gt;</span>
                         <span class="tag">&lt;/cac:Person&gt;</span>
@@ -3537,6 +3646,7 @@ This section about the ESPD Response does not cover those information elements t
                                         <span class="tag">&lt;cbc:ElectronicMail&gt;</span>sergi.mallol@everis.com<span class="tag">&lt;/cbc:ElectronicMail&gt;</span>
                                 <span class="tag">&lt;/cac:Contact&gt;</span>
                                 <span class="tag">&lt;cac:ResidenceAddress&gt;</span>
+                                        <span class="tag">&lt;cbc:CityName&gt;</span>Barcelona<span class="tag">&lt;/cbc:CityName&gt;</span>
                                         <span class="tag">&lt;cbc:PostalZone&gt;</span>08020<span class="tag">&lt;/cbc:PostalZone&gt;</span>
                                         <span class="tag">&lt;cac:Country&gt;</span>
                                                 <span class="tag">&lt;cbc:IdentificationCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CountryCodeIdentifier</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="error">&gt;</span>ES<span class="tag">&lt;/cbc:IdentificationCode&gt;</span>
@@ -3551,6 +3661,58 @@ This section about the ESPD Response does not cover those information elements t
 
 <span class="comment">&lt;!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity --&gt;</span></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>First Name of the natural person that represents the economic operator.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Data of birth of the natural person that represents the economic operator.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Notice that no street name and building number or postbox was provided. Hence the element <code>cac:AddressLine</code> has not been instantiated in this XML document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Postal or zip code in the city where the natural person lives.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Name of the city where the natural person lives.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Code representing the country where the natural person lives.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Second line of the <code>cac:Description</code> element reserved to hold the additional information providing detailed information about the representation (such as the extent of the representation, its forms, purposes, etc.).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>The family name of the natural person that represents the economic operator.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Name of the place where the natural person representing the EO was born. This can be used to further identify the natural person.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>Electronic mail of the natural person.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>Telephone number of the natural person.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>Firts line of the <code>cac:Description</code> element reserved to hold the 'representation' role the natural person plays for this economic operator.</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -3577,7 +3739,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-06 07:06:36 CEST
+Last updated 2017-09-07 07:51:47 CEST
 </div>
 </div>
 </body>
