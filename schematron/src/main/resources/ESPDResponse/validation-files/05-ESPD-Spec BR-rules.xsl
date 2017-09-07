@@ -166,7 +166,7 @@
 
 	<!--RULE -->
 
-   <axsl:template match="/espd:ESPDResponse/espd-cac:EconomicOperatorParty/cac:Party/cac:PartyIdentification" priority="1004" mode="M12">
+   <axsl:template match="/espd:ESPDResponse/espd-cac:EconomicOperatorParty/cac:Party/cac:PartyIdentification" priority="1003" mode="M12">
 
 		<!--ASSERT -->
 
@@ -186,7 +186,7 @@
 
 	<!--RULE -->
 
-   <axsl:template match="/espd:ESPDResponse/espd-cac:EconomicOperatorParty/cac:Party/cac:PartyName" priority="1003" mode="M12">
+   <axsl:template match="/espd:ESPDResponse/espd-cac:EconomicOperatorParty/cac:Party/cac:PartyName" priority="1002" mode="M12">
 
 		<!--ASSERT -->
 
@@ -206,7 +206,7 @@
 
 	<!--RULE -->
 
-   <axsl:template match="/espd:ESPDResponse/espd-cac:EconomicOperatorParty/cac:Party/cac:PostalAddress/cac:Country" priority="1002" mode="M12">
+   <axsl:template match="/espd:ESPDResponse/espd-cac:EconomicOperatorParty/cac:Party/cac:PostalAddress/cac:Country" priority="1001" mode="M12">
 
 		<!--ASSERT -->
 
@@ -226,7 +226,7 @@
 
 	<!--RULE -->
 
-   <axsl:template match="ccv:RequirementGroup/ccv:Requirement" priority="1001" mode="M12">
+   <axsl:template match="ccv:RequirementGroup/ccv:Requirement" priority="1000" mode="M12">
 
 		<!--ASSERT -->
 
@@ -245,9 +245,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='AMOUNT' and not(string(ccv:Response/cbc:Amount))))"/>
+         <axsl:when test="(not(@responseDataType='AMOUNT' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Amount))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='AMOUNT' and not(string(ccv:Response/cbc:Amount))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='AMOUNT' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Amount))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -259,9 +259,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='CODE' and not(string(ccv:Response/ccv-cbc:Code))))"/>
+         <axsl:when test="(not(@responseDataType='CODE' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/ccv-cbc:Code)))) "/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='CODE' and not(string(ccv:Response/ccv-cbc:Code))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='CODE' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/ccv-cbc:Code))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -273,9 +273,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='CODE_COUNTRY' and not(string(ccv:Response/cbc:Description))))"/>
+         <axsl:when test="(not(@responseDataType='CODE_COUNTRY' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/ccv-cbc:Code))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='CODE_COUNTRY' and not(string(ccv:Response/cbc:Description))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='CODE_COUNTRY' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/ccv-cbc:Code))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -287,9 +287,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='DATE' and not(string(ccv:Response/cbc:Date))))"/>
+         <axsl:when test="(not(@responseDataType='DATE' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Date))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='DATE' and not(string(ccv:Response/cbc:Date))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='DATE' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Date))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -301,9 +301,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='DESCRIPTION' and not(string(ccv:Response/cbc:Description))))"/>
+         <axsl:when test="(not(@responseDataType='DESCRIPTION' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Description))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='DESCRIPTION' and not(string(ccv:Response/cbc:Description))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='DESCRIPTION' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Description))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -315,9 +315,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='EVIDENCE_URL' and not(string(ccv:Response/cbc:Description))))"/>
+         <axsl:when test="(not(@responseDataType='EVIDENCE_URL' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cev:Evidence))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='EVIDENCE_URL' and not(string(ccv:Response/cbc:Description))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='EVIDENCE_URL' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cev:Evidence))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -329,9 +329,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='INDICATOR' and not(string(ccv:Response/ccv-cbc:Indicator))))"/>
+         <axsl:when test="(not(@responseDataType='INDICATOR' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/ccv-cbc:Indicator))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='INDICATOR' and not(string(ccv:Response/ccv-cbc:Indicator))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='INDICATOR' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/ccv-cbc:Indicator))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -343,9 +343,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='PERCENTAGE' and not(string(ccv:Response/cbc:Percent))))"/>
+         <axsl:when test="(not(@responseDataType='PERCENTAGE' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Percent))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='PERCENTAGE' and not(string(ccv:Response/cbc:Percent))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='PERCENTAGE' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Percent))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -357,9 +357,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='PERIOD' and not(string(ccv:Response/cac:Period))))"/>
+         <axsl:when test="(not(@responseDataType='PERIOD' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cac:Period))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='PERIOD' and not(string(ccv:Response/cac:Period))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='PERIOD' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cac:Period))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -371,9 +371,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='QUANTITY_INTEGER' and not(string(ccv:Response/cbc:Quantity))))"/>
+         <axsl:when test="(not(@responseDataType='QUANTITY_INTEGER' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Quantity))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='QUANTITY_INTEGER' and not(string(ccv:Response/cbc:Quantity))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='QUANTITY_INTEGER' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Quantity))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -385,9 +385,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='QUANTITY_YEAR' and not(string(ccv:Response/cbc:Quantity))))"/>
+         <axsl:when test="(not(@responseDataType='QUANTITY_YEAR' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Quantity))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='QUANTITY_YEAR' and not(string(ccv:Response/cbc:Quantity))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='QUANTITY_YEAR' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Quantity))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -399,47 +399,13 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(not(@responseDataType='QUANTITY' and not(string(ccv:Response/cbc:Quantity))))"/>
+         <axsl:when test="(not(@responseDataType='QUANTITY' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Quantity))))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='QUANTITY' and not(string(ccv:Response/cbc:Quantity))))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(not(@responseDataType='QUANTITY' and not(count(ccv:Response/child::*) = 0) and not(string(ccv:Response/cbc:Quantity))))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
                <svrl:text>The element used inside the Response to answer a Requirement MUST always match the type of data indicated by the attribute ResponseDataType of the Requirement. </svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-      <axsl:apply-templates select="*|comment()|processing-instruction()" mode="M12"/>
-   </axsl:template>
-
-	<!--RULE -->
-
-   <axsl:template match="ccv:RequirementGroup" priority="1000" mode="M12">
-
-		<!--ASSERT -->
-
-      <axsl:choose>
-         <axsl:when test="not(ccv:Requirement/ccv:Response/ccv-cbc:Indicator='true' and ccv:RequirementGroup/@pi='GROUP_FULFILLED.ON_TRUE') or (count(ccv:RequirementGroup/ccv:Requirement/ccv:Response/child::*) = count(ccv:RequirementGroup/ccv:Requirement))"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="not(ccv:Requirement/ccv:Response/ccv-cbc:Indicator='true' and ccv:RequirementGroup/@pi='GROUP_FULFILLED.ON_TRUE') or (count(ccv:RequirementGroup/ccv:Requirement/ccv:Response/child::*) = count(ccv:RequirementGroup/ccv:Requirement))">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>All Criteria behave in this same way: if the answer to the first requirement is affirmative (a “yes” answer), specific data related to that criterion MUST be provided.</svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-
-		<!--ASSERT -->
-
-      <axsl:choose>
-         <axsl:when test="not(ccv:Requirement/ccv:Response/ccv-cbc:Indicator='false' and ccv:RequirementGroup/@pi='GROUP_FULFILLED.ON_FALSE') or (count(ccv:RequirementGroup/ccv:Requirement/ccv:Response/child::*) = count(ccv:RequirementGroup/ccv:Requirement))"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="not(ccv:Requirement/ccv:Response/ccv-cbc:Indicator='false' and ccv:RequirementGroup/@pi='GROUP_FULFILLED.ON_FALSE') or (count(ccv:RequirementGroup/ccv:Requirement/ccv:Response/child::*) = count(ccv:RequirementGroup/ccv:Requirement))">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>All Criteria behave in this same way: if the answer to the first requirement is affirmative (a “yes” answer), specific data related to that criterion MUST be provided.</svrl:text>
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
