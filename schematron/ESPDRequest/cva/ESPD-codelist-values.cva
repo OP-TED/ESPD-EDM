@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cva:ContextValueAssociation xmlns:cva="http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/1.0/" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" id="urn:x-illustration" name="code-list-values" version="$Id: ESPD-codelist-values.cva,v 1.0 $">
+	<Annotation>
+		<Description>
+		Value constraints that one can express for XML samples.
+		
+		The validation requirements for this scenario are as follows:
+			- Code list used in each element.
+    </Description>
+	</Annotation>
+	<Title>
+		ESPD code list values constraints - ESPD-codelist-values.cva
+	</Title>
+	<!-- List all of the genericode files -->
+	<ValueLists>
+		<ValueList xml:id="ActivityTypeCode" uri="../../../common artefacts/gc/ActivityTypeCode-CodeList.gc"/>
+		<!-- cbc:ActivityTypeCode -->
+		<ValueList xml:id="AmountTypeCode" uri="../../../common artefacts/gc/AmountTypeCodes-CodeList.gc"/>
+		<ValueList xml:id="ContractType" uri="../../../common artefacts/gc/ContractType-CodeList.gc"/>
+		<!-- cbc:ContractTypeCode -->
+		<ValueList xml:id="CountryCodeIDs" uri="../../../common artefacts/gc/CountryCodeIdentifier-CodeList.gc"/>
+		<!-- cac:Country/cbc:IdentificationCode -->
+		<ValueList xml:id="CriteriaTypeCode" uri="../../../common artefacts/gc/CriteriaTypeCode-CodeList.gc"/>
+		<!-- cbc:TypeCode -->
+		<ValueList xml:id="CriterionJurisdictionLevel" uri="../../../common artefacts/gc/CriterionJurisdictionLevel-CodeList.gc"/>
+		<!-- ccv-cbc:JurisdictionLevelCode -->
+		<ValueList xml:id="CurrencyCodeList" uri="../../../common artefacts/gc/CurrencyCode-CodeList.gc"/>
+		<!-- cbc:CurrencyCode, currencyID -->
+		<ValueList xml:id="CustomizationID" uri="../../../common artefacts/gc/CustomizationID-CodeList.gc"/>
+		<ValueList xml:id="DocRefContentType" uri="../../../common artefacts/gc/DocRefContentType-CodeList.gc"/>
+		<ValueList xml:id="LanguageCodeEU" uri="../../../common artefacts/gc/LanguageCodeEU-CodeList.gc"/>
+		<!-- @langID and cbc:LocaleCode -->
+		<ValueList xml:id="PeriodMeasureTypeCodes" uri="../../../common artefacts/gc/PeriodMeasureTypeCodes-CodeList.gc"/>
+		<ValueList xml:id="PeriodtypeCodes" uri="../../../common artefacts/gc/PeriodTypeCodes-CodeList.gc"/>
+		<ValueList xml:id="ProcedureType" uri="../../../common artefacts/gc/ProcedureType-CodeList.gc"/>
+		<!-- cbc:ProcurementTypeCode -->
+		<ValueList xml:id="ProfileExecutionID" uri="../../../common artefacts/gc/ProfileExecutionID-CodeList.gc"/>
+		<ValueList xml:id="ProjectType" uri="../../../common artefacts/gc/ProjectType-CodeList.gc"/>
+		<ValueList xml:id="ResponseDataType" uri="../../../common artefacts/gc/ResponseDataType-CodeList.gc"/>
+		<!-- @responseDataType -->
+		<ValueList xml:id="ServicesProjectSubType" uri="../../../common artefacts/gc/ServicesProjectSubType-CodeList.gc"/>
+		<ValueList xml:id="TechnicalCapabilityTypeCode" uri="../../../common artefacts/gc/TechnicalCapabilityTypeCode-CodeList.gc"/>
+		<ValueList xml:id="TendererRoleCodeList" uri="../../../common artefacts/gc/TendererRole-CodeList.gc"/>
+		<!-- espd-cbc:EconomicOperatorRoleCode -->
+	</ValueLists>
+	<!--List all of the instance-level metadata associations-->
+	<InstanceMetadataSets>
+		<!-- Code list elements -->
+		<InstanceMetadataSet xml:id="cctsV2.01-code">
+			<InstanceMetadata address="@listName" identification="ShortName"/>
+			<InstanceMetadata address="@listID" identification="ShortName"/>
+			<InstanceMetadata address="@listVersionID" identification="Version"/>
+			<InstanceMetadata address="@listSchemeURI" identification="LocationUri"/>
+			<InstanceMetadata address="@listURI" identification="CanonicalUri"/>
+			<InstanceMetadata address="@listAgencyName" identification="Agency/LongName"/>
+			<InstanceMetadata address="@listAgencyID" identification="Agency/Identifier"/>
+		</InstanceMetadataSet>
+	</InstanceMetadataSets>
+	<!-- ESPDRequest - List of all elements and attributes where the code lists are used -->
+	<Contexts>
+		<Context address="cbc:TypeCode" values="CriteriaTypeCode" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<!-- All the elements Requirement in an XML instance MUST specify the type of data that shall be used for the ESPDResponse in the Requirement attribute ResponseDataType. -->
+		<Context address="@responseDataType" values="ResponseDataType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
+		</Context>
+		<Context address="@langID" values="LanguageCodeEU">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
+		</Context>
+		<Context address="@currencyID" values="CurrencyCodeList">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
+		</Context>
+		<Context address="ccv-cbc:JurisdictionLevelCode" values="CriterionJurisdictionLevel" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<Context address="cbc:ActivityTypeCode" values="ActivityTypeCode" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<Context address="cbc:LocaleCode" values="LanguageCodeEU" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<Context address="cbc:ContractTypeCode" values="ContractType" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<Context address="cbc:CountrySubentityCode" values="CountryCodeIDs" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<Context address="cac:Country/cbc:IdentificationCode" values="CountryCodeIDs" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<Context address="cbc:ProcurementTypeCode" values="ProcedureType" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+		<Context address="espd-cbc:EconomicOperatorRoleCode" values="TendererRoleCodeList" metadata="cctsV2.01-code">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
+		</Context>
+	</Contexts>
+</cva:ContextValueAssociation>

@@ -319,13 +319,13 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="( string(.)!='urn:www.cenbii.eu:transaction:biitrns070:ver3.0' )"/>
+         <axsl:when test="( string(.)='urn:www.cenbii.eu:transaction:biitrns092:ver3.0' )"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( string(.)!='urn:www.cenbii.eu:transaction:biitrns070:ver3.0' )">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( string(.)='urn:www.cenbii.eu:transaction:biitrns092:ver3.0' )">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
-               <svrl:text>The value must be 'urn:www.cenbii.eu:transaction:biitrns070:ver3.0' </svrl:text>
+               <svrl:text>The value must be 'urn:www.cenbii.eu:transaction:biitrns092:ver3.0' </svrl:text>
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
@@ -353,9 +353,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="( string(.)!='ESPD' )"/>
+         <axsl:when test="( string(.)='ESPD' )"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( string(.)!='ESPD' )">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( string(.)='ESPD' )">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
@@ -387,9 +387,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="( string(.)!='QT' )"/>
+         <axsl:when test="( string(.)='QT' )"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( string(.)!='QT' )">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( string(.)='QT' )">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>

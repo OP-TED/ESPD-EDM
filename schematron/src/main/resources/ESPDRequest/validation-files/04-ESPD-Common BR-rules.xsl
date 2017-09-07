@@ -192,34 +192,6 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &lt; 24)"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &lt; 24)">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>There are some EXCLUSION Criterias that are not included in the XML</svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-
-		<!--ASSERT -->
-
-      <axsl:choose>
-         <axsl:when test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &gt; 24)"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &gt; 24)">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>There are more EXCLUSION Criterias than expected</svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-
-		<!--ASSERT -->
-
-      <axsl:choose>
          <axsl:when test="( not(string(cbc:ID))=false() )"/>
          <axsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( not(string(cbc:ID))=false() )">
@@ -241,20 +213,6 @@
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
                <svrl:text>The element 'espd-req:ESPDRequest / cbc:IssueDate' is mandatory </svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-
-		<!--ASSERT -->
-
-      <axsl:choose>
-         <axsl:when test="( not(string(cbc:ContractFolderID))=false() )"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( not(string(cbc:ContractFolderID))=false() )">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>The element 'espd-req:ESPDRequest / cbc:ContractFolderID' is mandatory </svrl:text>
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
@@ -584,9 +542,9 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(count(cbc:ID)=0) or ( (count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))"/>
+         <axsl:when test="(count(cbc:ID)=0) or not(cbc:DocumentTypeCode/text() = 'TED_CN') or ((count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(count(cbc:ID)=0) or ( (count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(count(cbc:ID)=0) or not(cbc:DocumentTypeCode/text() = 'TED_CN') or ((count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
