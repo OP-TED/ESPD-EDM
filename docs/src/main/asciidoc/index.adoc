@@ -1,21 +1,74 @@
 ifndef::imagesdir[:imagesdir: images]
-ifndef::downloaddir[:downloaddir: download]
 
+== ESPD Exchange Data Model (ESPD-EDM)
 
-= *The European Single Procurement Document*
-
-== *XML Implementation Guide*
-=== V02.00.00
+v2.0.0-alpha
 
 :toc:
 :toclevels: 3
 
-include::I_Introduction_Includes.adoc[]
-include::II_The_ESPD_Semantic_Assets_Includes.adoc[]
-include::III_ESPDRequest_Includes.adoc[]
-include::IV_Criteria_Includes.adoc[]
-include::V_Exclusion_Criteria_Includes.adoc[]
-include::VI_Selection_Criteria_Includes.adoc[]
-include::VII_ESPDResponse_Includes.adoc[]
+== Resources
 
+* link:++https://espd.github.io/ESPD-EDM/v2.0.0/xml_guide.html++[ESPD Exchange Data Model Implementation Guide V02.00.00]
+* link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/dist++[All resources in the distribution package]
+* link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/code_lists++[Code lists]
+* link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/xml/snippets++[XML snippets]
+* link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.0/exchange-model/src/main/resources/schema/2.0.0++[XSD Schema files] - they are found under the `exchange-model`
+module, under the `exchange-model/src/main/resources/schema/2.0.0` folder.
 
+== Requirements
+
+ * Java 8
+ * Maven 3
+
+=== Installation
+
+=== With Maven
+
+The recommended way to get started using the `exchange-model` in your Java project is with a dependency management system.
+
+[source,xml]
+.pom.xml
+----
+<dependency>
+  <groupId>eu.europa.ec.grow.espd</groupId>
+  <artifactId>exchange-model2</artifactId>
+  <version>2.0.0-SNAPSHOT</version>
+</dependency>
+----
+
+[NOTE]
+====
+Version 2 of the `Exchange Model` has a different `artifactId`, i.e. `exchange-model2`, in order to
+support the usage of both versions at the same time inside a `Java` Maven project.
+====
+
+[NOTE]
+====
+In order to use the snapshot version, you might have to enable the `Maven` snapshot repository.
+
+[source,xml]
+.pom.xml
+----
+<repositories>
+  <repository>
+    <id>oss-sonatype</id>
+    <name>oss-sonatype</name>
+    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+----
+====
+
+=== With Gradle
+
+[source,groovy]
+.build.gradle
+----
+dependencies {
+    compile("eu.europa.ec.grow.espd:exchange-model2:2.0.0-SNAPSHOT")
+}
+----
