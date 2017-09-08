@@ -7,7 +7,7 @@ Compare with the XML example about the economic operator for the *REGULATED* ESP
 The figure below shows how the data about the economic operator looks like in a 'collapsed' *SELF-CONTAINED* ESPD XML instance (notice that in this example the EO belongs to a group named 'ACME-Consortium', element `cac:EconomicOperatorGroupName`).
 
 .Vision of the data about the EO in a 'collapsed' Self-contained ESPD 
-image::REGULATED_EO_XML_Collapsed[EO data - collapsed view, alt="EO data - collapsed view", align="center"]
+image::REGULATED_EO_XML_Collapsed.png[EO data - collapsed view, alt="EO data - collapsed view", align="center"]
 
 This fragment of XML *does not include the responses to the QUESTIONs* in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each `cac:TenderingCriterionProperty` element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element `cac:ResponseValue` is associated to a the UUID of the corresponding `cac:TenderingCriterionProperty`. For an example of a complete *SELF-CONTAINED* ESPD Response XML document you can also see the file link:./dist/xml/SELFCONTAINED-ESPDResponse-02.00.00.xml[SELFCONTAINED-ESPDResponse-02.00.00.xml].
 
