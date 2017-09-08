@@ -1,0 +1,186 @@
+
+=== VII.5.2 Self-contained economic operator party 
+
+. The value expected for the EO identifier is of type `Identifier`. For the identifier of the EO it is also required to specify the type of identifier, and a closed list of possible types is proposed. EOs must use one of the available values, but the preferred one is the VAT number. Beware that the data structure does not keep the type of the identifier. This is because the this type code is placed in the attribute `@schemeID` of the `cac:ResponseValue/cbc:ResponseID` element (and the `@schemeAgencyID` attribute must be set to the default `EU-COM-GROW`). See the information requirement about the identifiers of the economic operators at the beginning of the section. See also next sections about the responses, XSD schemas and XML example.
+
+==== Mock-up (SELFCONTAINED economic operator)
+
+The figure below shows a possible mock-up with the information required related to the economic operator in the case of the *SELF-CONTAINED* ESPD Response.
+
+.Economic operator - mock-up (SELF-CONTAINED)
+image::Self-contained_Economic_Operator_Mock-up.png[Economic operator - mock-up, alt="Economic operator - mock-up", align="center"]
+
+As you will see next, the information required about the economic operators varies depending on several factors:
+
+. Is the economic operator a sole trader or does it belong to a group?
+
+. If it belongs to a group, is the economic operator the leader of the group, a member or another entity (see the different types of 'roles' below);
+
+. Does the economic operator rely on other entities to fulfill the selection criteria? 
+
+. Is the procurement procedure divided into lots?
+
+One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information to be provided by each role varies depending on whether the EO is:
+
+. *Sole contractor / Lead entity*: Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group. In this case:
+
+** The sole contractor or leader will have to produce a complete ESDP; 
+** The sole contractor or leader will also have to identify the rest of the procurers (in the case of a group); 
+** The sole contractor or leader will have to identify the entities upon which it relies (and about those on which the entities it relies on rely).
+
+** The sole contractor or leader will have to identify the entities upon which it does not relies.
+
+** The sole contractor or leader will have to specify the subcontracted proportion of the group (in the selection criteria "Subcontracted Proportion" of the ESPD). 
+
+. *Group member*:	 Member (not leader) of the Consortium, Joint Venture or other type of group. In this case:
+
+** The member of the group will have to produce a complete ESPD;
+
+** The member of the group does not have to identify the rest of the procurers or entities.
+
+. *Other entity (relied upon)*:	Entity on which the main contractor, the group or another subcontractor relies in order to meet the selection criteria. In this case:
+
+** The entity will have to produce an ESPD;
+
+** The entity will not have have to identify the rest of the procurers or entities. Beware that an entity could have again another entity which it relies on or a a sub-contractor: in this case those entities and sub-contractors will have also to produce their own ESPD Response.
+  
+. *Other entity (not relied upon)*:	Entity on which the main contractor, the group or another subcontractor does not rely in order to meet the selection criteria. In this case:
+
+** The entity will have to produce an ESPD, too;
+
+** The entity does not have to provide information about the selection criteria;
+
+** The entity does not have to provide information about the reduction of the number of qualified candidates footnote:[The Annex 2 of the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:JOL_2016_003_R_0004[Commission Implementing Regulation (EU) No 2016/7] refers to these two as Part IV and Part V].
+
+===== The simplest case
+
+The simplest case is when:
+
+** The economic operator (EO) is a sole contractor
+
+** The EO does not rely on other entities
+
+** The procurement procedure is not divided into lots
+
+*Notice the following*:
+
+. *Sole contractor*. We know that the EO is a sole contractor when:
+	
+** The role specified is 'Sole contractor / Lead entity' (first field of the mock-up); and (circle #1) 
+
+** The EO states that it does not participate together with others; and (circle #24)
+
+** The EO states that it does not participate in a group (last field of the mock-up); (circle #25) 
+
+. *Not an SME*. The EO is a large company (circles #13-#15). The definition of what is an SME is provided in the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361[EU recommendation 2003/361]footnote:[The Commission is preparing for an http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en[evaluation and possible revision] of some aspects of the SME Definition. A public consultation on the topic will be launched soon.]. Notice that, differently to the *REGULATED* version, the *SELF-CONTAINED* version asks for the number of employees and turnover. This can be used by the software applications to validate the consistency of the data provided by the EO with the definition. By the way, these data are all placed in the `cac:QualifyingParty` element. See the XSD diagrams above the and the XML example below for details on the use of the `cac:QualifyingParty` and sub-components. 
+
+. *No lots*. The software application GUI should not show any information about Lots if the procurement procedure is not divided into Lots. This information is available in the ESPD Request. 
+
+===== Sheltered workshop
+
+For this case the *SELF-CONTAINED* version works identically as the *REGULATED* version. If the economic operator answers *Yes* the fields about the 'percentage of disabled/disadvantaged workers and the category of handicap to which they belong to should shown, validated or processed (see mock-up for the *REGULATED* version in section link:#vii-5-1-regulated-economic-operator-party[VII.5.1 Regulated economic operator party]. For this purpose the *REGULATED* and the *SELF-CONTAINED* data structures are identical:
+
+*Data structure for a sheltered workshop or social business in case of reserved procurement*:
+
+.Sheltered workshop or social business - data structure
+image::Regulated_EO_Sheltered_DS.png[Sheltered workshop - data structure, alt="Sheltered workshop - data structure", align="center"]
+
+
+===== EO registered in a (Pre)Qualification System (PQS)
+
+One of the questions asked is whether the economic operator is registered on an official list (e.g. on a national Pre-Qualification System). In the case the EO answers *Yes*, the software application should ask the EO for this other data about which the evaluators may be interested in (see mock-up, circles #17-#21).
+
+Beware that the (pre)qualification system the EO is registered on must be know by the software application. One proposal is that each (pre)qualification systems is perfectly identified and registered in e-Certis so the applications can use it and trust it (and even download certificates from it) footnote:[This is part of the schema envisioned in the Once Only Principle]. However if this were not possible (because e-Certis does not implement this timely, for example), the data structure for the PQS provides an alternative field to keep the name of the (pre)qualification system; see data structure below.
+
+In case the EO is registered on several pre-qualification systems, the EO will need to choose the one that applies to this particular procurement procedure. The EO will also be required to provide the identification of the EO in the selected pre-qualification system.
+
+*Data structure for the (pre)qualification of the economic operator by an official list or similar*:
+
+The elements in the data structure for this *SELF-CONTAINED* version are different to the *REGULATED* one. Notice that int the *SELF-CONTAINED* version:
+
+** The identifier assigned by the (pre)qualification system to the economic operator is required. This value however is placed in the element `cac:QualifyingParty/cac:Party/cac:PartyIdentification/cbc:ID` and therefore is not required in the data structure.
+
+** The name of an alternative or additional (pre)qualification system (PQS) can also be provided by the EO. In principle this is not necessary as the PQS identifier is the value of the attribute `@schemeAgencyID` of the element `cbc:ID`.
+
+** The rest of the data are the same as for the *REGULATED* version: references, classifications and the scope of the registration in respect of the selection criteria of the procurement procedure.
+
+.Pre-qualification-related data structure  
+image::SELFCONTAINED_Prequalification_DS.png[(Pre)qualification-related data structure, alt="(Pre)qualification-related data structure", align="center"]
+
+===== Lots (contracting authority perspective)
+
+The economic operator should be able to specify to which Lots it tenders. Thus, if the procurement procedure is divided into Lots, the software application should show the list with all the Lots the contracted authority (CA) specified for the economic operator select one or more Lots. See the section link:#iii-10-lots-selfcontained-espd[III.10 Lots - Self-contained ESPD] for details on how the CA specifies Lots.  The mock-up below shows the requirements established by the contracting authorities about the Lots of the procurement procedure.
+
+.Selection of Lots by the CA, mock-up
+image::Lots-Selfcontained.png[Lots-Selfcontained ESPD, alt="Lots-Selfcontained ESPD", align="center"]
+
+===== Lots (economic operator perspective)
+
+The economic operator should then be able to select the Lots it will tender to. However the software application should control that the requirements established by the contracting authority (CA) are respected. Thus, for example, if the CA established that the economic operator can only tender to one lot the application should block the economic operator from selecting more than one lot.
+
+*Data structure for the Lots to which the economic operator tenders to*:
+
+Observe that the difference with the *REGULATED* version is that in the *SELF-CONTAINED* the Lots are a list of multiple identifiers (cardinality 1..n) instead of a free-text field.
+
+.Lots tendered, data structure 
+image::Selfcontained_EO_LotsTendered_DS.png[Lots tendered, alt="Lots tendered", align="center"]
+ 
+===== Roles of the economic operator
+
+Depending on its role the data that the economic operator (EO) will have to provide is different. In this example (see mock-up):
+
+* The EO is the Leader of a Consortium it also had to select *Yes* to the question on whether it participates in a group. To this the software application reacts displaying a new field for the EO to provide the name of the Consortium (the rest of the members and entities related to this Consortium will have also to provide *exactly* the same name in their ESPDs).
+
+* As it is the Leader this EO will have to identify the rest of procurers and entities. The rest of members and entities participating in the tender shall not be requested to provide this information.
+
+* The Leader will also have to identify the entities it relies on and on those it does not rely on (this would also the case for the Sole Contractor). See the two next mock-ups below for the data to be provided on these two entities.
+
+*Data structure to identify the rest of the EOs that are members of the group*:
+
+In the *SELF-CONTAINED* version the Lead entity of a group must identify the rest of economic operators that participate in the group. See the rest of the mock-ups and data structure below to see how, additionally, it also identifies other entities (e.g. sub-contractors).
+
+Notice that:
+
+. The data required here is different from the data required in the *REGULATED* version: name, identifier and activity of the EO.
+
+. The values expected for the name and activity are texts.
+
+. The value expected for the EO identifier is of type `Identifier`. For the identifier of the EO it is also required to specify the type of identifier, and a closed list of possible types is proposed (see Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EOIDType]. EOs must use one of the available codes, but the preferred one is the VAT number. Beware that the data structure does not keep the type of the identifier. This is because this type code is placed in the attribute `@schemeName` of the `cac:ResponseValue/cbc:ResponseID` element (and the `@schemeAgencyID` attribute must be set to the default `EU-COM-GROW`). See information requirements at the beginning of the section. See also next sections about the responses, XSD schemas and XML example.
+
+.The user can add or delete more than one economic operator (buttons '+' and 'paper-bin').
+
+.Lots tendered, data structure 
+image::Selfcontained_GroupOfEOs_DS.png[Lots tendered, alt="Lots tendered", align="center"]
+
+===== Certificates about contributions to the Tax Agency and/or Social Security
+
+*Data structure for the certificates about contributions to the Tax Agency and/or Social Security*:
+
+This data structure is identical to the *REGULATED* version, see circles #22 and #23 in the mock-up above).
+
+.Contributions certificates
+image::Regulated_EO_Contributions_Certificates_DS.png[Contributions certificates - data structure, alt="Contributions certificates - data structure", align="center"]
+
+===== Mock-up: Information about reliance on the capacities of the other entities
+
+As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V02.00.00 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
+
+.EO Roles-entities relied on, mock-up
+image::Subcontractor_relied_on_mockup.png[EO Roles-entities relied on, alt="EO Roles-entities relied on", width="600", align="center"]
+
+*Data structure for the entities upon which the EO relies on*:
+
+.Relied on entities - data structure
+image::Selfcontained_Relied_ON_DS.png[Relied on entities - data structure, alt="Relied on entities - data structure", align="center"]
+
+===== Mock-up: Information about third parties on which the EO does not rely on
+
+The Sole contractor or the Leader of a group will have also to provide information about subcontractors on whose capacity the economic operator does not rely. Remember that this information does not need to be supplied by the members of a group or other entities.
+ 
+.EO Roles-entities not relied on, mock-up
+image::Subcontractor_not_relied_on_mockup.png[EO Roles-entities not relied on, alt="EO Roles-entities not relied on", width="600", align="center"]
+
+*Data structure for the entities upon which the EO does not relies on*:
+
+.Not relied on entities - data structure
+image::Selfcontained_NOT_Relied_ON_DS.png[Not relied on entities - data structure, alt="Not relied on entities - data structure", align="center"]

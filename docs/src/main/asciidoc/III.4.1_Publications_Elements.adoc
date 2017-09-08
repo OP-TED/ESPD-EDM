@@ -28,6 +28,14 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 
 *Rule*: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). If at the time of drafting the ESPD document the Publication Office has not published yet the Contract Notice the value 0000/S 000-000000 value must be used to indicate that a temporary identifier is being used. 
 
+|*cbc:UUID*
+|Identifier
+|0..1
+|A universally unique identifier that can be used to reference this ESPD document instance.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013[_tbr92-013_]. 
+
+*Rule*: If the referenced document has a UUID to identify its particular instance refer to that UUID here.
 |*cbc:DocumentTypeCode*
 |Code
 |1
@@ -45,6 +53,24 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
 
 *Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List `LanguageCodeEU` for the value of the languageID attribute.
+
+|*cbc:IssueDate*
+|Date
+|0..1
+|Date when the document was issued by the contracting authority.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013[_tbr92-013_]. 
+
+*Rule*: Format "YYYY-MM-DD". If available in the referenced document place here the data of publication by the contracting authority.
+
+|*cbc:IssueTime*
+|Time
+|0..1
+|Time when the document was issued by the contracting authority.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002[_tbr92-013_]. 
+*Rule*: If available in the referenced document place here the time of publication by the contracting authority.
+
 |===
 
 Beware that the ESPD document do not embed the content of referenced documents but instead make a reference to its source. Thus the class DocumentReference aggregates a `cac:Attachment`class that allows for embedding the content or making reference to an external source of the content, which is the preferred way in ESPD (see XSD schema above):

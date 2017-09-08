@@ -1,0 +1,48 @@
+
+=== VII.6 Economic operator representatives 
+
+==== Related information requirements
+
+See formal requirements related to the representatives of the economic operator in the e-Sens site: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-021[_tbr92-021_].
+
+*Notice that the economic operator may specify more than one representative*.
+
+==== Differences between the Regulated and Self-contained versions
+ 
+There are no differences between the *REGULATED* and *SELF-CONTAINED* versions as far as the economic operator representatives are concerned. Thus, the mock-up, data structure and XML example proposed below are applicable to both cases.  
+
+==== Mock-up (REGULATED and SELF-CONTAINED)
+
+*In this example of mock-up the economic operator is specifying two representatives:*.
+
+.EO representatives, mock-up 
+image::EO_Representatives.png[EO representatives - mock-up, alt="EO representatives - mock-up, mock-up", align="center"]
+
+==== XSD Schema (REGULATED and SELF-CONTAINED)
+
+In the The ESPD-EDM V02.00.00 all the data regarding the representative of the economic operators is placed in the UBL-2.2 component `cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney`. In principle the elements expected by the ESPD-EDM are very few, only the ones represented in the mock-up above. However this UBL element provides other possibilities that may be used in the future or for other purposes (or as a national extension of the ESPD). 
+
+Thus, additionally to the expected elements, the `cac:PowerOfAttorney` component caters also for, at least, two other data could be required at some point (e.g. `cac:MandateDocumentReference`, see figure below):
+
+
+* The place of registration of the representative. The logic first element to look at is the place of birth (this is one of the expected elements). But other elements could be used complementarily: (i) `cac:Person/cac:IdentityDocumentReference` (A reference to a document that can precisely identify this person (e.g., a residence certificate), (ii) `cac:Person/cbc:NationalityID`, and/or `cac:Person/cbc:CitizenshipCountry`.       
+
+* Official documentation demonstrating that the person representing has an authentic mandate (e.g. a reference to a register where this mandate is located). For this the element `cac:/PowerOfAttorney/cac:MandateDocumentReference` should be used.   
+
+.EO representatives, XSD Schema
+image::EO_Representatives_XSD.png[EO representatives - XSD Schema, alt="EO representatives - XSD Schema", align="center"]
+
+Notice that the largest part of the data is held in the component `cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney/cac:AgentParty/cac:Person`. The figure below shows (in blue) the expected elements. See the table "Expecte Elements" and the XML example below for the details (e.g. how to use the `cac:Person/cac:Contact` element to contact the representative.
+
+.EO representatives - element Person, XSD Schema
+image::EO_PowerOfAttorneyPartyPerson.png[EO representatives - element Person - XSD Schema, alt="EO representatives - element Person - XSD Schema", align="center"]
+
+Contact elements, such as telephone and e-mail are in the `cac:Contact` associated to the the `cac:Person` information element:
+
+.EO representatives - element Contact, inside Person, XSD Schema
+image::PartyPersonContact.png[EO representatives - Contact- XSD Schema, alt="EO representatives - Contac - XSD Schema", align="center"]
+
+
+
+
