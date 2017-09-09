@@ -13172,7 +13172,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="sect3">
 <h4 id="related-information-requirements-24"><a class="anchor" href="#related-information-requirements-24"></a>Related information requirements</h4>
 <div class="paragraph">
-<p>See formal requirements related to the economic operators in the e-Sens site: from <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr092-001">(<em>tbr092-001, _tbr092-008</em>)</a>.</p>
+<p>See formal requirements related to the economic operators in the e-Sens site: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr092-001">(<em>tbr092-001, _tbr092-008</em>)</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 27. Information requirement about the ESPD Response and the economic operators</caption>
@@ -16929,7 +16929,57 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 <div class="sect2">
 <h3 id="ix-evidences"><a class="anchor" href="#ix-evidences"></a>IX. Evidences</h3>
-
+<div class="sect3">
+<h4 id="related-information-requirements-26"><a class="anchor" href="#related-information-requirements-26"></a>Related information requirements</h4>
+<div class="paragraph">
+<p>See formal requirements related to evidences in the e-Sens site: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017">(<em>tbr092-017</em>)</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="differences-between-the-regulated-and-self-contained-versions-3"><a class="anchor" href="#differences-between-the-regulated-and-self-contained-versions-3"></a>Differences between the Regulated and Self-contained versions</h4>
+<div class="paragraph">
+<p>There are no differences between the <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> versions as far as evidences are concerned.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xsd-schema-regulated-and-self-contained-3"><a class="anchor" href="#xsd-schema-regulated-and-self-contained-3"></a>XSD Schema (REGULATED and SELF-CONTAINED)</h4>
+<div class="paragraph">
+<p>Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element <code>cac:EvidenceSupplied/cbc:ID</code> contains the identifier set in <code>/QualificationApplicationResponse/cac:Evidence/cbc:ID</code>. See XML example below; see also the example XML file "<a href="./dist/xml/SELFCONTAINED-ESPDResponse-02.00.00.xml">SELFCONTAINED-ESPDResponse-02.00.00.xml</a>" for an example.</p>
+</div>
+<div class="paragraph">
+<p>The figure below shows the XSD Diagram for the UBL-2.2 component <code>cac:Evidence</code> (elements in blue are the expected ones in ESPD-EDM V02.00.00):</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Evidence_XSD.png" alt="cac:Evidence XSD diagram">
+</div>
+<div class="title">Figure 226. cac:Evidence XSD diagram</div>
+</div>
+<div class="paragraph">
+<p>The UBL-2.2 element <code>cac:Evidence</code> is a specialisation of <code>cac:DocumentReference</code>. This other XSD diagram shows this association and, in blue, highlights the elements expected in the ESPD-EDM V02.00.00:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Evidence_DocumentReference.png" alt="cac:DocumentReference in Evidence">
+</div>
+<div class="title">Figure 227. cac:DocumentReference inside cac:Evidence XSD diagram</div>
+</div>
+<div class="sect4">
+<h5 id="mock-ups-and-data-structures-3"><a class="anchor" href="#mock-ups-and-data-structures-3"></a>Mock-ups and data structures</h5>
+<div class="paragraph">
+<p>In principle only three elements are kept in the ESPD Response document about an evidence: its Identifier, a URL from where to access its content, a Reference/Code, and the Issuer.</p>
+</div>
+<div class="paragraph">
+<p>This group of data repeats frequently in the many different mock-ups presented in this document. The one below is just one example and will be used to illustrate where the three element go in the XML instance of an evidence (compare the circled numbers #9 to #12 with the comments in the XML snippet below).</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Convictions__EO_mock-up.png" alt="Conviction EO mock-up">
+</div>
+<div class="title">Figure 228. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -16963,7 +17013,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-07 11:28:39 CEST
+Last updated 2017-09-09 09:39:12 CEST
 </div>
 </div>
 </body>
