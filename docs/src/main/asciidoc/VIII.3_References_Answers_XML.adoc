@@ -1,0 +1,112 @@
+
+=== VIII.3. XML Example 2: References
+
+This example is based on the EO perspective of the *SELF-CONTAINED* mock-up in section "link:l#vi-7-2-self-contained-references[VI.7.2. SELF-CONTAINED References]":
+
+.Self-contained 'References' EO mock-up
+image::Selfcontained_References_EO_mockup.png[Self-contained 'References' EO mock-up, alt="Self-contained 'References' EO mock-up", align="center"]
+
+==== XML snippet 1.a) REQUIREMENTs by the contracting authority (CA) (criterion properties)
+
+This fragment of XML code extracts the requirement issued by the CA in a *SELF-CONTAINED ESPD Request* document. In this example the CA specifies 3 requirements: 
+
+* The minimum number of references (one in this case, to shorten the example. Normally more references are required);  
+
+* Two requirements expressed as text: 'Specific amount greater than 1,000.000 €' and 'Executed recently, after 2013 in any case.'; and 
+
+* The Lots to which these three requirements apply: Lot1, Lot2, Lot4 and Lot5. Notice that the list of Lots is made of a set of individual criterion properties inside its own subgroup.
+
+.Requirements by the contracting authority
+[source,xml]
+----
+<!-- Criterion description removed for brevity --> <--1-->
+<cac:TenderingCriterionPropertyGroup>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">381bea15-9460-49f7-a6d0-15d13059de29</cbc:ID>
+	<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+	<!-- REQUIREMENT #1 issued by the CA -->
+	<cac:TenderingCriterionProperty>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">98a67182-d7b7-4fb4-ae35-ea6bd9411eac</cbc:ID>
+		<cbc:Description>Minimum number of references</cbc:Description> <--3-->
+		<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+		<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUANTITY_INTEGER</cbc:ValueDataTypeCode>
+		<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+		<cbc:ExpectedValueNumeric>1</cbc:ExpectedValueNumeric>
+	</cac:TenderingCriterionProperty>
+	<!-- SUBGROUP OF REQUIREMENTS (2 textual requirements issued by the CA -->
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">53c9aad8-dc80-48f8-85d9-755c2aab8e95</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4b19bd4b-78ae-476a-a2c5-6c409388a07b</cbc:ID>
+					<cbc:Description/>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:SubsidiaryTenderingCriterionPropertyGroup>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d663aca5-5f3c-4980-b825-81e1bd7db381</cbc:ID>
+					<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+					<!-- Requirement 2 -->
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">3646852e-ebfc-463a-be95-0cf697fb138a</cbc:ID>
+						<cbc:Description>Requirement</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+						<cbc:ExpectedDescription>Specific amount greater than 1,000.000 €</cbc:ExpectedDescription><--4-->
+					</cac:TenderingCriterionProperty>
+					<!-- Requirement 3 -->
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">610e450c-89c9-49ec-b18a-ebb6683f9b31</cbc:ID>
+						<cbc:Description>Requirement</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+						<cbc:ExpectedDescription>Executed recently, after 2013 in any case.</cbc:ExpectedDescription><--5-->
+					</cac:TenderingCriterionProperty>
+				</cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<!-- Lots these requirements apply to -->
+				<cac:SubsidiaryTenderingCriterionPropertyGroup>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">167ab253-4fb7-4e45-81be-b049fba44b3a</cbc:ID>
+					<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+					<!-- The list of Lots these requirements apply to starts here--> <--2-->
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">b0c6f987-227e-426b-8023-c2f56416d3eb</cbc:ID>
+						<cbc:Description>Lots the requirement applies to</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
+					</cac:TenderingCriterionProperty>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">1af3d1c6-69e6-4af0-ba96-ba1461b29e13</cbc:ID>
+						<cbc:Description>Lot ID</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">IDENTIFIER</cbc:ValueDataTypeCode>
+						<cbc:ExpectedID>Lot1</cbc:ExpectedID>
+					</cac:TenderingCriterionProperty>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">1af3d1c6-69e6-4af0-ba96-ba1461b29e13</cbc:ID>
+						<cbc:Description>Lot ID</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">IDENTIFIER</cbc:ValueDataTypeCode>
+						<cbc:ExpectedID>Lot2</cbc:ExpectedID>
+					</cac:TenderingCriterionProperty>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">1af3d1c6-69e6-4af0-ba96-ba1461b29e13</cbc:ID>
+						<cbc:Description>Lot ID</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">IDENTIFIER</cbc:ValueDataTypeCode>
+						<cbc:ExpectedID>Lot4</cbc:ExpectedID>
+					</cac:TenderingCriterionProperty>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">1af3d1c6-69e6-4af0-ba96-ba1461b29e13</cbc:ID>
+						<cbc:Description>Lot ID</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">IDENTIFIER</cbc:ValueDataTypeCode>
+						<cbc:ExpectedID>Lot5</cbc:ExpectedID>
+					</cac:TenderingCriterionProperty>
+				</cac:SubsidiaryTenderingCriterionPropertyGroup>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+----
+
+==== XML snippet 1.b) QUESTIONS asked to the economic operator (criterion properties)
+
+==== XML snippet 1.c) Responses supplied by the economic operator (criterion responses, and response values)
+
+

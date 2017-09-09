@@ -1,9 +1,9 @@
 
-==== XML Example 1: Information about the EO
+=== VIII.2. XML Example 1: Information about the EO
 
 The information about the economic operator is distributed into the `cac:EconomicOperatorParty` element and 'data structures' that use the `cac:TenderingCriterion` element. The XML examples provided herein refer only to the data structured using the `cac:TenderingCriterion`. See chapter link:#vii-5-economic-operator[VII.5. Economic Operator] for more details and other XML examples.
 
-===== XML snippet 1.a) Criterion Properties
+==== XML snippet 1.a) EO registered in a PQS (criterion properties)
 
 This XML shows the criterion properties to which the responses supplied by the economic operator are related. Some of these are *copied* from the QualificationApplicationRequest, other are added during the edition of the QualificationApplicationResponse (e.g. the ones necessary to ask for the data on the economic operator, such as name, date of birth, number of employees, etc.). See the answers corresponding to these criteria properties in the XML snippet 1.b) below.  
 
@@ -59,10 +59,13 @@ In this particular example, the snippet 1.a) contains criterion properties from 
 <!-- Rest of elements removed for the sake of brevity -->
 ----
 <1> Global QUESTION. If the answer to this QUESTION is *Yes* the content of the data structure must be processed.
-<2> Expected answer data type: an INDICATOR (*true* or *false*).
-<3> Expected answer data type: a DESCRIPTION.
-<4> Expected answer data type: a DESCRIPTION.
-<5> Expected answer data type: an INDICATOR (*true* or *false*).
+<2> 'Your answer?' needed to decide how to handle the GUI, the validation or other processing. Expected answer data type: an INDICATOR (*true* or *false*). If the answer supplied is *true* the group of data in the data structure is processed. The response value shall be of type a `cbc:ResponseIndicator` (based on the CCT udt:IndicatorType, (see folder link:/.dist/mod/UBL-Entities-2.2-Pre-award.ods[mod] and  link:./dist/xsdrt/common/UBL-UnqualifiedDataTypes-2.2.xsd[/UBL-UnqualifiedDataTypes-2.2.xsd] to see examples of use and definition).
+<3> 'Alternative name of the (pre)qualifiction system'. Expected answer data type: a DESCRIPTION -> the response value shall be a `cbc:Description` element.
+<4> Reference or certifications that led to the classification of the EO in that PQS. Expected answer data type: a DESCRIPTION. -> the response value shall be a `cbc:Description` element.
+<5> Scope of the certification regardin the selection criteria of this procurement procedure. Expected answer data type: an INDICATOR (*true* or *false*) -> the response value shall be a `cbc:ResponseIndicator` based on the CCT 'udt:IndicatorType' element.
+
+
+==== XML snippet 1.b) EO registered in a PQS (answers)
 
 Compare now the elements marked with circled numbers [2, 5] with the elements below marked with the same numbers.
 
@@ -73,8 +76,8 @@ Compare now the elements marked with circled numbers [2, 5] with the elements be
 <!-- Economic Operator Data: answers -->
 
 <!-- Answers to Criterion:EO registered in a PQS -->
-	<!-- Property:Your answer? (PropertyID:343b5c92-2a5f-4ef7-9d8a-41c8e7b70aa7)--><--2-->
-	<cac:TenderingCriterionResponse>
+	<!-- Property:Your answer? (PropertyID:343b5c92-2a5f-4ef7-9d8a-41c8e7b70aa7)--><--1-->
+	<cac:TenderingCriterionResponse><--2-->
 		<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d9e19426-fc27-4c15-bdd3-a62a0de62a63</cbc:ID>
 		<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">343b5c92-2a5f-4ef7-9d8a-41c8e7b70aa7</cbc:ValidatedCriterionPropertyID>
 		<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00"/>
@@ -84,7 +87,7 @@ Compare now the elements marked with circled numbers [2, 5] with the elements be
 		</cac:ResponseValue>
 	</cac:TenderingCriterionResponse>
 	
-	<!-- Property:a) Alternative or additional name of the (pre)qualifiction system (PropertyID:9f5528c1-6f7f-41e0-9287-054a0bef2f9f)--><--3-->
+	<!-- Property:a) Alternative name of the (pre)qualifiction system (PropertyID:9f5528c1-6f7f-41e0-9287-054a0bef2f9f)--><--3-->
 	<cac:TenderingCriterionResponse>
 		<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">867cca96-d690-45b9-86db-f65a9ca613cd</cbc:ID>
 		<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">9f5528c1-6f7f-41e0-9287-054a0bef2f9f</cbc:ValidatedCriterionPropertyID>
@@ -119,7 +122,13 @@ Compare now the elements marked with circled numbers [2, 5] with the elements be
 <!-- Rest of elements removed for the sake of brevity -->
 
 ----
-If you compare these two snippets with the mock-up you will notice that the field "b) Please provide the identification of the economic operator in the pre-qualification system" is not referred to or instantiated in the XML snippets above. This is because this identification of the economic party is placed in the element `cac:EconomicParty/cac:QualifyingParty/cac:Identification/cbc:ID`. See the XML example in section "link:l#xml-example-self-contained-economic-operator[XML Example (SELF-CONTAINED economic operator)]" and look for this fragment of XML code (circle #19):
+<1> Comment documenting to which criterion response this response is linked to.
+<2> Response value to the global QUESTION. The data type is `cbc:ResponseIndicator`, which is consistent with the expected data value code INDICATOR (from the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.xlsx[ResponseDataType]).
+<3> Response value tot the 'Alternative name of the (pre)qualifiction system'. Expected answer data type was a DESCRIPTION -> the response value is a `cbc:Description` element.
+<4> Reference or certifications. Expected answer data type was a DESCRIPTION. -> the response value is a `cbc:Description` element;
+<5> Scope of the certification. Expected answer data type was an INDICATOR (*true* or *false*) -> the response value is a `cbc:ResponseIndicator`.
+
+If you compare these two snippets with the mock-up you will notice that the field "b) Please provide the identification of the economic operator in the pre-qualification system" is not referred to or instantiated in the XML snippets above. This is because this identification of the economic party is placed in the element `cac:EconomicParty/cac:QualifyingParty/cac:Identification/cbc:ID`. See the XML example in section "link:l#xml-example-self-contained-economic-operator[XML Example (SELF-CONTAINED economic operator)]" and look for this fragment of XML code (circle #19 in the mock-up):
 
 .Identification of the EO in the PQS
 [source,xml]
@@ -128,4 +137,67 @@ If you compare these two snippets with the mock-up you will notice that the fiel
 		<cbc:ID schemeID="VAT" schemeAgencyID="ROLECE" schemeAgencyName="Registro Oficial de Licitadores y Empresas Clasificadas del Estado">B82387770</cbc:ID>
 </cac:PartyIdentification>
 ----
+
+==== XML snippet 2.a) Lots the EO tenders to (criterion properties)
+
+If the procurement procedure is divided into Lots the ESPD Request will have multiple instances of the element `cac:ProcurementProjectLot` (see section "link:#iii-10-lots-self-contained-espd[III.10 Lots - Self-contained ESPD]"). 
+
+Based on the identifiers of the Lots specified in the ESPD Request, software applications can require the economic operator to link its answers to the Lots. One example of this are when the EO specifies the Lots it tenders to; (another example is when the EO links its references to works, supplies or services similar to the procurement procedure it is tendering. In the *SELF-CONTAINED* ESPD a group of references can be linked to one or more Lots. See the "XML Example 2" below). 
+
+
+.Lots the EO tenders to
+[source,xml]
+----
+<!-- Criterion:Lots the EO tenders to -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">8b9700b7-b13c-41e6-a220-6bbf8d5fab31</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.OTHER.EO_DATA.LOTS_TENDERED</cbc:CriterionTypeCode>
+	<cbc:Name>Lots the EO tenders to</cbc:Name>
+	<cbc:Description>Lots selected by the economic operator</cbc:Description><--1-->
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">289f39b3-2a15-421a-8050-a29858031f35</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
+		<!-- This property below provides the UUID to which all the Lot IDs provided by the EO in the response will be linked, thus constructing the List -->
+		<cac:TenderingCriterionProperty><--2-->
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">ca0e6adb-a8a3-40f0-9ffa-f9f0b3d95e31</cbc:ID>
+			<cbc:Description>Lot IDs</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">IDENTIFIER</cbc:ValueDataTypeCode><--3-->
+		</cac:TenderingCriterionProperty>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+----
+<1> Text description the QUESTION.
+<2> Property to which all the Lots provided by the EO will be linked to.
+<3> The expected type of data is an IDENTIFIER. This implies that in the response the response value shall be an element based on the `cbc:Identifier` type defined by UBL; see snippet 2.b) below.
+
+Compare the circled numbers in the XML snippet above with the circled numbers in the XML snippet below.
+
+==== XML snippet 2.b) Lots the EO tenders to (answers)
+
+.Lots the EO tenders to
+[source,xml]
+----
+<!-- Answer to Criterion:Lots the EO tenders to -->
+<!-- Property:Lot IDs (PropertyID:ca0e6adb-a8a3-40f0-9ffa-f9f0b3d95e31) --><--1-->
+<cac:TenderingCriterionResponse>
+	<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">9bbe78e9-e342-46fa-974c-299dc87087ef</cbc:ID>
+	<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">ca0e6adb-a8a3-40f0-9ffa-f9f0b3d95e31</cbc:ValidatedCriterionPropertyID><--2-->
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00"/>
+	<cac:ResponseValue> <--3-->
+		<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">ea861f62-50c8-4f57-9212-ffbb6f2a10a8</cbc:ID>
+		<cbc:ResponseID>Lot4</cbc:ResponseID><--4-->
+	</cac:ResponseValue>
+	<cac:ResponseValue>
+		<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">bcde4e84-936d-4b27-a873-3fe74860b0a7</cbc:ID>
+		<cbc:ResponseID>Lot5</cbc:ResponseID><--5-->
+	</cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+
+----
+<1> Comments identifying the criterion.
+<2> The UUID of the criterion property thus linking this answer to it and all its content, in this case a *list* of 2 values.
+<3> First value of the list (compare to the value supplied by the EO, circle #27 in the mock-up).
+<4> Notice that the value is placed in a `cbc:Identifier` (CCT `udt:IdentifierType`) qualified as `ResponseID` (see folder link:/.dist/mod/UBL-Entities-2.2-Pre-award.ods[mod] and  link:./dist/xsdrt/common/UBL-UnqualifiedDataTypes-2.2.xsd[/UBL-UnqualifiedDataTypes-2.2.xsd] to see examples of use and definition). This is consistent with the fact that the criterion property (see XML snippet 2.a) specifies the value *IDENTIFIER* in the element `cac:ValueDataTypeCode`.  
+<5> Second value of the list (compare to the value supplied by the EO, circle #27 in the mock-up).
 
