@@ -3820,19 +3820,19 @@ table.CodeRay td.code>pre{padding:0}
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>For both versions, <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> the contracting authority can require references for the type of project (or nature of the contract: works, supplies and services).</p>
+<p>For both versions, <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> the contracting authority can require references for the type of project (or nature of the contract: works, supplies and services). Software applications should take care of not including those types of contract that were not selected by the contracting authority.</p>
 </li>
 <li>
-<p>In the <strong>REGULATED</strong> version the economic operator supplies its references for one of those types of contract (software applications should take care of not including those types of contract that were not selected by the contracting authority).</p>
+<p>In the <strong>REGULATED</strong> version the economic operator supplies its references for one of those types of contract.</p>
 </li>
 <li>
-<p>In the <strong>REGULATED</strong> version the economic operator provides a description for the reference, the amount of the contract, the period of execution and who where the recipients of its works, supplies or services.</p>
+<p>In the <strong>REGULATED</strong> version the economic operator provides a description for the reference, the amount of the contract, the period of execution and who where the recipients of its works, supplies or services. 'Amount' here must be interpreted as the amount specific to this reference. See difference between total and specific amounts below.</p>
 </li>
 <li>
 <p>In the <strong>SELF-CONTAINED</strong> version the contracting authority can specify the minimum number of references required for the evaluation; an an unlimited number of free-text “requirements”, so the CA can provide requirements very specific to the procurement procedure.</p>
 </li>
 <li>
-<p>In the <strong>SELF-CONTAINED</strong> the contracting authority can also specify the Lots to which each reference applies. From the references specified by the contracting authority, the economic operator can in turn specify to which Lots, amongst the ones it tenders to, the reference applies to. This is not possible in the <strong>REGULATED</strong> version.</p>
+<p>In the <strong>SELF-CONTAINED</strong> version, and per each reference, the economic operator (EO) can specify more information than for the <strong>REGULATED</strong> version; e.g. the Lots to which the reference applies; the 'total amount'  and the 'specific amount', the 'activity' of the economic operator in this reference, the period of time the execution or performance took, whether this reference must be treated as confidential or not, and the 'receipients' of this reference.</p>
 </li>
 <li>
 <p>The <strong>SELF-CONTAINED</strong> is able to keep in the XML documents the national sub-criteria defined by the MS in e-Certis.</p>
@@ -3854,6 +3854,31 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </li>
 </ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Difference between 'total amount' and 'specific amount' in a reference</div>
+<div class="paragraph">
+<p>The total amount refers to the amount of the contract, the specific refers to the amount of the contract a concrete reference is linked to. Two examples could be:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A contract for the acquisition of printers (Lot1) and the maintenance of the printers (Lot2). Your reference is about the maintenance only. Total amount: 1,000,000 € (Lot1 + Lot 2). Specific amount: 700,000.00 (Lot2, maintenance).</p>
+</li>
+<li>
+<p>Building of a bridge. Total amount: 20,000,000 €. The reference is only about the asphalt provided for the bridge: specific amount 1,351,145.89 €.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
