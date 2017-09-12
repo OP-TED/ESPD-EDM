@@ -1,15 +1,15 @@
 
-=== IX. Evidences
+== IX. Evidences
 
-==== Related information requirements
+=== Related information requirements
 
 See formal requirements related to evidences in the e-Sens site: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[(_tbr092-017_)].
 
-==== Differences between the Regulated and Self-contained versions
+=== Differences between the Regulated and Self-contained versions
  
 There are no differences between the *REGULATED* and *SELF-CONTAINED* versions as far as evidences are concerned. 
 
-==== XSD Schema (REGULATED and SELF-CONTAINED)
+=== XSD Schema (REGULATED and SELF-CONTAINED)
 
 Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element `cac:EvidenceSupplied/cbc:ID` contains the identifier set in `/QualificationApplicationResponse/cac:Evidence/cbc:ID`. See XML example below; see also the example XML file "link:./dist/xml/SELFCONTAINED-ESPDResponse-02.00.00.xml[SELFCONTAINED-ESPDResponse-02.00.00.xml]" for an example.
 
@@ -23,7 +23,7 @@ The UBL-2.2 element `cac:Evidence` is a specialisation of `cac:DocumentReference
 .cac:DocumentReference inside cac:Evidence XSD diagram
 image::Evidence_DocumentReference.png[cac:DocumentReference in Evidence, alt="cac:DocumentReference in Evidence", align="center"]
 
-==== Mock-ups and data structures
+=== Mock-ups and data structures
 
 In principle only a few elements are kept in the ESPD Response document about an evidence: its Identifier, a URL from where to access its content, a Reference/Code, a Confidentiality indicator, and the Issuer.
 
