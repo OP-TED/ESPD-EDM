@@ -24,7 +24,7 @@ As you can see from the XSD  Schema the `cac:DocumentReference` class has a rich
 |1
 |The identifier for the referenced document, generally issued by the entity responsible for the document.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). If at the time of drafting the ESPD document the Publication Office has not published yet the Contract Notice the value 0000/S 000-000000 value must be used to indicate that a temporary identifier is being used. 
 
@@ -33,7 +33,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |A universally unique identifier that can be used to reference this ESPD document instance.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013[_tbr92-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-013[_tbr92-013_]. 
 
 *Rule*: If the referenced document has a UUID to identify its particular instance refer to that UUID here.
 |*cbc:DocumentTypeCode*
@@ -41,7 +41,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |1
 |The type of document being referenced, expressed as a code.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: For the ESDP-EDM it is compulsory use of the Code List `DocRefContentType`. See example below on how to specify the OJS Contract Notice. If, for other documents, the type of document is not available in this list, provide the code “Other” and describe the content in the element `DocumentType`.
 
@@ -50,7 +50,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The type of document being referenced, expressed as text.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List `LanguageCodeEU` for the value of the languageID attribute.
 
@@ -59,7 +59,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |Date when the document was issued by the contracting authority.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-013[_tbr92-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-013[_tbr92-013_]. 
 
 *Rule*: Format "YYYY-MM-DD". If available in the referenced document place here the data of publication by the contracting authority.
 
@@ -68,7 +68,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |Time when the document was issued by the contracting authority.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-002[_tbr92-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr92-013_]. 
 *Rule*: If available in the referenced document place here the time of publication by the contracting authority.
 
 |===
@@ -92,7 +92,7 @@ Beware that the ESPD document do not embed the content of referenced documents b
 |0..1
 |The Uniform Resource Identifier (URI) that identifies where the document is located.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: None.
 
@@ -101,7 +101,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The title of the document.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: Originally this field is the placeholder for the name of the file (e.g. `PLACE-ContractNotice-2017-12452.xml`. However, as the UBL component does not have a placeholder for a name or title, the ESPD documents use it for a short descriptive title of the document being referenced.
 
@@ -110,7 +110,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..n
 |Short description of the document.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-007[_tbr070-007_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: If the document being referenced is a Notice being published on TED, use two description lines. Use the second description line to place therein the temporary number received from TED. See example and comments below.
 

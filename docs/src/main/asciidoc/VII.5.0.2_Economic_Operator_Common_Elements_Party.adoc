@@ -129,14 +129,14 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |Code
 |1
 |Identifies the role of the economic operator in the bid.
-|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-008[_tbr92-008_]
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-008[_tbr92-008_]
 *Rule*: Compulsory use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EORoleType].
 
 |*cbc:RoleDescription*
 |Text
 |0..n
 |The text describing the role of the economic operator in the bid.
-|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-008[_tbr92-008_]
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-008[_tbr92-008_]
 
 *Rule*: Software applications should retrieve and reuse the description from the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EORoleType].
 
@@ -162,7 +162,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |1
 |An identifier that identifies the economic operator, such as a the VAT number, the company registration number in a Business Register, other.
 
-|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001[_tbr92-001_]. 
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
 
 *Rule*: More than one identifier can be specified. Compulsory use of the attribute `schemeAgencyID` and highly recommended the use of the attribute schemeAgencyID. The preferred identifier is the national VAT number. Additional identifiers may be used. For a very complete way of identification of the Party it is highly recommended to, additionally to the `cac:Party/cac:Identification/cbc:ID`, use the UBL-2.2 component `cac:PartyLegalEntity`: this element is the perfect placeholder for the data officially registered in a Business Register (see UBL-2.2 model, and XSD diagram above).
 
@@ -171,7 +171,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |0..1
 |Electronic address of the contracting body.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001[_tbr92-001_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
 
 *Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
 
@@ -180,7 +180,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |1
 |The name of the economic operator.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-001[_tbr92-001_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
 
 *Rule*: Use the official name of the Party as officially registered. Be accurate in its spelling. 
 
@@ -189,7 +189,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |1
 |Used to indicate whether the company is a micro, small, medium or large enterprise. 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-004[_tbr92-004_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-004[_tbr92-004_]. 
 
 *Rule*: Used only for statistical purposes. Compulsory use of parameters established by the http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en[EU Recommendation 2003/361] to determine whether the EO's company is micro, small, medium or large. Beware that these parameters may change in the future.
 
@@ -198,7 +198,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The website of the economic operator. 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_]. 
 
 *Rule*: None.
 
@@ -223,7 +223,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The main address line in an address. Usually the street name and number or post office box.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 
@@ -232,7 +232,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The common name of a city where the address is located.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 
@@ -241,7 +241,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The identifier for an addressable group of properties according to the relevant postal service, such as a ZIP code or Post Code.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 
@@ -250,7 +250,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |1
 |A code that identifies the country. 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: The country of the contracting body must always be specified. Compulsory use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
 
@@ -259,7 +259,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The name of the country. 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 
@@ -284,7 +284,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |The name of the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 
@@ -293,7 +293,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |A phone number for the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 
@@ -302,7 +302,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |A fax number for the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 
@@ -311,7 +311,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |An e-mail address for the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr92-012[_tbr92-012_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
 
 *Rule*: None.
 |===
@@ -340,7 +340,7 @@ Please see also the section III.6 Service Provider (for the ESPD Request) for ot
 |0..1
 |The website of the service provider.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021[_tbr070-021_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
 
 *Rule*: Use it for the official web site of the service provider. Reserve the `EndPointID` for online services (e.g. web, REST, ftp services, etc.)
 
@@ -349,7 +349,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |0..1
 |Electronic address of the service provider.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021[_tbr070-021_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
 
 *Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
 
@@ -358,7 +358,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |1
 |The national identifier of a service provider as it is legally registered (e.g. VAT identification).
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021[_tbr070-021_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
 
 *Rule*: An identifier for the service provider must always be provided. Compulsory use of the attribute `SchemeAgencyID`. When possible use the VAT identification of the service provider (see the VIES platform for a EU cross-border national VAT number verification system). See XML example below.
 
@@ -367,7 +367,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |1
 |The name of the service provider.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021[_tbr070-021_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
 
 *Rule*: The name of the service provider must always be specified. Supply the official registered name of the service provider.
 
@@ -376,7 +376,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Doc
 |1
 |The code that identifies the country of the service provider.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr070-021[_tbr070-021_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
 
 *Rule*:  The country of the service provider must always be specified. Compulsory use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
 
