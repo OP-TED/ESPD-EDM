@@ -1241,7 +1241,227 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structures"><a class="anchor" href="#data-structures"></a>Data Structures</h4>
+<h4 id="mock-ups-data-structures-and-xml-examples"><a class="anchor" href="#mock-ups-data-structures-and-xml-examples"></a>Mock-ups, data structures and XML examples</h4>
+<div class="paragraph">
+<p>The two next chapters describe in detail the different <strong>types</strong> of exclusion and selection criteria defined and used in the ESPD-EDM. By <strong>type</strong> of criterion we refer to criteria that share common characteristics, namely how they are structured. Each type of criterion is presented from three perspectives:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Layout and functional</strong>: Mock-ups are provided to explain which data are expected and, to some extent, how software applications should behave (what to show/hide, validate or process depending on variables like 'what the user answers' or 'which is the role of the user'). Mock-ups are provided for both the contracting authority and economic operator perspectives;</p>
+</li>
+<li>
+<p><strong>Structural</strong>: two spread-sheet books (two files) are provided with this document aimed to explain how each type of criterion is organised:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ESPD-Data_Structures-REGULATED-V02.00.00.xlsx, where the structures of the REGULATED ESPD criteria are defined;</p>
+</li>
+<li>
+<p>ESPD-Data_Structures-SELFCONTAINED-V02.00.00.xlsx, where the structures of the SELF-CONTAINE ESPD criteria are defined;</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each book (file) contains different sheets (tabs). Each 'tab' shows the structure of one type of criterion (e.g. 'EG-Convictions', 'EG-Contributions', &#8230;&#8203;, 'SC-Suitability', 'SC_References', etc.; where 'EG' stands for 'Exclusion Grounds', and 'SC' stands for 'Selection Criteria').</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>XML Implementation</strong>:</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each mock-up (or pair of CA + EO mock-ups) represent the structure represented in the data structure spread-sheet and in the supplied XML example. Whilst the mock-up and XML example are quite self-explanatory, to understand the value of the data structure spread-sheet needs to be explained; which is the mission of this very next sub-section below.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-structures"><a class="anchor" href="#data-structures"></a>Data structures</h4>
+<div class="paragraph">
+<p>The ESPD-EDM 'criterion' entity is a very flexible and business-agnostic structure. This flexibility provides a convenient way to represent any type of criteria. The counterpart is that the semantics of the criteria needs to be delimited based on codes, identifiers and design rules.</p>
+</div>
+<div class="paragraph">
+<p>Hence this document proposes a way of representing the criteria following a regular method and providing concrete codes to specify types of criterion properties, and identifiers to distinguish the different criteria and <strong>reusable</strong> groups of properties (when studying these data groups you will observe that sub-groups of properties are reused in different criteria have identical identifiers and structures).</p>
+</div>
+<div class="paragraph">
+<p>The following two figures below illustrate the data structure sheets for one simple exclusion criterion (EG-Contributions) from both versions of the ESPD, REGULATED and SELF-CONTAINED. Compare them with the UBL-2.2 <code>cac:TenderingCriterion</code> XSD element.</p>
+</div>
+<div class="paragraph">
+<p><strong>REGULATED</strong></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Regulated_ESPDRequest_Contributions_Data_Structure.png" alt="Regulated 'Contributions' criterion data structure">
+</div>
+<div class="title">Figure 8. Regulated 'Contributions' criterion data structure</div>
+</div>
+<div class="paragraph">
+<p><strong>SELF-CONTAINED</strong></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Selfcontained_ESPDRequest_Contributions_Data_Structure.png" alt="Self-contained 'Contributions' criterion data structure">
+</div>
+<div class="title">Figure 9. Self-contained 'Contributions' criterion data structure</div>
+</div>
+<div class="paragraph">
+<p>We could say that the 'data structures' represented in the spread-sheets define a kind of 'meta-language' (or 'controlled vocabulary') that helps 'map' the structure of an ESPD-EDM criterion and the UBL-2.2 criterion data structure. The table below 'maps' both vocabularies. Please compare any of the data structures provided in this document with both the UBL-2.2 XSD Schemas and the XML examples provided herein.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 5. Mapping between the ESPD-EDM criterion data structure spread-sheets and the UBL-2.2 vocabulary</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ESDP-EDM Spread-sheet vocabulary</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>UBL-2.2 vocabulary</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CRITERION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SUBCRITERION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:SubTenderingCriterion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REQUIREMENT_GROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUESTION_GROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REQUIREMENT_SUBGROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:SubsidiaryTenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUESTION_SUBGROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:SubsidiaryTenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CAPTION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionProperty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REQUIREMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionProperty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUESTION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionProperty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ADDITIONAL_DESCRIPTION_LINE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cbc:Description (namely in cac:TenderingCriterion)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LEGISLATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:Legislation</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The ESPD-EDM data structures vocabulary is defined in the Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CriterionElementType</a>". Her you have the definitions provided therein:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CRITERION: A criterion (in the case of the the ESPD an Exclusion or Selection criterion); maps to a UBL-2.2 cac:TenderingCriterion class</p>
+</li>
+<li>
+<p>SUBCRITERION: Used to define national sub-criteria; maps to a UBL-2.2 cac:SubTenderingCriterion class</p>
+</li>
+<li>
+<p>REQUIREMENT_GROUP: Group of requirements or remarks issued by a MS or a CA; maps to a UBL-2.2 cac:TenderingCriterionPropertyGroup</p>
+</li>
+<li>
+<p>REQUIREMENT_SUBGROUP: A subgroup of requirements or remarks inside a group or subgroup of requirements; maps to a UBL-2.2 cac:SubsidiaryTenderingCriterionPropertyGroup</p>
+</li>
+<li>
+<p>REQUIREMENT: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ResponseDataType</a>")</p>
+</li>
+<li>
+<p>QUESTION_GROUP: Group of questions, each question requiring a datum as an answer from the EO; maps to a cac:TenderingCriterionPropertyGroup class</p>
+</li>
+<li>
+<p>QUESTION_SUBGROUP:	A subgroup of questions inside a group or a subgroup of questions; maps to a cac:SubsidiaryTenderingCriterionPropertyGroup</p>
+</li>
+<li>
+<p>QUESTION: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ResponseDataType</a>" )</p>
+</li>
+<li>
+<p>CAPTION: A text label (no requirement nor answer is expected); maps to a cac:TenderingCriterionProperty class (the expected response data type is NONE)</p>
+</li>
+<li>
+<p>ADDITIONAL_DESCRIPTION_LINE:	Additional line in a description (for descriptions that can be split in several lines); maps to a cbc:Description element (namely in cac:TenderingCriterion)</p>
+</li>
+<li>
+<p>LEGISLATION:	An instance of a Legislation class; maps to a cac:Legislation class</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The main differences between REQUIREMENT, CAPTION and QUESTION are</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A REQUIREMENT is a condition, restriction or rule established by the Member State (in e-Certis, for all procurement procedures) or the contracting authority (CA, for the specific procurement procedure). REQUIREMENTs are not intended to be responded by the economic operator; but the economic operator must conform to (comply with) it. Examples of REQUIREMENTs: 'Provide at least three references to similar works', 'The expected lowest general yearly turnover is 1,000,000 €', etc. (see mock-ups).</p>
+</li>
+<li>
+<p>A CAPTION is a label normally used to introduce a group of REQUIREMENTs or QUESTIONs; e.g. 'Lots the EO tenders to' (which is followed by a list of Lots identifiers provided by the EO);</p>
+</li>
+<li>
+<p>A QUESTION is a direct request of a specific datum issued by the MS or the CA and addressed to the EO. The EO has to respond this QUESTION with a value of the expected type of data.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you examine any of the XML examples provided in this document you will observe that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SUBCRITERION is reserved to specify national criteria. The Regulated ESPD documents do not specify SUBCRITERIA. The SELF-CONTAINED version does;</p>
+</li>
+<li>
+<p>The Regulated ESPD documents do not specify REQUIREMENTs, only QUESTIONs. The SELF-CONTAINED version does;</p>
+</li>
+<li>
+<p>The reason for having 'groups' and 'sub-groups' of properties is because UBL-2.2 defined the 'TenderingCriterionPropertyGroup' and 'SubsidiaryTenderingCriterionPropertyGroup';</p>
+</li>
+<li>
+<p>In the SELF-CONTAINED version the following rules apply in a regular way:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When the member state (MS) or the contracting authority (CA) needs to specify REQUIREMENTs, the outer group of the data structure is always a REQUIREMENT_GROUP (e.g. 'EG-Contributions', 'SC-Suitability', or practically all selection criteria). Otherwise the outer group is always a QUESTION_GROUP (e.g. 'EG-Convictions', 'EG-Environ-Social-Labour_Law', 'EG-Business', etc.)</p>
+</li>
+<li>
+<p>A REQUIREMENT_GROUP always contain a first element CAPTION or REQUIREMENT. This is because in the UBL-2.2 XSD schema the first <strong>mandatory</strong> element is always a <code>cac:TenderingCriterionProperty</code> element;</p>
+</li>
+<li>
+<p>A REQUIREMENT_GROUP or REQUIREMENT-SUBGROUP may contain either REQUIREMENT_SUBGROUPS and/or QUESTION_SUBGROUPS;</p>
+</li>
+<li>
+<p>The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENTs or QUESTIONs is to look into the value of the <code>cac:TenderingCriterionProperty/cbc:TypeCode</code>. The list of possible codes are the ones of the above mentioned Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CriterionElementType</a>".</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-structures-as-a-tool-to-generate-xml-instances"><a class="anchor" href="#data-structures-as-a-tool-to-generate-xml-instances"></a>Data structures as a tool to generate XML instances</h4>
 
 </div>
 </div>
@@ -1250,7 +1470,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-10 08:52:24 CEST
+Last updated 2017-09-14 06:26:15 CEST
 </div>
 </div>
 </body>

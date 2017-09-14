@@ -632,26 +632,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#vii-5-1-regulated-economic-operator-party">VII.5.1 Regulated economic operator party</a></li>
 <li><a href="#vii-5-2-self-contained-economic-operator-party">VII.5.2 Self-contained economic operator party</a></li>
 <li><a href="#vii-6-economic-operator-representatives">VII.6 Economic operator representatives</a></li>
-</ul>
-</li>
-<li><a href="#viii-answers-to-the-questions">VIII. Answers to the QUESTIONs</a>
-<ul class="sectlevel2">
-<li><a href="#differences-between-the-regulated-and-self-contained-versions-2">Differences between the Regulated and Self-contained versions</a></li>
-<li><a href="#xsd-schema-regulated-and-self-contained-2">XSD Schema (REGULATED and SELF-CONTAINED)</a></li>
-<li><a href="#mock-ups-and-data-structures-2">Mock-ups and data structures</a></li>
-<li><a href="#viii-1-xml-example-1-information-about-the-eo">VIII.1. XML Example 1: Information about the EO</a></li>
-<li><a href="#viii-2-xml-example-2-references">VIII.2. XML Example 2: References</a></li>
-<li><a href="#viii-3-xml-example-3-weighting">VIII.3. XML Example 3: Weighting</a></li>
-</ul>
-</li>
-<li><a href="#ix-evidences">IX. Evidences</a>
-<ul class="sectlevel2">
-<li><a href="#related-information-requirements-26">Related information requirements</a></li>
-<li><a href="#differences-between-the-regulated-and-self-contained-versions-3">Differences between the Regulated and Self-contained versions</a></li>
-<li><a href="#xsd-schema-regulated-and-self-contained-3">XSD Schema (REGULATED and SELF-CONTAINED)</a></li>
-<li><a href="#mock-ups-and-data-structures-3">Mock-ups and data structures</a></li>
-<li><a href="#expected-and-other-elements-regulated-and-self-contained">Expected (and other) Elements (REGULATED and SELF-CONTAINED)</a></li>
-<li><a href="#xml-examples-5">XML Examples</a></li>
+<li><a href="#vii-7-answering-questions">VII.7 Answering QUESTIONs</a></li>
+<li><a href="#vii-8-xml-example-1-information-about-the-eo">VII.8 XML Example 1: Information about the EO</a></li>
+<li><a href="#vii-9-xml-example-2-references">VII.9 XML Example 2: References</a></li>
+<li><a href="#vii-10-xml-example-3-weighting">VII.10. XML Example 3: Weighting</a></li>
+<li><a href="#vii-11-evidences">VII.11 Evidences</a></li>
 </ul>
 </li>
 </ul>
@@ -4155,7 +4140,227 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </div>
 <div class="sect3">
-<h4 id="data-structures"><a class="anchor" href="#data-structures"></a>Data Structures</h4>
+<h4 id="mock-ups-data-structures-and-xml-examples"><a class="anchor" href="#mock-ups-data-structures-and-xml-examples"></a>Mock-ups, data structures and XML examples</h4>
+<div class="paragraph">
+<p>The two next chapters describe in detail the different <strong>types</strong> of exclusion and selection criteria defined and used in the ESPD-EDM. By <strong>type</strong> of criterion we refer to criteria that share common characteristics, namely how they are structured. Each type of criterion is presented from three perspectives:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Layout and functional</strong>: Mock-ups are provided to explain which data are expected and, to some extent, how software applications should behave (what to show/hide, validate or process depending on variables like 'what the user answers' or 'which is the role of the user'). Mock-ups are provided for both the contracting authority and economic operator perspectives;</p>
+</li>
+<li>
+<p><strong>Structural</strong>: two spread-sheet books (two files) are provided with this document aimed to explain how each type of criterion is organised:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ESPD-Data_Structures-REGULATED-V02.00.00.xlsx, where the structures of the REGULATED ESPD criteria are defined;</p>
+</li>
+<li>
+<p>ESPD-Data_Structures-SELFCONTAINED-V02.00.00.xlsx, where the structures of the SELF-CONTAINE ESPD criteria are defined;</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each book (file) contains different sheets (tabs). Each 'tab' shows the structure of one type of criterion (e.g. 'EG-Convictions', 'EG-Contributions', &#8230;&#8203;, 'SC-Suitability', 'SC_References', etc.; where 'EG' stands for 'Exclusion Grounds', and 'SC' stands for 'Selection Criteria').</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>XML Implementation</strong>:</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Each mock-up (or pair of CA + EO mock-ups) represent the structure represented in the data structure spread-sheet and in the supplied XML example. Whilst the mock-up and XML example are quite self-explanatory, to understand the value of the data structure spread-sheet needs to be explained; which is the mission of this very next sub-section below.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-structures"><a class="anchor" href="#data-structures"></a>Data structures</h4>
+<div class="paragraph">
+<p>The ESPD-EDM 'criterion' entity is a very flexible and business-agnostic structure. This flexibility provides a convenient way to represent any type of criteria. The counterpart is that the semantics of the criteria needs to be delimited based on codes, identifiers and design rules.</p>
+</div>
+<div class="paragraph">
+<p>Hence this document proposes a way of representing the criteria following a regular method and providing concrete codes to specify types of criterion properties, and identifiers to distinguish the different criteria and <strong>reusable</strong> groups of properties (when studying these data groups you will observe that sub-groups of properties are reused in different criteria have identical identifiers and structures).</p>
+</div>
+<div class="paragraph">
+<p>The following two figures below illustrate the data structure sheets for one simple exclusion criterion (EG-Contributions) from both versions of the ESPD, REGULATED and SELF-CONTAINED. Compare them with the UBL-2.2 <code>cac:TenderingCriterion</code> XSD element.</p>
+</div>
+<div class="paragraph">
+<p><strong>REGULATED</strong></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Regulated_ESPDRequest_Contributions_Data_Structure.png" alt="Regulated 'Contributions' criterion data structure">
+</div>
+<div class="title">Figure 37. Regulated 'Contributions' criterion data structure</div>
+</div>
+<div class="paragraph">
+<p><strong>SELF-CONTAINED</strong></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Selfcontained_ESPDRequest_Contributions_Data_Structure.png" alt="Self-contained 'Contributions' criterion data structure">
+</div>
+<div class="title">Figure 38. Self-contained 'Contributions' criterion data structure</div>
+</div>
+<div class="paragraph">
+<p>We could say that the 'data structures' represented in the spread-sheets define a kind of 'meta-language' (or 'controlled vocabulary') that helps 'map' the structure of an ESPD-EDM criterion and the UBL-2.2 criterion data structure. The table below 'maps' both vocabularies. Please compare any of the data structures provided in this document with both the UBL-2.2 XSD Schemas and the XML examples provided herein.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 24. Mapping between the ESPD-EDM criterion data structure spread-sheets and the UBL-2.2 vocabulary</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ESDP-EDM Spread-sheet vocabulary</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>UBL-2.2 vocabulary</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CRITERION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SUBCRITERION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:SubTenderingCriterion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REQUIREMENT_GROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUESTION_GROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REQUIREMENT_SUBGROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:SubsidiaryTenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUESTION_SUBGROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:SubsidiaryTenderingCriterionPropertyGroup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CAPTION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionProperty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REQUIREMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionProperty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUESTION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:TenderingCriterionProperty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ADDITIONAL_DESCRIPTION_LINE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cbc:Description (namely in cac:TenderingCriterion)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LEGISLATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:Legislation</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The ESPD-EDM data structures vocabulary is defined in the Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CriterionElementType</a>". Her you have the definitions provided therein:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CRITERION: A criterion (in the case of the the ESPD an Exclusion or Selection criterion); maps to a UBL-2.2 cac:TenderingCriterion class</p>
+</li>
+<li>
+<p>SUBCRITERION: Used to define national sub-criteria; maps to a UBL-2.2 cac:SubTenderingCriterion class</p>
+</li>
+<li>
+<p>REQUIREMENT_GROUP: Group of requirements or remarks issued by a MS or a CA; maps to a UBL-2.2 cac:TenderingCriterionPropertyGroup</p>
+</li>
+<li>
+<p>REQUIREMENT_SUBGROUP: A subgroup of requirements or remarks inside a group or subgroup of requirements; maps to a UBL-2.2 cac:SubsidiaryTenderingCriterionPropertyGroup</p>
+</li>
+<li>
+<p>REQUIREMENT: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ResponseDataType</a>")</p>
+</li>
+<li>
+<p>QUESTION_GROUP: Group of questions, each question requiring a datum as an answer from the EO; maps to a cac:TenderingCriterionPropertyGroup class</p>
+</li>
+<li>
+<p>QUESTION_SUBGROUP:	A subgroup of questions inside a group or a subgroup of questions; maps to a cac:SubsidiaryTenderingCriterionPropertyGroup</p>
+</li>
+<li>
+<p>QUESTION: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ResponseDataType</a>" )</p>
+</li>
+<li>
+<p>CAPTION: A text label (no requirement nor answer is expected); maps to a cac:TenderingCriterionProperty class (the expected response data type is NONE)</p>
+</li>
+<li>
+<p>ADDITIONAL_DESCRIPTION_LINE:	Additional line in a description (for descriptions that can be split in several lines); maps to a cbc:Description element (namely in cac:TenderingCriterion)</p>
+</li>
+<li>
+<p>LEGISLATION:	An instance of a Legislation class; maps to a cac:Legislation class</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The main differences between REQUIREMENT, CAPTION and QUESTION are</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A REQUIREMENT is a condition, restriction or rule established by the Member State (in e-Certis, for all procurement procedures) or the contracting authority (CA, for the specific procurement procedure). REQUIREMENTs are not intended to be responded by the economic operator; but the economic operator must conform to (comply with) it. Examples of REQUIREMENTs: 'Provide at least three references to similar works', 'The expected lowest general yearly turnover is 1,000,000 €', etc. (see mock-ups).</p>
+</li>
+<li>
+<p>A CAPTION is a label normally used to introduce a group of REQUIREMENTs or QUESTIONs; e.g. 'Lots the EO tenders to' (which is followed by a list of Lots identifiers provided by the EO);</p>
+</li>
+<li>
+<p>A QUESTION is a direct request of a specific datum issued by the MS or the CA and addressed to the EO. The EO has to respond this QUESTION with a value of the expected type of data.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If you examine any of the XML examples provided in this document you will observe that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SUBCRITERION is reserved to specify national criteria. The Regulated ESPD documents do not specify SUBCRITERIA. The SELF-CONTAINED version does;</p>
+</li>
+<li>
+<p>The Regulated ESPD documents do not specify REQUIREMENTs, only QUESTIONs. The SELF-CONTAINED version does;</p>
+</li>
+<li>
+<p>The reason for having 'groups' and 'sub-groups' of properties is because UBL-2.2 defined the 'TenderingCriterionPropertyGroup' and 'SubsidiaryTenderingCriterionPropertyGroup';</p>
+</li>
+<li>
+<p>In the SELF-CONTAINED version the following rules apply in a regular way:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>When the member state (MS) or the contracting authority (CA) needs to specify REQUIREMENTs, the outer group of the data structure is always a REQUIREMENT_GROUP (e.g. 'EG-Contributions', 'SC-Suitability', or practically all selection criteria). Otherwise the outer group is always a QUESTION_GROUP (e.g. 'EG-Convictions', 'EG-Environ-Social-Labour_Law', 'EG-Business', etc.)</p>
+</li>
+<li>
+<p>A REQUIREMENT_GROUP always contain a first element CAPTION or REQUIREMENT. This is because in the UBL-2.2 XSD schema the first <strong>mandatory</strong> element is always a <code>cac:TenderingCriterionProperty</code> element;</p>
+</li>
+<li>
+<p>A REQUIREMENT_GROUP or REQUIREMENT-SUBGROUP may contain either REQUIREMENT_SUBGROUPS and/or QUESTION_SUBGROUPS;</p>
+</li>
+<li>
+<p>The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENTs or QUESTIONs is to look into the value of the <code>cac:TenderingCriterionProperty/cbc:TypeCode</code>. The list of possible codes are the ones of the above mentioned Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CriterionElementType</a>".</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="data-structures-as-a-tool-to-generate-xml-instances"><a class="anchor" href="#data-structures-as-a-tool-to-generate-xml-instances"></a>Data structures as a tool to generate XML instances</h4>
 
 </div>
 </div>
@@ -4241,7 +4446,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/ExclusionCriteriaTaxonomy.png" alt="Exclusion criteria taxonomy" width="900">
 </div>
-<div class="title">Figure 37. Exclusion criteria taxonomy</div>
+<div class="title">Figure 39. Exclusion criteria taxonomy</div>
 </div>
 <div class="sect2">
 <h3 id="v-1-convictions"><a class="anchor" href="#v-1-convictions"></a>V.1 Convictions</h3>
@@ -4319,7 +4524,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Convictions__EO_mock-up.png" alt="Conviction EO mock-up">
 </div>
-<div class="title">Figure 38. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
+<div class="title">Figure 40. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
 </div>
 </div>
 <div class="sect3">
@@ -4331,7 +4536,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_ESPDRequest_Convictions_Data_Structure.png" alt="Convictions data structure">
 </div>
-<div class="title">Figure 39. Data Structure for all 'Regulated Conviction' exclusion grounds criteria</div>
+<div class="title">Figure 41. Data Structure for all 'Regulated Conviction' exclusion grounds criteria</div>
 </div>
 </div>
 <div class="sect3">
@@ -4340,7 +4545,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_ESPDRequest_Convictions_Data_Structure.png" alt="Convictions data structure">
 </div>
-<div class="title">Figure 40. Data Structure for all 'Self-contained Conviction' exclusion grounds criteria</div>
+<div class="title">Figure 42. Data Structure for all 'Self-contained Conviction' exclusion grounds criteria</div>
 </div>
 </div>
 <div class="sect3">
@@ -4669,7 +4874,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_ESPDRequest_Contributions_CA_mockup.png" alt="Regulated 'Payment of Taxes' (ESPD Service, CA perspective)" width="800">
 </div>
-<div class="title">Figure 41. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
+<div class="title">Figure 43. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -4681,7 +4886,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/PaymentOfTaxes_EO_YES_mock-up.png" alt="Regulated 'Payment of Taxes' (ESPD Service, EO perspective)" width="EO perspective)">
 </div>
-<div class="title">Figure 42. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
+<div class="title">Figure 44. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
 </div>
 <div class="paragraph">
 <p>This other mock-up shows the view of the economic operator when it answers "No" to the question "Has this breach of obligations been established by other means&#8230;&#8203;.?".</p>
@@ -4690,7 +4895,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/PaymentOfTaxes_EO_NO_mock-up.png" alt="Regulated 'Payment of Taxes' (ESPD Service, EO perspective)" width="EO perspective)">
 </div>
-<div class="title">Figure 43. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 2 (<strong>NO</strong>)</div>
+<div class="title">Figure 45. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 2 (<strong>NO</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -4699,7 +4904,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_ESPDRequest_Contributions_Data_Structure.png" alt="Regulated 'Contributions' criterion data structure">
 </div>
-<div class="title">Figure 44. Regulated 'Contributions' criterion data structure</div>
+<div class="title">Figure 46. Regulated 'Contributions' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -4940,7 +5145,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/PaymentOfTaxes_CA_mock-up.png" alt="Regulated 'Payment of Taxes' (ESPD Service, CA perspective)" width="CA perspective)">
 </div>
-<div class="title">Figure 45. Regulated 'Payment of Taxes' (ESPD Service, CA perspective)</div>
+<div class="title">Figure 47. Regulated 'Payment of Taxes' (ESPD Service, CA perspective)</div>
 </div>
 <div class="paragraph">
 <p>This other screen-capture below represents a possible mock-up, from the contracting authority perspective, for the edition of requirements in a Self-contained 'Contributions' criterion (Payment of Taxes).</p>
@@ -4949,7 +5154,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_PaymentOfTaxes_CA_REQUIREMENTS_Edition-mock-up.png" alt="Self-contained 'Payment of Taxes', REQUIREMENT edition">
 </div>
-<div class="title">Figure 46. Self-contained 'Payment of Taxes', REQUIREMENT edition (CA Perspective)</div>
+<div class="title">Figure 48. Self-contained 'Payment of Taxes', REQUIREMENT edition (CA Perspective)</div>
 </div>
 <div class="paragraph">
 <p>The differences with the Regulated Contribution version are:</p>
@@ -4988,7 +5193,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_PaymentOfTaxes_EO_REQUIREMENTS-mock-up.png" alt="Self-contained 'Payment of Taxes', EO  perspective">
 </div>
-<div class="title">Figure 47. Self-contained 'Payment of Taxes', (EO perspective)</div>
+<div class="title">Figure 49. Self-contained 'Payment of Taxes', (EO perspective)</div>
 </div>
 </div>
 <div class="sect3">
@@ -5011,7 +5216,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_ESPDRequest_Contributions_Data_Structure.png" alt="Self-contained 'Contributions' criterion data structure">
 </div>
-<div class="title">Figure 48. Self-contained 'Contributions' criterion data structure</div>
+<div class="title">Figure 50. Self-contained 'Contributions' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -5371,7 +5576,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Social_CA_mock_up.png" alt="Social - CA perspective">
 </div>
-<div class="title">Figure 49. 'Environmental Law' criterion mock-up - CA perspective</div>
+<div class="title">Figure 51. 'Environmental Law' criterion mock-up - CA perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5394,7 +5599,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Social_EO_mock_up.png" alt="Social - EO perspective">
 </div>
-<div class="title">Figure 50. 'Environmental Law' criterion mock-up - CA perspective</div>
+<div class="title">Figure 52. 'Environmental Law' criterion mock-up - CA perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5403,7 +5608,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Environmental_Law_Data_Structure.png" alt="Regulated Environmental Law">
 </div>
-<div class="title">Figure 51. 'Environmental Law' criterion data structure</div>
+<div class="title">Figure 53. 'Environmental Law' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -5412,7 +5617,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Environmental_Law_Data_Structure.png" alt="Self-contained Environmental Law">
 </div>
-<div class="title">Figure 52. 'Environmental Law' criterion data structure</div>
+<div class="title">Figure 54. 'Environmental Law' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -5561,7 +5766,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Business_CA_mock-up.png" alt="'Bankruptcy' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 53. 'Bankruptcy' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 55. 'Bankruptcy' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5584,7 +5789,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Business_EO_mock-up.png" alt="'Bankruptcy' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 54. 'Bankruptcy' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 56. 'Bankruptcy' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5593,7 +5798,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Business_Data_Structure.png" alt="Regulated_Business">
 </div>
-<div class="title">Figure 55. 'Bankruptcy' criterion  data structure - Regulated</div>
+<div class="title">Figure 57. 'Bankruptcy' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -5602,7 +5807,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Business_Data_Structure.png" alt="Selfcontained_Business">
 </div>
-<div class="title">Figure 56. 'Bankruptcy' criterion  data structure - Self-contained</div>
+<div class="title">Figure 58. 'Bankruptcy' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -5758,7 +5963,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misconduct_CA_mock-up.png" alt="'Professional misconduct' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 57. 'Professional misconduct' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 59. 'Professional misconduct' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5781,7 +5986,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misconduct_EO_mock-up.png" alt="'Professional misconduct' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 58. 'Professional misconduct' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 60. 'Professional misconduct' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5790,7 +5995,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Misconduct_Data_Structure.png" alt="Regulated Professional misconduct">
 </div>
-<div class="title">Figure 59. 'Professional misconduct' criterion data structure - Regulated</div>
+<div class="title">Figure 61. 'Professional misconduct' criterion data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -5799,7 +6004,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Misconduct_Data_Structure.png" alt="Professional misconduct Professional misconduct">
 </div>
-<div class="title">Figure 60. 'Professional misconduct' criterion data structure - Self-contained</div>
+<div class="title">Figure 62. 'Professional misconduct' criterion data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -5960,7 +6165,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Conflict_of_interest_CA_mock-up.png" alt="'Conflict of interest' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 61. 'Conflict of interest' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 63. 'Conflict of interest' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5986,7 +6191,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Conflict_of_interest_EO_mock-up.png" alt="'Conflict of interest' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 62. 'Conflict of interest' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 64. 'Conflict of interest' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -5995,7 +6200,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Conflict_of_Interest_Data_Structure.png" alt="Conflict of interest">
 </div>
-<div class="title">Figure 63. 'Conflict of interest' criterion  data structure - Regulated</div>
+<div class="title">Figure 65. 'Conflict of interest' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6004,7 +6209,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Conflict_of_Interest_Data_Structure.png" alt="Conflict of interest">
 </div>
-<div class="title">Figure 64. 'Conflict of interest' criterion  data structure - Self-contained</div>
+<div class="title">Figure 66. 'Conflict of interest' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -6131,7 +6336,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Early_Termination_CA_mock-up.png" alt="'Early termination' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 65. 'Early termination' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 67. 'Early termination' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6154,7 +6359,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Early_Termination_EO_mock-up.png" alt="'Early termination' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 66. 'Early termination' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 68. 'Early termination' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6163,7 +6368,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Early_Termination_Data_Structure.png" alt="Early termination">
 </div>
-<div class="title">Figure 67. 'Early termination' criterion  data structure - Regulated</div>
+<div class="title">Figure 69. 'Early termination' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6172,7 +6377,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Early_Termination_Data_Structure.png" alt="Early termination">
 </div>
-<div class="title">Figure 68. 'Early termination' criterion  data structure - Self-contained</div>
+<div class="title">Figure 70. 'Early termination' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -6321,7 +6526,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misinterpretation_CA_mock-up.png" alt="'Misinterpretation' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 69. 'Misinterpretation' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 71. 'Misinterpretation' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6344,7 +6549,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misinterpretation_EO_mock-up.png" alt="'Misinterpretation' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 70. 'Misinterpretation' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 72. 'Misinterpretation' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6353,7 +6558,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Misinterpretation_Data_Structure.png" alt="Misinterpretation">
 </div>
-<div class="title">Figure 71. 'Misinterpretation' criterion  data structure - Regulated</div>
+<div class="title">Figure 73. 'Misinterpretation' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6362,7 +6567,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Misinterpretation_Data_Structure.png" alt="Misinterpretation">
 </div>
-<div class="title">Figure 72. 'Misinterpretation' criterion  data structure - Self-contained</div>
+<div class="title">Figure 74. 'Misinterpretation' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -6535,7 +6740,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Purely_National_CA_mock-up.png" alt="'Purely national criteria' mock-up - CA perspective" width="mock-up - CA perspective">
 </div>
-<div class="title">Figure 73. 'Purely national criteria' mock-up - contracting authority perspective</div>
+<div class="title">Figure 75. 'Purely national criteria' mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6547,7 +6752,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Purely_National_EO_mock-up.png" alt="'Purely national criteria' mock-up - EO perspective" width="mock-up - EO perspective">
 </div>
-<div class="title">Figure 74. 'Purely national criteria' mock-up - economic operator perspective</div>
+<div class="title">Figure 76. 'Purely national criteria' mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6556,7 +6761,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Purely_National_Data_Structure.png" alt="'Purely national criteria'">
 </div>
-<div class="title">Figure 75. 'Purely national criteria' data structure</div>
+<div class="title">Figure 77. 'Purely national criteria' data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -6658,7 +6863,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Purely_National_EO_mock-up.png" alt="'Purely national criteria' mock-up - CA perspective" width="mock-up - CA perspective">
 </div>
-<div class="title">Figure 76. 'Purely natural criteria' - economic operator perspective (Self-contained)</div>
+<div class="title">Figure 78. 'Purely natural criteria' - economic operator perspective (Self-contained)</div>
 </div>
 </div>
 <div class="sect3">
@@ -6667,7 +6872,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Purely_National_Data_Structure.png" alt="Purely national criteria">
 </div>
-<div class="title">Figure 77. 'Purely national criteria' data structure - Regulated</div>
+<div class="title">Figure 79. 'Purely national criteria' data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6868,7 +7073,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/SelectionCriteriaTaxonomy.png" alt="Selection criteria taxonomy" width="900">
 </div>
-<div class="title">Figure 78. Selection criteria taxonomy</div>
+<div class="title">Figure 80. Selection criteria taxonomy</div>
 </div>
 </div>
 <div class="sect2">
@@ -6914,7 +7119,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Suitability_CA_mockup.png" alt="Regulated 'Suitability' criterion (CA perspective)">
 </div>
-<div class="title">Figure 79. Regulated 'Suitability' criterion (CA perspective)'</div>
+<div class="title">Figure 81. Regulated 'Suitability' criterion (CA perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -6926,7 +7131,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Suitability_EO_mockup.png" alt="Regulated 'Suitability' criterion (EO perspective)" width="800">
 </div>
-<div class="title">Figure 80. Regulated 'Suitability' criterion (EO perspective)'</div>
+<div class="title">Figure 82. Regulated 'Suitability' criterion (EO perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -6935,7 +7140,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Suitability_Data_Structure.png" alt="Regulated 'Suitability' criterion data structure">
 </div>
-<div class="title">Figure 81. Regulated 'Suitability' criterion data structure</div>
+<div class="title">Figure 83. Regulated 'Suitability' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7006,7 +7211,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_NOLOTS_CA_mockup.png" alt="Self-contained 'Suitability' criterion (CA perspective)">
 </div>
-<div class="title">Figure 82. Self-contained 'Suitability' criterion without Lots (CA perspective)'</div>
+<div class="title">Figure 84. Self-contained 'Suitability' criterion without Lots (CA perspective)'</div>
 </div>
 <div class="paragraph">
 <p>This other mock-up represents the same situation when the procurement procedure is <strong>divided into lots</strong>.</p>
@@ -7018,7 +7223,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_LOTS_CA_mockup.png" alt="Self-contained 'Suitability' criterion (CA perspective)">
 </div>
-<div class="title">Figure 83. Self-contained 'Suitability' criterion with Lots (CA perspective)'</div>
+<div class="title">Figure 85. Self-contained 'Suitability' criterion with Lots (CA perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -7043,7 +7248,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_LOTS_EO_mockup.png" alt="Self-contained 'Suitability' criterion (EO perspective)" width="800">
 </div>
-<div class="title">Figure 84. Self-contained 'Suitability' criterion (EO perspective)'</div>
+<div class="title">Figure 86. Self-contained 'Suitability' criterion (EO perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -7071,7 +7276,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_Data_Structure.png" alt="Self-contained 'Suitability' criterion data structure">
 </div>
-<div class="title">Figure 85. Self-contained 'Suitability' criterion data structure</div>
+<div class="title">Figure 87. Self-contained 'Suitability' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7307,7 +7512,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Yearly_Turnover_CA_mock-up.png" alt="Regulated 'yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 86. Regulated 'general yearly turnover' CA mock-up</div>
+<div class="title">Figure 88. Regulated 'general yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7319,7 +7524,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Yearly_Turnover_EO_mock-up.png" alt="Regulated 'yearly turnover' EO mock-up">
 </div>
-<div class="title">Figure 87. Regulated 'general yearly turnover' EO mock-up</div>
+<div class="title">Figure 89. Regulated 'general yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7328,7 +7533,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Yearly_Turnover_Data_Structure.png" alt="Regulated 'yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 88. Regulated 'general yearly turnover' criterion data structure</div>
+<div class="title">Figure 90. Regulated 'general yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7466,7 +7671,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Yearly_Turnovers_CA_mockup.png" alt="Self-contained 'General and Specific Yearly Turnovers' CA mock-up">
 </div>
-<div class="title">Figure 89. Self-contained 'General Yearly Turnovers' CA mock-up</div>
+<div class="title">Figure 91. Self-contained 'General Yearly Turnovers' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7475,7 +7680,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Yearly_Turnovers_EO_mock-up.png" alt="Self-contained 'General and Specific Yearly Turnovers' EO mock-up_EO">
 </div>
-<div class="title">Figure 90. Self-contained 'General Yearly Turnovers' EO mock-up</div>
+<div class="title">Figure 92. Self-contained 'General Yearly Turnovers' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7487,7 +7692,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Yearly_Turnovers_Data_Structure.png" alt="Self-contained 'General Yearly Turnovers' criterion data structure">
 </div>
-<div class="title">Figure 91. Self-contained 'General Yearly Turnovers' criterion data structure</div>
+<div class="title">Figure 93. Self-contained 'General Yearly Turnovers' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7664,7 +7869,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Average_Yearly_Turnover_CA_mock-up.png" alt="Regulated 'average yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 92. Regulated 'average yearly turnover' CA mock-up</div>
+<div class="title">Figure 94. Regulated 'average yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7676,7 +7881,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Average_Yearly_Turnover_EO_mock-up.png" alt="Regulated 'average yearly turnover' EO mock-up">
 </div>
-<div class="title">Figure 93. Regulated 'average yearly turnover' EO mock-up</div>
+<div class="title">Figure 95. Regulated 'average yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7685,7 +7890,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Average_Yearly_Turnover_Data_Structure.png" alt="Regulated 'yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 94. Regulated 'average yearly turnover' criterion data structure</div>
+<div class="title">Figure 96. Regulated 'average yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7786,7 +7991,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Average_Yearly_Turnover_CA_mock-up.png" alt="Self-contained 'average yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 95. Self-contained 'average yearly turnover' CA mock-up</div>
+<div class="title">Figure 97. Self-contained 'average yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7808,7 +8013,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Average_Yearly_Turnovers_EO_mock-up.png" alt="Self-contained 'average yearly turnover' EO mock-up_EO">
 </div>
-<div class="title">Figure 96. Self-contained 'average yearly turnover' EO mock-up</div>
+<div class="title">Figure 98. Self-contained 'average yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7817,7 +8022,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Average_Yearly_Turnover_Data_Structure.png" alt="Self-contained 'average yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 97. Self-contained 'average yearly turnover' criterion data structure</div>
+<div class="title">Figure 99. Self-contained 'average yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7929,7 +8134,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Yearly_Turnover_CA_mock-up.png" alt="Regulated 'specific yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 98. Regulated 'specific yearly turnover' CA mock-up</div>
+<div class="title">Figure 100. Regulated 'specific yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7941,7 +8146,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Yearly_Turnover_EO_mock-up.png" alt="Regulated 'specific yearly turnover' EO mock-up">
 </div>
-<div class="title">Figure 99. Regulated 'specific yearly turnover' EO mock-up</div>
+<div class="title">Figure 101. Regulated 'specific yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -7953,7 +8158,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Yearly_Turnover_Data_Structure.png" alt="Regulated 'specific yearly ' criterion data structure">
 </div>
-<div class="title">Figure 100. Regulated 'specific yearly turnover' criterion data structure</div>
+<div class="title">Figure 102. Regulated 'specific yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8104,7 +8309,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Yearly_Turnover_CA_mock-up.png" alt="Self-contained 'specific yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 101. Self-contained 'specific yearly turnover' CA mock-up</div>
+<div class="title">Figure 103. Self-contained 'specific yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8135,7 +8340,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Yearly_Turnovers_EO_mock-up.png" alt="Self-contained 'specific yearly turnover' EO mock-up_EO">
 </div>
-<div class="title">Figure 102. Self-contained 'specific yearly turnover' EO mock-up</div>
+<div class="title">Figure 104. Self-contained 'specific yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8169,7 +8374,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Yearly_Turnover_Data_Structure.png" alt="Self-contained 'specific yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 103. Self-contained 'specific yearly turnover' criterion data structure</div>
+<div class="title">Figure 105. Self-contained 'specific yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8309,7 +8514,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Average_Turnover_CA_mock-up.png" alt="Regulated 'specific average turnover' CA mock-up">
 </div>
-<div class="title">Figure 104. Regulated 'specific average turnover' CA mock-up</div>
+<div class="title">Figure 106. Regulated 'specific average turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8321,7 +8526,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Average_Turnover_EO_mock-up.png" alt="Regulated 'specific average turnover' EO mock-up">
 </div>
-<div class="title">Figure 105. Regulated 'specific average turnover' EO mock-up</div>
+<div class="title">Figure 107. Regulated 'specific average turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8330,7 +8535,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Average_Turnover_Data_Structure.png" alt="Regulated 'specific average turnover' criterion data structure">
 </div>
-<div class="title">Figure 106. Regulated 'specific average turnover' criterion data structure</div>
+<div class="title">Figure 108. Regulated 'specific average turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8462,7 +8667,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Average_Turnovers_CA_mock-up.png" alt="Self-contained 'specific average turnover' CA mock-up_EO">
 </div>
-<div class="title">Figure 107. Self-contained 'specific average turnover' CA mock-up</div>
+<div class="title">Figure 109. Self-contained 'specific average turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8471,7 +8676,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Average_Turnovers_EO_mock-up.png" alt="Self-contained 'specific average turnover' EO mock-up_EO">
 </div>
-<div class="title">Figure 108. Self-contained 'specific average turnover' EO mock-up</div>
+<div class="title">Figure 110. Self-contained 'specific average turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8483,7 +8688,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Average_Turnover_Data_Structure.png" alt="Self-contained 'specific average turnover' criterion data structure">
 </div>
-<div class="title">Figure 109. Self-contained 'specific average turnover' criterion data structure</div>
+<div class="title">Figure 111. Self-contained 'specific average turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8621,7 +8826,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/EO_Setup_CA_mock-up.png" alt="'Economic operator setup'CA mock-up" width="CA mock-up">
 </div>
-<div class="title">Figure 110. 'Economic operator setup&#8217;CA mock-up</div>
+<div class="title">Figure 112. 'Economic operator setup&#8217;CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8633,7 +8838,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/EO_Setup_EO_mock-up.png" alt="'Economic operator setup' EO mock-up" width="EO mock-up">
 </div>
-<div class="title">Figure 111. 'Economic operator setup&#8217;EO mock-up</div>
+<div class="title">Figure 113. 'Economic operator setup&#8217;EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8642,7 +8847,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_EO_Setup_Data_Structure.png" alt="'Economic operator setup' criterion data structure" width="criterion data structure">
 </div>
-<div class="title">Figure 112. 'Economic operator setup' criterion (<strong>REGULATED</strong>) data structure</div>
+<div class="title">Figure 114. 'Economic operator setup' criterion (<strong>REGULATED</strong>) data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8654,7 +8859,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_EO_Setup_Data_Structure.png" alt="'Economic operator setup' criterion data structure" width="criterion data structure">
 </div>
-<div class="title">Figure 113. 'Economic operator setup' criterion (<strong>SELF-CONTAINED</strong>) data structure</div>
+<div class="title">Figure 115. 'Economic operator setup' criterion (<strong>SELF-CONTAINED</strong>) data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8790,7 +8995,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Financial_ratio_CA_mockup.png" alt="Regulated 'financial ratio' CA mock-up">
 </div>
-<div class="title">Figure 114. Regulated 'financial ratio' CA mock-up</div>
+<div class="title">Figure 116. Regulated 'financial ratio' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8802,7 +9007,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Financial_Ratio_EO_mockup.png" alt="Regulated 'financial ratio' CA mock-up">
 </div>
-<div class="title">Figure 115. Regulated 'financial ratio' EO mock-up</div>
+<div class="title">Figure 117. Regulated 'financial ratio' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8811,7 +9016,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Financial_Ratio_Data_Structure.png" alt="Regulated 'financial ratio' criterion data structure">
 </div>
-<div class="title">Figure 116. Regulated 'financial ratio' criterion data structure</div>
+<div class="title">Figure 118. Regulated 'financial ratio' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8892,7 +9097,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Financial_ratio_CA_REQUIREMENTS_mockup.png" alt="Self-contained 'financial ratio' CA REQUIREMENTS mock-up">
 </div>
-<div class="title">Figure 117. Self-contained 'financial ratio' CA mock-up REQUIREMENTS edition</div>
+<div class="title">Figure 119. Self-contained 'financial ratio' CA mock-up REQUIREMENTS edition</div>
 </div>
 </div>
 <div class="sect3">
@@ -8904,7 +9109,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Financial_Ratio_EO_mockup.png" alt="Self-contained 'financial ratio' EO mock-up">
 </div>
-<div class="title">Figure 118. Self-contained 'financial ratio' EO mock-up</div>
+<div class="title">Figure 120. Self-contained 'financial ratio' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8930,7 +9135,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Financial_Ratio_Data_Structure.png" alt="Self-contained 'financial ratio' criterion data structure">
 </div>
-<div class="title">Figure 119. Self-contained 'financial ratio' criterion data structure</div>
+<div class="title">Figure 121. Self-contained 'financial ratio' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9238,7 +9443,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Risk_Indemnity_Insurance_CA_mock-up.png" alt="Regulated 'risk indemnity insurance' CA mock-up">
 </div>
-<div class="title">Figure 120. 'Regulated risk indemnity insurance&#8217;CA mock-up</div>
+<div class="title">Figure 122. 'Regulated risk indemnity insurance&#8217;CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9250,7 +9455,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Risk_Indemnity_Insurance_EO_mock-up.png" alt="'Regulated 'risk indemnity insurance' EO mock-up" width="risk indemnity insurance' EO mock-up">
 </div>
-<div class="title">Figure 121. Regulated 'risk indemnity insurance' criterion data structure</div>
+<div class="title">Figure 123. Regulated 'risk indemnity insurance' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9259,7 +9464,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Risk_Indemnity_Insurance_Data_Structure.png" alt="Regulated 'risk indemnity insurance' criterion data structure">
 </div>
-<div class="title">Figure 122. Regulated 'risk indemnity insurance' criterion data structure</div>
+<div class="title">Figure 124. Regulated 'risk indemnity insurance' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9339,7 +9544,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_CA_NOLOTS_mock-up.png" alt="Self-contained 'risk indemnity insurance' CA mock-up">
 </div>
-<div class="title">Figure 123. 'Self-contained risk indemnity insurance' CA REQUIREMENTS edition (Procedure without Lots)</div>
+<div class="title">Figure 125. 'Self-contained risk indemnity insurance' CA REQUIREMENTS edition (Procedure without Lots)</div>
 </div>
 <div class="paragraph">
 <p>When the procedure is divided into Lots: The contracting authority can specify the Lots one particular insurance applies to.</p>
@@ -9348,7 +9553,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_CA_LOTS_mock-up.png" alt="Self-contained 'risk indemnity insurance' CA mock-up">
 </div>
-<div class="title">Figure 124. 'Self-contained risk indemnity insurance' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
+<div class="title">Figure 126. 'Self-contained risk indemnity insurance' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
 </div>
 </div>
 <div class="sect3">
@@ -9360,7 +9565,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_EO_mock-up.png" alt="'Self-contained 'risk indemnity insurance' EO mock-up" width="risk indemnity insurance' EO mock-up">
 </div>
-<div class="title">Figure 125. 'Economic operator setup&#8217;EO mock-up</div>
+<div class="title">Figure 127. 'Economic operator setup&#8217;EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9401,7 +9606,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png" alt="Self-contained 'risk indemnity insurance' criterion data structure">
 </div>
-<div class="title">Figure 126. Self-contained 'risk indemnity insurance' criterion data structure</div>
+<div class="title">Figure 128. Self-contained 'risk indemnity insurance' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9609,7 +9814,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Other_Ec_Fin_Reqs_CA_mockup.png" alt="Regulated 'other economic or financial requirements' CA mock-up">
 </div>
-<div class="title">Figure 127. Regulated 'other economic or financial requirements' CA mock-up</div>
+<div class="title">Figure 129. Regulated 'other economic or financial requirements' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9621,7 +9826,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Other_Ec_Fin_Reqs_EO_mockup.png" alt="Regulated 'other economic or financial requirements' EO mock-up">
 </div>
-<div class="title">Figure 128. Regulated 'other economic or financial requirements' EO mock-up</div>
+<div class="title">Figure 130. Regulated 'other economic or financial requirements' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9633,7 +9838,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Other_Ec_Fin_Reqs_Data_Structure.png" alt="Regulated 'other economic or financial requirements' data structure">
 </div>
-<div class="title">Figure 129. Regulated 'other economic or financial requirements' data structure</div>
+<div class="title">Figure 131. Regulated 'other economic or financial requirements' data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9711,7 +9916,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Other_EC_FIN_CA_LOTS_mock-up.png" alt="Self-contained 'other economic or financial requirements' CA mock-up">
 </div>
-<div class="title">Figure 130. Self-contained 'other economic or financial requirements' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
+<div class="title">Figure 132. Self-contained 'other economic or financial requirements' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
 </div>
 </div>
 <div class="sect3">
@@ -9723,7 +9928,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Other_EC_FIN_EO_mock-up.png" alt="'Self-contained 'other economic or financial requirements' EO mock-up" width="other economic or financial requirements' EO mock-up">
 </div>
-<div class="title">Figure 131. Self-contained 'other economic or financial requirements' EO mock-up</div>
+<div class="title">Figure 133. Self-contained 'other economic or financial requirements' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9767,7 +9972,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Other_EC_FIN_Data_Structure.png" alt="Self-contained 'other economic or financial requirements' criterion data structure">
 </div>
-<div class="title">Figure 132. Self-contained 'other economic or financial requirements' criterion data structure</div>
+<div class="title">Figure 134. Self-contained 'other economic or financial requirements' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10022,7 +10227,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_References_CA_mockup.png" alt="Regulated 'References' CA mock-up" width="800">
 </div>
-<div class="title">Figure 133. Regulated 'References' CA mock-up</div>
+<div class="title">Figure 135. Regulated 'References' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10034,7 +10239,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_References_EO_mockup.png" alt="Regulated 'References' CA mock-up' EO mock-up">
 </div>
-<div class="title">Figure 134. Regulated 'References' CA mock-up' EO mock-up</div>
+<div class="title">Figure 136. Regulated 'References' CA mock-up' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10046,7 +10251,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_References_Data_Structure.png" alt="Regulated 'References' criterion data structure">
 </div>
-<div class="title">Figure 135. Regulated 'References' criterion data structure</div>
+<div class="title">Figure 137. Regulated 'References' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10175,7 +10380,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_References_CA_REQUIREMENTS_mockup.png" alt="Self-contained 'References' CA REQUIREMENTs edition mock-up">
 </div>
-<div class="title">Figure 136. Self-contained 'References' CA REQUIREMENTs edition mock-up</div>
+<div class="title">Figure 138. Self-contained 'References' CA REQUIREMENTs edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10200,7 +10405,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_References_EO_mockup.png" alt="Self-contained 'References' EO mock-up">
 </div>
-<div class="title">Figure 137. Self-contained 'References' EO mock-up</div>
+<div class="title">Figure 139. Self-contained 'References' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10228,7 +10433,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_References_Data_Structure.png" alt="Self-contained 'References' criterion data structure">
 </div>
-<div class="title">Figure 138. Self-contained 'References' criterion data structure</div>
+<div class="title">Figure 140. Self-contained 'References' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10571,7 +10776,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Abilities_I_CA_mockup.png" alt="Regulated 'Abilities (I)' CA mock-up">
 </div>
-<div class="title">Figure 139. Regulated 'Abilities (I)' CA mock-up</div>
+<div class="title">Figure 141. Regulated 'Abilities (I)' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10580,7 +10785,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Abilities_I_EO_mockup.png" alt="Regulated 'Abilities (I)' EO mock-up">
 </div>
-<div class="title">Figure 140. Regulated 'Abilities (I)' EO mock-up</div>
+<div class="title">Figure 142. Regulated 'Abilities (I)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10589,7 +10794,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Abilities_I_Data_Structure.png" alt="Regulated 'Abilities (I)' criterion data structure">
 </div>
-<div class="title">Figure 141. Regulated 'Abilities (I)' criterion data structure</div>
+<div class="title">Figure 143. Regulated 'Abilities (I)' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10678,7 +10883,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Abilities_1_CA_REQUIREMENT_Edition_mockup.png" alt="Self-contained 'Abilities (I)' CA REQUIREMENT mock-up">
 </div>
-<div class="title">Figure 142. Self-contained 'Abilities (I)' CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 144. Self-contained 'Abilities (I)' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10690,7 +10895,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Abilities_1_EO_mockup.png" alt="Self-contained 'Abilities (I)' EO mock-up">
 </div>
-<div class="title">Figure 143. Self-contained 'Abilities (I)' EO mock-up</div>
+<div class="title">Figure 145. Self-contained 'Abilities (I)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10702,7 +10907,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up">
 </div>
-<div class="title">Figure 144. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 146. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10711,7 +10916,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_EO_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up">
 </div>
-<div class="title">Figure 145. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
+<div class="title">Figure 147. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10726,7 +10931,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Abilities_1_Data_Structure.png" alt="Self-contained 'Abilities (I)' ">
 </div>
-<div class="title">Figure 146. Self-contained 'Abilities (I)' criterion data structure</div>
+<div class="title">Figure 148. Self-contained 'Abilities (I)' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11062,7 +11267,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Checks_CA_mockup.png" alt="Regulated 'checks' CA mock-up">
 </div>
-<div class="title">Figure 147. Regulated 'checks' CA mock-up</div>
+<div class="title">Figure 149. Regulated 'checks' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11074,7 +11279,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Checks_EO_mockup.png" alt="Regulated 'checks' EO mock-up">
 </div>
-<div class="title">Figure 148. Regulated 'checks' EO mock-up</div>
+<div class="title">Figure 150. Regulated 'checks' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11089,7 +11294,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Checks_Data_Structure.png" alt="Regulated 'checks' criterion data structure criterion data structure">
 </div>
-<div class="title">Figure 149. Regulated 'checks' criterion data structure</div>
+<div class="title">Figure 151. Regulated 'checks' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11147,7 +11352,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Checks_CA_REQUIREMENT_mockup.png" alt="Self-contained 'Checks' CA REQUIREMENT mock-up">
 </div>
-<div class="title">Figure 150. Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 152. Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11159,7 +11364,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Checks_EO_mockup.png" alt="Self-contained 'Checks' CA mock-up">
 </div>
-<div class="title">Figure 151. Self-contained 'allowance of hecks' EO mock-up</div>
+<div class="title">Figure 153. Self-contained 'allowance of hecks' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11190,7 +11395,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Checks_Data_Structure.png" alt="Self-contained 'Checks' criterion data structure">
 </div>
-<div class="title">Figure 152. Self-contained 'allowance of checks' criterion data structure</div>
+<div class="title">Figure 154. Self-contained 'allowance of checks' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11316,7 +11521,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Abilities_3_CA_mockup.png" alt="Regulated 'Abilities (III)' CA mock-up">
 </div>
-<div class="title">Figure 153. Regulated 'Abilities (III)' CA mock-up</div>
+<div class="title">Figure 155. Regulated 'Abilities (III)' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11325,7 +11530,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Abilities_3_EO_mockup.png" alt="Regulated 'Abilities (III)' CA mock-up">
 </div>
-<div class="title">Figure 154. Regulated 'Abilities (III)' EO mock-up</div>
+<div class="title">Figure 156. Regulated 'Abilities (III)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11337,7 +11542,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Abilities_3_Data_Structure.png" alt="Regulated 'Abilities (III)' criterion data structure">
 </div>
-<div class="title">Figure 155. Regulated 'Abilities (III)' criterion data structure</div>
+<div class="title">Figure 157. Regulated 'Abilities (III)' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11430,7 +11635,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Abilities_3_CA_REQUIREMENT_mockup.png" alt="Selfcontained 'Abilities (III)' CA REQUIREMENT mock-up" width="800">
 </div>
-<div class="title">Figure 156. Self-contained 'Abilities (III)' CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 158. Self-contained 'Abilities (III)' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11442,7 +11647,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Abilities_3_EO_mockup.png" alt="Selfcontained 'Abilities (III)' EO mock-up" width="800">
 </div>
-<div class="title">Figure 157. Self-contained 'Abilities (III)' EO mock-up</div>
+<div class="title">Figure 159. Self-contained 'Abilities (III)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11470,7 +11675,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Abilities_3_Data_Structure.png" alt="Self-contained 'Abilities (III)' criterion data structure">
 </div>
-<div class="title">Figure 158. Self-contained 'Abilities (III)' criterion data structure</div>
+<div class="title">Figure 160. Self-contained 'Abilities (III)' criterion data structure</div>
 </div>
 <div class="paragraph">
 <p>The figure below shows how the XML instance, with the nodes collapsed, will look like for the case where the CA specifies three years as the minimum requirement:</p>
@@ -11479,7 +11684,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Abilities_3_CollapsedXML.png" alt="Self-contained 'Abilities (III)' collapsed XML">
 </div>
-<div class="title">Figure 159. Self-contained 'Abilities (III)' criterion data structure (collapsed XML view)</div>
+<div class="title">Figure 161. Self-contained 'Abilities (III)' criterion data structure (collapsed XML view)</div>
 </div>
 <div class="paragraph">
 <p>If you take the data structure spread-sheet and manipulate it as in the figure below you could use the transformation <a href="./dist/xslt/SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt">style-sheet</a> to obtain the XML snippet shown above with the three sub-groups of pairs 'Year + Number of staff' fields:</p>
@@ -11488,7 +11693,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Abilities_3_DS_Manual.png" alt="Self-contained 'Abilities (III)' collapsed XML">
 </div>
-<div class="title">Figure 160. Self-contained 'Abilities (III)' criterion data structure (manual iteration)</div>
+<div class="title">Figure 162. Self-contained 'Abilities (III)' criterion data structure (manual iteration)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11653,7 +11858,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Subcontracting_CA_mockup.png" alt="'Subcontracting proportion' CA mock-up" width="CA mock-up">
 </div>
-<div class="title">Figure 161. 'Subcontracting proportion' CA mock-up (REGULATED and SELF-CONTAINED)</div>
+<div class="title">Figure 163. 'Subcontracting proportion' CA mock-up (REGULATED and SELF-CONTAINED)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11665,7 +11870,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Subcontracting_EO_mockup.png" alt="'Subcontracting proportion' EO mock-up" width="EO mock-up">
 </div>
-<div class="title">Figure 162. 'Subcontracting proportion' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 164. 'Subcontracting proportion' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11680,7 +11885,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Subcontracting_Data_Structure.png" alt="Regulated 'Subcontracting proportion' criterion data structure">
 </div>
-<div class="title">Figure 163. 'Subcontracting proportion' criterion data structure (<strong>REGULATED</strong>)</div>
+<div class="title">Figure 165. 'Subcontracting proportion' criterion data structure (<strong>REGULATED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11695,7 +11900,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Subcontracting_Data_Structure.png" alt="Self-contained 'Subcontracting proportion' criterion data structure">
 </div>
-<div class="title">Figure 164. 'Subcontracting proportion' criterion data structure (<strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 166. 'Subcontracting proportion' criterion data structure (<strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11771,7 +11976,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/SamplesCertificates_CA_mockup.png" alt="'Samples and certificates' CA mock-up" width="CA mock-up">
 </div>
-<div class="title">Figure 165. 'Samples and certificates' CA mock-up (REGULATED and SELF-CONTAINED)</div>
+<div class="title">Figure 167. 'Samples and certificates' CA mock-up (REGULATED and SELF-CONTAINED)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11783,7 +11988,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/SamplesCertificates_EO_mockup.png" alt="'Samples and certificates' EO mock-up" width="EO mock-up">
 </div>
-<div class="title">Figure 166. 'Samples and certificates' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 168. 'Samples and certificates' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11795,7 +12000,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_SamplesCertificates_Data_Structure.png" alt="Regulated 'Samples and certificates' criteria data structure">
 </div>
-<div class="title">Figure 167. 'Samples and certificates' criteria data structure (<strong>REGULATED</strong>)</div>
+<div class="title">Figure 169. 'Samples and certificates' criteria data structure (<strong>REGULATED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11810,7 +12015,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_SamplesCertificates_Data_Structure.png" alt="Self-contained 'Samples and certificates' criterion data structure">
 </div>
-<div class="title">Figure 168. 'Samples and certificates' criteria data structure (<strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 170. 'Samples and certificates' criteria data structure (<strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -11927,7 +12132,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_QA_CA_mockup.png" alt="Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 169. Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
+<div class="title">Figure 171. Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11942,7 +12147,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_QA_EO_mockup.png" alt="Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 170. Regulated 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
+<div class="title">Figure 172. Regulated 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11957,7 +12162,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_QA_Data_Structure.png" alt="Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure">
 </div>
-<div class="title">Figure 171. Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
+<div class="title">Figure 173. Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -12041,7 +12246,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_QA_CA_mockup.png" alt="Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 172. Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
+<div class="title">Figure 174. Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12056,7 +12261,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_QA_EO_mockup.png" alt="Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 173. Self-contained 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
+<div class="title">Figure 175. Self-contained 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12084,7 +12289,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_QA_Data_Structure.png" alt="Self-contained  'Quality Assurance schemes and environmental management standards' criteria data structure">
 </div>
-<div class="title">Figure 174. Self-contained 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
+<div class="title">Figure 176. Self-contained 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -12225,7 +12430,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/QualificationApplicationResponse-XSD-Global-View.png" alt="QualificationApplicationResponse XSD Schema" width="600" height="400">
 </div>
-<div class="title">Figure 175. QualificationApplicationResponse XSD Schema, global view</div>
+<div class="title">Figure 177. QualificationApplicationResponse XSD Schema, global view</div>
 </div>
 <div class="paragraph">
 <p><strong>LEGEND</strong>: The figure below enumerates the four different types of optionality and cardinality for the elements of the UBL-2.2 Schema:</p>
@@ -12234,7 +12439,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/XSD-Schema-elements-Legend.png" alt="Legend: cardinalities" width="400">
 </div>
-<div class="title">Figure 176. Legend: QualificationApplicationRequest XSD Schema, possible cardinalities of the Schema elements</div>
+<div class="title">Figure 178. Legend: QualificationApplicationRequest XSD Schema, possible cardinalities of the Schema elements</div>
 </div>
 </div>
 <div class="sect2">
@@ -12249,7 +12454,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/ESPDResponse-UML-1stLevel.png" alt="QualificationApplicationResponse-UML" width="600">
 </div>
-<div class="title">Figure 177. ESPD-EDM 'QualificationApplicationResponse', UML diagram</div>
+<div class="title">Figure 179. ESPD-EDM 'QualificationApplicationResponse', UML diagram</div>
 </div>
 <div class="paragraph">
 <p>If you compare both figures you will observe that:</p>
@@ -12277,7 +12482,7 @@ This section about the ESPD Response does not cover those information elements t
 <p>The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 24. Class QualificationApplicationResponse, components required by the ESPD-EDM V02.00.00</caption>
+<caption class="title">Table 25. Class QualificationApplicationResponse, components required by the ESPD-EDM V02.00.00</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 83.3334%;">
@@ -12529,7 +12734,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/ESPDResponseXMLinstance_Global_View.png" alt="ESPD Response XML instance">
 </div>
-<div class="title">Figure 178. An ESPD Response XML instance (global view)</div>
+<div class="title">Figure 180. An ESPD Response XML instance (global view)</div>
 </div>
 <div class="sect3">
 <h4 id="xml-example-12"><a class="anchor" href="#xml-example-12"></a>XML example</h4>
@@ -12606,7 +12811,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Reference_To_ESPDRequest.png" alt="Reference to ESPD Request">
 </div>
-<div class="title">Figure 179. Elements expected to reference the ESPD Request from the ESPD Response</div>
+<div class="title">Figure 181. Elements expected to reference the ESPD Request from the ESPD Response</div>
 </div>
 <div class="paragraph">
 <p>If the contracting authority publishes the ESPD Request on a public journal, the economic operator must specify the URI from where the ESPD Response was downloaded to draft its ESPD Response (see for instance how this is done for the publications on the TED or national journals; and see also the XML example below).</p>
@@ -12618,7 +12823,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Reference_To_ESPDRequest_URI.png" alt="Reference to ESPD Request">
 </div>
-<div class="title">Figure 180. URI of the ESPD Request</div>
+<div class="title">Figure 182. URI of the ESPD Request</div>
 </div>
 <div class="paragraph">
 <p>In the ESPD Response you may also add references to:</p>
@@ -12636,7 +12841,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="sect3">
 <h4 id="expected-elements-13"><a class="anchor" href="#expected-elements-13"></a>Expected elements</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 25. Reference to the ESPD Request, expected elements</caption>
+<caption class="title">Table 26. Reference to the ESPD Request, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -12745,7 +12950,7 @@ This section about the ESPD Response does not cover those information elements t
 <p>In the case of the reference to the ESPD Request from the ESPD Response, the only data expected here is the URI where the ESPD Request XML instance was published:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 26. External Reference</caption>
+<caption class="title">Table 27. External Reference</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -12812,7 +13017,7 @@ This section about the ESPD Response does not cover those information elements t
 <p>See formal requirements related to the economic operators in the e-Sens site: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+European+Single+Procurement+Document#BIS41-EuropeanSingleProcurementDocument-tbr092-001">(<em>tbr092-001, _tbr092-008</em>)</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 27. Information requirement about the ESPD Response and the economic operators</caption>
+<caption class="title">Table 28. Information requirement about the ESPD Response and the economic operators</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -12824,32 +13029,21 @@ This section about the ESPD Response does not cover those information elements t
 </tr>
 </tbody>
 </table>
-<div class="exampleblock">
-<div class="title">Example 1. Information requirement about the identifiers of the economic operators</div>
-<div class="content">
-<div class="paragraph">
-<p><strong>REQUIREMENT</strong>|For the identification of the economic operators the UBL-2.2 element <code>cac:PartyIdentification/cbc:ID</code> must be used. The following two attributes of the cbc:ID element (CCT IdentifierType element) must be used:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>@schemeID</code>, a code from the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EOIDType</a> must be used;</p>
-</li>
-<li>
-<p><code>@schemeAgencyID</code>, the default value "EU-COM-GROW" must be used;</p>
-</li>
-<li>
-<p>Optionally, the attribute <code>@schemeName</code> can be used to place the 'Name' of the code (see the column 'Name' in the above mentioned Code List).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>For the ESPD-EDM the preferred type code for the <code>@schemID</code> is VAT.</p>
-</div>
-</div>
-</div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 28. Information requirement about the groups of economic operators</caption>
+<caption class="title">Table 29. Information requirement about the identifiers of the economic operators</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIREMENT</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For the identification of the economic operators the UBL-2.2 element <code>cac:PartyIdentification/cbc:ID</code> must be used. The following two attributes of the cbc:ID element (CCT IdentifierType element) must be used: (1) <code>@schemeID</code>, a code from the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">EOIDType</a> must be used; (2) <code>@schemeAgencyID</code>, the default value "EU-COM-GROW" must be used; (3) Optionally, the attribute <code>@schemeName</code> can be used to place the 'Name' of the code (see the column 'Name' in the above mentioned Code List). For the ESPD-EDM the preferred type code for the <code>@schemID</code> is VAT.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 30. Information requirement about the groups of economic operators</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -12957,7 +13151,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Economic_Operator_XSD.png" alt="cac:EconomicOperatorParty XSD, global view" width="global view">
 </div>
-<div class="title">Figure 181. cac:EconomicOperatorParty XSD, global view</div>
+<div class="title">Figure 183. cac:EconomicOperatorParty XSD, global view</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -13031,7 +13225,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/QualifyinParty_XSD.png" alt="cac:QualifyingParty element-XSD">
 </div>
-<div class="title">Figure 182. cac:QualifyingParty element, XSD</div>
+<div class="title">Figure 184. cac:QualifyingParty element, XSD</div>
 </div>
 </div>
 <div class="sect4">
@@ -13043,7 +13237,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EO_Role_XSD.png" alt="EO Role">
 </div>
-<div class="title">Figure 183. Role of the economic operator</div>
+<div class="title">Figure 185. Role of the economic operator</div>
 </div>
 </div>
 <div class="sect4">
@@ -13055,7 +13249,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EconomicOperatorPartyParty.png" alt="EO Party">
 </div>
-<div class="title">Figure 184. The Party of the economic party</div>
+<div class="title">Figure 186. The Party of the economic party</div>
 </div>
 <div class="paragraph">
 <p>The figures below show the <code>cac:QualifyingParty</code> sub-components <code>cac:BusinessClassificationScheme`and `FinancialCapability</code>, and <code>cac:CompletedTask</code> in a bit more of detail. At present, the ESPD-EDM only uses one field, <code>cbc:Description</code> for the references and classifications and `cbc:Amount`for the Turnover.</p>
@@ -13064,19 +13258,19 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Business_Classification_Scheme.png" alt="Classification Scheme">
 </div>
-<div class="title">Figure 185. The rich structure of a UBL-2.2 'Classification Scheme' for the representation of taxonomies</div>
+<div class="title">Figure 187. The rich structure of a UBL-2.2 'Classification Scheme' for the representation of taxonomies</div>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/FinancialCapabililty.png" alt="Capabilities">
 </div>
-<div class="title">Figure 186. The structure of UBL-2.2 'Capability'</div>
+<div class="title">Figure 188. The structure of UBL-2.2 'Capability'</div>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Completed_Task.png" alt="Completed task (reference)">
 </div>
-<div class="title">Figure 187. The structure of the UBL-2.2 Completed Task (used for references)</div>
+<div class="title">Figure 189. The structure of the UBL-2.2 Completed Task (used for references)</div>
 </div>
 <div class="paragraph">
 <p>UBL-2.2 provides a component to hold very specifically the data to identify the economic operator as it officially registered in a Business Register. This XSD diagram below shows the elements of this component <code>cac:LegalEntityParty</code>. This ESPD-EDM specification recommends to use it as an alternative (or supplementary) way to identify the economic party.</p>
@@ -13085,7 +13279,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/LegalEntityParty.png" alt="Legal Entity Party">
 </div>
-<div class="title">Figure 188. The UBL-2.2 Legal Entity Party</div>
+<div class="title">Figure 190. The UBL-2.2 Legal Entity Party</div>
 </div>
 </div>
 </div>
@@ -13109,7 +13303,7 @@ This section about the ESPD Response does not cover those information elements t
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 29. Economic operator, expected elements</caption>
+<caption class="title">Table 31. Economic operator, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -13182,7 +13376,7 @@ This section about the ESPD Response does not cover those information elements t
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 30. Qualifying Party, expected elements</caption>
+<caption class="title">Table 32. Qualifying Party, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -13272,7 +13466,7 @@ This section about the ESPD Response does not cover those information elements t
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 31. Economic operator role, expected elements</caption>
+<caption class="title">Table 33. Economic operator role, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -13337,7 +13531,7 @@ This section about the ESPD Response does not cover those information elements t
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 32. (Qualifying) economic operator party, expected elements</caption>
+<caption class="title">Table 34. (Qualifying) economic operator party, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -13426,7 +13620,7 @@ This section about the ESPD Response does not cover those information elements t
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 33. Economic operator postal address, expected elements</caption>
+<caption class="title">Table 35. Economic operator postal address, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -13516,7 +13710,7 @@ This section about the ESPD Response does not cover those information elements t
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 34. Contact of the economic operator, expected elements</caption>
+<caption class="title">Table 36. Contact of the economic operator, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -13611,7 +13805,7 @@ This section about the ESPD Response does not cover those information elements t
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 35. Service provider, expected elements</caption>
+<caption class="title">Table 37. Service provider, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -13716,7 +13910,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_Economic_Operator_Mock-ups.png" alt="Regulated economic operator - mock-up">
 </div>
-<div class="title">Figure 189. Regulated economic operator, mock-up</div>
+<div class="title">Figure 191. Regulated economic operator, mock-up</div>
 </div>
 <div class="paragraph">
 <p>The following figures below show the data aimed at other purposes (namely statistical), that is structured using the UBL-2.2 <code>cac:TenderingCriterion</code>. See the XML example below to check how both, the <code>cac:EconomicOperatorParty</code> and these data structures are used.</p>
@@ -13728,7 +13922,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_Sheltered_mock-up.png" alt="Sheltered workshop - mock-up">
 </div>
-<div class="title">Figure 190. Sheltered workshop or social business - mock-up</div>
+<div class="title">Figure 192. Sheltered workshop or social business - mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for a sheltered workshop or social business in case of reserved procurement</strong>:</p>
@@ -13737,7 +13931,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_Sheltered_DS.png" alt="Sheltered workshop - data structure">
 </div>
-<div class="title">Figure 191. Sheltered workshop or social business - data structure</div>
+<div class="title">Figure 193. Sheltered workshop or social business - data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mockup (3/8): Registration on an official list, tenderer register or (pre)qualification system</strong>:</p>
@@ -13746,7 +13940,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_Economic_Operator_Registered_Mock-ups.png" alt="EO registration on a (pre)qualified system - mock-up">
 </div>
-<div class="title">Figure 192. EO registration on a (pre)qualified system, mock-up</div>
+<div class="title">Figure 194. EO registration on a (pre)qualified system, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the (pre)qualification of the economic operator by an official list or similar</strong>:</p>
@@ -13755,7 +13949,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Prequalification_DS.png" alt="(Pre)qualification-related data structure">
 </div>
-<div class="title">Figure 193. Prequalification-related data structure</div>
+<div class="title">Figure 195. Prequalification-related data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up (4/8): Role and other members of the group</strong>:</p>
@@ -13764,7 +13958,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_EO_Group_Members_Mock-ups.png" alt="Role and other members of the group">
 </div>
-<div class="title">Figure 194. Role and other members of the group, mock-up</div>
+<div class="title">Figure 196. Role and other members of the group, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the role and members of the group (when bidding as a Consortium, Joint Venture, etc.)</strong> Beware that the name of the group has its own placeholder in the UBL-2.2 data model: <code>/QualificationApplicationResponse/cbc:EconomicOperatorGroupName</code></p>
@@ -13773,7 +13967,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_RoleAndGroup_DS.png" alt="EO Role and group-related data">
 </div>
-<div class="title">Figure 195. EO Role and group-related data</div>
+<div class="title">Figure 197. EO Role and group-related data</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up: (5/8): Lots to which the economic operator tenders</strong>:</p>
@@ -13782,7 +13976,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_LotsTendered_mock-up.png" alt="Lots to which the EO tenders, mock-up" width="mock-up">
 </div>
-<div class="title">Figure 196. Lots to which the EO tenders, mock-up</div>
+<div class="title">Figure 198. Lots to which the EO tenders, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the Lots to which the economic operator tenders to</strong>:</p>
@@ -13791,7 +13985,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_LotsTendered_DS.png" alt="Lots tendered">
 </div>
-<div class="title">Figure 197. Lots tendered, data structure</div>
+<div class="title">Figure 199. Lots tendered, data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up(6/8): Certificates about contributions to the Tax Agency and/or Social Security</strong>:</p>
@@ -13800,7 +13994,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_Contributions_Certificates-mockup.png" alt="Contributions certificates - mock-up">
 </div>
-<div class="title">Figure 198. Contributions certificates</div>
+<div class="title">Figure 200. Contributions certificates</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the certificates about contributions to the Tax Agency and/or Social Security</strong>:</p>
@@ -13809,7 +14003,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_Contributions_Certificates_DS.png" alt="Contributions certificates - data structure">
 </div>
-<div class="title">Figure 199. Contributions certificates</div>
+<div class="title">Figure 201. Contributions certificates</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up (7/8): Entities on which the economic operator relies on to meet the selection criteria. Notice only a *Yes</strong> or <strong>No</strong> answer is expected:</p>
@@ -13818,7 +14012,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_EO_Relied_On_entities.png" alt="Entities upon which the EO relies on, mock-up" width="mock-up">
 </div>
-<div class="title">Figure 200. Entities upon which the EO relies on, mock-up</div>
+<div class="title">Figure 202. Entities upon which the EO relies on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the entities the EO relies on</strong>:</p>
@@ -13827,7 +14021,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_EO_Relied_On_entities_DS.png" alt="Entities relied on - data structure">
 </div>
-<div class="title">Figure 201. Entities relied on - data structure</div>
+<div class="title">Figure 203. Entities relied on - data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up: (8/8): Entities on which the economic operator does not rely on to meet the selection criteria. Notice only a *Yes</strong> or <strong>No</strong> answer is expected, plus a sequence of entity names as a text:</p>
@@ -13836,7 +14030,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_EO_NOT_Relied_On_entities.png" alt="Entities upon which the EO does not rely on - mock-up">
 </div>
-<div class="title">Figure 202. Entities upon which the EO does not rely on, mock-up</div>
+<div class="title">Figure 204. Entities upon which the EO does not rely on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the subcontractor upon which the EO does not relied to meet the selection criteria</strong>:</p>
@@ -13845,7 +14039,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_EO_NOT_Relied_On_entities_DS.png" alt="Entities not relied on - data structure">
 </div>
-<div class="title">Figure 203. Entities not relied on - data structure</div>
+<div class="title">Figure 205. Entities not relied on - data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -13863,7 +14057,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_EO_XML_Collapsed" alt="EO data - collapsed view">
 </div>
-<div class="title">Figure 204. Vision of the data about the EO in a 'collapsed' Regulated ESPD</div>
+<div class="title">Figure 206. Vision of the data about the EO in a 'collapsed' Regulated ESPD</div>
 </div>
 <div class="paragraph">
 <p>This fragment of XML <strong>does not include the responses to the QUESTIONs</strong> in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each <code>cac:TenderingCriterionProperty</code> element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element <code>cac:ResponseValue</code> is associated to a the UUID of the corresponding <code>cac:TenderingCriterionProperty</code>. For an example of a complete <strong>REGULATED</strong> ESPD Response XML document you can also see the file <a href="./dist/xml/REGULATED-ESPDResponse-02.00.00.xml">REGULATED-ESPDResponse-02.00.00.xml</a>.</p>
@@ -14140,7 +14334,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Self-contained_Economic_Operator_Mock-up.png" alt="Economic operator - mock-up">
 </div>
-<div class="title">Figure 205. Economic operator - mock-up (SELF-CONTAINED)</div>
+<div class="title">Figure 207. Economic operator - mock-up (SELF-CONTAINED)</div>
 </div>
 <div class="paragraph">
 <p>As you will see next, the information required about the economic operators varies depending on several factors:</p>
@@ -14292,7 +14486,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_Sheltered_DS.png" alt="Sheltered workshop - data structure">
 </div>
-<div class="title">Figure 206. Sheltered workshop or social business - data structure</div>
+<div class="title">Figure 208. Sheltered workshop or social business - data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -14329,7 +14523,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/SELFCONTAINED_Prequalification_DS.png" alt="(Pre)qualification-related data structure">
 </div>
-<div class="title">Figure 207. Pre-qualification-related data structure</div>
+<div class="title">Figure 209. Pre-qualification-related data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -14341,7 +14535,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Lots-Selfcontained.png" alt="Lots-Selfcontained ESPD">
 </div>
-<div class="title">Figure 208. Selection of Lots by the CA, mock-up</div>
+<div class="title">Figure 210. Selection of Lots by the CA, mock-up</div>
 </div>
 </div>
 <div class="sect4">
@@ -14359,7 +14553,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Selfcontained_EO_LotsTendered_DS.png" alt="Lots tendered">
 </div>
-<div class="title">Figure 209. Lots tendered, data structure</div>
+<div class="title">Figure 211. Lots tendered, data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -14406,7 +14600,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Selfcontained_GroupOfEOs_DS.png" alt="Lots tendered">
 </div>
-<div class="title">Figure 210. Lots tendered, data structure</div>
+<div class="title">Figure 212. Lots tendered, data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -14421,7 +14615,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Regulated_EO_Contributions_Certificates_DS.png" alt="Contributions certificates - data structure">
 </div>
-<div class="title">Figure 211. Contributions certificates</div>
+<div class="title">Figure 213. Contributions certificates</div>
 </div>
 </div>
 <div class="sect4">
@@ -14433,7 +14627,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Subcontractor_relied_on_mockup.png" alt="EO Roles-entities relied on" width="600">
 </div>
-<div class="title">Figure 212. EO Roles-entities relied on, mock-up</div>
+<div class="title">Figure 214. EO Roles-entities relied on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the entities upon which the EO relies on</strong>:</p>
@@ -14442,7 +14636,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Selfcontained_Relied_ON_DS.png" alt="Relied on entities - data structure">
 </div>
-<div class="title">Figure 213. Relied on entities - data structure</div>
+<div class="title">Figure 215. Relied on entities - data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -14454,7 +14648,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Subcontractor_not_relied_on_mockup.png" alt="EO Roles-entities not relied on" width="600">
 </div>
-<div class="title">Figure 214. EO Roles-entities not relied on, mock-up</div>
+<div class="title">Figure 216. EO Roles-entities not relied on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the entities upon which the EO does not relies on</strong>:</p>
@@ -14463,7 +14657,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/Selfcontained_NOT_Relied_ON_DS.png" alt="Not relied on entities - data structure">
 </div>
-<div class="title">Figure 215. Not relied on entities - data structure</div>
+<div class="title">Figure 217. Not relied on entities - data structure</div>
 </div>
 </div>
 </div>
@@ -14482,7 +14676,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/REGULATED_EO_XML_Collapsed.png" alt="EO data - collapsed view">
 </div>
-<div class="title">Figure 216. Vision of the data about the EO in a 'collapsed' Self-contained ESPD</div>
+<div class="title">Figure 218. Vision of the data about the EO in a 'collapsed' Self-contained ESPD</div>
 </div>
 <div class="paragraph">
 <p>This fragment of XML <strong>does not include the responses to the QUESTIONs</strong> in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each <code>cac:TenderingCriterionProperty</code> element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element <code>cac:ResponseValue</code> is associated to a the UUID of the corresponding <code>cac:TenderingCriterionProperty</code>. For an example of a complete <strong>SELF-CONTAINED</strong> ESPD Response XML document you can also see the file <a href="./dist/xml/SELFCONTAINED-ESPDResponse-02.00.00.xml">SELFCONTAINED-ESPDResponse-02.00.00.xml</a>.</p>
@@ -14974,7 +15168,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EO_Representatives.png" alt="EO representatives - mock-up, mock-up">
 </div>
-<div class="title">Figure 217. EO representatives, mock-up</div>
+<div class="title">Figure 219. EO representatives, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -14999,7 +15193,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EO_Representatives_XSD.png" alt="EO representatives - XSD Schema">
 </div>
-<div class="title">Figure 218. EO representatives, XSD Schema</div>
+<div class="title">Figure 220. EO representatives, XSD Schema</div>
 </div>
 <div class="paragraph">
 <p>Notice that the largest part of the data is held in the component <code>cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney/cac:AgentParty/cac:Person</code>. The figure below shows (in blue) the expected elements. See the table "Expecte Elements" and the XML example below for the details (e.g. how to use the <code>cac:Person/cac:Contact</code> element to contact the representative.</p>
@@ -15008,7 +15202,7 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/EO_PowerOfAttorneyPartyPerson.png" alt="EO representatives - element Person - XSD Schema">
 </div>
-<div class="title">Figure 219. EO representatives - element Person, XSD Schema</div>
+<div class="title">Figure 221. EO representatives - element Person, XSD Schema</div>
 </div>
 <div class="paragraph">
 <p>Contact elements, such as telephone and e-mail are in the <code>cac:Contact</code> associated to the the <code>cac:Person</code> information element:</p>
@@ -15017,12 +15211,12 @@ This section about the ESPD Response does not cover those information elements t
 <div class="content">
 <img src="./images/PartyPersonContact.png" alt="EO representatives - Contac - XSD Schema">
 </div>
-<div class="title">Figure 220. EO representatives - element Contact, inside Person, XSD Schema</div>
+<div class="title">Figure 222. EO representatives - element Contact, inside Person, XSD Schema</div>
 </div>
 <div class="sect4">
 <h5 id="expected-elements-regulated-and-self-contained"><a class="anchor" href="#expected-elements-regulated-and-self-contained"></a>Expected Elements (REGULATED and SELF-CONTAINED)</h5>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 36. Representatives of the economic operator, expected elements</caption>
+<caption class="title">Table 38. Representatives of the economic operator, expected elements</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -15349,11 +15543,8 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="viii-answers-to-the-questions"><a class="anchor" href="#viii-answers-to-the-questions"></a>VIII. Answers to the QUESTIONs</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="vii-7-answering-questions"><a class="anchor" href="#vii-7-answering-questions"></a>VII.7 Answering QUESTIONs</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -15411,14 +15602,14 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </li>
 </ol>
 </div>
-<div class="sect2">
-<h3 id="differences-between-the-regulated-and-self-contained-versions-2"><a class="anchor" href="#differences-between-the-regulated-and-self-contained-versions-2"></a>Differences between the Regulated and Self-contained versions</h3>
+<div class="sect3">
+<h4 id="differences-between-the-regulated-and-self-contained-versions-2"><a class="anchor" href="#differences-between-the-regulated-and-self-contained-versions-2"></a>Differences between the Regulated and Self-contained versions</h4>
 <div class="paragraph">
 <p>There are no differences between the <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> versions as far as the answers to the QUESTIONS are concerned.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="xsd-schema-regulated-and-self-contained-2"><a class="anchor" href="#xsd-schema-regulated-and-self-contained-2"></a>XSD Schema (REGULATED and SELF-CONTAINED)</h3>
+<div class="sect3">
+<h4 id="xsd-schema-regulated-and-self-contained-2"><a class="anchor" href="#xsd-schema-regulated-and-self-contained-2"></a>XSD Schema (REGULATED and SELF-CONTAINED)</h4>
 <div class="paragraph">
 <p>To answer a QUESTION the ESPD-EDM V02.00.00 uses the UBL-2.2 component <code>cac:TenderingCriterionResponse</code>. The expected elements are highlighted in blue in the figure below:</p>
 </div>
@@ -15426,7 +15617,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/TenderingCriterionResponse_XSD.png" alt="cac:TenderingCriterionResponse element">
 </div>
-<div class="title">Figure 221. cac:TenderingCriterionResponse XSD element</div>
+<div class="title">Figure 223. cac:TenderingCriterionResponse XSD element</div>
 </div>
 <div class="paragraph">
 <p>To answer one QUESTION one of the different possible types of values from the <code>cac:ResponseValue</code> element (inside the <code>cac:TenderingCriterionResponse</code>) must be selected. In other words, the types of elements inside the <code>cac:ResponseValue</code> are all <strong>disjoint</strong> amongst themselves.</p>
@@ -15438,7 +15629,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/ResponseValue_XSD.png" alt="cac:ResponseValue XSD element">
 </div>
-<div class="title">Figure 222. cac:ResponseValue XSD element</div>
+<div class="title">Figure 224. cac:ResponseValue XSD element</div>
 </div>
 <div class="paragraph">
 <p>The <code>cac:ApplicablePeriod</code> is used to hold the start date and the end-date provided by the economic operator to a QUESTION for which the expected data is of type 'PERIOD'. (See expected types in the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ResponseDataType</a>).</p>
@@ -15462,7 +15653,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Period_XSD.png" alt="cac:ApplicablePeriod XSD element">
 </div>
-<div class="title">Figure 223. cac:ApplicablePeriod XSD element</div>
+<div class="title">Figure 225. cac:ApplicablePeriod XSD element</div>
 </div>
 <div class="paragraph">
 <p>One answer to one QUESTION may be linked to multiple evidences. The XSD diagram below shows that to make this link possible the element <code>cac:TenderingCriterionResponse</code> element associates a class <code>cac:EvidenceSupplied</code>. This class contains only one basic information element, a <code>cbc:ID</code>. In UBL, except for <code>cbc:Description</code>, basic information elements (typically prefixed as <code>cbc:</code>) cannot be of multiple cardinality, but associated classes can. Thus the need to place the <code>cbc:ID</code> inside a class. This ID points at an instance of <code>cac:Evidence</code> present in the XML.</p>
@@ -15474,21 +15665,22 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Evidence_Supplied_XSD.png" alt="cac:EvidenceSupplied XSD element">
 </div>
-<div class="title">Figure 224. cac:EvidenceSupplied XSD element</div>
+<div class="title">Figure 226. cac:EvidenceSupplied XSD element</div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="mock-ups-and-data-structures-2"><a class="anchor" href="#mock-ups-and-data-structures-2"></a>Mock-ups and data structures</h3>
+<div class="sect3">
+<h4 id="mock-ups-and-data-structures-2"><a class="anchor" href="#mock-ups-and-data-structures-2"></a>Mock-ups and data structures</h4>
 <div class="paragraph">
 <p>The answers to QUESTIONs are provided in the example mock-ups of the previous sections about how the contracting authority specify REQUIREMENTs and QUESTIONs, and how the economic operator adds or removes instances of elements (such as data on the economic operator, references to similar works and services, etc. Please refer to those mock-ups and compare the values shown in the fields reserved for the EO to answer and compare those values with the ones in the example XML snippets below.</p>
 </div>
 <div class="paragraph">
 <p>Responses are not associated to ESPD custom data structures. All the values regarding an answer are always placed in one instance of the UBL-2.2 data element <code>cac:TenderingCriterionResponse</code>.</p>
 </div>
+</div>
 <div class="sect3">
 <h4 id="expected-elements-regulated-and-self-contained-2"><a class="anchor" href="#expected-elements-regulated-and-self-contained-2"></a>Expected Elements (REGULATED and SELF-CONTAINED)</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 37. Elements expected in an answer to a criterion property</caption>
+<caption class="title">Table 39. Elements expected in an answer to a criterion property</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -15609,7 +15801,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </table>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 38. Elements expected in the 'cac:ApplicablePeriod' class</caption>
+<caption class="title">Table 40. Elements expected in the 'cac:ApplicablePeriod' class</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -15674,7 +15866,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 39. Elements expected in the 'cac:EvidenceSupplied' class</caption>
+<caption class="title">Table 41. Elements expected in the 'cac:EvidenceSupplied' class</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -15741,7 +15933,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viii-1-xml-example-1-information-about-the-eo"><a class="anchor" href="#viii-1-xml-example-1-information-about-the-eo"></a>VIII.1. XML Example 1: Information about the EO</h3>
+<h3 id="vii-8-xml-example-1-information-about-the-eo"><a class="anchor" href="#vii-8-xml-example-1-information-about-the-eo"></a>VII.8 XML Example 1: Information about the EO</h3>
 <div class="paragraph">
 <p>The information about the economic operator is distributed into the <code>cac:EconomicOperatorParty</code> element and 'data structures' that use the <code>cac:TenderingCriterion</code> element. The XML examples provided herein refer only to the data structured using the <code>cac:TenderingCriterion</code>. See chapter <a href="#vii-5-economic-operator">VII.5. Economic Operator</a> for more details and other XML examples.</p>
 </div>
@@ -15972,9 +16164,8 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="paragraph">
 <p>Compare the circled numbers in the XML snippet above with the circled numbers in the XML snippet below.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="xml-snippet-2-b-lots-the-eo-tenders-to-answers"><a class="anchor" href="#xml-snippet-2-b-lots-the-eo-tenders-to-answers"></a>XML snippet 2.b) Lots the EO tenders to (answers)</h4>
+<div class="sect4">
+<h5 id="xml-snippet-2-b-lots-the-eo-tenders-to-answers"><a class="anchor" href="#xml-snippet-2-b-lots-the-eo-tenders-to-answers"></a>XML snippet 2.b) Lots the EO tenders to (answers)</h5>
 <div class="listingblock">
 <div class="title">Lots the EO tenders to</div>
 <div class="content">
@@ -16021,8 +16212,9 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="viii-2-xml-example-2-references"><a class="anchor" href="#viii-2-xml-example-2-references"></a>VIII.2. XML Example 2: References</h3>
+<h3 id="vii-9-xml-example-2-references"><a class="anchor" href="#vii-9-xml-example-2-references"></a>VII.9 XML Example 2: References</h3>
 <div class="paragraph">
 <p>This example is based on the EO perspective of the <strong>SELF-CONTAINED</strong> mock-up in section "<a href="l#vi-7-2-self-contained-references">VI.7.2. SELF-CONTAINED References</a>":</p>
 </div>
@@ -16030,7 +16222,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Selfcontained_References_EO_mockup.png" alt="Self-contained 'References' EO mock-up">
 </div>
-<div class="title">Figure 225. Self-contained 'References' EO mock-up</div>
+<div class="title">Figure 227. Self-contained 'References' EO mock-up</div>
 </div>
 <div class="sect3">
 <h4 id="xml-snippet-1-a-requirements-by-the-contracting-authority-ca-criterion-properties"><a class="anchor" href="#xml-snippet-1-a-requirements-by-the-contracting-authority-ca-criterion-properties"></a>XML snippet 1.a) REQUIREMENTs by the contracting authority (CA) (criterion properties)</h4>
@@ -16364,7 +16556,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Answers_Reference_Collapsed.png" alt="Responses to 'References' (collapsed)">
 </div>
-<div class="title">Figure 226. Set of responses to the criterion "For works contracts: performance of works of the specified type" (collapsed view)</div>
+<div class="title">Figure 228. Set of responses to the criterion "For works contracts: performance of works of the specified type" (collapsed view)</div>
 </div>
 <div class="paragraph">
 <p>The circled numbers map the ones in the mock-up (at the beginning of this section) and the notes in the XML examples above (&lt;6&gt; to &lt;16&gt; &#8594; QUESTIONS, as REQUIREMENTS do not expect and answer by the EO, they are informative/prescriptive).</p>
@@ -16563,7 +16755,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viii-3-xml-example-3-weighting"><a class="anchor" href="#viii-3-xml-example-3-weighting"></a>VIII.3. XML Example 3: Weighting</h3>
+<h3 id="vii-10-xml-example-3-weighting"><a class="anchor" href="#vii-10-xml-example-3-weighting"></a>VII.10. XML Example 3: Weighting</h3>
 <div class="paragraph">
 <p>This section presents an XML Example of a WEIGHTED SELF-CONTAINED criterion (used in a two-stages procedure). The criterion properties corresponding to REQUIREMENTs and QUESTIONs are the ones that were <strong>copied</strong> from the ESPD Request into the ESPD Request.</p>
 </div>
@@ -16595,7 +16787,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up">
 </div>
-<div class="title">Figure 227. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 229. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Economic operator perspective</strong>:</p>
@@ -16604,7 +16796,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_EO_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up">
 </div>
-<div class="title">Figure 228. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
+<div class="title">Figure 230. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -17126,25 +17318,22 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ix-evidences"><a class="anchor" href="#ix-evidences"></a>IX. Evidences</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="related-information-requirements-26"><a class="anchor" href="#related-information-requirements-26"></a>Related information requirements</h3>
+<h3 id="vii-11-evidences"><a class="anchor" href="#vii-11-evidences"></a>VII.11 Evidences</h3>
+<div class="sect3">
+<h4 id="related-information-requirements-26"><a class="anchor" href="#related-information-requirements-26"></a>Related information requirements</h4>
 <div class="paragraph">
 <p>See formal requirements related to evidences in the e-Sens site: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017">(<em>tbr092-017</em>)</a>.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="differences-between-the-regulated-and-self-contained-versions-3"><a class="anchor" href="#differences-between-the-regulated-and-self-contained-versions-3"></a>Differences between the Regulated and Self-contained versions</h3>
+<div class="sect3">
+<h4 id="differences-between-the-regulated-and-self-contained-versions-3"><a class="anchor" href="#differences-between-the-regulated-and-self-contained-versions-3"></a>Differences between the Regulated and Self-contained versions</h4>
 <div class="paragraph">
 <p>There are no differences between the <strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong> versions as far as evidences are concerned.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="xsd-schema-regulated-and-self-contained-3"><a class="anchor" href="#xsd-schema-regulated-and-self-contained-3"></a>XSD Schema (REGULATED and SELF-CONTAINED)</h3>
+<div class="sect3">
+<h4 id="xsd-schema-regulated-and-self-contained-3"><a class="anchor" href="#xsd-schema-regulated-and-self-contained-3"></a>XSD Schema (REGULATED and SELF-CONTAINED)</h4>
 <div class="paragraph">
 <p>Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element <code>cac:EvidenceSupplied/cbc:ID</code> contains the identifier set in <code>/QualificationApplicationResponse/cac:Evidence/cbc:ID</code>. See XML example below; see also the example XML file "<a href="./dist/xml/SELFCONTAINED-ESPDResponse-02.00.00.xml">SELFCONTAINED-ESPDResponse-02.00.00.xml</a>" for an example.</p>
 </div>
@@ -17155,7 +17344,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Evidence_XSD.png" alt="cac:Evidence XSD diagram">
 </div>
-<div class="title">Figure 229. cac:Evidence XSD diagram</div>
+<div class="title">Figure 231. cac:Evidence XSD diagram</div>
 </div>
 <div class="paragraph">
 <p>The UBL-2.2 element <code>cac:Evidence</code> is a specialisation of <code>cac:DocumentReference</code>. This other XSD diagram shows this association and, in blue, highlights the elements expected in the ESPD-EDM V02.00.00:</p>
@@ -17164,11 +17353,11 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Evidence_DocumentReference.png" alt="cac:DocumentReference in Evidence">
 </div>
-<div class="title">Figure 230. cac:DocumentReference inside cac:Evidence XSD diagram</div>
+<div class="title">Figure 232. cac:DocumentReference inside cac:Evidence XSD diagram</div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="mock-ups-and-data-structures-3"><a class="anchor" href="#mock-ups-and-data-structures-3"></a>Mock-ups and data structures</h3>
+<div class="sect3">
+<h4 id="mock-ups-and-data-structures-3"><a class="anchor" href="#mock-ups-and-data-structures-3"></a>Mock-ups and data structures</h4>
 <div class="paragraph">
 <p>In principle only a few elements are kept in the ESPD Response document about an evidence: its Identifier, a URL from where to access its content, a Reference/Code, a Confidentiality indicator, and the Issuer.</p>
 </div>
@@ -17179,7 +17368,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Convictions__EO_mock-up.png" alt="Conviction EO mock-up">
 </div>
-<div class="title">Figure 231. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
+<div class="title">Figure 233. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -17200,13 +17389,13 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="expected-and-other-elements-regulated-and-self-contained"><a class="anchor" href="#expected-and-other-elements-regulated-and-self-contained"></a>Expected (and other) Elements (REGULATED and SELF-CONTAINED)</h3>
+<div class="sect3">
+<h4 id="expected-and-other-elements-regulated-and-self-contained"><a class="anchor" href="#expected-and-other-elements-regulated-and-self-contained"></a>Expected (and other) Elements (REGULATED and SELF-CONTAINED)</h4>
 <div class="paragraph">
 <p>This list below enumerates the elements of <code>cac:Evidence</code> that could be used in (that make sense for) an ESPD Response. Notice though that the current versions of the ESPD-EDM only use the few elements mentioned above: ID, URL, Reference/Code, Confidentiality level  and Issuer.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 40. Elements expected in an Evidence</caption>
+<caption class="title">Table 42. Elements expected in an Evidence</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -17306,7 +17495,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <p>This other table lists the elements from <code>cac:Evidence/cac:DocumentReference</code> used in the ESPD-EDM-V02.00.00:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 41. Elements expected from the 'cac:Evidence/cac:DocumentReference' element</caption>
+<caption class="title">Table 43. Elements expected from the 'cac:Evidence/cac:DocumentReference' element</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -17395,13 +17584,13 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="xml-examples-5"><a class="anchor" href="#xml-examples-5"></a>XML Examples</h3>
+<div class="sect3">
+<h4 id="xml-examples-5"><a class="anchor" href="#xml-examples-5"></a>XML Examples</h4>
 <div class="paragraph">
 <p><strong>Example 1: One evidence shared by two criteria</strong></p>
 </div>
-<div class="sect3">
-<h4 id="xml-snippet-1-a-the-criteria-defined-in-the-espd-request-and-copied-in-the-espd-response"><a class="anchor" href="#xml-snippet-1-a-the-criteria-defined-in-the-espd-request-and-copied-in-the-espd-response"></a>XML snippet 1.a) the criteria defined in the ESPD Request, and 'copied' in the ESPD Response</h4>
+<div class="sect4">
+<h5 id="xml-snippet-1-a-the-criteria-defined-in-the-espd-request-and-copied-in-the-espd-response"><a class="anchor" href="#xml-snippet-1-a-the-criteria-defined-in-the-espd-request-and-copied-in-the-espd-response"></a>XML snippet 1.a) the criteria defined in the ESPD Request, and 'copied' in the ESPD Response</h5>
 <div class="listingblock">
 <div class="title">XML snippet 1.a) the criteria defined in the ESPD Request, and 'copied' in the ESPD Response (SELF-CONTAINED)</div>
 <div class="content">
@@ -17482,8 +17671,8 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </table>
 </div>
 </div>
-<div class="sect3">
-<h4 id="xml-snippet-1-b-one-evidentiary-document-supporting-the-three-responses"><a class="anchor" href="#xml-snippet-1-b-one-evidentiary-document-supporting-the-three-responses"></a>XML snippet 1.b) One evidentiary document supporting the three responses</h4>
+<div class="sect4">
+<h5 id="xml-snippet-1-b-one-evidentiary-document-supporting-the-three-responses"><a class="anchor" href="#xml-snippet-1-b-one-evidentiary-document-supporting-the-three-responses"></a>XML snippet 1.b) One evidentiary document supporting the three responses</h5>
 <div class="listingblock">
 <div class="title">XML snippet 1.b) One evidentiary document supporting the three responses</div>
 <div class="content">
@@ -17577,8 +17766,8 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <p>The following snippet uses the same two criteria shown in the XML example snippet 1.a): hence the values of the <code>cac:ValidatedCriterionPropertyID</code> are 'd8d5478e-cc65-48c9-a189-19bbe87a9bfd' (criterion property 'participation in a criminal organisation') and '7c7fb445-c5f9-4f92-8b58-7f06a541951f' (criterion property 'contributions certificates').</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="xml-snippet-2-different-evidentiary-documents-per-response"><a class="anchor" href="#xml-snippet-2-different-evidentiary-documents-per-response"></a>XML snippet 2 different evidentiary documents per response</h4>
+<div class="sect4">
+<h5 id="xml-snippet-2-different-evidentiary-documents-per-response"><a class="anchor" href="#xml-snippet-2-different-evidentiary-documents-per-response"></a>XML snippet 2 different evidentiary documents per response</h5>
 <div class="listingblock">
 <div class="title">XML snippet 1.b) different evidentiary documents per response</div>
 <div class="content">
@@ -17725,6 +17914,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 </div>
+</div>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnote_1">
@@ -17754,7 +17944,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-10 08:52:24 CEST
+Last updated 2017-09-14 05:43:57 CEST
 </div>
 </div>
 </body>
