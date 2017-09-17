@@ -676,7 +676,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Numeric</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A weighting to provide for automatic scoring of the Criterion (normally a percentage, e.g. 0.1, 0.5)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-016"><em>tbr70-016</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Used only in Self-contained ESPDs namely for ability and professional selection criteria in  procedures organised in two stages.</p></td>
 </tr>
 <tr>
@@ -684,7 +684,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A code to inform about the type of Evaluation, namely for transparency purposes (e.g. PASSFAIL, WEIGHTED)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-016"><em>tbr70-016</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the Code List “EvaluationMethodType”.</p></td>
 </tr>
 <tr>
@@ -692,7 +692,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Numeric</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Additional information, comments or considerations about the weighting and the evaluation method, namely for transparency purposes; e.g. '0 Points 0 IT specialists, 30 Points 1 IT specialists, 60 Points 2 IT specialists'. See section about Selection Criteria and sub-section on 'Weighting', for more details.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-016"><em>tbr70-016</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Used only in Self-contained ESPDs namely for ability and professional selection criteria in  procedures organised in two stages.</p></td>
 </tr>
 <tr>
@@ -700,7 +700,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One or more descendant criteria used namely to define a national exclusion criterion that specialises a more generic criterion like a EU exclusion criterion defined in the Directive.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-013"><em>tbr70-013</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: None. Beware that a sub-criterion 'is a' criterion, therefore no need to list these elements at new. See XML examples in the section about exclusion criteria about how to define a sub-criterion.</p></td>
 </tr>
 <tr>
@@ -989,7 +989,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A second, third or n-level group inside a first level group of properties.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013"><em>tbr070-013</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>:  subsidiary property groups 'are' property groups (i.e. its the same component but qualified as 'subsidary'). Therefore all the rules applicable to property groups are also applicable to sub-groups: Compulsory use of the Code List <code>PropertyGroupType</code>. See sections below about the 'criteria data structures' and the XML examples on exclusion and selection criteria to understand the use of this code. Beware that the first element inside a group of properties (after the group ID) is always a cac:TenderingCriterionProperty. In some occasions this might entail the use of an empty CAPTION element, for instance, to produce groups of subgroups where no property does really makes sense in the first group.</p></td>
 </tr>
 </tbody>
@@ -1414,7 +1414,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <p>A CAPTION is a label normally used to introduce a group of REQUIREMENTs or QUESTIONs; e.g. 'Lots the EO tenders to' (which is followed by a list of Lots identifiers provided by the EO);</p>
 </li>
 <li>
-<p>A QUESTION is a direct request of a specific datum issued by the MS or the CA and addressed to the EO. The EO has to respond this QUESTION with a value of the expected type of data.</p>
+<p>A QUESTION is a direct request for a specific datum by the MS or the CA addressed to the EO. The EO has to respond this QUESTION with a value of the expected type of data.</p>
 </li>
 </ol>
 </div>
@@ -1424,7 +1424,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="ulist">
 <ul>
 <li>
-<p>SUBCRITERION is reserved to specify national criteria. The Regulated ESPD documents do not specify SUBCRITERIA. The SELF-CONTAINED version does;</p>
+<p>SUBCRITERION is currently used to specify national criteria. The Regulated ESPD documents do not specify SUBCRITERIA. The SELF-CONTAINED version does;</p>
 </li>
 <li>
 <p>The Regulated ESPD documents do not specify REQUIREMENTs, only QUESTIONs. The SELF-CONTAINED version does;</p>
@@ -1475,7 +1475,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <p>To generate the REGULATED ESPD Request criteria (without the responses, only criteria groups and properties):</p>
 <div class="literalblock">
 <div class="content">
-<pre>c:\dist\xslt&gt;Transformer.bat [ods_file_filePathName] [XSL-T_filePathName] 	[Output_XML_filePathName].</pre>
+<pre>c:\dist\xslt&gt;Transformer.bat [ods_file_filePathName] [XSL-T_filePathName] 	[Output_XML_filePathName]</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -1488,7 +1488,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <p>To generate the REGULATED ESDP Response criteria (generates only the answers to the QUESTIONs):</p>
 <div class="literalblock">
 <div class="content">
-<pre>c:\dist\xslt&gt;Transformer.bat [ESPD_Request_filePathName] [XSL-T_filePathName] 	[Output_XML_filePathName].</pre>
+<pre>c:\dist\xslt&gt;Transformer.bat [ESPD_Request_filePathName] [XSL-T_filePathName] 	[Output_XML_filePathName]</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -1501,7 +1501,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <p>To generate the SELF-CONTAINED_ESPD Request criteria:</p>
 <div class="literalblock">
 <div class="content">
-<pre>c:\dist\xslt&gt;Transformer.bat [ods_file_filePathName] [XSL-T_filePathName] Output_XML_filePathName].</pre>
+<pre>c:\dist\xslt&gt;Transformer.bat [ods_file_filePathName] [XSL-T_filePathName] Output_XML_filePathName]</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -1514,7 +1514,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <p>To generate the SELF-CONTAINED ESDP Response criteria (generates only the answers to the QUESTIONs):</p>
 <div class="literalblock">
 <div class="content">
-<pre>c:\dist\xslt&gt;Transformer.bat [ESPD_Request_filePathName] [XSL-T_filePathName] 	[Output_XML_filePathName].</pre>
+<pre>c:\dist\xslt&gt;Transformer.bat [ESPD_Request_filePathName] [XSL-T_filePathName] 	[Output_XML_filePathName]</pre>
 </div>
 </div>
 <div class="literalblock">
@@ -1527,15 +1527,15 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </div>
 </li>
 <li>
-<p>Manual method: Rename the <strong>.ods* files as </strong>.ods.zip* and extract the file 'content.xml'; use an XML editor to load the 'content.xml' file and the XSL-T file. Associate (or reference) the XSLT file to the XML. Launch the transformation from the XML  Editor. Save the output file.</p>
+<p>Manual method: Rename the <code>.ods</code> files as <code>.ods.zip</code> and extract the file 'content.xml'; use an XML editor to load the 'content.xml' file and the XSL-T file. Associate (or reference) the XSLT file to the XML. Launch the transformation from the XML  Editor. Save the output file.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Beware that this tool is a simple prototype aimed at generating the complete list of criteria that may occur in an ESDP Request and an ESPD Response.</p>
+<p>Beware that this solution is a simple prototype aimed at generating the complete list of criteria that may occur in an ESDP Request and the responses (but not the the criteria properties) in an ESPD Response.</p>
 </div>
 <div class="paragraph">
-<p>The following features <strong>are implemented</strong> in the first set of transformation XSL-T style-sheet (REGULATED-ESPDRequest-Annotated-V02.00.00.xslt and SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt):</p>
+<p>The following features <strong>are implemented</strong> in the first set of transformation XSL-T style-sheet (<code>REGULATED-ESPDRequest-Annotated-V02.00.00.xslt</code> and <code>SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt</code>):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1557,7 +1557,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </ul>
 </div>
 <div class="paragraph">
-<p>The following features <strong>are NOT implemented</strong> in the first set of transformation XSL-T style-sheet (REGULATED-ESPDRequest-Annotated-V02.00.00.xslt and SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt):</p>
+<p>The following features <strong>are NOT implemented</strong> in the first set of transformation XSL-T style-sheet (<code>REGULATED-ESPDRequest-Annotated-V02.00.00.xslt</code> and <code>SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt</code>):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1570,7 +1570,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </ul>
 </div>
 <div class="paragraph">
-<p>The following features <strong>are implemented</strong> in the second set of transformation XSL-T style-sheet (From-REGULATED-REQUEST_to_RESPONSE.xslt and From-SELFCONTAINED-REQUEST_to_RESPONSE.xslt files):</p>
+<p>The following features <strong>are implemented</strong> in the second set of transformation XSL-T style-sheet (<code>From-REGULATED-REQUEST_to_RESPONSE.xslt</code> and <code>From-SELFCONTAINED-REQUEST_to_RESPONSE.xslt</code> files):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1589,7 +1589,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 </ul>
 </div>
 <div class="paragraph">
-<p>The following features <strong>is NOT implemented</strong> in the first set of transformation XSL-T style-sheet (REGULATED-ESPDRequest-Annotated-V02.00.00.xslt and SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt):</p>
+<p>The following features <strong>is NOT implemented</strong> in the first set of transformation XSL-T style-sheet (<code>REGULATED-ESPDRequest-Annotated-V02.00.00.xslt</code> and <code>SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt</code>):</p>
 </div>
 <div class="ulist">
 <ul>

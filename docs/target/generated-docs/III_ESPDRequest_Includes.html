@@ -516,17 +516,17 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#iii-the-espd-request-document">III. The ESPD Request document</a>
 <ul class="sectlevel2">
-<li><a href="#business-requirements-specification">Business requirements specification</a></li>
-<li><a href="#iii-1-xsd-schema-global-view">III.1 XSD Schema, global view</a></li>
-<li><a href="#iii-2-espd-request-cardinalities">III.2 ESPD Request cardinalities</a></li>
-<li><a href="#iii-3-root-elements">III.3 Root elements</a></li>
-<li><a href="#iii-4-eu-and-national-publications">III.4 EU and national publications</a></li>
-<li><a href="#iii-5-contracting-body">III.5 Contracting Body</a></li>
-<li><a href="#iii-6-service-provider">III.6 Service Provider</a></li>
-<li><a href="#iii-7-procurement-procedure-regulated-espd">III.7 Procurement Procedure: Regulated ESPD</a></li>
-<li><a href="#iii-8-procurement-procedure-self-contained-espd">III.8 Procurement Procedure: Self-contained ESPD</a></li>
-<li><a href="#iii-9-lots-regulated-espd">III.9 Lots - Regulated ESPD</a></li>
-<li><a href="#iii-10-lots-self-contained-espd">III.10 Lots - Self-contained ESPD</a></li>
+<li><a href="#iii-1-espd-request-business-requirements">III.1 ESPD Request Business Requirements</a></li>
+<li><a href="#iii-2-espd-request-xsd-schema">III.2 ESPD Request XSD Schema</a></li>
+<li><a href="#iii-3-espd-request-cardinalities">III.3 ESPD Request cardinalities</a></li>
+<li><a href="#iii-4-root-elements">III.4 Root elements</a></li>
+<li><a href="#iii-5-eu-and-national-publications">III.5 EU and national publications</a></li>
+<li><a href="#iii-6-contracting-body">III.6 Contracting Body</a></li>
+<li><a href="#iii-7-service-provider">III.7 Service Provider</a></li>
+<li><a href="#iii-8-procurement-procedure-regulated-espd">III.8 Procurement Procedure: Regulated ESPD</a></li>
+<li><a href="#iii-9-procurement-procedure-self-contained-espd">III.9 Procurement Procedure: Self-contained ESPD</a></li>
+<li><a href="#iii-10-lots-regulated-espd">III.10 Lots - Regulated ESPD</a></li>
+<li><a href="#iii-11-lots-self-contained-espd">III.11 Lots - Self-contained ESPD</a></li>
 </ul>
 </li>
 </ul>
@@ -537,16 +537,13 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="iii-the-espd-request-document"><a class="anchor" href="#iii-the-espd-request-document"></a>III. The ESPD Request document</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="business-requirements-specification"><a class="anchor" href="#business-requirements-specification"></a>Business requirements specification</h3>
+<h3 id="iii-1-espd-request-business-requirements"><a class="anchor" href="#iii-1-espd-request-business-requirements"></a>III.1 ESPD Request Business Requirements</h3>
 <div class="paragraph">
-<p>e-Sens uses the identifier <strong>Trdm070</strong> to refer to the business requirements regarding the ESPD Request transaction.</p>
-</div>
-<div class="paragraph">
-<p>See formal information requirements related to the ESPD Request transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-BusinessRequirements:ESPDrequesttransaction(Trdm070)"><em>Business Requirements: ESPD request transaction (Trdm070)</em></a>, by e-Sens.</p>
+<p>The ESPD-EDM V02.00.00 models the business and information requirements in alignment with the works developed by e-Sens, which uses the identifier <strong>Trdm070</strong> to refer to the business requirements regarding the ESPD Request transaction. See formal information requirements related to the ESPD Request transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-BusinessRequirements:ESPDrequesttransaction(Trdm070)"><em>Business Requirements: ESPD request transaction (Trdm070)</em></a>, by e-Sens.</p>
 </div>
 </div>
-<div class="sect2 text-left">
-<h3 id="iii-1-xsd-schema-global-view"><a class="anchor" href="#iii-1-xsd-schema-global-view"></a>III.1 XSD Schema, global view</h3>
+<div class="sect2">
+<h3 id="iii-2-espd-request-xsd-schema"><a class="anchor" href="#iii-2-espd-request-xsd-schema"></a>III.2 ESPD Request XSD Schema</h3>
 <div class="paragraph">
 <p>The ESPD-EDM V02.00.00 uses the UBL-2.2 document named <code>QualificationApplicationRequest.xsd</code> XSD Schema. This schema can be found under the folder <a href="./dist/xsdrt/maindoc">dist/xsdrt/maindoc</a> (or the equivalent documented <code>xsd</code> folder).</p>
 </div>
@@ -572,8 +569,8 @@ table.CodeRay td.code>pre{padding:0}
 <div class="title">Figure 2. Legend: QualificationApplicationRequest XSD Schema, possible cardinalities of the Schema elements</div>
 </div>
 </div>
-<div class="sect2 text-left">
-<h3 id="iii-2-espd-request-cardinalities"><a class="anchor" href="#iii-2-espd-request-cardinalities"></a>III.2 ESPD Request cardinalities</h3>
+<div class="sect2">
+<h3 id="iii-3-espd-request-cardinalities"><a class="anchor" href="#iii-3-espd-request-cardinalities"></a>III.3 ESPD Request cardinalities</h3>
 <div class="paragraph">
 <p>As you can see the UBL-2.2 Schema is quite flexible as, except for a few cases practically all the elements are optional.</p>
 </div>
@@ -607,7 +604,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="iii-3-root-elements"><a class="anchor" href="#iii-3-root-elements"></a>III.3 Root elements</h3>
+<h3 id="iii-4-root-elements"><a class="anchor" href="#iii-4-root-elements"></a>III.4 Root elements</h3>
 <div class="paragraph">
 <p>The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
 </div>
@@ -686,7 +683,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator). An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator). The identifier enables positive referencing the document instance for various purposes including referencing between transactions that are part of the same process.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-002"><em>tbr070-002</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Use it to identify the organisation responsible for the document.</p></td>
 </tr>
 <tr>
@@ -695,7 +692,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether this document is a copy (true) or not (false).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-002"><em>tbr070-002</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: It is a good practice to use the CopyIndicator component if the same document is forwarded several times to the same or to different destinations. Use it in combination with the UUID identifier: copies of an ESPD document should be identified with distinct UUIDs.</p></td>
 </tr>
 <tr>
@@ -704,7 +701,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier that can be used to reference this ESPD document instance.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-002"><em>tbr070-002</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: This UUID will be used to link the ESPD Response to its corresponding ESPD Request (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute.</p></td>
 </tr>
 <tr>
@@ -713,7 +710,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which a Qualification request document and the delivered response documents are associated.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-007"><em>tbr070-007</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Try always to use the reference number issued by the contracting authority. This number in combination with a registered contracting authority ID (e.g. the VAT number) results in a <strong>universally unique identifier of the procurement procedure</strong>.</p></td>
 </tr>
 <tr>
@@ -722,7 +719,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Date when the document was issued by the contracting authority.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-002"><em>tbr070-002</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Format "YYYY-MM-DD".</p></td>
 </tr>
 <tr>
@@ -731,7 +728,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time when the document was issued by the contracting authority.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-002"><em>tbr070-002</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002"><em>tbr070-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Format "hh:mm:ss".</p></td>
 </tr>
 <tr>
@@ -740,7 +737,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The version identifying the content of this document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-014"><em>tbr070-014</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-014"><em>tbr070-014</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Changes in content should entail the modification of the version identifier and a reference to the previous version.</p></td>
 </tr>
 <tr>
@@ -749,7 +746,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The version identifying the previous modification of the content of this document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-014"><em>tbr070-014</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-014"><em>tbr070-014</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: None</p></td>
 </tr>
 <tr>
@@ -758,7 +755,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The type of the procurement administrative procedure according to the EU Directives.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-02"><em>tbr070-02</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: <strong>Rule</strong>: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ProcedureType</a> (values: <code>Open</code>, <code>Restricted</code>, <code>Accelerated</code>, <code>Competitive dialogue</code>, etc.). Do not confound with the object of the procurement project (code list <code>ProjectType</code>: Works, Supplies, Services).</p></td>
 </tr>
 <tr>
@@ -767,7 +764,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The type of European Single Procurement Document (ESPD).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-02"><em>tbr070-02</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-02"><em>tbr070-02</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the code list <code>QualificationApplicationType</code>. Compulsory use of attributes listID, listAgencyName and listVersionID.</p></td>
 </tr>
 <tr>
@@ -776,7 +773,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The contracting authority or contracting entity who is buying supplies, services or public works using a tendering procedure as described in the applicable directive (Directives 2014/24/EU, 2014/25/EU).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-01"><em>tbr070-01</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-01"><em>tbr070-01</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: UBL-2.2 defines multiple cardinality ContractingParties presumably to allow <strong>joint procurements</strong>. However the ESPD only expects data about one buyer. The decision was made that in case of joint procurement the data collected in the ESPD would be about <strong>the leader</strong> of the joint procurement procedure.</p></td>
 </tr>
 <tr>
@@ -785,7 +782,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An overall definition of the procurement procedure.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr70-002"><em>tbr70-002</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-002"><em>tbr70-002</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Use this component to identify and describe the procurement administrative procedure. If the procurement procedure is divided into lots use the <code>ProcurementProjectLot</code> component to provide details specific to the lot and reserve the <code>ProcurementProject</code> component to describe the global characteristics of the procedure.</p></td>
 </tr>
 <tr>
@@ -794,7 +791,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One of the procurement project lots into which this contract can be divided.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr070-008"><em>tbr70-008</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-008"><em>tbr70-008</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: If there is only one single procurement project lot specified, the ESPD refers then to a procurement procedure without lots.</p></td>
 </tr>
 <tr>
@@ -803,7 +800,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">1..n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A tendering criterion describes a rule or a condition that is used by the contracting body to evaluate and compare tenders by economic operators and which will be used for the exclusion and the selection of candidates to the award decision.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr70-003"><em>tbr70-003, tbr70-009</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-003"><em>tbr70-003, tbr70-009</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: (see examples further below in this document)</p></td>
 </tr>
 <tr>
@@ -812,7 +809,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A reference to an additional document associated with this document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0-tbr70-007"><em>tbr70-007</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-007"><em>tbr70-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: <strong>For procurement procedures above the threshold it is compulsory to make reference to the Contract Notice of the procedure published in TED</strong>. See section "Reference to the Contract Notice" for a complete example.</p></td>
 </tr>
 </tbody>
@@ -856,8 +853,8 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 </div>
-<div class="sect2 text-left">
-<h3 id="iii-4-eu-and-national-publications"><a class="anchor" href="#iii-4-eu-and-national-publications"></a>III.4 EU and national publications</h3>
+<div class="sect2">
+<h3 id="iii-5-eu-and-national-publications"><a class="anchor" href="#iii-5-eu-and-national-publications"></a>III.5 EU and national publications</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -910,7 +907,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="title">Figure 7. Associated class cac:ExternalReference, XSD diagram</div>
 </div>
 </div>
-<div class="sect3 text-left">
+<div class="sect3">
 <h4 id="expected-elements"><a class="anchor" href="#expected-elements"></a>Expected elements</h4>
 <div class="paragraph">
 <p>As you can see from the XSD  Schema the <code>cac:DocumentReference</code> class has a rich data structure. However, to refer to publications such as the TED and national publications, the ESPD most expects at most the following data:</p>
@@ -1171,7 +1168,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="iii-5-contracting-body"><a class="anchor" href="#iii-5-contracting-body"></a>III.5 Contracting Body</h3>
+<h3 id="iii-6-contracting-body"><a class="anchor" href="#iii-6-contracting-body"></a>III.6 Contracting Body</h3>
 <div class="sect3">
 <h4 id="related-information-requirements"><a class="anchor" href="#related-information-requirements"></a>Related information requirements</h4>
 <div class="paragraph">
@@ -1232,7 +1229,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="title">Figure 12. cac:Contact, XSD Schema</div>
 </div>
 </div>
-<div class="sect3 text-left">
+<div class="sect3">
 <h4 id="expected-elements-2"><a class="anchor" href="#expected-elements-2"></a>Expected elements</h4>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 4. Contracting body, expected elements</caption>
@@ -1283,7 +1280,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URL of the web section, in the contracting body web site, that contains information about the contracting body, the norms it applies when contracting, published calls for tenders, Prior Information Notices and Contract Notices as well as the related procurement documents, contract award notices, etc.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
-<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001"><em>tbr070-001</em></a>.
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-006"><em>tbr070-006</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Notices published at national level shall not contain information other than that contained in the notices dispatched to the Publications Office of the European Union or published on a buyer profile, but shall indicate the date of dispatch of the notice to the Publications Office of the European Union or its publication on the buyer profile (Directive <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32014L0024&amp;from=ES">2014/24/EU, Art. 52.2</a>).</p></td>
 </tr>
 </tbody>
@@ -1448,6 +1445,15 @@ table.CodeRay td.code>pre{padding:0}
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-006"><em>tbr070-006</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: The country of the contracting body must always be specified. Compulsory use of the code list CountryCodeIdentifier (ISO 3166-1 2A:2006).</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Country/cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the country.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
+<a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-006"><em>tbr070-006</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: None.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
@@ -1590,7 +1596,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="iii-6-service-provider"><a class="anchor" href="#iii-6-service-provider"></a>III.6 Service Provider</h3>
+<h3 id="iii-7-service-provider"><a class="anchor" href="#iii-7-service-provider"></a>III.7 Service Provider</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1641,7 +1647,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="title">Figure 14. cac:ServiceProvider/cac:Party elements expected for the service provider</div>
 </div>
 </div>
-<div class="sect3 text-left">
+<div class="sect3">
 <h4 id="expected-elements-3"><a class="anchor" href="#expected-elements-3"></a>Expected elements</h4>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 8. Service provider, expected elements</caption>
@@ -1792,7 +1798,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="iii-7-procurement-procedure-regulated-espd"><a class="anchor" href="#iii-7-procurement-procedure-regulated-espd"></a>III.7 Procurement Procedure: Regulated ESPD</h3>
+<h3 id="iii-8-procurement-procedure-regulated-espd"><a class="anchor" href="#iii-8-procurement-procedure-regulated-espd"></a>III.8 Procurement Procedure: Regulated ESPD</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1941,7 +1947,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A title for the procurement procedure.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Use the same name that will be used for the Contract Notice.</p></td>
 </tr>
 <tr>
@@ -1949,7 +1955,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A descriptive text for the procurement procedure.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Use the same description that will be used for the Contract Notice.</p></td>
 </tr>
 </tbody>
@@ -1975,7 +1981,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="iii-8-procurement-procedure-self-contained-espd"><a class="anchor" href="#iii-8-procurement-procedure-self-contained-espd"></a>III.8 Procurement Procedure: Self-contained ESPD</h3>
+<h3 id="iii-9-procurement-procedure-self-contained-espd"><a class="anchor" href="#iii-9-procurement-procedure-self-contained-espd"></a>III.9 Procurement Procedure: Self-contained ESPD</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2046,7 +2052,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect3">
 <h4 id="expected-elements-5"><a class="anchor" href="#expected-elements-5"></a>Expected elements</h4>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 11. Self-contained ESPD Request: Procurement Procedure reference number</caption>
+<caption class="title">Table 11. Self-contained ESPD Request</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -2091,15 +2097,15 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which this Qualification document is delivered as a response.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:
 <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of schemeAgencyID attribute. Although not mandatory, it is a good practice to identify the document with a UUID. Copies of a document should be identified with a different UUID.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ProcedureCode</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The code representing the type of procurement procedure (e.g. open procedure, restricted procedure, accelerated restricted procedure, competitive dialogue, negotiated procedure, etc.).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending).
-</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the Code List <code>ProcedureType</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the procurement administrative procedure according to the EU Directives.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the Code List <code>ProcedureType</code> (open procedure, restricted procedure, accelerated restricted procedure, competitive dialogue, negotiated procedure, etc.).</p></td>
 </tr>
 </tbody>
 </table>
@@ -2150,7 +2156,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A title for the procurement procedure.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Use the same name that will be used for the Contract Notice.</p></td>
 </tr>
 <tr>
@@ -2158,7 +2164,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A descriptive text for the procurement procedure.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Use the same description that will be used for the Contract Notice.</p></td>
 </tr>
 <tr>
@@ -2166,16 +2172,16 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-top"><p class="tableblock">Code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A code to describe the object of the project (e.g. works, supplies, services, public work concessions, service concessions, other).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
 </p><p class="tableblock"><strong>Rule</strong>: Compulsory use of the Code List <code>ProjectType</code>.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:MainCommodityClassification</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:MainCommodityClassification</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A class to classify the works, services or supplies. The Self-contained ESPD uses it to assign CPV codes to works and services.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: (TODO: Pending)
-</p><p class="tableblock"><strong>Rule</strong>: Use the element <code>cbc:ItemClassificationCode</code> for the specification of the CPV code. Beware that the cardinality of the basic element is 0..1 but the cardinality of the class is 0..n, thus allowing for multiple CPVs. See XML example below.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007"><em>tbr070-007</em></a>.
+</p><p class="tableblock"><strong>Rule</strong>: Use the element <code>cbc:ItemClassificationCode</code> for the specification of the CPV code. Beware that the cardinality of the basic element is 0..1 but the cardinality of the class is 0..n, thus allowing for multiple CPVs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2251,7 +2257,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="iii-9-lots-regulated-espd"><a class="anchor" href="#iii-9-lots-regulated-espd"></a>III.9 Lots - Regulated ESPD</h3>
+<h3 id="iii-10-lots-regulated-espd"><a class="anchor" href="#iii-10-lots-regulated-espd"></a>III.10 Lots - Regulated ESPD</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -2387,7 +2393,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="iii-10-lots-self-contained-espd"><a class="anchor" href="#iii-10-lots-self-contained-espd"></a>III.10 Lots - Self-contained ESPD</h3>
+<h3 id="iii-11-lots-self-contained-espd"><a class="anchor" href="#iii-11-lots-self-contained-espd"></a>III.11 Lots - Self-contained ESPD</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -2775,7 +2781,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-10 08:52:23 CEST
+Last updated 2017-09-16 01:00:38 CEST
 </div>
 </div>
 </body>

@@ -516,20 +516,20 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#vii-the-espd-response-document">VII. The ESPD Response document</a>
 <ul class="sectlevel2">
-<li><a href="#business-requirements-specification">Business requirements specification</a></li>
-<li><a href="#vii-1-xsd-schema-global-view">VII.1 XSD Schema, global view</a></li>
-<li><a href="#vii-2-espd-response-cardinalities">VII.2 ESPD Response cardinalities</a></li>
-<li><a href="#vii-3-root-elements">VII.3 Root elements</a></li>
-<li><a href="#vii-4-reference-to-publications-and-to-the-espd-request">VII.4 Reference to publications and to the ESPD Request</a></li>
-<li><a href="#vii-5-economic-operator">VII.5 Economic Operator</a></li>
-<li><a href="#vii-5-1-regulated-economic-operator-party">VII.5.1 Regulated economic operator party</a></li>
-<li><a href="#vii-5-2-self-contained-economic-operator-party">VII.5.2 Self-contained economic operator party</a></li>
-<li><a href="#vii-6-economic-operator-representatives">VII.6 Economic operator representatives</a></li>
+<li><a href="#vii-1-business-requirements-specification">VII.1 Business requirements specification</a></li>
+<li><a href="#vii-2-espd-request-xsd-schema">VII.2 ESPD Request XSD Schema</a></li>
+<li><a href="#vii-3-espd-response-cardinalities">VII.3 ESPD Response cardinalities</a></li>
+<li><a href="#vii-4-root-elements">VII.4 Root elements</a></li>
+<li><a href="#vii-5-reference-to-publications-and-to-the-espd-request">VII.5 Reference to publications and to the ESPD Request</a></li>
+<li><a href="#vii-6-economic-operator">VII.6 Economic Operator</a></li>
+<li><a href="#vii-6-1-regulated-economic-operator-party">VII.6.1 Regulated economic operator party</a></li>
+<li><a href="#vii-6-2-self-contained-economic-operator-party">VII.6.2 Self-contained economic operator party</a></li>
+<li><a href="#vii-6-3-economic-operator-representatives">VII.6.3 Economic operator representatives</a></li>
 <li><a href="#vii-7-answering-questions">VII.7 Answering QUESTIONs</a></li>
-<li><a href="#vii-8-xml-example-1-information-about-the-eo">VII.8 XML Example 1: Information about the EO</a></li>
-<li><a href="#vii-9-xml-example-2-references">VII.9 XML Example 2: References</a></li>
-<li><a href="#vii-10-xml-example-3-weighting">VII.10. XML Example 3: Weighting</a></li>
-<li><a href="#vii-11-evidences">VII.11 Evidences</a></li>
+<li><a href="#vii-7-1-xml-example-1-information-about-the-eo">VII.7.1 XML Example 1: Information about the EO</a></li>
+<li><a href="#vii-7-2-xml-example-2-references">VII.7.2 XML Example 2: References</a></li>
+<li><a href="#vii-7-3-xml-example-3-weighting">VII.7.3 XML Example 3: Weighting</a></li>
+<li><a href="#vii-8-evidences">VII.8 Evidences</a></li>
 </ul>
 </li>
 </ul>
@@ -540,12 +540,9 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="vii-the-espd-response-document"><a class="anchor" href="#vii-the-espd-response-document"></a>VII. The ESPD Response document</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="business-requirements-specification"><a class="anchor" href="#business-requirements-specification"></a>Business requirements specification</h3>
+<h3 id="vii-1-business-requirements-specification"><a class="anchor" href="#vii-1-business-requirements-specification"></a>VII.1 Business requirements specification</h3>
 <div class="paragraph">
-<p>e-Sens uses the identifier <strong>Trdm092</strong> to refer to the business requirements regarding the ESPD Response transaction.</p>
-</div>
-<div class="paragraph">
-<p>See formal information requirements related to the ESPD Response transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-ESPDResponsetransaction(Trdm092)"><em>BIS 41 - European Single Procurement Document (Version 2.0.0)</em></a>, by e-Sens.</p>
+<p>The ESPD-EDM V02.00.00 models the business and information requirements in alignment with the works developed by e-Sens, which uses the identifier <strong>Trdm092</strong> to refer to the business requirements regarding the ESPD Response transaction. See formal information requirements related to the ESPD Response transaction in the document <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-ESPDResponsetransaction(Trdm092)"><em>BIS 41 - European Single Procurement Document (Version 2.0.0)</em></a>, by e-Sens.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -567,7 +564,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2 text-left">
-<h3 id="vii-1-xsd-schema-global-view"><a class="anchor" href="#vii-1-xsd-schema-global-view"></a>VII.1 XSD Schema, global view</h3>
+<h3 id="vii-2-espd-request-xsd-schema"><a class="anchor" href="#vii-2-espd-request-xsd-schema"></a>VII.2 ESPD Request XSD Schema</h3>
 <div class="paragraph">
 <p>For the ESPD Response, the ESPD-EDM V02.00.00 uses the UBL-2.2 document named <code>QualificationApplicationResponse.xsd</code> XSD Schema. This schema can be found under the folder <a href="./dist/xsdrt/maindoc">dist/xsdrt/maindoc</a> (or the equivalent documented <code>xsd</code> folder).</p>
 </div>
@@ -585,14 +582,12 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-===
-This section about the ESPD Response does not cover those information elements that were already described in the ESPD Request, unless a characteristic related to the ESPD Response needs to be clarified. Thus for details about elements like <code>cac:ContractingAuthorityParty</code>, <code>ProcurementProject</code>, <code>ProcurementProjectLot</code> and <code>AdditionalDocumentReference</code> refer to the section <strong>III. The ESPD Request document</strong>.
+<div class="paragraph">
+<p>This section about the ESPD Response does not cover those information elements that were already described in the ESPD Request, unless a characteristic related to the ESPD Response needs to be clarified. Thus for details about elements like <code>cac:ContractingAuthorityParty</code>, <code>ProcurementProject</code>, <code>ProcurementProjectLot</code> and <code>AdditionalDocumentReference</code> refer to the section <strong>III. The ESPD Request document</strong>.</p>
+</div>
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>===</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -611,7 +606,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-2-espd-response-cardinalities"><a class="anchor" href="#vii-2-espd-response-cardinalities"></a>VII.2 ESPD Response cardinalities</h3>
+<h3 id="vii-3-espd-response-cardinalities"><a class="anchor" href="#vii-3-espd-response-cardinalities"></a>VII.3 ESPD Response cardinalities</h3>
 <div class="paragraph">
 <p>As you can see the UBL-2.2 Schema is quite flexible as, except for a few cases practically all the elements are optional.</p>
 </div>
@@ -645,7 +640,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-3-root-elements"><a class="anchor" href="#vii-3-root-elements"></a>VII.3 Root elements</h3>
+<h3 id="vii-4-root-elements"><a class="anchor" href="#vii-4-root-elements"></a>VII.4 Root elements</h3>
 <div class="paragraph">
 <p>The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.</p>
 </div>
@@ -936,7 +931,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-4-reference-to-publications-and-to-the-espd-request"><a class="anchor" href="#vii-4-reference-to-publications-and-to-the-espd-request"></a>VII.4 Reference to publications and to the ESPD Request</h3>
+<h3 id="vii-5-reference-to-publications-and-to-the-espd-request"><a class="anchor" href="#vii-5-reference-to-publications-and-to-the-espd-request"></a>VII.5 Reference to publications and to the ESPD Request</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1170,7 +1165,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-5-economic-operator"><a class="anchor" href="#vii-5-economic-operator"></a>VII.5 Economic Operator</h3>
+<h3 id="vii-6-economic-operator"><a class="anchor" href="#vii-6-economic-operator"></a>VII.6 Economic Operator</h3>
 <div class="sect3">
 <h4 id="related-information-requirements"><a class="anchor" href="#related-information-requirements"></a>Related information requirements</h4>
 <div class="paragraph">
@@ -1514,8 +1509,8 @@ This section about the ESPD Response does not cover those information elements t
 <td class="tableblock halign-left valign-top"><p class="tableblock">Associated class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
-</p><p class="tableblock"><strong>Rule</strong>: This element is compulsory in the ESPD-EDM V02.00.00 as it is the natural placeholder for several relevant data about the Economic Operator.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001"><em>tbr92-001</em></a>
+</p><p class="tableblock"></p><p class="tableblock"><strong>Rule</strong>: This element is compulsory in the ESPD-EDM V02.00.00 as it is the natural placeholder for several relevant data about the Economic Operator.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:EconomnicOperatorRole</strong></p></td>
@@ -1587,7 +1582,7 @@ This section about the ESPD Response does not cover those information elements t
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quantity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The number of people employed by the economic operator participating in the tender.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001"><em>tbr92-001</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Integer value expected.</p></td>
 </tr>
 <tr>
@@ -1595,7 +1590,7 @@ This section about the ESPD Response does not cover those information elements t
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..n</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The text describing one official classification assigned by an official list or (pre)qualification system to the economic operator.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001"><em>tbr92-001</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Only the 'Description' is expected, but the component cac:ClassificationScheme offers other rich possibilities (see the <a href="./dist/mod/UBL-Entities-2.2-Pre-award.ods">UBL-2.2 model in the distribution package</a> or in the <a href="https://www.oasis-open.org/committees/document.php?document_id=60554">original source</a> for more details).
 </p><p class="tableblock"><strong>Rule</strong>: Integer value expected.</p></td>
 </tr>
@@ -1604,7 +1599,7 @@ This section about the ESPD Response does not cover those information elements t
 <td class="tableblock halign-left valign-top"><p class="tableblock">Amount</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A monetary amount as a measure of this capability.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001"><em>tbr92-001</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Use it to place here the general Turnover of the EO (for statistical purposes). Compulsory assignment of a value to the attribute currency. The default value should be set to 'EUR'. Compulsory use of the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">CurrencyCode</a>.</p></td>
 </tr>
 <tr>
@@ -1612,7 +1607,7 @@ This section about the ESPD Response does not cover those information elements t
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text describing the works, supplies or services executed, delivered or performed in a procurement project (normally used as a reference for the classification of the economic operator.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001"><em>tbr92-001</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Use it to place here the references that were used in the (pre)qualification system to get the specific classification related to those references.</p></td>
 </tr>
 <tr>
@@ -1620,7 +1615,7 @@ This section about the ESPD Response does not cover those information elements t
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the economic operator in an official list, register or (pre)qualification system.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: [TODO]
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001"><em>tbr92-001</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: The attribute <code>schemeAgencyID</code> must hold the value retrieved from eCertis that identifies unequivocally the (pre)qualification system. If, for any reason, that value is not available use the default schemeAgencyID "EU-COM-GROW" and the <code>cac:EconomicOperatorParty/cac:PartyIdentificaton/cbc:ID</code> for the value of the identifier. Additionally you can use the data structure <code>CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST</code> to specify an alternative or additional name, identifier and description.</p></td>
 </tr>
 </tbody>
@@ -2057,7 +2052,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-5-1-regulated-economic-operator-party"><a class="anchor" href="#vii-5-1-regulated-economic-operator-party"></a>VII.5.1 Regulated economic operator party</h3>
+<h3 id="vii-6-1-regulated-economic-operator-party"><a class="anchor" href="#vii-6-1-regulated-economic-operator-party"></a>VII.6.1 Regulated economic operator party</h3>
 <div class="sect3">
 <h4 id="mock-ups-and-data-structures"><a class="anchor" href="#mock-ups-and-data-structures"></a>Mock-ups and data structures</h4>
 <div class="paragraph">
@@ -2477,7 +2472,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-5-2-self-contained-economic-operator-party"><a class="anchor" href="#vii-5-2-self-contained-economic-operator-party"></a>VII.5.2 Self-contained economic operator party</h3>
+<h3 id="vii-6-2-self-contained-economic-operator-party"><a class="anchor" href="#vii-6-2-self-contained-economic-operator-party"></a>VII.6.2 Self-contained economic operator party</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3302,7 +3297,7 @@ This section about the ESPD Response does not cover those information elements t
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-6-economic-operator-representatives"><a class="anchor" href="#vii-6-economic-operator-representatives"></a>VII.6 Economic operator representatives</h3>
+<h3 id="vii-6-3-economic-operator-representatives"><a class="anchor" href="#vii-6-3-economic-operator-representatives"></a>VII.6.3 Economic operator representatives</h3>
 <div class="sect3">
 <h4 id="related-information-requirements-2"><a class="anchor" href="#related-information-requirements-2"></a>Related information requirements</h4>
 <div class="paragraph">
@@ -4241,7 +4236,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-8-xml-example-1-information-about-the-eo"><a class="anchor" href="#vii-8-xml-example-1-information-about-the-eo"></a>VII.8 XML Example 1: Information about the EO</h3>
+<h3 id="vii-7-1-xml-example-1-information-about-the-eo"><a class="anchor" href="#vii-7-1-xml-example-1-information-about-the-eo"></a>VII.7.1 XML Example 1: Information about the EO</h3>
 <div class="paragraph">
 <p>The information about the economic operator is distributed into the <code>cac:EconomicOperatorParty</code> element and 'data structures' that use the <code>cac:TenderingCriterion</code> element. The XML examples provided herein refer only to the data structured using the <code>cac:TenderingCriterion</code>. See chapter <a href="#vii-5-economic-operator">VII.5. Economic Operator</a> for more details and other XML examples.</p>
 </div>
@@ -4522,7 +4517,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-9-xml-example-2-references"><a class="anchor" href="#vii-9-xml-example-2-references"></a>VII.9 XML Example 2: References</h3>
+<h3 id="vii-7-2-xml-example-2-references"><a class="anchor" href="#vii-7-2-xml-example-2-references"></a>VII.7.2 XML Example 2: References</h3>
 <div class="paragraph">
 <p>This example is based on the EO perspective of the <strong>SELF-CONTAINED</strong> mock-up in section "<a href="l#vi-7-2-self-contained-references">VI.7.2. SELF-CONTAINED References</a>":</p>
 </div>
@@ -5063,7 +5058,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-10-xml-example-3-weighting"><a class="anchor" href="#vii-10-xml-example-3-weighting"></a>VII.10. XML Example 3: Weighting</h3>
+<h3 id="vii-7-3-xml-example-3-weighting"><a class="anchor" href="#vii-7-3-xml-example-3-weighting"></a>VII.7.3 XML Example 3: Weighting</h3>
 <div class="paragraph">
 <p>This section presents an XML Example of a WEIGHTED SELF-CONTAINED criterion (used in a two-stages procedure). The criterion properties corresponding to REQUIREMENTs and QUESTIONs are the ones that were <strong>copied</strong> from the ESPD Request into the ESPD Request.</p>
 </div>
@@ -5627,7 +5622,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="vii-11-evidences"><a class="anchor" href="#vii-11-evidences"></a>VII.11 Evidences</h3>
+<h3 id="vii-8-evidences"><a class="anchor" href="#vii-8-evidences"></a>VII.8 Evidences</h3>
 <div class="sect3">
 <h4 id="related-information-requirements-3"><a class="anchor" href="#related-information-requirements-3"></a>Related information requirements</h4>
 <div class="paragraph">
@@ -6243,7 +6238,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-14 05:34:29 CEST
+Last updated 2017-09-16 08:13:42 CEST
 </div>
 </div>
 </body>
