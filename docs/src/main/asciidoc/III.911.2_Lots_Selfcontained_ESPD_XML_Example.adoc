@@ -8,6 +8,11 @@ In the example below the contracting authority has specified seven Lots, hence t
 *Convention*: Lots should always be identified with a sequential number, as in the examples: Lot1, Lot2, ... Lot7.
 ====
 
+Observe that the data is 
+
+
+
+
 .Lots (*SEL-CONTAINED* ESPD)
 [source,xml]
 ----
@@ -37,41 +42,39 @@ In the example below the contracting authority has specified seven Lots, hence t
 	
 <--2-->
 <!-- Additional information about the Lots supplied by the contracting authority -->
-<cac:TenderingCriterion>
-	<cac:TenderingCriterionPropertyGroup>
-		<cbc:ID schemeAgencyID="EU-COM-GROW">69c1de17-3256-4920-9d46-1e7da839b279</cbc:ID>
-		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeAgencyID="EU-COM-GROW">e0036f1c-8129-430b-ab8a-4e1d8703ddeb</cbc:ID>
-			<cbc:Description>Please take into account the following requirements regarding the lots of this procurement procedure:</cbc:Description>
-			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode> <--3-->
-			<cbc:ValueDataTypeCode  listID="ResponseDataType" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode> <--4-->
-		</cac:TenderingCriterionProperty>
-		<cac:SubsidiaryTenderingCriterionPropertyGroup>
-			<cbc:ID schemeAgencyID="EU-COM-GROW">eabd66bb-6899-469b-bb17-80177a2d7f7a</cbc:ID>
+	<!-- Criterion:CA Lots -->
+	<cac:TenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">6a21c421-5c1e-46f4-9762-116fbcd33097</cbc:ID>
+		<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.OTHER.CA_DATA.LOTS_SUBMISSION</cbc:CriterionTypeCode>
+		<cbc:Name>CA Lots</cbc:Name>
+		<cbc:Description>Please take into account the following requirements regarding the lots of this procurement procedure:</cbc:Description>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">03cff8d1-4d22-4435-82fa-d6361af84be6</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeAgencyID="EU-COM-GROW">f0a38925-a8ee-4753-942d-deca0262ed94</cbc:ID>
-				<cbc:Description>Tenders may be submitted for:</cbc:Description>
-				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
-				<cbc:ExpectedCode listID="NumberOfLotsCode" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">MAX</cbc:ExpectedCode>
-				</cac:TenderingCriterionProperty>
-				<cac:TenderingCriterionProperty>
-					<cbc:ID schemeAgencyID="EU-COM-GROW">8d899045-1031-467f-a2b4-58ef9b1f719d</cbc:ID>
-					<cbc:Description>Maximum number of lots</cbc:Description>
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
-					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
-					<cbc:ExpectedValueNumeric>5</cbc:ExpectedValueNumeric>
-				</cac:TenderingCriterionProperty>
-				<cac:TenderingCriterionProperty>
-					<cbc:ID schemeAgencyID="EU-OM-GROW" >8d899045-1031-467f-a2b4-58ef9b1f719d</cbc:ID>
-					<cbc:Description>Maximum number of lots that may be awarded to one tenderer</cbc:Description>
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CAPTION</cbc:TypeCode>
-					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">NONE</cbc:ValueDataTypeCode>
-					<cbc:ExpectedValueNumeric>1</cbc:ExpectedValueNumeric>
-				</cac:TenderingCriterionProperty>
-			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">847829aa-e70a-45e1-b4d3-e11c3ffaf7a0</cbc:ID>
+				<cbc:Description>Tenders may be submitted for</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CODE</cbc:ValueDataTypeCode>
+				<!-- Compulsory use of the Publications Office Code List BidType -->
+				<cbc:ExpectedCode listID="BidType" listAgencyID="EU-COM-OP" listVersionID="1.0">LOT_ALL</cbc:ExpectedCode>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">dceddc28-0ac8-471b-b954-c376a862ea30</cbc:ID>
+				<cbc:Description>Maximum number of lots</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUANTITY_INTEGER</cbc:ValueDataTypeCode>
+				<cbc:ExpectedValueNumeric>5</cbc:ExpectedValueNumeric>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">4b710530-abea-4ed0-b3fb-f324919c2d62</cbc:ID>
+				<cbc:Description>Maximum number of lots that may be awarded to one tenderer</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">REQUIREMENT</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUANTITY_INTEGER</cbc:ValueDataTypeCode>
+				<cbc:ExpectedValueNumeric>1</cbc:ExpectedValueNumeric>
+			</cac:TenderingCriterionProperty>
 		</cac:TenderingCriterionPropertyGroup>
-</cac:TenderingCriterion> 
+	</cac:TenderingCriterion> 
 </QualificationApplicationRequest>
 
 ----
