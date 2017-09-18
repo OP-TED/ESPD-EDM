@@ -85,7 +85,7 @@ This other table lists the elements from `cac:Evidence/cac:DocumentReference` us
 |===
 |*Components*|*Type*|*Card*|*Description*|*Requirements*
 
-|*cac:Attachment/cac:ExternalReference/cbc:ID*
+|*cbc:ID*
 |Identifier
 |1
 |An identifier for the referenced document.
@@ -101,26 +101,26 @@ This other table lists the elements from `cac:Evidence/cac:DocumentReference` us
 
 *Rule*: None. Not currently used in ESPD.
 
-|*cac:Attachment/cac:Party/cbc:ID*
+|*cac:IssuerParty/cbc:ID*
 |Identifier
 |0..1
-|The identifier of the party issuer of the evidence.
+|The identifier of the party issuer of the documentary evidence.
 |*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
 
 *Rule*: Not currently used in ESPD, but if you decide to use it try to use the VAT number whenever possible.
 
-|*cac:Attachment/cac:Party/cbc:Name*
+|*cac:IssuerParty/cbc:Name*
 |Text
 |0..1
-|The name of the party issuer of the evidence.
+|The name of the party issuer of the documentary  evidence.
 |*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
 
 *Rule*: ESPD-EDM uses this element to keep the name of the evidence issuer in the ESPD Response XML instance. 
 
-|*cac:Attachment/cac:Party/cbc:WebsiteURI*
+|*cac:IssuerParty/cbc:WebsiteURI*
 |URI
 |0..1
-|The website of the party issuer of the evidence.
+|The website of the party issuer of the documentary evidence.
 |*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
 
 *Rule*: None. Not currently used in ESPD-EDM V02.00.00.

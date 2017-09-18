@@ -115,7 +115,7 @@ This disjointness rule applies to the *type* of the value, but *not to the value
 .Elements expected in the 'cac:EvidenceSupplied' class
 [cols="<1,<4"]
 |===
-|*Class name*:|cac:Period
+|*Class name*:|cac:EvidenceSupplied
 |*Definition*:|A reference to the evidence supporting this criterion property response.
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
@@ -127,21 +127,13 @@ This disjointness rule applies to the *type* of the value, but *not to the value
 |===
 |*Components*|*Type*|*Card*|*Description*|*Requirements*
 
-|*cbc:StartDate*
-|Date
-|0..1
-|The date on which this period begins.
+|*cbc:ID*
+|Identifier
+|1
+|The identifier of the referenced evidence.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
-*Rule*: Expected format 'YYYY-MM-DD'.
-
-|*cbc:EndDate*
-|Date
-|0..1
-|The date on which this period ends.
-|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
-
-*Rule*: Expected format 'YYYY-MM-DD'.
+*Rule*: The expected identifier must match the value of a `cac:Evidence/cbc:ID` present in the XML document. 
 
 |===
 

@@ -3463,7 +3463,16 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="title">Figure 29. cac:ProcurementProjectLot. XSD Schema</div>
 </div>
 <div class="paragraph">
-<p>The rest of information about the lots (“tenders must be submitted for…”, “maximum number of lots”, “maximum number of lots that may be awarded”) is treated as the elements (or properties) of a “Criterion” (component <code>cac:TenderingCriterion</code>) named “Additional information about the Lots”.  As this structure is dealt with further on in this guide. See sections about exclusion and selection for details about it.</p>
+<p>The rest of information about the lots (“tenders must be submitted for…”, “maximum number of lots”, “maximum number of lots that may be awarded”) is treated as the elements (or properties) of a “Criterion” (component <code>cac:TenderingCriterion</code>) named “Additional information about the Lots”.</p>
+</div>
+<div class="paragraph">
+<p>As you will see in section <a href="#iv-4-mock-ups-data-structures-xml-examples-and-tools">IV.4 Mock-ups, data structures, XML examples and tools</a> and further on, this guide uses a spread-sheet-based method to represent the structures of the criteria (and to generate XML template instances of the criteria). The figure below shows the structure that "generates" the XML instance. One important thing to observe in this structure and in the XML example is the use of the Publications Office Code List "<a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">BidType</a>" to specify to which Lots the economic operator may bid.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./images/Selfcontained_OTHER-CA-Lots.png" alt="Requirements about Lots issued by the CA">
+</div>
+<div class="title">Figure 30. Requirements about Lots issued by the CA (Selfcontained ESPD), mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -3546,6 +3555,9 @@ of a greater number of potential operators in public procurement procedures and 
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Observe that the data is</p>
+</div>
 <div class="listingblock">
 <div class="title">Lots (<strong>SEL-CONTAINED</strong> ESPD)</div>
 <div class="content">
@@ -3575,41 +3587,39 @@ of a greater number of potential operators in public procurement procedures and 
 
 <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">&lt;!-- Additional information about the Lots supplied by the contracting authority --&gt;</span>
-<span class="tag">&lt;cac:TenderingCriterion&gt;</span>
-        <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
-                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>69c1de17-3256-4920-9d46-1e7da839b279<span class="tag">&lt;/cbc:ID&gt;</span>
-                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e0036f1c-8129-430b-ab8a-4e1d8703ddeb<span class="tag">&lt;/cbc:ID&gt;</span>
-                        <span class="tag">&lt;cbc:Description&gt;</span>Please take into account the following requirements regarding the lots of this procurement procedure:<span class="tag">&lt;/cbc:Description&gt;</span>
-                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-                        <span class="tag">&lt;cbc:ValueDataTypeCode</span>  <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
-                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                <span class="tag">&lt;cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
-                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>eabd66bb-6899-469b-bb17-80177a2d7f7a<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="comment">&lt;!-- Criterion:CA Lots --&gt;</span>
+        <span class="tag">&lt;cac:TenderingCriterion&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>6a21c421-5c1e-46f4-9762-116fbcd33097<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.OTHER.CA_DATA.LOTS_SUBMISSION<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
+                <span class="tag">&lt;cbc:Name&gt;</span>CA Lots<span class="tag">&lt;/cbc:Name&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Please take into account the following requirements regarding the lots of this procurement procedure:<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>03cff8d1-4d22-4435-82fa-d6361af84be6<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
                         <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f0a38925-a8ee-4753-942d-deca0262ed94<span class="tag">&lt;/cbc:ID&gt;</span>
-                                <span class="tag">&lt;cbc:Description&gt;</span>Tenders may be submitted for:<span class="tag">&lt;/cbc:Description&gt;</span>
-                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
-                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
-                                <span class="tag">&lt;cbc:ExpectedCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NumberOfLotsCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>MAX<span class="tag">&lt;/cbc:ExpectedCode&gt;</span>
-                                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8d899045-1031-467f-a2b4-58ef9b1f719d<span class="tag">&lt;/cbc:ID&gt;</span>
-                                        <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots<span class="tag">&lt;/cbc:Description&gt;</span>
-                                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>5<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
-                                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-OM-GROW</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>8d899045-1031-467f-a2b4-58ef9b1f719d<span class="tag">&lt;/cbc:ID&gt;</span>
-                                        <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots that may be awarded to one tenderer<span class="tag">&lt;/cbc:Description&gt;</span>
-                                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>1<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
-                                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                        <span class="tag">&lt;/cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>847829aa-e70a-45e1-b4d3-e11c3ffaf7a0<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Tenders may be submitted for<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>REQUIREMENT<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CODE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                                <span class="comment">&lt;!-- Compulsory use of the Publications Office Code List BidType --&gt;</span>
+                                <span class="tag">&lt;cbc:ExpectedCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">BidType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-OP</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>LOT_ALL<span class="tag">&lt;/cbc:ExpectedCode&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>dceddc28-0ac8-471b-b954-c376a862ea30<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>REQUIREMENT<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUANTITY_INTEGER<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>5<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>4b710530-abea-4ed0-b3fb-f324919c2d62<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots that may be awarded to one tenderer<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>REQUIREMENT<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUANTITY_INTEGER<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>1<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
                 <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
-<span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
+        <span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
 <span class="tag">&lt;/QualificationApplicationRequest&gt;</span></code></pre>
 </div>
 </div>
@@ -3714,6 +3724,9 @@ of a greater number of potential operators in public procurement procedures and 
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Observe that the data is</p>
+</div>
 <div class="listingblock">
 <div class="title">Lots (<strong>SEL-CONTAINED</strong> ESPD)</div>
 <div class="content">
@@ -3743,41 +3756,39 @@ of a greater number of potential operators in public procurement procedures and 
 
 <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="comment">&lt;!-- Additional information about the Lots supplied by the contracting authority --&gt;</span>
-<span class="tag">&lt;cac:TenderingCriterion&gt;</span>
-        <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
-                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>69c1de17-3256-4920-9d46-1e7da839b279<span class="tag">&lt;/cbc:ID&gt;</span>
-                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>e0036f1c-8129-430b-ab8a-4e1d8703ddeb<span class="tag">&lt;/cbc:ID&gt;</span>
-                        <span class="tag">&lt;cbc:Description&gt;</span>Please take into account the following requirements regarding the lots of this procurement procedure:<span class="tag">&lt;/cbc:Description&gt;</span>
-                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span> <i class="conum" data-value="3"></i><b>(3)</b>
-                        <span class="tag">&lt;cbc:ValueDataTypeCode</span>  <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span> <i class="conum" data-value="4"></i><b>(4)</b>
-                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                <span class="tag">&lt;cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
-                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>eabd66bb-6899-469b-bb17-80177a2d7f7a<span class="tag">&lt;/cbc:ID&gt;</span>
+        <span class="comment">&lt;!-- Criterion:CA Lots --&gt;</span>
+        <span class="tag">&lt;cac:TenderingCriterion&gt;</span>
+                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>6a21c421-5c1e-46f4-9762-116fbcd33097<span class="tag">&lt;/cbc:ID&gt;</span>
+                <span class="tag">&lt;cbc:CriterionTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTypeCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CRITERION.OTHER.CA_DATA.LOTS_SUBMISSION<span class="tag">&lt;/cbc:CriterionTypeCode&gt;</span>
+                <span class="tag">&lt;cbc:Name&gt;</span>CA Lots<span class="tag">&lt;/cbc:Name&gt;</span>
+                <span class="tag">&lt;cbc:Description&gt;</span>Please take into account the following requirements regarding the lots of this procurement procedure:<span class="tag">&lt;/cbc:Description&gt;</span>
+                <span class="tag">&lt;cac:TenderingCriterionPropertyGroup&gt;</span>
+                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>03cff8d1-4d22-4435-82fa-d6361af84be6<span class="tag">&lt;/cbc:ID&gt;</span>
+                        <span class="tag">&lt;cbc:PropertyGroupTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>ON*<span class="tag">&lt;/cbc:PropertyGroupTypeCode&gt;</span>
                         <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>f0a38925-a8ee-4753-942d-deca0262ed94<span class="tag">&lt;/cbc:ID&gt;</span>
-                                <span class="tag">&lt;cbc:Description&gt;</span>Tenders may be submitted for:<span class="tag">&lt;/cbc:Description&gt;</span>
-                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
-                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
-                                <span class="tag">&lt;cbc:ExpectedCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">NumberOfLotsCode</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>MAX<span class="tag">&lt;/cbc:ExpectedCode&gt;</span>
-                                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8d899045-1031-467f-a2b4-58ef9b1f719d<span class="tag">&lt;/cbc:ID&gt;</span>
-                                        <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots<span class="tag">&lt;/cbc:Description&gt;</span>
-                                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>5<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
-                                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                                <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
-                                        <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-OM-GROW</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>8d899045-1031-467f-a2b4-58ef9b1f719d<span class="tag">&lt;/cbc:ID&gt;</span>
-                                        <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots that may be awarded to one tenderer<span class="tag">&lt;/cbc:Description&gt;</span>
-                                        <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CAPTION<span class="tag">&lt;/cbc:TypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>NONE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
-                                        <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>1<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
-                                <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
-                        <span class="tag">&lt;/cac:SubsidiaryTenderingCriterionPropertyGroup&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>847829aa-e70a-45e1-b4d3-e11c3ffaf7a0<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Tenders may be submitted for<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>REQUIREMENT<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>CODE<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                                <span class="comment">&lt;!-- Compulsory use of the Publications Office Code List BidType --&gt;</span>
+                                <span class="tag">&lt;cbc:ExpectedCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">BidType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-OP</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>LOT_ALL<span class="tag">&lt;/cbc:ExpectedCode&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>dceddc28-0ac8-471b-b954-c376a862ea30<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>REQUIREMENT<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUANTITY_INTEGER<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>5<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
+                        <span class="tag">&lt;cac:TenderingCriterionProperty&gt;</span>
+                                <span class="tag">&lt;cbc:ID</span> <span class="attribute-name">schemeID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriteriaTaxonomy</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">schemeVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>4b710530-abea-4ed0-b3fb-f324919c2d62<span class="tag">&lt;/cbc:ID&gt;</span>
+                                <span class="tag">&lt;cbc:Description&gt;</span>Maximum number of lots that may be awarded to one tenderer<span class="tag">&lt;/cbc:Description&gt;</span>
+                                <span class="tag">&lt;cbc:TypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">CriterionElementType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>REQUIREMENT<span class="tag">&lt;/cbc:TypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ValueDataTypeCode</span> <span class="attribute-name">listID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ResponseDataType</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listAgencyID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">EU-COM-GROW</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">listVersionID</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">02.00.00</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>QUANTITY_INTEGER<span class="tag">&lt;/cbc:ValueDataTypeCode&gt;</span>
+                                <span class="tag">&lt;cbc:ExpectedValueNumeric&gt;</span>1<span class="tag">&lt;/cbc:ExpectedValueNumeric&gt;</span>
+                        <span class="tag">&lt;/cac:TenderingCriterionProperty&gt;</span>
                 <span class="tag">&lt;/cac:TenderingCriterionPropertyGroup&gt;</span>
-<span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
+        <span class="tag">&lt;/cac:TenderingCriterion&gt;</span>
 <span class="tag">&lt;/QualificationApplicationRequest&gt;</span></code></pre>
 </div>
 </div>
@@ -3831,7 +3842,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="content">
 <img src="./images/Criterion.png" alt="Criterion">
 </div>
-<div class="title">Figure 30. A Criterion - UML diagram</div>
+<div class="title">Figure 31. A Criterion - UML diagram</div>
 </div>
 <div class="sect2">
 <h3 id="iv-1-general-behavior"><a class="anchor" href="#iv-1-general-behavior"></a>IV.1 General behavior</h3>
@@ -3866,7 +3877,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="content">
 <img src="./images/TenderingCriterion_XSD_global_view.png" alt="Criterion">
 </div>
-<div class="title">Figure 31. cac:TenderingCriterion - XSD Schema, global view</div>
+<div class="title">Figure 32. cac:TenderingCriterion - XSD Schema, global view</div>
 </div>
 </div>
 <div class="sect3">
@@ -4016,7 +4027,7 @@ of a greater number of potential operators in public procurement procedures and 
 <div class="content">
 <img src="./images/Legislation-XSD.png" alt="Legislation">
 </div>
-<div class="title">Figure 32. cac:Legislation. XSD Schema</div>
+<div class="title">Figure 33. cac:Legislation. XSD Schema</div>
 </div>
 <div class="sect3">
 <h4 id="expected-elements-10"><a class="anchor" href="#expected-elements-10"></a>Expected elements</h4>
@@ -4175,7 +4186,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/CriterionGroup.png" alt="TenderingCriterionPropertyGroup">
 </div>
-<div class="title">Figure 33. cac:TenderingCriterionPropertyGroup - XSD Schema, global view</div>
+<div class="title">Figure 34. cac:TenderingCriterionPropertyGroup - XSD Schema, global view</div>
 </div>
 <div class="paragraph">
 <p>One group of properties may include one or more 'sub-groups' of properties (class <code>cac:SubsidiaryTenderingCriterionGroup</code>).</p>
@@ -4187,7 +4198,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/SubsidiaryTenderingCriterionGroup.png" alt="SubsidiaryTenderingCriterionGroup">
 </div>
-<div class="title">Figure 34. cac:SubsidiaryTenderingCriterionGroup- XSD Schema</div>
+<div class="title">Figure 35. cac:SubsidiaryTenderingCriterionGroup- XSD Schema</div>
 </div>
 <div class="sect3">
 <h4 id="expected-elements-11"><a class="anchor" href="#expected-elements-11"></a>Expected elements</h4>
@@ -4308,7 +4319,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/CriterionProperty-XSD.png" alt="TenderingCriterion">
 </div>
-<div class="title">Figure 35. cac:TenderingCriterionProperty - XSD Schema</div>
+<div class="title">Figure 36. cac:TenderingCriterionProperty - XSD Schema</div>
 </div>
 <div class="paragraph">
 <p><strong>Notice that</strong>: One sub-criterion 'is a' criterion:</p>
@@ -4317,7 +4328,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/SubCriterion-XSD.png" alt="SubTenderingCriterion">
 </div>
-<div class="title">Figure 36. cac:SubTenderingCriterion- XSD Schema</div>
+<div class="title">Figure 37. cac:SubTenderingCriterion- XSD Schema</div>
 </div>
 <div class="sect3">
 <h4 id="expected-elements-12"><a class="anchor" href="#expected-elements-12"></a>Expected elements</h4>
@@ -4569,7 +4580,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_ESPDRequest_Contributions_Data_Structure.png" alt="Regulated 'Contributions' criterion data structure">
 </div>
-<div class="title">Figure 37. Regulated 'Contributions' criterion data structure</div>
+<div class="title">Figure 38. Regulated 'Contributions' criterion data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>SELF-CONTAINED</strong></p>
@@ -4578,7 +4589,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_ESPDRequest_Contributions_Data_Structure.png" alt="Self-contained 'Contributions' criterion data structure">
 </div>
-<div class="title">Figure 38. Self-contained 'Contributions' criterion data structure</div>
+<div class="title">Figure 39. Self-contained 'Contributions' criterion data structure</div>
 </div>
 <div class="paragraph">
 <p>We could say that the 'data structures' represented in the spread-sheets define a kind of 'meta-language' (or 'controlled vocabulary') that helps 'map' the structure of an ESPD-EDM criterion and the UBL-2.2 criterion data structure. The table below 'maps' both vocabularies. Please compare any of the data structures provided in this document with both the UBL-2.2 XSD Schemas and the XML examples provided herein.</p>
@@ -4960,7 +4971,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/ExclusionCriteriaTaxonomy.png" alt="Exclusion criteria taxonomy" width="900">
 </div>
-<div class="title">Figure 39. Exclusion criteria taxonomy</div>
+<div class="title">Figure 40. Exclusion criteria taxonomy</div>
 </div>
 <div class="sect2">
 <h3 id="v-1-convictions"><a class="anchor" href="#v-1-convictions"></a>V.1 Convictions</h3>
@@ -5038,7 +5049,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Convictions__EO_mock-up.png" alt="Conviction EO mock-up">
 </div>
-<div class="title">Figure 40. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
+<div class="title">Figure 41. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
 </div>
 </div>
 <div class="sect3">
@@ -5050,7 +5061,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_ESPDRequest_Convictions_Data_Structure.png" alt="Convictions data structure">
 </div>
-<div class="title">Figure 41. Data Structure for all 'Regulated Conviction' exclusion grounds criteria</div>
+<div class="title">Figure 42. Data Structure for all 'Regulated Conviction' exclusion grounds criteria</div>
 </div>
 </div>
 <div class="sect3">
@@ -5059,7 +5070,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_ESPDRequest_Convictions_Data_Structure.png" alt="Convictions data structure">
 </div>
-<div class="title">Figure 42. Data Structure for all 'Self-contained Conviction' exclusion grounds criteria</div>
+<div class="title">Figure 43. Data Structure for all 'Self-contained Conviction' exclusion grounds criteria</div>
 </div>
 </div>
 <div class="sect3">
@@ -5388,7 +5399,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_ESPDRequest_Contributions_CA_mockup.png" alt="Regulated 'Payment of Taxes' (ESPD Service, CA perspective)" width="800">
 </div>
-<div class="title">Figure 43. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
+<div class="title">Figure 44. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -5400,7 +5411,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/PaymentOfTaxes_EO_YES_mock-up.png" alt="Regulated 'Payment of Taxes' (ESPD Service, EO perspective)" width="EO perspective)">
 </div>
-<div class="title">Figure 44. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
+<div class="title">Figure 45. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (<strong>YES</strong>)</div>
 </div>
 <div class="paragraph">
 <p>This other mock-up shows the view of the economic operator when it answers "No" to the question "Has this breach of obligations been established by other means&#8230;&#8203;.?".</p>
@@ -5409,7 +5420,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/PaymentOfTaxes_EO_NO_mock-up.png" alt="Regulated 'Payment of Taxes' (ESPD Service, EO perspective)" width="EO perspective)">
 </div>
-<div class="title">Figure 45. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 2 (<strong>NO</strong>)</div>
+<div class="title">Figure 46. Regulated 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 2 (<strong>NO</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -5418,7 +5429,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_ESPDRequest_Contributions_Data_Structure.png" alt="Regulated 'Contributions' criterion data structure">
 </div>
-<div class="title">Figure 46. Regulated 'Contributions' criterion data structure</div>
+<div class="title">Figure 47. Regulated 'Contributions' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -5659,7 +5670,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/PaymentOfTaxes_CA_mock-up.png" alt="Regulated 'Payment of Taxes' (ESPD Service, CA perspective)" width="CA perspective)">
 </div>
-<div class="title">Figure 47. Regulated 'Payment of Taxes' (ESPD Service, CA perspective)</div>
+<div class="title">Figure 48. Regulated 'Payment of Taxes' (ESPD Service, CA perspective)</div>
 </div>
 <div class="paragraph">
 <p>This other screen-capture below represents a possible mock-up, from the contracting authority perspective, for the edition of requirements in a Self-contained 'Contributions' criterion (Payment of Taxes).</p>
@@ -5668,7 +5679,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_PaymentOfTaxes_CA_REQUIREMENTS_Edition-mock-up.png" alt="Self-contained 'Payment of Taxes', REQUIREMENT edition">
 </div>
-<div class="title">Figure 48. Self-contained 'Payment of Taxes', REQUIREMENT edition (CA Perspective)</div>
+<div class="title">Figure 49. Self-contained 'Payment of Taxes', REQUIREMENT edition (CA Perspective)</div>
 </div>
 <div class="paragraph">
 <p>The differences with the Regulated Contribution version are:</p>
@@ -5707,7 +5718,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_PaymentOfTaxes_EO_REQUIREMENTS-mock-up.png" alt="Self-contained 'Payment of Taxes', EO  perspective">
 </div>
-<div class="title">Figure 49. Self-contained 'Payment of Taxes', (EO perspective)</div>
+<div class="title">Figure 50. Self-contained 'Payment of Taxes', (EO perspective)</div>
 </div>
 </div>
 <div class="sect3">
@@ -5730,7 +5741,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_ESPDRequest_Contributions_Data_Structure.png" alt="Self-contained 'Contributions' criterion data structure">
 </div>
-<div class="title">Figure 50. Self-contained 'Contributions' criterion data structure</div>
+<div class="title">Figure 51. Self-contained 'Contributions' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -6090,7 +6101,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Social_CA_mock_up.png" alt="Social - CA perspective">
 </div>
-<div class="title">Figure 51. 'Environmental Law' criterion mock-up - CA perspective</div>
+<div class="title">Figure 52. 'Environmental Law' criterion mock-up - CA perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6113,7 +6124,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Social_EO_mock_up.png" alt="Social - EO perspective">
 </div>
-<div class="title">Figure 52. 'Environmental Law' criterion mock-up - CA perspective</div>
+<div class="title">Figure 53. 'Environmental Law' criterion mock-up - CA perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6122,7 +6133,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Environmental_Law_Data_Structure.png" alt="Regulated Environmental Law">
 </div>
-<div class="title">Figure 53. 'Environmental Law' criterion data structure</div>
+<div class="title">Figure 54. 'Environmental Law' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -6131,7 +6142,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Environmental_Law_Data_Structure.png" alt="Self-contained Environmental Law">
 </div>
-<div class="title">Figure 54. 'Environmental Law' criterion data structure</div>
+<div class="title">Figure 55. 'Environmental Law' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -6280,7 +6291,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Business_CA_mock-up.png" alt="'Bankruptcy' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 55. 'Bankruptcy' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 56. 'Bankruptcy' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6303,7 +6314,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Business_EO_mock-up.png" alt="'Bankruptcy' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 56. 'Bankruptcy' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 57. 'Bankruptcy' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6312,7 +6323,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Business_Data_Structure.png" alt="Regulated_Business">
 </div>
-<div class="title">Figure 57. 'Bankruptcy' criterion  data structure - Regulated</div>
+<div class="title">Figure 58. 'Bankruptcy' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6321,7 +6332,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Business_Data_Structure.png" alt="Selfcontained_Business">
 </div>
-<div class="title">Figure 58. 'Bankruptcy' criterion  data structure - Self-contained</div>
+<div class="title">Figure 59. 'Bankruptcy' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -6477,7 +6488,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misconduct_CA_mock-up.png" alt="'Professional misconduct' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 59. 'Professional misconduct' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 60. 'Professional misconduct' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6500,7 +6511,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misconduct_EO_mock-up.png" alt="'Professional misconduct' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 60. 'Professional misconduct' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 61. 'Professional misconduct' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6509,7 +6520,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Misconduct_Data_Structure.png" alt="Regulated Professional misconduct">
 </div>
-<div class="title">Figure 61. 'Professional misconduct' criterion data structure - Regulated</div>
+<div class="title">Figure 62. 'Professional misconduct' criterion data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6518,7 +6529,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Misconduct_Data_Structure.png" alt="Professional misconduct Professional misconduct">
 </div>
-<div class="title">Figure 62. 'Professional misconduct' criterion data structure - Self-contained</div>
+<div class="title">Figure 63. 'Professional misconduct' criterion data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -6679,7 +6690,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Conflict_of_interest_CA_mock-up.png" alt="'Conflict of interest' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 63. 'Conflict of interest' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 64. 'Conflict of interest' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6705,7 +6716,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Conflict_of_interest_EO_mock-up.png" alt="'Conflict of interest' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 64. 'Conflict of interest' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 65. 'Conflict of interest' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6714,7 +6725,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Conflict_of_Interest_Data_Structure.png" alt="Conflict of interest">
 </div>
-<div class="title">Figure 65. 'Conflict of interest' criterion  data structure - Regulated</div>
+<div class="title">Figure 66. 'Conflict of interest' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6723,7 +6734,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Conflict_of_Interest_Data_Structure.png" alt="Conflict of interest">
 </div>
-<div class="title">Figure 66. 'Conflict of interest' criterion  data structure - Self-contained</div>
+<div class="title">Figure 67. 'Conflict of interest' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -6850,7 +6861,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Early_Termination_CA_mock-up.png" alt="'Early termination' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 67. 'Early termination' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 68. 'Early termination' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6873,7 +6884,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Early_Termination_EO_mock-up.png" alt="'Early termination' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 68. 'Early termination' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 69. 'Early termination' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -6882,7 +6893,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Early_Termination_Data_Structure.png" alt="Early termination">
 </div>
-<div class="title">Figure 69. 'Early termination' criterion  data structure - Regulated</div>
+<div class="title">Figure 70. 'Early termination' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -6891,7 +6902,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Early_Termination_Data_Structure.png" alt="Early termination">
 </div>
-<div class="title">Figure 70. 'Early termination' criterion  data structure - Self-contained</div>
+<div class="title">Figure 71. 'Early termination' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -7040,7 +7051,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misinterpretation_CA_mock-up.png" alt="'Misinterpretation' criterion mock-up - CA perspective" width="criterion mock-up - CA perspective">
 </div>
-<div class="title">Figure 71. 'Misinterpretation' criterion mock-up - contracting authority perspective</div>
+<div class="title">Figure 72. 'Misinterpretation' criterion mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -7063,7 +7074,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Misinterpretation_EO_mock-up.png" alt="'Misinterpretation' criterion mock-up - EO perspective" width="criterion mock-up - EO perspective">
 </div>
-<div class="title">Figure 72. 'Misinterpretation' criterion mock-up - economic operator perspective</div>
+<div class="title">Figure 73. 'Misinterpretation' criterion mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -7072,7 +7083,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Misinterpretation_Data_Structure.png" alt="Misinterpretation">
 </div>
-<div class="title">Figure 73. 'Misinterpretation' criterion  data structure - Regulated</div>
+<div class="title">Figure 74. 'Misinterpretation' criterion  data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -7081,7 +7092,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Misinterpretation_Data_Structure.png" alt="Misinterpretation">
 </div>
-<div class="title">Figure 74. 'Misinterpretation' criterion  data structure - Self-contained</div>
+<div class="title">Figure 75. 'Misinterpretation' criterion  data structure - Self-contained</div>
 </div>
 </div>
 <div class="sect3">
@@ -7254,7 +7265,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Purely_National_CA_mock-up.png" alt="'Purely national criteria' mock-up - CA perspective" width="mock-up - CA perspective">
 </div>
-<div class="title">Figure 75. 'Purely national criteria' mock-up - contracting authority perspective</div>
+<div class="title">Figure 76. 'Purely national criteria' mock-up - contracting authority perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -7266,7 +7277,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Purely_National_EO_mock-up.png" alt="'Purely national criteria' mock-up - EO perspective" width="mock-up - EO perspective">
 </div>
-<div class="title">Figure 76. 'Purely national criteria' mock-up - economic operator perspective</div>
+<div class="title">Figure 77. 'Purely national criteria' mock-up - economic operator perspective</div>
 </div>
 </div>
 <div class="sect3">
@@ -7275,7 +7286,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Purely_National_Data_Structure.png" alt="'Purely national criteria'">
 </div>
-<div class="title">Figure 77. 'Purely national criteria' data structure</div>
+<div class="title">Figure 78. 'Purely national criteria' data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7377,7 +7388,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Purely_National_EO_mock-up.png" alt="'Purely national criteria' mock-up - CA perspective" width="mock-up - CA perspective">
 </div>
-<div class="title">Figure 78. 'Purely natural criteria' - economic operator perspective (Self-contained)</div>
+<div class="title">Figure 79. 'Purely natural criteria' - economic operator perspective (Self-contained)</div>
 </div>
 </div>
 <div class="sect3">
@@ -7386,7 +7397,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Purely_National_Data_Structure.png" alt="Purely national criteria">
 </div>
-<div class="title">Figure 79. 'Purely national criteria' data structure - Regulated</div>
+<div class="title">Figure 80. 'Purely national criteria' data structure - Regulated</div>
 </div>
 </div>
 <div class="sect3">
@@ -7585,7 +7596,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/SelectionCriteriaTaxonomy.png" alt="Selection criteria taxonomy" width="900">
 </div>
-<div class="title">Figure 80. Selection criteria taxonomy</div>
+<div class="title">Figure 81. Selection criteria taxonomy</div>
 </div>
 <div class="sect2">
 <h3 id="vi-1-suitability"><a class="anchor" href="#vi-1-suitability"></a>VI.1 Suitability</h3>
@@ -7630,7 +7641,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Suitability_CA_mockup.png" alt="Regulated 'Suitability' criterion (CA perspective)">
 </div>
-<div class="title">Figure 81. Regulated 'Suitability' criterion (CA perspective)'</div>
+<div class="title">Figure 82. Regulated 'Suitability' criterion (CA perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -7642,7 +7653,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Suitability_EO_mockup.png" alt="Regulated 'Suitability' criterion (EO perspective)" width="800">
 </div>
-<div class="title">Figure 82. Regulated 'Suitability' criterion (EO perspective)'</div>
+<div class="title">Figure 83. Regulated 'Suitability' criterion (EO perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -7651,7 +7662,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Suitability_Data_Structure.png" alt="Regulated 'Suitability' criterion data structure">
 </div>
-<div class="title">Figure 83. Regulated 'Suitability' criterion data structure</div>
+<div class="title">Figure 84. Regulated 'Suitability' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7722,7 +7733,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_NOLOTS_CA_mockup.png" alt="Self-contained 'Suitability' criterion (CA perspective)">
 </div>
-<div class="title">Figure 84. Self-contained 'Suitability' criterion without Lots (CA perspective)'</div>
+<div class="title">Figure 85. Self-contained 'Suitability' criterion without Lots (CA perspective)'</div>
 </div>
 <div class="paragraph">
 <p>This other mock-up represents the same situation when the procurement procedure is <strong>divided into lots</strong>.</p>
@@ -7734,7 +7745,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_LOTS_CA_mockup.png" alt="Self-contained 'Suitability' criterion (CA perspective)">
 </div>
-<div class="title">Figure 85. Self-contained 'Suitability' criterion with Lots (CA perspective)'</div>
+<div class="title">Figure 86. Self-contained 'Suitability' criterion with Lots (CA perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -7759,7 +7770,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_LOTS_EO_mockup.png" alt="Self-contained 'Suitability' criterion (EO perspective)" width="800">
 </div>
-<div class="title">Figure 86. Self-contained 'Suitability' criterion (EO perspective)'</div>
+<div class="title">Figure 87. Self-contained 'Suitability' criterion (EO perspective)'</div>
 </div>
 </div>
 <div class="sect3">
@@ -7787,7 +7798,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Suitability_Data_Structure.png" alt="Self-contained 'Suitability' criterion data structure">
 </div>
-<div class="title">Figure 87. Self-contained 'Suitability' criterion data structure</div>
+<div class="title">Figure 88. Self-contained 'Suitability' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -7992,7 +8003,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Yearly_Turnover_CA_mock-up.png" alt="Regulated 'yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 88. Regulated 'general yearly turnover' CA mock-up</div>
+<div class="title">Figure 89. Regulated 'general yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8004,7 +8015,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Yearly_Turnover_EO_mock-up.png" alt="Regulated 'yearly turnover' EO mock-up">
 </div>
-<div class="title">Figure 89. Regulated 'general yearly turnover' EO mock-up</div>
+<div class="title">Figure 90. Regulated 'general yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8013,7 +8024,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Yearly_Turnover_Data_Structure.png" alt="Regulated 'yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 90. Regulated 'general yearly turnover' criterion data structure</div>
+<div class="title">Figure 91. Regulated 'general yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8151,7 +8162,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Yearly_Turnovers_CA_mockup.png" alt="Self-contained 'General and Specific Yearly Turnovers' CA mock-up">
 </div>
-<div class="title">Figure 91. Self-contained 'General Yearly Turnovers' CA mock-up</div>
+<div class="title">Figure 92. Self-contained 'General Yearly Turnovers' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8160,7 +8171,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Yearly_Turnovers_EO_mock-up.png" alt="Self-contained 'General and Specific Yearly Turnovers' EO mock-up_EO">
 </div>
-<div class="title">Figure 92. Self-contained 'General Yearly Turnovers' EO mock-up</div>
+<div class="title">Figure 93. Self-contained 'General Yearly Turnovers' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8172,7 +8183,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Yearly_Turnovers_Data_Structure.png" alt="Self-contained 'General Yearly Turnovers' criterion data structure">
 </div>
-<div class="title">Figure 93. Self-contained 'General Yearly Turnovers' criterion data structure</div>
+<div class="title">Figure 94. Self-contained 'General Yearly Turnovers' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8349,7 +8360,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Average_Yearly_Turnover_CA_mock-up.png" alt="Regulated 'average yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 94. Regulated 'average yearly turnover' CA mock-up</div>
+<div class="title">Figure 95. Regulated 'average yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8361,7 +8372,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Average_Yearly_Turnover_EO_mock-up.png" alt="Regulated 'average yearly turnover' EO mock-up">
 </div>
-<div class="title">Figure 95. Regulated 'average yearly turnover' EO mock-up</div>
+<div class="title">Figure 96. Regulated 'average yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8370,7 +8381,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Average_Yearly_Turnover_Data_Structure.png" alt="Regulated 'yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 96. Regulated 'average yearly turnover' criterion data structure</div>
+<div class="title">Figure 97. Regulated 'average yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8471,7 +8482,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Average_Yearly_Turnover_CA_mock-up.png" alt="Self-contained 'average yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 97. Self-contained 'average yearly turnover' CA mock-up</div>
+<div class="title">Figure 98. Self-contained 'average yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8493,7 +8504,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Average_Yearly_Turnovers_EO_mock-up.png" alt="Self-contained 'average yearly turnover' EO mock-up_EO">
 </div>
-<div class="title">Figure 98. Self-contained 'average yearly turnover' EO mock-up</div>
+<div class="title">Figure 99. Self-contained 'average yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8502,7 +8513,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Average_Yearly_Turnover_Data_Structure.png" alt="Self-contained 'average yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 99. Self-contained 'average yearly turnover' criterion data structure</div>
+<div class="title">Figure 100. Self-contained 'average yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8614,7 +8625,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Yearly_Turnover_CA_mock-up.png" alt="Regulated 'specific yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 100. Regulated 'specific yearly turnover' CA mock-up</div>
+<div class="title">Figure 101. Regulated 'specific yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8626,7 +8637,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Yearly_Turnover_EO_mock-up.png" alt="Regulated 'specific yearly turnover' EO mock-up">
 </div>
-<div class="title">Figure 101. Regulated 'specific yearly turnover' EO mock-up</div>
+<div class="title">Figure 102. Regulated 'specific yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8638,7 +8649,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Yearly_Turnover_Data_Structure.png" alt="Regulated 'specific yearly ' criterion data structure">
 </div>
-<div class="title">Figure 102. Regulated 'specific yearly turnover' criterion data structure</div>
+<div class="title">Figure 103. Regulated 'specific yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8789,7 +8800,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Yearly_Turnover_CA_mock-up.png" alt="Self-contained 'specific yearly turnover' CA mock-up">
 </div>
-<div class="title">Figure 103. Self-contained 'specific yearly turnover' CA mock-up</div>
+<div class="title">Figure 104. Self-contained 'specific yearly turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8820,7 +8831,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Yearly_Turnovers_EO_mock-up.png" alt="Self-contained 'specific yearly turnover' EO mock-up_EO">
 </div>
-<div class="title">Figure 104. Self-contained 'specific yearly turnover' EO mock-up</div>
+<div class="title">Figure 105. Self-contained 'specific yearly turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -8854,7 +8865,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Yearly_Turnover_Data_Structure.png" alt="Self-contained 'specific yearly turnover' criterion data structure">
 </div>
-<div class="title">Figure 105. Self-contained 'specific yearly turnover' criterion data structure</div>
+<div class="title">Figure 106. Self-contained 'specific yearly turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -8994,7 +9005,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Average_Turnover_CA_mock-up.png" alt="Regulated 'specific average turnover' CA mock-up">
 </div>
-<div class="title">Figure 106. Regulated 'specific average turnover' CA mock-up</div>
+<div class="title">Figure 107. Regulated 'specific average turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9006,7 +9017,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Average_Turnover_EO_mock-up.png" alt="Regulated 'specific average turnover' EO mock-up">
 </div>
-<div class="title">Figure 107. Regulated 'specific average turnover' EO mock-up</div>
+<div class="title">Figure 108. Regulated 'specific average turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9015,7 +9026,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Specific_Average_Turnover_Data_Structure.png" alt="Regulated 'specific average turnover' criterion data structure">
 </div>
-<div class="title">Figure 108. Regulated 'specific average turnover' criterion data structure</div>
+<div class="title">Figure 109. Regulated 'specific average turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9147,7 +9158,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Average_Turnovers_CA_mock-up.png" alt="Self-contained 'specific average turnover' CA mock-up_EO">
 </div>
-<div class="title">Figure 109. Self-contained 'specific average turnover' CA mock-up</div>
+<div class="title">Figure 110. Self-contained 'specific average turnover' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9156,7 +9167,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Average_Turnovers_EO_mock-up.png" alt="Self-contained 'specific average turnover' EO mock-up_EO">
 </div>
-<div class="title">Figure 110. Self-contained 'specific average turnover' EO mock-up</div>
+<div class="title">Figure 111. Self-contained 'specific average turnover' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9168,7 +9179,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Specific_Average_Turnover_Data_Structure.png" alt="Self-contained 'specific average turnover' criterion data structure">
 </div>
-<div class="title">Figure 111. Self-contained 'specific average turnover' criterion data structure</div>
+<div class="title">Figure 112. Self-contained 'specific average turnover' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9306,7 +9317,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/EO_Setup_CA_mock-up.png" alt="'Economic operator setup'CA mock-up" width="CA mock-up">
 </div>
-<div class="title">Figure 112. 'Economic operator setup&#8217;CA mock-up</div>
+<div class="title">Figure 113. 'Economic operator setup&#8217;CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9318,7 +9329,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/EO_Setup_EO_mock-up.png" alt="'Economic operator setup' EO mock-up" width="EO mock-up">
 </div>
-<div class="title">Figure 113. 'Economic operator setup&#8217;EO mock-up</div>
+<div class="title">Figure 114. 'Economic operator setup&#8217;EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9327,7 +9338,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_EO_Setup_Data_Structure.png" alt="'Economic operator setup' criterion data structure" width="criterion data structure">
 </div>
-<div class="title">Figure 114. 'Economic operator setup' criterion (<strong>REGULATED</strong>) data structure</div>
+<div class="title">Figure 115. 'Economic operator setup' criterion (<strong>REGULATED</strong>) data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9339,7 +9350,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_EO_Setup_Data_Structure.png" alt="'Economic operator setup' criterion data structure" width="criterion data structure">
 </div>
-<div class="title">Figure 115. 'Economic operator setup' criterion (<strong>SELF-CONTAINED</strong>) data structure</div>
+<div class="title">Figure 116. 'Economic operator setup' criterion (<strong>SELF-CONTAINED</strong>) data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9475,7 +9486,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Financial_ratio_CA_mockup.png" alt="Regulated 'financial ratio' CA mock-up">
 </div>
-<div class="title">Figure 116. Regulated 'financial ratio' CA mock-up</div>
+<div class="title">Figure 117. Regulated 'financial ratio' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9487,7 +9498,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Financial_Ratio_EO_mockup.png" alt="Regulated 'financial ratio' CA mock-up">
 </div>
-<div class="title">Figure 117. Regulated 'financial ratio' EO mock-up</div>
+<div class="title">Figure 118. Regulated 'financial ratio' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9496,7 +9507,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Financial_Ratio_Data_Structure.png" alt="Regulated 'financial ratio' criterion data structure">
 </div>
-<div class="title">Figure 118. Regulated 'financial ratio' criterion data structure</div>
+<div class="title">Figure 119. Regulated 'financial ratio' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9577,7 +9588,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Financial_ratio_CA_REQUIREMENTS_mockup.png" alt="Self-contained 'financial ratio' CA REQUIREMENTS mock-up">
 </div>
-<div class="title">Figure 119. Self-contained 'financial ratio' CA mock-up REQUIREMENTS edition</div>
+<div class="title">Figure 120. Self-contained 'financial ratio' CA mock-up REQUIREMENTS edition</div>
 </div>
 </div>
 <div class="sect3">
@@ -9589,7 +9600,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Financial_Ratio_EO_mockup.png" alt="Self-contained 'financial ratio' EO mock-up">
 </div>
-<div class="title">Figure 120. Self-contained 'financial ratio' EO mock-up</div>
+<div class="title">Figure 121. Self-contained 'financial ratio' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9615,7 +9626,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Self-contained_Financial_Ratio_Data_Structure.png" alt="Self-contained 'financial ratio' criterion data structure">
 </div>
-<div class="title">Figure 121. Self-contained 'financial ratio' criterion data structure</div>
+<div class="title">Figure 122. Self-contained 'financial ratio' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9923,7 +9934,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Risk_Indemnity_Insurance_CA_mock-up.png" alt="Regulated 'risk indemnity insurance' CA mock-up">
 </div>
-<div class="title">Figure 122. 'Regulated risk indemnity insurance&#8217;CA mock-up</div>
+<div class="title">Figure 123. 'Regulated risk indemnity insurance&#8217;CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -9935,7 +9946,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Risk_Indemnity_Insurance_EO_mock-up.png" alt="'Regulated 'risk indemnity insurance' EO mock-up" width="risk indemnity insurance' EO mock-up">
 </div>
-<div class="title">Figure 123. Regulated 'risk indemnity insurance' criterion data structure</div>
+<div class="title">Figure 124. Regulated 'risk indemnity insurance' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -9944,7 +9955,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Risk_Indemnity_Insurance_Data_Structure.png" alt="Regulated 'risk indemnity insurance' criterion data structure">
 </div>
-<div class="title">Figure 124. Regulated 'risk indemnity insurance' criterion data structure</div>
+<div class="title">Figure 125. Regulated 'risk indemnity insurance' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10024,7 +10035,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_CA_NOLOTS_mock-up.png" alt="Self-contained 'risk indemnity insurance' CA mock-up">
 </div>
-<div class="title">Figure 125. 'Self-contained risk indemnity insurance' CA REQUIREMENTS edition (Procedure without Lots)</div>
+<div class="title">Figure 126. 'Self-contained risk indemnity insurance' CA REQUIREMENTS edition (Procedure without Lots)</div>
 </div>
 <div class="paragraph">
 <p>When the procedure is divided into Lots: The contracting authority can specify the Lots one particular insurance applies to.</p>
@@ -10033,7 +10044,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_CA_LOTS_mock-up.png" alt="Self-contained 'risk indemnity insurance' CA mock-up">
 </div>
-<div class="title">Figure 126. 'Self-contained risk indemnity insurance' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
+<div class="title">Figure 127. 'Self-contained risk indemnity insurance' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
 </div>
 </div>
 <div class="sect3">
@@ -10045,7 +10056,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_EO_mock-up.png" alt="'Self-contained 'risk indemnity insurance' EO mock-up" width="risk indemnity insurance' EO mock-up">
 </div>
-<div class="title">Figure 127. 'Economic operator setup&#8217;EO mock-up</div>
+<div class="title">Figure 128. 'Economic operator setup&#8217;EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10086,7 +10097,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png" alt="Self-contained 'risk indemnity insurance' criterion data structure">
 </div>
-<div class="title">Figure 128. Self-contained 'risk indemnity insurance' criterion data structure</div>
+<div class="title">Figure 129. Self-contained 'risk indemnity insurance' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10294,7 +10305,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Other_Ec_Fin_Reqs_CA_mockup.png" alt="Regulated 'other economic or financial requirements' CA mock-up">
 </div>
-<div class="title">Figure 129. Regulated 'other economic or financial requirements' CA mock-up</div>
+<div class="title">Figure 130. Regulated 'other economic or financial requirements' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10306,7 +10317,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_Other_Ec_Fin_Reqs_EO_mockup.png" alt="Regulated 'other economic or financial requirements' EO mock-up">
 </div>
-<div class="title">Figure 130. Regulated 'other economic or financial requirements' EO mock-up</div>
+<div class="title">Figure 131. Regulated 'other economic or financial requirements' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10318,7 +10329,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Other_Ec_Fin_Reqs_Data_Structure.png" alt="Regulated 'other economic or financial requirements' data structure">
 </div>
-<div class="title">Figure 131. Regulated 'other economic or financial requirements' data structure</div>
+<div class="title">Figure 132. Regulated 'other economic or financial requirements' data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10396,7 +10407,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Other_EC_FIN_CA_LOTS_mock-up.png" alt="Self-contained 'other economic or financial requirements' CA mock-up">
 </div>
-<div class="title">Figure 132. Self-contained 'other economic or financial requirements' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
+<div class="title">Figure 133. Self-contained 'other economic or financial requirements' CA REQUIREMENTs edition (Procedure divided into Lots).</div>
 </div>
 </div>
 <div class="sect3">
@@ -10408,7 +10419,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Other_EC_FIN_EO_mock-up.png" alt="'Self-contained 'other economic or financial requirements' EO mock-up" width="other economic or financial requirements' EO mock-up">
 </div>
-<div class="title">Figure 133. Self-contained 'other economic or financial requirements' EO mock-up</div>
+<div class="title">Figure 134. Self-contained 'other economic or financial requirements' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10452,7 +10463,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_Other_EC_FIN_Data_Structure.png" alt="Self-contained 'other economic or financial requirements' criterion data structure">
 </div>
-<div class="title">Figure 134. Self-contained 'other economic or financial requirements' criterion data structure</div>
+<div class="title">Figure 135. Self-contained 'other economic or financial requirements' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10707,7 +10718,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_References_CA_mockup.png" alt="Regulated 'References' CA mock-up" width="800">
 </div>
-<div class="title">Figure 135. Regulated 'References' CA mock-up</div>
+<div class="title">Figure 136. Regulated 'References' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10719,7 +10730,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_References_EO_mockup.png" alt="Regulated 'References' CA mock-up' EO mock-up">
 </div>
-<div class="title">Figure 136. Regulated 'References' CA mock-up' EO mock-up</div>
+<div class="title">Figure 137. Regulated 'References' CA mock-up' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10731,7 +10742,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Regulated_References_Data_Structure.png" alt="Regulated 'References' criterion data structure">
 </div>
-<div class="title">Figure 137. Regulated 'References' criterion data structure</div>
+<div class="title">Figure 138. Regulated 'References' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -10860,7 +10871,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_References_CA_REQUIREMENTS_mockup.png" alt="Self-contained 'References' CA REQUIREMENTs edition mock-up">
 </div>
-<div class="title">Figure 138. Self-contained 'References' CA REQUIREMENTs edition mock-up</div>
+<div class="title">Figure 139. Self-contained 'References' CA REQUIREMENTs edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10885,7 +10896,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_References_EO_mockup.png" alt="Self-contained 'References' EO mock-up">
 </div>
-<div class="title">Figure 139. Self-contained 'References' EO mock-up</div>
+<div class="title">Figure 140. Self-contained 'References' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -10913,7 +10924,7 @@ on public procurement and repealing Directive 2004/18/EC'). Can be provided in s
 <div class="content">
 <img src="./images/Selfcontained_References_Data_Structure.png" alt="Self-contained 'References' criterion data structure">
 </div>
-<div class="title">Figure 140. Self-contained 'References' criterion data structure</div>
+<div class="title">Figure 141. Self-contained 'References' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11261,7 +11272,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Abilities_I_CA_mockup.png" alt="Regulated 'Abilities (I)' CA mock-up">
 </div>
-<div class="title">Figure 141. Regulated 'Abilities (I)' CA mock-up</div>
+<div class="title">Figure 142. Regulated 'Abilities (I)' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11270,7 +11281,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Abilities_I_EO_mockup.png" alt="Regulated 'Abilities (I)' EO mock-up">
 </div>
-<div class="title">Figure 142. Regulated 'Abilities (I)' EO mock-up</div>
+<div class="title">Figure 143. Regulated 'Abilities (I)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11279,7 +11290,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Abilities_I_Data_Structure.png" alt="Regulated 'Abilities (I)' criterion data structure">
 </div>
-<div class="title">Figure 143. Regulated 'Abilities (I)' criterion data structure</div>
+<div class="title">Figure 144. Regulated 'Abilities (I)' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11368,7 +11379,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Abilities_1_CA_REQUIREMENT_Edition_mockup.png" alt="Self-contained 'Abilities (I)' CA REQUIREMENT mock-up">
 </div>
-<div class="title">Figure 144. Self-contained 'Abilities (I)' CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 145. Self-contained 'Abilities (I)' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11380,7 +11391,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Abilities_1_EO_mockup.png" alt="Self-contained 'Abilities (I)' EO mock-up">
 </div>
-<div class="title">Figure 145. Self-contained 'Abilities (I)' EO mock-up</div>
+<div class="title">Figure 146. Self-contained 'Abilities (I)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11392,7 +11403,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up">
 </div>
-<div class="title">Figure 146. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 147. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11401,7 +11412,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_EO_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up">
 </div>
-<div class="title">Figure 147. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
+<div class="title">Figure 148. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11416,7 +11427,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Abilities_1_Data_Structure.png" alt="Self-contained 'Abilities (I)' ">
 </div>
-<div class="title">Figure 148. Self-contained 'Abilities (I)' criterion data structure</div>
+<div class="title">Figure 149. Self-contained 'Abilities (I)' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11752,7 +11763,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Checks_CA_mockup.png" alt="Regulated 'checks' CA mock-up">
 </div>
-<div class="title">Figure 149. Regulated 'checks' CA mock-up</div>
+<div class="title">Figure 150. Regulated 'checks' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11764,7 +11775,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Checks_EO_mockup.png" alt="Regulated 'checks' EO mock-up">
 </div>
-<div class="title">Figure 150. Regulated 'checks' EO mock-up</div>
+<div class="title">Figure 151. Regulated 'checks' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11779,7 +11790,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Checks_Data_Structure.png" alt="Regulated 'checks' criterion data structure criterion data structure">
 </div>
-<div class="title">Figure 151. Regulated 'checks' criterion data structure</div>
+<div class="title">Figure 152. Regulated 'checks' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -11837,7 +11848,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Checks_CA_REQUIREMENT_mockup.png" alt="Self-contained 'Checks' CA REQUIREMENT mock-up">
 </div>
-<div class="title">Figure 152. Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 153. Self-contained 'allowance of checks' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11849,7 +11860,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Checks_EO_mockup.png" alt="Self-contained 'Checks' CA mock-up">
 </div>
-<div class="title">Figure 153. Self-contained 'allowance of hecks' EO mock-up</div>
+<div class="title">Figure 154. Self-contained 'allowance of hecks' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -11880,7 +11891,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Self-contained_Checks_Data_Structure.png" alt="Self-contained 'Checks' criterion data structure">
 </div>
-<div class="title">Figure 154. Self-contained 'allowance of checks' criterion data structure</div>
+<div class="title">Figure 155. Self-contained 'allowance of checks' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -12006,7 +12017,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Abilities_3_CA_mockup.png" alt="Regulated 'Abilities (III)' CA mock-up">
 </div>
-<div class="title">Figure 155. Regulated 'Abilities (III)' CA mock-up</div>
+<div class="title">Figure 156. Regulated 'Abilities (III)' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12015,7 +12026,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Abilities_3_EO_mockup.png" alt="Regulated 'Abilities (III)' CA mock-up">
 </div>
-<div class="title">Figure 156. Regulated 'Abilities (III)' EO mock-up</div>
+<div class="title">Figure 157. Regulated 'Abilities (III)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12027,7 +12038,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Abilities_3_Data_Structure.png" alt="Regulated 'Abilities (III)' criterion data structure">
 </div>
-<div class="title">Figure 157. Regulated 'Abilities (III)' criterion data structure</div>
+<div class="title">Figure 158. Regulated 'Abilities (III)' criterion data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -12120,7 +12131,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Abilities_3_CA_REQUIREMENT_mockup.png" alt="Selfcontained 'Abilities (III)' CA REQUIREMENT mock-up" width="800">
 </div>
-<div class="title">Figure 158. Self-contained 'Abilities (III)' CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 159. Self-contained 'Abilities (III)' CA REQUIREMENT edition mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12132,7 +12143,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Abilities_3_EO_mockup.png" alt="Selfcontained 'Abilities (III)' EO mock-up" width="800">
 </div>
-<div class="title">Figure 159. Self-contained 'Abilities (III)' EO mock-up</div>
+<div class="title">Figure 160. Self-contained 'Abilities (III)' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12160,7 +12171,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Self-contained_Abilities_3_Data_Structure.png" alt="Self-contained 'Abilities (III)' criterion data structure">
 </div>
-<div class="title">Figure 160. Self-contained 'Abilities (III)' criterion data structure</div>
+<div class="title">Figure 161. Self-contained 'Abilities (III)' criterion data structure</div>
 </div>
 <div class="paragraph">
 <p>The figure below shows how the XML instance, with the nodes collapsed, will look like for the case where the CA specifies three years as the minimum requirement:</p>
@@ -12169,7 +12180,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Self-contained_Abilities_3_CollapsedXML.png" alt="Self-contained 'Abilities (III)' collapsed XML">
 </div>
-<div class="title">Figure 161. Self-contained 'Abilities (III)' criterion data structure (collapsed XML view)</div>
+<div class="title">Figure 162. Self-contained 'Abilities (III)' criterion data structure (collapsed XML view)</div>
 </div>
 <div class="paragraph">
 <p>If you take the data structure spread-sheet and manipulate it as in the figure below you could use the transformation <a href="./dist/xslt/SELFCONTAINED-ESPDRequest-Annotated-V02.00.00.xslt">style-sheet</a> to obtain the XML snippet shown above with the three sub-groups of pairs 'Year + Number of staff' fields:</p>
@@ -12178,7 +12189,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Self-contained_Abilities_3_DS_Manual.png" alt="Self-contained 'Abilities (III)' collapsed XML">
 </div>
-<div class="title">Figure 162. Self-contained 'Abilities (III)' criterion data structure (manual iteration)</div>
+<div class="title">Figure 163. Self-contained 'Abilities (III)' criterion data structure (manual iteration)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12343,7 +12354,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Subcontracting_CA_mockup.png" alt="'Subcontracting proportion' CA mock-up" width="CA mock-up">
 </div>
-<div class="title">Figure 163. 'Subcontracting proportion' CA mock-up (REGULATED and SELF-CONTAINED)</div>
+<div class="title">Figure 164. 'Subcontracting proportion' CA mock-up (REGULATED and SELF-CONTAINED)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12355,7 +12366,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Subcontracting_EO_mockup.png" alt="'Subcontracting proportion' EO mock-up" width="EO mock-up">
 </div>
-<div class="title">Figure 164. 'Subcontracting proportion' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 165. 'Subcontracting proportion' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12370,7 +12381,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_Subcontracting_Data_Structure.png" alt="Regulated 'Subcontracting proportion' criterion data structure">
 </div>
-<div class="title">Figure 165. 'Subcontracting proportion' criterion data structure (<strong>REGULATED</strong>)</div>
+<div class="title">Figure 166. 'Subcontracting proportion' criterion data structure (<strong>REGULATED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12385,7 +12396,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_Subcontracting_Data_Structure.png" alt="Self-contained 'Subcontracting proportion' criterion data structure">
 </div>
-<div class="title">Figure 166. 'Subcontracting proportion' criterion data structure (<strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 167. 'Subcontracting proportion' criterion data structure (<strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12461,7 +12472,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/SamplesCertificates_CA_mockup.png" alt="'Samples and certificates' CA mock-up" width="CA mock-up">
 </div>
-<div class="title">Figure 167. 'Samples and certificates' CA mock-up (REGULATED and SELF-CONTAINED)</div>
+<div class="title">Figure 168. 'Samples and certificates' CA mock-up (REGULATED and SELF-CONTAINED)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12473,7 +12484,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/SamplesCertificates_EO_mockup.png" alt="'Samples and certificates' EO mock-up" width="EO mock-up">
 </div>
-<div class="title">Figure 168. 'Samples and certificates' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 169. 'Samples and certificates' EO mock-up (<strong>REGULATED</strong> and <strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12485,7 +12496,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_SamplesCertificates_Data_Structure.png" alt="Regulated 'Samples and certificates' criteria data structure">
 </div>
-<div class="title">Figure 169. 'Samples and certificates' criteria data structure (<strong>REGULATED</strong>)</div>
+<div class="title">Figure 170. 'Samples and certificates' criteria data structure (<strong>REGULATED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12500,7 +12511,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_SamplesCertificates_Data_Structure.png" alt="Self-contained 'Samples and certificates' criterion data structure">
 </div>
-<div class="title">Figure 170. 'Samples and certificates' criteria data structure (<strong>SELF-CONTAINED</strong>)</div>
+<div class="title">Figure 171. 'Samples and certificates' criteria data structure (<strong>SELF-CONTAINED</strong>)</div>
 </div>
 </div>
 <div class="sect3">
@@ -12617,7 +12628,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_QA_CA_mockup.png" alt="Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 171. Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
+<div class="title">Figure 172. Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12632,7 +12643,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_QA_EO_mockup.png" alt="Regulated 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 172. Regulated 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
+<div class="title">Figure 173. Regulated 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12647,7 +12658,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Regulated_QA_Data_Structure.png" alt="Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure">
 </div>
-<div class="title">Figure 173. Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
+<div class="title">Figure 174. Regulated 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -12731,7 +12742,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_QA_CA_mockup.png" alt="Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 174. Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
+<div class="title">Figure 175. Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12746,7 +12757,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_QA_EO_mockup.png" alt="Self-contained 'Quality Assurance schemes and environmental management standards' CA mock-up">
 </div>
-<div class="title">Figure 175. Self-contained 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
+<div class="title">Figure 176. Self-contained 'Quality Assurance schemes and environmental management standards' EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -12774,7 +12785,7 @@ Weighting can be done either using percentage or points for one procedure. The C
 <div class="content">
 <img src="./images/Selfcontained_QA_Data_Structure.png" alt="Self-contained  'Quality Assurance schemes and environmental management standards' criteria data structure">
 </div>
-<div class="title">Figure 176. Self-contained 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
+<div class="title">Figure 177. Self-contained 'Quality Assurance schemes and environmental management standards' criteria data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -12910,7 +12921,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/QualificationApplicationResponse-XSD-Global-View.png" alt="QualificationApplicationResponse XSD Schema" width="600" height="400">
 </div>
-<div class="title">Figure 177. QualificationApplicationResponse XSD Schema, global view</div>
+<div class="title">Figure 178. QualificationApplicationResponse XSD Schema, global view</div>
 </div>
 <div class="paragraph">
 <p><strong>LEGEND</strong>: The figure below enumerates the four different types of optionality and cardinality for the elements of the UBL-2.2 Schema:</p>
@@ -12919,7 +12930,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/XSD-Schema-elements-Legend.png" alt="Legend: cardinalities" width="400">
 </div>
-<div class="title">Figure 178. Legend: QualificationApplicationRequest XSD Schema, possible cardinalities of the Schema elements</div>
+<div class="title">Figure 179. Legend: QualificationApplicationRequest XSD Schema, possible cardinalities of the Schema elements</div>
 </div>
 </div>
 <div class="sect2">
@@ -12934,7 +12945,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/ESPDResponse-UML-1stLevel.png" alt="QualificationApplicationResponse-UML" width="600">
 </div>
-<div class="title">Figure 179. ESPD-EDM 'QualificationApplicationResponse', UML diagram</div>
+<div class="title">Figure 180. ESPD-EDM 'QualificationApplicationResponse', UML diagram</div>
 </div>
 <div class="paragraph">
 <p>If you compare both figures you will observe that:</p>
@@ -13206,7 +13217,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/ESPDResponseXMLinstance_Global_View.png" alt="ESPD Response XML instance">
 </div>
-<div class="title">Figure 180. An ESPD Response XML instance (global view)</div>
+<div class="title">Figure 181. An ESPD Response XML instance (global view)</div>
 </div>
 <div class="sect3">
 <h4 id="xml-example-12"><a class="anchor" href="#xml-example-12"></a>XML example</h4>
@@ -13283,7 +13294,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Reference_To_ESPDRequest.png" alt="Reference to ESPD Request">
 </div>
-<div class="title">Figure 181. Elements expected to reference the ESPD Request from the ESPD Response</div>
+<div class="title">Figure 182. Elements expected to reference the ESPD Request from the ESPD Response</div>
 </div>
 <div class="paragraph">
 <p>If the contracting authority publishes the ESPD Request on a public journal, the economic operator must specify the URI from where the ESPD Response was downloaded to draft its ESPD Response (see for instance how this is done for the publications on the TED or national journals; and see also the XML example below).</p>
@@ -13295,7 +13306,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Reference_To_ESPDRequest_URI.png" alt="Reference to ESPD Request">
 </div>
-<div class="title">Figure 182. URI of the ESPD Request</div>
+<div class="title">Figure 183. URI of the ESPD Request</div>
 </div>
 <div class="paragraph">
 <p>In the ESPD Response you may also add references to:</p>
@@ -13623,7 +13634,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Economic_Operator_XSD.png" alt="cac:EconomicOperatorParty XSD, global view" width="global view">
 </div>
-<div class="title">Figure 183. cac:EconomicOperatorParty XSD, global view</div>
+<div class="title">Figure 184. cac:EconomicOperatorParty XSD, global view</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -13697,7 +13708,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/QualifyinParty_XSD.png" alt="cac:QualifyingParty element-XSD">
 </div>
-<div class="title">Figure 184. cac:QualifyingParty element, XSD</div>
+<div class="title">Figure 185. cac:QualifyingParty element, XSD</div>
 </div>
 </div>
 <div class="sect4">
@@ -13709,7 +13720,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/EO_Role_XSD.png" alt="EO Role">
 </div>
-<div class="title">Figure 185. Role of the economic operator</div>
+<div class="title">Figure 186. Role of the economic operator</div>
 </div>
 </div>
 <div class="sect4">
@@ -13721,7 +13732,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/EconomicOperatorPartyParty.png" alt="EO Party">
 </div>
-<div class="title">Figure 186. The Party of the economic party</div>
+<div class="title">Figure 187. The Party of the economic party</div>
 </div>
 <div class="paragraph">
 <p>The figures below show the <code>cac:QualifyingParty</code> sub-components <code>cac:BusinessClassificationScheme`and `FinancialCapability</code>, and <code>cac:CompletedTask</code> in a bit more of detail. At present, the ESPD-EDM only uses one field, <code>cbc:Description</code> for the references and classifications and `cbc:Amount`for the Turnover.</p>
@@ -13730,19 +13741,19 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Business_Classification_Scheme.png" alt="Classification Scheme">
 </div>
-<div class="title">Figure 187. The rich structure of a UBL-2.2 'Classification Scheme' for the representation of taxonomies</div>
+<div class="title">Figure 188. The rich structure of a UBL-2.2 'Classification Scheme' for the representation of taxonomies</div>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/FinancialCapabililty.png" alt="Capabilities">
 </div>
-<div class="title">Figure 188. The structure of UBL-2.2 'Capability'</div>
+<div class="title">Figure 189. The structure of UBL-2.2 'Capability'</div>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="./images/Completed_Task.png" alt="Completed task (reference)">
 </div>
-<div class="title">Figure 189. The structure of the UBL-2.2 Completed Task (used for references)</div>
+<div class="title">Figure 190. The structure of the UBL-2.2 Completed Task (used for references)</div>
 </div>
 <div class="paragraph">
 <p>UBL-2.2 provides a component to hold very specifically the data to identify the economic operator as it officially registered in a Business Register. This XSD diagram below shows the elements of this component <code>cac:LegalEntityParty</code>. This ESPD-EDM specification recommends to use it as an alternative (or supplementary) way to identify the economic party.</p>
@@ -13751,7 +13762,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/LegalEntityParty.png" alt="Legal Entity Party">
 </div>
-<div class="title">Figure 190. The UBL-2.2 Legal Entity Party</div>
+<div class="title">Figure 191. The UBL-2.2 Legal Entity Party</div>
 </div>
 </div>
 </div>
@@ -14382,7 +14393,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_Economic_Operator_Mock-ups.png" alt="Regulated economic operator - mock-up">
 </div>
-<div class="title">Figure 191. Regulated economic operator, mock-up</div>
+<div class="title">Figure 192. Regulated economic operator, mock-up</div>
 </div>
 <div class="paragraph">
 <p>The following figures below show the data aimed at other purposes (namely statistical), that is structured using the UBL-2.2 <code>cac:TenderingCriterion</code>. See the XML example below to check how both, the <code>cac:EconomicOperatorParty</code> and these data structures are used.</p>
@@ -14394,7 +14405,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_Sheltered_mock-up.png" alt="Sheltered workshop - mock-up">
 </div>
-<div class="title">Figure 192. Sheltered workshop or social business - mock-up</div>
+<div class="title">Figure 193. Sheltered workshop or social business - mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for a sheltered workshop or social business in case of reserved procurement</strong>:</p>
@@ -14403,7 +14414,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_Sheltered_DS.png" alt="Sheltered workshop - data structure">
 </div>
-<div class="title">Figure 193. Sheltered workshop or social business - data structure</div>
+<div class="title">Figure 194. Sheltered workshop or social business - data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mockup (3/8): Registration on an official list, tenderer register or (pre)qualification system</strong>:</p>
@@ -14412,7 +14423,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_Economic_Operator_Registered_Mock-ups.png" alt="EO registration on a (pre)qualified system - mock-up">
 </div>
-<div class="title">Figure 194. EO registration on a (pre)qualified system, mock-up</div>
+<div class="title">Figure 195. EO registration on a (pre)qualified system, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the (pre)qualification of the economic operator by an official list or similar</strong>:</p>
@@ -14421,7 +14432,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Prequalification_DS.png" alt="(Pre)qualification-related data structure">
 </div>
-<div class="title">Figure 195. Prequalification-related data structure</div>
+<div class="title">Figure 196. Prequalification-related data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up (4/8): Role and other members of the group</strong>:</p>
@@ -14430,7 +14441,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_EO_Group_Members_Mock-ups.png" alt="Role and other members of the group">
 </div>
-<div class="title">Figure 196. Role and other members of the group, mock-up</div>
+<div class="title">Figure 197. Role and other members of the group, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the role and members of the group (when bidding as a Consortium, Joint Venture, etc.)</strong> Beware that the name of the group has its own placeholder in the UBL-2.2 data model: <code>/QualificationApplicationResponse/cbc:EconomicOperatorGroupName</code></p>
@@ -14439,7 +14450,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_RoleAndGroup_DS.png" alt="EO Role and group-related data">
 </div>
-<div class="title">Figure 197. EO Role and group-related data</div>
+<div class="title">Figure 198. EO Role and group-related data</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up: (5/8): Lots to which the economic operator tenders</strong>:</p>
@@ -14448,7 +14459,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_LotsTendered_mock-up.png" alt="Lots to which the EO tenders, mock-up" width="mock-up">
 </div>
-<div class="title">Figure 198. Lots to which the EO tenders, mock-up</div>
+<div class="title">Figure 199. Lots to which the EO tenders, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the Lots to which the economic operator tenders to</strong>:</p>
@@ -14457,7 +14468,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_LotsTendered_DS.png" alt="Lots tendered">
 </div>
-<div class="title">Figure 199. Lots tendered, data structure</div>
+<div class="title">Figure 200. Lots tendered, data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up(6/8): Certificates about contributions to the Tax Agency and/or Social Security</strong>:</p>
@@ -14466,7 +14477,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_Contributions_Certificates-mockup.png" alt="Contributions certificates - mock-up">
 </div>
-<div class="title">Figure 200. Contributions certificates</div>
+<div class="title">Figure 201. Contributions certificates</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the certificates about contributions to the Tax Agency and/or Social Security</strong>:</p>
@@ -14475,7 +14486,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_Contributions_Certificates_DS.png" alt="Contributions certificates - data structure">
 </div>
-<div class="title">Figure 201. Contributions certificates</div>
+<div class="title">Figure 202. Contributions certificates</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up (7/8): Entities on which the economic operator relies on to meet the selection criteria. Notice only a *Yes</strong> or <strong>No</strong> answer is expected:</p>
@@ -14484,7 +14495,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_EO_Relied_On_entities.png" alt="Entities upon which the EO relies on, mock-up" width="mock-up">
 </div>
-<div class="title">Figure 202. Entities upon which the EO relies on, mock-up</div>
+<div class="title">Figure 203. Entities upon which the EO relies on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the entities the EO relies on</strong>:</p>
@@ -14493,7 +14504,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_EO_Relied_On_entities_DS.png" alt="Entities relied on - data structure">
 </div>
-<div class="title">Figure 203. Entities relied on - data structure</div>
+<div class="title">Figure 204. Entities relied on - data structure</div>
 </div>
 <div class="paragraph">
 <p><strong>Mock-up: (8/8): Entities on which the economic operator does not rely on to meet the selection criteria. Notice only a *Yes</strong> or <strong>No</strong> answer is expected, plus a sequence of entity names as a text:</p>
@@ -14502,7 +14513,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_EO_NOT_Relied_On_entities.png" alt="Entities upon which the EO does not rely on - mock-up">
 </div>
-<div class="title">Figure 204. Entities upon which the EO does not rely on, mock-up</div>
+<div class="title">Figure 205. Entities upon which the EO does not rely on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the subcontractor upon which the EO does not relied to meet the selection criteria</strong>:</p>
@@ -14511,7 +14522,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_EO_NOT_Relied_On_entities_DS.png" alt="Entities not relied on - data structure">
 </div>
-<div class="title">Figure 205. Entities not relied on - data structure</div>
+<div class="title">Figure 206. Entities not relied on - data structure</div>
 </div>
 </div>
 <div class="sect3">
@@ -14529,7 +14540,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_EO_XML_Collapsed" alt="EO data - collapsed view">
 </div>
-<div class="title">Figure 206. Vision of the data about the EO in a 'collapsed' Regulated ESPD</div>
+<div class="title">Figure 207. Vision of the data about the EO in a 'collapsed' Regulated ESPD</div>
 </div>
 <div class="paragraph">
 <p>This fragment of XML <strong>does not include the responses to the QUESTIONs</strong> in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each <code>cac:TenderingCriterionProperty</code> element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element <code>cac:ResponseValue</code> is associated to a the UUID of the corresponding <code>cac:TenderingCriterionProperty</code>. For an example of a complete <strong>REGULATED</strong> ESPD Response XML document you can also see the file <a href="./dist/xml/REGULATED-ESPDResponse-02.00.00.xml">REGULATED-ESPDResponse-02.00.00.xml</a>.</p>
@@ -14806,7 +14817,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Self-contained_Economic_Operator_Mock-up.png" alt="Economic operator - mock-up">
 </div>
-<div class="title">Figure 207. Economic operator - mock-up (SELF-CONTAINED)</div>
+<div class="title">Figure 208. Economic operator - mock-up (SELF-CONTAINED)</div>
 </div>
 <div class="paragraph">
 <p>As you will see next, the information required about the economic operators varies depending on several factors:</p>
@@ -14958,7 +14969,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_Sheltered_DS.png" alt="Sheltered workshop - data structure">
 </div>
-<div class="title">Figure 208. Sheltered workshop or social business - data structure</div>
+<div class="title">Figure 209. Sheltered workshop or social business - data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -14995,7 +15006,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/SELFCONTAINED_Prequalification_DS.png" alt="(Pre)qualification-related data structure">
 </div>
-<div class="title">Figure 209. Pre-qualification-related data structure</div>
+<div class="title">Figure 210. Pre-qualification-related data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -15007,7 +15018,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Lots-Selfcontained.png" alt="Lots-Selfcontained ESPD">
 </div>
-<div class="title">Figure 210. Selection of Lots by the CA, mock-up</div>
+<div class="title">Figure 211. Selection of Lots by the CA, mock-up</div>
 </div>
 </div>
 <div class="sect4">
@@ -15025,7 +15036,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Selfcontained_EO_LotsTendered_DS.png" alt="Lots tendered">
 </div>
-<div class="title">Figure 211. Lots tendered, data structure</div>
+<div class="title">Figure 212. Lots tendered, data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -15072,7 +15083,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Selfcontained_GroupOfEOs_DS.png" alt="Lots tendered">
 </div>
-<div class="title">Figure 212. Lots tendered, data structure</div>
+<div class="title">Figure 213. Lots tendered, data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -15087,7 +15098,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Regulated_EO_Contributions_Certificates_DS.png" alt="Contributions certificates - data structure">
 </div>
-<div class="title">Figure 213. Contributions certificates</div>
+<div class="title">Figure 214. Contributions certificates</div>
 </div>
 </div>
 <div class="sect4">
@@ -15099,7 +15110,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Subcontractor_relied_on_mockup.png" alt="EO Roles-entities relied on" width="600">
 </div>
-<div class="title">Figure 214. EO Roles-entities relied on, mock-up</div>
+<div class="title">Figure 215. EO Roles-entities relied on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the entities upon which the EO relies on</strong>:</p>
@@ -15108,7 +15119,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Selfcontained_Relied_ON_DS.png" alt="Relied on entities - data structure">
 </div>
-<div class="title">Figure 215. Relied on entities - data structure</div>
+<div class="title">Figure 216. Relied on entities - data structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -15120,7 +15131,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Subcontractor_not_relied_on_mockup.png" alt="EO Roles-entities not relied on" width="600">
 </div>
-<div class="title">Figure 216. EO Roles-entities not relied on, mock-up</div>
+<div class="title">Figure 217. EO Roles-entities not relied on, mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Data structure for the entities upon which the EO does not relies on</strong>:</p>
@@ -15129,7 +15140,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/Selfcontained_NOT_Relied_ON_DS.png" alt="Not relied on entities - data structure">
 </div>
-<div class="title">Figure 217. Not relied on entities - data structure</div>
+<div class="title">Figure 218. Not relied on entities - data structure</div>
 </div>
 </div>
 </div>
@@ -15148,7 +15159,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/REGULATED_EO_XML_Collapsed.png" alt="EO data - collapsed view">
 </div>
-<div class="title">Figure 218. Vision of the data about the EO in a 'collapsed' Self-contained ESPD</div>
+<div class="title">Figure 219. Vision of the data about the EO in a 'collapsed' Self-contained ESPD</div>
 </div>
 <div class="paragraph">
 <p>This fragment of XML <strong>does not include the responses to the QUESTIONs</strong> in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each <code>cac:TenderingCriterionProperty</code> element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element <code>cac:ResponseValue</code> is associated to a the UUID of the corresponding <code>cac:TenderingCriterionProperty</code>. For an example of a complete <strong>SELF-CONTAINED</strong> ESPD Response XML document you can also see the file <a href="./dist/xml/SELFCONTAINED-ESPDResponse-02.00.00.xml">SELFCONTAINED-ESPDResponse-02.00.00.xml</a>.</p>
@@ -15640,7 +15651,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/EO_Representatives.png" alt="EO representatives - mock-up, mock-up">
 </div>
-<div class="title">Figure 219. EO representatives, mock-up</div>
+<div class="title">Figure 220. EO representatives, mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -15665,7 +15676,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/EO_Representatives_XSD.png" alt="EO representatives - XSD Schema">
 </div>
-<div class="title">Figure 220. EO representatives, XSD Schema</div>
+<div class="title">Figure 221. EO representatives, XSD Schema</div>
 </div>
 <div class="paragraph">
 <p>Notice that the largest part of the data is held in the component <code>cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney/cac:AgentParty/cac:Person</code>. The figure below shows (in blue) the expected elements. See the table "Expecte Elements" and the XML example below for the details (e.g. how to use the <code>cac:Person/cac:Contact</code> element to contact the representative.</p>
@@ -15674,7 +15685,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/EO_PowerOfAttorneyPartyPerson.png" alt="EO representatives - element Person - XSD Schema">
 </div>
-<div class="title">Figure 221. EO representatives - element Person, XSD Schema</div>
+<div class="title">Figure 222. EO representatives - element Person, XSD Schema</div>
 </div>
 <div class="paragraph">
 <p>Contact elements, such as telephone and e-mail are in the <code>cac:Contact</code> associated to the the <code>cac:Person</code> information element:</p>
@@ -15683,7 +15694,7 @@ The figure below shows a diagram representing the UBL-2.2 XSD Schema. Only the f
 <div class="content">
 <img src="./images/PartyPersonContact.png" alt="EO representatives - Contac - XSD Schema">
 </div>
-<div class="title">Figure 222. EO representatives - element Contact, inside Person, XSD Schema</div>
+<div class="title">Figure 223. EO representatives - element Contact, inside Person, XSD Schema</div>
 </div>
 <div class="sect4">
 <h5 id="expected-elements-regulated-and-self-contained"><a class="anchor" href="#expected-elements-regulated-and-self-contained"></a>Expected Elements (REGULATED and SELF-CONTAINED)</h5>
@@ -16089,7 +16100,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/TenderingCriterionResponse_XSD.png" alt="cac:TenderingCriterionResponse element">
 </div>
-<div class="title">Figure 223. cac:TenderingCriterionResponse XSD element</div>
+<div class="title">Figure 224. cac:TenderingCriterionResponse XSD element</div>
 </div>
 <div class="paragraph">
 <p>To answer one QUESTION one of the different possible types of values from the <code>cac:ResponseValue</code> element (inside the <code>cac:TenderingCriterionResponse</code>) must be selected. In other words, the types of elements inside the <code>cac:ResponseValue</code> are all <strong>disjoint</strong> amongst themselves.</p>
@@ -16101,7 +16112,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/ResponseValue_XSD.png" alt="cac:ResponseValue XSD element">
 </div>
-<div class="title">Figure 224. cac:ResponseValue XSD element</div>
+<div class="title">Figure 225. cac:ResponseValue XSD element</div>
 </div>
 <div class="paragraph">
 <p>The <code>cac:ApplicablePeriod</code> is used to hold the start date and the end-date provided by the economic operator to a QUESTION for which the expected data is of type 'PERIOD'. (See expected types in the Code List <a href="./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods">ResponseDataType</a>).</p>
@@ -16125,7 +16136,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Period_XSD.png" alt="cac:ApplicablePeriod XSD element">
 </div>
-<div class="title">Figure 225. cac:ApplicablePeriod XSD element</div>
+<div class="title">Figure 226. cac:ApplicablePeriod XSD element</div>
 </div>
 <div class="paragraph">
 <p>One answer to one QUESTION may be linked to multiple evidences. The XSD diagram below shows that to make this link possible the element <code>cac:TenderingCriterionResponse</code> element associates a class <code>cac:EvidenceSupplied</code>. This class contains only one basic information element, a <code>cbc:ID</code>. In UBL, except for <code>cbc:Description</code>, basic information elements (typically prefixed as <code>cbc:</code>) cannot be of multiple cardinality, but associated classes can. Thus the need to place the <code>cbc:ID</code> inside a class. This ID points at an instance of <code>cac:Evidence</code> present in the XML.</p>
@@ -16137,7 +16148,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Evidence_Supplied_XSD.png" alt="cac:EvidenceSupplied XSD element">
 </div>
-<div class="title">Figure 226. cac:EvidenceSupplied XSD element</div>
+<div class="title">Figure 227. cac:EvidenceSupplied XSD element</div>
 </div>
 </div>
 <div class="sect3">
@@ -16346,7 +16357,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cac:Period</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:EvidenceSupplied</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
@@ -16385,20 +16396,12 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:StartDate</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which this period begins.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the referenced evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018"><em>tbr92-018</em></a>
-</p><p class="tableblock"><strong>Rule</strong>: Expected format 'YYYY-MM-DD'.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:EndDate</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which this period ends.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018"><em>tbr92-018</em></a>
-</p><p class="tableblock"><strong>Rule</strong>: Expected format 'YYYY-MM-DD'.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: The expected identifier must match the value of a <code>cac:Evidence/cbc:ID</code> present in the XML document.</p></td>
 </tr>
 </tbody>
 </table>
@@ -16842,7 +16845,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Selfcontained_References_EO_mockup.png" alt="Self-contained 'References' EO mock-up">
 </div>
-<div class="title">Figure 227. Self-contained 'References' EO mock-up</div>
+<div class="title">Figure 228. Self-contained 'References' EO mock-up</div>
 </div>
 <div class="sect3">
 <h4 id="xml-snippet-1-a-requirements-by-the-contracting-authority-ca-criterion-properties"><a class="anchor" href="#xml-snippet-1-a-requirements-by-the-contracting-authority-ca-criterion-properties"></a>XML snippet 1.a) REQUIREMENTs by the contracting authority (CA) (criterion properties)</h4>
@@ -17176,7 +17179,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Answers_Reference_Collapsed.png" alt="Responses to 'References' (collapsed)">
 </div>
-<div class="title">Figure 228. Set of responses to the criterion "For works contracts: performance of works of the specified type" (collapsed view)</div>
+<div class="title">Figure 229. Set of responses to the criterion "For works contracts: performance of works of the specified type" (collapsed view)</div>
 </div>
 <div class="paragraph">
 <p>The circled numbers map the ones in the mock-up (at the beginning of this section) and the notes in the XML examples above (&lt;6&gt; to &lt;16&gt; &#8594; QUESTIONS, as REQUIREMENTS do not expect and answer by the EO, they are informative/prescriptive).</p>
@@ -17407,7 +17410,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up">
 </div>
-<div class="title">Figure 229. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
+<div class="title">Figure 230. Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up</div>
 </div>
 <div class="paragraph">
 <p><strong>Economic operator perspective</strong>:</p>
@@ -17416,7 +17419,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Selfcontained_Abilities_WEIGHTED_EO_mockup.png" alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up">
 </div>
-<div class="title">Figure 230. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
+<div class="title">Figure 231. Self-contained 'Abilities (I)' WEIGHTED EO mock-up</div>
 </div>
 </div>
 <div class="sect3">
@@ -17964,7 +17967,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Evidence_XSD.png" alt="cac:Evidence XSD diagram">
 </div>
-<div class="title">Figure 231. cac:Evidence XSD diagram</div>
+<div class="title">Figure 232. cac:Evidence XSD diagram</div>
 </div>
 <div class="paragraph">
 <p>The UBL-2.2 element <code>cac:Evidence</code> is a specialisation of <code>cac:DocumentReference</code>. This other XSD diagram shows this association and, in blue, highlights the elements expected in the ESPD-EDM V02.00.00:</p>
@@ -17973,7 +17976,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Evidence_DocumentReference.png" alt="cac:DocumentReference in Evidence">
 </div>
-<div class="title">Figure 232. cac:DocumentReference inside cac:Evidence XSD diagram</div>
+<div class="title">Figure 233. cac:DocumentReference inside cac:Evidence XSD diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -17988,7 +17991,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <div class="content">
 <img src="./images/Convictions__EO_mock-up.png" alt="Conviction EO mock-up">
 </div>
-<div class="title">Figure 233. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
+<div class="title">Figure 234. Conviction 'Participation in criminal organisation', mock-up (EO perspective)</div>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -18162,7 +18165,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:ExternalReference/cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for the referenced document.</p></td>
@@ -18178,26 +18181,26 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </p><p class="tableblock"><strong>Rule</strong>: None. Not currently used in ESPD.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:Party/cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:IssuerParty/cbc:ID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the party issuer of the evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the party issuer of the documentary evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:  <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017"><em>tbr092-017, tbr092-007, tbr092-006</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Not currently used in ESPD, but if you decide to use it try to use the VAT number whenever possible.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:Party/cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:IssuerParty/cbc:Name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the party issuer of the evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the party issuer of the documentary  evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:  <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017"><em>tbr092-017, tbr092-007, tbr092-006</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: ESPD-EDM uses this element to keep the name of the evidence issuer in the ESPD Response XML instance.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:Party/cbc:WebsiteURI</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:IssuerParty/cbc:WebsiteURI</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The website of the party issuer of the evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The website of the party issuer of the documentary evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:  <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017"><em>tbr092-017, tbr092-007, tbr092-006</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: None. Not currently used in ESPD-EDM V02.00.00.</p></td>
 </tr>

@@ -4029,7 +4029,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Class name</strong>:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cac:Period</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cac:EvidenceSupplied</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong>:</p></td>
@@ -4068,20 +4068,12 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:StartDate</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which this period begins.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the referenced evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018"><em>tbr92-018</em></a>
-</p><p class="tableblock"><strong>Rule</strong>: Expected format 'YYYY-MM-DD'.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:EndDate</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The date on which this period ends.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>: <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018"><em>tbr92-018</em></a>
-</p><p class="tableblock"><strong>Rule</strong>: Expected format 'YYYY-MM-DD'.</p></td>
+</p><p class="tableblock"><strong>Rule</strong>: The expected identifier must match the value of a <code>cac:Evidence/cbc:ID</code> present in the XML document.</p></td>
 </tr>
 </tbody>
 </table>
@@ -5845,7 +5837,7 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:ExternalReference/cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cbc:ID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for the referenced document.</p></td>
@@ -5861,26 +5853,26 @@ cac:Person/cac:Contact/cbc:Telephone</strong></p></td>
 </p><p class="tableblock"><strong>Rule</strong>: None. Not currently used in ESPD.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:Party/cbc:ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:IssuerParty/cbc:ID</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Identifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the party issuer of the evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the party issuer of the documentary evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:  <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017"><em>tbr092-017, tbr092-007, tbr092-006</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: Not currently used in ESPD, but if you decide to use it try to use the VAT number whenever possible.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:Party/cbc:Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:IssuerParty/cbc:Name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the party issuer of the evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the party issuer of the documentary  evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:  <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017"><em>tbr092-017, tbr092-007, tbr092-006</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: ESPD-EDM uses this element to keep the name of the evidence issuer in the ESPD Response XML instance.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:Attachment/cac:Party/cbc:WebsiteURI</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cac:IssuerParty/cbc:WebsiteURI</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0..1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The website of the party issuer of the evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The website of the party issuer of the documentary evidence.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Information Requirement</strong>:  <a href="http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017"><em>tbr092-017, tbr092-007, tbr092-006</em></a>
 </p><p class="tableblock"><strong>Rule</strong>: None. Not currently used in ESPD-EDM V02.00.00.</p></td>
 </tr>
