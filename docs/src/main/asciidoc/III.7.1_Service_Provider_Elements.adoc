@@ -1,0 +1,64 @@
+
+==== Expected elements
+
+.Service provider, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:| cac:Party
+|*Definition*:|Main information about the service provider.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationRequest/cac:ContractingParty/cac:Party/cac:ServiceProviderParty/cac:Party
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:WebsiteURI*
+|Identifier
+|0..1
+|The website of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-011[_tbr070-011_].
+
+*Rule*: Use it for the official web site of the service provider. Reserve the `EndPointID` for online services (e.g. web, REST, ftp services, etc.)
+
+|*cbc:EndpointID*
+|Identifier
+|0..1
+|Electronic address of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-0011[_tbr070-011_].
+
+*Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
+
+|*cac:PartyIdentification/cbc:ID*
+|Identifier
+|1
+|The national identifier of a service provider as it is legally registered (e.g. VAT identification).
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-0011[_tbr070-011_].
+
+*Rule*: An identifier for the service provider must always be provided. Compulsory use of the attribute `SchemeAgencyID`. When possible use the VAT identification of the service provider (see the VIES platform for a EU cross-border national VAT number verification system). See XML example below.
+
+|*cac:PartyName/cbc:Name*
+|Text
+|1
+|The name of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-0011[_tbr070-011_].
+
+*Rule*: The name of the service provider must always be specified. Supply the official registered name of the service provider.
+
+|*cac:PostalAddress/cac:Country/cbc:IdentificationCode*
+|Identifier
+|1
+|The code that identifies the country of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-0011[_tbr070-011_].
+
+*Rule*:  The country of the service provider must always be specified. Compulsory use of the code list CountryCodeIdentifier (ISO 3166-1 2A:2006).
+
+|===
+

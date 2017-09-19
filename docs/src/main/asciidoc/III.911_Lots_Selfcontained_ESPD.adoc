@@ -1,0 +1,33 @@
+
+=== III.11 Lots - Self-contained ESPD
+
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*
+|The contracting authority needs to be able to specify the following information: (i) The Lots into which the procedure is divided; (ii) To which lots the tenders may be submitted (all lots, maximum number of lots, only one lot); and (iii) The maximum number of lots that may be awarded to one tenderer.
+|===
+ 
+==== Mock-up
+This mock-up shows how this could be implemented:
+
+.Lots (Selfcontained ESPD), mock-up
+image::Lots-Selfcontained.png[Lots-Selfcontained ESPD, alt="Lots-Selfcontained ESPD", align="center"]
+
+==== XSD Schema
+*REGULATED* and *SELF-CONTAINED* ESPD documents share the same UBL-2.2 XSD Schemas (there are not two different sets of XSD Schemas). Thus, for the identification of the Lots, the Self-contained ESPD uses the same component than for the Regulated ESPD:
+
+.cac:ProcurementProjectLot. XSD Schema
+image::ProcurementProjectLot.png[Lots, alt="Lots", align="center"]
+
+The rest of information about the lots (“tenders must be submitted for…”, “maximum number of lots”, “maximum number of lots that may be awarded”) is treated as the elements (or properties) of a “Criterion” (component `cac:TenderingCriterion`) named “Additional information about the Lots”.  
+
+As you will see in section link:#iv-4-mock-ups-data-structures-xml-examples-and-tools[IV.4 Mock-ups, data structures, XML examples and tools] and further on, this guide uses a spread-sheet-based method to represent the structures of the criteria (and to generate XML template instances of the criteria). The figure below shows the structure that "generates" the XML instance. One important thing to observe in this structure and in the XML example is the use of the Publications Office Code List "link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[BidType]" to specify to which Lots the economic operator may bid.
+
+.Requirements about Lots issued by the CA (Selfcontained ESPD), mock-up
+image::Selfcontained_OTHER-CA-Lots.png[Requirements about Lots issued by the CA, alt="Requirements about Lots issued by the CA", align="center"]
+
+
+
+
+ 
+
