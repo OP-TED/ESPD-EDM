@@ -1,0 +1,233 @@
+
+==== XML Examples
+
+
+*Example 1: One evidence shared by two criteria*
+
+
+===== XML snippet 1.a) the criteria defined in the ESPD Request, and 'copied' in the ESPD Response 
+
+.XML snippet 1.a) the criteria defined in the ESPD Request, and 'copied' in the ESPD Response (SELF-CONTAINED)
+[source,xml]
+----
+	<!-- Criterion #1:Participation in a criminal organisation -->
+	
+	<cac:TenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">005eb9ed-1347-4ca3-bb29-9bc0db64e1ab</cbc:ID>
+		<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.EXCLUSION.CONVICTIONS.PARTICIPATION_IN_CRIMINAL_ORGANISATION</cbc:CriterionTypeCode>
+		<cbc:Name>Participation in a criminal organisation</cbc:Name>
+	
+	<!-- ... -->
+	<!-- Elements removed for brevity -->
+	<!-- ... -->
+	
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">3f61215a-cd38-438b-a355-e4d06c57384c</cbc:ID>
+				<cbc:Description>Is this information available at no cost to the authorities from an EU Member State database?</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ONTRUE</cbc:PropertyGroupTypeCode> <--1-->
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d8d5478e-cc65-48c9-a189-19bbe87a9bfd</cbc:ID><--2-->
+					<cbc:Description>Evidence Supplied</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode> <--3-->
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		</cac:TenderingCriterionPropertyGroup>
+	</cac:TenderingCriterion>
+	
+	<!-- Criterion #2:Contributions certificates -->
+	
+	<cac:TenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">5a8dea31-5db9-4e03-862b-07810aa6a7fd</cbc:ID>
+		<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CRITERION.OTHER.EO_DATA.CONTRIBUTIONS_CERTIFICATES</cbc:CriterionTypeCode>
+		<cbc:Name>Contributions certificates</cbc:Name>
+		<cbc:Description>Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?</cbc:Description>
+	
+	<!-- ... -->
+	<!-- Elements removed for brevity -->
+	<!-- ... -->
+	
+						<cbc:Description>Is this information available at no cost to the authorities from an EU Member State database?</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:SubsidiaryTenderingCriterionPropertyGroup>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+					<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ONTRUE</cbc:PropertyGroupTypeCode>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">191b34a8-5af0-4d53-b431-4ecd624218ea</cbc:ID><--2-->
+						<cbc:Description>Evidence Supplied</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode><--3-->
+					</cac:TenderingCriterionProperty>
+				</cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<!-- elements removed for brevity -->
+	</cac:TenderingCriterion>
+
+----
+<1> The group of fields requesting the URL, Reference/Code and Issuer of the evidence will only be shown, validated or otherwise processed if the answer to the QUESTION is *Yes* (*true*).
+<2> The ID of the criterion property that the response will use in the `cac:ValidatedCriterionPropertyID`. See the response in the XML snippet 1.b) below.
+<3> The type of the data expected in the response value (when a code EVIDENCE_IDENTIFIER is encountered -> an object `cac:Evidence` must be present in the ESPD Response XML instance.  
+
+
+===== XML snippet 1.b) One evidentiary document supporting the three responses
+
+.XML snippet 1.b) One evidentiary document supporting the three responses
+[source,xml]
+----
+
+<!-- ... elements removed for brevity .. -->
+
+<!-- Answer to Criterion:Participation in a criminal organisation -->
+<!-- Property:Evidence Supplied (PropertyID:d8d5478e-cc65-48c9-a189-19bbe87a9bfd) -->
+<cac:TenderingCriterionResponse>
+	<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">219949a1-b7bb-4d7e-8c3b-cc8ca695e15b</cbc:ID>
+	<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d8d5478e-cc65-48c9-a189-19bbe87a9bfd</cbc:ValidatedCriterionPropertyID><--1-->
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CONFIDENTIAL</cbc:ConfidentialityLevelCode><--2-->
+	<cac:EvidenceSupplied>
+		<cbc:ID>7dea9283-f8a2-481f-9ea6-41438e25fdd4</cbc:ID><--3-->
+	</cac:EvidenceSupplied>
+</cac:TenderingCriterionResponse>
+
+
+<!-- Answer to Criterion:Contributions certificates -->
+<!-- Property:URL (PropertyID:191b34a8-5af0-4d53-b431-4ecd624218ea) -->
+<cac:TenderingCriterionResponse>
+	<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">7c7fb445-c5f9-4f92-8b58-7f06a541951f</cbc:ID>
+	<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">191b34a8-5af0-4d53-b431-4ecd624218ea</cbc:ValidatedCriterionPropertyID>
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">PUBLIC</cbc:ConfidentialityLevelCode>
+	<cac:EvidenceSupplied>
+		<cbc:ID>7dea9283-f8a2-481f-9ea6-41438e25fdd4</cbc:ID><--3-->
+	</cac:EvidenceSupplied>
+</cac:TenderingCriterionResponse>
+
+<cac:Evidence>
+	<cbc:UUID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">7dea9283-f8a2-481f-9ea6-41438e25fdd4</cbc:UUID><--4-->
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CONFIDENTIAL</cbc:ConfidentialityLevelCode><--5-->
+	<cac:DocumentReference>
+		<!-- Verification code (an EAN-13 barcode number) used in Spain to check the authenticity of the document. -->
+		<cbc:ID schemeID="EAN-13" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">5901234123457</cbc:ID><--6-->
+		<cac:Attachment>
+			<cac:ExternalReference>
+				<cbc:URI>http://minafhp.gob.es/pub/cert?id=5901234123457</cbc:URI><--7-->
+			</cac:ExternalReference>
+		</cac:Attachment>
+		<cac:IssuerParty>
+			<cac:PartyName> <--8-->
+				<cbc:Name languageID="es">Ministerio de Hacienda y Administracions Públicas</cbc:Name>
+			</cac:PartyName>
+		</cac:IssuerParty>
+	</cac:DocumentReference>
+</cac:Evidence>
+
+</QualificationApplicationResponse>
+----
+<1> ID  value of the criterion property (QUESTION) for which this response value is the answer. 
+<2> The criteron MUST be treated as confidential: only the members of the evaluation team should have access to it. This makes the evidence confidential too.
+<3> Identifier of the only evidence object that is used for both criteria: it must match the value provided for the `cac:Evidence/cbc:ID` element of the evidence.
+<4> Identifer of the evidence. It matches the values in the `cac:EvidenceSupplied/cbc:ID` of the two criteria.
+<5> Confidentiality level is set to 'CONFIDENTIAL' because the first criterion requires to be treated as confidential. Thus even if the second criterion sets 'PUBLIC' as for its level of confidentiality the evidence will be kept confidential.
+<6> The Reference/Verification code (5901234123457) is in this case a 13 digit EAN-13 barcode number. 
+<7> URL to access the evidentiary document (in this case it's and end-point using the verification code as an end-point parameter).
+<8> The name of the issuer party.
+
+*Example 2: Two different evidences for two criteria*
+
+The following snippet uses the same two criteria shown in the XML example snippet 1.a): hence the values of the `cac:ValidatedCriterionPropertyID` are 'd8d5478e-cc65-48c9-a189-19bbe87a9bfd' (criterion property 'participation in a criminal organisation') and '7c7fb445-c5f9-4f92-8b58-7f06a541951f' (criterion property 'contributions certificates').     
+
+===== XML snippet 2 different evidentiary documents per response
+
+.XML snippet 1.b) different evidentiary documents per response
+[source,xml]
+----
+<!-- ANSWERS TO QUESTIONS -->
+
+<!-- ... elements removed for brevity .. -->
+
+<!-- Answer to Criterion:Participation in a criminal organisation -->
+<!-- Property:Evidence Supplied (PropertyID:d8d5478e-cc65-48c9-a189-19bbe87a9bfd) -->
+<cac:TenderingCriterionResponse>
+	<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">219949a1-b7bb-4d7e-8c3b-cc8ca695e15b</cbc:ID>
+	<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">d8d5478e-cc65-48c9-a189-19bbe87a9bfd</cbc:ValidatedCriterionPropertyID> <--1-->
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">PUBLIC</cbc:ConfidentialityLevelCode><--2-->
+	<cac:EvidenceSupplied>
+		<cbc:ID>7dea9283-f8a2-481f-9ea6-41438e25fdd4</cbc:ID><--3-->
+	</cac:EvidenceSupplied>
+</cac:TenderingCriterionResponse>
+
+
+<!-- Answer to Criterion:Contributions certificates -->
+<!-- Property:URL (PropertyID:191b34a8-5af0-4d53-b431-4ecd624218ea) -->
+<cac:TenderingCriterionResponse>
+	<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">7c7fb445-c5f9-4f92-8b58-7f06a541951f</cbc:ID>
+	<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">191b34a8-5af0-4d53-b431-4ecd624218ea</cbc:ValidatedCriterionPropertyID><--4-->
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CONFIDENTIAL</cbc:ConfidentialityLevelCode><--5-->
+	<cac:EvidenceSupplied>
+		<cbc:ID>3b3be32e-3b7f-4a17-a0bb-a84210f61bb8</cbc:ID><--6-->
+	</cac:EvidenceSupplied>
+</cac:TenderingCriterionResponse>
+
+<!-- EVIDENCES -->
+
+<cac:Evidence>
+	<cbc:UUID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">7dea9283-f8a2-481f-9ea6-41438e25fdd4</cbc:UUID><--7-->
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">PUBLIC</cbc:ConfidentialityLevelCode><--8-->
+	<cac:DocumentReference>
+		<!-- Verification code to access an authentic 'manifestation' of the document from the original issuer end-point -->  
+		<cbc:ID schemeID="EAN-13" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">5901234123457</cbc:ID><--9-->
+		<cac:Attachment>
+			<cac:ExternalReference>
+				<cbc:URI>http://interior.gob.es/pub/cert?id=5901234123457</cbc:URI><--10-->
+			</cac:ExternalReference>
+		</cac:Attachment>
+		<cac:IssuerParty>
+			<cac:PartyName>
+				<cbc:Name languageID="es">Ministerio del Interior</cbc:Name><--11-->
+			</cac:PartyName>
+		</cac:IssuerParty>
+	</cac:DocumentReference>
+</cac:Evidence>
+
+<cac:Evidence>
+	<cbc:UUID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">3b3be32e-3b7f-4a17-a0bb-a84210f61bb8</cbc:UUID><--12-->
+	<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">CONFIDENTIAL</cbc:ConfidentialityLevelCode><--13-->
+	<cac:DocumentReference>
+		<!-- Verification code to access an authentic 'manifestation' of the document from the original issuer end-point -->
+		<cbc:ID schemeID="EAN-13" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">6002345234568</cbc:ID><--14-->
+		<cac:Attachment>
+			<cac:ExternalReference>
+				<cbc:URI>http://aeat.gob.es/pub/cert?id=6002345234568</cbc:URI><--15-->
+			</cac:ExternalReference>
+		</cac:Attachment>
+		<cac:IssuerParty>
+			<cac:PartyName>
+				<cbc:Name languageID="es">Agencia Tributaria</cbc:Name><--16-->
+			</cac:PartyName>
+		</cac:IssuerParty>
+	</cac:DocumentReference>
+</cac:Evidence>
+
+</QualificationApplicationResponse>
+----
+<1> ID  value of the first criterion property (QUESTION) for which this response value is the answer. 
+<2> The criteron is to be treated as 'PUBLIC': it could be published.
+<3> Identifier of the first evidence object that is used for this criterion: it must match the value provided for the `cac:Evidence/cbc:ID` element of the evidence.
+<4> ID  value of the second criterion property (QUESTION) for which this response value is the answer. 
+<5> Confidentiality level is set to 'CONFIDENTIAL'. Therefore the evidence linked to this response will also be treated as 'CONFIDENTIAL'. 
+<6> Identifier of the second evidence object that is used for this second criterion: it must match the value provided for the `cac:Evidence/cbc:ID` element of the evidence.
+<7> The identifier of the first evidence. It matches the `cac:EvidenceSupplied/cbc:ID` element value of the first response.
+<8> Confidentiality code for the first evidence: 'PUBLIC', notice that it is consistent with the fact that  the response is also set as 'PUBLIC'. 
+<9> Verification code ID for the first evidence (a 13 digit EAN-13 barcode number in this case).
+<10> URL from where to get the document. The fact that the evidence MUST BE treated as CONFIDENTIAL is not inconsistent with the fact that the evidence is available online from a free-of-charge national data base.
+<11> The name of the issuer of the first evidenciary document.
+<12> ID  of the second criterion property (QUESTION) for which this response value is the answer. 
+<13> The criteron is to be treated as 'CONFIDENTIAL': addressed only to the evaluators.
+<14> Verification code ID of the second evidence.
+<15> URL from where to get the document.
+<16> The name of the issuer of the second evidenciary document.
+ 

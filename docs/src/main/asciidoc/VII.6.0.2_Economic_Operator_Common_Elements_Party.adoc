@@ -1,0 +1,385 @@
+
+==== Expected elements
+
+Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementProject`, `cac:ProcurementProjectLot`, and `cac:AdditionalDocumentReference` are expected in the ESPD Request, too. However, for the sake of brevity, and as they are taken from the ESPD Request and 'copied' in the ESPD Response, they have not been re-explained in this section about the ESPD Response. Therefore for details on those elements please refer to the section link:#iii-the-espd-request-document[III. The ESPD Request document].
+
+[IMPORTANT]
+====
+*Remember* that if the economic operator belongs to a group (i.e. it is not a sole contractor), the element `/cac:QualificationApplicationResponse/cbc:EconomicOperatorGroupName` becomes *compulsory* and that *the spelling of the name must be identical for lead entity, all the members of the group and all the entities that participate in the bid*. 
+====
+
+.Economic operator, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:EconomicOperatorParty
+|*Definition*:|Any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:EconomicOperatorParty
+|*Context of use*:|The ESPD Response document.
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cac:QualifyingParty*
+|Associated class
+|1
+|The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]
+ 
+
+*Rule*: This element is compulsory in the ESPD-EDM V02.00.00 as it is the natural placeholder for several relevant data about the Economic Operator.
+
+|*cac:EconomnicOperatorRole*
+|Associated class
+|1
+|The function of the economic operator when bidding from a consortium (Sole contractor / Lead entity, member of a group, etc.).
+|*Information Requirement*:  
+
+*Rule*: This element is compulsory in the ESPD-EDM V02.00.00 because depending on it different sets of data will be required or not, shown or hidden, processed or skipped.
+
+|*cac:Party*
+|Associated class
+|1
+|Main set of data used to identify and contact the economic operator, such as official identifiers, name, address, contact person, representatives, etc.
+
+|*Information Requirement*:  
+
+*Rule*: (See expected elements and rules below in the table about this Party).
+
+|===
+
+.Qualifying Party, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:QualifyingParty
+|*Definition*:|The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:QualifyingParty
+|*Context of use*:|Economic Operator in the ESPD Response document.
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:EmployeeQuantity*
+|Quantity
+|0..1
+|The number of people employed by the economic operator participating in the tender.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]  
+
+*Rule*: Integer value expected.
+
+|*cac:BusinessClassificationScheme/cbc:Description*
+|Text
+|0..n
+|The text describing one official classification assigned by an official list or (pre)qualification system to the economic operator.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]  
+
+*Rule*: Only the 'Description' is expected, but the component cac:ClassificationScheme offers other rich possibilities (see the link:./dist/mod/UBL-Entities-2.2-Pre-award.ods[UBL-2.2 model in the distribution package] or in the https://www.oasis-open.org/committees/document.php?document_id=60554[original source] for more details).
+
+*Rule*: Integer value expected.
+
+|*cac:FinancialCapability/cbc:ValueAmount*
+|Amount
+|0..1
+|A monetary amount as a measure of this capability.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]  
+
+*Rule*: Use it to place here the general Turnover of the EO (for statistical purposes). Compulsory assignment of a value to the attribute currency. The default value should be set to 'EUR'. Compulsory use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[CurrencyCode].
+
+|*cac:CompletedTask/cbc:Description*
+|Text
+|0..1
+|Text describing the works, supplies or services executed, delivered or performed in a procurement project (normally used as a reference for the classification of the economic operator.
+
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]  
+
+*Rule*: Use it to place here the references that were used in the (pre)qualification system to get the specific classification related to those references.
+
+|*cac:Party/cac:PartyIdentifier/cbc:ID*
+|Identifier
+|0..1
+|The identifier of the economic operator in an official list, register or (pre)qualification system.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]  
+
+*Rule*: The attribute `schemeAgencyID` must hold the value retrieved from eCertis that identifies unequivocally the (pre)qualification system. If, for any reason, that value is not available use the default schemeAgencyID "EU-COM-GROW" and the `cac:EconomicOperatorParty/cac:PartyIdentificaton/cbc:ID` for the value of the identifier. Additionally you can use the data structure `CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST` to specify an alternative or additional name, identifier and description.
+
+|===
+
+.Economic operator role, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:EconomicOperatorRole
+|*Definition*:|The function of the economic operator when bidding from a consortium (Sole contractor / Lead entity, member of a group, etc.).
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:EconomicOperatorRole
+|*Context of use*:|Economic Operator in the ESPD Response document.
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:RoleCode*
+|Code
+|1
+|Identifies the role of the economic operator in the bid.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-008[_tbr92-008_]
+*Rule*: Compulsory use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EORoleType].
+
+|*cbc:RoleDescription*
+|Text
+|0..n
+|The text describing the role of the economic operator in the bid.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-008[_tbr92-008_]
+
+*Rule*: Software applications should retrieve and reuse the description from the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EORoleType].
+
+|===
+
+.(Qualifying) economic operator party, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:Party
+|*Definition*:
+|Main set of data used to identify and contact the economic operator, such as official identifiers, name, address, contact person, representatives, etc.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cac:PartyIdentification/cbc:Identifier*
+|Identifier
+|1
+|An identifier that identifies the economic operator, such as a the VAT number, the company registration number in a Business Register, other.
+
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
+
+*Rule*: More than one identifier can be specified. Compulsory use of the attribute `schemeAgencyID` and highly recommended the use of the attribute schemeAgencyID. The preferred identifier is the national VAT number. Additional identifiers may be used. For a very complete way of identification of the Party it is highly recommended to, additionally to the `cac:Party/cac:Identification/cbc:ID`, use the UBL-2.2 component `cac:PartyLegalEntity`: this element is the perfect placeholder for the data officially registered in a Business Register (see UBL-2.2 model, and XSD diagram above).
+
+|*cbc:EndPointID*
+|Identifier
+|0..1
+|Electronic address of the contracting body.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
+
+*Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
+
+|*cac:PartyName/cbc:Name*
+|Text
+|1
+|The name of the economic operator.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
+
+*Rule*: Use the official name of the Party as officially registered. Be accurate in its spelling. 
+
+|*cbc:IndustryClassificationCode*
+|Code
+|1
+|Used to indicate whether the company is a micro, small, medium or large enterprise. 
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-004[_tbr92-004_]. 
+
+*Rule*: Used only for statistical purposes. Compulsory use of parameters established by the http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition_en[EU Recommendation 2003/361] to determine whether the EO's company is micro, small, medium or large. Beware that these parameters may change in the future.
+
+|*cbc:WebsiteURI*
+|Identifier
+|0..1
+|The website of the economic operator. 
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_]. 
+
+*Rule*: None.
+
+|===
+
+.Economic operator postal address, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:PostalAddress
+|*Definition*:|Postal address information.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:EconomicOperator/cac:Party/cac:PostalAddress
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cac:AddressLine/cbc:Line*
+|Text
+|0..1
+|The main address line in an address. Usually the street name and number or post office box.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+
+|*cbc:CityName*
+|Text
+|0..1
+|The common name of a city where the address is located.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+
+|*cbc:PostalZone*
+|Text
+|0..1
+|The identifier for an addressable group of properties according to the relevant postal service, such as a ZIP code or Post Code.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+
+|*cac:Country/cbc:IdentificationCode*
+|Code
+|1
+|A code that identifies the country. 
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: The country of the contracting body must always be specified. Compulsory use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
+
+|*cac:Country/cbc:Name*
+|Text
+|0..1
+|The name of the country. 
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+
+|===
+
+.Contact of the economic operator, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:Contact
+|*Definition*:|Used to provide contacting information for a party in general or a person.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:Contact
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:Name*
+|Text
+|0..1
+|The name of the contact point.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+
+|*cbc:Telephone*
+|Text
+|0..1
+|A phone number for the contact point.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+
+|*cbc:Telefax*
+|Text
+|0..1
+|A fax number for the contact point.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+
+|*cbc:ElectronicMail*
+|Text
+|0..1
+|An e-mail address for the contact point.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_].
+
+*Rule*: None.
+|===
+
+[NOTE]
+====
+Please see also the section III.6 Service Provider (for the ESPD Request) for other details and comparison with the previous version 1.0.2 of the ESPD-EDM. 
+====
+
+.Service provider, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:ServiceProviderParty/cac:Party
+|*Definition*:|Main information about the service provider.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:ServiceProviderParty/cac:Party
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:WebsiteURI*
+|Identifier
+|0..1
+|The website of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
+
+*Rule*: Use it for the official web site of the service provider. Reserve the `EndPointID` for online services (e.g. web, REST, ftp services, etc.)
+
+|*cbc:EndpointID*
+|Identifier
+|0..1
+|Electronic address of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
+
+*Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
+
+|*cac:PartyIdentification/cbc:ID*
+|Identifier
+|1
+|The national identifier of a service provider as it is legally registered (e.g. VAT identification).
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
+
+*Rule*: An identifier for the service provider must always be provided. Compulsory use of the attribute `SchemeAgencyID`. When possible use the VAT identification of the service provider (see the VIES platform for a EU cross-border national VAT number verification system). See XML example below.
+
+|*cac:PartyName/cbc:Name*
+|Text
+|1
+|The name of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
+
+*Rule*: The name of the service provider must always be specified. Supply the official registered name of the service provider.
+
+|*cac:PostalAddress/cac:Country/cbc:IdentificationCode*
+|Identifier
+|1
+|The code that identifies the country of the service provider.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
+
+*Rule*:  The country of the service provider must always be specified. Compulsory use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
+
+|===
+

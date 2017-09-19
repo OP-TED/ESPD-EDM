@@ -173,21 +173,9 @@ The fragment of XML code below illustrates how a 'Convictions' criterion looks l
 			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ONTRUE</cbc:PropertyGroupTypeCode>
 			<cac:TenderingCriterionProperty>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">f0651bc9-41b9-49b2-9401-ed23ed6aa12d</cbc:ID>
-				<cbc:Description>URL</cbc:Description><--9-->
+				<cbc:Description>Evidence supplied</cbc:Description><--9-->
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_URL</cbc:ValueDataTypeCode>
-			</cac:TenderingCriterionProperty>
-			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">47025ee2-a9a8-46f7-a7e9-687685e1a2dc</cbc:ID>
-				<cbc:Description>Reference/Code</cbc:Description><--10--> 
-				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
-			</cac:TenderingCriterionProperty>
-			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">15ceed20-2df7-45a8-9ba0-69329d4c6ecb</cbc:ID>
-				<cbc:Description>Issuer</cbc:Description><--11--> 
-				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
 			</cac:TenderingCriterionProperty>
 		</cac:SubsidiaryTenderingCriterionPropertyGroup>
 	</cac:TenderingCriterionPropertyGroup>
@@ -204,9 +192,9 @@ The fragment of XML code below illustrates how a 'Convictions' criterion looks l
 <6> Text box to describe the measures to demonstrate the economic operator's realibility.
 <7> A whole group related to one conviction can be repeated multiple times (or deleted).
 <8> If answered as *No* the group of QUESTIONs relating the online evidence should not be shown. Beware that the ESPD Response behaves totally differently as far as evidences are concerned. The data concerning the evidence in the ESPDRequest document is placed in the ESPD Response document in a component `cac:Evidence` in a different manner. See the section `ESPD Response` for more details on this. See also the XML examples.
-<9> The URL where to access the evidence
-<10> The verification or reference code to verify the autenticity of the evidence. This 'code' is used in some countries (e.g. Spain) to check that the document is authentic. If a verification code is supplied you can use an official *'end-point'* to retrieve an image (or a PDF) of the document and check that the evidence is authentic.
-<11> The issuer party of this evidence (e.g. a base registry).
+<9> The URL where to access the evidence.  Will be placed in an element of the object `cac:Evidence`. See chapter "link:#ix-evidences[IX. Evidences]".
+<10> The verification or reference code to verify the autenticity of the evidence. This 'code' is used in some countries (e.g. Spain) to check that the document is authentic. If a verification code is supplied you can use an official *'end-point'* to retrieve an image (or a PDF) of the document and check that the evidence is authentic. Will be placed in an element of the object `cac:Evidence`. See chapter "link:#ix-evidences[IX. Evidences]".
+<11> The issuer party of this evidence (e.g. a base registry). Will be placed in an element of the object `cac:Evidence`. See chapter "link:#ix-evidences[IX. Evidences]".
 <12> National criterion defined by the MS in e-Certis (this example corresponds to Finland) related to the EU criterion on this conviction.
 <13> An additional specification for this national criterion, in this case related to the evidence that will be required by this Member State.
 <14> UUID supplied by e-Certis. See also the link:./dist/cl/ods/ESPDRequest-CriteriaTaxonomy-REGULATED-V02.00.00.ods[criteria taxonomy spread-sheet].

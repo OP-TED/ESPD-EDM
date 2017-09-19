@@ -172,23 +172,9 @@ image::Regulated_ESPDRequest_Contributions_Data_Structure.png[Regulated 'Contrib
 			<cac:TenderingCriterionProperty>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">849d935c-7ef8-4e00-b075-9b6094464367</cbc:ID>
 				<cbc:Name/>
-				<cbc:Description>URL</cbc:Description><--6-->
+				<cbc:Description>Evidence supplied</cbc:Description><--6-->
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_URL</cbc:ValueDataTypeCode>
-			</cac:TenderingCriterionProperty>
-			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">bd1ed0e7-62a4-4b07-b11e-eafe9c01e810</cbc:ID>
-				<cbc:Name/>
-				<cbc:Description>Verification code</cbc:Description> <--7-->
-				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode>
-			</cac:TenderingCriterionProperty>
-			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">8a8ccf94-de8a-49f0-8a62-788646aafaa1</cbc:ID>
-				<cbc:Name/>
-				<cbc:Description>Issuer</cbc:Description> <--8-->
-				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">DESCRIPTION</cbc:ValueDataTypeCode> <--13-->
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
 			</cac:TenderingCriterionProperty>
 		</cac:SubsidiaryTenderingCriterionPropertyGroup>
 	</cac:TenderingCriterionPropertyGroup>
@@ -199,9 +185,9 @@ image::Regulated_ESPDRequest_Contributions_Data_Structure.png[Regulated 'Contrib
 <3> Amount concerned and currency for the amount concerned. The economic operator may change the currency. Notice that the currency is specified in the `cac:Amount` attribute `@currencyID`. To see how this looks like in an XML instance open an XM example file corresponding to an ESPDResponse and search for `currencyID`. The default currency is EUR, but the economic operator may specify it in the currency of its country. 
 <4> Placeholder for the "[...] means used to" establish the obligation (See mock-up above). Beware that this sub-structure is only processed (e.g. showed in a GUI, preserved in the XML instance, other) if the answer to the previous QUESTION is *Yes* (INDICATOR value = true). Compare with the ESPD Service screen-capture above (EO perspective) when the answer is *yes*.
 <5> Placeholder for the "Please describe them" field. This sub-group of one QUESTION is only shown if the previous QUESTION was answered with a *Yes*, thus the ONTRUE code for the sub-group.
-<6> URL from where to download the evidence.
-<7> Reference number of verification code for the evidence.
-<8> Data (e.g. the name) of the evidence issuer.
+<6> URL from where to download the evidence. Will be placed in an element of the object `cac:Evidence`. See chapter "link:#ix-evidences[IX. Evidences]". 
+<7> Reference number of verification code for the evidence. Will be placed in an element of the object `cac:Evidence`. See chapter "link:#ix-evidences[IX. Evidences]".
+<8> Data (e.g. the name) of the evidence issuer. Will be placed in an element of the object `cac:Evidence`. See chapter "link:#ix-evidences[IX. Evidences]".
 <9> Placeholder for the "Please indicate the date of conviction or decision". Beware that this sub-structure is only processed (e.g. showed in a GUI, preserved in the XML instance, other) if the answer to the previous QUESTION is *Yes* (INDICATOR value = true). Compare with the ESPD Service screen-capture above (EO perspective) when the answer is *yes*. Notice also that this XML example contains the possible answers. This was done on purpose to show you how both branches are instantiated in the XML file. However in a real file (e.g. not in an example) it would not make sense have both XML branches, but only one: either the one corresponding to the *Yes* answer or the one for the *No* answer; which is the normal expected behaviour of a `choice` structure (this behavior is similar to the an XML `choice` structure, however UBL Naming and Design Rules (NDR) do not allow the use of `choices`).
 <10> Placeholder for the "In case of a conviction, insofar as established...". It goes in the same sub-group than the previous QUESTION about the date of conviction.
 <11> Notice that the structure and elements for legislation are always the same for all exclusion criteria. Also the UUID identifying the structure is the same in all the exclusion criteria, as this  is a highly *reusable structure*. 
