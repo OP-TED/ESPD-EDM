@@ -1,0 +1,255 @@
+
+==== Expected Elements (REGULATED and SELF-CONTAINED)
+
+.Elements expected in an answer to a criterion property
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:TenderingCriterionResponse
+|*Definition*:|A class to describe a response to a criterion property.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:TenderingCriterionResponse
+|*Context of use*:|The economic operator uses it in the ESPD Response document to answer a QUESTION. http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]. 
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:ID*
+|Identifier
+|0..1
+|A language-independent token, e.g., a number, that allows to identify a criterion response uniquely as well as allows to reference the criterion response in other documents. A criterion response describes how an economic operators fulfills an specific criterion.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
+
+*Rule*: This ID SHOULD be provided by the EO or the service provider that instantiates the ESPDResponse XML document.
+
+|*cbc:ValidatedCriterionPropertyID*
+|Identifier
+|1
+|A cross-reference to the criterion propertys which is validated thorugh this response expressed as an identifier.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
+
+*Rule*: This ID MUST point at one of the TenderingCriterionProperty/cbc:ID that were included in the Request document.
+
+|*cbc:ConfidentialityLevelCode*
+|Code
+|0..1
+|A code specifying the confidentiality level of the given response for this criterion.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
+
+*Rule*: If the value is true, all the evidences associated to this response becomes also confidential.
+
+|*cac:ResponseValue*
+|Associated class
+|1..n
+|A class to describe the criterion property response value.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: This class contains the main disjoint elements used to provide the actual answer. The UBL-2.2 model provides cardinality 1..n, this allows for building up lists of, namely, identifier and code values that are all "packaged" into one `cac:TenderingCriterionResponse` that in turn is linked to one `cac:TenderingCriterionProperty`.  
+
+|*cac:ApplicablePeriod*
+|Associated class
+|0..1
+|A class for the economic operator to specify the start date and the end-date when the expected answer to a criterion property is a lapse of time.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: The ESPD-EDM does only expect start date and end date. Software applications may take leverage of the richness of this class though for other purposes beyond the scope of this specification.
+
+|*cac:EvidenceSupplied*
+|Associated class
+|0..1
+|A reference to the evidence supporting this criterion property response.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-017[_tbr92-017_]
+
+*Rule*: None.
+
+|===
+
+.Disjointness of the elements inside cac:ResponseValue
+[NOTE]
+====
+*Beware* that *one* `cac:ResponseValue` element contains the complete list of possible values for *one* answer to a criterion property. Only one *type* of element can be used to answer a criterion property, and that element MUST be of the same type as the one specified as expected in the ESPD Request (element `cac:TenderingCriterionProperty/cac:ValueDataTypeCode`). 
+
+Thus, for example, if in the ESPD Request the expected type is DESCRIPTION the cac:ResponseValue must use the element `cbc:Description`, if INDICATOR `cbc:ResponseIndicator`, if IDENTIFIER `cbc:ResponseID`, etc. 
+
+See the codes used for `cac:ValueDataTypeCode` in the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
+
+This disjointness rule applies to the *type* of the value, but *not to the values of the same type*. Thus, for lists of values that constitute the actual answer (e.g. the list of LotIDs the economic operator tenders to, or a list of CPV codes to describe with granularity an activity), a sequence of `cac:ResponseValues` shall be instantiated in the XML. See the XML examples below.
+
+====
+
+.Elements expected in the 'cac:ApplicablePeriod' class
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:Period
+|*Definition*:|A class to describe a period of time.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:ApplicablePeriod
+|*Context of use*:|A class for the economic operator to specify the start date and the end-date when the expected answer to a criterion property is a lapse of time; http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]. 
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:StartDate*
+|Date
+|0..1
+|The date on which this period begins.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: Expected format 'YYYY-MM-DD'.
+
+|*cbc:EndDate*
+|Date
+|0..1
+|The date on which this period ends.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: Expected format 'YYYY-MM-DD'.
+
+|===
+
+.Elements expected in the 'cac:EvidenceSupplied' class
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:EvidenceSupplied
+|*Definition*:|A reference to the evidence supporting this criterion property response.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:EvidenceSupplied
+|*Context of use*:|Used to refer to one ore more evidences that are present in the QualificationApplicationResponse XML instance; http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-017[_tbr92-017_]. 
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:ID*
+|Identifier
+|1
+|The identifier of the referenced evidence.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: The expected identifier must match the value of a `cac:Evidence/cbc:ID` present in the XML document. 
+
+|===
+
+The table below lists the elements expected in the sub-class `cac:ResponseValue`. Remember that the elements of distinct types are all *disjoint* amongst themselves: i.e. you cannot associate one amount AND one indicator to the same `cac:TenderingCriterionProperty` element  (but several values for elements of one type may be used to build up lists, e.g. lists of Lots and lists of CPV codes). 
+
+.Elements expected in the 'cac:ResponseValue' class
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:ResponseValue
+|*Definition*:|A class to describe the criterion property response value.
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:ResponseValue
+|*Context of use*:|Used to specify one value or a collection of values (in the case of a list) as a response to one, and only one, cac:TenderingCriterionProperty that is typified as a QUESTION.
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:ID*
+|Identifier
+|0..1
+|An identifier to refer to this criterion response value.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: Recommendation: use a UUDI-version 4 number. 
+
+|*cbc:Description*
+|Text
+|0..n
+|A description used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: *The ESPD-EDM uses this element to place a response that is a string*. UBL-2.2 instead uses cbc:Response, for this. This is something that needs to be reviewed and agreed between ESPD-EDM and future versions of the UBL. See the XML provided in this ESPD-EDM specifications for details on its usage.
+
+|*cbc:ResponseAmount*
+|Amount
+|0..1
+|An amount used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: None.
+
+|*cbc:ResponseCode*
+|Code
+|0..1
+|A code used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: Compulsory use of the attributes mentioned in the section "link:##ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes.
+
+|*cbc:ResponseDate*
+|Date
+|0..1
+|A date used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: Format 'YYYY-MM-DD'.
+
+|*cbc:ResponseTime*
+|Time
+|0..1
+|A time used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: Format 'HH:MM:SS'.
+
+|*cbc:ResponseID*
+|Identifier
+|0..1
+|An identifier used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: Compulsory use of the attributes mentioned in the section "link:##ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes. Several identifiers may be linked to one criterion property thus building a list of identifiers. See XML examples (e.g. in Self-contained references ESPD Response, 'Lots tendered the EO tenders to').
+
+|*cbc:ResponseIndicator*
+|Indicator
+|0..1
+|An indicator used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: None.
+
+|*cbc:ResponseMeasure*
+|Measure
+|0..1
+|A measure used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: None.
+
+|*cbc:ResponseNumeric*
+|Numeric
+|0..1
+|A number used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: None.
+
+|*cbc:ResponseQuantity*
+|Quantity
+|0..1
+|A quantity used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: None.
+
+|*cbc:ResponseURI*
+|URI
+|0..1
+|A URI used as a reply to the criterion property.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
+
+*Rule*: None.
+
+|===
+
+

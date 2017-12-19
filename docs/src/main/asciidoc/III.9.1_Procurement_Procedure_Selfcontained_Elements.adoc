@@ -1,0 +1,81 @@
+
+==== Expected elements
+
+.Self-contained ESPD Request
+[cols="<1,<4"]
+|===
+|*Class name*:|QualificationApplicationRequest
+|*Definition*: |"_A structured electronic business document for requesting qualification information through an ESPD (conform to an ESPD template). Directive 2014/24/EU, Art. 59._" (http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-ESPDRequesttransaction(Trdm070)[_ESPD Request transaction (Trdm070)_])
+|*File*: |dist/main/xsdrt/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:ContractFolderID*
+|Identifier
+|1
+|An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which this Qualification document is delivered as a response.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
+
+*Rule*: Compulsory use of schemeAgencyID attribute. Although not mandatory, it is a good practice to identify the document with a UUID. Copies of a document should be identified with a different UUID.
+
+|*cbc:ProcedureCode*
+|Identifier
+|1
+|The type of the procurement administrative procedure according to the EU Directives.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
+
+*Rule*: Compulsory use of the Code List `ProcedureType` (open procedure, restricted procedure, accelerated restricted procedure, competitive dialogue, negotiated procedure, etc.).
+
+|===
+
+The rest of the data related to the Self-contained ESPD Request go in the `cac:ProcurementProject` class:
+
+.Regulated ESPD Request: Procurement Procedure-related data 
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:ProcurementProject
+|*Definition*: |An overall description of the procurement procedure.
+|*File*:|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:Name*
+|Text
+|1
+|A title for the procurement procedure.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
+
+*Rule*: Use the same name that will be used for the Contract Notice.
+
+|*cbc:Description*
+|Text
+|1
+|A descriptive text for the procurement procedure.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
+
+*Rule*: Use the same description that will be used for the Contract Notice.
+
+|*cbc:ProcurementTypeCode*
+|Code
+|1
+|A code to describe the object of the project (e.g. works, supplies, services, public work concessions, service concessions, other).
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
+
+*Rule*: Compulsory use of the Code List `ProjectType`.
+
+|*cbc:MainCommodityClassification*
+|Class
+|0..n
+|A class to classify the works, services or supplies. The Self-contained ESPD uses it to assign CPV codes to works and services.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
+
+*Rule*: Use the element `cbc:ItemClassificationCode` for the specification of the CPV code. Beware that the cardinality of the basic element is 0..1 but the cardinality of the class is 0..n, thus allowing for multiple CPVs. 
+
+|===
+
+

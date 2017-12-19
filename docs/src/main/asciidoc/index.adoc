@@ -1,18 +1,13 @@
 ifndef::imagesdir[:imagesdir: images]
 
-= *ESPD Exchange Data Model* (ESPD-EDM)
+== ESPD Exchange Data Model (ESPD-EDM)
 
-v1.0.2
-
-:toc:
-:toclevels: 3
+v2.0.0-alpha
 
 == Resources
 
-* link:++https://espd.github.io/ESPD-EDM/v1.0.2/index_response.html++[ESPD Exchange Data Model Implementation Guide V1.0.2]
-* link:++https://github.com/ESPD/ESPD-EDM/tree/1.0.2/docs/src/main/asciidoc/code_lists++[Code lists]
-* link:++https://github.com/ESPD/ESPD-EDM/tree/1.0.2/exchange-model/src/main/resources/schema++[XSD Schema files] - they are found under the `exchange-model`
-module, under the `exchange-model/src/main/resources/schema/` folder.
+* link:++https://espd.github.io/ESPD-EDM/v2.0.0/xml_guide.html++[ESPD Exchange Data Model Implementation Guide V02.00.00]
+* link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/dist++[All resources in the distribution package]
 
 == Requirements
 
@@ -30,10 +25,36 @@ The recommended way to get started using the `exchange-model` in your Java proje
 ----
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
-  <artifactId>exchange-model</artifactId>
-  <version>1.0.2</version>
+  <artifactId>exchange-model2</artifactId>
+  <version>2.0.0-SNAPSHOT</version>
 </dependency>
 ----
+
+[NOTE]
+====
+Version 2 of the `Exchange Model` has a different `artifactId`, i.e. `exchange-model2`, in order to
+support the usage of both versions at the same time inside a `Java` Maven project.
+====
+
+[NOTE]
+====
+In order to use the snapshot version, you might have to enable the `Maven` snapshot repository.
+
+[source,xml]
+.pom.xml
+----
+<repositories>
+  <repository>
+    <id>oss-sonatype</id>
+    <name>oss-sonatype</name>
+    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+----
+====
 
 === With Gradle
 
@@ -41,6 +62,6 @@ The recommended way to get started using the `exchange-model` in your Java proje
 .build.gradle
 ----
 dependencies {
-    compile("eu.europa.ec.grow.espd:exchange-model:1.0.2")
+    compile("eu.europa.ec.grow.espd:exchange-model2:2.0.0-SNAPSHOT")
 }
 ----

@@ -1,0 +1,12 @@
+[.text-left]
+=== I.5 Backwards compatibility
+
+Regulated ESPDs expressed using the new ESPD-EDM V02.00.00 can be mapped back to the previous version ESPD-EDM 1.0.2. Software applications should not have any problem in importing and exporting Regulated XML documents in one version or the other. Even more, those applications should be able to import a 1.0.2 ESPD XML document and to export it as a Regulated ESPD 02.00.00 XML document (or vice-versa).
+
+In order to facilitate developers map between one version into the other and vice-versa, this guide includes a link:./dist/doc/UBL2.2-ESPD1.02_Mapping.ods[spreadsheet] with the correspondences between the elements of the ESPD-EDM V1.0.2 and ESPD-EDM V02.00.00.
+
+This is not the case for Self-contained ESPDs: given that Self-contained ESPDs may contain requirements and richer structures that are not present in the Regulated ESPD the backward compatibility is not possible for all the elements. 
+
+However mapping a Regulated ESPD (or an ESPD 1.0.2) into a V02.00.00 Self-contained ESPD is possible for a large part of its components. This means that software applications could somehow "pre-fill" a Self-contained ESPD taking as the input a 1.0.2 or a 02.00.00 Regulated ESPD and leave the "extended" requirements and fields empty (i.e. "forward compatibility" is to some extent possible).
+
+

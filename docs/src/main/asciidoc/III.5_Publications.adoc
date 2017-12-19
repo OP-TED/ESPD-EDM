@@ -1,0 +1,32 @@
+
+=== III.5 EU and national publications
+
+[cols="<1,<5"]
+|===
+|*REQUIREMENT*
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]
+|*The CA must be able to provide information about official journals or gazettes where the procurement procedure is announced. For procurement projects above the threshold it is compulsory to refer to the Contract Notice published in http://ted.europa.eu/TED/misc/chooseLanguage.do[TED].*
+|===
+
+ESPD conformant software applications will have to provide the means for the user to supply references to EU and national publications about the procurement procedure, and notably about the Notices to which the ESPD is related.
+
+==== Mock-up
+
+The Figure below is a mock-up representation of how to collect the data expected to reference publications on official gazettes or journals. This mechanism can also be used for contracts below the threshold, obviously.
+
+.Publications, mock-up
+image::Information_about_publication.png[Publications, mock-up, alt="Publications", align="center"]
+
+==== XSD Schema
+
+The ESPD EDM uses the UBL component `cac:AdditionalReferenceDocument` to allow the inclusion of references to documents that they might consider relevant, and amongst them the reference to the Contract Notice on the TED (for above-the-threshold contracts) and to possible Notices on national journals and boards.
+
+The class used for this, `cac:AdditionalDocumentReference` ''is a'' `cac:DocumentReference` class defined in the UBL-2.2 Common Aggregate Components library).
+
+.cac:DocumentReference, XSD diagram
+image::DocumentReference.png[DocumentReference, alt="DocumentReference", align="center"]
+
+The class `cac:AdditionalDocumentReference` aggregates a subclass `cac:Attachment` that is used by ESPD to place the URI, name of the document and descriptions.
+
+.Associated class cac:ExternalReference, XSD diagram
+image::ExternalReference.png[ExternalReference, alt="ExternalReference", align="center"]
