@@ -1,0 +1,38 @@
+
+==== XML example
+
+The XML snippet below shows how an example of how to supply the expected data for the service provider.
+
+[source,xml]
+----
+...
+<!--- Root elements eliminated for the sake of brevity -->
+
+<cac:ContractingParty>
+	<cac:Party> <--1-->
+		<cac:PartyIdentification><cbc:ID schemeAgencyID="VIES">B82387770</cbc:ID>	</cac:PartyIdentification>
+		<cac:PartyName><cbc:Name>Ministerio de Defensa</cbc:Name></cac:PartyName>
+		<cac:PostalAddress><cac:Country><cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ES</cbc:IdentificationCode></cac:Country></cac:PostalAddress>
+		<cac:ServiceProviderParty>
+			<cac:Party>
+				<cbc:WebsiteURI>http://www.minhafp.gob.es/es-ES/Areas%20Tematicas/Patrimonio%20del%20Estado/Contratacion%20del%20Sector%20Publico/Paginas/ROLECE.aspx</cbc:WebsiteURI>
+				<cbc:EndpointID>http://www.minhafp.gob.es/ESPD/endpoint</cbc:EndpointID>
+				<cac:PartyIdentification> <--2-->
+					<cbc:ID schemeAgencyID="AEAT">B36699932</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName> <--3-->
+					<cbc:Name>Registro Oficial de Licitadores y Empresas Clasificadas (ROLECE)</cbc:Name></cac:PartyName>
+				<cac:PostalAddress> <--4-->
+					<cac:Country><cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ES</cbc:IdentificationCode></cac:Country>
+				</cac:PostalAddress>
+			</cac:Party>
+		</cac:ServiceProviderParty>
+	</cac:Party>
+</cac:ContractingParty>
+
+...
+----
+<1> ContractingParty non-compulsory elements have been omitted for the sake of brevity.
+<2> The service provider VAT number. The issuer Agency is the Spanish Tax Agency (AEAT). You can use the VIES platform to verify that the VAT number exists and is correct for Spain.
+<3> The registered name of the service provider is mandatory.
+<4> The country code of the service provider (ES, in this example) is compulsory. You will need to use this code (ES) to verify the VAT number in the VIES service.
