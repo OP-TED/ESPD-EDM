@@ -79,7 +79,8 @@
                 <version>0.13.2</version>
                 <configuration>
                     <extension>true</extension>
-                    <schemaDirectory>src/main/resources/schema/2.0.0/xsdrt/maindoc</schemaDirectory>
+                    <!-- Use the XSD files from the distribution package in the documentation folder instead of src/main/resources -->
+                    <schemaDirectory>../docs/src/main/asciidoc/dist/xsdrt/maindoc</schemaDirectory>
                     <generateDirectory>src/main/generated</generateDirectory>
                     <removeOldOutput>true</removeOldOutput>
                     <args>
