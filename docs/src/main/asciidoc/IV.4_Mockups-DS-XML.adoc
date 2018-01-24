@@ -26,6 +26,22 @@ Hence this document proposes a way of representing the criteria following a regu
 
 The following two figures below illustrate the data structure sheets for one simple exclusion criterion (EG-Contributions) from both versions of the ESPD, REGULATED and SELF-CONTAINED. Compare them with the UBL-2.2 `cac:TenderingCriterion` XSD element.
 
+The columns of the tables are to be interpreted as follows:
+
+* Column 1: an ordinal number to sort sequentially the criteria
+* Column 2: contains always the opening and closing tag for Criterion
+* Columns 3 to 17: reserved for the opening and closing tags defining the data structure (see the tag codes in code list `CriterionElementType`).
+* Column 18: *Name*, a short descriptive text to identify the criterion withouth having to read the description
+* Column 19: *Description*, the text describing the criterion as kept in e-Certis
+* Column 20: *Value* a possible value or description of the value used by the transformation artefacts to produce example XML instances
+* Column 21: *Cardinality*, indicates whether the element is mandatory or optional and its multiplicity
+* Column 22: *PropertyDataType*, the type of data expected according to the types defined in the code list `ResponseDataType`
+* Column 23: *ElementUUID*, The Universal Unique Identifier assigned to identify unambiguously a criterion, group or subgroup. These UUID are kept in e-Certis, except for those that have to be generated dynamically (e.g. UUIDs for Questions, Captions and Requirements). 
+* Column 24: *Element Code*; in the case of Criterion it contains the code that categorises the criterion in the taxonomy of exclusion and selection criteria (it maps to the taxonomy drawn in the online documentation and in the spread-sheet files "ESPD-CriteriaTaxonomy*" in folder `dist/cl`). For the rest of elements there are three types of codes:
+** `ON*`, meaning "process always" (e.g. show always or read and extract data always")
+** `ONTRUE`, meaning "process this group only if the previous parent question (always an INDICATOR) has been answered affirmatively"
+** `ONFALSE`, meaning "process this group only if the previous parent question (always an INDICATOR) has been answered negatively"
+
 *REGULATED*
 
 .Regulated 'Contributions' criterion data structure 

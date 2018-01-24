@@ -164,7 +164,7 @@ The fragment of XML code below illustrates how a 'Convictions' criterion looks l
 		<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">ON*</cbc:PropertyGroupTypeCode>
 		<cac:TenderingCriterionProperty>
 			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="02.00.00">643ed2c5-1be5-4b4d-8103-63dcec7f5fe0</cbc:ID>
-			<cbc:Description>Is this information available at no cost to the authorities from an EU Member State database?</cbc:Description><--8-->
+			<cbc:Description>Is this information available electronically?</cbc:Description><--8-->
 			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">QUESTION</cbc:TypeCode>
 			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">INDICATOR</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
@@ -212,7 +212,7 @@ The fragment of XML code below illustrates how a 'Convictions' criterion looks l
 <26> Pay attention to this type of QUESTIONs. It is intended to act as a *decision point*. If answered with *yes* (INDICATOR  value = true) some additional questions will be asked to the economic operator. Thus the value of the code of the next sub-group (set to ONTRUE).
 <27> This property is a QUESTION, therefore a specific type of value will be expected from the economic operator in the ESPD Response (an INDICATOR, i.e. a 'boolean' value true/false, in this case).
 <28> The `cbc:ValueDataType` indicates the type of value that the contracting authority requires for this QUESTION. Therefore, in its answer (inside the ESPD Request document) the economic operator will have to use also an INDICATOR value (true/false). Otherwise the mechanism used to validate the ESPD Response should consider the XML instance as invalid (should be treated as a FATAL error).
-<29> Data structures defined by GROW are *re-usable*. This is specially the case (but not uniquelly) of the structure 'Is this information available at no cost to the authorities from an EU Member State database?' Notice that the UUID that identifies this structure is always the same in all the criteria that include it. Similarly structures that are reused in different criteria do have the same UUID (as they are the same). Beware that the group of properties (URI, Reference/Code, Issuer) will only be shown if the answer is 'Yes', thus the sub-group code `ONTRUE`.
+<29> Data structures defined by GROW are *re-usable*. This is specially the case (but not uniquelly) of the structure 'Is this information available electronically?' Notice that the UUID that identifies this structure is always the same in all the criteria that include it. Similarly structures that are reused in different criteria do have the same UUID (as they are the same). Beware that the group of properties (URI, Reference/Code, Issuer) will only be shown if the answer is 'Yes', thus the sub-group code `ONTRUE`.
 
 .Note for the future: Cross-border/cross-sector codes
 [NOTE]

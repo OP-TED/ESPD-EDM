@@ -25,9 +25,16 @@ image::Misinterpretation_CA_mock-up.png['Misinterpretation' criterion mock-up - 
 Beware that this mock-up is not showing the national criteria. For this mock-up it is presumed that *by answering 'Yes' to the general EU criterion all the national criteria QUESTION 'Your answer' will be also set to 'Yes'*.
 ====
 
-
 .'Misinterpretation' criterion mock-up - economic operator perspective
 image::Misinterpretation_EO_mock-up.png['Misinterpretation' criterion mock-up - EO perspective, alt="'Misinterpretation' criterion mock-up - EO perspective", align="center"]
+
+[NOTE]
+====
+The UBL specification allows always multiple lines of text for the component `cbc:Description`. This feature can be used to split long descriptions into multiple lines, specially when the description contains enumerations.
+
+The data structure for the criterion "Guilty of misinterpretation [...]" below uses the feature to divide four possible cases into different lines. Software and transformation solutions can also use it to generate an XML instance where the enumeration is split in multiple `cbc:Description` lines. See screen-captures below representing the data structures of this criterion for the REGULATED and SELF-CONTAINED versions.
+     
+====
 
 ==== Data structure - Regulated
 
