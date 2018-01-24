@@ -73,7 +73,7 @@
 
 Thus, for example, if in the ESPD Request the expected type is DESCRIPTION the cac:ResponseValue must use the element `cbc:Description`, if INDICATOR `cbc:ResponseIndicator`, if IDENTIFIER `cbc:ResponseID`, etc. 
 
-See the codes used for `cac:ValueDataTypeCode` in the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
+See the codes used for `cac:ValueDataTypeCode` in the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
 
 This disjointness rule applies to the *type* of the value, but *not to the values of the same type*. Thus, for lists of values that constitute the actual answer (e.g. the list of LotIDs the economic operator tenders to, or a list of CPV codes to describe with granularity an activity), a sequence of `cac:ResponseValues` shall be instantiated in the XML. See the XML examples below.
 
