@@ -17,15 +17,15 @@ v2.0.1
 
 * *Use of the UBL-2.2 Schemas elements*: 
 
-** The UBL-2.2 element "ProfileExecutionID" is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.0.1-REGULATED", "ESPD-EDMv2.0.1-SELFCONTAINED"...see also the Guideline and XML examples).(Remember that cardinalities are to be controlled via business rule).
+** The UBL-2.2 element `ProfileExecutionID` is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.0.1-REGULATED", "ESPD-EDMv2.0.1-SELFCONTAINED"...see also the Guideline and XML examples).(Remember that cardinalities are to be controlled via business rule).
 
-** The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID" and "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID" had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: "cac:QualificationApplicationRequest/cbc:ID" and "cac:QualificationApplicationRequest/cbc:UUID".  
+** The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID` and `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID` had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: `cac:QualificationApplicationRequest/cbc:ID` and `cac:QualificationApplicationRequest/cbc:UUID`.  
 
-** Element "cac:ProcurementProject" (cardinality 0..1): Use this component to identify and describe the procurement administrative procedure. The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2. Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure. 
+** Element `cac:ProcurementProject` (cardinality 0..1): Use this component to identify and describe the procurement administrative procedure. The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2. Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure. 
 
 * *ESPD-EDM Cardinalities*: 
-** The ESPD-EDM cardinality for the element cac:TenderingCriterionResponse/cac:ResponseValue has been modified to 0..n (see the online ESPD-EDM documentation). 
-** The cardinality of the element cac:Evidence/cbc:ID is now mandatory (to be controlled via business rule, as the UBL-XSD is 0..1). 
+** The ESPD-EDM cardinality for the element `cac:TenderingCriterionResponse/cac:ResponseValue` has been modified to 0..n (see the online ESPD-EDM documentation). 
+** The cardinality of the element `cac:Evidence/cbc:ID` is now mandatory (to be controlled via business rule, as the UBL-XSD is 0..1). 
 
 * *UUIDS reviewed*: UUIDs, names and descriptions in files ESPD-REGULATED-CriteriaTaxonomy-V02.00.01 and ESPD-SELFCONTAINED-CriteriaTaxonomy-V02.00.01.xlsx do match now the ones in ESPD-Data_Structures-REGULATED-V02.00.01 and ESPD-Data_Structures-SELFCONTAINED-V02.00.01 spreadsheet books. Some UUIDS for subgroups of requirements have also been corrected (e.g. SC-General_Turnover --> 5ca58d66-3ef1-4145-957c-45d5b18a837f,  SC-Specific_Turnover --> 19a68e37-d307-4a28-9061-c22cd767be58, SC-General_Average_Turnover --> 53882893-f4a8-40ae-99dc-cad7b0748790, SC-Specific_Average_Turnover --> 6cff132b-8d15-4f79-ae37-2f9295432381).
 
@@ -50,7 +50,7 @@ v2.0.1
 
 ** The figures representing the criteria taxonomies (both exclusion grounds and selection criteria) are now aligned with the criteria defined in the CriteriaTaxonomy and Data Structure spread-sheets (compare images in sections "V. Exclusion criteria", "VI. Selection criteria" and these files located in the "dist/cl" folder). 
 
-** As explained above the following editorial error has been corrected: The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID" and "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID" had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: "cac:QualificationApplicationRequest/cbc:ID" and "cac:QualificationApplicationRequest/cbc:UUID".
+** As explained above the following editorial error has been corrected: The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID` and `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID` had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: `cac:QualificationApplicationRequest/cbc:ID` and `cac:QualificationApplicationRequest/cbc:UUID`.
 
 	
 == Requirements
