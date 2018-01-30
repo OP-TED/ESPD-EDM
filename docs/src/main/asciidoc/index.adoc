@@ -2,13 +2,57 @@ ifndef::imagesdir[:imagesdir: images]
 
 == ESPD Exchange Data Model (ESPD-EDM)
 
-v2.0.0-alpha
+v2.0.1
 
 == Resources
 
 * link:++https://espd.github.io/ESPD-EDM/v2.0.0/xml_guide.html++[ESPD Exchange Data Model Implementation Guide V2.0.1]
 * link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/dist++[All resources in the distribution package]
 
+* link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.0/docs/src/main/asciidoc/dist/rn/Release Notes-2.0.1.ods++[Release Notes Details]
+
+== Release Notes
+
+* *Code Lists*: The "ActivityType", "AmountTypeCode" and "ContractType" Code Lists have been removed, as they're not used. The Code List "ContractType" is covered (i.e. replaced) by the CodeList "ProcedureType".
+
+* *Use of the UBL-2.2 Schemas elements*: 
+
+** The UBL-2.2 element "ProfileExecutionID" is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.0.1-REGULATED", "ESPD-EDMv2.0.1-SELFCONTAINED"...see also the Guideline and XML examples).(Remember that cardinalities are to be controlled via business rule).
+
+** The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID" and "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID" had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: "cac:QualificationApplicationRequest/cbc:ID" and "cac:QualificationApplicationRequest/cbc:UUID".  
+
+** Element "cac:ProcurementProject" (cardinality 0..1): Use this component to identify and describe the procurement administrative procedure. The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2. Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure. 
+
+* *ESPD-EDM Cardinalities*: 
+** The ESPD-EDM cardinality for the element cac:TenderingCriterionResponse/cac:ResponseValue has been modified to 0..n (see the online ESPD-EDM documentation). 
+** The cardinality of the element cac:Evidence/cbc:ID is now mandatory (to be controlled via business rule, as the UBL-XSD is 0..1). 
+
+* *UUIDS reviewed*: UUIDs, names and descriptions in files ESPD-REGULATED-CriteriaTaxonomy-V02.00.01 and ESPD-SELFCONTAINED-CriteriaTaxonomy-V02.00.01.xlsx do match now the ones in ESPD-Data_Structures-REGULATED-V02.00.01 and ESPD-Data_Structures-SELFCONTAINED-V02.00.01 spreadsheet books. Some UUIDS for subgroups of requirements have also been corrected (e.g. SC-General_Turnover --> 5ca58d66-3ef1-4145-957c-45d5b18a837f,  SC-Specific_Turnover --> 19a68e37-d307-4a28-9061-c22cd767be58, SC-General_Average_Turnover --> 53882893-f4a8-40ae-99dc-cad7b0748790, SC-Specific_Average_Turnover --> 6cff132b-8d15-4f79-ae37-2f9295432381).
+
+* *Data Structures*:
+
+** Information available electronically: The group "Is this information available electronically" is now presentn i all the criteria data sturctures (see "Data Structures" in the "dist/cl" files).
+
+** Some codes "ON*" were erroneous and have been transformed into "ONTRUE", e.g.Criterion 22 in the REGULATED Data Structures spreadsheets book AND Criterion 22 in the SELF-CONTAINED Data Structures spreadsheets book.
+
+** Missing data types: Some data types were missing and have been added; e.g. compare criteria 9 to 11, and criteria 62 and 63 between versions 2.0.0 and version 2.0.1. 
+
+* *Editorial corrections*: 
+** The definitions in the Data Structure spread-sheets containing syntax and grammar errors have been corrected (based on the texts on the Regulation Annex II and ESPD Service GUI). Additional comments have also been added in the online documentation about the use of the UBL-2.2 0..n multi-line descriptions, as requested by some users.     
+
+** Requirement about Lots: The documentation (in version 2.0.1) has been modified and reads now "One Lot must be always instantiated in the REGULATED ESPD XML document, and its identifier value should be '0'. The REGULATED version of the ESPD cannot be used for procurement procedures divided into Lots. For procedures divided into Lots use the SELF-CONTAINED version.
+
+** Additional explanatory texts have been added at the beginning of sections "VI.2.6 Self-contained specific yearly turnover" and "VI.2.8 Self-contained specific average turnover" to clarify the use of CPVs.
+
+** Group "Is this information availabel electronically": Beware that in version 2.0.0 this sentence was phrased differently as "Is this information available at no cost to the authorities from an EU Member State database?".
+
+** Enhanced description of the codes ON*, ONTRUE,ONFALSE, and other Data Structure elements: A sub-section "IV.4 Mock-ups, data structures, XML examples and tools" has been added to the online documentation explaining the meaning and use of each column of the Data Structures.
+
+** The figures representing the criteria taxonomies (both exclusion grounds and selection criteria) are now aligned with the criteria defined in the CriteriaTaxonomy and Data Structure spread-sheets (compare images in sections "V. Exclusion criteria", "VI. Selection criteria" and these files located in the "dist/cl" folder). 
+
+** As explained above the following editorial error has been corrected: The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID" and "cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID" had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: "cac:QualificationApplicationRequest/cbc:ID" and "cac:QualificationApplicationRequest/cbc:UUID".
+
+	
 == Requirements
 
  * Java 8
