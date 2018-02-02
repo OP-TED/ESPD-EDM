@@ -20,7 +20,7 @@ As you will see next, the information required about the economic operators vari
 
 . Is the procurement procedure divided into lots?
 
-One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information to be provided by each role varies depending on whether the EO is:
+One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V2.0.1 defines four different roles for the EO. The information to be provided by each role varies depending on whether the EO is:
 
 . *Sole contractor / Lead entity*: Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group. In this case:
 
@@ -83,7 +83,7 @@ For this case the *SELF-CONTAINED* version works identically as the *REGULATED* 
 *Data structure for a sheltered workshop or social business in case of reserved procurement*:
 
 .Sheltered workshop or social business - data structure
-image::Regulated_EO_Sheltered_DS.png[Sheltered workshop - data structure, alt="Sheltered workshop - data structure", align="center"]
+image::Selfcontained_OTHER-EO-SHELTERED_DS.png[Sheltered workshop - data structure, alt="Sheltered workshop - data structure", align="center"]
 
 
 ===== EO registered in a (Pre)Qualification System (PQS)
@@ -105,7 +105,7 @@ The elements in the data structure for this *SELF-CONTAINED* version are differe
 ** The rest of the data are the same as for the *REGULATED* version: references, classifications and the scope of the registration in respect of the selection criteria of the procurement procedure.
 
 .Pre-qualification-related data structure  
-image::SELFCONTAINED_Prequalification_DS.png[(Pre)qualification-related data structure, alt="(Pre)qualification-related data structure", align="center"]
+image::Selfcontained_OTHER-EO-PQS_DS.png[(Pre)qualification-related data structure, alt="(Pre)qualification-related data structure", align="center"]
 
 ===== Lots (contracting authority perspective)
 
@@ -123,7 +123,7 @@ The economic operator should then be able to select the Lots it will tender to. 
 Observe that the difference with the *REGULATED* version is that in the *SELF-CONTAINED* the Lots are a list of multiple identifiers (cardinality 1..n) instead of a free-text field.
 
 .Lots tendered, data structure 
-image::Selfcontained_EO_LotsTendered_DS.png[Lots tendered, alt="Lots tendered", align="center"]
+image::Selfcontained_OTHER-EO-Lots_DS.png[Lots tendered, alt="Lots tendered", align="center"]
  
 ===== Roles of the economic operator
 
@@ -145,12 +145,12 @@ Notice that:
 
 . The values expected for the name and activity are texts.
 
-. The value expected for the EO identifier is of type `Identifier`. For the identifier of the EO it is also required to specify the type of identifier, and a closed list of possible types is proposed (see Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EOIDType]. EOs must use one of the available codes, but the preferred one is the VAT number. Beware that the data structure does not keep the type of the identifier. This is because this type code is placed in the attribute `@schemeName` of the `cac:ResponseValue/cbc:ResponseID` element (and the `@schemeAgencyID` attribute must be set to the default `EU-COM-GROW`). See information requirements at the beginning of the section. See also next sections about the responses, XSD schemas and XML example.
+. The value expected for the EO identifier is of type `Identifier`. For the identifier of the EO it is also required to specify the type of identifier, and a closed list of possible types is proposed (see Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[EOIDType]. EOs must use one of the available codes, but the preferred one is the VAT number. Beware that the data structure does not keep the type of the identifier. This is because this type code is placed in the attribute `@schemeName` of the `cac:ResponseValue/cbc:ResponseID` element (and the `@schemeAgencyID` attribute must be set to the default `EU-COM-GROW`). See information requirements at the beginning of the section. See also next sections about the responses, XSD schemas and XML example.
 
 .The user can add or delete more than one economic operator (buttons '+' and 'paper-bin').
 
 .Lots tendered, data structure 
-image::Selfcontained_GroupOfEOs_DS.png[Lots tendered, alt="Lots tendered", align="center"]
+image::Selfcontained_OTHER-EO-GROUPS_DS.png[Lots tendered, alt="Lots tendered", align="center"]
 
 ===== Certificates about contributions to the Tax Agency and/or Social Security
 
@@ -159,11 +159,11 @@ image::Selfcontained_GroupOfEOs_DS.png[Lots tendered, alt="Lots tendered", align
 This data structure is identical to the *REGULATED* version, see circles #22 and #23 in the mock-up above).
 
 .Contributions certificates
-image::Regulated_EO_Contributions_Certificates_DS.png[Contributions certificates - data structure, alt="Contributions certificates - data structure", align="center"]
+image::Selfcontained_OTHER-EO-Contributions_DS.png[Contributions certificates - data structure, alt="Contributions certificates - data structure", align="center"]
 
 ===== Mock-up: Information about reliance on the capacities of the other entities
 
-As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V02.00.00 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
+As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V2.0.1 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
 
 .EO Roles-entities relied on, mock-up
 image::Subcontractor_relied_on_mockup.png[EO Roles-entities relied on, alt="EO Roles-entities relied on", width="600", align="center"]
@@ -171,7 +171,7 @@ image::Subcontractor_relied_on_mockup.png[EO Roles-entities relied on, alt="EO R
 *Data structure for the entities upon which the EO relies on*:
 
 .Relied on entities - data structure
-image::Selfcontained_Relied_ON_DS.png[Relied on entities - data structure, alt="Relied on entities - data structure", align="center"]
+image::Selfcontained_OTHER-EO-RELIED_ON-ENTITIES_DS.png[Relied on entities - data structure, alt="Relied on entities - data structure", align="center"]
 
 ===== Mock-up: Information about third parties on which the EO does not rely on
 
@@ -183,4 +183,4 @@ image::Subcontractor_not_relied_on_mockup.png[EO Roles-entities not relied on, a
 *Data structure for the entities upon which the EO does not relies on*:
 
 .Not relied on entities - data structure
-image::Selfcontained_NOT_Relied_ON_DS.png[Not relied on entities - data structure, alt="Not relied on entities - data structure", align="center"]
+image::Selfcontained_OTHER-EO-NOT_RELIED_ON-ENTITIES_DS.png[Not relied on entities - data structure, alt="Not relied on entities - data structure", align="center"]

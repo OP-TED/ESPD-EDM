@@ -6,7 +6,7 @@ This fragment of XML shows how to supply data in a Self-contained ESPD Request X
 [source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<QualificationApplicationRequest xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:02.00.00"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
+<QualificationApplicationRequest xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:2.0.1"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
 	<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
 	<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrdm070:ver3.0</cbc:CustomizationID>
 	<cbc:ProfileID schemeAgencyID="CEN-BII">41</cbc:ProfileID>
@@ -17,9 +17,9 @@ This fragment of XML shows how to supply data in a Self-contained ESPD Request X
 	<cbc:IssueDate>2017-12-31</cbc:IssueDate>
 	
 	<!-- The type of procedure: 1 stands for Open Procedure. See Code List 'ProcedureType' -->
-	<cbc:ProcedureCode listID="ProcedureType" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">1</cbc:ProcedureCode> <--1-->
+	<cbc:ProcedureCode listID="ProcedureType" listAgencyName="EU-COM-GROW" listVersionID="2.0.1">1</cbc:ProcedureCode> <--1-->
 
-	<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">SELFCONTAINED</cbc:QualificationApplicationTypeCode>
+	<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyName="EU-COM-GROW" listVersionID="2.0.1">SELFCONTAINED</cbc:QualificationApplicationTypeCode>
 	
 	<!-- Contracting body data left empty for the sake of brevity -->
 	<cac:ContractingParty><cac:Party/>	</cac:ContractingParty>
@@ -28,7 +28,7 @@ This fragment of XML shows how to supply data in a Self-contained ESPD Request X
 	<cac:ProcurementProject>
 		<cbc:Name>Spain-Aljaraque: Repair and maintenance services</cbc:Name> <--2-->
 		<cbc:Description>Repair and maintenance services. Real estate services.</cbc:Description> <--3-->
-		<cbc:ProcurementTypeCode listID="ProjectType" listAgencyID="EU-COM-GROW" listVersionID="02.00.00">Services</cbc:ProcurementTypeCode> <--4-->
+		<cbc:ProcurementTypeCode listID="ProjectType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">Services</cbc:ProcurementTypeCode> <--4-->
 		
 		<!-- CPV for 'Repair and maintenance services'. -->
 		<cac:MainCommodityClassification><cbc:ItemClassificationCode>50000000</cbc:ItemClassificationCode></cac:MainCommodityClassification> <--5-->

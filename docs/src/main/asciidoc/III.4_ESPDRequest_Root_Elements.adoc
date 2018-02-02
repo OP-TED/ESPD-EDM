@@ -1,9 +1,9 @@
 
 === III.4 Root elements
 
-The table below lists the elements that are expected in the ESPD Response V02.00.00 and provides details on the cardinalities and usage of those elements.
+The table below lists the elements that are expected in the ESPD Response V2.0.1 and provides details on the cardinalities and usage of those elements.
 
-.Class QualificationApplicationRequest, components required by the ESPD-EDM V02.00.00
+.Class QualificationApplicationRequest, components required by the ESPD-EDM V2.0.1
 [cols="<1,<5"]
 |===
 |*Document name*: |QualificationApplicationRequest
@@ -46,6 +46,15 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-002_]. 
 
 *Rule*: Use the value "41". Use also "CEN-BII" for the scheme AgencyID attribute. 
+
+|*cbc:ProfileExecutionID*
+|Identifier
+|1
+|The identification and version of the ESPD Exchange Data Model used to create the to XML instance. The identification may include the exact version of the specification.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-002_]. 
+
+*Rule*: Compulsory use of the CodeList `ProfileExecutionID`. Use the value "EU-COM-GROW" for th SchemeAgencyID attribute.   
 
 |*cbc:ID*
 |Identifier
@@ -127,7 +136,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_].
 
-*Rule*: *Rule*: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[ProcedureType] (values: `Open`, `Restricted`, `Accelerated`, `Competitive dialogue`, etc.). Do not confound with the object of the procurement project (code list `ProjectType`: Works, Supplies, Services).
+*Rule*: *Rule*: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[ProcedureType] (values: `Open`, `Restricted`, `Accelerated`, `Competitive dialogue`, etc.). Do not confound with the object of the procurement project (code list `ProjectType`: Works, Supplies, Services).
 
 |*cbc:QualificationApplicationTypeCode*
 |Code
@@ -154,7 +163,10 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-002[_tbr70-002_]. 
 
-*Rule*: Use this component to identify and describe the procurement administrative procedure. If the procurement procedure is divided into lots use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure. 
+*Rules*: Use this component to identify and describe the procurement administrative procedure. 
+The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2.   
+
+Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure. 
 
 |*cac:ProcurementProjectLot*
 |Associated class
