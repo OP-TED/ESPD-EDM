@@ -6,7 +6,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## Documentation
 
-* [v2.0.2](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/)  (documentation in progress)
+* [v2.0.2](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/) (documentation in progress)
 * [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
 * [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
 * [v1.0.2](https://espd.github.io/ESPD-EDM/v1.0.2/)
@@ -14,7 +14,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## Roadmap
 
-* **Version 2.0.2** (Feb. 2018): XML Validation: Schematron files for the validation of ESPD-EDM v2.0.1 REGULATED XML instances have been published in folder "dist/val". Beware that this development is an ongoing work, as per February 2018. The OASIS Genericode files have been moved from the "dist/cl/" folder into the "dist/val/schematron/common/" folder. 
+* **Version 2.0.2** (Feb. 2018): XML Validation: Schematron files for the validation of ESPD-EDM v2.0.1 REGULATED XML instances have been published in folder [dist/val](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val). Beware that this development is an ongoing work, as per February 2018. The OASIS Genericode files have been moved from the "dist/cl/" folder into the "dist/val/schematron/common/" folder. 
 
 * **Version 2.0.1** (Jan. 2018): Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.0.1 that have been closed). 
 
