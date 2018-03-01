@@ -12,7 +12,7 @@
     Start of synthesis of rules from procurer constraints ESPD Request
 
     Illustration of procurer constraints - 04 ESPD Req Procurer BR.sch
-	ESPD Version: 2.0.0
+	ESPD Version: 2.0.2
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-PROC">

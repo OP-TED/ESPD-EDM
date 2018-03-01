@@ -183,8 +183,8 @@
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
             </xsl:attribute>
-            <xsl:attribute name="id">BR-COM-CRI</xsl:attribute>
-            <xsl:attribute name="name">BR-COM-CRI</xsl:attribute>
+            <xsl:attribute name="id">BR-COM-CR</xsl:attribute>
+            <xsl:attribute name="name">BR-COM-CR</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
          <xsl:apply-templates select="/" mode="M6"/>
@@ -194,7 +194,7 @@
    <!--SCHEMATRON PATTERNS-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Common Criterion Business Rules</svrl:text>
 
-   <!--PATTERN BR-COM-CRI-->
+   <!--PATTERN BR-COM-CR-->
 
 
 	<!--RULE -->
@@ -255,80 +255,6 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:variable name="ElementUUID"
-                    select="document('ESPD-CriteriaTaxonomy-REGULATED.V02.00.01.xml')/espd:QualificationApplicationRequest"/>
-      <xsl:variable name="currentID" select="cbc:ID"/>
-      <xsl:variable name="currentCode" select="cbc:CriterionTypeCode"/>
-      <xsl:variable name="currentName" select="cbc:Name"/>
-      <xsl:variable name="currentDesc" select="cbc:Description"/>
-
-		    <!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="count($ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:ID) = 1"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="count($ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:ID) = 1">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Each Criterion is defined in e-Certis and must use the UUID supplied by e-Certis. The UUID '<xsl:text/>
-                  <xsl:value-of select="$currentID"/>
-                  <xsl:text/>' is not defined in e-Certis.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:CriterionTypeCode = $currentCode"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:CriterionTypeCode = $currentCode">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The criterion type code should match the one from e-Certis. The code '<xsl:text/>
-                  <xsl:value-of select="$currentCode"/>
-                  <xsl:text/>' is not defined in e-Certis.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT warning-->
-<xsl:choose>
-         <xsl:when test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Name = $currentName"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Name = $currentName">
-               <xsl:attribute name="role">warning</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The name should match the one from e-Certis. The name '<xsl:text/>
-                  <xsl:value-of select="$currentName"/>
-                  <xsl:text/>' is not defined in e-Certis.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT warning-->
-<xsl:choose>
-         <xsl:when test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Description = $currentDesc"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Description = $currentDesc">
-               <xsl:attribute name="role">warning</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The description should match the one from e-Certis. The description '<xsl:text/>
-                  <xsl:value-of select="$currentDesc"/>
-                  <xsl:text/>' is not defined in e-Certis.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
       <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
@@ -372,7 +298,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>Other articles where the Criterion is referred to (/cac:TenderingCriterion/cac:Legislation/cbc:Article') SHOULD also be provided.</svrl:text>
+               <svrl:text>Other articles where the Criterion is referred to (/cac:TenderingCriterion/cac:Legislation/cbc:Article') SHOULD be provided.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -481,39 +407,6 @@
                <svrl:text>The type of answer expected by the contracting authority ('<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>/cbc:ValueDataTypeCode') is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="( (cbc:TypeCode='CAPTION' or cbc:TypeCode='REQUIREMENT') and cbc:ValueDataTypeCode='NONE') or (cbc:TypeCode='QUESTION' and not(cbc:ValueDataTypeCode='NONE'))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( (cbc:TypeCode='CAPTION' or cbc:TypeCode='REQUIREMENT') and cbc:ValueDataTypeCode='NONE') or (cbc:TypeCode='QUESTION' and not(cbc:ValueDataTypeCode='NONE'))">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The type of answer ('cbc:ValueDataTypeCode') must be different to NONE for properties ('cbc:TypeCode') of type QUESTION; or equal to NONE for properties of type CAPTION and REQUIREMENT. The current value are 'cbc:ValueDataTypeCode'='<xsl:text/>
-                  <xsl:value-of select="cbc:ValueDataTypeCode"/>
-                  <xsl:text/>' and 'cbc:TypeCode'='<xsl:text/>
-                  <xsl:value-of select="cbc:TypeCode"/>
-                  <xsl:text/>'</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cbc:TypeCode='QUESTION' and not(cbc:ValueDataTypeCode = 'NONE') and (count(cac:TemplateEvidence) + count(cac:ApplicablePeriod) + count(cbc:CertificationLevelDescription) + count(cbc:MinimumValueNumeric) + count(cbc:MaximumValueNumeric) + count(cbc:ExpectedValueNumeric) + count(cbc:ExpectedCode) + count(cbc:ValueCurrencyCode) + count(cbc:ValueUnitCode) + count(cbc:ExpectedID))&lt;2)    or ( (cbc:TypeCode='CAPTION' or cbc:TypeCode='REQUIREMENT') and cbc:ValueDataTypeCode='NONE')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cbc:TypeCode='QUESTION' and not(cbc:ValueDataTypeCode = 'NONE') and (count(cac:TemplateEvidence) + count(cac:ApplicablePeriod) + count(cbc:CertificationLevelDescription) + count(cbc:MinimumValueNumeric) + count(cbc:MaximumValueNumeric) + count(cbc:ExpectedValueNumeric) + count(cbc:ExpectedCode) + count(cbc:ValueCurrencyCode) + count(cbc:ValueUnitCode) + count(cbc:ExpectedID))&lt;2) or ( (cbc:TypeCode='CAPTION' or cbc:TypeCode='REQUIREMENT') and cbc:ValueDataTypeCode='NONE')">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>For properties of type QUESTION, a maximum of one subelement can be filled-in.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

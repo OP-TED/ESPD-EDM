@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion constraints ESPD Response
 
     Illustration of procurer constraints - 04 ESPD Resp Criterion BR.sch
-	ESPD Version: 2.0.0
+	ESPD Version: 2.0.2
 -->
 	
 	<xsl:key name="CriterionProperty" match="cac:TenderingCriterionProperty" use="cbc:ID"/>
@@ -45,9 +45,6 @@
 			
 			<!-- /cac:TenderingCriterionResponse/cac:EvidenceSupplied/cbc:ID must match one of the IDs within /cac:Evidence/cbc:ID -->
 			<assert test="((cac:EvidenceSupplied) and (count(key('EvidenceID', cac:EvidenceSupplied/cbc:ID)) = 1)) or not(cac:EvidenceSupplied)" flag="fatal">The evidence response (' cac:EvidenceSupplied/cbc:ID' = '<value-of select="cac:EvidenceSupplied/cbc:ID"/>') does not have a corss-reference to the evidence identifier ('cac:Evidence/cbc:ID').</assert>
-			
-			<!-- /cac:TenderingCriterionResponse/cac:ResponseValue/cbc:ID should follow UUDI-version 4 structure -->
-			<!--assert test="fn:matches(normalize-space(cac:ResponseValue/cbc:ID/text()), '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$')" flag="warning">Recommendation: use a UUDI-version 4 number (cbc:ID = '<value-of select="cac:ResponseValue/cbc:ID"/>').</assert-->
 			
 			<!-- The mandatory sub-element within /cac:TenderingCriterionResponse/cac:ResponseValue depends on /cac:TenderingCriterion /cac:TenderingCriterionPropertyGroup /cac:TenderingCriterionProperty /cac:ValueDataTypeCode -->
 			<!-- AMOUNT = cac:ResponseValue/cbc:ResponseAmount -->
@@ -93,35 +90,6 @@
 			<!-- TIME = cac:ResponseValue/cbc:ResponseTime -->
 			<assert test="( ($currentDataType = 'TIME') and (cac:ResponseValue/cbc:ResponseTime) ) or not($currentDataType = 'TIME')" flag="fatal">The type of answer expected by the contracting authority is 'TIME' ('cac:ResponseValue/cbc:ResponseTime' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			
-		</rule>
-		
-		<rule context="cac:TenderingCriterionPropertyGroup">
-			<!-- If /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID matches one of the IDs within  /cac:TenderingCriterionPropertyGroup /cbc:ID, and its /cbc:PropertyGroupTypeCode = ‘ON*’
-Then, its /cac: SubsidiaryTenderingCriterionPropertyGroup /cbc:ID must exist within /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID -->
-			<assert test="( (cbc:PropertyGroupTypeCode = 'ON*') and (count(key('CriterionResponseType', cac:TenderingCriterionProperty[1]/cbc:ID)) &gt; 0) ) or not(cbc:PropertyGroupTypeCode = 'ON*')" flag="fatal">Groups codified as ON* must be processed always (criterion not processed: '<value-of select="ancestor::*[1]/cbc:CriterionTypeCode"/>').</assert>			
-			
-		</rule>
-		
-		<rule context="cac:SubsidiaryTenderingCriterionPropertyGroup">
-			<!-- If /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID matches one of the IDs within  /cac:SubsidiaryTenderingCriterionPropertyGroup /cbc:ID, and its /cbc:PropertyGroupTypeCode = ‘ON*’
-Then, its /cac: SubsidiaryTenderingCriterionPropertyGroup /cbc:ID must exist within /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID -->
-			<assert test="( (cbc:PropertyGroupTypeCode = 'ON*') and (count(key('CriterionResponseType', cac:TenderingCriterionProperty[1]/cbc:ID)) &gt; 0) ) or not(cbc:PropertyGroupTypeCode = 'ON*')" flag="fatal">Groups codified as ON* must be processed always (criterion not processed: '<value-of select="cac:TenderingCriterionProperty[1]/cbc:ID"/>').</assert>
-			
-		</rule>
-		
-		<rule context="cac:TenderingCriterionProperty">
-			<let name="currentID" value="cbc:ID"/>
-			<let name="ancestorIndicator" value="key('CriterionResponseType', ancestor::*[1]/ancestor::*[1]/cac:TenderingCriterionProperty/cbc:ID)/cac:ResponseValue/cbc:ResponseIndicator"/>
-			
-			<!-- If /cac:TenderingCriterionResponse /cac:ResponseValue /cbc:ResponseIndicator = true  and /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID matches one of the IDs within  /cac:TenderingCriterionGroupPropertyGroup /cbc:ID, and its /cbc:PropertyGroupTypeCode = ‘ONTRUE’
-Then, its /cac: SubsidiaryTenderingCriterionPropertyGroup /cbc:ID must exist within /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID -->
-			<assert test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'true') and (count(key('CriterionResponseType', cbc:ID)) = 1) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'false')">As the question '<value-of select='ancestor::*[1]/ancestor::*[1]/cbc:Description'/>' is TRUE, the question which 'cbc:ID' is '<value-of select='$currentID'/>' must be answered as well.</assert>
-			<assert test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'false') and (count(key('CriterionResponseType', cbc:ID)) = 0) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'true')">As the question '<value-of select='ancestor::*[1]/ancestor::*[1]/cbc:Description'/>' is TRUE, the question which 'cbc:ID' is '<value-of select='$currentID'/>' must not be answered.</assert>
-			
-			<!-- If /cac:TenderingCriterionResponse /cac:ResponseValue /cbc:ResponseIndicator = false  and /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID matches one of the IDs within  /cac:SubsidiaryTenderingCriterionPropertyGroup/cbc:ID, and its /cbc:PropertyGroupTypeCode = ‘ONFALSE’
-Then, its /cac: SubsidiaryTenderingCriterionPropertyGroup /cbc:ID must exist within /cac:TenderingCriterionResponse /cbc:ValidatedCriterionPropertyID -->
-			<assert test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'false') and (count(key('CriterionResponseType', cbc:ID)) = 1) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'true')">As the question '<value-of select='ancestor::*[1]/ancestor::*[1]/cbc:Description'/>' is FALSE, the question which 'cbc:ID' is '<value-of select='$currentID'/>' must be answered as well.</assert>
-			<assert test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'true') and (count(key('CriterionResponseType', cbc:ID)) = 0) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'false')">As the question '<value-of select='ancestor::*[1]/ancestor::*[1]/cbc:Description'/>' is FALSE, the question which 'cbc:ID' is '<value-of select='$currentID'/>' must not be answered.</assert>
 		</rule>
 		
 	</pattern>

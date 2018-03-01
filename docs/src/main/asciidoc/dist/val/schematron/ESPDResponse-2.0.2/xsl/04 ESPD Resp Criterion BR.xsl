@@ -203,7 +203,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="espd:QualificationApplicationResponse" priority="1004" mode="M11">
+<xsl:template match="espd:QualificationApplicationResponse" priority="1001" mode="M11">
       <xsl:variable name="selectionCriterion"
                     select="cac:TenderingCriterion[ starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.') and (count( key('CriterionResponseType', cac:TenderingCriterionPropertyGroup[1]/cac:TenderingCriterionProperty[1]/cbc:ID) ) = 0) ]"/>
 
@@ -225,7 +225,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterionResponse" priority="1003" mode="M11">
+<xsl:template match="cac:TenderingCriterionResponse" priority="1000" mode="M11">
       <xsl:variable name="currentDataType"
                     select="key('CriterionProperty', cbc:ValidatedCriterionPropertyID)/cbc:ValueDataTypeCode/text()"/>
 
@@ -663,131 +663,6 @@
                <svrl:text>The type of answer expected by the contracting authority is 'TIME' ('cac:ResponseValue/cbc:ResponseTime' element) - ('cbc:ID' is <xsl:text/>
                   <xsl:value-of select="cbc:ID"/>
                   <xsl:text/>).</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M11"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterionPropertyGroup" priority="1002" mode="M11">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( (cbc:PropertyGroupTypeCode = 'ON*') and (count(key('CriterionResponseType', cac:TenderingCriterionProperty[1]/cbc:ID)) &gt; 0) ) or not(cbc:PropertyGroupTypeCode = 'ON*')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( (cbc:PropertyGroupTypeCode = 'ON*') and (count(key('CriterionResponseType', cac:TenderingCriterionProperty[1]/cbc:ID)) &gt; 0) ) or not(cbc:PropertyGroupTypeCode = 'ON*')">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Groups codified as ON* must be processed always (criterion not processed: '<xsl:text/>
-                  <xsl:value-of select="ancestor::*[1]/cbc:CriterionTypeCode"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M11"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:SubsidiaryTenderingCriterionPropertyGroup" priority="1001"
-                 mode="M11">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( (cbc:PropertyGroupTypeCode = 'ON*') and (count(key('CriterionResponseType', cac:TenderingCriterionProperty[1]/cbc:ID)) &gt; 0) ) or not(cbc:PropertyGroupTypeCode = 'ON*')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( (cbc:PropertyGroupTypeCode = 'ON*') and (count(key('CriterionResponseType', cac:TenderingCriterionProperty[1]/cbc:ID)) &gt; 0) ) or not(cbc:PropertyGroupTypeCode = 'ON*')">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Groups codified as ON* must be processed always (criterion not processed: '<xsl:text/>
-                  <xsl:value-of select="cac:TenderingCriterionProperty[1]/cbc:ID"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M11"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterionProperty" priority="1000" mode="M11">
-      <xsl:variable name="currentID" select="cbc:ID"/>
-      <xsl:variable name="ancestorIndicator"
-                    select="key('CriterionResponseType', ancestor::*[1]/ancestor::*[1]/cac:TenderingCriterionProperty/cbc:ID)/cac:ResponseValue/cbc:ResponseIndicator"/>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'true') and (count(key('CriterionResponseType', cbc:ID)) = 1) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'false')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'true') and (count(key('CriterionResponseType', cbc:ID)) = 1) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'false')">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>As the question '<xsl:text/>
-                  <xsl:value-of select="ancestor::*[1]/ancestor::*[1]/cbc:Description"/>
-                  <xsl:text/>' is TRUE, the question which 'cbc:ID' is '<xsl:text/>
-                  <xsl:value-of select="$currentID"/>
-                  <xsl:text/>' must be answered as well.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'false') and (count(key('CriterionResponseType', cbc:ID)) = 0) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'true')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'false') and (count(key('CriterionResponseType', cbc:ID)) = 0) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONTRUE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'true')">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>As the question '<xsl:text/>
-                  <xsl:value-of select="ancestor::*[1]/ancestor::*[1]/cbc:Description"/>
-                  <xsl:text/>' is TRUE, the question which 'cbc:ID' is '<xsl:text/>
-                  <xsl:value-of select="$currentID"/>
-                  <xsl:text/>' must not be answered.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'false') and (count(key('CriterionResponseType', cbc:ID)) = 1) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'true')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'false') and (count(key('CriterionResponseType', cbc:ID)) = 1) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'true')">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>As the question '<xsl:text/>
-                  <xsl:value-of select="ancestor::*[1]/ancestor::*[1]/cbc:Description"/>
-                  <xsl:text/>' is FALSE, the question which 'cbc:ID' is '<xsl:text/>
-                  <xsl:value-of select="$currentID"/>
-                  <xsl:text/>' must be answered as well.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'true') and (count(key('CriterionResponseType', cbc:ID)) = 0) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'false')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( (ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') and (count($ancestorIndicator) &gt; 0) and ($ancestorIndicator = 'true') and (count(key('CriterionResponseType', cbc:ID)) = 0) ) or not(ancestor::*[1]/cbc:PropertyGroupTypeCode = 'ONFALSE') or (count($ancestorIndicator) = 0) or ($ancestorIndicator = 'false')">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>As the question '<xsl:text/>
-                  <xsl:value-of select="ancestor::*[1]/ancestor::*[1]/cbc:Description"/>
-                  <xsl:text/>' is FALSE, the question which 'cbc:ID' is '<xsl:text/>
-                  <xsl:value-of select="$currentID"/>
-                  <xsl:text/>' must not be answered.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
