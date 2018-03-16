@@ -45,7 +45,7 @@ dependencies {
 }
 ```
 
-### Version 2.0.0
+### Version 2.0.1
 
 **Please note that this version requires Java 8**
 
@@ -53,7 +53,7 @@ dependencies {
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
   <artifactId>exchange-model2</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
+  <version>2.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
