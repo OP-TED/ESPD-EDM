@@ -13,13 +13,16 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## Roadmap
 
-* **Version 1.0.1**: Version 1.0.1 is used since December 2015. This version is based on UBL 2.1.
-* **Current Version 1.0.2**: Version 1.0.2 has no impact on current implementation. It was published in July 2016. It fixes the issue: 
-  * https://github.com/ESPD/ESPD-EDM/issues/2
-* **Version 2.0.0**: The goal of version 2.0.0 is that the ESPD-EDM is self contained. Meaning that public buyers can specify directly in their ESPD services criteria instead of defining them in the procurement document or the notice. Examples are that the public buyer can specify the number of years needed for the turnovers, the financial ratios needed for the procedure or that they can specify certificates needed. Something else that will be implemented in version 2.0.0 is the possibility to weight criteria which is important to reduce the number of participants in a procedure. Issues for this release are:
+* **Version 2.0.1** (Jan. 2018): Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.0.1 that have been closed). 
+
+* **Version 2.0.0** (Sept. 2017): The goal of version 2.0.0 is that the ESPD-EDM is self contained. Meaning that public buyers can specify directly in their ESPD services criteria instead of defining them in the procurement document or the notice. Examples are that the public buyer can specify the number of years needed for the turnovers, the financial ratios needed for the procedure or that they can specify certificates needed. Something else that will be implemented in version 2.0.0 is the possibility to weight criteria which is important to reduce the number of participants in a procedure. Issues for this release are:
   * https://github.com/ESPD/ESPD-EDM/issues/
-* **Version 2.0.1**: Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.0.1 that have been closed). 
+
+* **Version 1.0.2**: Version 1.0.2 has no impact on current implementation. It was published in July 2016. It fixes the issue: 
+  * https://github.com/ESPD/ESPD-EDM/issues/2
   
+* **Version 1.0.1**: Version 1.0.1 is used since December 2015. This version is based on UBL 2.1.
+
 ## Installation
 
 The recommended way to get started using the `exchange-model` in a `Java` project is with a dependency management system.
