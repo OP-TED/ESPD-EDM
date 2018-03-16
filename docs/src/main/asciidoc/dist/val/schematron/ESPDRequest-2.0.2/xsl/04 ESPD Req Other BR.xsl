@@ -229,7 +229,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>For the ESPD customization of UBL ('/cbc:CustomizationID') we use the value “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”.</svrl:text>
+               <svrl:text>For the ESPD customization of UBL ('/cbc:CustomizationID'), the value is “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

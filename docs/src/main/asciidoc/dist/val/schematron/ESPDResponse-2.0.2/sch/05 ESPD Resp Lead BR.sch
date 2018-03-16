@@ -11,7 +11,7 @@
     Start of synthesis of rules from lead role constraints ESPD Response
 
     Illustration of procurer constraints - 05 ESPD Resp Lead BR.sch
-	ESPD Version: 2.0.0
+	ESPD Version: 2.0.2
 -->
 	
     <xsl:key name="EORoleTest" match="cbc:RoleCode" use="." />
