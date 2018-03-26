@@ -10,13 +10,12 @@
 	
 <!--
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
-	Currently, the rules implemented are those related to the obligatory nature of an element.
 
     Illustration of criterion constraints - 03 ESPD Common Criterion BR.sch
 	ESPD Version: 2.0.2
 -->
 	
-	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-CR">
+	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-CRI">
 		<!-- A tendering criterion describes a fact or a condition that is used by the contracting body to evaluate and compare tenders by economic operators and which will be used for the 
 		exclusion and the selection of candidate tenderers to the award decision. -->
 		<rule context="cac:TenderingCriterion">
@@ -30,13 +29,13 @@
 			<let name="ElementUUID" value="document('../../../../common/cl/ESPD-CriteriaTaxonomy-REGULATED.V02.00.01.xml')/espd:QualificationApplicationRequest"/>
 			<let name="currentID" value="cbc:ID"/>
 			<let name="currentCode" value="cbc:CriterionTypeCode"/>
-			<let name="currentName" value="cbc:Name"/>
-			<let name="currentDesc" value="cbc:Description"/>
+			<!--let name="currentName" value="cbc:Name"/>
+			<let name="currentDesc" value="cbc:Description"/-->
 			
 			<assert test="count($ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:ID) = 1" role="error">Each Criterion is defined in e-Certis and must use the UUID supplied by e-Certis. The UUID '<value-of select="$currentID"/>' is not defined in e-Certis.</assert>
 			<assert test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:CriterionTypeCode = $currentCode" role="error">The criterion type code should match the one from e-Certis. The code '<value-of select="$currentCode"/>' is not defined in e-Certis.</assert>
-			<assert test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Name = $currentName" role="warning">The name should match the one from e-Certis. The name '<value-of select="$currentName"/>' is not defined in e-Certis.</assert>
-			<assert test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Description = $currentDesc" role="warning">The description should match the one from e-Certis. The description '<value-of select="$currentDesc"/>' is not defined in e-Certis.</assert>
+			<!--assert test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Name = $currentName" role="warning">The name should match the one from e-Certis. The name '<value-of select="$currentName"/>' is not defined in e-Certis.</assert>
+			<assert test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Description = $currentDesc" role="warning">The description should match the one from e-Certis. The description '<value-of select="$currentDesc"/>' is not defined in e-Certis.</assert-->
 			
 		</rule>
 		

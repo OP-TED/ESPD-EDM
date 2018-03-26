@@ -259,8 +259,6 @@
                     select="document('../../../../common/cl/ESPD-CriteriaTaxonomy-REGULATED.V02.00.01.xml')/espd:QualificationApplicationRequest"/>
       <xsl:variable name="currentID" select="cbc:ID"/>
       <xsl:variable name="currentCode" select="cbc:CriterionTypeCode"/>
-      <xsl:variable name="currentName" select="cbc:Name"/>
-      <xsl:variable name="currentDesc" select="cbc:Description"/>
 
 		    <!--ASSERT error-->
 <xsl:choose>
@@ -291,40 +289,6 @@
                </xsl:attribute>
                <svrl:text>The criterion type code should match the one from e-Certis. The code '<xsl:text/>
                   <xsl:value-of select="$currentCode"/>
-                  <xsl:text/>' is not defined in e-Certis.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT warning-->
-<xsl:choose>
-         <xsl:when test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Name = $currentName"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Name = $currentName">
-               <xsl:attribute name="role">warning</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The name should match the one from e-Certis. The name '<xsl:text/>
-                  <xsl:value-of select="$currentName"/>
-                  <xsl:text/>' is not defined in e-Certis.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT warning-->
-<xsl:choose>
-         <xsl:when test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Description = $currentDesc"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$ElementUUID/cac:TenderingCriterion[cbc:ID = $currentID]/cbc:Description = $currentDesc">
-               <xsl:attribute name="role">warning</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The description should match the one from e-Certis. The description '<xsl:text/>
-                  <xsl:value-of select="$currentDesc"/>
                   <xsl:text/>' is not defined in e-Certis.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
