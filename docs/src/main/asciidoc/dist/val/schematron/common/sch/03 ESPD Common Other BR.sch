@@ -46,13 +46,26 @@
 			<assert test="(cbc:Description)" flag="warning">The short description of  the procurement procedure is mandatory.</assert>
 		</rule>
 		
-		<!-- For codes, this ESPD V02.00.20 specification requires always three mandatory attributes: listID, listAgencyID, and listVersionID. -->
-		<rule context="cbc:ExpectedCode | cbc:ConfidentialityLevelCode | cbc:IdentificationCode | cbc:CriterionTypeCode | cbc:ValueCurrencyCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | 
-		cbc:EvaluationMethodTypeCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:PropertyGroupTypeCode | cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode | cbc:ProcurementSubTypeCode">
+		<!-- If @languageID is not specified, it defaults to EN (English) -->
+		<!--rule context="cbc:LegislationTitle | cbc:Description | cbc:JurisdictionLevel | cbc:Article">
+			<assert test="@languageID" flag="fatal">If @languageID is not specified, it defaults to EN (English).</assert>
+		</rule-->
+		
+		<!-- For codes, this ESPD V02.00.00 specification requires always three mandatory attributes: listID, listAgencyID, and listVersionID. -->
+		<rule context="cbc:ExpectedCode | cbc:IdentificationCode | cbc:CriterionTypeCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode">
 			<assert test="@listID" flag="fatal">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listAgencyID" flag="fatal">The attribute listAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listVersionID" flag="fatal">The attribute listVersionID is mandatory for the element: '<value-of select="name()"/>').</assert>
 		</rule>
+		<!-- CODE LISTS NO IDENTIFIED -->
+		<!--rule context="ext:ExtensionReasonCode | cbc:PartyTypeCode | cbc:ActivityTypeCode | cbc:LocaleCode | cbc:AddressTypeCode | cbc:AddressFormatCode | cbc:CountrySubentityCode | cbc:CoordinateSystemCode | cbc:LatitudeDirectionCode | cbc:LongitudeDirectionCode
+		| cbc:LocationTypeCode | cbc:DescriptionCode | cbc:TaxLevelCode | cbc:ExemptionReasonCode | cbc:TaxTypeCode | cbc:CurrencyCode | cbc:CompanyLegalFormCode | cbc:CorporateRegistrationTypeCode | cbc:ChannelCode | cbc:GenderCode | cbc:RoleCode
+		| cbc:AccountTypeCode | cbc:AccountFormatCode | cbc:DocumentStatusCode | cbc:MimeCode | cbc:FormatCode | cbc:EncodingCode | cbc:CharacterSetCode | cbc:ValidationResultCode | cbc:ServiceTypeCode | cbc:WebSiteTypeCode | cbc:SocialMediaTypeCode
+		| cbc:TendererRoleCode | cbc:CapabilityTypeCode | cbc:DeclarationTypeCode | cbc:QualityControlCode | cbc:TaxExemptionReasonCode | cbc:NatureCode | cbc:CargoTypeCode | cbc:CommodityCode | cbc:ItemClassificationCode | cbc:AllowanceChargeReasonCode | cbc:AccountingCostCode 
+		| cbc:PaymentMeansCode | cbc:PaymentChannelCode | cbc:MandateTypeCode | cbc:FinancingInstrumentCode | cbc:LineStatusCode | cbc:PositionCode | cbc:ActionCode | cbc:UNDGCode | cbc:EmergencyProceduresCode | cbc:MedicalFirstAidGuideCode | cbc:HazardousCategoryCode
+		| cbc:TransportEmergencyCardCode | cbc:PackingCriteriaCode | cbc:HazardousRegulationCode | cbc:InhalationToxicityZoneCode | cbc:TransportAuthorizationCode | cbc:NameCode | cbc:ImportanceCode | cbc:CertificateTypeCode">
+			<assert test="@listID and @listAgencyName and @listVersionID" flag="fatal">The attributes listID, listAgencyName and listVersionID are mandatory for the element: '<value-of select="name()"/>').</assert>
+		</rule-->
 		
 		<!-- For identifiers, this ESPD V02.00.00 specification requires at least (and always) the mandatory attribute schemeAgencyID. -->
 		<rule context="ext:ExtensionAgencyID | ext:ExtensionVersionID | cbc:AccountID| cbc:AdditionalAccountID|cbc:AgencyID| cbc:AircraftID| cbc:AttributeID| cbc:AwardID| cbc:AwardingCriterionID| cbc:BarcodeSymbologyID| cbc:BrokerAssignedID| cbc:BusinessClassificationEvidenceID| 
@@ -65,6 +78,16 @@
 		cbc:SequenceID| cbc:SequenceNumberID| cbc:SerialID| cbc:ShippingOrderID| cbc:SignatureID| cbc:SpecificationID| cbc:SubscriberID| cbc:SuccessiveSequenceID| cbc:SupplierAssignedAccountID| cbc:TenderEnvelopeID| cbc:TraceID| cbc:TrackingID| cbc:TrainID| 
 		cbc:TransportExecutionPlanReferenceID| cbc:UBLVersionID| cbc:UUID| cbc:UpperOrangeHazardPlacardID| cbc:ValidatedCriterionPropertyID| cbc:ValidatorID| cbc:VariantID| cbc:VersionID| cbc:VesselID| cbc:WeighingDeviceID">
 			<assert test="@schemeAgencyID" flag="fatal">The attribute schemeAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
+		</rule>
+		
+		<!-- Code types listVersionID validation: starts with 2. -->
+		<rule context="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:EvaluationMethodTypeCode | cbc:PropertyGroupTypeCode |
+		cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode">
+			<assert test="@listID" flag="fatal">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
+			<assert test="@listAgencyID" flag="fatal">The attribute listAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
+			<assert test="@listVersionID" flag="fatal">The attribute listVersionID is mandatory for the element: '<value-of select="name()"/>').</assert>
+			
+			<assert test="starts-with(@listVersionID, '2.')" flag="fatal">Invalid value: '<value-of select="@listVersionID"/>' for the attribute 'listVersionID'.<value-of select="name()"/>').</assert>
 		</rule>
 	</pattern>
 </schema>

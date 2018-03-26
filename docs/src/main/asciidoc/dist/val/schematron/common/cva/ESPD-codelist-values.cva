@@ -22,7 +22,7 @@
 		ESPD code list values constraints - ESPD-codelist-values.cva
 		Version 2.0.2
 	</Title>
-	<!-- List of all genericode files -->
+	<!-- List all of the genericode files -->
 	<ValueLists>
 		<!--ValueList xml:id="ActivityTypeCode" uri="../gc/ActivityType-CodeList.gc"/ NOT USED -->
 		<!--ValueList xml:id="AmountTypeCode" uri="../gc/AmountType-CodeList.gc"/ NOT USED -->
@@ -50,7 +50,7 @@
 		<ValueList xml:id="ServicesProjectSubType" uri="../gc/ServicesProjectSubType-CodeList.gc"/><!-- /cac:ProcurementProject/cbc:ProcurementSubTypeCode -->
 		<ValueList xml:id="TechnicalCapabilityTypeCode" uri="../gc/TechnicalCapabilityType-CodeList.gc"/>
 	</ValueLists>
-	<!--List of all instance-level metadata associations-->
+	<!--List all of the instance-level metadata associations-->
 	<InstanceMetadataSets>
 		<!-- Code list elements -->
 		<InstanceMetadataSet xml:id="cctsV2.01-code">
@@ -62,19 +62,28 @@
 			<InstanceMetadata address="@listAgencyName" identification="Agency/LongName"/>
 			<InstanceMetadata address="@listAgencyID" identification="Agency/Identifier"/>
 		</InstanceMetadataSet>
+		<!-- Code list elements without version validation -->
+		<InstanceMetadataSet xml:id="cctsV2.01-code-noVersion">
+			<InstanceMetadata address="@listName" identification="ShortName"/>
+			<InstanceMetadata address="@listID" identification="ShortName"/>
+			<InstanceMetadata address="@listSchemeURI" identification="LocationUri"/>
+			<InstanceMetadata address="@listURI" identification="CanonicalUri"/>
+			<InstanceMetadata address="@listAgencyName" identification="Agency/LongName"/>
+			<InstanceMetadata address="@listAgencyID" identification="Agency/Identifier"/>
+		</InstanceMetadataSet>
 	</InstanceMetadataSets>
 	<!-- ESPDRequest - List of all elements and attributes where the code lists are used -->
 	<Contexts>
 		<Context address="cac:TenderingCriterionProperty/cbc:ExpectedCode" values="BidType" metadata="cctsV2.01-code">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
-		<Context address="cbc:ConfidentialityLevelCode" values="ConfidentialityLevel" metadata="cctsV2.01-code">
+		<Context address="cbc:ConfidentialityLevelCode" values="ConfidentialityLevel" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
 		<Context address="cac:Country/cbc:IdentificationCode" values="CountryCodeIDs" metadata="cctsV2.01-code">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
-		<Context address="cbc:TypeCode" values="CriterionElementType" metadata="cctsV2.01-code">
+		<Context address="cbc:TypeCode" values="CriterionElementType" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
 		<Context address="@currencyID" values="CurrencyCodeList">
@@ -83,22 +92,22 @@
 		<Context address="cbc:ValueCurrencyCode" values="CurrencyCodeList" metadata="cctsV2.01-code">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
 		</Context>
-		<Context address="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" values="DocRefContentType" metadata="cctsV2.01-code">
+		<Context address="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" values="DocRefContentType" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
 		</Context>
 		<Context address="cac:PartyIdentification/cbc:ID/@schemeID" values="EOIDType">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
 		</Context>
-		<Context address="cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode" values="EOIndustryClassificationCode" metadata="cctsV2.01-code">
+		<Context address="cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode" values="EOIndustryClassificationCode" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
 		</Context>
-		<Context address="cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode" values="EORoleType" metadata="cctsV2.01-code">
+		<Context address="cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode" values="EORoleType" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
 		</Context>
 		<Context address="@languageID" values="LanguageCodeEU">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
 		</Context>
-		<Context address="cac:TenderingCriterion/cbc:EvaluationMethodTypeCode" values="EvaluationMethodType" metadata="cctsV2.01-code">
+		<Context address="cac:TenderingCriterion/cbc:EvaluationMethodTypeCode" values="EvaluationMethodType" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element</Message>
 		</Context>
 		<Context address="cac:Legislation/cbc:JurisdictionLevel" values="LegislationType">
@@ -110,13 +119,13 @@
 		<Context address="cbc:ProcurementTypeCode" values="ProjectType" metadata="cctsV2.01-code">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
-		<Context address="cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode" values="PropertyGroupType" metadata="cctsV2.01-code">
+		<Context address="cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode" values="PropertyGroupType" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
-		<Context address="cbc:QualificationApplicationTypeCode" values="QualificationApplicationType" metadata="cctsV2.01-code">
+		<Context address="cbc:QualificationApplicationTypeCode" values="QualificationApplicationType" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
-		<Context address="cac:TenderingCriterionProperty/cbc:ValueDataTypeCode" values="ResponseDataType" metadata="cctsV2.01-code">
+		<Context address="cac:TenderingCriterionProperty/cbc:ValueDataTypeCode" values="ResponseDataType" metadata="cctsV2.01-code-noVersion">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element or invalid codelist used</Message>
 		</Context>
 		<Context address="cac:ProcurementProject/cbc:ProcurementSubTypeCode" values="ServicesProjectSubType" metadata="cctsV2.01-code">
