@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Library:           UBL Pre-award Development Test
-  Release Date:      06 July 2017
+  Release Date:      04 September 2017
   Module:            xsd/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd
-  Generated on:      2017-07-06 12:20z
+  Generated on:      2017-09-07 16:43z
   Copyright (c) OASIS Open 2017. All Rights Reserved.
 -->
 <xsd:schema xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
@@ -294,6 +294,41 @@
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Qualification Application Request</ccts:ObjectClass>
                      <ccts:PropertyTerm>Qualification Application Type Code</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
+                     <ccts:DataType>Code. Type</ccts:DataType>
+                     <ccts:Examples>"Regulated", "Self-contained"</ccts:Examples>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:WeightScoringMethodologyNote"
+                      minOccurs="0"
+                      maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Qualification Application Request. Weight Scoring Methodology Note. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>Free-form text to describing information about Weight Scoring Methodology.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Qualification Application Request</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Weight Scoring Methodology Note</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:WeightingTypeCode" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Qualification Application Request. Weighting Type Code. Code</ccts:DictionaryEntryName>
+                     <ccts:Definition>A code specifying the type of the Weighting.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Qualification Application Request</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Weighting Type Code</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
                      <ccts:DataType>Code. Type</ccts:DataType>
                      <ccts:Examples>"Regulated", "Self-contained"</ccts:Examples>
