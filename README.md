@@ -7,7 +7,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 ## Documentation
 
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
-* [v1.0.3](See v2.0.2 chapter "I.5 Forward compatibility")
+* [v1.0.3](See v2.0.2 chapter link:https://espd.github.io/ESPD-EDM/v2.0.2/["I.5 Forward compatibility"])
 * [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
 * [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
 * [v1.0.2](https://espd.github.io/ESPD-EDM/v1.0.2/)
@@ -16,10 +16,9 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 ## Roadmap
 
 * **Version 2.0.2** (April 2018): 
-
-** Set of Schematron-based artefacts provided to validate REGULATED and SELF-CONTAINED ESPD Request and Response XML instances. Includes validation of the criteria taxonomy. See the artefacts in link:./dist/val[dist/val/] folder and the new online documentation chapter on XML validation.
-** Set of XSL-T 2.0 stylesheets provided to convert ESPD Request and Response XML instances from v1.0.3 into REGULATED v2.0.2 XML instances. See the link:./dist/xslt/Versions_1-2_Mapping[dist/xslt/Versions_1-2_Mapping] folder.
-** Documentation bugs fixed.
+- Set of Schematron-based artefacts provided to validate REGULATED and SELF-CONTAINED ESPD Request and Response XML instances. Includes validation of the criteria taxonomy. See the artefacts in link:./dist/val[dist/val/] folder and the new online documentation chapter on XML validation.
+- Set of XSL-T 2.0 stylesheets provided to convert ESPD Request and Response XML instances from v1.0.3 into REGULATED v2.0.2 XML instances. See the link:./dist/xslt/Versions_1-2_Mapping[dist/xslt/Versions_1-2_Mapping] folder.
+- Documentation bugs fixed.
 
 * **Version 1.0.3** (April 2018): Minor documentation fixes applied to version 1.0.2. The data model was not changed.  Only the documentation was updated to reflect the changes made until the July 2017 release of the Commission ESPD. It has no impact on current ESPD services based on v1.0.2. The update criteria taxonomy can be found here: ./dist/cl/ods/ESPD-CriteriaTaxonomy(Data-Structures)_V1.0.3.ods[Criteria Taxonomy (Data Structures)]. See also documentation about v2.0.2 chapter "I.5 Forward compatibility").
 
