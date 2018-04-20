@@ -197,7 +197,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="cac:AdditionalDocumentReference" priority="1005" mode="M6">
+<xsl:template match="cac:AdditionalDocumentReference" priority="1006" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -252,7 +252,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:UBLVersionID" priority="1004" mode="M6">
+<xsl:template match="cbc:UBLVersionID" priority="1005" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -290,7 +290,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ProfileID" priority="1003" mode="M6">
+<xsl:template match="cbc:ProfileID" priority="1004" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -327,7 +327,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:ProcurementProject" priority="1002" mode="M6">
+<xsl:template match="cac:ProcurementProject" priority="1003" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -360,8 +360,8 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ExpectedCode | cbc:ConfidentialityLevelCode | cbc:IdentificationCode | cbc:CriterionTypeCode | cbc:ValueCurrencyCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode |    cbc:EvaluationMethodTypeCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:PropertyGroupTypeCode | cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode | cbc:ProcurementSubTypeCode"
-                 priority="1001"
+<xsl:template match="cbc:ExpectedCode | cbc:IdentificationCode | cbc:CriterionTypeCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode"
+                 priority="1002"
                  mode="M6">
 
 		<!--ASSERT -->
@@ -416,7 +416,7 @@
 
 	  <!--RULE -->
 <xsl:template match="ext:ExtensionAgencyID | ext:ExtensionVersionID | cbc:AccountID| cbc:AdditionalAccountID|cbc:AgencyID| cbc:AircraftID| cbc:AttributeID| cbc:AwardID| cbc:AwardingCriterionID| cbc:BarcodeSymbologyID| cbc:BrokerAssignedID| cbc:BusinessClassificationEvidenceID|    cbc:BusinessIdentityEvidenceID| cbc:BuyerEventID| cbc:CV2ID| cbc:CarrierAssignedID| cbc:ChipApplicationID| cbc:CompanyID| cbc:ConsigneeAssignedID| cbc:ConsignorAssignedID| cbc:ConsumptionID| cbc:ConsumptionReportID| cbc:ContractFolderID| cbc:ContractedCarrierAssignedID|   cbc:CustomerAssignedAccountID| cbc:CustomizationID| cbc:DocumentID| cbc:EndpointID| cbc:ExchangeMarketID| cbc:ExpectedID| cbc:ExtendedID| cbc:FormatID| cbc:FreightForwarderAssignedID| cbc:HazardClassID| cbc:ID| cbc:IdentificationID| cbc:ImmobilizationCertificateID|   cbc:InstructionID| cbc:IssueNumberID| cbc:IssuerID| cbc:JourneyID| cbc:LanguageID| cbc:LicensePlateID| cbc:LineID| cbc:LoadingSequenceID| cbc:LocationID| cbc:LogoReferenceID| cbc:LotNumberID| cbc:LowerOrangeHazardPlacardID| cbc:MarkingID| cbc:MinimumImprovementBid|   cbc:NationalityID| cbc:NetworkID| cbc:OID| cbc:OpenTenderID| cbc:OriginalContractingSystemID| cbc:OriginalJobID| cbc:ParentDocumentID| cbc:ParentDocumentLineReferenceID| cbc:ParentDocumentVersionID| cbc:ParticipantID| cbc:PaymentID| cbc:PaymentMeansID|   cbc:PerformingCarrierAssignedID| cbc:PrepaidPaymentReferenceID| cbc:PreviousJobID| cbc:PreviousVersionID| cbc:PrimaryAccountNumberID| cbc:ProductTraceID| cbc:ProfileExecutionID| cbc:ProfileID| cbc:ProtocolID| cbc:RadioCallSignID| cbc:RailCarID| cbc:ReferenceID|    cbc:ReferencedConsignmentID| cbc:RegistrationID| cbc:RegistrationNationalityID| cbc:ReleaseID| cbc:RequestForQuotationLineID| cbc:RequiredCustomsID| cbc:ResponseID| cbc:RevisedForecastLineID| cbc:SalesOrderID| cbc:SalesOrderLineID| cbc:SecurityID| cbc:SellerEventID|   cbc:SequenceID| cbc:SequenceNumberID| cbc:SerialID| cbc:ShippingOrderID| cbc:SignatureID| cbc:SpecificationID| cbc:SubscriberID| cbc:SuccessiveSequenceID| cbc:SupplierAssignedAccountID| cbc:TenderEnvelopeID| cbc:TraceID| cbc:TrackingID| cbc:TrainID|    cbc:TransportExecutionPlanReferenceID| cbc:UBLVersionID| cbc:UUID| cbc:UpperOrangeHazardPlacardID| cbc:ValidatedCriterionPropertyID| cbc:ValidatorID| cbc:VariantID| cbc:VersionID| cbc:VesselID| cbc:WeighingDeviceID"
-                 priority="1000"
+                 priority="1001"
                  mode="M6">
 
 		<!--ASSERT -->
@@ -429,6 +429,80 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>The attribute schemeAgencyID is mandatory for the element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:EvaluationMethodTypeCode | cbc:PropertyGroupTypeCode |   cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode"
+                 priority="1000"
+                 mode="M6">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="@listID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listID">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The attribute listID is mandatory for the element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="@listAgencyID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listAgencyID">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The attribute listAgencyID is mandatory for the element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="@listVersionID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listVersionID">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The attribute listVersionID is mandatory for the element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="starts-with(@listVersionID, '2.')"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="starts-with(@listVersionID, '2.')">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid value: '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>' for the attribute 'listVersionID'.<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>').</svrl:text>
             </svrl:failed-assert>
