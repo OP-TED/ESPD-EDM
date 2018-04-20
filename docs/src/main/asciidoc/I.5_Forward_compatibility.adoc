@@ -1,0 +1,23 @@
+[.text-left]
+=== I.5 Backwards compatibility
+
+In order to ensure compatibility between regulated ESPD versions 1 and 2, this distribution provides a conversion solution to facilitate the generation of ESPD REGULATED Request and Response XML documents.
+
+Beware that this is not the case for Self-contained ESPDs: given that Self-contained ESPDs may contain requirements and richer structures that are not present in the Regulated ESPD the compatibility is not possible for all the elements of the version 2.
+ 
+The development and testing of the previous version 1.0.2 by Member States and other Stakeholders has revealed some minor bugs relating the taxonomy of criteria that needed corrections. The data model and XSD schemas was not modified whatsoever. The updated criteria taxonomy can be found here: link: ./dist/cl/ods/ESPD-CriteriaTaxonomy(Data-Structures)_V1.0.3.ods[Criteria Taxonomy (Data Structures)].  
+
+To see those few changes introduced between version 1.0.2 and this new release 1.0.3 you can use this link:./dist/cl/ods/CriteriaTaxonomyV1.0.3_CHANGE_LOG.ods[Track-Change file].
+
+Mapping a Regulated ESPD (or an ESPD 1.0.2) into a V2.0.1 Self-contained ESPD is yet possible for a large part of its components. This means that software applications could somehow "pre-fill" a Self-contained ESPD taking as the input a 1.0.2 or a 2.0.1 Regulated ESPD and leave the "extended" requirements and fields empty (i.e. "forward compatibility" is to some extent possible).
+
+In order to facilitate developers map between one version into the other and vice-versa, this guide includes a link:./dist/doc/UBL2.2-ESPD1.02_Mapping.ods[spreadsheet] with the correspondences between the elements of the ESPD-EDM V1.0.3 and ESPD-EDM V2.0.2.
+
+Regulated ESPDs expressed using the previous versions of ESPD-EDM 1.0.2. Software applications should not have any problem in importing and exporting Regulated XML documents in one version or the other. Even more, those applications should be able to import a 1.0.2 ESPD XML document and to export it as a Regulated ESPD 2.0.1 XML document (or vice-versa).
+
+==== Transformation process
+
+(TODO: DESCRIBE-->BURAK) 
+
+
+
