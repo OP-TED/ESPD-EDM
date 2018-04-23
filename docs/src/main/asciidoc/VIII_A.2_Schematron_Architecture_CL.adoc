@@ -1,12 +1,13 @@
 
 [.text-left]
-=== I.2 Code list validation Architecture
+
+== Code list validation Architecture
 
 Business rules related to code list validates:
 
 image::A1_Schematron_CL.png[Code list business rules, alt="Code list business rules", align="center"]
 
-==== Architecture for Code List validation
+=== Architecture for Code List validation
 
 The validation of the code lists needs an extra step on the process before executing the Schematron process. This is because it needs https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist[Genericode] (GC) as input files.
 
@@ -25,7 +26,7 @@ The validation of the code lists needs an extra step on the process before execu
 image::A2_Architecture_CL.png[Architecture for code list validation, alt="Architecture for code list validation", align="center"]
 
 
-==== What does SCH files contain?
+=== What does SCH files contain?
 
 . Association between one or more elements of the XML and one or more code list (specified in the Genericodes).
 . The declaration of which attributes of the XML identify information of the Genericode.
@@ -36,7 +37,7 @@ The implementation of the CVA file has the following structure:
 image::A2_Architecture_CVA_Example.png[CVA example, alt="CVA example", align="center"]
 
 
-==== Execution
+=== Execution
 
 As a basis of the implementation, it has been taken into account:
 
