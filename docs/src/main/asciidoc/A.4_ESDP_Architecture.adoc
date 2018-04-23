@@ -1,0 +1,62 @@
+
+[.text-left]
+=== I.4 ESPD Architecture
+
+The validation of a ESPD XML has the following life-cycle:
+
+image::A4_ESPD_lifecycle.png[ESPD Schematron life-cycle, alt="ESPD Schematorn lyfe-cycle", align="center"]
+
+. The validation of the XML starts by ensuring that the input XML follows the structure defined by the XSD: QualificationApplicationRequest.xsd XSD Schema or QualificationApplicationResponse.xsd XSD Schema. These schemas can be found under the folder dist/xsdrt/maindoc (or the equivalent documented xsd folder).
+
+. If the validation is not successful, the process stops and sends the report with the list of errors.
+
+. If the validation is successful, the process continues with the code list validations and business rules. All errors found (if any) are listed in the report.
+
+
+. Depending on the type of application (request or response), different types of validations are executed:
+
+image::A4_ESPD_Architecture.png[ESPD architecture, alt="ESPD architecture", align="center"]
+
+
+==== ESDP Request
+
+. XSD Validation: UBL-QualificationApplicationRequest-2.2-Pre-award.xsd
+
+. Code list validations. These are common for both, request and response:
+.. Values: 01 ESPD-codelist-values.cva
+.. Attributes: 01 ESPD Common CL Attributes.sch
+
+. Cardinality business rules: Cardinality Rules (02 ESPD Req Cardinality BR.sch)
+
+. Criterion taxonomy business rules:
+.. Common for both, request and response: 03 ESPD Common Criterion BR.sch
+.. Specific for request applications: 03 ESPD Req Criterion BR.sch
+
+. Other business rules:
+.. Common business rules: 04 ESPD Common Other BR.sch
+.. Specific business rules for request applications: 04 ESPD Req Other BR.sch
+.. Business rules related to the procurer: 05 ESPD Req Procurer BR.sch
+.. Specific business rules for self-contained application type: 05 ESPD Req Self-contained BR.sch
+
+
+==== ESDP Response
+
+. XSD Validation: UBL-QualificationApplicationResponse-2.2-Pre-award.xsd
+
+. Code list validations. These are common for both, request and response:
+.. Values: 01 ESPD-codelist-values.cva
+.. Attributes: 01 ESPD Common CL Attributes.sch
+
+. Cardinality business rules: Cardinality Rules (02 ESPD Resp Cardinality BR.sch.sch)
+
+. Criterion taxonomy business rules:
+.. Common for both, request and response: 03 ESPD Common Criterion BR.sch
+.. Specific for response applications: 03 ESPD Resp Criterion BR.sch
+
+. Other business rules:
+.. Common business rules: 04 ESPD Common Other BR.sch
+.. Specific business rules for request applications: 04 ESPD Resp Other BR.sch
+.. Business rules related to the economic operator: 05 ESPD Resp EO BR.sch
+.. Specific business rules for self-contained application type: 05 ESPD Resp Self-contained BR.sch
+.. Specific business rules for economic operators registered in a pre-qualification system: 05 ESPD Resp Qualification BR.sch
+.. Specific business rules depending on the role: 05 ESPD Resp Role BR.sch
