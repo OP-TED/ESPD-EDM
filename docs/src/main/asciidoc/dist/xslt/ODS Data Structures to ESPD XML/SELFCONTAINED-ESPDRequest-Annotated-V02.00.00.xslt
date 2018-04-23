@@ -154,9 +154,17 @@
 		<xsl:call-template name="createTypeCode"/>
 	</xsl:template>
 	<xsl:template name="createDataTypeValue">
-		<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">
-			<xsl:value-of select="espd:getCellContent(., 22)"/>
-		</cbc:ValueDataTypeCode>
+		<xsl:variable name="captionValue" select="espd:getCellContent(., 22)"/>
+		<xsl:choose>
+			<xsl:when test="$captionValue = ''">
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">NONE</cbc:ValueDataTypeCode>
+			</xsl:when>
+			<xsl:when test="$captionValue != ''">
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">
+					<xsl:value-of select="$captionValue"/>
+				</cbc:ValueDataTypeCode>
+			</xsl:when>
+		</xsl:choose>		
 	</xsl:template>
 	<xsl:template name="createExpectedRequirementValue">
 		<xsl:for-each select="ancestor-or-self::table:table-row/table:table-cell">

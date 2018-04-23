@@ -37,7 +37,7 @@
 
 	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the procurement procedure; e.g. V = Award of contract without prior publication of a contract notice --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	
-	<cbc:ProcedureCode listID="ProcedureType"  listAgencyID="EU-COM-GROW" listVersionID="2.0.1"><xsl:value-of select="//./*[./name()='cbc:ProcedureCode']"/></cbc:ProcedureCode>
+	<cbc:ProcedureCode listID="ProcedureType" listAgencyID="EU-COM-OP" listVersionID="1.0"><xsl:value-of select="//./*[./name()='cbc:ProcedureCode']"/></cbc:ProcedureCode>
 
 	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the ESPD (REGULATED or SELFCONTAINED) --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>	
 	

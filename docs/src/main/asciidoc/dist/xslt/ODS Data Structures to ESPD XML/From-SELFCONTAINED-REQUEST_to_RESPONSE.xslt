@@ -44,7 +44,6 @@ xmlns:util="java:java.util.UUID">
 			<cac:TenderingCriterionResponse>
 					<xsl:call-template name="generateID"/>
 					<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1"><xsl:value-of select="cbc:ID"/></cbc:ValidatedCriterionPropertyID>
-					<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="2.0.1"/>
 					<xsl:call-template name="createPeriod"/>
 					<xsl:call-template name="createEvidenceSupplied"/>		
 					<xsl:call-template name="createResponseValue"/>
@@ -61,7 +60,7 @@ xmlns:util="java:java.util.UUID">
 	<xsl:template name="createEvidenceSupplied">
 		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>		
 		<xsl:if test="$propertyDataType = 'EVIDENCE_IDENTIFIER'">
-			<cac:EvidenceSupplied><cbc:ID>EVIDENCE-00001</cbc:ID></cac:EvidenceSupplied>	
+			<cac:EvidenceSupplied><cbc:ID schemeAgencyID="EU-COM-GROW">EVIDENCE-00001</cbc:ID></cac:EvidenceSupplied>	
 		</xsl:if>
 	</xsl:template>
 
