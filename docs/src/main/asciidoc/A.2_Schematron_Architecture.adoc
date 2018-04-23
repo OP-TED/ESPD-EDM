@@ -2,38 +2,32 @@
 [.text-left]
 === I.2 Schematron Architecture
 
-==== I.2.1 Architecture for Code List validation
+ISO Schematron executes the validations in two stages:
 
-image::A2_Architecture_CL.png[Architecture for code list validation, alt="Architecture for code list validation", align="center"]
-
-. Code list validations need as input source the https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist[Genericode] (GC) files as they contain information about:
-.. Values for each code list.
-.. Identifiers for each code list.
-
-.. Code list are defined in the files https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val/schematron/common/gc[Validation folder]
-
-. http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/1.0/[CVA] files
-.. CVA stands for Context / Value Association
-
-.. Specify associations: Between one or more elements of the XML and one or more code list (specified in the Genericodes).
-
-.. Declares which attributes of the XML contains the identification information of the Genericode.
-
-image::A2_Architecture_CVA.png[CVA files, alt="CVA file", align="center"]
-
-.. The implementation of the CVA file has the following structure:
-image::A2_Architecture_CVA_Example.png[CVA example, alt="CVA example", align="center"]
-
-
-==== I.2.2 Architecture for non-Code List validation
+. *Design and implementation of the SCH files*. 
+SCH stands for Schematron Schema and contains the set of rules to be validated within the XML document.
+. *Execution of the implemented validations* in the SCH files:
+.. Transformation of SCH files into XSLT files in order to be able to execute the validations against the XML.
+.. Execution of the validations using the XSLT files to get the final report.
 
 image::A2_Architecture_N-CL.png[Architecture for non-code list validation, alt="Architecture for non-code list validation", align="center"]
 
-. SCH files
-.. SCH stands for Schematron Schema
-
-.. What does it contain?
-... Set of rules specifying the context (the element(s) and/or attribute(s) which the assertions affect);
-... Each rule have a set of assertions with the tests that must be evaluated in the context. 
+==== What does SCH files contain?
+. *Set of rules* specifying the context (the element(s) and/or attribute(s) which the assertions affect);
+. Each rule have a *set of assertions* with the tests that must be evaluated in the context. 
 
 image::A2_Architecture_SCH.png[SCH file example, alt="SCH file example", align="center"]
+
+
+==== Execution
+
+As a basis of the implementation, it has been taken into account:
+
+. Schematron "skeleton" implementation in https://github.com/SCHEMATRON[XSLT]. 
+
+image::A3_AS_IS.png[Execution files, alt="Execution files", align="center"]
+
+
+This example describes the execution of the validation process using the http://saxon.sourceforge.net/[Saxon library] to execute XSLT files and the XSLT provided as a basis:
+
+image::A3_Batch.png[Execution of the validation process, alt="Execution of the validation process", align="center"]
