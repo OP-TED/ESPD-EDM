@@ -170,13 +170,14 @@
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedAmount>
 					</xsl:when>
+
 					<xsl:when test="$propertyDataType = 'IDENTIFIER' or $propertyDataType='EVIDENCE_IDENTIFIER'">
-						<cbc:ExpectedID>
+						<cbc:ExpectedID schemeAgencyID="EU-COM-GROW">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedID>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
-						<cbc:ExpectedCode>
+						<cbc:ExpectedCode listID="PleaseSelectTheCorrectOne" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>

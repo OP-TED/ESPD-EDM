@@ -94,6 +94,7 @@ xmlns:util="java:java.util.UUID">
 			</xsl:if>
 		</xsl:template>	
 
+
 	<xsl:template name="createResponseValue">
 		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>
 		<xsl:if test="$propertyDataType != 'PERIOD' and $propertyDataType != 'EVIDENCE_IDENTIFIER'">
@@ -107,10 +108,10 @@ xmlns:util="java:java.util.UUID">
 							<cbc:ResponseAmount currencyID="EUR">10000000</cbc:ResponseAmount>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'IDENTIFIER'">
-							<cbc:ResponseID>DUMMY_ID</cbc:ResponseID>
+							<cbc:ResponseID schemeAgencyID="EU-COM-GROW">DUMMY_ID</cbc:ResponseID>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
-							<cbc:ResponseCode schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">DUMMY_CODE</cbc:ResponseCode>
+							<cbc:ResponseCode listAgencyID="EU-COM-GROW" listVersionID="2.0.1" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
 							<cbc:ResponseCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2" listAgencyID="ISO" listVersionID="1.0">DUMMY_COUNTRY_CODE</cbc:ResponseCode>

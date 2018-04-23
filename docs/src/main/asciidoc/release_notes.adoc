@@ -2,19 +2,35 @@
 
 === v2.0.2 (30th April 2018)
 
+This releases encompasses the following updates:  
+
 * *XML Validation*:
 
-** Schematron files for the validation of ESPD-EDM v2.0.1 REGULATED XML instances have been published in folder "dist/val". Beware that this development is an ongoing work, as per February 2018.
+** Schematron files are provided for the validation of REGULATED and SELF-CONTAINED ESPD Request and Response XML instances, including the validation of the criteria. See folder link:./dist/val[dist/val] and documentation.  
 
-** The OASIS Genericode *.gc files have been moved from the "dist/cl/" folder into the "dist/val/schematron/common/" folder. 
+* **Code Lists**
+
+** The OASIS Genericode *.gc files have been moved from the "dist/cl/" folder into the "dist/val/schematron/common/" folder.
+
+** Genericode *.gc files are provided for the Criteria Taxonomy, see file "dist/val/schematron/common/gc/ESPD-CriteriaTaxonomy_V1.0.3.gc". 
 
 * *Compatibility between versions 1 and 2*:
 
-** Transformation artefacts are now available for the conversion of ESPD Request and Response from version 1.0.3 (see below) and REGULATED ESPD Request and Response XML files. See chapter "I.5 Forward compatibility" for details on how to execute these conversions.
+Transformation artefacts are now available for the conversion of ESPD Request and Response from version 1.0.3 (see below) and REGULATED ESPD V2.0.2, Request and Response. See chapter "I.5 Forward compatibility" for details on how to execute these conversions.
 
 === v1.0.3 (30th April 2018)
 
 
+* **CriteriaTaxonomy** 
+A new file containing the criteria, the taxonomy codes, the Criteria UUIDs and the each criterion data structures is provided. This new spread-sheet mimics the distribution of data structures in v2.0.2 REGULATED, thus facilitating the comparison between the version 1.0.3 and version 2.0.x data structures. 
+  
+Beware that the Codes and UUIDs of the Criteria have not been modified between major versions: versions 1.0.2-1.0.3, and 2.0.0 to 2.0.2 REGULATED and SELF-CONTAINED do use the same codes and UUIDs for each Criterion. However some minor corrections have been applied to the UUIDs of some data structures. Thus the UUIDs for the structures "Is this information available electronically" are now consistent; in the case of Convictions a new UUID is now used for the group containing the question ""; etc. 
+
+
+* **Code Lists**
+
+To ensure compatibility between versions 1 and 2, version 1.0.3 uses the code lists used also in version 2.0.2. See the spread-sheets in link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ESPD-CodeLists-V2.0.2.ods], and the Genericode *.gc files in link:./dist/val/schematron/gc[V2.0.2 Genericode files], which also includes a Genericod file for the link:/dist/val/schematron/gc/[Criteria Taxonomy]. 
+    
 
 
 === v2.0.1 (1st February 2018)
