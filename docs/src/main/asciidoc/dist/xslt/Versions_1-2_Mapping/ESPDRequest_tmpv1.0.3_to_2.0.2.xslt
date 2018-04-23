@@ -1,4 +1,4 @@
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:cbc-old="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:espd="urn:com:grow:espd:2.0.1" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:cac-old="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:util="java:java.util.UUID" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exclude-result-prefixes="cev-cbc ccv-cbc cbc-old cev ccv cac-old ext espd-req espd-cac" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../../../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:espd-cac="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonAggregateComponents-1" xmlns:cbc-old="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:espd="urn:com:grow:espd:2.0.2" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:cac-old="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:util="java:java.util.UUID" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exclude-result-prefixes="cev-cbc ccv-cbc cbc-old cev ccv cac-old ext espd-req espd-cac" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../../../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
 	<xsl:import href="./inc/common/RootElements.xslt"/>
 	<xsl:import href="./inc/common/ContractingAuthorityData.xslt"/>
 	<xsl:import href="./inc/common/ProcurementProjectLot.xslt"/>
@@ -11,17 +11,17 @@
 	<!--Template for non-existing TenderingCriterionProperty to ensure Semantics Interoperability-->
 	<xsl:template name="TenderingCriterionPropertyEmptyCaption">
 		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
 				<xsl:value-of select="util:toString(util:randomUUID())"/>
 			</cbc:ID>
 			<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
-			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">CAPTION</cbc:TypeCode>
-			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">NONE</cbc:ValueDataTypeCode>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CAPTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">NONE</cbc:ValueDataTypeCode>
 		</cac:TenderingCriterionProperty>
 	</xsl:template>
 	<xsl:template match="/">
 		<!-- Transform the root node to 2.0.0 Mapping structure  -->
-		<QualificationApplicationRequest xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:2.0.1" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:util="java:java.util.UUID" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<QualificationApplicationRequest xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:2.0.2" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:util="java:java.util.UUID" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 			<!-- Since we add the root elements externally, start to apply templates from ccv:Criterion -->
 			<xsl:call-template name="RootElements"/>
 			<xsl:call-template name="ContractingAuthorityData"/>
@@ -33,13 +33,13 @@
 	</xsl:template>
 	<!-- Match with each elements to apply the mapping changes and create a structure to copy or recreate the values-->
 	<xsl:template match="ccv:Criterion/cbc-old:ID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
 			<!-- Select the values from v1.0.2 and apply them into 2.0.0 -->
 			<xsl:apply-templates select="node()"/>
 		</cbc:ID>
 	</xsl:template>
 	<xsl:template match="ccv:Criterion/cbc-old:TypeCode">
-		<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">
+		<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
 			<xsl:apply-templates select="node()"/>
 		</cbc:CriterionTypeCode>
 	</xsl:template>
@@ -59,7 +59,7 @@
 	<!--Legislation Implementation-->
 	<xsl:template match="ccv:LegislationReference">
 		<cac:Legislation>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
 				<xsl:value-of select="util:toString(util:randomUUID())"/>
 			</cbc:ID>
 			<xsl:apply-templates/>
@@ -90,7 +90,7 @@
 			<xsl:apply-templates select="node()"/>
 		</cbc:URI>
 		<cac:Language>
-			<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="2.0.1">EN</cbc:LocaleCode>
+			<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="2.0.2">EN</cbc:LocaleCode>
 		</cac:Language>
 	</xsl:template>
 	<!--All the Criterion implementations start here ! -->
@@ -162,19 +162,19 @@
 		</cbc:ID>
 	</xsl:template>
 	<xsl:template match="ccv:RequirementGroup/cbc-old:ID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
 			<xsl:apply-templates select="node()"/>
 		</cbc:ID>
 		<!-- Answers are implemented in the way of 2.0.2 structure -->
 		<xsl:choose>
 			<xsl:when test="parent::node()/ccv:RequirementGroup[@pi = 'GROUP_FULFILLED.ON_TRUE']">
-				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
 			</xsl:when>
 			<xsl:when test="parent::node()/ccv:RequirementGroup[@pi = 'GROUP_FULFILLED.ON_FALSE']">
-				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ONFALSE</cbc:PropertyGroupTypeCode>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONFALSE</cbc:PropertyGroupTypeCode>
 			</xsl:when>
 			<xsl:otherwise>
-				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ON*</cbc:PropertyGroupTypeCode>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
 			</xsl:otherwise>
 		</xsl:choose>
 		<xsl:if test="not(following-sibling::ccv:Requirement)">
@@ -184,8 +184,8 @@
 	<xsl:template match="ccv:Requirement">
 		<cac:TenderingCriterionProperty>
 			<xsl:apply-templates select="node()"/>
-			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">QUESTION</cbc:TypeCode>
-			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
 				<!-- EVIDENCE_URL is no longer in use in 2.0.2-->
 				<xsl:choose>
 					<xsl:when test="@responseDataType = 'EVIDENCE_URL'">
@@ -202,7 +202,7 @@
 		</cac:TenderingCriterionProperty>
 	</xsl:template>
 	<xsl:template match="ccv:Requirement/cbc-old:ID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
 			<!-- We are not producing UUID automatically in 2.0.2 since it is already changed in 1.0.2 as a unique identifier in the new version of 1.0.3 -->
 			<xsl:value-of select="node()"/>
 		</cbc:ID>
@@ -227,18 +227,18 @@
 	</xsl:template>
 	<!-- Select the values from v1.0.2 and apply them into 2.0.0 -->
 	<xsl:template match="ccv:RequirementGroup[@pi]/cbc-old:ID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
 			<xsl:apply-templates select="node()"/>
 		</cbc:ID>
 		<xsl:choose>
 			<xsl:when test="parent::node()/ccv:RequirementGroup[@pi = 'GROUP_FULFILLED.ON_TRUE']">
-				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
 			</xsl:when>
 			<xsl:when test="parent::node()/ccv:RequirementGroup[@pi = 'GROUP_FULFILLED.ON_FALSE']">
-				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ONFALSE</cbc:PropertyGroupTypeCode>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONFALSE</cbc:PropertyGroupTypeCode>
 			</xsl:when>
 		<xsl:otherwise>
-				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ON*</cbc:PropertyGroupTypeCode>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
 		</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
