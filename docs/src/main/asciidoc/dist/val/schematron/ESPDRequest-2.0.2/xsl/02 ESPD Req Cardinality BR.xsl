@@ -197,12 +197,13 @@
 	<!--RULE -->
 <xsl:template match="espd:QualificationApplicationRequest" priority="1000" mode="M5">
 
-		<!--ASSERT error-->
+		<!--ASSERT -->
 <xsl:choose>
          <xsl:when test="(cbc:UBLVersionID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:UBLVersionID)">
-               <xsl:attribute name="role">error</xsl:attribute>
+               <xsl:attribute name="id">BR-OTH-04-01</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -211,12 +212,13 @@
          </xsl:otherwise>
       </xsl:choose>
 
-		    <!--ASSERT error-->
+		    <!--ASSERT -->
 <xsl:choose>
          <xsl:when test="(cbc:CustomizationID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:CustomizationID)">
-               <xsl:attribute name="role">error</xsl:attribute>
+               <xsl:attribute name="id">BR-OTH-04-02</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -225,12 +227,13 @@
          </xsl:otherwise>
       </xsl:choose>
 
-		    <!--ASSERT error-->
+		    <!--ASSERT -->
 <xsl:choose>
          <xsl:when test="(cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID)">
-               <xsl:attribute name="role">error</xsl:attribute>
+               <xsl:attribute name="id">BR-OTH-04-03</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -239,12 +242,13 @@
          </xsl:otherwise>
       </xsl:choose>
 
-		    <!--ASSERT error-->
+		    <!--ASSERT -->
 <xsl:choose>
          <xsl:when test="(cbc:UUID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:UUID)">
-               <xsl:attribute name="role">error</xsl:attribute>
+               <xsl:attribute name="id">BR-OTH-04-04</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -253,13 +257,14 @@
          </xsl:otherwise>
       </xsl:choose>
 
-		    <!--ASSERT error-->
+		    <!--ASSERT -->
 <xsl:choose>
          <xsl:when test="(cbc:QualificationApplicationTypeCode)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                                 test="(cbc:QualificationApplicationTypeCode)">
-               <xsl:attribute name="role">error</xsl:attribute>
+               <xsl:attribute name="id">BR-OTH-04-05</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -268,12 +273,13 @@
          </xsl:otherwise>
       </xsl:choose>
 
-		    <!--ASSERT error-->
+		    <!--ASSERT -->
 <xsl:choose>
          <xsl:when test="(cac:TenderingCriterion)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:TenderingCriterion)">
-               <xsl:attribute name="role">error</xsl:attribute>
+               <xsl:attribute name="id">BR-OTH-04-06</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>

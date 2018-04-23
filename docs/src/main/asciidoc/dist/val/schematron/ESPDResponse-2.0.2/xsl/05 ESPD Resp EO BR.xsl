@@ -9,7 +9,7 @@
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
                 xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-                xmlns:espd="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+                xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter"/>
@@ -163,7 +163,7 @@
    <!--SCHEMA SETUP-->
 <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                              title="ESPD Response Cardinality Business Rules"
+                              title="ESPD Response Economic Operator Business Rules"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -175,13 +175,14 @@
          <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonBasic" prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                                              prefix="ext"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" prefix="espd"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+                                             prefix="udt"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
             </xsl:attribute>
-            <xsl:attribute name="id">BR-RESP-CARD</xsl:attribute>
-            <xsl:attribute name="name">BR-RESP-CARD</xsl:attribute>
+            <xsl:attribute name="id">BR-RESP-EO</xsl:attribute>
+            <xsl:attribute name="name">BR-RESP-EO</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
          <xsl:apply-templates select="/" mode="M5"/>
@@ -189,117 +190,244 @@
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Response Cardinality Business Rules</svrl:text>
+<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Response Economic Operator Business Rules</svrl:text>
 
-   <!--PATTERN BR-RESP-CARD-->
+   <!--PATTERN BR-RESP-EO-->
 
 
 	<!--RULE -->
-<xsl:template match="espd:QualificationApplicationResponse" priority="1000" mode="M5">
+<xsl:template match="cac:EconomicOperatorParty" priority="1003" mode="M5">
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(cbc:UBLVersionID)"/>
+         <xsl:when test="(cac:QualifyingParty)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:UBLVersionID)">
-               <xsl:attribute name="id">BR-OTH-04-01</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:QualifyingParty)">
+               <xsl:attribute name="id">BR-RESP-10-01</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>The element '/cbc:UBLVersionID' is mandatory.</svrl:text>
+               <svrl:text>The characteristics qualifying an economic operator ('/cac:EconomicOperatorParty/cac:QualifyingParty') is mandatory.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(cbc:CustomizationID)"/>
+         <xsl:when test="(cac:EconomicOperatorRole)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:CustomizationID)">
-               <xsl:attribute name="id">BR-OTH-04-02</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:EconomicOperatorRole)">
+               <xsl:attribute name="id">BR-RESP-10-02</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>The element '/cbc:CustomizationID' is mandatory.</svrl:text>
+               <svrl:text>The function of the economic operator ('/cac:EconomicOperatorParty/cac:EconomicOperatorRole') is mandatory.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(cbc:ID)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID)">
-               <xsl:attribute name="id">BR-OTH-04-03</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The element '/cbc:ID' is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cbc:UUID)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:UUID)">
-               <xsl:attribute name="id">BR-OTH-04-04</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The element '/cbc:UUID' is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cbc:QualificationApplicationTypeCode)"/>
+         <xsl:when test="(cac:EconomicOperatorRole/cbc:RoleCode)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cbc:QualificationApplicationTypeCode)">
-               <xsl:attribute name="id">BR-OTH-04-05</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
+                                test="(cac:EconomicOperatorRole/cbc:RoleCode)">
+               <xsl:attribute name="id">BR-RESP-10-03</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>The element '/cbc:QualificationApplicationTypeCode' is mandatory.</svrl:text>
+               <svrl:text>The role of the economic operator ('/cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode') is mandatory.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
 
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cac:TenderingCriterion)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:TenderingCriterion)">
-               <xsl:attribute name="id">BR-OTH-04-06</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The element '/cac:TenderingCriterion' is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
+	  <!--RULE -->
+<xsl:template match="cac:EconomicOperatorParty/cac:Party" priority="1002" mode="M5">
 
-		    <!--ASSERT -->
+		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(cac:TenderingCriterionResponse)"/>
+         <xsl:when test="(cac:PartyIdentification/cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cac:TenderingCriterionResponse)">
-               <xsl:attribute name="id">BR-OTH-04-07</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
+                                test="(cac:PartyIdentification/cbc:ID)">
+               <xsl:attribute name="id">BR-RESP-10-04</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>The element '/cac:TenderingCriterionResponse' is mandatory.</svrl:text>
+               <svrl:text>An identifier that identifies the economic operator ('/cac:EconomicOperatorParty/cac:Party/cac:PartyIdentification/cbc:ID') is mandatory.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PartyName/cbc:Name)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:PartyName/cbc:Name)">
+               <xsl:attribute name="id">BR-RESP-10-05</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The name of the economic operator ('/cac:EconomicOperatorParty/cac:Party/cac:PartyName/cbc:Name') is mandatory.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cbc:IndustryClassificationCode)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cbc:IndustryClassificationCode)">
+               <xsl:attribute name="id">BR-RESP-10-06</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The size of the company ('/cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode') is mandatory.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)">
+               <xsl:attribute name="id">BR-RESP-10-07</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The size of the company ('/cac:EconomicOperatorParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode') is mandatory.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cac:ServiceProviderParty/cac:Party" priority="1001" mode="M5">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cbc:EndpointID/@schemeID)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:EndpointID/@schemeID)">
+               <xsl:attribute name="id">BR-RESP-10-08</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>An end-point identifier MUST have a scheme identifier attribute ('/cac:ServiceProviderParty/cac:Party/cbc:EndpointID/@schemeID').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PartyName/cbc:Name)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:PartyName/cbc:Name)">
+               <xsl:attribute name="id">BR-RESP-10-09</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The name of the service provider ('/cac:ServiceProviderParty/cac:Party/cac:PartyName/cbc:Name') must always be specified.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)">
+               <xsl:attribute name="id">BR-RESP-10-10</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The country of the service provider ('/cac:ServiceProviderParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode') must always be specified.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PartyIdentification/cbc:ID)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:PartyIdentification/cbc:ID)">
+               <xsl:attribute name="id">BR-RESP-10-11</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>An identifier for the service provider ('/cac:ServiceProviderParty/cac:Party/cac:PartyIdentification/cbc:ID') must always be provided.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cac:PowerOfAttorney" priority="1000" mode="M5">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:AgentParty/cac:Person/cbc:FirstName)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:AgentParty/cac:Person/cbc:FirstName)">
+               <xsl:attribute name="id">BR-RESP-20-01</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Name of the natural person ('/cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FirstName') must always be provided.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:AgentParty/cac:Person/cbc:FamilyName)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:AgentParty/cac:Person/cbc:FamilyName)">
+               <xsl:attribute name="id">BR-RESP-20-02</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Family Name of the natural person ('/cac:PowerOfAttorney/cac:AgentParty/cac:Person/cbc:FamilyName') must always be provided.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:AgentParty/cac:Person/cac:ResidenceAddress/cac:Country/cbc:IdentificationCode)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:AgentParty/cac:Person/cac:ResidenceAddress/cac:Country/cbc:IdentificationCode)">
+               <xsl:attribute name="id">BR-RESP-20-03</xsl:attribute>
+               <xsl:attribute name="flag">error</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>A code that identifies the country ('/cac:PowerOfAttorney/cac:AgentParty/cac:Person/cac:ResidenceAddress/cac:Country/cbc:IdentificationCode') must always be provided.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

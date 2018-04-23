@@ -9,7 +9,7 @@
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
                 xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-                xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+                xmlns:espd="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter"/>
@@ -33,9 +33,9 @@
 
 
 <!--KEYS AND FUNCTIONS-->
+<xsl:key name="EOrole" match="cbc:RoleCode" use="."/>
 
-
-<!--DEFAULT RULES-->
+   <!--DEFAULT RULES-->
 
 
 <!--MODE: SCHEMATRON-SELECT-FULL-PATH-->
@@ -163,7 +163,7 @@
    <!--SCHEMA SETUP-->
 <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                              title="ESPD Response Other Business Rules"
+                              title="ESPD Response pre-qualification system Business Rules"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -175,63 +175,129 @@
          <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonBasic" prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                                              prefix="ext"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
-                                             prefix="udt"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" prefix="espd"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
             </xsl:attribute>
-            <xsl:attribute name="id">BR-RESP-OTHER</xsl:attribute>
-            <xsl:attribute name="name">BR-RESP-OTHER</xsl:attribute>
+            <xsl:attribute name="id">BR-RESP-QUAL</xsl:attribute>
+            <xsl:attribute name="name">BR-RESP-QUAL</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M5"/>
+         <xsl:apply-templates select="/" mode="M6"/>
       </svrl:schematron-output>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Response Other Business Rules</svrl:text>
+<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Response pre-qualification system Business Rules</svrl:text>
 
-   <!--PATTERN BR-RESP-OTHER-->
+   <!--PATTERN BR-RESP-QUAL-->
 
 
 	<!--RULE -->
-<xsl:template match="cbc:CustomizationID" priority="1000" mode="M5">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'">
-               <xsl:attribute name="id">BR-OTH-06-01</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>For the ESPD customization of UBL ('/cbc:CustomizationID') we use the value “urn:www.cenbii.eu:transaction:biitrdm092:ver3.0”.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
+<xsl:template match="espd:QualificationApplicationResponse" priority="1000" mode="M6">
+      <xsl:variable name="isPQS"
+                    select="(cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cac:PartyIdentification/cbc:ID)"/>
+      <xsl:variable name="isOENRON" select="count(key('EOrole', 'OENRON'))=1"/>
+      <xsl:variable name="allResponses"
+                    select="cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID"/>
+      <xsl:variable name="exclusionCriteria"
+                    select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
+      <xsl:variable name="exclusionResponses"
+                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses]]/cbc:CriterionTypeCode"/>
+      <xsl:variable name="exclusionNotResponses"
+                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses)]]/cbc:CriterionTypeCode/text()"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="@schemeAgencyID='CEN-BII'"/>
+         <xsl:when test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = count($exclusionResponses)) )"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID='CEN-BII'">
-               <xsl:attribute name="id">BR-OTH-06-02</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = count($exclusionResponses)) )">
+               <xsl:attribute name="id">BR-RESP-30</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.</svrl:text>
+               <svrl:text>Information about compliance of exclusion grounds MUST be provided. The following exclusion criterion are not provided: <xsl:text/>
+                  <xsl:value-of select="$exclusionNotResponses"/>
+                  <xsl:text/>
+               </svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:variable name="selectionCriteria"
+                    select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.')]"/>
+      <xsl:variable name="selectionResponses"
+                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses]]/cbc:CriterionTypeCode"/>
+      <xsl:variable name="selectionNotResponses"
+                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses)]]/cbc:CriterionTypeCode"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = count($selectionResponses)) )"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = count($selectionResponses)) )">
+               <xsl:attribute name="id">BR-RESP-40</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <xsl:text/>
+                  <xsl:value-of select="$selectionNotResponses"/>
+                  <xsl:text/>
+               </svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:variable name="hasServiceProvider"
+                    select="(cac:ContractingParty/cac:Party/cac:ServiceProviderParty)"/>
+      <xsl:variable name="isSelfcontained"
+                    select="(cbc:QualificationApplicationTypeCode = 'SELFCONTAINED')"/>
+      <xsl:variable name="testS10"
+                    select="$isPQS and not($isOENRON) and $hasServiceProvider and $isSelfcontained"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="not($testS10) or ($testS10 and (count($selectionCriteria) = count($selectionResponses)) )"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="not($testS10) or ($testS10 and (count($selectionCriteria) = count($selectionResponses)) )">
+               <xsl:attribute name="id">BR-RESP-80-S10</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <xsl:text/>
+                  <xsl:value-of select="$selectionNotResponses"/>
+                  <xsl:text/>
+               </svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:variable name="testS20"
+                    select="$isPQS and not($isOENRON) and not($hasServiceProvider) and $isSelfcontained"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="not($testS20) or ($testS20 and (count($selectionResponses) = 0) )"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="not($testS20) or ($testS20 and (count($selectionResponses) = 0) )">
+               <xsl:attribute name="id">BR-RESP-80-S20</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>When the pre-qualification system the EO is registered on covers all the selection criteria, information about compliance of selection criteria IS NOT required.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M5"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M5">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   <xsl:template match="text()" priority="-1" mode="M6"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M6">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 </xsl:stylesheet>

@@ -10,6 +10,7 @@
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
                 xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
                 xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+                xmlns:espd="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter"/>
@@ -163,7 +164,7 @@
    <!--SCHEMA SETUP-->
 <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                              title="ESPD Response Other Business Rules"
+                              title="ESPD Request Procurer Business Rules"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -177,61 +178,153 @@
                                              prefix="ext"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
                                              prefix="udt"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" prefix="espd"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
             </xsl:attribute>
-            <xsl:attribute name="id">BR-RESP-OTHER</xsl:attribute>
-            <xsl:attribute name="name">BR-RESP-OTHER</xsl:attribute>
+            <xsl:attribute name="id">BR-REQ-PROC</xsl:attribute>
+            <xsl:attribute name="name">BR-REQ-PROC</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M5"/>
+         <xsl:apply-templates select="/" mode="M6"/>
       </svrl:schematron-output>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Response Other Business Rules</svrl:text>
+<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Procurer Business Rules</svrl:text>
 
-   <!--PATTERN BR-RESP-OTHER-->
+   <!--PATTERN BR-REQ-PROC-->
 
 
 	<!--RULE -->
-<xsl:template match="cbc:CustomizationID" priority="1000" mode="M5">
+<xsl:template match="espd:QualificationApplicationRequest" priority="1002" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'"/>
+         <xsl:when test="count(cac:ContractingParty) = 1"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'">
-               <xsl:attribute name="id">BR-OTH-06-01</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
+                                test="count(cac:ContractingParty) = 1">
+               <xsl:attribute name="id">BR-REQ-20-01</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>For the ESPD customization of UBL ('/cbc:CustomizationID') we use the value “urn:www.cenbii.eu:transaction:biitrdm092:ver3.0”.</svrl:text>
+               <svrl:text>The ESPD only expects data about one buyer ('/cac:ContractingParty'). There are currently '<xsl:text/>
+                  <xsl:value-of select="count(cac:ContractingParty)"/>
+                  <xsl:text/>' buyers.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cac:ContractingParty/cac:Party" priority="1001" mode="M6">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PartyName/cbc:Name)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:PartyName/cbc:Name)">
+               <xsl:attribute name="id">BR-REQ-20-02</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The use of the official name of the contracting body ('/cac:ContractingParty/cac:Party/cac:PartyName/cbc:Name') is mandatory.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="@schemeAgencyID='CEN-BII'"/>
+         <xsl:when test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID='CEN-BII'">
-               <xsl:attribute name="id">BR-OTH-06-02</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)">
+               <xsl:attribute name="id">BR-REQ-20-03</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.</svrl:text>
+               <svrl:text>The country of the contracting body ('/cac:ContractingParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode') must always be specified.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PartyIdentification/cbc:ID)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:PartyIdentification/cbc:ID)">
+               <xsl:attribute name="id">BR-REQ-20-04</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>At least one identifier ('cac:ContractingParty/cac:Party/cac:PartyIdentification/cbc:ID') should be specified.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M5"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M5">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+
+	  <!--RULE -->
+<xsl:template match="cac:ServiceProviderParty/cac:Party" priority="1000" mode="M6">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PartyIdentification/cbc:ID)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:PartyIdentification/cbc:ID)">
+               <xsl:attribute name="id">BR-REQ-20-05</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>An identifier for the service provider ('/cac:ServiceProviderParty/cac:Party/cac:PartyIdentification/cbc:ID') must always be provided.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PartyName/cbc:Name)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:PartyName/cbc:Name)">
+               <xsl:attribute name="id">BR-REQ-20-06</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The name of the service provider ('/cac:ServiceProviderParty/cac:Party/cac:PartyName/cbc:Name') must always be specified.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)">
+               <xsl:attribute name="id">BR-REQ-20-07</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The country of the service provider ('/cac:ServiceProviderParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode') must always be specified.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M6"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M6">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 </xsl:stylesheet>

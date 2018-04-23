@@ -16,18 +16,13 @@
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-OTHER">
-	
-		<rule context="espd:QualificationApplicationRequest">
-			<!-- Information about the procurement procedure MUST be provided. -->
-			<assert test="(cac:ProcurementProject)" role="error">Information about the procurement procedure ('/cacProcurementProject') MUST be provided.</assert>
-		</rule>
 		
 		<rule context="cbc:CustomizationID">
-			<!-- For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”. -->
-			<assert test="text()='urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'" role="error">For the ESPD customization of UBL ('/cbc:CustomizationID'), the value is “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”.</assert>
+			<!-- BR-OTH-06: For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”. -->
+			<assert test="text()='urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'" role="fatal" id="BR-OTH-06-01">The ESPD customization of UBL ('/cbc:CustomizationID = <value-of select="."/>') must use the value 'urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'.</assert>
 			
-			<!-- Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute. -->
-			<assert test="@schemeAgencyID='CEN-BII'" role="error">Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.</assert>
+			<!-- BR-OTH-06: Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute. -->
+			<assert test="@schemeAgencyID='CEN-BII'" role="fatal" id="BR-OTH-06-02">'/cbc:CustomizationID/@schemeAgencyID' must use the value "CEN-BII" (/cbc:CustomizationID/@schemeAgencyID = '<value-of select="@schemeAgencyID"/>').</assert>
 		</rule>
 		
 	</pattern>

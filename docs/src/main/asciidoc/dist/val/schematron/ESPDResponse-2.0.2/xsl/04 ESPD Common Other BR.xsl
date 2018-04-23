@@ -197,7 +197,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="cac:AdditionalDocumentReference" priority="1006" mode="M6">
+<xsl:template match="cac:AdditionalDocumentReference" priority="1005" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -205,6 +205,7 @@
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                                 test="(count(cbc:ID)=0) or not(cbc:DocumentTypeCode/text() = 'TED_CN') or ((count(cbc:ID))=1 and fn:matches(normalize-space(cbc:ID/text()), '^[0-9]{4}/S [0-9]{3}\-[0-9]{6}$'))">
+               <xsl:attribute name="id">BR-COM-10-01</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -222,6 +223,7 @@
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                                 test="(cbc:DocumentTypeCode/text() = 'TED_CN' and (count(cac:Attachment/cac:ExternalReference/cbc:Description) = 2)) or not(cbc:DocumentTypeCode/text() = 'TED_CN')">
+               <xsl:attribute name="id">BR-COM-10-02</xsl:attribute>
                <xsl:attribute name="flag">warning</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -238,6 +240,7 @@
          <xsl:when test="(cbc:DocumentTypeCode)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:DocumentTypeCode)">
+               <xsl:attribute name="id">BR-COM-10-03</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -252,13 +255,14 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:UBLVersionID" priority="1005" mode="M6">
+<xsl:template match="cbc:UBLVersionID" priority="1004" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
          <xsl:when test="text()='2.2'"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="text()='2.2'">
+               <xsl:attribute name="id">BR-OTH-05-01</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -276,6 +280,7 @@
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                                 test="@schemeAgencyID = 'OASIS-UBL-TC'">
+               <xsl:attribute name="id">BR-OTH-05-02</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -290,13 +295,14 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ProfileID" priority="1004" mode="M6">
+<xsl:template match="cbc:ProfileID" priority="1003" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
          <xsl:when test="text()='4.1'"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="text()='4.1'">
+               <xsl:attribute name="id">BR-OTH-07-01</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -313,6 +319,7 @@
          <xsl:when test="@schemeAgencyID = 'CEN-BII'"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID = 'CEN-BII'">
+               <xsl:attribute name="id">BR-OTH-07-02</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -327,40 +334,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:ProcurementProject" priority="1003" mode="M6">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cbc:Name)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:Name)">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The title of  the procurement procedure is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cbc:Description)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:Description)">
-               <xsl:attribute name="flag">warning</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The short description of  the procurement procedure is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cbc:ExpectedCode | cbc:IdentificationCode | cbc:CriterionTypeCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode"
+<xsl:template match="cbc:ExpectedCode | cbc:IdentificationCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode"
                  priority="1002"
                  mode="M6">
 
@@ -369,6 +343,7 @@
          <xsl:when test="@listID"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listID">
+               <xsl:attribute name="id">BR-OTH-01-10</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -385,6 +360,7 @@
          <xsl:when test="@listAgencyID"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listAgencyID">
+               <xsl:attribute name="id">BR-OTH-01-20</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -401,6 +377,7 @@
          <xsl:when test="@listVersionID"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listVersionID">
+               <xsl:attribute name="id">BR-OTH-01-30</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -408,6 +385,84 @@
                <svrl:text>The attribute listVersionID is mandatory for the element: '<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:EvaluationMethodTypeCode | cbc:PropertyGroupTypeCode |    cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode | cbc:CriterionTypeCode | cbc:WeightingTypeCode"
+                 priority="1001"
+                 mode="M6">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="@listID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listID">
+               <xsl:attribute name="id">BR-OTH-01-11</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The attribute listID is mandatory for the element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="@listAgencyID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listAgencyID">
+               <xsl:attribute name="id">BR-OTH-01-21</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The attribute listAgencyID is mandatory for the element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="@listVersionID"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listVersionID">
+               <xsl:attribute name="id">BR-OTH-01-31</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The attribute listVersionID is mandatory for the element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="starts-with(@listVersionID, '2.') or starts-with(@listVersionID, '02.')"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="starts-with(@listVersionID, '2.') or starts-with(@listVersionID, '02.')">
+               <xsl:attribute name="id">BR-OTH-01-40</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>List version identifier '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>/listVersionID = <xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>' is not correct. ListVersionID should be '2.x.y' or '02.xx.yy'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -416,95 +471,23 @@
 
 	  <!--RULE -->
 <xsl:template match="ext:ExtensionAgencyID | ext:ExtensionVersionID | cbc:AccountID| cbc:AdditionalAccountID|cbc:AgencyID| cbc:AircraftID| cbc:AttributeID| cbc:AwardID| cbc:AwardingCriterionID| cbc:BarcodeSymbologyID| cbc:BrokerAssignedID| cbc:BusinessClassificationEvidenceID|    cbc:BusinessIdentityEvidenceID| cbc:BuyerEventID| cbc:CV2ID| cbc:CarrierAssignedID| cbc:ChipApplicationID| cbc:CompanyID| cbc:ConsigneeAssignedID| cbc:ConsignorAssignedID| cbc:ConsumptionID| cbc:ConsumptionReportID| cbc:ContractFolderID| cbc:ContractedCarrierAssignedID|   cbc:CustomerAssignedAccountID| cbc:CustomizationID| cbc:DocumentID| cbc:EndpointID| cbc:ExchangeMarketID| cbc:ExpectedID| cbc:ExtendedID| cbc:FormatID| cbc:FreightForwarderAssignedID| cbc:HazardClassID| cbc:ID| cbc:IdentificationID| cbc:ImmobilizationCertificateID|   cbc:InstructionID| cbc:IssueNumberID| cbc:IssuerID| cbc:JourneyID| cbc:LanguageID| cbc:LicensePlateID| cbc:LineID| cbc:LoadingSequenceID| cbc:LocationID| cbc:LogoReferenceID| cbc:LotNumberID| cbc:LowerOrangeHazardPlacardID| cbc:MarkingID| cbc:MinimumImprovementBid|   cbc:NationalityID| cbc:NetworkID| cbc:OID| cbc:OpenTenderID| cbc:OriginalContractingSystemID| cbc:OriginalJobID| cbc:ParentDocumentID| cbc:ParentDocumentLineReferenceID| cbc:ParentDocumentVersionID| cbc:ParticipantID| cbc:PaymentID| cbc:PaymentMeansID|   cbc:PerformingCarrierAssignedID| cbc:PrepaidPaymentReferenceID| cbc:PreviousJobID| cbc:PreviousVersionID| cbc:PrimaryAccountNumberID| cbc:ProductTraceID| cbc:ProfileExecutionID| cbc:ProfileID| cbc:ProtocolID| cbc:RadioCallSignID| cbc:RailCarID| cbc:ReferenceID|    cbc:ReferencedConsignmentID| cbc:RegistrationID| cbc:RegistrationNationalityID| cbc:ReleaseID| cbc:RequestForQuotationLineID| cbc:RequiredCustomsID| cbc:ResponseID| cbc:RevisedForecastLineID| cbc:SalesOrderID| cbc:SalesOrderLineID| cbc:SecurityID| cbc:SellerEventID|   cbc:SequenceID| cbc:SequenceNumberID| cbc:SerialID| cbc:ShippingOrderID| cbc:SignatureID| cbc:SpecificationID| cbc:SubscriberID| cbc:SuccessiveSequenceID| cbc:SupplierAssignedAccountID| cbc:TenderEnvelopeID| cbc:TraceID| cbc:TrackingID| cbc:TrainID|    cbc:TransportExecutionPlanReferenceID| cbc:UBLVersionID| cbc:UUID| cbc:UpperOrangeHazardPlacardID| cbc:ValidatedCriterionPropertyID| cbc:ValidatorID| cbc:VariantID| cbc:VersionID| cbc:VesselID| cbc:WeighingDeviceID"
-                 priority="1001"
+                 priority="1000"
                  mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="@schemeAgencyID"/>
+         <xsl:when test="(@schemeAgencyID) and normalize-space(@schemeAgencyID) != ''"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(@schemeAgencyID) and normalize-space(@schemeAgencyID) != ''">
+               <xsl:attribute name="id">BR-OTH-02</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>The attribute schemeAgencyID is mandatory for the element: '<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:EvaluationMethodTypeCode | cbc:PropertyGroupTypeCode |   cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode"
-                 priority="1000"
-                 mode="M6">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="@listID"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listID">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The attribute listID is mandatory for the element: '<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="@listAgencyID"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listAgencyID">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The attribute listAgencyID is mandatory for the element: '<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="@listVersionID"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@listVersionID">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The attribute listVersionID is mandatory for the element: '<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="starts-with(@listVersionID, '2.')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="starts-with(@listVersionID, '2.')">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Invalid value: '<xsl:text/>
-                  <xsl:value-of select="@listVersionID"/>
-                  <xsl:text/>' for the attribute 'listVersionID'.<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>').</svrl:text>
+                  <xsl:text/>', and it should not be empty.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

@@ -9,7 +9,6 @@
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
                 xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-                xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
                 xmlns:espd="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
@@ -164,7 +163,7 @@
    <!--SCHEMA SETUP-->
 <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                              title="ESPD Request Procurer Business Rules"
+                              title="ESPD Request Criterion Business Rules"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -176,148 +175,71 @@
          <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonBasic" prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                                              prefix="ext"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
-                                             prefix="udt"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" prefix="espd"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
             </xsl:attribute>
-            <xsl:attribute name="id">BR-REQ-PROC</xsl:attribute>
-            <xsl:attribute name="name">BR-REQ-PROC</xsl:attribute>
+            <xsl:attribute name="id">BR-REQ-CR</xsl:attribute>
+            <xsl:attribute name="name">BR-REQ-CR</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M6"/>
+         <xsl:apply-templates select="/" mode="M5"/>
       </svrl:schematron-output>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Procurer Business Rules</svrl:text>
+<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Criterion Business Rules</svrl:text>
 
-   <!--PATTERN BR-REQ-PROC-->
+   <!--PATTERN BR-REQ-CR-->
 
 
 	<!--RULE -->
-<xsl:template match="espd:QualificationApplicationRequest" priority="1002" mode="M6">
+<xsl:template match="espd:QualificationApplicationRequest" priority="1000" mode="M5">
+      <xsl:variable name="current_Exclusion"
+                    select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
+      <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
+      <xsl:variable name="ElementUUID_Exclusion"
+                    select="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.2.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]      else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.2.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
 
-		<!--ASSERT warning-->
+		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="count(cac:ContractingParty) = 1"/>
+         <xsl:when test="count($ElementUUID_Exclusion) &lt;= count($current_Exclusion)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="count(cac:ContractingParty) = 1">
-               <xsl:attribute name="role">warning</xsl:attribute>
+                                test="count($ElementUUID_Exclusion) &lt;= count($current_Exclusion)">
+               <xsl:attribute name="id">BR-REQ-30</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>The ESPD only expects data about one buyer. There are currently '<xsl:text/>
-                  <xsl:value-of select="count(cac:ContractingParty)"/>
-                  <xsl:text/>' buyers.</svrl:text>
+               <svrl:text>Exclusion criteria MUST be retrieved from e-Certis. The current qualification application request has '<xsl:text/>
+                  <xsl:value-of select="count($ElementUUID_Exclusion) - count($current_Exclusion)"/>
+                  <xsl:text/>' exclusion criterion missing.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+      <xsl:variable name="current_Selection"
+                    select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.')]"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="count($current_Selection) != 0"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="count($current_Selection) != 0">
+               <xsl:attribute name="id">BR-REQ-40</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The current ESPD request does not provide selection criteria.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
    </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:ContractingParty/cac:Party" priority="1001" mode="M6">
-
-		<!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="(cac:PartyName/cbc:Name)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:PartyName/cbc:Name)">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The use of the official name of the contracting body is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The country of the contracting body must always be specified.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT warning-->
-<xsl:choose>
-         <xsl:when test="count(cac:PartyIdentification/cbc:ID) = 1"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="count(cac:PartyIdentification/cbc:ID) = 1">
-               <xsl:attribute name="role">warning</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>At least one identifier should be specified.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:ServiceProviderParty/cac:Party" priority="1000" mode="M6">
-
-		<!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="(cac:PartyIdentification/cbc:ID)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cac:PartyIdentification/cbc:ID)">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>An identifier for the service provider must always be provided.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="(cac:PartyName/cbc:Name)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:PartyName/cbc:Name)">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The name of the service provider must always be specified.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT error-->
-<xsl:choose>
-         <xsl:when test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cac:PostalAddress/cac:Country/cbc:IdentificationCode)">
-               <xsl:attribute name="role">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The country of the service provider must always be specified.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M6"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M6">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   <xsl:template match="text()" priority="-1" mode="M5"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M5">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
    </xsl:template>
 </xsl:stylesheet>

@@ -17,11 +17,12 @@
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-OTHER">
 		
 		<rule context="cbc:CustomizationID">
+			<!-- BR-OTH-06 -->
 			<!-- For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”. -->
-			<assert test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'" role="error">For the ESPD customization of UBL ('/cbc:CustomizationID'), the value is “urn:www.cenbii.eu:transaction:biitrdm092:ver3.0”.</assert>
+			<assert test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'" flag="error" id="BR-OTH-06-01">For the ESPD customization of UBL ('/cbc:CustomizationID') we use the value “urn:www.cenbii.eu:transaction:biitrdm092:ver3.0”.</assert>
 			
 			<!-- Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute. -->
-			<assert test="@schemeAgencyID='CEN-BII'" role="error">Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.</assert>
+			<assert test="@schemeAgencyID='CEN-BII'" flag="error" id="BR-OTH-06-02">Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.</assert>
 		</rule>
 		
 	</pattern>
