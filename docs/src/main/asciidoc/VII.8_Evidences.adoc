@@ -11,14 +11,14 @@ There are no differences between the *REGULATED* and *SELF-CONTAINED* versions a
 
 ==== XSD Schema (REGULATED and SELF-CONTAINED)
 
-Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element `cac:EvidenceSupplied/cbc:ID` contains the identifier set in `/QualificationApplicationResponse/cac:Evidence/cbc:ID`. See XML example below; see also the example XML file "link:./dist/xml/SELFCONTAINED-ESPDResponse-2.0.1.xml[SELFCONTAINED-ESPDResponse-2.0.1.xml]" for an example.
+Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element `cac:EvidenceSupplied/cbc:ID` contains the identifier set in `/QualificationApplicationResponse/cac:Evidence/cbc:ID`. See XML example below; see also the example XML file "link:./dist/xml/SELFCONTAINED-ESPDResponse-2.0.2.xml[SELFCONTAINED-ESPDResponse-2.0.2.xml]" for an example.
 
-The figure below shows the XSD Diagram for the UBL-2.2 component `cac:Evidence` (elements in blue are the expected ones in ESPD-EDM V2.0.1):
+The figure below shows the XSD Diagram for the UBL-2.2 component `cac:Evidence` (elements in blue are the expected ones in ESPD-EDM V2.0.2):
 
 .cac:Evidence XSD diagram
 image::Evidence_XSD.png[cac:Evidence XSD diagram, alt="cac:Evidence XSD diagram", align="center"]
 
-The UBL-2.2 element `cac:Evidence` is a specialisation of `cac:DocumentReference`. This other XSD diagram shows this association and, in blue, highlights the elements expected in the ESPD-EDM V2.0.1:
+The UBL-2.2 element `cac:Evidence` is a specialisation of `cac:DocumentReference`. This other XSD diagram shows this association and, in blue, highlights the elements expected in the ESPD-EDM V2.0.2:
  
 .cac:DocumentReference inside cac:Evidence XSD diagram
 image::Evidence_DocumentReference.png[cac:DocumentReference in Evidence, alt="cac:DocumentReference in Evidence", align="center"]
@@ -37,6 +37,6 @@ image::Convictions__EO_mock-up.png[Conviction EO mock-up, alt="Conviction EO moc
 ====
 *Beware that* the current modeel of UBL-2.2 provides two elements for the Issuer, one for the issuer of the evidence and another for the issuer of the document reference. 
 
-The ESPD-EDM V2.0.1 uses always the one inside the document reference to refer to the issuer of the evidence (and of the document that 'is' the evidence). Thus the element used in the ESPD is `cac:Evidence/cac:DocumentReference/cac:IssuerParty`.
+The ESPD-EDM V2.0.2 uses always the one inside the document reference to refer to the issuer of the evidence (and of the document that 'is' the evidence). Thus the element used in the ESPD is `cac:Evidence/cac:DocumentReference/cac:IssuerParty`.
 
 ====

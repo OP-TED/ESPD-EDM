@@ -36,7 +36,7 @@
 		<!-- BEWARE THAT IN VERSION 1.0.2 INDICATING THE TYPE OF PROCUREMENT PROCEDURE WAS NOT MANDATORY, WHILST IN THE ESPD-EDM V2.0.x THIS ELEMENT IS COMPULSORY. PLEASE CORRECT THE CODE AFTER TRANSFORMATION!!! -->
 		<xsl:text disable-output-escaping="yes">&lt;!--	######################### VERY IMPORTANT ##################################################### --&gt;</xsl:text>
 		<xsl:text disable-output-escaping="yes">&lt;!--	BEWARE THAT IN VERSION 1.0.2 INDICATING THE TYPE OF PROCUREMENT PROCEDURE WAS NOT MANDATORY, WHILST IN THE ESPD-EDM V2.0.x THIS ELEMENT IS COMPULSORY. PLEASE CORRECT THE CODE AFTER TRANSFORMATION!!! --&gt;</xsl:text>
-		<cbc:ProcedureCode listID="ProcedureType"  listAgencyName="EU-COM-GROW" listVersionID="2.0.1">OPEN</cbc:ProcedureCode>
+		<cbc:ProcedureCode listID="ProcedureType"  listAgencyName="EU-COM-GROW" listVersionID="2.0.2">OPEN</cbc:ProcedureCode>
 		<xsl:text disable-output-escaping="yes">&lt;!--	############################################################################################## --&gt;</xsl:text>
 		<!-- ############################################################################################## -->
 		

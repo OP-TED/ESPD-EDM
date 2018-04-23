@@ -32,18 +32,33 @@ image::ConversionREQUEST.png[REQUEST 1.0.3 to 2.0.2, alt="REQUEST 1.0.3 to 2.0.2
 image::ConversionRESPONSE.png[RESPONSE 1.0.3 to 2.0.2, alt="RESPONSE 1.0.3 to 2.0.2", align="center"]
 
 
-== Some Remarks about the conversion
+== Remarks about the conversion
 
-In order to ensure stable conversions between versions 1.0.3 and 2.0.2 you must be aware of the following aspects:
+In order to ensure stable conversions between versions 1.0.3 and 2.0.2 you must be aware of the following aspects and practices:
 
-* The REGULATED ESPD version 2.0.2 mimicks as much as possible the criteria data structures implemented in version 1.0.3. Thus:
+* The REGULATED ESPD version 2.0.2 mimicks as much as possible the criteria data structures implemented in version 1.0.3. This is not necesarily the case of the SELF-CONTAINED ESPD. Thus the following REGULATED ESPD *version 2.0.2* have been slightly modified in the *REGULATED ESPD v2.0.2* to match the structures of criteria in version 1.0.3: 
 
-** CRITERION.EXCLUSION.CONTRIBUTIONS.* Data Structure (both in REGULATED and SELF-CONTAINED) has been slightly modified to match the one in version 1.0.2.
+** CRITERION.EXCLUSION.CONTRIBUTIONS.*
 
-** CRITERION.EXCLUSION.NATIONAL.OTHER (both in REGULATED and SELF-CONTAINED) has been slightly modified to match the one in version 1.0.2.
+** CRITERION.EXCLUSION.NATIONAL.OTHER
 
-** CRITERION.SELECTION.SUITABILITY.MEMBERSHIP has been slightly modified to match the one in version 1.0.2.
+** CRITERION.SELECTION.SUITABILITY.MEMBERSHIP
 
-** CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST has been slightly modified to match the one in version 1.0.2.
+** CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST
   
+* In the previous REGULATED *version 2.0.2* all criteria about Suitability were grouped in one tab of the data structure spread-sheet. The spread-sheets for *ESPD v1.0.3* and *REGULATED ESPD v2.0.2* the tab tSC-Suitability has been split into into the tabs *SC-Suitability-I* and *SC-Suitability-II* as the structure of CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT and CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT are different from CRITERION.SELECTION.SUITABILITY.AUTHORISATION and CRITERION.SELECTION.SUITABILITY.MEMBERSHIP. 
+
+* Turnovers have been split into 4 tabs to respect the order of appearance of the criteria as in they appear in version 1.0.3.
+
+* Beware that in version 2.0.2 the UBL-QualificationApplicationResponse has a placeholder at the root level named "cbc:EconomicOperatorGroupName". This element is used only by the SELF-CONTAINED ESPD Response document. The *REGULATED ESPD Response does not use this element* as it is defined in the Data Structure "OTHER-EO-GROUPS", thus mimicking version 1.0.3 to facilitate the conversion between versions 1.0.3 and 2.0.2.
+
+* Financial Ratios in ESPD v1.0.3 and REGULATED v2.0.2 have two fields: Description and Ratio. The first one, "Description" is used to add a descriptive text about the ratio used, whilst the second one, "Ratio" MUST be used to place the ratio value itself.
+
+* In ESPD Request and ESPD Response version 1.0.3, the bloc of fields about whether "Is this information available electronically" the UUID "7458d42a-e581-4640-9283-34ceb3ad4345" is used for the main subgroup of elements, and the UUID "41dd2e9b-1bfd-44c7-93ee-56bd74a4334b" for the sub-subgroup "URL, Code and Issuer". However there were two criteria ("CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT" and "CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT") where other UUIDs were erroneously used for the same subgroups. This has been corrected and now, in versions 1.0.3 and 2.0.2 all the blocks "Is this information available electronically" use always the same UUIDs.
+
+* The Criterion "CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST" has changed slightly in respect of the current ESPD Service: the question "Not applicable" has been removed.
+
+* ESDP v1.0.3 Start Date and End Date structures are mimicked in the REGULATED ESPD v2.0.2. The SELF-CONTAINED ESPD instead uses the UBL-2.2 "cac:Period" element.
+
+
 

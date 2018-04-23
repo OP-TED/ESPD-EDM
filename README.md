@@ -8,7 +8,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v1.0.3](https://espd.github.io/ESPD-EDM/v2.0.2/) [See v2.0.2 documentation, chapter "I.5 Forward compatibility"]
-* [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
+* [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
 * [v1.0.2](https://espd.github.io/ESPD-EDM/v1.0.2/)
 * [v1.0.1](https://github.com/ESPD/ESPD-EDM/blob/1.0.1/docs/src/main/asciidoc/index.adoc)
@@ -22,7 +22,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 * **Version 1.0.3** (April 2018): Minor documentation fixes applied to version 1.0.2. The data model was not changed.  Only the documentation was updated to reflect the changes made until the July 2017 release of the Commission ESPD. It has no impact on current ESPD services based on v1.0.2. The update criteria taxonomy can be found here: ./dist/cl/ods/ESPD-CriteriaTaxonomy(Data-Structures)_V1.0.3.ods[Criteria Taxonomy (Data Structures)]. See also documentation about v2.0.2 chapter "I.5 Forward compatibility").
 
-* **Version 2.0.1** (Jan. 2018): Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.0.1 that have been closed). 
+* **Version 2.0.2** (Jan. 2018): Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.0.2 that have been closed). 
 
 * **Version 2.0.0** (Sept. 2017): The goal of version 2.0.0 is that the ESPD-EDM is self contained. Meaning that public buyers can specify directly in their ESPD services criteria instead of defining them in the procurement document or the notice. Examples are that the public buyer can specify the number of years needed for the turnovers, the financial ratios needed for the procedure or that they can specify certificates needed. Something else that will be implemented in version 2.0.0 is the possibility to weight criteria which is important to reduce the number of participants in a procedure. Issues for this release are:
   * https://github.com/ESPD/ESPD-EDM/issues/
@@ -54,7 +54,7 @@ dependencies {
 }
 ```
 
-### Version 2.0.1
+### Version 2.0.2
 
 **Please note that this version requires Java 8**
 
@@ -62,7 +62,7 @@ dependencies {
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
   <artifactId>exchange-model2</artifactId>
-  <version>2.0.1-SNAPSHOT</version>
+  <version>2.0.2-SNAPSHOT</version>
 </dependency>
 ```
 
