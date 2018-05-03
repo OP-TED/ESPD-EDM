@@ -24,7 +24,7 @@
             <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
                 <xsl:value-of select="$node/cbc-old:ID"/>
             </cbc:ID>
-            <cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
             
             <cac:TenderingCriterionProperty>
                 <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
@@ -39,7 +39,7 @@
             <xsl:variable name="node" select="$node/ccv:RequirementGroup"/>
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
                 <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="$node/cbc-old:ID"/></cbc:ID>
-                <cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
                 <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
                         <!-- First field must always be the URL. If empty each evidence will be a separate document. -->
@@ -68,7 +68,7 @@
             <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
                 <xsl:value-of select="$node/cbc-old:ID"/>
             </cbc:ID>
-            <cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
             
             <cac:TenderingCriterionProperty>
                 <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
@@ -83,7 +83,7 @@
             <xsl:variable name="node" select="$node/ccv:RequirementGroup"/>
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
                 <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="$node/cbc-old:ID"/></cbc:ID>
-                <cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
                 <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
                         <!-- First field must always be the URL. If empty each evidence will be a separate document. -->
@@ -103,7 +103,7 @@
 
             <cac:TenderingCriterionPropertyGroup>
 			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
-			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
 			<cac:TenderingCriterionProperty>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="util:toString(util:randomUUID())"/></cbc:ID>
 				<cbc:Description>Is this information available electronically?</cbc:Description>
@@ -112,7 +112,7 @@
 			</cac:TenderingCriterionProperty>
 			<cac:SubsidiaryTenderingCriterionPropertyGroup>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
-				<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
 				<cac:TenderingCriterionProperty>
 					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="util:toString(util:randomUUID())"/></cbc:ID>
 					<cbc:Description>Evidence supplied</cbc:Description>

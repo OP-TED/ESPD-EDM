@@ -5,10 +5,10 @@ This example contains all the data about an economic operator. Beware that the b
 
 Compare with the XML example about the economic operator for the SELF-CONTAINED ESPD Response. You will notice some differences, e.g. the Role of the economic operator, number of employees, and other.
 
-The figure below shows how the data about the economic operator looks like in a 'collapsed' *SELF-CONTAINED* ESPD XML instance (notice that in this example the EO belongs to a group named 'ACME-Consortium', element `cac:EconomicOperatorGroupName`).
+The figure below shows how the data about the economic operator looks like in a 'collapsed' *SELF-CONTAINED* ESPD XML instance (notice that in this example the EO belongs to a group named 'AIAPU', element `/cac:EconomicOperatorGroupName`; beware that the group name is a data element located at the root of the document).
 
 .Vision of the data about the EO in a 'collapsed' Regulated ESPD 
-image::REGULATED_EO_XML_Collapsed[EO data - collapsed view, alt="EO data - collapsed view", align="center"]
+image::REGULATED_EO_XML_Collapsed.png[EO data - collapsed view, alt="EO data - collapsed view", align="center"]
 
 This fragment of XML *does not include the responses to the QUESTIONs* in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each `cac:TenderingCriterionProperty` element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element `cac:ResponseValue` is associated to a the UUID of the corresponding `cac:TenderingCriterionProperty`. For an example of a complete *REGULATED* ESPD Response XML document you can also see the file link:./dist/xml/REGULATED-ESPDResponse-2.0.2.xml[REGULATED-ESPDResponse-2.0.2.xml].
 
