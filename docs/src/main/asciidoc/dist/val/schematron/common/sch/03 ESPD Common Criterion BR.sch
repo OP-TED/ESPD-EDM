@@ -141,7 +141,7 @@
 			<!-- BR-TC-19: The text of the caption, requirement or question is mandatory -->
 			<assert test="(cbc:Description)" flag="fatal" id="BR-TC-19">The text of the caption, requirement or question ('<value-of select="name()"/>/cbc:Description') is mandatory.</assert>
 			<!-- BR-TC-20-01: The type of property is mandatory -->
-			<assert test="(cbc:TypeCode)" flag="fatal" id="BR-TC-20">The type of property ('<value-of select="name()"/>/cbc:Description') is mandatory.</assert>
+			<assert test="(cbc:TypeCode)" flag="fatal" id="BR-TC-20">The type of property ('<value-of select="name()"/>/cbc:TypeCode') is mandatory.</assert>
 			<!-- BR-TC-21-01: ../cbc:ValueDataTypeCode is mandatory -->
 			<assert test="(cbc:ValueDataTypeCode)" flag="fatal" id="BR-TC-21-01">The type of answer expected by the contracting authority ('<value-of select="name()"/>/cbc:ValueDataTypeCode') is mandatory.</assert>
 						

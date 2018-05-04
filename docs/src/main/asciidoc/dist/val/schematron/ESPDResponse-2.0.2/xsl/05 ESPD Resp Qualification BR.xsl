@@ -253,10 +253,7 @@
       </xsl:choose>
       <xsl:variable name="hasServiceProvider"
                     select="(cac:ContractingParty/cac:Party/cac:ServiceProviderParty)"/>
-      <xsl:variable name="isSelfcontained"
-                    select="(cbc:QualificationApplicationTypeCode = 'SELFCONTAINED')"/>
-      <xsl:variable name="testS10"
-                    select="$isPQS and not($isOENRON) and $hasServiceProvider and $isSelfcontained"/>
+      <xsl:variable name="testS10" select="$isPQS and not($isOENRON) and $hasServiceProvider"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
@@ -276,8 +273,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:variable name="testS20"
-                    select="$isPQS and not($isOENRON) and not($hasServiceProvider) and $isSelfcontained"/>
+      <xsl:variable name="testS20" select="$isPQS and not($isOENRON) and not($hasServiceProvider)"/>
 
 		    <!--ASSERT -->
 <xsl:choose>

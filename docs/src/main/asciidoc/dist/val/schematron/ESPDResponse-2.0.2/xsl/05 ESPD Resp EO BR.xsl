@@ -197,27 +197,14 @@
 
 	<!--RULE -->
 <xsl:template match="cac:EconomicOperatorParty" priority="1003" mode="M5">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cac:QualifyingParty)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:QualifyingParty)">
-               <xsl:attribute name="id">BR-RESP-10-01</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The characteristics qualifying an economic operator ('/cac:EconomicOperatorParty/cac:QualifyingParty') is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
+      <xsl:variable name="isSC" select="/*[1]/cbc:QualificationApplicationTypeCode='SELFCONTAINED'"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(cac:EconomicOperatorRole)"/>
+         <xsl:when test="not($isSC) or ($isSC and (cac:EconomicOperatorRole))"/>
          <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cac:EconomicOperatorRole)">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="not($isSC) or ($isSC and (cac:EconomicOperatorRole))">
                <xsl:attribute name="id">BR-RESP-10-02</xsl:attribute>
                <xsl:attribute name="flag">error</xsl:attribute>
                <xsl:attribute name="location">
@@ -230,10 +217,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(cac:EconomicOperatorRole/cbc:RoleCode)"/>
+         <xsl:when test="not($isSC) or ($isSC and (cac:EconomicOperatorRole/cbc:RoleCode))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(cac:EconomicOperatorRole/cbc:RoleCode)">
+                                test="not($isSC) or ($isSC and (cac:EconomicOperatorRole/cbc:RoleCode))">
                <xsl:attribute name="id">BR-RESP-10-03</xsl:attribute>
                <xsl:attribute name="flag">error</xsl:attribute>
                <xsl:attribute name="location">
@@ -318,21 +305,6 @@
 <xsl:template match="cac:ServiceProviderParty/cac:Party" priority="1001" mode="M5">
 
 		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(cbc:EndpointID/@schemeID)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:EndpointID/@schemeID)">
-               <xsl:attribute name="id">BR-RESP-10-08</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>An end-point identifier MUST have a scheme identifier attribute ('/cac:ServiceProviderParty/cac:Party/cbc:EndpointID/@schemeID').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
 <xsl:choose>
          <xsl:when test="(cac:PartyName/cbc:Name)"/>
          <xsl:otherwise>

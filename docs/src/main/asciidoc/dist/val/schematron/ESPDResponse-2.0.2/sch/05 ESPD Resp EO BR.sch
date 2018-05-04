@@ -16,15 +16,14 @@
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-EO">
 		<!-- BR-RESP-10: Information about the economic operator MUST be provided. -->
-		<rule context="cac:EconomicOperatorParty">
-			<!-- BR-RESP-10-01: Qualifying party is compulsory in the ESPD-EDM V02.00.00 as it is the natural placeholder for several relevant data about the Economic Operator. -->
-			<assert test="(cac:QualifyingParty)" flag="error" id="BR-RESP-10-01">The characteristics qualifying an economic operator ('/cac:EconomicOperatorParty/cac:QualifyingParty') is mandatory.</assert>
-		
+		<rule context="cac:EconomicOperatorParty">	
+			<let name="isSC" value="/*[1]/cbc:QualificationApplicationTypeCode='SELFCONTAINED'"/>	
+			
 			<!-- BR-RESP-10-02: This element is compulsory in the ESPD-EDM V02.00.00 because depending on it different sets of data will be required or not, shown or hidden, processed or skipped. -->
-			<assert test="(cac:EconomicOperatorRole)" flag="error" id="BR-RESP-10-02">The function of the economic operator ('/cac:EconomicOperatorParty/cac:EconomicOperatorRole') is mandatory.</assert>
+			<assert test="not($isSC) or ($isSC and (cac:EconomicOperatorRole))" flag="error" id="BR-RESP-10-02">The function of the economic operator ('/cac:EconomicOperatorParty/cac:EconomicOperatorRole') is mandatory.</assert>
 			
 			<!-- BR-RESP-10-03: Identifies the role of the economic operator in the bid. -->
-			<assert test="(cac:EconomicOperatorRole/cbc:RoleCode)" flag="error" id="BR-RESP-10-03">The role of the economic operator ('/cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode') is mandatory.</assert>	
+			<assert test="not($isSC) or ($isSC and (cac:EconomicOperatorRole/cbc:RoleCode))" flag="error" id="BR-RESP-10-03">The role of the economic operator ('/cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode') is mandatory.</assert>	
 		</rule>
 		
 		<!-- Main set of data used to identify and contact the economic operator, such as official identifiers, name, address, contact person, representatives, etc. -->
@@ -44,9 +43,6 @@
 		
 		<!-- Main information about the service provider. -->
 		<rule context="cac:ServiceProviderParty/cac:Party">
-			<!-- BR-RESP-10-08: An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). -->
-			<assert test="(cbc:EndpointID/@schemeID)" flag="error" id="BR-RESP-10-08">An end-point identifier MUST have a scheme identifier attribute ('/cac:ServiceProviderParty/cac:Party/cbc:EndpointID/@schemeID').</assert>
-			
 			<!-- BR-RESP-10-09: The name of the service provider must always be specified. -->
 			<assert test="(cac:PartyName/cbc:Name)" flag="error" id="BR-RESP-10-09">The name of the service provider ('/cac:ServiceProviderParty/cac:Party/cac:PartyName/cbc:Name') must always be specified.</assert>
 			
