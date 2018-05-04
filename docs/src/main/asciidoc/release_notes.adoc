@@ -1,12 +1,19 @@
 == Release Notes
 
-=== v2.0.2 (30th April 2018)
+Dear ESPD implementation community,
+Within this information note, we inform you about the release of ESPD EDM version 2.0.2 and the release of ESPD EDM version 1.0.3. A change to ESPD EDM version 1.0.3 was necessary to ensure proper interoperability and functioning of the XLS-T style-sheets that allow the conversion from version 1.0.3 into version 2.0.2. The conversion offers an easy way for the ESPD implementation community to convert XML instances (both Request and Response documents) from version 1.0.3 into version 2.0.2.
 
-This releases encompasses the following updates:  
+=== v2.0.2 (May 2018)
+
+The ESPD EDM version 2.0.2 is now released and contains bugs fixed on the basis of the received comments on GitHub. The release contains a definition of all relevant business rules and corresponding schematron files to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy). A corresponding TestBed for version 2.0.2 has been set up. Other major artefacts of this release are conversion style-sheets from version 1.0.3 to version 2.0.2. The specifications for version 2.0.2 contain an updated distribution of the ESPD Exchange Data Model and include a corresponding implementation guideline which clarifies the ESPD validation architecture in Annex I and the conversion from ESPD EDM version 1.0.3 to ESPD EDM version 2.0.2 in Annex II.  Also, the BIS 41 – ESPD version 2.0.2 was updated accordingly.
+
+More details on these changes follow:  
 
 * *XML Validation*:
 
-** Schematron files are provided for the validation of REGULATED and SELF-CONTAINED ESPD Request and Response XML instances, including the validation of the criteria. See folder link:./dist/val[dist/val] and the online documentation (see chapter Annex I. XML Validation").  
+** Schematron files are provided for the validation of REGULATED and SELF-CONTAINED ESPD Request and Response XML instances, including the validation of the criteria. See folder link:./dist/val[dist/val] and the online documentation (see chapter Annex I. XML Validation"). 
+
+Beware that the Genericode code list files (*.gc files) are now located in the folder link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2-Revision/docs/src/main/asciidoc/dist/val/schematron/common/gc[dist/val/schematron/common/gc]. You will also find there Genericode files for the Criteria Taxonomy files versions 1.0.2-errata, 1.0.3 and 2.0.2.
 
 * **Code Lists**
 
@@ -64,7 +71,7 @@ A new file containing the criteria, the taxonomy codes, the Criteria UUIDs and t
 To ensure compatibility between versions 1 and 2, version 1.0.3 uses the code lists used also in version 2.0.2. See the spread-sheets in link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ESPD-CodeLists-V2.0.2.ods], and the Genericode *.gc files in link:./dist/val/schematron/gc[V2.0.2 Genericode files], which also includes a Genericod file for the link:/dist/val/schematron/gc/[Criteria Taxonomy]. 
     
 
-=== v2.0.2 (1st February 2018)
+=== v2.0.1 (1st February 2018)
 
 The changes specified herein have been applied in both (1) the link:++https://github.com/ESPD/ESPD-EDM++[ESPD-EDM specification], version 2.0.2 published in this Github repository; and (2) the link:++http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2++[ESPDInt BIS document]. 
 
@@ -163,8 +170,4 @@ The ESPDInt BIS document has been aligned accordingly.
 === v1.0.2 (28th of July 2016)
 
 * https://github.com/ESPD/ESPD-EDM/issues/2[Change cardinality of requirements inside requirement groups]
-
-
-
-
 
