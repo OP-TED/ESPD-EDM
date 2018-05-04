@@ -31,6 +31,11 @@ We recommend to the ESPD implementation community to change directly to ESPD EDM
 In order to support the ESPD implementation community in their efforts to establish ESPD services for version 2.0.x, we have planned another review period which will result in the release of ESPD EDM version 2.0.3 planned for the 30th of September. The release will concentrate on the removal of errors, improvements and editorial aspects. It is not planned to process any request for new features in this release. Please submit any issues on the GitHub before 31st of August so that we can process them. We are looking forward to receiving your [issues and comments on GitHub](https://github.com/ESPD/ESPD-EDM/issues) in order to improve the overall ESPD specifications. 
 For further project information please visit our [GitHub](https://github.com/ESPD/ESPD-EDM) repository.
 
+For further project information please visit our GitHub repository.
+I would like to use this chance to thank the CEF consortia ESPDint team for the great support in maintaining the ESPD data model. Without them it would have been much harder and they did in on top of their CEF engagement.  
+Best regards,
+Marc-Christopher Schmidt
+
 
 * **Version 2.0.1** (January 2018): Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.0.2 that have been closed). 
 
