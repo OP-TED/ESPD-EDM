@@ -682,7 +682,7 @@
                </xsl:attribute>
                <svrl:text>The type of property ('<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>/cbc:Description') is mandatory.</svrl:text>
+                  <xsl:text/>/cbc:TypeCode') is mandatory.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

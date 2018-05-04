@@ -38,15 +38,14 @@
 			<assert test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = count($selectionResponses)) )" flag="warning" id="BR-RESP-40">Information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <value-of select="$selectionNotResponses"/></assert>
 			
 			<!-- BR-RESP-80-S10: When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. -->
-			<!-- isPQS = true + isOENRON = false +  hasServiceProvider = true + isSelfcontained = true -->
+			<!-- isPQS = true + isOENRON = false +  hasServiceProvider = true -->
 			<let name="hasServiceProvider" value="(cac:ContractingParty/cac:Party/cac:ServiceProviderParty)"/>
-			<let name="isSelfcontained" value="(cbc:QualificationApplicationTypeCode = 'SELFCONTAINED')"/>
-			<let name="testS10" value="$isPQS and not($isOENRON) and $hasServiceProvider and $isSelfcontained"/>
+			<let name="testS10" value="$isPQS and not($isOENRON) and $hasServiceProvider"/>
 			<assert test="not($testS10) or ($testS10 and (count($selectionCriteria) = count($selectionResponses)) )" flag="warning" id="BR-RESP-80-S10">When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <value-of select="$selectionNotResponses"/></assert>
 
 			<!-- BR-RESP-80-S20: When the pre-qualification system the EO is registered on covers all the selection criteria, information about compliance of selection criteria IS NOT required. -->
 			<!-- isPQS = true + isOENRON = false +  hasServiceProvider = false + isSelfcontained = true -->
-			<let name="testS20" value="$isPQS and not($isOENRON) and not($hasServiceProvider) and $isSelfcontained"/>
+			<let name="testS20" value="$isPQS and not($isOENRON) and not($hasServiceProvider)"/>
 			<assert test="not($testS20) or ($testS20 and (count($selectionResponses) = 0) )" flag="warning" id="BR-RESP-80-S20">When the pre-qualification system the EO is registered on covers all the selection criteria, information about compliance of selection criteria IS NOT required.</assert>
 					
 		</rule>
