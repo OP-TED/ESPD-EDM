@@ -8,52 +8,6 @@ Within this information note, we inform you about the release of ESPD EDM versio
 
 The ESPD EDM version 2.0.2 is now released and contains only bugs fixed on the basis of the received comments on link:https://github.com/ESPD/ESPD-EDM/issues[GitHub] about versions 2.0.0 and 2.0.1. The release contains a definition of all relevant link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc[business rules] and corresponding link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val/schematron[schematron files] to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy). A corresponding link:http://isaitb2.northeurope.cloudapp.azure.com/espd/upload[TestBed for version 2.0.2] has been set up. Other major artefacts of this release are link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xslt/Versions_1-2_Mapping[conversion style-sheets from version 1.0.3 to version 2.0.2]. The specifications for version 2.0.2 contain an updated link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist[distribution] of the ESPD Exchange Data Model and include a corresponding link:https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html[implementation guideline] which clarifies the ESPD validation architecture in link:https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html#annex-i-xml-validation[Annex I] and the conversion from ESPD EDM version 1.0.3 to ESPD EDM version 2.0.2 in link:https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html#annex-ii-v1-0-3-to-v2-0-2-conversion[Annex II]. Also, the link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2[BIS 41 – ESPD version 2.0.2] was updated accordingly.
 
-More details on these changes follow (some references are made to version 1.0.3, please see section about this version below for more details).    
-
-* *XML Validation*:
-
-** Schematron files are provided for the validation of REGULATED and SELF-CONTAINED ESPD Request and Response XML instances, including the validation of the criteria. See folder link:./dist/val[dist/val] and the online documentation (see chapter Annex I. XML Validation"). 
-
-Beware that the Genericode code list files (*.gc files) are now located in the folder link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2-Revision/docs/src/main/asciidoc/dist/val/schematron/common/gc[dist/val/schematron/common/gc]. You will also find there Genericode files for the Criteria Taxonomy files versions 1.0.2-errata, 1.0.3 and 2.0.2.
-
-* **Code Lists**
-
-** A new Code List has been added: "WeightingType". Reason: some selection criteria need to be weighted. In version 2.0.0 the element "cbc:WeightingTypeCode" was added to the root of the "UBL-QualificationApplicationResponse-2.2-Pre-award.xd" document.
-
-** The OASIS Genericode *.gc files have been moved from the "dist/cl/" folder into the "dist/val/schematron/common/" folder.
-
-** Genericode *.gc files are provided for the Criteria Taxonomy, see file "dist/val/schematron/common/gc/ESPD-CriteriaTaxonomy_V1.0.3.gc". 
-
-* *Compatibility between versions 1 and 2*:
-
-Transformation artefacts are now available for the conversion of ESPD Request and Response *from version 1.0.3* (see below) and *REGULATED ESPD V2.0.2*, Request and Response. See chapters "I.5 Forward compatibility" and "Annex II: v1.0.3 to v2.0.2 conversion" for more details.
-
-* **Criteria data structures**
-
-* In the *SELF-CONTAINED ESPD* CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE Subgroup "83e3dcc4-c9b3-47e5-9fb8-ffd8386679f1" changed its cardinality from 1 to 1..n.
-
-* The REGULATED ESPD version 2.0.2 mimicks as much as possible the criteria data structures implemented in version 1.0.3. This is not necesarily the case of the SELF-CONTAINED ESPD. Thus the following REGULATED ESPD *version 2.0.2* have been slightly modified in the *REGULATED ESPD v2.0.2* to match the structures of criteria in version 1.0.3: 
-
-** CRITERION.EXCLUSION.CONTRIBUTIONS.*
-
-** CRITERION.EXCLUSION.NATIONAL.OTHER
-
-** CRITERION.SELECTION.SUITABILITY.MEMBERSHIP
-
-** CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST
-  
-* In the previous REGULATED *version 2.0.2* all criteria about Suitability were grouped in one tab of the data structure spread-sheet. The spread-sheets for *ESPD v1.0.3* and *REGULATED ESPD v2.0.2* the tab tSC-Suitability has been split into into the tabs *SC-Suitability-I* and *SC-Suitability-II* as the structure of CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT and CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT are different from CRITERION.SELECTION.SUITABILITY.AUTHORISATION and CRITERION.SELECTION.SUITABILITY.MEMBERSHIP. 
-
-* Turnovers have been split into 4 tabs to respect the order of appearance of the criteria as in they appear in version 1.0.3.
-
-* Beware that in version 2.0.2 the UBL-QualificationApplicationResponse has a placeholder at the root level named "cbc:EconomicOperatorGroupName". This element is used only by the SELF-CONTAINED ESPD Response document. The *REGULATED ESPD Response does not use this element* as it is defined in the Data Structure "OTHER-EO-GROUPS", thus mimicking version 1.0.3 to facilitate the conversion between versions 1.0.3 and 2.0.2.
-
-* Financial Ratios in ESPD v1.0.3 and REGULATED v2.0.2 have two fields: Description and Ratio. The first one, "Description" is used to add a descriptive text about the ratio used, whilst the second one, "Ratio" MUST be used to place the ratio value itself.
-
-* In ESPD Request and ESPD Response version 1.0.3, the bloc of fields about whether "Is this information available electronically" the UUID "7458d42a-e581-4640-9283-34ceb3ad4345" is used for the main subgroup of elements, and the UUID "41dd2e9b-1bfd-44c7-93ee-56bd74a4334b" for the sub-subgroup "URL, Code and Issuer". However there were two criteria ("CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT" and "CRITERION.SELECTION.SUITABILITY.TRADE_REGISTER_ENROLMENT") where other UUIDs were erroneously used for the same subgroups. This has been corrected and now, in versions 1.0.3 and 2.0.2 all the blocks "Is this information available electronically" use always the same UUIDs.
-
-* The Criterion "CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST" has changed slightly in respect of the current ESPD Service: the question "Not applicable" has been removed.
-
 === Release of criteria taxonomy file errata [ESPD EDM version 1.0.2] (May 2018)
 
 A release of link:https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods[criteria taxonomy file errata (ESPD EDM version 1.0.2)] was necessary as the documentation on the criteria taxonomy was not updated to reflect the changes that were made to the Commission ESPD service up until July 2017. All corrections relate to the Criteria Data Flows and result in a revision of the link:https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods[criteria taxonomy for version 1.0.2] (revisions are marked within the sheet). No other change was done to the ESPD EDM version 1.0.2. The revisions should therefore have no impact on all current ESPD services based on v1.0.2 but we recommend using the revised criteria taxonomy to approve the correct Criteria Data Flows. 
