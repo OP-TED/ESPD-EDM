@@ -3,10 +3,10 @@
 
 For those who cannot implement yet the version 2 of the ESPD Request and for whatever reason need to keep working with a previous version for a while, they can start taking some very small steps that will facilitate the migration to version 2.0.2.
 
-The latest version of the ESPD-EDM was version 1.0.2. The ESPD XML documents exported by the ESPD Service, for example, are 100% compliant with the version 1.0.2  
+The latest version of the ESPD-EDM was version 1.0.2. The ESPD XML documents exported by the ESPD Service, for example, are 100% compliant with the version 1.0.2. Beware that while maintaining the ESPD Service a few small errata were identified regarding the identification of the elements of the exclusion and selection criteria and a bit of flexibility was also added to the criteria data structures (allowing for a non-predetermined number of requirements, instead of having always the same fixed number requirements, in the case of turnovers, for example.). Apart from that version 1.0.2 did not suffer other changes, and the XSD Schema remained unaltered whatsoever.  
 
-In order to ensure compatibility between regulated ESPD versions 1 and 2, this distribution provides a conversion solution to facilitate the generation of ESPD REGULATED Request and Response XML documents. Beware that *this is not the case for Self-contained ESPDs*: given that Self-contained ESPDs may contain requirements and richer structures that are not present in the Regulated ESPD the compatibility is not possible for all the elements of the version 2.
- 
+If you wish to see the spreadsheet file with the definition of each criterion, its identifiers (UUIDs), and structure of this version 1.0.2 open the file link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods[dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods]. This file contains two sheets, "Updated_Version_(16-04-2018)" and "Change_Log". Use the Change Log tab to track the errata corrected.
+
 The development and testing of the previous version 1.0.2 by Member States and other Stakeholders revealed the need for improving some minor details relating the taxonomy of criteria. *The data model and XSD schemas was not modified whatsoever*. Hence a new minor editorial *_ESPD version 1.0.3_* of the criteria is distributed jointly with this distribution package that is *_compliant with the REGULATED ESPD-EDM v.2.0.2_*:  
 
 ** The updated criteria taxonomy v1.0.3 can be found here: link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy(Data-Structures)_V1.0.3.ods[Criteria Taxonomy (Data Structures)].  
