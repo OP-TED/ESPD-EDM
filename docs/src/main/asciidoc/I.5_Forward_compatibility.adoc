@@ -3,16 +3,26 @@
 
 For those who cannot implement yet the version 2 of the ESPD Request and for whatever reason need to keep working with a previous version for a while, they can start taking some very small steps that will facilitate the migration to version 2.0.2.
 
-The latest version of the ESPD-EDM was version 1.0.2. The ESPD XML documents exported by the ESPD Service, for example, are 100% compliant with the version 1.0.2. Beware that while maintaining the ESPD Service a few small errata were identified regarding the identification of the elements of the exclusion and selection criteria and a bit of flexibility was also added to the criteria data structures (allowing for a non-predetermined number of requirements, instead of having always the same fixed number requirements, in the case of turnovers, for example.). Apart from that version 1.0.2 did not suffer other changes, and the XSD Schema remained unaltered whatsoever.  
+Previous to versions 2.0.x, the latest version of the ESPD-EDM was 1.0.2. The ESPD XML documents exported by the ESPD Service, for example, are 100% compliant with the version 1.0.2. Beware that while maintaining the ESPD Service a few small errata were identified regarding the identification of the elements of the exclusion and selection criteria and a bit of flexibility was also added to the criteria data structures (allowing for a non-predetermined number of requirements, instead of having always the same fixed number requirements, in the case of turnovers, for example). Apart from that version 1.0.2 did not suffer other changes, and the XSD Schema remained unaltered whatsoever.  
 
 If you wish to see the spreadsheet file with the definition of each criterion, its identifiers (UUIDs), and structure of this version 1.0.2 open the file link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods[dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods]. This file contains two sheets, "Updated_Version_(16-04-2018)" and "Change_Log". Use the Change Log tab to track the errata corrected.
 
-The development and testing of the previous version 1.0.2 by Member States and other Stakeholders revealed the need for improving some minor details relating the taxonomy of criteria. *The data model and XSD schemas was not modified whatsoever*. Hence a new minor editorial *_ESPD version 1.0.3_* of the criteria is distributed jointly with this distribution package that is *_compliant with the REGULATED ESPD-EDM v.2.0.2_*:  
+Some additional inputs coming the Member States that have implemented this version 1.0.2 and are adopting version 2.0.x revealed that some minor details relating the taxonomy of criteria could be yet improved and would facilitate a *100% mapping to the REGULATED ESDP v2.0.2 document*. Hence a new minor editorial *_ESPD version 1.0.3_* of the criteria has been produced and is distributed jointly with this ESPD v2.0.2.   
 
-** The updated criteria taxonomy v1.0.3 can be found here: link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy(Data-Structures)_V1.0.3.ods[Criteria Taxonomy (Data Structures)].  
-** To track those few changes introduced in v1.0.3 you can use this link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomyV1.0.3_CHANGE_LOG.ods[Track-Change file "CriteriaTaxonomyV1.0.3_CHANGE_LOG.ods"].
-** The folder link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xslt/Versions_1-2_Mapping[dist/xslt/Versions_1-2_Mapping] contains the stylesheets making possible to transform XML documents from version 1.0.3 into version REGULATED ESPD Request and Response v.2.0.2. See "Annex II: Converting from version 1.0.3 into 2.0.2" for details on how this conversion works.
+If you wish to see the spread-sheet with the criteria taxonomy of this v1.0.3 open this file: link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomy-V1.0.3.ods[Criteria Taxonomy v1.0.3]. This versions fixes three topics:
 
-Mapping a Regulated ESPD (or an ESPD 1.0.2) into a V2.0.2 Self-contained ESPD is yet possible for a large part of its components. This means that software applications could somehow "pre-fill" a Self-contained ESPD taking as the input a 1.0.2 or a 2.0.2 Regulated ESPD and leave the "extended" requirements and fields empty (i.e. "forward compatibility" is to some extent possible).
+* One UUID has been modified in the criteria of type "Convictions";
 
-In order to facilitate developers map between one version into the other and vice-versa, this guide includes a link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc/UBL2.2-ESPD1.02_Mapping.ods[spreadsheet] with the correspondences between the elements of the ESPD-EDM V1.0.3 and ESPD-EDM V2.0.2.
+* All the data structures related to the "Is this information available electronically" block are now identical for all criteria (so now they are all consistent);
+
+* All Code Lists used in v1.0.3 are the ones used also in v2.0.2, thus ensuring a complete semantic mapping of concepts between versions.
+
+If you implemented v1.0.2 and are interested in moving towards version 2.0.x you may:
+
+. Consider applying these few modifications to your system;
+
+. Start developing v2.0.2, start by the REGULATED flavor; 
+
+. Use the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xslt/Versions_1-2_Mapping[conversion artefacts] distributed in this v2.0.2 to convert your v1.0.3-compliant XML instances into v2.0.2 REGULATED XML instances. See "Annex II: Converting from version 1.0.3 into 2.0.2" for details on how this conversion works.
+
+Mapping a Regulated ESPD (or an ESPD 1.0.2) into a V2.0.2 Self-contained ESPD is yet possible for a large part of its components. This means that software applications could somehow "pre-fill" a Self-contained ESPD taking as the input a 1.0.2 or a 2.0.2 Regulated ESPD and leave the "extended" requirements and fields empty (i.e. "forward compatibility" is to some extent possible). See als this link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc/UBL2.2-ESPD1.02_Mapping.ods[spreadsheet] with the correspondences between the elements of the ESPD-EDM V1.0.2 and ESPD-EDM V2.0.2.
