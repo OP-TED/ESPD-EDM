@@ -6,6 +6,7 @@
 |===
 |*Class name*:|cac:PowerOfAttorney
 |*Definition*:|Official or legal mandate issued by an authority (e.g. an attorney or a notary) to represent the economic operator as a representative of the economic operator in public procurement procedures.
+|*Business rule(s)*:|Common (BR-RESP-20)
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -22,7 +23,9 @@ cac:Person/cbc:FirstName*
 |1
 |Name of the natural person.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009[_tbr92-009_]
-*Rule*: None.
+*Rule*: Name of the natural person is mandatory.
+
+*Rule scope*: Common (BR-RESP-20-01)
 
 |*cac:PowerOfAttorney/cac:AgentParty/
 cac:Person/cbc:FamilyName*
@@ -31,7 +34,9 @@ cac:Person/cbc:FamilyName*
 |Family Name of the natural person.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009[_tbr92-009_]
 
-*Rule*: None.
+*Rule*: Family Name of the natural person is mandatory.
+
+*Rule scope*: Common (BR-RESP-20-02)
 
 |*cac:PowerOfAttorney/cac:AgentParty/
 cac:Person/cbc:BirthDate*
@@ -87,6 +92,8 @@ cac:Country/cbc:IdentificationCode*
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-009[_tbr92-009_]
 
 *Rule*: Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CountryCodeIdentifier].
+
+*Rule scope*: Common (BR-RESP-20-03, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
 
 |*cac:PowerOfAttorney/cac:AgentParty/
 cac:Person/cac:ResidenceAddress/
