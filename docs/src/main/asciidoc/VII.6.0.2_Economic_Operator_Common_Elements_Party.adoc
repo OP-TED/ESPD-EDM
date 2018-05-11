@@ -13,6 +13,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |===
 |*Class name*:|cac:EconomicOperatorParty
 |*Definition*:|Any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.
+|*Business rule(s)*:|Common (BR-RESP-10)
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -31,6 +32,8 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
  
 
 *Rule*: This element is compulsory in the ESPD-EDM V2.0.2 as it is the natural placeholder for several relevant data about the Economic Operator.
+
+*Rule scope*: SELF-CONTAINED (BR-RESP-10-01)
 
 |*cac:EconomnicOperatorRole*
 |Associated class
@@ -56,6 +59,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |===
 |*Class name*:|cac:QualifyingParty
 |*Definition*:|The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).
+|*Business rule(s)*:|SELF-CONTAINED (BR-RESP-10-01)
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -92,6 +96,8 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 
 *Rule*: Use it to place here the general Turnover of the EO (for statistical purposes). Compulsory assignment of a value to the attribute currency. The default value should be set to 'EUR'. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CurrencyCode].
 
+*Rule scope*: SELF-CONTAINED (BR-OTH-01#16, BR-OTH-03)
+
 |*cac:CompletedTask/cbc:Description*
 |Text
 |0..1
@@ -108,6 +114,8 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]  
 
 *Rule*: The attribute `schemeAgencyID` must hold the value retrieved from eCertis that identifies unequivocally the (pre)qualification system. If, for any reason, that value is not available use the default schemeAgencyID "EU-COM-GROW" and the `cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cac:PartyIdentificaton/cbc:ID` for the value of the identifier. Additionally you can use the data structure `CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST` to specify an alternative or additional name, identifier and description.
+
+*Rule scope*: SELF-CONTAINED ( BR-RESP-80-S10, BR-RESP-80-S20), Common (BR-RESP-50, BR-OTH-02)
 
 |===
 
@@ -133,6 +141,8 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-008[_tbr92-008_]
 *Rule*: Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EORoleType].
 
+*Rule scope*: SELF-CONTAINED (BR-RESP-10-03, BR-OTH-01, BR-OTH-01#15, BR-OTH-03)
+
 |*cbc:RoleDescription*
 |Text
 |0..n
@@ -140,6 +150,8 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-008[_tbr92-008_]
 
 *Rule*: Software applications should retrieve and reuse the description from the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EORoleType].
+
+*Rule scope*: Common (BR-RESP-10-02)
 
 |===
 
@@ -167,6 +179,8 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 
 *Rule*: More than one identifier can be specified. Compulsory use of the attribute `schemeAgencyID` and highly recommended the use of the attribute schemeAgencyID. The preferred identifier is the national VAT number. Additional identifiers may be used. For a very complete way of identification of the Party it is highly recommended to, additionally to the `cac:Party/cac:Identification/cbc:ID`, use the UBL-2.2 component `cac:PartyLegalEntity`: this element is the perfect placeholder for the data officially registered in a Business Register (see UBL-2.2 model, and XSD diagram above).
 
+*Rule scope*: Common (BR-OTH-02)
+
 |*cbc:EndPointID*
 |Identifier
 |0..1
@@ -175,6 +189,8 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
 
 *Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
+
+*Rule scope*: Common (BR-RESP-10-08)
 
 |*cac:PartyName/cbc:Name*
 |Text
@@ -201,7 +217,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-012[_tbr92-012_]. 
 
-*Rule*: None.
+*Rule*: Use it for the official web site of the service provider.
 
 |===
 
@@ -210,6 +226,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |===
 |*Class name*:|cac:PostalAddress
 |*Definition*:|Postal address information.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -255,6 +272,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule*: The country of the contracting body must always be specified. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
 
+*Rule scope*: Common (BR-RESP-10-07, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
+
 |*cac:Country/cbc:Name*
 |Text
 |0..1
@@ -271,6 +290,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |===
 |*Class name*:|cac:Contact
 |*Definition*:|Used to provide contacting information for a party in general or a person.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -327,6 +347,7 @@ Please see also the section III.6 Service Provider (for the ESPD Request) for ot
 |===
 |*Class name*:|cac:ServiceProviderParty/cac:Party
 |*Definition*:|Main information about the service provider.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -354,6 +375,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 
 *Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
 
+*Rule scope*: Common (BR-RESP-10-08)
+
 |*cac:PartyIdentification/cbc:ID*
 |Identifier
 |1
@@ -362,6 +385,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
 
 *Rule*: An identifier for the service provider must always be provided. Compulsory use of the attribute `SchemeAgencyID`. When possible use the VAT identification of the service provider (see the VIES platform for a EU cross-border national VAT number verification system). See XML example below.
+
+*Rule scope*: Common (BR-RESP-10-11, BR-OTH-02)
 
 |*cac:PartyName/cbc:Name*
 |Text
@@ -372,6 +397,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 
 *Rule*: The name of the service provider must always be specified. Supply the official registered name of the service provider.
 
+*Rule scope*: Common (BR-RESP-10-09)
+
 |*cac:PostalAddress/cac:Country/cbc:IdentificationCode*
 |Identifier
 |1
@@ -380,6 +407,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-021[_tbr070-021_].
 
 *Rule*:  The country of the service provider must always be specified. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
+
+*Rule scope*: SELF-CONTAINED (BR-RESP-10-10, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
 
 |===
 
