@@ -8,6 +8,7 @@ This list below enumerates the elements of `cac:Evidence` that could be used in 
 |===
 |*Class name*:|cac:Evidence
 |*Definition*:|A class to describe an item of evidentiary support for representations of capabilities or the ability to meet tendering requirements, which an economic operator must provide for acceptance into a tendering process.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -26,13 +27,17 @@ This list below enumerates the elements of `cac:Evidence` that could be used in 
 
 *Rule*: The Evidence ID MUST be unique in the ESPD Response XML instance (i.e. two evidences cannot have the same ID value). It is recommended to use always a UUID  UUID of version 4 (random generated UUID).
 
+*Rule scope*: Common (BR-TCR-09, BR-OTH-0)
+
 |*cbc:EvidenceTypeCode*
 |Code
 |0..1
 |A code signifying the type of evidence.
 |*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
 
-*Rule*: None. Could be used in the future in alignment to e-Certis.
+*Rule*: A code signifying the type of evidence. Could be used in the future in alignment to e-Certis.
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-01)
 
 |*cbc:Name*
 |Text
@@ -64,7 +69,9 @@ This list below enumerates the elements of `cac:Evidence` that could be used in 
 |A code specifying the confidentiality level of this evidence.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017_]
 
-*Rule*: Compulsory use of the Code List link./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ConfidentialityLevel]. Software application should set this code to CONFIDENTIAL automatically when the confidentiality level code of at least one criterion to which this evidence is associated is set to CONFIDENTIAL.
+*Rule*: Compulsory use of the Code List linkhttps://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ConfidentialityLevel]. Software application should set this code to CONFIDENTIAL automatically when the confidentiality level code of at least one criterion to which this evidence is associated is set to CONFIDENTIAL.
+
+*Rule scope*: SELF-CONTAINED (BR-TCR-02, BR-OTH-01, BR-OTH-01#18, BR-OTH-03)
 
 |===
 
@@ -75,6 +82,7 @@ This other table lists the elements from `cac:Evidence/cac:DocumentReference` us
 |===
 |*Class name*:|cac:DocumentReference
 |*Definition*:|A reference to the evidentiary document.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -93,6 +101,8 @@ This other table lists the elements from `cac:Evidence/cac:DocumentReference` us
 
 *Rule*: *If the reference or verification code is provided for the evidence use this element to place it.* This 'code' is used in some countries (e.g. Spain) to check that the document is authentic. If a verification code is supplied you can use an official 'end-point' to retrieve an image (or a PDF) of the document and check that the evidence is authentic. 
 
+*Rule scope*: SELF-CONTAINED (BR-OTH-02)
+
 |*cac:Attachment/cac:ExternalReference/cbc:URI*
 |Identifier
 |1
@@ -108,6 +118,8 @@ This other table lists the elements from `cac:Evidence/cac:DocumentReference` us
 |*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
 
 *Rule*: Not currently used in ESPD, but if you decide to use it try to use the VAT number whenever possible.
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-02)
 
 |*cac:IssuerParty/cbc:Name*
 |Text

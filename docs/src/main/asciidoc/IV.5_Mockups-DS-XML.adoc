@@ -1,5 +1,5 @@
 
-=== IV.4 Mock-ups, data structures, XML examples and tools
+=== IV.5 Mock-ups, data structures, XML examples and tools
 
 The two next chapters describe in detail the different *types* of exclusion and selection criteria defined and used in the ESPD-EDM. By *type* of criterion we refer to criteria that share common characteristics, namely how they are structured. Each type of criterion is presented from three perspectives:      
 
@@ -36,7 +36,7 @@ The columns of the tables are to be interpreted as follows:
 * Column 20: *Value* a possible value or description of the value used by the transformation artefacts to produce example XML instances
 * Column 21: *Cardinality*, indicates whether the element is mandatory or optional and its multiplicity
 * Column 22: *PropertyDataType*, the type of data expected according to the types defined in the code list `ResponseDataType`
-* Column 23: *ElementUUID*, The Universal Unique Identifier assigned to identify unambiguously a criterion, group or subgroup. These UUID are kept in e-Certis, except for those that have to be generated dynamically (e.g. UUIDs for Questions, Captions and Requirements). 
+* Column 23: *ElementUUID*, The Universal Unique Identifier assigned to identify unambiguously a criterion, group or subgroup. These UUID are kept in e-Certis, except for those that have to be generated dynamically (e.g. UUIDs for Questions, Captions and Requirements). See also the special note "Criteria Taxonomy/Data Structures and the use of UUIDS" below
 * Column 24: *Element Code*; in the case of Criterion it contains the code that categorises the criterion in the taxonomy of exclusion and selection criteria (it maps to the taxonomy drawn in the online documentation and in the spread-sheet files "ESPD-CriteriaTaxonomy*" in folder `dist/cl`). For the rest of elements there are three types of codes:
 ** `ON*`, meaning "process always" (e.g. show always or read and extract data always")
 ** `ONTRUE`, meaning "process this group only if the previous parent question (always an INDICATOR) has been answered affirmatively"
@@ -51,6 +51,24 @@ image::Regulated_ESPDRequest_Contributions_Data_Structure.png[Regulated 'Contrib
 
 .Self-contained 'Contributions' criterion data structure 
 image::Selfcontained_ESPDRequest_Contributions_Data_Structure.png[Self-contained 'Contributions' criterion data structure, alt="Self-contained 'Contributions' criterion data structure", align="center"]
+
+.Important Note: Criteria Taxonomy/Data Structures and the use of UUIDS  
+[IMPORTANT]
+====
+
+
+*Please notice the following*:
+
+Every element of the data structures has an UUID assigned, except for the CAPTIONs, REQUIREMENTs and QUESTIONS. This is UUID is necessary to identify unambiguously a particular "data structure" (or "data shape"). One data structure identified with a unique identifier has always the same elements and characteristics. This allows the reuse of the same structure in different criteria. These UUIDs map the ones maintained in link:https://ec.europa.eu/isa2/solutions/e-certis_en[e-Certis] for each criterion.
+
+* *Example 1*: There is a data structure that is reused by all the criteria, the one asking whether there is information available electronically. You will notice that all criteria where it is used the UUIDs of the groups and subgroups are the same, but also the cardinalities, the PropertyDataType and the Element Code".
+
+* *Example 2*: If you look into the "Convictions" data structures you will notice the data structure (a QUESTION_SUBGROUP) identified with the UUID "f4978772-3126-4ded-bc30-f50da8c3a038". This subgroup contains one QUESTION ("Have you taken measures to demonstrate your reliability (Self-Cleaning)?" and a sub-group with another QUESTION ("Please describe them"). If you search in the book you will observe that this same structure is also reused by other criteria (e.g. CRITERION.EXCLUSION.SOCIAL.\*, CRITERION.EXCLUSION.MISCONDUCT.\*, etc.) but the UUID of the main subgroup is different in all those cases from the one used for Convictions. This is because the Element Code in the case of Convictions (and for this subgroup) is "ONTRUE" whilst in the rest of criteria it is "ON*".
+
+As explained, CAPTIONs, REQUIREMENTs and QUESTIONs cannot have a "reusable" UUID allocated. The reason for this is that they are defined as "Criterion Properties" which must use non-reusable truly unique identifiers. This is especially important in the case of the responses of the economic operator (in the ESPD Response document) which will refer to one, and only one, QUESTION of the ESPD Request. For more details see sections link:#iv-4-properties[IV.4 Properties] and link:#vii-7-answering-questions[VII.7 Answering QUESTIONs]. 
+
+Beware also that the spread-sheet files in v2.0.2 defining the criteria data structures (link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-REGULATED-V2.0.2.ods[ESPD-CriteriaTaxonomy-REGULATED-V2.0.2.ods] and link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods[ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods]) are indeed functionally equivalent to those that in previous versions were named as "Criteria Taxonomy", as they do not only identify and define the criteria and their inner elements but also "classify" the criteria in different categories. Each category represents one type of criterion with identical data structures inside. This concept of "taxonomies" is better illustrated and further detailed at the beginning of the sections link:#v-exclusion-criteria[V. Exclusion criteria] and link:#vi-selection-criteria[VI. Selection criteria]. And keep in mind that, in ESPD v2.0.x, these Criteria Taxonomy spread-sheets can be used to link:#data-structures-spread-sheets-as-a-tool-to-generate-xml-instances[automatically generate XML instances of REGULATED and SELF-CONTAINED documents], which can be extremely useful for implementers and testers of the ESPD v2.0.2-based software and services.     
+====
 
 We could say that the 'data structures' represented in the spread-sheets define a kind of 'meta-language' (or 'controlled vocabulary') that helps 'map' the structure of an ESPD-EDM criterion and the UBL-2.2 criterion data structure. The table below 'maps' both vocabularies. Please compare any of the data structures provided in this document with both the UBL-2.2 XSD Schemas and the XML examples provided herein.
 
@@ -70,19 +88,19 @@ We could say that the 'data structures' represented in the spread-sheets define 
 |LEGISLATION|cac:Legislation
 |===
   
-The ESPD-EDM data structures vocabulary is defined in the Code List "link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CriterionElementType]". Her you have the definitions provided therein:
+The ESPD-EDM data structures vocabulary is defined in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CriterionElementType]". Her you have the definitions provided therein:
 
-* CRITERION: A criterion (in the case of the the ESPD an Exclusion or Selection criterion); maps to a UBL-2.2 cac:TenderingCriterion class
-* SUBCRITERION: Used to define national sub-criteria; maps to a UBL-2.2 cac:SubTenderingCriterion class 
-* REQUIREMENT_GROUP: Group of requirements or remarks issued by a MS or a CA; maps to a UBL-2.2 cac:TenderingCriterionPropertyGroup
-* REQUIREMENT_SUBGROUP: A subgroup of requirements or remarks inside a group or subgroup of requirements; maps to a UBL-2.2 cac:SubsidiaryTenderingCriterionPropertyGroup
-* REQUIREMENT: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ResponseDataType]") 
-* QUESTION_GROUP: Group of questions, each question requiring a datum as an answer from the EO; maps to a cac:TenderingCriterionPropertyGroup class 
-* QUESTION_SUBGROUP:	A subgroup of questions inside a group or a subgroup of questions; maps to a cac:SubsidiaryTenderingCriterionPropertyGroup
-* QUESTION: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ResponseDataType]" )
-* CAPTION: A text label (no requirement nor answer is expected); maps to a cac:TenderingCriterionProperty class (the expected response data type is NONE) 
-* ADDITIONAL_DESCRIPTION_LINE:	Additional line in a description (for descriptions that can be split in several lines); maps to a cbc:Description element (namely in cac:TenderingCriterion) 
-* LEGISLATION:	An instance of a Legislation class; maps to a cac:Legislation class
+* *CRITERION*: A criterion (in the case of the the ESPD an Exclusion or Selection criterion); maps to a UBL-2.2 cac:TenderingCriterion class
+* *SUBCRITERION*: Used to define national sub-criteria; maps to a UBL-2.2 cac:SubTenderingCriterion class 
+* *REQUIREMENT_GROUP*: Group of requirements or remarks issued by a MS or a CA; maps to a UBL-2.2 cac:TenderingCriterionPropertyGroup
+* *REQUIREMENT_SUBGROUP*: A subgroup of requirements or remarks inside a group or subgroup of requirements; maps to a UBL-2.2 cac:SubsidiaryTenderingCriterionPropertyGroup
+* *REQUIREMENT*: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ResponseDataType]") 
+* *QUESTION_GROUP*: Group of questions, each question requiring a datum as an answer from the EO; maps to a cac:TenderingCriterionPropertyGroup class 
+* *QUESTION_SUBGROUP*:	A subgroup of questions inside a group or a subgroup of questions; maps to a cac:SubsidiaryTenderingCriterionPropertyGroup
+* *QUESTION*: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ResponseDataType]" )
+* *CAPTION*: A text label (no requirement nor answer is expected); maps to a cac:TenderingCriterionProperty class (the expected response data type is NONE) 
+* *ADDITIONAL_DESCRIPTION_LINE*:	Additional line in a description (for descriptions that can be split in several lines); maps to a cbc:Description element (namely in cac:TenderingCriterion) 
+* *LEGISLATION*:	An instance of a Legislation class; maps to a cac:Legislation class
 
 
 *The main differences between REQUIREMENT, CAPTION and QUESTION are*:
@@ -109,13 +127,13 @@ If you examine any of the XML examples provided in this document you will observ
 
 ** A REQUIREMENT_GROUP or REQUIREMENT-SUBGROUP may contain either REQUIREMENT_SUBGROUPS and/or QUESTION_SUBGROUPS;   
 
-** The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENTs or QUESTIONs is to look into the value of the `cac:TenderingCriterionProperty/cbc:TypeCode`. The list of possible codes are the ones of the above mentioned Code List "link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CriterionElementType]".  
+** The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENTs or QUESTIONs is to look into the value of the `cac:TenderingCriterionProperty/cbc:TypeCode`. The list of possible codes are the ones of the above mentioned Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CriterionElementType]".  
 
 ==== Data structures spread-sheets as a tool to generate XML instances
 
 The fact of presenting the data structures as a spread-sheet book had an additional reason: *to use the spread-sheet as an elementary prototype tool to generate the XML instances of the criteria for the ESPD Request and ESDP Response documents*.
 
-Thus the folder link:./dist/xslt[dist/xslt] contains four XSL style-sheets that facilitate the generation of the complete set of criteria required in an ESDP Request or in an ESDP Response XML file. 
+Thus the folder link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xslt[dist/xslt] contains four XSL style-sheets that facilitate the generation of the complete set of criteria required in an ESDP Request or in an ESDP Response XML file. 
 
 For this you can use two different methods:
 
@@ -163,7 +181,7 @@ The following features *are implemented* in the first set of transformation XSL-
 
 The following features *are NOT implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.0.2.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.0.2.xslt`):
 
-* The publications and document references requested in the business requirements are not generated; but the XML examples provided in the distribution do contain examples of TED and national publications (both for the ESPD Request and ESPD Response examples. See files REGULATED-ESPDRequest-2.0.2.xml, REGULATED-ESPDResponse-2.0.2.xml, SELFCONTAINED-ESPDRequest-2.0.2.xml and SELFCONTAINED-ESPDResponse-2.0.2.xml, in the link:./dist/xml[xml folder].
+* The publications and document references requested in the business requirements are not generated; but the XML examples provided in the distribution do contain examples of TED and national publications (both for the ESPD Request and ESPD Response examples. See files REGULATED-ESPDRequest-2.0.2.xml, REGULATED-ESPDResponse-2.0.2.xml, SELFCONTAINED-ESPDRequest-2.0.2.xml and SELFCONTAINED-ESPDResponse-2.0.2.xml, in the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xml[xml folder].
 
 * The response value and cardinality are shown for informative purposes. No functionality is currently implemented based on them, but could be used in future improved versions of the prototype;
 
@@ -179,4 +197,4 @@ The following features *are implemented* in the second set of transformation XSL
 
 The following features *is NOT implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.0.2.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.0.2.xslt`):
 
-* The Criteria from the ESPD Request *are not* copied in the ESPD Response document. but the XML examples in the link:./dist/xml[xml folder] do.
+* The Criteria from the ESPD Request *are not* copied in the ESPD Response document. but the XML examples in the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xml[xml folder] do.

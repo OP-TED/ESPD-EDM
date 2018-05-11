@@ -6,6 +6,7 @@
 |===
 |*Class name*:| cac:ContractParty
 |*Definition*:|The contracting authority or contracting entity who is buying supplies, services or public works using a tendering procedure as described in the applicable directive (e.g. Directives 2014/24/EU, 2014/25/EU).
+|*Business rule(s)*: Common (BR-REQ-20#1)
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -48,6 +49,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 
 *Rule*: More than one identifier can be specified. When possible use the VAT identification of the contracting body (see the http://ec.europa.eu/taxation_customs/vies/[VIES] platform for a EU cross-border national VAT number verification system).
 
+*Rule scope*: Common (BR-REQ-20#4, BR-OTH-02)
+
 |*cbc:WebsiteURI*
 |Identifier
 |0..1
@@ -73,7 +76,10 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-001_]. 
 
-*Rule*: Mandatory. Use the official name of the contracting body. The PartyName class has an associated basic element "cbc:Name". See XML example below. 
+*Rule*: Mandatory. Use the official name of the contracting body. The PartyName class has an associated basic element "cbc:Name". See XML example below.
+
+*Rule scope*: Common (BR-REQ-20#2)
+
 |===
 
 
@@ -82,6 +88,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |===
 |*Class name*:|cac:PostalAddress
 |*Definition*:|Contractinng body address information.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -126,6 +133,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-006[_tbr070-006_]. 
 
 *Rule*: The country of the contracting body must always be specified. Compulsory use of the code list CountryCodeIdentifier (ISO 3166-1 2A:2006).
+
+*Rule scope*: Common (BR-REQ-20#3, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
 
 |*cac:Country/cbc:Name*
 |Text

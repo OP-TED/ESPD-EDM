@@ -9,7 +9,7 @@ The figure below shows how the data about the economic operator looks like in a 
 .Vision of the data about the EO in a 'collapsed' Self-contained ESPD 
 image::SELFCONTAINED_EO_XML_Collapsed.png[EO data - collapsed view, alt="EO data - collapsed view", align="center"]
 
-This fragment of XML *does not include the responses to the QUESTIONs* in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each `cac:TenderingCriterionProperty` element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element `cac:ResponseValue` is associated to the UUID of the corresponding `cac:TenderingCriterionProperty` via the element `cbc:ValidatedCriterionPropertyID`. For an example of a complete *SELF-CONTAINED* ESPD Response XML document you can also see the file link:./dist/xml/SELFCONTAINED-ESPDResponse-2.0.2.xml[SELFCONTAINED-ESPDResponse-2.0.2.xml].
+This fragment of XML *does not include the responses to the QUESTIONs* in the data structures, yet. This is because the Responses have to be associated to a criterion property. The fragment below shows how these criterion properties are prepared and a 'dynamic' UUID is associated to each criterion property.  Later on the response values will use these UUID to link the actual response to each QUESTION (i.e. with each `cac:TenderingCriterionProperty` element). Therefore the example does not include the data about the the EO yet. To see how the EO provides these data please see the sections below about the Response. There you will see that each element `cac:ResponseValue` is associated to the UUID of the corresponding `cac:TenderingCriterionProperty` via the element `cbc:ValidatedCriterionPropertyID`. For an example of a complete *SELF-CONTAINED* ESPD Response XML document you can also see the file link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xml/SELFCONTAINED-ESPDResponse-2.0.2.xml[SELFCONTAINED-ESPDResponse-2.0.2.xml].
 
 .Economic operator data - XML example
 [source,xml]
@@ -309,7 +309,7 @@ This fragment of XML *does not include the responses to the QUESTIONs* in the da
 
 <!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity -->
 ----
-<1> Role of the economic operator. The values are defined in the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EORoleType]. The selection of the value `SCLE` determines whether the data about the relied-on and not-relied-on entities is instantiated in this XML. In this case, as the value is `SCLE` these data is present in the XML document.
+<1> Role of the economic operator. The values are defined in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EORoleType]. The selection of the value `SCLE` determines whether the data about the relied-on and not-relied-on entities is instantiated in this XML. In this case, as the value is `SCLE` these data is present in the XML document.
 <2> Name of the economic operator. A text field.
 <3> Street and number of the economic operator. Notice that the `cac:AddressLine` element is used instead of `cbc:StreetnName` and `cbc:BuildingNumber`. This is because name and number are not split in two fields. 
 <4> Postcode (zip code) of the EO. A text field. Either the GUI and/or an external Schematron rule could be implemented to control the pattern of this text.
@@ -321,7 +321,7 @@ This fragment of XML *does not include the responses to the QUESTIONs* in the da
 <10> The VAT number of the EO. Notice how the attributes of the `cbc:ID` element are used: they respect the information requirements established for the identification of the EO (see requirements at the beginning of the section).
 <11> Additional identifier. In this example it is not used, thus the absence of the element.
 <12> Internet address, normally the official web-site of the EO.
-<13> Code to identify the type of the company (micro, small, medium, SME, Large). Notice the use of the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIndustryClassificationCode] (for statistical purposes).
+<13> Code to identify the type of the company (micro, small, medium, SME, Large). Notice the use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIndustryClassificationCode] (for statistical purposes).
 <14> Number of employees of the EO's company. Do not use separators. The software application should take care of the formatting (for statistical purposes).
 <15> Indicative turnover of the EO's company (for statistical purposes).
 <16> Set of data about a sheltered workshop.
@@ -338,15 +338,15 @@ This fragment of XML *does not include the responses to the QUESTIONs* in the da
 <27> Lots the EO tenders to. See the responses in the next section to see how this list of Lots is constructed.
 <28> Name of one member of the group. This EO is the Lead entity and therefore has to identify all the members of the group (ACME-Consortium, in this example). The EO will have to introduce as many groups of name, ID, and activity data as members has the group (except itself). 
 <29> Identifier of the member. The ESPD-EDM preferred option is the VAT number. Notice in the response (in further sections) that the type of identifier goes to the attribute `schemeID` (see values in the Code List  
-link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType].
+link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType].
 <30> Activity of the EO. Free-text field.
 <31> Group of data about the relied-on entities. As this EO is the Lead entity it has to provide this data. Thus the instance of this data structure in this XML example. 
 <32> Name of an entity. A free-text field.
 <33> ID of the entity. The ESPD-EDM preferred option is the VAT number. Notice in the response (in further sections) that the type of identifier goes to the attribute `schemeID` (see values in the Code List  
-link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType].
+link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType].
 <34> Activity of the entity. Free-text field.
 <35> Group of data about the entities upon which the EO does not rely on. As this EO is the Lead entity it has to provide this data. Thus the instance of this data structure in this XML example.
 <36> Name of a subcontractor. A free-text field.
 <37> ID of a subcontractor. The ESPD-EDM preferred option is the VAT number. Notice in the response (in further sections) that the type of identifier goes to the attribute `schemeID` (see values in the Code List  
-link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType].
+link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType].
 <38> Activity of the subcontractor. Free-text field.

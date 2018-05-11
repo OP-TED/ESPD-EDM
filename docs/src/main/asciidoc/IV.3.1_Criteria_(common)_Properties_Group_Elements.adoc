@@ -8,6 +8,7 @@
 |*Definition*: |The first level group of properties and sub-groups of properties in the structure of a criterion.
 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]
+|*Business rule(s)*:|Common (BR-TC-07, BR-TC-16)
 |*File*:|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:|/QualificationApplicationRequest/cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup	
 |===
@@ -22,7 +23,9 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
 
-*Rule*: Compulsory use of the UUIDs supplied by e-Certis. See also the spreadsheets link:dist/ods/ESPDRequest-CriteriaTaxonomy-REGULATED-V2.0.2.ods [_Criteria Taxonomy (Regulated ESPD)_] and link:dist/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods [_Criteria Taxonomy (Self-contained ESPD)_]. 
+*Rule*: Compulsory use of the UUIDs supplied by e-Certis. See also the spreadsheets link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/ods/ESPDRequest-CriteriaTaxonomy-REGULATED-V2.0.2.ods[_Criteria Taxonomy (Regulated ESPD)_] and link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods[_Criteria Taxonomy (Self-contained ESPD)_]. 
+
+*Rule scope*: Common (BR-TC-12, BR-OTH-02, BR-OTH-02#01)
 
 |*cbc:PropertyGroupTypeCode*
 |Code
@@ -32,6 +35,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
 
 *Rule*:  Compulsory use of the Code List `PropertyGroupType`. See sections below about the 'criteria data structures' and the XML examples on exclusion and selection criteria to understand the use of this code. Beware that the first element inside a group of properties (after the group ID) is always a cac:TenderingCriterionProperty. In some occasions this might entail the use of an empty CAPTION element, for instance, to produce groups of subgroups where no property does really makes sense in the first group.
+
+*Rule scope*: Common (BR-TC-14, BR-TC-15, BR-OTH-01, BR-OTH-01#11, BR-OTH-03)
 
 |*cac:TenderingCriterionProperty*
 |Class

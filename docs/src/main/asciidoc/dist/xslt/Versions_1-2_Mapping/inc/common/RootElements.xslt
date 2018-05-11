@@ -4,6 +4,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" 
 	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" 
+	xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1"
 	xmlns:cbc-old="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 	xmlns:util="java:java.util.UUID"
 	exclude-result-prefixes="cbc cac cbc-old util">
@@ -11,8 +12,13 @@
 	<xsl:template name="RootElements" exclude-result-prefixes="#all">
 		
 		<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
-		<cbc:CustomizationID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">ESPD-2.0.2</cbc:CustomizationID>	
-		<cbc:ProfileID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">urn:www.cenbii.eu:transaction:biitrns092:ver3.0</cbc:ProfileID>
+		<xsl:if test="espd:ESPDResponse">
+		<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="2.0">urn:www.cenbii.eu:transaction:biitrdm092:ver3.0</cbc:CustomizationID>
+		</xsl:if>
+		<xsl:if test="not(espd:ESPDResponse)">
+		<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="2.0">urn:www.cenbii.eu:transaction:biitrdm070:ver3.0</cbc:CustomizationID>
+		</xsl:if>
+		<cbc:ProfileID schemeAgencyID="CEN-BII" schemeVersionID="2.0">4.1</cbc:ProfileID>
 		<cbc:ProfileExecutionID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">ESPD-EDMv2.0.2-REGULATED</cbc:ProfileExecutionID>
 		<xsl:element name="cbc:ID">
 			
@@ -36,11 +42,11 @@
 		<!-- BEWARE THAT IN VERSION 1.0.2 INDICATING THE TYPE OF PROCUREMENT PROCEDURE WAS NOT MANDATORY, WHILST IN THE ESPD-EDM V2.0.x THIS ELEMENT IS COMPULSORY. PLEASE CORRECT THE CODE AFTER TRANSFORMATION!!! -->
 		<xsl:text disable-output-escaping="yes">&lt;!--	######################### VERY IMPORTANT ##################################################### --&gt;</xsl:text>
 		<xsl:text disable-output-escaping="yes">&lt;!--	BEWARE THAT IN VERSION 1.0.2 INDICATING THE TYPE OF PROCUREMENT PROCEDURE WAS NOT MANDATORY, WHILST IN THE ESPD-EDM V2.0.x THIS ELEMENT IS COMPULSORY. PLEASE CORRECT THE CODE AFTER TRANSFORMATION!!! --&gt;</xsl:text>
-		<cbc:ProcedureCode listID="ProcedureType"  listAgencyName="EU-COM-GROW" listVersionID="2.0.2">OPEN</cbc:ProcedureCode>
+		<cbc:ProcedureCode listID="ProcedureType"  listAgencyName="Publications Office of the EU" listAgencyID="EU-COM-OP" listVersionID="1.0">OPEN</cbc:ProcedureCode>
 		<xsl:text disable-output-escaping="yes">&lt;!--	############################################################################################## --&gt;</xsl:text>
 		<!-- ############################################################################################## -->
 		
-		<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType"  listAgencyName="EU-COM-GROW" listVersionID="2.0.2">REGULATED</cbc:QualificationApplicationTypeCode>
+		<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType"  listAgencyName="DG GROW (European Commission)" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REGULATED</cbc:QualificationApplicationTypeCode>
 		
 	</xsl:template>
 	

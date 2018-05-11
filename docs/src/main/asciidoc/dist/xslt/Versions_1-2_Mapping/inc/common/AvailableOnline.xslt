@@ -16,16 +16,13 @@
         <xsl:variable name="node" select=".//ccv:RequirementGroup[cbc-old:ID = '9026e403-3eb6-4705-a9e9-e21a1efc867d']"/>
      
         
-        <xsl:for-each select=".//ccv:RequirementGroup[cbc-old:ID = '9026e403-3eb6-4705-a9e9-e21a1efc867d']">   
+      
         
         <xsl:variable name="node" select="."/>
             
-        <cac:SubsidiaryTenderingCriterionPropertyGroup>
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
-                <xsl:value-of select="$node/cbc-old:ID"/>
-            </cbc:ID>
+        
+            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
             <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
-            
             <cac:TenderingCriterionProperty>
                 <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
                     <xsl:value-of select="$node/ccv:Requirement/cbc-old:ID"/>
@@ -38,7 +35,7 @@
             </cac:TenderingCriterionProperty>
             <xsl:variable name="node" select="$node/ccv:RequirementGroup"/>
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
-                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="$node/cbc-old:ID"/></cbc:ID>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
                 <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
                 <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
@@ -52,24 +49,21 @@
                     <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
                 </cac:TenderingCriterionProperty>
             </cac:SubsidiaryTenderingCriterionPropertyGroup>
-        </cac:SubsidiaryTenderingCriterionPropertyGroup>
-        </xsl:for-each>
+       
+        
     </xsl:template>
  <xsl:template name="availableOnlineUUIDChange" exclude-result-prefixes="#all">
         
         <xsl:variable name="node" select=".//ccv:RequirementGroup[cbc-old:ID = '7458d42a-e581-4640-9283-34ceb3ad4345']"/>
      
         
-        <xsl:for-each select=".//ccv:RequirementGroup[cbc-old:ID = '7458d42a-e581-4640-9283-34ceb3ad4345']">   
+        
         
         <xsl:variable name="node" select="."/>
             
-        <cac:SubsidiaryTenderingCriterionPropertyGroup>
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
-                <xsl:value-of select="$node/cbc-old:ID"/>
-            </cbc:ID>
+       
+            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
             <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
-            
             <cac:TenderingCriterionProperty>
                 <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
                     <xsl:value-of select="$node/ccv:Requirement/cbc-old:ID"/>
@@ -82,7 +76,7 @@
             </cac:TenderingCriterionProperty>
             <xsl:variable name="node" select="$node/ccv:RequirementGroup"/>
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
-                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="$node/cbc-old:ID"/></cbc:ID>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
                 <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
                 <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
@@ -96,28 +90,27 @@
                     <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
                 </cac:TenderingCriterionProperty>
             </cac:SubsidiaryTenderingCriterionPropertyGroup>
-        </cac:SubsidiaryTenderingCriterionPropertyGroup>
-        </xsl:for-each>
+        
+        
     </xsl:template>
     <xsl:template name="availableOnlineNotExist" exclude-result-prefixes="#all">
-
             <cac:TenderingCriterionPropertyGroup>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
-			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ON*</cbc:PropertyGroupTypeCode>
 			<cac:TenderingCriterionProperty>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="util:toString(util:randomUUID())"/></cbc:ID>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1"><xsl:value-of select="util:toString(util:randomUUID())"/></cbc:ID>
 				<cbc:Description>Is this information available electronically?</cbc:Description>
-				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">INDICATOR</cbc:ValueDataTypeCode>
 			</cac:TenderingCriterionProperty>
 			<cac:SubsidiaryTenderingCriterionPropertyGroup>
-				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
-				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">ONTRUE</cbc:PropertyGroupTypeCode>
 				<cac:TenderingCriterionProperty>
-					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="util:toString(util:randomUUID())"/></cbc:ID>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.1"><xsl:value-of select="util:toString(util:randomUUID())"/></cbc:ID>
 					<cbc:Description>Evidence supplied</cbc:Description>
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
-					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.1">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
 				</cac:TenderingCriterionProperty>
 			</cac:SubsidiaryTenderingCriterionPropertyGroup>
 	</cac:TenderingCriterionPropertyGroup>
