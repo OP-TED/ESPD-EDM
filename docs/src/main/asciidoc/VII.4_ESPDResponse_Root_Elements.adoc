@@ -160,6 +160,26 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule scope*: SELF-CONTAINED (BR-OTH-01, BR-OTH-01#2, BR-OTH-03)
 
+|*cbc:WeightScoringMethodologyNote*
+|Text
+|0..n
+|Free-form text to describing information about Weight Scoring Methodology.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-016[tbr070-016]
+
+*Rule*: Used for transparency motives. Provide a text explaining clearly the method that will be used to select those selection criteria that will be weighted.
+
+*Rule scope*: Common (BR-2P-10)
+
+|*cbc:WeightingTypeCode*
+|Code
+|0..1
+|A code specifying the type of the Weighting.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-016[tbr070-016]
+
+*Rule*: Compulsory use of the code list `WeightingType`. If this element it is not instantiated and one or more selection criteria are weighted the type defaults to `NUMERIC`.
+
+*Rule scope*: Common (BR-2P-10)
+
 |*cac:ContractingParty*
 |Associated class
 |1
