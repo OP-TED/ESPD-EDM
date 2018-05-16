@@ -9,25 +9,30 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
 * [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
-* [v1.0.3](https://espd.github.io/ESPD-EDM/v2.0.2/) [See v2.0.2 documentation, chapter "I.5 Forward compatibility"]
 * [v1.0.2](https://espd.github.io/ESPD-EDM/v1.0.2/)
 * [v1.0.1](https://github.com/ESPD/ESPD-EDM/blob/1.0.1/docs/src/main/asciidoc/index.adoc)
 
 ## Roadmap
 
+Dear ESPD implementation community, 
+
+We are happy to inform you about the release of ESPD EDM version 2.0.2.
+
 ### Version 2.0.2 (May 2018)
  
-Bugs fixed on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues) about versions 2.0.0 and 2.0.1. The release contains a definition of all relevant [business rules](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc) and corresponding [schematron files](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val/schematron) to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy). A corresponding [TestBed for version 2.0.2](http://isaitb2.northeurope.cloudapp.azure.com/espd/upload) has been set up. Other major artefacts of this release are [conversion style-sheets from version 1.0.3 to version 2.0.2](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xslt/Versions_1-2_Mapping). The specifications for version 2.0.2 contain an updated [distribution](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist) of the ESPD Exchange Data Model and include a corresponding [implementation guideline](https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html) which clarifies the ESPD validation architecture in [Annex I](https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html#annex-i-xml-validation) and the conversion from ESPD EDM version 1.0.3 to ESPD EDM version 2.0.2 in [Annex II](https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html#annex-ii-v1-0-3-to-v2-0-2-conversion). Also, the [BIS 41 – ESPD version 2.0.2](http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2) was updated accordingly.
+The [ESPD EDM version 2.0.2](https://github.com/ESPD/ESPD-EDM/tree/2.0.2) is now released and contains only bugs fixed on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues).
+For further details please read the release notes. For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.2/release_notes.html). The release contains a definition of all relevant
+[business rules](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc) and corresponding [schematron files](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val/schematron)
+to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy).
+The corresponding [TestBed for version 2.0.2](http://isaitb2.northeurope.cloudapp.azure.com/espd/upload) has been set up. The specifications for version 2.0.2 contain an updated distribution of the
+[ESPD Exchange Data Model](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val/schematron) and include a corresponding [implementation guideline](https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html)
+which clarifies the [ESPD validation architecture in Annex I](https://espd.github.io/ESPD-EDM/v2.0.2/xml_guide.html#annex-i-xml-validation).
+Also, the [BIS 41 – ESPD version 2.0.2](http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2) was updated accordingly.
 
-### Criteria taxonomy file errata [ESPD-EDM version 1.0.2] (May 2018)
+
+### Release of criteria taxonomy file errata [ESPD EDM version 1.0.2] (May 2018)
 
 A release of criteria taxonomy file errata [ESPD EDM version 1.0.2] was necessary as the documentation on the criteria taxonomy was not updated to reflect the changes that were made to the Commission ESPD service up until July 2017. All corrections relate to the Criteria Data Flows and result in a revision of the [criteria taxonomy for version 1.0.2](https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods) (revisions are marked within the sheet). No other change was done to the ESPD EDM version 1.0.2. The revisions should therefore have no impact on all current ESPD services based on v1.0.2 but we recommend using the revised criteria taxonomy to approve the correct Criteria Data Flows. 
-
-### Version 1.0.3 (May 2018)
-
-The release of ESPD EDM version 1.0.3 was necessary to ensure proper functioning of conversions from the earlier version to version 2.0.2. It contains few updates which will have a minor impact on current ESPD services based on version 1.0.2. A few elements of the revised criteria taxonomy file errata [ESPD EDM version 1.0.2] had to be changed and need to be updated in current ESPD services. The [criteria taxonomy for version 1.0.3](https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-V1.0.3.ods) introduces a few new UUIDs for exclusion criteria and a new numbering of the criteria (changes are marked within the sheet). In addition, the ESPD EDM version 1.0.3 mandates the use of [new code lists](https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods) which are used in version 2.0.2. For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.2/release_notes.html).
-
-We recommend to the ESPD implementation community to change directly to ESPD EDM version 2.0.2. If your goal is to ensure a proper conversion between version 1.0.2 and 2.0.2, you should implement the changes outlined in ESPD EDM version 1.0.3. 
 
 ### Outlook: Release of ESPD EDM version 2.0.3 (foreseen October 2018)
 
@@ -46,7 +51,7 @@ Bug fixes detected in the previous versions; change requests related to these bu
 
 ### Version 2.0.0 (September 2017): 
 
-The goal of version 2.0.0 is that the ESPD-EDM is self contained. Meaning that public buyers can specify directly in their ESPD services criteria instead of defining them in the procurement document or the notice. Examples are that the public buyer can specify the number of years needed for the turnovers, the financial ratios needed for the procedure or that they can specify certificates needed. Something else that will be implemented in version 2.0.0 is the possibility to weight criteria which is important to reduce the number of participants in a procedure. Issues for this release are in *https://github.com/ESPD/ESPD-EDM/issues/*
+The goal of version 2.0.0 is that the ESPD-EDM is self contained. Meaning that public buyers can specify directly in their ESPD services criteria instead of defining them in the procurement document or the notice. Examples are that the public buyer can specify the number of years needed for the turnovers, the financial ratios needed for the procedure or that they can specify certificates needed. Something else that will be implemented in version 2.0.0 is the possibility to weight criteria which is important to reduce the number of participants in a procedure. Issues for this release are in *https://github.com/ESPD/ESPD-EDM/issues*.
 
 ### Version 1.0.2 (July 2016) 
 
