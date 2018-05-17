@@ -50,14 +50,14 @@ Observe that the data is
 		<cbc:Description>Please take into account the following requirements regarding the lots of this procurement procedure:</cbc:Description>
 		<cac:TenderingCriterionPropertyGroup>
 			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">03cff8d1-4d22-4435-82fa-d6361af84be6</cbc:ID>
-			<cbc:PropertyGroupTypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
 			<cac:TenderingCriterionProperty>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">847829aa-e70a-45e1-b4d3-e11c3ffaf7a0</cbc:ID>
 				<cbc:Description>Tenders may be submitted for</cbc:Description>
 				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CODE</cbc:ValueDataTypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CODE</cbc:ValueDataTypeCode><--3-->
 				<!-- Compulsory use of the Publications Office Code List BidType -->
-				<cbc:ExpectedCode listID="BidType" listAgencyID="EU-COM-OP" listVersionID="1.0">LOT_ALL</cbc:ExpectedCode>
+				<cbc:ExpectedCode listID="BidType" listAgencyID="EU-COM-OP" listVersionID="1.0">LOT_ALL</cbc:ExpectedCode> <--4-->
 			</cac:TenderingCriterionProperty>
 			<cac:TenderingCriterionProperty>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">dceddc28-0ac8-471b-b954-c376a862ea30</cbc:ID>
@@ -80,5 +80,5 @@ Observe that the data is
 ----
 <1> This procedure is divided into 7 lots. Hence their automatic identification from Lot1 to Lot7.
 <2> this Criterion has one group of properties containing a sub-group where the three requirements about the lots are actually specified: (i)The tenderers may submit tenders for the maximum number of lots; (ii) The Contracting Authority specifies a maximum number of 5 lots; and (iii) one tenderer can not win more than one lot. Notice that each element inside a criterion has a Universally Unique Identifier (UUID): these UUIDs are 'constant', meaning that they are maintained by DG GROW and need to be used compulsory as they were issued by DG GROW.
-<3> The Lot ID is provided by the contracting authority to inform the economic operator about which lots conform this procedure, thus the type 'CAPTION' to indicate that this is merely informative.
-<4> As the content of the criterion property is informative no answer will be expected from the economic operator in  the ESPD Response.
+<3> A code has to be provided to specify whether the economic operator is allowed to submit a tender covering one lot only, more than one but not all, or all of them. 
+<4> The value for the expected code (see bullet number 3) needs to be chosen amongst the values of the Code List `BidType`.

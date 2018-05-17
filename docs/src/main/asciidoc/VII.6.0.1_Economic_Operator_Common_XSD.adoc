@@ -1,4 +1,5 @@
 
+
 The information that the economic operator (EO) has to provide is relatively abundant, especially if the EO is the lead entity of a group. UBL does provide a class cac:EconomicOperator with sufficient data elements to identify the economic operator, its role, its representatives, physical location, officially registered address and other.
 
 As the whole ESDP-EDM V2.0.2 is based entirely on the UBL-2.2 XSD (W3C) Schemas, these schemas are to be used for both the *Regulated* and the *Self-contained* versions of the ESPD. 
@@ -50,7 +51,7 @@ The diagram below shows the XSD element that will hold the data required by the 
 
 ** *cac:QualifyingParty/cbc:EmployeeQuantity*, for the number of employees; and
 
-** *cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode* to indicate whether the EO is a micro, small, medium or large company (or simply an SME). This code is defined in the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIndustryClassificationCode]. See also sections "Expected Elements" and "XML example" for more details.
+** *cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode* to indicate whether the EO is a micro, small, medium or large company (or simply an SME). This code is defined in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIndustryClassificationCode]. See also sections "Expected Elements" and "XML example" for more details.
 
 * *Turnover*: For statistical purposes the ESPD-EDM asks this datum to reflect the financial capability of the economic operator (see mock-ups above). This datum is to be placed in `cac:QualifyingParty/cac:FinancialCapability/ValueAmount`.
 
@@ -59,7 +60,7 @@ image::QualifyinParty_XSD.png[cac:QualifyingParty element-XSD, alt="cac:Qualifyi
 
 ===== cac:EconomicOperatorRole
 
-The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair *code + description* (see Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EORoleType] for the codes and descriptions; see also the XML example below).
+The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair *code + description* (see Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EORoleType] for the codes and descriptions; see also the XML example below).
 
 .Role of the economic operator
 image::EO_Role_XSD.png[EO Role, alt="EO Role", align="center"]

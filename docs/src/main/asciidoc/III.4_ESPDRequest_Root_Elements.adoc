@@ -3,6 +3,27 @@
 
 The table below lists the elements that are expected in the ESPD Response V2.0.2 and provides details on the cardinalities and usage of those elements.
 
+.A note about the Business Rules identifiers
+[IMPORTANT]
+====
+From this point on in the document, the tables defining classes and its properties refer frequently to business rules. 
+As stated in the link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2#BIS41-ESPDV2.0.2-BusinessRules[e-Sens BIS document], 
+"_ [..] business rules are sets of rules that clarify the content of instances by stating mandatory fields, fixed values (like code lists), dependency 
+between fields in the same object and dependency between different objects_".
+
+If you need to well understand where the business rules come from and how they are implemented and executed you should read the following content in the order indicated:
+
+. The http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2#BIS41-ESPDV2.0.2-BusinessRules[ESPDint BIS document, Chapter Business Rules], where the rules are described in a 
+narrative way, from the business perspective; 
+. The link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc/ESPD_TestCases.docx[ESPD Test Cases], where the ESPDint BIS rules are connected to each 
+class and data element of the XML implementation Guide and "Test Cases" are defined as a previous step towards the specification of machine-readable rules (based on ISO-Schematron, see link:#annex-i-xml-validation[Annex I: XML Validation];   
+. The link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc/ESPD_TestCases_mapping.docx[ESPD Test Cases Mapping], where every business rule (previously identified and describe in the other two documents) is mapped 
+to specific elements of the ESPD XSD Schemas, the severity of the error is indicate, the text of the validation-result message for the validation report, etc.;
+|*Information requirement*: 
+
+Beware that *all theses documents do share the same business rule identifiers* (e.g. tbrxx-yyy for Business Requirement Identifiers in ESPDInt, and BR-Type-Id#n for the Test Cases technical rules).          
+====
+
 .Class QualificationApplicationRequest, components required by the ESPD-EDM V2.0.2
 [cols="<1,<5"]
 |===
@@ -12,7 +33,9 @@ The table below lists the elements that are expected in the ESPD Response V2.0.2
 
 Document provided by a buyer defining the exclusion and selection criteria for a given procurement procedure.
 
-|*File*: |link:./dist/xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd[dist/xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd]
+|*Business rule(s)*: |None
+
+|*File*: |link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd[dist/xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd]
 
 |===
 
@@ -24,81 +47,97 @@ Document provided by a buyer defining the exclusion and selection criteria for a
 |Identifier
 |1
 |Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_].
 
-*Rule*: Use the value "2.2". Use also "OASIS-UBL-TC" for the schemeAgencyID attribute. 
+*Rule*: Use the value "2.2". Use also "OASIS-UBL-TC" for the schemeAgencyID attribute.
+
+*Rule scope*: Common (BR-OTH-05, 2.BR-OTH-02)
 
 |*cbc:CustomizationID*
 |Identifier
 |1
 |Identifies a user-defined customization of UBL for a specific use.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-001_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-001_].
 
-*Rule*: For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”. Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute. 
+*Rule*: For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0”. Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.
+
+*Rule scope*: Common (BR-OTH-02, BR-OTH-06)
 
 |*cbc:ProfileID*
 |Identifier
 |0..1
 |An identification of the specification containing the total set of rules regarding semantic content, cardinalities and business rules to which the data contained in the instance document conforms. The identification may include the version of the specification as well as any customizations applied.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-002_].
 
-*Rule*: Use the value "41". Use also "CEN-BII" for the scheme AgencyID attribute. 
+*Rule*: Use the value "41". Use also "CEN-BII" for the scheme AgencyID attribute.
+
+*Rule scope*: Common (BR-OTH-07, BR-OTH-02)
 
 |*cbc:ProfileExecutionID*
 |Identifier
 |1
 |The identification and version of the ESPD Exchange Data Model used to create the to XML instance. The identification may include the exact version of the specification.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-001[_tbr070-002_].
 
-*Rule*: Compulsory use of the CodeList `ProfileExecutionID`. Use the value "EU-COM-GROW" for th SchemeAgencyID attribute.   
+*Rule*: Compulsory use of the CodeList `ProfileExecutionID`. Use the value "EU-COM-GROW" for th SchemeAgencyID attribute.
+
+*Rule scope*: Common (BR-OTH-01, BR-OTH-01#13, BR-OTH-03)
 
 |*cbc:ID*
 |Identifier
 |1
 |An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator). An identifier for this document, normally generated by the system that creates the ESPD document, or the organisation responsible for the document (e.g. the buyer, e.g. a contracting authority, or the supplier, e.g. an economic operator). The identifier enables positive referencing the document instance for various purposes including referencing between transactions that are part of the same process.
 
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_].
 
 *Rule*: Compulsory use of schemeAgencyID attribute. Use it to identify the organisation responsible for the document.
+
+*Rule scope*: Common (BR-OTH-02)
+
 
 |*cbc:CopyIndicator*
 |Indicator
 |0..1
 |Indicates whether this document is a copy (true) or not (false).
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_].
 
 *Rule*: It is a good practice to use the CopyIndicator component if the same document is forwarded several times to the same or to different destinations. Use it in combination with the UUID identifier: copies of an ESPD document should be identified with distinct UUIDs.
+
 
 |*cbc:UUID*
 |Identifier
 |1
 |A universally unique identifier that can be used to reference this ESPD document instance.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_].
 
-*Rule*: This UUID will be used to link the ESPD Response to its corresponding ESPD Request (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute. 
+*Rule*: This UUID will be used to link the ESPD Response to its corresponding ESPD Request (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute.
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-02)
 
 |*cbc:ContractFolderID*
 |Identifier
 |1
 |An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which a Qualification request document and the delivered response documents are associated.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_].
 
 *Rule*: Try always to use the reference number issued by the contracting authority. This number in combination with a registered contracting authority ID (e.g. the VAT number) results in a *universally unique identifier of the procurement procedure*.
+
+*Rule scope*: REGULATED (BR-REG-10), SELF-CONTAINED (BR-SC-10)
 
 |*cbc:IssueDate*
 |Date
 |1
 |Date when the document was issued by the contracting authority.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_].
 
 *Rule*: Format "YYYY-MM-DD".
 
@@ -106,8 +145,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |Time
 |0..1
 |Time when the document was issued by the contracting authority.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-002[_tbr070-002_].
 
 *Rule*: Format "hh:mm:ss".
 
@@ -115,8 +154,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |Identifier
 |0..1
 |The version identifying the content of this document.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-014[_tbr070-014_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-014[_tbr070-014_].
 
 *Rule*: Changes in content should entail the modification of the version identifier and a reference to the previous version.
 
@@ -124,8 +163,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |Identifier
 |0..1
 |The version identifying the previous modification of the content of this document.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-014[_tbr070-014_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-014[_tbr070-014_].
 
 *Rule*: None
 
@@ -133,26 +172,50 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |Code
 |0..1
 |The type of the procurement administrative procedure according to the EU Directives.
-|*Information Requirement*: 
+|*Information Requirement*:
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_].
 
-*Rule*: *Rule*: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ProcedureType] (values: `Open`, `Restricted`, `Accelerated`, `Competitive dialogue`, etc.). Do not confound with the object of the procurement project (code list `ProjectType`: Works, Supplies, Services).
+*Rule*: *Rule*: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[ProcedureType] (values: `Open`, `Restricted`, `Accelerated`, `Competitive dialogue`, etc.). Do not confound with the object of the procurement project (code list `ProjectType`: Works, Supplies, Services).
+
+*Rule scope*: SELF-CONTAINED (BR-SC-10#2, BR-OTH-03, BR-OTH-01, BR-OTH-01#1)
 
 |*cbc:QualificationApplicationTypeCode*
 |Code
 |1
 |The type of European Single Procurement Document (ESPD).
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-02[_tbr070-02_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-02[_tbr070-02_].
 
-*Rule*: Compulsory use of the code list `QualificationApplicationType`. Compulsory use of attributes listID, listAgencyName and listVersionID. 
+*Rule*: Compulsory use of the code list `QualificationApplicationType`. Compulsory use of attributes listID, listAgencyName and listVersionID.
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-01, BR-OTH-01#2, BR-OTH-03)
+
+|*cbc:WeightScoringMethodologyNote*
+|Text
+|0..n
+|Free-form text to describing information about Weight Scoring Methodology.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-016[tbr070-016]
+
+*Rule*: Used for transparency motives. Provide a text explaining clearly the method that will be used to select those selection criteria that will be weighted.
+
+*Rule scope*: Common (BR-2P-10)
+
+|*cbc:WeightingTypeCode*
+|Code
+|0..1
+|A code specifying the type of the Weighting.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-016[tbr070-016]
+
+*Rule*: Compulsory use of the code list `WeightingType`. If this element it is not instantiated and one or more selection criteria are weighted the type defaults to `NUMERIC`.
+
+*Rule scope*: Common (BR-2P-10)
 
 |*cac:ContractingParty*
 |Associated class
 |1
 |The contracting authority or contracting entity who is buying supplies, services or public works using a tendering procedure as described in the applicable directive (Directives 2014/24/EU, 2014/25/EU).
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-01[_tbr070-01_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-01[_tbr070-01_].
 
 *Rule*: UBL-2.2 defines multiple cardinality ContractingParties presumably to allow *joint procurements*. However the ESPD only expects data about one buyer. The decision was made that in case of joint procurement the data collected in the ESPD would be about *the leader* of the joint procurement procedure.
 
@@ -160,20 +223,20 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |Associated class
 |0..1
 |An overall definition of the procurement procedure.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-002[_tbr70-002_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-002[_tbr70-002_].
 
-*Rules*: Use this component to identify and describe the procurement administrative procedure. 
-The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2.   
+*Rules*: Use this component to identify and describe the procurement administrative procedure.
+The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2.
 
-Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure. 
+Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure.
 
 |*cac:ProcurementProjectLot*
 |Associated class
 |0..1
 |One of the procurement project lots into which this contract can be divided.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-008[_tbr70-008_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-008[_tbr70-008_].
 
 *Rule*: If there is only one single procurement project lot specified, the ESPD refers then to a procurement procedure without lots.
 
@@ -182,8 +245,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |Associated class
 |1..n
 |A tendering criterion describes a rule or a condition that is used by the contracting body to evaluate and compare tenders by economic operators and which will be used for the exclusion and the selection of candidates to the award decision.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-003[_tbr70-003, tbr70-009_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-003[_tbr70-003, tbr70-009_].
 
 *Rule*: (see examples further below in this document)
 
@@ -191,8 +254,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-
 |Associated class
 |0..n
 |A reference to an additional document associated with this document.
-|*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-007[_tbr70-007_]. 
+|*Information Requirement*:
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr70-007[_tbr70-007_].
 
 *Rule*: *For procurement procedures above the threshold it is compulsory to make reference to the Contract Notice of the procedure published in TED*. See section "Reference to the Contract Notice" for a complete example.
 

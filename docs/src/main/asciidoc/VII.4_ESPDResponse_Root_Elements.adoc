@@ -12,7 +12,8 @@ The table below lists the elements that are expected in the ESPD Response V2.0.2
 
 Preliminary evidence certificates in the form of a self-declaration submitted by the economic operator during the tendering phase. On awarding, the winning party has to supply the real attestations and certificates.
 
-|*File*: |link:./dist/xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd[dist/xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd]
+|*Business rule(s)*:|None
+|*File*: |link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd[dist/xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd]
 
 |===
 
@@ -29,6 +30,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule*: Use the value "2.2". Use also "OASIS-UBL-TC" for the schemeAgencyID attribute. 
 
+*Rule scope*: Common (BR-OTH-05, 2.BR-OTH-02)
+
 |*cbc:CustomizationID*
 |Identifier
 |1
@@ -36,6 +39,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-019[_tbr92-019_].
 
 *Rule*: For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm092:ver3.0”. Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute. 
+
+*Rule scope*: Common (BR-OTH-02, BR-OTH-06)
 
 |*cbc:ProfileID*
 |Identifier
@@ -45,6 +50,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule*: Use the value "41". Use also "CEN-BII" for the scheme AgencyID attribute. 
 
+*Rule scope*: Common (BR-OTH-07, BR-OTH-02)
+
 |*cbc:ID*
 |Identifier
 |1
@@ -53,6 +60,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-019[_tbr92-019_]. 
 
 *Rule*: Compulsory use of schemeAgencyID attribute. Use it to identify the organisation responsible for the document.
+
+*Rule scope*: Common (BR-OTH-02)
 
 |*cbc:CopyIndicator*
 |Indicator
@@ -79,6 +88,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-013[_tbr92-013_]. 
 
 *Rule*: Try always to use the reference number issued by the contracting authority. This number in combination with a registered contracting authority ID (e.g. the VAT number) results in a *universally unique identifier of the procurement procedure*.
+
+*Rule scope*: REGULATED (BR-REG-20), SELF-CONTAINED (BR-SC-30)
 
 |*cbc:IssueDate*
 |Date
@@ -107,6 +118,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule*: The leader of the group must take care of ensuring that the name of the group is identical in all the ESPDs of the tender.
 
+*Rule scope*: SELF-CONTAINED (BR-LEAD-10-S10)
+
 |*cbc:VersionID*
 |Identifier
 |0..1
@@ -132,7 +145,9 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: 
  
 
-*Rule*: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ProcedureType] (values: `Open`, `Restricted`, `Accelerated`, `Competitive dialogue`, etc.). Do not confound with the object of the procurement project (code list `ProjectType`: Works, Supplies, Services).
+*Rule*: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ProcedureType] (values: `Open`, `Restricted`, `Accelerated`, `Competitive dialogue`, etc.). Do not confound with the object of the procurement project (code list `ProjectType`: Works, Supplies, Services).
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-01, BR-OTH-01#1, BR-OTH-03)
 
 |*cbc:QualificationApplicationTypeCode*
 |Code
@@ -141,7 +156,29 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-019[_tbr92-019_]. 
 
-*Rule*: Compulsory use of the codelist link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[QualificationApplicationType] (values 'REGULATED`, `SELFCONTAINED`). Compulsory use of attributes listID, listAgencyName and listVersionID.
+*Rule*: Compulsory use of the codelist link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[QualificationApplicationType] (values 'REGULATED`, `SELFCONTAINED`). Compulsory use of attributes listID, listAgencyName and listVersionID.
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-01, BR-OTH-01#2, BR-OTH-03)
+
+|*cbc:WeightScoringMethodologyNote*
+|Text
+|0..n
+|Free-form text to describing information about Weight Scoring Methodology.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-016[tbr070-016]
+
+*Rule*: Used for transparency motives. Provide a text explaining clearly the method that will be used to select those selection criteria that will be weighted.
+
+*Rule scope*: Common (BR-2P-10)
+
+|*cbc:WeightingTypeCode*
+|Code
+|0..1
+|A code specifying the type of the Weighting.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-016[tbr070-016]
+
+*Rule*: Compulsory use of the code list `WeightingType`. If this element it is not instantiated and one or more selection criteria are weighted the type defaults to `NUMERIC`.
+
+*Rule scope*: Common (BR-2P-10)
 
 |*cac:ContractingParty*
 |Associated class
@@ -158,7 +195,10 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |Any natural or legal person or public entity which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-001[_tbr92-001_]. 
-*Rule*: 
+
+*Rule*: The ESPD Response only refers to one, and only one, economic operator.
+
+*Rule scope*: Common (BR-RESP-10)
 
 |*cac:ProcurementProject*
 |Associated class
@@ -178,6 +218,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule*: If there is only one single procurement project lot specified, the ESPD refers then to a procurement procedure without lots.
 
+*Rule scope*: SELF-CONTAINED (BR-LOT-30)
 
 |*cac:TenderingCriterion*
 |Associated class
@@ -210,6 +251,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 ** In the ESPD Response it is also compulsory to make reference to the ESPD Request document.
 
+*Rule scope*: Common (BR-COM-10)
+
 |*cac:Evidence*
 |Associated class
 |0..n
@@ -217,7 +260,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-017,tbr92-007,tbr92-006[_tbr92-017, tbr92-007, tbr92-006_]. 
 
-*Rule*:
+*Rule*: Used to point at an instance of the cac:Evidence.
 
 |===
 

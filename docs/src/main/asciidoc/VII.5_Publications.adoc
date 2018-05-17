@@ -41,6 +41,7 @@ In the ESPD Response you may also add references to:
 |===
 |*Class name*:| cac:AdditionalDocumentReference
 |*Definition*:|A reference to an additional document associated with this document. 
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -61,6 +62,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule*: Use the same value that was used in the *cac:QualificationApplicationRequest/cbc:ID*. 
 
+*Rule scope*: Common (BR-OTH-02)
+
 |*cbc:UUID*
 |Identifier
 |1
@@ -70,6 +73,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 
 *Rule*: Use the same value that was used in the *cac:QualificationApplicationRequest/cbc:UUID*.
 
+*Rule scope*: SELF-CONTAINED (BR-OTH-02)
+
 |*cbc:DocumentTypeCode*
 |Code
 |1
@@ -77,7 +82,9 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-013[_tbr92-013_]. 
 
-*Rule*: For the ESDP-EDM it is compulsory use of the value `ESPD_REQUEST` from the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[_DocRefContentType_]. See also the XML example below on how to specify the ESPD Request. 
+*Rule*: For the ESDP-EDM it is compulsory use of the value `ESPD_REQUEST` from the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[_DocRefContentType_]. See also the XML example below on how to specify the ESPD Request. 
+
+*Rule scope*: Common (BR-OTH-01, BR-COM-10#3, BR-OTH-01#3, BR-OTH-03)
 
 |*cbc:DocumentType*
 |Text
@@ -86,7 +93,9 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-013[_tbr92-013_]. 
 
-*Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[_LanguageCodeEU_] for the value of the languageID attribute.
+*Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[_LanguageCodeEU_] for the value of the languageID attribute.
+
+*Rule scope*: Common (BR-OTH-01, BR-OTH-01#4, BR-OTH-03)
 
 |*cbc:IssueDate*
 |Date
@@ -132,7 +141,7 @@ In the case of the reference to the ESPD Request from the ESPD Response, the onl
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-013[_tbr92-013_]. 
 
-*Rule*: None.
+*Rule*: If the document exists at a remote location, then the value should be the URL pointing to the document.
 |===
 
 

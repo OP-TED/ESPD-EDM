@@ -8,6 +8,7 @@ As you can see from the XSD  Schema the `cac:DocumentReference` class has a rich
 |===
 |*Class name*:| cac:AdditionalDocumentReference
 |*Definition*:|A reference to an additional document associated with this document.
+|*Business rule(s)*:|Common (BR-COM-10)
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -28,6 +29,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 
 *Rule*: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). If at the time of drafting the ESPD document the Publication Office has not published yet the Contract Notice the value 0000/S 000-000000 value must be used to indicate that a temporary identifier is being used. 
 
+*Rule scope*: Common (BR-COM-10#1, BR-OTH-02)
+
 |*cbc:UUID*
 |Identifier
 |0..1
@@ -45,6 +48,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 
 *Rule*: For the ESDP-EDM it is compulsory use of the Code List `DocRefContentType`. See example below on how to specify the OJS Contract Notice. If, for other documents, the type of document is not available in this list, provide the code “Other” and describe the content in the element `DocumentType`.
 
+*Rule scope*: Common (BR-OTH-01, BR-OTH-01#3, BR-OTH-03)
+
 |*cbc:DocumentType*
 |Text
 |0..1
@@ -53,6 +58,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List `LanguageCodeEU` for the value of the languageID attribute.
+
+*Rule scope*: Common (BR-OTH-01, BR-OTH-01#4, BR-OTH-03)
 
 |*cbc:IssueDate*
 |Date
@@ -113,5 +120,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-007[_tbr070-007_]. 
 
 *Rule*: If the document being referenced is a Notice being published on TED, use two description lines. Use the second description line to place therein the temporary number received from TED. See example and comments below.
+
+*Rule scope*: Common (BR-COM-10#2, BR-COM-10-S10, BR-COM-10-S20, BR-COM-10-S30)
 
 |===
