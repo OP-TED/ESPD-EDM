@@ -22,7 +22,7 @@
  *
  */
 
-package eu.europa.ec.grow.espd.edm.xml;
+package eu.europa.ec.grow.espd.edm2.xml;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
