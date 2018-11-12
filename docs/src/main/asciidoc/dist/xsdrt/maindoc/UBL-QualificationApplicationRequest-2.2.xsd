@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           UBL Pre-award Development Test
-  Release Date:      04 September 2017
-  Module:            xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd
-  Generated on:      2017-09-07 16:43z
-  Copyright (c) OASIS Open 2017. All Rights Reserved.
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2.xsd
+  Generated on:      2018-07-08 20:04z
+  Copyright (c) OASIS Open 2018. All Rights Reserved.
 -->
-<xsd:schema xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
-            xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-            xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsd:schema xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+            xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
             xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+            targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
             elementFormDefault="qualified"
             attributeFormDefault="unqualified"
             version="2.2">
-   <xsd:import namespace="urn:X-test:UBL:Pre-award:CommonAggregate"
-               schemaLocation="../common/UBL-CommonAggregateComponents-Pre-award.xsd"/>
-   <xsd:import namespace="urn:X-test:UBL:Pre-award:CommonBasic"
-               schemaLocation="../common/UBL-CommonBasicComponents-Pre-award.xsd"/>
+   <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               schemaLocation="../common/UBL-CommonAggregateComponents-2.2.xsd"/>
+   <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+               schemaLocation="../common/UBL-CommonBasicComponents-2.2.xsd"/>
    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-               schemaLocation="../common/UBL-CommonExtensionComponents-Pre-award.xsd"/>
-   <xsd:element name="QualificationApplicationResponse"
-                type="QualificationApplicationResponseType"/>
-   <xsd:complexType name="QualificationApplicationResponseType">
+               schemaLocation="../common/UBL-CommonExtensionComponents-2.2.xsd"/>
+   <xsd:element name="QualificationApplicationRequest"
+                type="QualificationApplicationRequestType"/>
+   <xsd:complexType name="QualificationApplicationRequestType">
       <xsd:sequence>
          <xsd:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:UBLVersionID" minOccurs="0" maxOccurs="1"/>
@@ -37,7 +38,6 @@
          <xsd:element ref="cbc:ContractName" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cbc:IssueDate" minOccurs="1" maxOccurs="1"/>
          <xsd:element ref="cbc:IssueTime" minOccurs="0" maxOccurs="1"/>
-         <xsd:element ref="cbc:EconomicOperatorGroupName" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:VersionID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:PreviousVersionID" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:ProcedureCode" minOccurs="0" maxOccurs="1"/>
@@ -50,17 +50,13 @@
          <xsd:element ref="cbc:WeightingTypeCode" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cbc:Note" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cac:ContractingParty" minOccurs="1" maxOccurs="unbounded"/>
-         <xsd:element ref="cac:EconomicOperatorParty" minOccurs="1" maxOccurs="unbounded"/>
+         <xsd:element ref="cac:EconomicOperatorParty" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cac:ProcurementProject" minOccurs="0" maxOccurs="1"/>
          <xsd:element ref="cac:ProcurementProjectLot" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cac:TenderingCriterion" minOccurs="0" maxOccurs="unbounded"/>
-         <xsd:element ref="cac:TenderingCriterionResponse"
-                      minOccurs="1"
-                      maxOccurs="unbounded"/>
          <xsd:element ref="cac:AdditionalDocumentReference"
                       minOccurs="0"
                       maxOccurs="unbounded"/>
-         <xsd:element ref="cac:Evidence" minOccurs="0" maxOccurs="unbounded"/>
          <xsd:element ref="cac:Signature" minOccurs="0" maxOccurs="unbounded"/>
       </xsd:sequence>
    </xsd:complexType>

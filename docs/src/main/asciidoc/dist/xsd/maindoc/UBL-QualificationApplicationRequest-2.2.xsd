@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           UBL Pre-award Development Test
-  Release Date:      04 September 2017
-  Module:            xsd/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd
-  Generated on:      2017-09-07 16:43z
-  Copyright (c) OASIS Open 2017. All Rights Reserved.
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            xsd/maindoc/UBL-QualificationApplicationRequest-2.2.xsd
+  Generated on:      2018-07-08 20:04z
+  Copyright (c) OASIS Open 2018. All Rights Reserved.
 -->
-<xsd:schema xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
-            xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-            xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsd:schema xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+            xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
             xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:ccts="urn:un:unece:uncefact:documentation:2"
-            targetNamespace="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
+            targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
             elementFormDefault="qualified"
             attributeFormDefault="unqualified"
             version="2.2">
    <!-- ===== Imports ===== -->
-   <xsd:import namespace="urn:X-test:UBL:Pre-award:CommonAggregate"
-               schemaLocation="../common/UBL-CommonAggregateComponents-Pre-award.xsd"/>
-   <xsd:import namespace="urn:X-test:UBL:Pre-award:CommonBasic"
-               schemaLocation="../common/UBL-CommonBasicComponents-Pre-award.xsd"/>
+   <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+               schemaLocation="../common/UBL-CommonAggregateComponents-2.2.xsd"/>
+   <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+               schemaLocation="../common/UBL-CommonBasicComponents-2.2.xsd"/>
    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-               schemaLocation="../common/UBL-CommonExtensionComponents-Pre-award.xsd"/>
+               schemaLocation="../common/UBL-CommonExtensionComponents-2.2.xsd"/>
    <!-- ===== Element Declarations ===== -->
    <xsd:element name="QualificationApplicationRequest"
                 type="QualificationApplicationRequestType">
@@ -44,12 +45,12 @@
          </xsd:documentation>
       </xsd:annotation>
       <xsd:sequence>
-           <xsd:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
-              <xsd:annotation>
-                 <xsd:documentation>A container for all extensions present in the document.</xsd:documentation>
-              </xsd:annotation>
-           </xsd:element>
-          <xsd:element ref="cbc:UBLVersionID" minOccurs="0" maxOccurs="1">
+         <xsd:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>A container for all extensions present in the document.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+        <xsd:element ref="cbc:UBLVersionID" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>

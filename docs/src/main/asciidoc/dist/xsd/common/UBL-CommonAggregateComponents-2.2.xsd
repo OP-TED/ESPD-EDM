@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           UBL Pre-award Development Test
-  Release Date:      04 September 2017
-  Module:            xsd/common/UBL-CommonAggregateComponents-Pre-award.xsd
-  Generated on:      2017-09-07 16:43z
-  Copyright (c) OASIS Open 2017. All Rights Reserved.
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            xsd/common/UBL-CommonAggregateComponents-2.2.xsd
+  Generated on:      2018-07-08 20:04z
+  Copyright (c) OASIS Open 2018. All Rights Reserved.
 -->
-<xsd:schema xmlns="urn:X-test:UBL:Pre-award:CommonAggregate"
-            xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-            xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsd:schema xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+            xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:ccts="urn:un:unece:uncefact:documentation:2"
-            targetNamespace="urn:X-test:UBL:Pre-award:CommonAggregate"
+            targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
             elementFormDefault="qualified"
             attributeFormDefault="unqualified"
             version="2.2">
    <!-- ===== Imports ===== -->
-   <xsd:import namespace="urn:X-test:UBL:Pre-award:CommonBasic"
-               schemaLocation="UBL-CommonBasicComponents-Pre-award.xsd"/>
+   <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+               schemaLocation="UBL-CommonBasicComponents-2.2.xsd"/>
    <!-- ===== Element Declarations ===== -->
    <xsd:element name="AcceptanceTransportEvent" type="TransportEventType"/>
    <xsd:element name="AccessoryRelatedItem" type="RelatedItemType"/>
@@ -94,6 +95,7 @@
    <xsd:element name="BuyerProposedSubstituteLineItem" type="LineItemType"/>
    <xsd:element name="BuyersItemIdentification" type="ItemIdentificationType"/>
    <xsd:element name="CallDuty" type="DutyType"/>
+   <xsd:element name="CallForTenderDocumentReference" type="DocumentReferenceType"/>
    <xsd:element name="CallForTendersDocumentReference" type="DocumentReferenceType"/>
    <xsd:element name="CallForTendersLineReference" type="LineReferenceType"/>
    <xsd:element name="Capability" type="CapabilityType"/>
@@ -512,6 +514,7 @@
    <xsd:element name="PromotionalEvent" type="PromotionalEventType"/>
    <xsd:element name="PromotionalEventLineItem" type="PromotionalEventLineItemType"/>
    <xsd:element name="PromotionalSpecification" type="PromotionalSpecificationType"/>
+   <xsd:element name="ProvidedDocumentReference" type="DocumentReferenceType"/>
    <xsd:element name="ProviderParty" type="PartyType"/>
    <xsd:element name="QualificationResolution" type="QualificationResolutionType"/>
    <xsd:element name="QualifyingParty" type="QualifyingPartyType"/>
@@ -582,6 +585,7 @@
    <xsd:element name="RequiredCertificationDocumentReference"
                 type="DocumentReferenceType"/>
    <xsd:element name="RequiredClassificationScheme" type="ClassificationSchemeType"/>
+   <xsd:element name="RequiredDocumentReference" type="DocumentReferenceType"/>
    <xsd:element name="RequiredFinancialGuarantee" type="FinancialGuaranteeType"/>
    <xsd:element name="RequiredItemLocationQuantity" type="ItemLocationQuantityType"/>
    <xsd:element name="RequiredRelatedItem" type="RelatedItemType"/>
@@ -12166,7 +12170,7 @@
             <ccts:Component>
                <ccts:ComponentType>ABIE</ccts:ComponentType>
                <ccts:DictionaryEntryName>Digital Collaboration. Details</ccts:DictionaryEntryName>
-               <ccts:Definition>A class to describe a digital collaboration.</ccts:Definition>
+               <ccts:Definition>A class to describe a digital trade collaboration.</ccts:Definition>
                <ccts:ObjectClass>Digital Collaboration</ccts:ObjectClass>
                <ccts:AlternativeBusinessTerms>Business Collaboration</ccts:AlternativeBusinessTerms>
             </ccts:Component>
@@ -12231,7 +12235,7 @@
             <ccts:Component>
                <ccts:ComponentType>ABIE</ccts:ComponentType>
                <ccts:DictionaryEntryName>Digital Process. Details</ccts:DictionaryEntryName>
-               <ccts:Definition>A class to describe a digital process.</ccts:Definition>
+               <ccts:Definition>A class to describe a digital trade process.</ccts:Definition>
                <ccts:ObjectClass>Digital Process</ccts:ObjectClass>
                <ccts:AlternativeBusinessTerms>Business Process</ccts:AlternativeBusinessTerms>
             </ccts:Component>
@@ -12330,7 +12334,7 @@
             <ccts:Component>
                <ccts:ComponentType>ABIE</ccts:ComponentType>
                <ccts:DictionaryEntryName>Digital Service. Details</ccts:DictionaryEntryName>
-               <ccts:Definition>A class to describe a specific digital service supported by an organization for either sending or receiving business documents on different formats (e.g. UBL, ISO20022, EDIFACT, ...).</ccts:Definition>
+               <ccts:Definition>A class to describe a specific digital trade service supported by an organization for either sending or receiving business documents on different formats (e.g. UBL, ISO20022, EDIFACT, ...).</ccts:Definition>
                <ccts:ObjectClass>Digital Service</ccts:ObjectClass>
                <ccts:AlternativeBusinessTerms>Business Transaction</ccts:AlternativeBusinessTerms>
             </ccts:Component>
@@ -22667,6 +22671,23 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cbc:WithholdingTaxTotalAmount" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Monetary Total. Withholding Tax_ Total Amount. Amount</ccts:DictionaryEntryName>
+                     <ccts:Definition>The total withholding tax amount.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Monetary Total</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Withholding Tax</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Total Amount</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Amount</ccts:RepresentationTerm>
+                     <ccts:DataType>Amount. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
          <xsd:element ref="cbc:PrepaidAmount" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
@@ -30043,7 +30064,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Response Value. Identifier</ccts:DictionaryEntryName>
-                     <ccts:Definition>An identifier to refer to the crterion requirement response value.</ccts:Definition>
+                     <ccts:Definition>An identifier to refer to the criterion requirement response value.</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Response Value</ccts:ObjectClass>
                      <ccts:PropertyTerm>Identifier</ccts:PropertyTerm>
@@ -30251,7 +30272,7 @@
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Response Value. Response URI. Identifier</ccts:DictionaryEntryName>
-                     <ccts:Definition>A URI to the response</ccts:Definition>
+                     <ccts:Definition>A URI value used as a reply to the criterion requirement.</ccts:Definition>
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Response Value</ccts:ObjectClass>
                      <ccts:PropertyTerm>Response URI</ccts:PropertyTerm>

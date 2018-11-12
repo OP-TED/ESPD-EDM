@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           UBL Pre-award Development Test
-  Release Date:      04 September 2017
-  Module:            xsd/common/UBL-CommonBasicComponents-Pre-award.xsd
-  Generated on:      2017-09-07 16:43z
-  Copyright (c) OASIS Open 2017. All Rights Reserved.
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            xsd/common/UBL-CommonBasicComponents-2.2.xsd
+  Generated on:      2018-07-08 20:04z
+  Copyright (c) OASIS Open 2018. All Rights Reserved.
 -->
-<xsd:schema xmlns="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsd:schema xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
             xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"
             xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="urn:X-test:UBL:Pre-award:CommonBasic"
+            targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
             elementFormDefault="qualified"
             attributeFormDefault="unqualified"
             version="2.2">
    <!-- ===== Imports ===== -->
    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"
-               schemaLocation="UBL-QualifiedDataTypes-Pre-award.xsd"/>
+               schemaLocation="UBL-QualifiedDataTypes-2.2.xsd"/>
    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
                schemaLocation="UBL-UnqualifiedDataTypes-2.2.xsd"/>
    <!-- ===== Element Declarations ===== -->
@@ -1095,6 +1096,7 @@
                 type="WeightingConsiderationDescriptionType"/>
    <xsd:element name="WeightingTypeCode" type="WeightingTypeCodeType"/>
    <xsd:element name="WithdrawOfferIndicator" type="WithdrawOfferIndicatorType"/>
+   <xsd:element name="WithholdingTaxTotalAmount" type="WithholdingTaxTotalAmountType"/>
    <xsd:element name="WorkPhase" type="WorkPhaseType"/>
    <xsd:element name="WorkPhaseCode" type="WorkPhaseCodeType"/>
    <xsd:element name="XPath" type="XPathType"/>
@@ -5933,6 +5935,11 @@
    <xsd:complexType name="WithdrawOfferIndicatorType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:IndicatorType"/>
+      </xsd:simpleContent>
+   </xsd:complexType>
+   <xsd:complexType name="WithholdingTaxTotalAmountType">
+      <xsd:simpleContent>
+         <xsd:restriction base="udt:AmountType"/>
       </xsd:simpleContent>
    </xsd:complexType>
    <xsd:complexType name="WorkPhaseCodeType">

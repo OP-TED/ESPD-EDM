@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           UBL Pre-award Development Test Version csd02wd01pa06
-  Release Date:      04 September 2017
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
   Module:            UBL-ExtensionContentDataType-2.2.xsd
-  Generated on:      2016-05-30 13:40(UTC)
+  Generated on:      2016-06-24 19:50(UTC)
   Copyright (c) OASIS Open 2016. All Rights Reserved.
+  
+  Release Note: This is a module that can be modified by users, typically
+  only to add extension schema fragments for lax detection when encountered.
+  Changes to the complex type should not be required for typical use.
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns=
      "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
@@ -12,12 +17,20 @@
      "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
             elementFormDefault="qualified" 
             attributeFormDefault="unqualified" 
-            version="2.1">
+            version="2.2">
 
-  <!--import here all extension schemas-->
+  <!-- ===== import here all extension schemas ===== -->
+  
+  <!-- UBL Technical Committee extensions -->
   <xsd:import namespace=
      "urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"
               schemaLocation="UBL-CommonSignatureComponents-2.2.xsd"/>
+
+  <!-- Incorporate ETSI signature specifications -->
+  <xsd:import namespace="http://uri.etsi.org/01903/v1.3.2#"
+              schemaLocation="UBL-XAdES01903v132-201601-2.2.xsd"/>
+  <xsd:import namespace="http://uri.etsi.org/01903/v1.4.1#"
+              schemaLocation="UBL-XAdES01903v141-201601-2.2.xsd"/>
 
   <!-- ===== Type Declaration ===== -->
   <xsd:complexType name="ExtensionContentType">
