@@ -2,13 +2,13 @@
 <cva:ContextValueAssociation 
 	xmlns:cva="http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/1.0/" 
 	xmlns:sch="http://purl.oclc.org/dsdl/schematron" 
-	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" 
-	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" 
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
 	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
-	xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" 
-	xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" 
+	xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2" 
+	xmlns:espd-resp="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2" 
 	xmlns:fn="http://www.w3.org/2005/xpath-functions"
-	id="urn:x-illustration" name="code-list-values" version="$Id: ESPD-codelist-values.cva,v 2.0.2 $">
+	id="urn:x-illustration" name="code-list-values" version="$Id: ESPD-codelist-values.cva,v 2.0.3 $">
 	
 	<Annotation>
 		<Description>
@@ -20,15 +20,11 @@
 	</Annotation>
 	<Title>
 		ESPD code list values constraints - ESPD-codelist-values.cva
-		Version 2.0.2
+		Version 2.0.3
 	</Title>
 	<!-- BR-OTH-03: List all of the genericode files -->
 	<ValueLists>
-		<!--ValueList xml:id="ActivityTypeCode" uri="../../../../cl/gc/ActivityType-CodeList.gc"/ NOT USED -->
-		<!--ValueList xml:id="AmountTypeCode" uri="../../../../cl/gc/AmountType-CodeList.gc"/ NOT USED -->
-		<ValueList xml:id="BidType" uri="../../../../cl/gc/BidType-CodeList.gc"/>
 		<ValueList xml:id="ConfidentialityLevel" uri="../../../../cl/gc/ConfidentialityLevel-CodeList.gc"/><!-- cbc:ConfidentialityLevelCode -->
-		<!--ValueList xml:id="ContractType" uri="../../../../cl/gc/ContractType-CodeList.gc"/ NOT USED-->
 		<ValueList xml:id="CountryCodeIDs" uri="../../../../cl/gc/CountryCodeIdentifier-CodeList.gc"/><!-- cac:Country/cbc:IdentificationCode -->
 		<ValueList xml:id="CriterionElementType" uri="../../../../cl/gc/CriterionElementType-CodeList.gc"/><!-- /cac:TenderingCriterionProperty/cbc:TypeCode -->
 		<ValueList xml:id="CurrencyCodeList" uri="../../../../cl/gc/CurrencyCode-CodeList.gc"/><!-- cbc:ValueCurrencyCode, @currencyID -->
@@ -38,18 +34,20 @@
 		<ValueList xml:id="EORoleType" uri="../../../../cl/gc/EORoleType-CodeList.gc"/><!-- /cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode -->
 		<ValueList xml:id="LanguageCodeEU" uri="../../../../cl/gc/EULanguageCode-CodeList.gc"/><!-- @languageID -->
 		<ValueList xml:id="EvaluationMethodType" uri="../../../../cl/gc/EvaluationMethodType-CodeList.gc"/><!-- /cac:TenderingCriterion/cbc:EvaluationMethodTypeCode -->
-		<ValueList xml:id="FinancialRatioType" uri="../../../../cl/gc/FinancialRatioType-CodeList.gc"/>
-		<!--ValueList xml:id="LegislationType" uri="../../../../cl/gc/LegislationType-CodeList.gc"/ NOT USED-->
-		<ValueList xml:id="PeriodMeasureTypeCodes" uri="../../../../cl/gc/PeriodMeasureType-CodeList.gc"/>
 		<ValueList xml:id="ProcedureType" uri="../../../../cl/gc/ProcedureType-CodeList.gc"/><!-- /cbc:ProcedureCode -->
-		<ValueList xml:id="ProfileExecutionID" uri="../../../../cl/gc/ProfileExecutionID-CodeList.gc"/>
+		<ValueList xml:id="ProfileExecutionID" uri="../../../../cl/gc/ProfileExecutionID-CodeList.gc"/><!-- /cbc:ProfileExecutionID -->
 		<ValueList xml:id="ProjectType" uri="../../../../cl/gc/ProjectType-CodeList.gc"/><!-- /cbc:ProcurementTypeCode -->
 		<ValueList xml:id="PropertyGroupType" uri="../../../../cl/gc/PropertyGroupType-CodeList.gc"/><!-- /cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode -->
 		<ValueList xml:id="QualificationApplicationType" uri="../../../../cl/gc/QualificationApplicationType-CodeList.gc"/><!-- /cbc:QualificationApplicationTypeCode -->
 		<ValueList xml:id="ResponseDataType" uri="../../../../cl/gc/ResponseDataType-CodeList.gc"/><!-- /cac:TenderingCriterionProperty/cbc:ValueDataTypeCode -->
 		<ValueList xml:id="ServicesProjectSubType" uri="../../../../cl/gc/ServicesProjectSubType-CodeList.gc"/><!-- /cac:ProcurementProject/cbc:ProcurementSubTypeCode -->
-		<ValueList xml:id="TechnicalCapabilityTypeCode" uri="../../../../cl/gc/TechnicalCapabilityType-CodeList.gc"/>
 		<ValueList xml:id="WeightingType" uri="../../../../cl/gc/WeightingType-CodeList.gc"/><!-- /cbc:WeightingTypeCode -->
+		
+		<!-- cbc:ResponseCode possible code lists -->
+		<!--ValueList xml:id="BidType" uri="../../../../cl/gc/BidType-CodeList.gc"/>
+		<ValueList xml:id="BooleanGUIControl" uri="../../../../cl/gc/BooleanGUIControlType-CodeList.gc"/>
+		<ValueList xml:id="CPVType" uri="../../../../cl/gc/CPVCodes-CodeList.gc"/>
+		<ValueList xml:id="FinancialRatioType" uri="../../../../cl/gc/FinancialRatioType-CodeList.gc"/-->
 	</ValueLists>
 	
 	<!-- ESPDRequest - List of all elements and attributes where the code lists are used -->
@@ -89,6 +87,9 @@
 		</Context>
 		<Context address="cbc:ProcedureCode" values="ProcedureType">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ProcedureCode'.</Message>
+		</Context>
+		<Context address="cbc:ProfileExecutionID" values="ProfileExecutionID">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ProfileExecutionID'.</Message>
 		</Context>
 		<Context address="cbc:ProcurementTypeCode" values="ProjectType">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ProcurementTypeCode'.</Message>

@@ -2,17 +2,17 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<title>Common Criterion Business Rules</title>
   
-	<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-	<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
 	<ns prefix="udt" uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"/>
-	<ns prefix="espd" uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
 	
 <!--
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
 
     Illustration of criterion constraints - 03 ESPD Common Criterion BR.sch
-	ESPD Version: 2.0.2
+	ESPD Version: 2.0.3
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-CR">
@@ -24,8 +24,8 @@
 			<let name="currentIDExist" value="(cbc:ID) and not(normalize-space(cbc:ID) = '')"/>
 			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>
 			
-			<let name="ElementUUID" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.2.xml')//cac:TenderingCriterion[cbc:ID = $currentID] 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.2.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
+			<let name="ElementUUID" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.3.xml')//cac:TenderingCriterion[cbc:ID = $currentID] 
+				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.3.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
 			<let name="ElementUUIDExists" value="(count($ElementUUID/cbc:ID) = 1)"/>
 			
 			<!-- Cardinality constraints -->
@@ -73,13 +73,13 @@
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
 			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>
 			
-			<let name="ElementUUID_SUB" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.2.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID] 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.2.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+			<let name="ElementUUID_SUB" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.3.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID] 
+				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.3.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
 			<let name="ParentUUID_SUB" value="$ElementUUID_SUB[parent::*[cbc:ID = $parentID]][1]"/>
 			
 			<!-- cac:TenderingCriterionPropertyGroup -->
-			<let name="ElementUUID_T" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.2.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID] 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.2.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+			<let name="ElementUUID_T" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.3.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID] 
+				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.3.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
 			<let name="ParentUUID_T" value="$ElementUUID_T[parent::*[cbc:ID = $parentID]][1]"/>
 			
 			<let name="ElementUUID_TExists" value="(count($ParentUUID_T/cbc:ID) &gt; 0)"/>
@@ -122,13 +122,13 @@
 			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>	
 			
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
-			<let name="ElementUUIDSTC" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.2.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.2.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
+			<let name="ElementUUIDSTC" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.3.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
+				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.3.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
 			<let name="ElementUUID_STCExists" value="(count($ElementUUIDSTC) &gt; 0)"/>
 			
 			<!-- cac:TenderingCriterionPropertyGroup -->
-			<let name="ElementUUIDTC" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.2.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.2.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>		
+			<let name="ElementUUIDTC" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.3.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
+				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.3.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>		
 			<let name="ElementUUID_TCExists" value="(count($ElementUUIDTC) &gt; 0)"/>
 			
 			<let name="ElementUUIDExists" value="$ElementUUID_TCExists or $ElementUUID_STCExists"/>

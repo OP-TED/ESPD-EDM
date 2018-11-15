@@ -2,16 +2,16 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<title>ESPD Request Cardinality Business Rules</title>
   
-	<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-	<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
-	<ns prefix="espd" uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
 	
 <!--
     Start of synthesis of rules from cardinality constraints ESPD Request.
 
     Illustration of cardinality constraints - 02 ESPD Req Cardinality BR.sch
-	ESPD Version: 2.0.2
+	ESPD Version: 2.0.3
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-CARD">

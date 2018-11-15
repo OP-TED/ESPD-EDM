@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by everis Spain, S.L. (everis Spain, S.L.) -->
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:espd="urn:com:grow:espd:2.0.2" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
-xmlns:util="java:java.util.UUID">	
+<xsl:stylesheet version="2.0" 
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:fn="http://www.w3.org/2005/xpath-functions" 
+	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" 
+	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" 
+	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" 
+	xmlns:espd="urn:com:grow:espd:2.0.2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:util="java:java.util.UUID">	
+	
 	<xsl:include href="./inc/REGULATED-RootElements-Annotated.xslt"/>
 	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>	
 	<xsl:include href="./inc/EconomicOperatorData.xslt"/>		
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:template match="/">
-		<QualificationApplicationResponse xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationResponse ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd">
+		<QualificationApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2 ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2.xsd">
 		<xsl:call-template name="createRootElements"/>
 		<xsl:call-template name="createContractingAuthority"/>
 		<xsl:call-template name="createEconomicOperator"/>	
@@ -102,13 +113,13 @@ xmlns:util="java:java.util.UUID">
 			<cac:ResponseValue>
 				<xsl:call-template name="generateID"/>
 				<xsl:choose>
-					<xsl:when test="$propertyDataType = 'INDICATOR'">
+					<xsl:when test="$propertyDataType = 'INDICATOR' or $propertyDataType='WEIGHT_INDICATOR' or $propertyDataType='ALPHA_INDICATOR'">
 							<cbc:ResponseIndicator>true</cbc:ResponseIndicator>
 					</xsl:when>
-					<xsl:when test="$propertyDataType = 'AMOUNT'">
+					<xsl:when test="$propertyDataType = 'AMOUNT' or $propertyDataType = 'MAXIMUM_AMOUNT' or $propertyDataType = 'MINIMUM_AMOUNT'">
 							<cbc:ResponseAmount currencyID="EUR">10000000</cbc:ResponseAmount>
 					</xsl:when>
-					<xsl:when test="$propertyDataType = 'IDENTIFIER'">
+					<xsl:when test="$propertyDataType = 'IDENTIFIER' or $propertyDataType = 'ECONOMIC_OPERATOR_IDENTIFIER' or $propertyDataType='LOT_IDENTIFIER'">
 							<cbc:ResponseID schemeAgencyID="EU-COM-GROW">DUMMY_ID</cbc:ResponseID>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
@@ -120,17 +131,17 @@ xmlns:util="java:java.util.UUID">
 					<xsl:when test="$propertyDataType = 'DATE'">
 							<cbc:ResponseDate>2014-01-01</cbc:ResponseDate>
 					</xsl:when>
-					<xsl:when test="$propertyDataType = 'DESCRIPTION'">
+					<xsl:when test="$propertyDataType = 'DESCRIPTION' or $propertyDataType = 'CERTIFICATION_LEVEL_DESCRIPTION'">
 							<cbc:Description>DUMMY_DESCRIPTION</cbc:Description>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'PERCENTAGE'">
-							<cbc:ResponseMeasure unitCode="PERCENTAGE">0.7</cbc:ResponseMeasure>
+							<cbc:ResponseQuantity unitCode="PERCENTAGE">0.7</cbc:ResponseQuantity>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY_INTEGER'">
-							<cbc:ResponseMeasure unitCode="INTEGER">1</cbc:ResponseMeasure>
+							<cbc:ResponseQuantity unitCode="INTEGER">1</cbc:ResponseQuantity>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY_YEAR'">
-							<cbc:ResponseMeasure unitCode="YEAR">2017</cbc:ResponseMeasure>
+							<cbc:ResponseQuantity unitCode="YEAR">2017</cbc:ResponseQuantity>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY'">
 							<cbc:ResponseQuantity>10</cbc:ResponseQuantity>
@@ -140,7 +151,10 @@ xmlns:util="java:java.util.UUID">
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'URL'">
 						<cbc:ResponseURI>DUMMY_URL</cbc:ResponseURI>
-					</xsl:when>					
+					</xsl:when>
+					<xsl:when test="$propertyDataType = 'MAXIMUM_VALUE_NUMERIC' or $propertyDataType = 'MINIMUM_VALUE_NUMERIC'">
+						<cbc:ResponseNumeric>10.0</cbc:ResponseNumeric>
+					</xsl:when>
 				</xsl:choose>
 			</cac:ResponseValue>
 		</xsl:if>

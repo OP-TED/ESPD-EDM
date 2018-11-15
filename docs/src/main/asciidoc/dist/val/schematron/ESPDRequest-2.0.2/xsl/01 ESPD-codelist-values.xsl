@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsl:stylesheet xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsl:stylesheet xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                 xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
-                xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+                xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+                xmlns:espd-resp="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-                xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
+                xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter"/>
@@ -187,7 +187,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="cbc:ConfidentialityLevelCode" priority="1017" mode="M0">
+<xsl:template match="cbc:ConfidentialityLevelCode" priority="1018" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -208,7 +208,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:Country/cbc:IdentificationCode" priority="1016" mode="M0">
+<xsl:template match="cac:Country/cbc:IdentificationCode" priority="1017" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -229,7 +229,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:TypeCode" priority="1015" mode="M0">
+<xsl:template match="cbc:TypeCode" priority="1016" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -250,7 +250,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="@currencyID" priority="1014" mode="M0">
+<xsl:template match="@currencyID" priority="1015" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -271,7 +271,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ValueCurrencyCode" priority="1013" mode="M0">
+<xsl:template match="cbc:ValueCurrencyCode" priority="1014" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -292,7 +292,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" priority="1012"
+<xsl:template match="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" priority="1013"
                  mode="M0">
 
 		<!--ASSERT -->
@@ -314,7 +314,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:PartyIdentification/cbc:ID/@schemeID" priority="1011" mode="M0">
+<xsl:template match="cac:PartyIdentification/cbc:ID/@schemeID" priority="1012" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -336,7 +336,7 @@
 
 	  <!--RULE -->
 <xsl:template match="cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode"
-                 priority="1010"
+                 priority="1011"
                  mode="M0">
 
 		<!--ASSERT -->
@@ -359,15 +359,15 @@
 
 	  <!--RULE -->
 <xsl:template match="cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode"
-                 priority="1009"
+                 priority="1010"
                  mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="( false() or ( (contains(translate('&#127;SCLE&#127;GM&#127;OERON&#127;OENRON&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
+         <xsl:when test="( false() or ( (contains(translate('&#127;SCLE&#127;GM&#127;OERON&#127;OENRON&#127;SC&#127;LE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( false() or ( (contains(translate('&#127;SCLE&#127;GM&#127;OERON&#127;OENRON&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
+                                test="( false() or ( (contains(translate('&#127;SCLE&#127;GM&#127;OERON&#127;OENRON&#127;SC&#127;LE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -381,7 +381,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="@languageID" priority="1008" mode="M0">
+<xsl:template match="@languageID" priority="1009" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -402,7 +402,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterion/cbc:EvaluationMethodTypeCode" priority="1007"
+<xsl:template match="cac:TenderingCriterion/cbc:EvaluationMethodTypeCode" priority="1008"
                  mode="M0">
 
 		<!--ASSERT -->
@@ -424,7 +424,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ProcedureCode" priority="1006" mode="M0">
+<xsl:template match="cbc:ProcedureCode" priority="1007" mode="M0">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -438,6 +438,27 @@
                <svrl:text>Invalid value: '<xsl:text/>
                   <xsl:value-of select="."/>
                   <xsl:text/>' for the element 'cbc:ProcedureCode'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M0"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cbc:ProfileExecutionID" priority="1006" mode="M0">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="( false() or ( (contains(translate('&#127;ESPD-EDMv2.0.0-REGULATED&#127;ESPD-EDMv2.0.0-SELFCONTAINED&#127;ESPD-EDMv2.0.3-REGULATED&#127;ESPD-EDMv2.0.3-SELFCONTAINED&#127;ESPD-EDMv1.0.2&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="( false() or ( (contains(translate('&#127;ESPD-EDMv2.0.0-REGULATED&#127;ESPD-EDMv2.0.0-SELFCONTAINED&#127;ESPD-EDMv2.0.3-REGULATED&#127;ESPD-EDMv2.0.3-SELFCONTAINED&#127;ESPD-EDMv1.0.2&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid value: '<xsl:text/>
+                  <xsl:value-of select="."/>
+                  <xsl:text/>' for the element 'cbc:ProfileExecutionID'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -515,10 +536,10 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
+         <xsl:when test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;LOT_IDENTIFIER&#127;WEIGHT_INDICATOR&#127;CODE_BOOLEAN&#127;ALPHA_INDICATOR&#127;ECONOMIC_OPERATOR_IDENTIFIER&#127;ECONOMIC_OPERATOR_ROLE_CODE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
+                                test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;LOT_IDENTIFIER&#127;WEIGHT_INDICATOR&#127;CODE_BOOLEAN&#127;ALPHA_INDICATOR&#127;ECONOMIC_OPERATOR_IDENTIFIER&#127;ECONOMIC_OPERATOR_ROLE_CODE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>

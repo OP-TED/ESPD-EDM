@@ -2,10 +2,10 @@
 <schema xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
         xmlns="http://purl.oclc.org/dsdl/schematron"
         xmlns:fn="http://www.w3.org/2005/xpath-functions"
-        xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-        xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
-        xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-        xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest">
+        xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+        xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+        xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
+        xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2">
    <pattern id="code-list-values"><!--
 		ESPD code list values constraints - ESPD-codelist-values.cva
 		Version 2.0.2
@@ -14,11 +14,11 @@ $Id: ESPD-codelist-values.cva,v 2.0.2 $
 
     Required namespace declarations as indicated in this set of rules:
 
-<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 <ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
-<ns prefix="espd-req" uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"/>
-<ns prefix="espd-resp" uri="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"/>
+<ns prefix="espd-req" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
+<ns prefix="espd-resp" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"/>
 <ns prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
 
 --><rule context="cbc:ConfidentialityLevelCode">

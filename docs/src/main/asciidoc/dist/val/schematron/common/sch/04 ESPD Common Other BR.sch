@@ -2,17 +2,18 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<title>Common Other Business Rules</title>
   
-	<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-	<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
 	<ns prefix="udt" uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
 	<ns prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
 	
 <!--
     Start of synthesis of rules from cardinality constraints ESPD Request and ESPD Response
 
     Illustration of cardinality constraints - 04 ESPD Common Other BR.sch
-	ESPD Version: 2.0.2
+	ESPD Version: 2.0.3
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-OTH">

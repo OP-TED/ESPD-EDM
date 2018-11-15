@@ -2,18 +2,18 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fn="http://www.w3.org/2005/xpath-functions">
 	<title>ESPD Request Self-contained Business Rules</title>
   
-	<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-	<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
 	<ns prefix="udt" uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"/>
-	<ns prefix="espd" uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
 	<ns prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
 	
 <!--
     Start of synthesis of rules from other constraints ESPD Request
 
     Illustration of procurer constraints - 05 ESPD Req Self-contained BR.sch
-	ESPD Version: 2.0.2
+	ESPD Version: 2.0.3
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-SC">
@@ -29,7 +29,7 @@
 		</rule>
 		
 		<!-- BR-LOT-40: The lots each criteria applies to MUST be provided. -->
-		<rule context="cac:TenderingCriterionPropertyGroup[cbc:ID='a53561d5-6614-4dbe-987e-b96f35387f46']/cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT' and cbc:ValueDataTypeCode='IDENTIFIER']">
+		<rule context="cac:TenderingCriterionPropertyGroup[cbc:ID='a53561d5-6614-4dbe-987e-b96f35387f46']/cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT' and cbc:ValueDataTypeCode='LOT_IDENTIFIER']">
 			<let name="allLots" value="/*[1]/cac:ProcurementProjectLot/cbc:ID"/>
 			<let name="testLots" value="(cbc:ExpectedID) and (/*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') and count($allLots)&gt;0"/>
 			<let name="currentExpectedID" value="cbc:ExpectedID"/>
@@ -53,7 +53,6 @@
 			<!-- BR-2P-10-S20: If evaluation method is pass/fail, weighting is not required. -->
 			<let name="testPassFail" value="$isSCopen and (cbc:EvaluationMethodTypeCode != 'WEIGHTED') and not(starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.'))"/>	
 			<assert test="not($testPassFail) or (($testPassFail) and not(cbc:WeightNumeric))" role="fatal" id="BR-2P-10-S20">If evaluation method is pass/fail, weighting is not required (see Tendering Criterion identifier '<value-of select="cbc:ID"/>').</assert>
-		
 		</rule>
 		
 	</pattern>

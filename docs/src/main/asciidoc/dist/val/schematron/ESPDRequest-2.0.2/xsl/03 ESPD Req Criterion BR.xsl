@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsl:stylesheet xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsl:stylesheet xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                 xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
-                xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+                xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+                xmlns:espd-resp="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-                xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-                xmlns:espd="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
+                xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                xmlns:espd="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter"/>
@@ -171,11 +171,14 @@
 		 <xsl:value-of select="$fileNameParameter"/>  
 		 <xsl:value-of select="$fileDirParameter"/>
          </xsl:comment>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonAggregate" prefix="cac"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonBasic" prefix="cbc"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                                             prefix="cac"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                                             prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                                              prefix="ext"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" prefix="espd"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+                                             prefix="espd"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -200,7 +203,7 @@
                     select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
       <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
       <xsl:variable name="ElementUUID_Exclusion"
-                    select="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.2.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]      else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.2.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
+                    select="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.0.3.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]      else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.0.3.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
@@ -233,6 +236,24 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>The current ESPD request does not provide selection criteria.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:variable name="alpha_Selection"
+                    select="cac:TenderingCriterion[cbc:CriterionTypeCode = 'CRITERION.SELECTION.ALL']"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="((count($alpha_Selection)=1) and (count($current_Selection) &lt; 2)) or (count($alpha_Selection)=0)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="((count($alpha_Selection)=1) and (count($current_Selection) &lt; 2)) or (count($alpha_Selection)=0)">
+               <xsl:attribute name="id">BR-REQ-41</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Alpha criteria is provided (cbc:CriterionTypeCode = 'CRITERION.SELECTION.ALL'), the other selection criteria cannot be included.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

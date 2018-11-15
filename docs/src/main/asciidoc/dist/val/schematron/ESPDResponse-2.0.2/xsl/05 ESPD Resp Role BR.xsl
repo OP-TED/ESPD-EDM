@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsl:stylesheet xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsl:stylesheet xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                 xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
-                xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+                xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+                xmlns:espd-resp="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-                xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-                xmlns:espd="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+                xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter"/>
@@ -171,11 +170,14 @@
 		 <xsl:value-of select="$fileNameParameter"/>  
 		 <xsl:value-of select="$fileDirParameter"/>
          </xsl:comment>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonAggregate" prefix="cac"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonBasic" prefix="cbc"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                                             prefix="cac"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                                             prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                                              prefix="ext"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" prefix="espd"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
+                                             prefix="espd-resp"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -195,101 +197,20 @@
 
 
 	<!--RULE -->
-<xsl:template match="cac:TenderingCriterion[ starts-with(cbc:CriterionTypeCode, 'CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS') ]"
-                 priority="1003"
-                 mode="M6">
-      <xsl:variable name="togetherCriterion"
-                    select="cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ID"/>
-      <xsl:variable name="togetherCriterionResponse"
-                    select="/*[1]/cac:TenderingCriterionResponse[ cbc:ValidatedCriterionPropertyID = $togetherCriterion ]"/>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( count(key('EOroleTest', 'SCLE'))=1 and (count($togetherCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'SCLE'))=1)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( count(key('EOroleTest', 'SCLE'))=1 and (count($togetherCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'SCLE'))=1)">
-               <xsl:attribute name="id">BR-LAED-10</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Information about the other participants MUST be provided (criteria 'CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterion[ starts-with(cbc:CriterionTypeCode, 'CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES') ]"
-                 priority="1002"
-                 mode="M6">
-      <xsl:variable name="relyCriterion"
-                    select="cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ID"/>
-      <xsl:variable name="relyCriterionResponse"
-                    select="/*[1]/cac:TenderingCriterionResponse[ cbc:ValidatedCriterionPropertyID = $relyCriterion ]"/>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( count(key('EOroleTest', 'SCLE'))=1 and (count($relyCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'SCLE'))=1)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( count(key('EOroleTest', 'SCLE'))=1 and (count($relyCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'SCLE'))=1)">
-               <xsl:attribute name="id">BR-LEAD-10-S20</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Information about all the entities the EO relies on MUST be provided (criteria 'CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterion[ starts-with(cbc:CriterionTypeCode, 'CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES') ]"
-                 priority="1001"
-                 mode="M6">
-      <xsl:variable name="subcontractorCriterion"
-                    select="cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ID"/>
-      <xsl:variable name="subcontractorResponse"
-                    select="/*[1]/cac:TenderingCriterionResponse[ cbc:ValidatedCriterionPropertyID = $subcontractorCriterion ]"/>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( count(key('EOroleTest', 'SCLE'))=1 and (count($subcontractorResponse) &gt; 0) ) or not(count(key('EOroleTest', 'SCLE'))=1)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( count(key('EOroleTest', 'SCLE'))=1 and (count($subcontractorResponse) &gt; 0) ) or not(count(key('EOroleTest', 'SCLE'))=1)">
-               <xsl:attribute name="id">BR-LEAD-10-S30</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Information about all the entities the EO relies on MUST be provided (criteria 'CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*" mode="M6"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="espd:QualificationApplicationResponse" priority="1000" mode="M6">
+<xsl:template match="espd-resp:QualificationApplicationResponse" priority="1003" mode="M6">
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(count(key('EOroleTest', 'SCLE'))=1 and (cbc:EconomicOperatorGroupName)) or not(count(key('EOroleTest', 'SCLE'))=1)"/>
+         <xsl:when test="(count(key('EOroleTest', 'LE'))=1 and (exists(cbc:EconomicOperatorGroupName))) or not(count(key('EOroleTest', 'LE'))=1)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(count(key('EOroleTest', 'SCLE'))=1 and (cbc:EconomicOperatorGroupName)) or not(count(key('EOroleTest', 'SCLE'))=1)">
+                                test="(count(key('EOroleTest', 'LE'))=1 and (exists(cbc:EconomicOperatorGroupName))) or not(count(key('EOroleTest', 'LE'))=1)">
                <xsl:attribute name="id">BR-LEAD-10-S10</xsl:attribute>
                <xsl:attribute name="flag">warning</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>The current EO role is 'SCLE', as the group name element ('/cbc:EconomicOperatorGroupName') is not implemented, the ESPDResponse is going to be executed as a Sole Contractor role.</svrl:text>
+               <svrl:text>The current EO role is 'LE', the information about the group ('/cbc:EconomicOperatorGroupName') must be provided.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -310,6 +231,87 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>If EO role is 'OENRON - Other entity (not relied upon)', the entity does not have to provide information about the selection criteria.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cac:TenderingCriterion[ starts-with(cbc:CriterionTypeCode, 'CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS') ]"
+                 priority="1002"
+                 mode="M6">
+      <xsl:variable name="togetherCriterion"
+                    select="cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ID"/>
+      <xsl:variable name="togetherCriterionResponse"
+                    select="/*[1]/cac:TenderingCriterionResponse[ cbc:ValidatedCriterionPropertyID = $togetherCriterion ]"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="( count(key('EOroleTest', 'LE'))=1 and (count($togetherCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'LE'))=1)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="( count(key('EOroleTest', 'LE'))=1 and (count($togetherCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'LE'))=1)">
+               <xsl:attribute name="id">BR-LAED-10</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Information about the other participants MUST be provided (criteria 'CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cac:TenderingCriterion[ starts-with(cbc:CriterionTypeCode, 'CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES') ]"
+                 priority="1001"
+                 mode="M6">
+      <xsl:variable name="relyCriterion"
+                    select="cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ID"/>
+      <xsl:variable name="relyCriterionResponse"
+                    select="/*[1]/cac:TenderingCriterionResponse[ cbc:ValidatedCriterionPropertyID = $relyCriterion ]"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="( count(key('EOroleTest', 'LE'))=1 and (count($relyCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'LE'))=1)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="( count(key('EOroleTest', 'LE'))=1 and (count($relyCriterionResponse) &gt; 0) ) or not(count(key('EOroleTest', 'LE'))=1)">
+               <xsl:attribute name="id">BR-LEAD-10-S20</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Information about all the entities the EO relies on MUST be provided (criteria 'CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES').</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cac:TenderingCriterion[ starts-with(cbc:CriterionTypeCode, 'CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES') ]"
+                 priority="1000"
+                 mode="M6">
+      <xsl:variable name="subcontractorCriterion"
+                    select="cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ID"/>
+      <xsl:variable name="subcontractorResponse"
+                    select="/*[1]/cac:TenderingCriterionResponse[ cbc:ValidatedCriterionPropertyID = $subcontractorCriterion ]"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="( count(key('EOroleTest', 'LE'))=1 and (count($subcontractorResponse) &gt; 0) ) or not(count(key('EOroleTest', 'LE'))=1)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="( count(key('EOroleTest', 'LE'))=1 and (count($subcontractorResponse) &gt; 0) ) or not(count(key('EOroleTest', 'LE'))=1)">
+               <xsl:attribute name="id">BR-LEAD-10-S30</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Information about all the entities the EO relies on MUST be provided (criteria 'CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES').</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
