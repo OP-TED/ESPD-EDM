@@ -178,8 +178,9 @@
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedAmount>
 					</xsl:when>
-
-					<xsl:when test="$propertyDataType = 'IDENTIFIER' or $propertyDataType='EVIDENCE_IDENTIFIER'">
+					
+					<xsl:when test="$propertyDataType = 'IDENTIFIER' or $propertyDataType='EVIDENCE_IDENTIFIER' or $propertyDataType='ECONOMIC_OPERATOR_IDENTIFIER'
+						or $propertyDataType='LOT_IDENTIFIER'">
 						<cbc:ExpectedID schemeAgencyID="EU-COM-GROW">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedID>
@@ -189,8 +190,18 @@
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
+					<xsl:when test="$propertyDataType = 'CODE_BOOLEAN'">
+						<cbc:ExpectedCode listID="BooleanGUIControlType" listAgencyID="EU-COM-GROW" listVersionID="2.0.3">
+							<xsl:value-of select="$value"/>
+						</cbc:ExpectedCode>
+					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
 						<cbc:ExpectedCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2" listAgencyID="ISO" listVersionID="1.0">
+							<xsl:value-of select="$value"/>
+						</cbc:ExpectedCode>
+					</xsl:when>
+					<xsl:when test="$propertyDataType = 'ECONOMIC_OPERATOR_ROLE_CODE'">
+						<cbc:ExpectedCode listID="EORoleType"  listAgencyID="EU-COM-GROW" listVersionID="2.0.3">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
