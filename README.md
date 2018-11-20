@@ -19,14 +19,15 @@ Dear ESPD implementation community,
 
 We are happy to inform you about the release of ESPD EDM version 2.0.3.
 
-### Outlook: Release of ESPD EDM version 2.0.3 (December 2018)
+### Version 2.0.3 (December 2018)
 
-This release has fixed some bugs related to the ESPD-EDM SELF-CONTAINED data structures and has introduced clarifications and helpers addressed mainly to the software implementors. No new features have been added to this release. For more details see the Release Notes page.
+The [ESPD EDM version 2.0.3](https://github.com/ESPD/ESPD-EDM/tree/2.0.3) is now released and contains only bugs fixed namely related to the self-contained version on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues).
+For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.3/release_notes.html).
 
 ### Version 2.0.2 (May 2018)
  
 The [ESPD EDM version 2.0.2](https://github.com/ESPD/ESPD-EDM/tree/2.0.2) is now released and contains only bugs fixed on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues).
-For further details please read the release notes. For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.2/release_notes.html). The release contains a definition of all relevant
+For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.2/release_notes.html). The release contains a definition of all relevant
 [business rules](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc) and corresponding [schematron files](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val/schematron)
 to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy).
 The corresponding [TestBed for version 2.0.2](http://isaitb2.northeurope.cloudapp.azure.com/espd/upload) has been set up. The specifications for version 2.0.2 contain an updated distribution of the
