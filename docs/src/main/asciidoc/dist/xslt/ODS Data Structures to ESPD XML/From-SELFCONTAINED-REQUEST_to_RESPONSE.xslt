@@ -8,9 +8,8 @@
 	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" 
 	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" 
 	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" 
-	xmlns:espd="urn:com:grow:espd:2.0.2" 
-	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
-	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
+	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
 	xmlns:util="java:java.util.UUID">	
 	
 	<xsl:include href="./inc/SELFCONTAINED-RootElements-Annotated.xslt"/>
@@ -19,13 +18,13 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:template match="/">
-		<QualificationApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2 ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2.xsd">
-		<xsl:call-template name="createRootElements"/>
-		<xsl:call-template name="createContractingAuthority"/>
-		<xsl:call-template name="createEconomicOperator"/>	
-		<xsl:apply-templates/>
-		<xsl:call-template name="createEvidence"/>
-	</QualificationApplicationResponse>
+		<QualificationApplicationResponse xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationResponse ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd">
+			<xsl:call-template name="createRootElements"/>
+			<xsl:call-template name="createContractingAuthority"/>
+			<xsl:call-template name="createEconomicOperator"/>	
+			<xsl:apply-templates/>
+			<xsl:call-template name="createEvidence"/>
+		</QualificationApplicationResponse>
 	</xsl:template>
 	<xsl:template match="*">
 		<xsl:for-each select="descendant::cac:TenderingCriterion">
@@ -54,7 +53,7 @@
 					
 			<cac:TenderingCriterionResponse>
 					<xsl:call-template name="generateID"/>
-					<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2"><xsl:value-of select="cbc:ID"/></cbc:ValidatedCriterionPropertyID>
+					<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0"><xsl:value-of select="cbc:ID"/></cbc:ValidatedCriterionPropertyID>
 					<xsl:call-template name="createPeriod"/>
 					<xsl:call-template name="createEvidenceSupplied"/>		
 					<xsl:call-template name="createResponseValue"/>
@@ -63,7 +62,7 @@
 	</xsl:template>
 
 	<xsl:template name="generateID">
-		<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
+		<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template>
@@ -78,7 +77,7 @@
 	<xsl:template name="createEvidence">
 		<cac:Evidence>
 			<cbc:ID schemeAgencyID="EU-COM-GROW">EVIDENCE-00001</cbc:ID>
-			<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CONFIDENTIAL</cbc:ConfidentialityLevelCode>
+			<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CONFIDENTIAL</cbc:ConfidentialityLevelCode>
 			<cac:DocumentReference>
 				<cbc:ID schemeAgencyID="EU-COM-GROW">SAT-11121233</cbc:ID>
 				<cac:Attachment>
@@ -121,7 +120,7 @@
 							<cbc:ResponseID schemeAgencyID="EU-COM-GROW">DUMMY_ID</cbc:ResponseID>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
-							<cbc:ResponseCode listAgencyID="EU-COM-GROW" listVersionID="2.0.2" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
+							<cbc:ResponseCode listAgencyID="EU-COM-GROW" listVersionID="2.1.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
 							<cbc:ResponseCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2" listAgencyID="ISO" listVersionID="1.0">DUMMY_COUNTRY_CODE</cbc:ResponseCode>

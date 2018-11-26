@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by everis Spain, S.L. (everis Spain, S.L.) -->
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:espd="urn:com:grow:espd:2.0.3" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:util="java:java.util.UUID">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions"
+	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
+	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
+	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:espd="urn:com:grow:espd:2.1.0"
+	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
+	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+	xmlns:util="java:java.util.UUID">
+	
 	<xsl:include href="./inc/SELFCONTAINED-RootElements-Annotated.xslt"/>
 	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>
 	<xsl:include href="./inc/Legislation.xslt"/>
@@ -9,29 +18,34 @@
 		<xsl:apply-templates/>
 	</xsl:template>
 	<xsl:template match="office:body">
-		<QualificationApplicationRequest xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2.xsd">
+		<QualificationApplicationRequest
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
+			xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+			xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
 			<xsl:call-template name="createRootElements"/>
 			<xsl:call-template name="createContractingAuthority"/>
 			<xsl:apply-templates select="office:spreadsheet/table:table"/>
 		</QualificationApplicationRequest>
 	</xsl:template>
-	
+
 	<xsl:template match="office:spreadsheet/table:table">
 		<!--xsl:if test="@table:name='SC-Quality_assurance'"-->
-			<xsl:apply-templates select="table:table-row/table:table-cell"/>
-		<!--/xsl:if-->				
+		<xsl:apply-templates select="table:table-row/table:table-cell"/>
+		<!--/xsl:if-->
 	</xsl:template>
 
 	<xsl:template match="table:table-row/table:table-cell">
 		<xsl:variable name="p" select="./text:p"/>
 		<xsl:choose>
-			<xsl:when test="$p= '{CRITERION'">
+			<xsl:when test="$p = '{CRITERION'">
 				<xsl:call-template name="createCriterion"/>
 			</xsl:when>
 			<xsl:when test="$p = 'CRITERION}'">
 				<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:TenderingCriterion<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 			</xsl:when>
-			<xsl:when test="$p= '{SUBCRITERION'">
+			<xsl:when test="$p = '{SUBCRITERION'">
 				<xsl:call-template name="createSubCriterion"/>
 			</xsl:when>
 			<xsl:when test="$p = 'SUBCRITERION}'">
@@ -52,7 +66,7 @@
 			<xsl:when test="$p = 'REQUIREMENT_SUBGROUP}' or $p = 'QUESTION_SUBGROUP}'">
 				<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:SubsidiaryTenderingCriterionPropertyGroup<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 			</xsl:when>
-			<xsl:when test="$p = '{REQUIREMENT}' or $p = '{QUESTION}' or $p='{CAPTION}'">
+			<xsl:when test="$p = '{REQUIREMENT}' or $p = '{QUESTION}' or $p = '{CAPTION}'">
 				<xsl:text disable-output-escaping="yes">&lt;</xsl:text>cac:TenderingCriterionProperty<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 				<xsl:call-template name="createProperty"/>
 				<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:TenderingCriterionProperty<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
@@ -61,19 +75,21 @@
 	</xsl:template>
 
 	<xsl:template name="generateID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template>
-	
+
 	<xsl:function name="espd:getCellContent">
 		<xsl:param name="node"/>
 		<xsl:param name="colpos"/>
-		<xsl:value-of select="$node/ancestor::table:table-row/table:table-cell[sum(preceding-sibling::*/@table:number-columns-repeated) + position() - count(preceding-sibling::*/@table:number-columns-repeated) &lt;= $colpos][last()]/text:p/text()"/>	
+		<xsl:value-of
+			select="$node/ancestor::table:table-row/table:table-cell[sum(preceding-sibling::*/@table:number-columns-repeated) + position() - count(preceding-sibling::*/@table:number-columns-repeated) &lt;= $colpos][last()]/text:p/text()"
+		/>
 	</xsl:function>
 
 	<xsl:template name="createID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">
 			<xsl:value-of select="espd:getCellContent(., 23)"/>
 		</cbc:ID>
 	</xsl:template>
@@ -82,33 +98,41 @@
 		<xsl:for-each select="ancestor-or-self::table:table-row/table:table-cell">
 			<xsl:choose>
 				<xsl:when test="text:p = '{CRITERION'">
-					<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
+					<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW"
+						listVersionID="2.1.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{CRITERION'">
-					<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
+					<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW"
+						listVersionID="2.1.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{REQUIREMENT_GROUP'">
-					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
+					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW"
+						listVersionID="2.1.0">
 						<xsl:value-of select="$code"/>
 					</cbc:PropertyGroupTypeCode>
 				</xsl:when>
-				<xsl:when test="text:p = '{REQUIREMENT_GROUP' or text:p = '{QUESTION_GROUP' or text:p = '{REQUIREMENT_SUBGROUP' or text:p = '{QUESTION_SUBGROUP'">
-					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
+				<xsl:when
+					test="text:p = '{REQUIREMENT_GROUP' or text:p = '{QUESTION_GROUP' or text:p = '{REQUIREMENT_SUBGROUP' or text:p = '{QUESTION_SUBGROUP'">
+					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW"
+						listVersionID="2.1.0">
 						<xsl:value-of select="$code"/>
 					</cbc:PropertyGroupTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{CAPTION}'">
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CAPTION</cbc:TypeCode>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW"
+						listVersionID="2.1.0">CAPTION</cbc:TypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{REQUIREMENT}'">
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW"
+						listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{QUESTION}'">
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW"
+						listVersionID="2.1.0">QUESTION</cbc:TypeCode>
 				</xsl:when>
 			</xsl:choose>
 		</xsl:for-each>
@@ -157,19 +181,24 @@
 		<xsl:variable name="captionValue" select="espd:getCellContent(., 22)"/>
 		<xsl:choose>
 			<xsl:when test="$captionValue = ''">
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">NONE</cbc:ValueDataTypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW"
+					listVersionID="2.1.0">NONE</cbc:ValueDataTypeCode>
 			</xsl:when>
 			<xsl:when test="$captionValue != ''">
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW"
+					listVersionID="2.1.0">
 					<xsl:value-of select="$captionValue"/>
 				</cbc:ValueDataTypeCode>
 			</xsl:when>
-		</xsl:choose>		
+		</xsl:choose>
 	</xsl:template>
 	<xsl:template name="createExpectedRequirementValue">
 		<xsl:for-each select="ancestor-or-self::table:table-row/table:table-cell">
 			<xsl:if test="text:p = '{REQUIREMENT}'">
-				<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+				<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- No answer is expected
+				here from the economic operator, as this is a REQUIREMENT issued by the contracting
+				authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of
+				the requirement issued by the contracting authority --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 				<xsl:variable name="propertyDataType" select="espd:getCellContent(., 22)"/>
 				<xsl:variable name="value" select="espd:getCellContent(., 20)"/>
 				<xsl:choose>
@@ -177,31 +206,35 @@
 						<cbc:ExpectedAmount currencyID="EUR">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedAmount>
-					</xsl:when>
-					
-					<xsl:when test="$propertyDataType = 'IDENTIFIER' or $propertyDataType='EVIDENCE_IDENTIFIER' or $propertyDataType='ECONOMIC_OPERATOR_IDENTIFIER'
-						or $propertyDataType='LOT_IDENTIFIER'">
+					</xsl:when> <xsl:when
+						test="
+							$propertyDataType = 'IDENTIFIER' or $propertyDataType = 'EVIDENCE_IDENTIFIER' or $propertyDataType = 'ECONOMIC_OPERATOR_IDENTIFIER'
+							or $propertyDataType = 'LOT_IDENTIFIER'">
 						<cbc:ExpectedID schemeAgencyID="EU-COM-GROW">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedID>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
-						<cbc:ExpectedCode listID="PleaseSelectTheCorrectOne" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">
+						<cbc:ExpectedCode listID="PleaseSelectTheCorrectOne"
+							listAgencyID="EU-COM-GROW" listVersionID="2.1.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_BOOLEAN'">
-						<cbc:ExpectedCode listID="BooleanGUIControlType" listAgencyID="EU-COM-GROW" listVersionID="2.0.3">
+						<cbc:ExpectedCode listID="BooleanGUIControlType" listAgencyID="EU-COM-GROW"
+							listVersionID="2.1.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
-						<cbc:ExpectedCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2" listAgencyID="ISO" listVersionID="1.0">
+						<cbc:ExpectedCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2"
+							listAgencyID="ISO" listVersionID="1.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'ECONOMIC_OPERATOR_ROLE_CODE'">
-						<cbc:ExpectedCode listID="EORoleType"  listAgencyID="EU-COM-GROW" listVersionID="2.0.3">
+						<cbc:ExpectedCode listID="EORoleType" listAgencyID="EU-COM-GROW"
+							listVersionID="2.1.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>

@@ -2,23 +2,23 @@
 <schema xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
         xmlns="http://purl.oclc.org/dsdl/schematron"
         xmlns:fn="http://www.w3.org/2005/xpath-functions"
-        xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
-        xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
-        xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
-        xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2">
+        xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
+        xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+        xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+        xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest">
    <pattern id="code-list-values"><!--
 		ESPD code list values constraints - ESPD-codelist-values.cva
-		Version 2.0.2
+		Version 2.1.0
 	
-$Id: ESPD-codelist-values.cva,v 2.0.2 $
+$Id: ESPD-codelist-values.cva,v 2.1.0 $
 
     Required namespace declarations as indicated in this set of rules:
 
-<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
-<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
+<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
+<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
 <ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
-<ns prefix="espd-req" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
-<ns prefix="espd-resp" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"/>
+<ns prefix="espd-req" uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"/>
+<ns prefix="espd-resp" uri="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"/>
 <ns prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
 
 --><rule context="cbc:ConfidentialityLevelCode">
@@ -46,7 +46,7 @@ $Id: ESPD-codelist-values.cva,v 2.0.2 $
       <!--{}[](EOIndustryClassificationCode)--><assert test="( false() or ( (contains(translate('&#127;MICRO&#127;SMALL&#127;MEDIUM&#127;SME&#127;LARGE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode'.</assert>
       </rule>
       <rule context="cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode">
-      <!--{}[](EORoleType)--><assert test="( false() or ( (contains(translate('&#127;SCLE&#127;GM&#127;OERON&#127;OENRON&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode'.</assert>
+      <!--{}[](EORoleType)--><assert test="( false() or ( (contains(translate('&#127;SCLE&#127;GM&#127;OERON&#127;OENRON&#127;SC&#127;LE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode'.</assert>
       </rule>
       <rule context="@languageID">
       <!--{}[](LanguageCodeEU)--><assert test="( false() or ( (contains(translate('&#127;PL&#127;PT&#127;EL&#127;EN&#127;ES&#127;ET&#127;FI&#127;RO&#127;GA&#127;FR&#127;SK&#127;SL&#127;SV&#127;HU&#127;IT&#127;LT&#127;LV&#127;MT&#127;BG&#127;NL&#127;DA&#127;CS&#127;DE&#127;HR&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the attribute '@languageID'.</assert>
@@ -56,6 +56,9 @@ $Id: ESPD-codelist-values.cva,v 2.0.2 $
       </rule>
       <rule context="cbc:ProcedureCode">
       <!--{}[](ProcedureType)--><assert test="( false() or ( (contains(translate('&#127;PRIOR&#127;OPEN&#127;RESTRICTED&#127;RESTRICTED_ACCELERATED&#127;NEGOTIATED&#127;OPEN_RECUR&#127;NEGOTIATED_ACCELERATED&#127;AWARD&#127;INFO&#127;AWARD_DIRECT&#127;COMP_NEGOTIATION&#127;COMP_DIALOGUE&#127;DESIGN_CONTEST&#127;CONCESSION&#127;CONCESSION_WO_PUB&#127;INNOVATION&#127;AMI&#127;NOT_SPECIFIED&#127;QUAL&#127;CONTESTS_RESULT&#127;NEGOTIATED_WO_CALL&#127;AWARD_WO_PUB&#127;OTHER&#127;NOT_APPLICABLE&#127;NOT_SPECIFIED&#127;LOV&#127;VDL&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cbc:ProcedureCode'.</assert>
+      </rule>
+      <rule context="cbc:ProfileExecutionID">
+      <!--{}[](ProfileExecutionID)--><assert test="( false() or ( (contains(translate('&#127;ESPD-EDMv2.0.0-REGULATED&#127;ESPD-EDMv2.0.0-SELFCONTAINED&#127;ESPD-EDMv2.1.0-REGULATED&#127;ESPD-EDMv2.1.0-SELFCONTAINED&#127;ESPD-EDMv1.0.2&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cbc:ProfileExecutionID'.</assert>
       </rule>
       <rule context="cbc:ProcurementTypeCode">
       <!--{}[](ProjectType)--><assert test="( false() or ( (contains(translate('&#127;WORKS&#127;SUPPLIES&#127;COMBINED&#127;SERVICES&#127;OTHER&#127;NOT_APPLICABLE&#127;NOT_SPECIFIED&#127;CON_PUBLIC_WORKS&#127;CON_SERVICE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cbc:ProcurementTypeCode'.</assert>
@@ -67,7 +70,7 @@ $Id: ESPD-codelist-values.cva,v 2.0.2 $
       <!--{}[](QualificationApplicationType)--><assert test="( false() or ( (contains(translate('&#127;REGULATED&#127;SELFCONTAINED&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cbc:QualificationApplicationTypeCode'.</assert>
       </rule>
       <rule context="cac:TenderingCriterionProperty/cbc:ValueDataTypeCode">
-      <!--{}[](ResponseDataType)--><assert test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cac:TenderingCriterionProperty/cbc:ValueDataTypeCode'.</assert>
+      <!--{}[](ResponseDataType)--><assert test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;LOT_IDENTIFIER&#127;WEIGHT_INDICATOR&#127;CODE_BOOLEAN&#127;ALPHA_INDICATOR&#127;ECONOMIC_OPERATOR_IDENTIFIER&#127;ECONOMIC_OPERATOR_ROLE_CODE&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cac:TenderingCriterionProperty/cbc:ValueDataTypeCode'.</assert>
       </rule>
       <rule context="cac:ProcurementProject/cbc:ProcurementSubTypeCode">
       <!--{}[](ServicesProjectSubType)--><assert test="( false() or ( (contains(translate('&#127;1&#127;2&#127;3&#127;4&#127;5&#127;6&#127;7&#127;8&#127;9&#127;10&#127;11&#127;12&#127;13&#127;14&#127;15&#127;16&#127;17&#127;18&#127;19&#127;20&#127;21&#127;22&#127;23&#127;24&#127;25&#127;26&#127;27&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) ">Invalid value: '<value-of select="."/>' for the element 'cac:ProcurementProject/cbc:ProcurementSubTypeCode'.</assert>

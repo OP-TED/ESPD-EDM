@@ -2,16 +2,16 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <title>Common Code lists Values Restrictions</title>
     
-    <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
-    <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
+    <ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
+    <ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
     
     <pattern id="BR-COM-CL-RESTR">
         
         <!--
 		ESPD code list values restrictions - 01 ESPD Common CL Values Resitrctions.sch
-		Version 2.0.3
+		Version 2.1.0
 	
-        $Id: 01 ESPD Common CL Values Restrictions.sch,v 2.0.3 $
+        $Id: 01 ESPD Common CL Values Restrictions.sch,v 2.1.0 $
 
         -->
         <let name="selfcontained" value="if (/*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') then 'SELF-CONTAINED' else 'REGULATED'"/><!-- TRUE is selfcontained / FALSE is regulated -->
@@ -39,7 +39,7 @@
                 flag="fatal" id="BR-COM-CL-RESTR-01.03">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cbc:CriterionTypeCode">
-            <let name="gc" value="document('../../../../cl/gc/ESPD-CriteriaTaxonomy_V2.0.3.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/ESPD-CriteriaTaxonomy_V2.1.0.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $selfcontained)))" 
