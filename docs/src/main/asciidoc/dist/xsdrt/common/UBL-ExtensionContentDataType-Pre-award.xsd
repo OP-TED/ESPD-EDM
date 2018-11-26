@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           OASIS Universal Business Language (UBL) 2.2 CSD02WD01PA06
-                     http://docs.oasis-open.org/ubl/csd02wd01pa06-UBL-2.2/
+  Library:           UBL Pre-award Development Test Version csd02wd01pa06
   Release Date:      04 September 2017
-  Module:            xsdrt/common/UBL-CommonSignatureComponents-2.2.xsd
-  Generated on:      2017-09-04 01:59z
+  Module:            UBL-ExtensionContentDataType-2.2.xsd
+  Generated on:      2016-05-30 13:40(UTC)
   Copyright (c) OASIS Open 2016. All Rights Reserved.
 -->
-<xsd:schema xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"
-            xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"
-            elementFormDefault="qualified"
-            attributeFormDefault="unqualified"
-            version="2.2">
-   <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
-               schemaLocation="UBL-SignatureAggregateComponents-2.2.xsd"/>
-   <xsd:element name="UBLDocumentSignatures" type="UBLDocumentSignaturesType"/>
-   <xsd:complexType name="UBLDocumentSignaturesType">
-      <xsd:sequence>
-         <xsd:element ref="sac:SignatureInformation" minOccurs="1" maxOccurs="unbounded"/>
-      </xsd:sequence>
-   </xsd:complexType>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns=
+     "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+            targetNamespace=
+     "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+            elementFormDefault="qualified" 
+            attributeFormDefault="unqualified" 
+            version="2.1">
+
+  <!--import here all extension schemas-->
+  <xsd:import namespace=
+     "urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"
+              schemaLocation="UBL-CommonSignatureComponents-2.2.xsd"/>
+
+  <!-- ===== Type Declaration ===== -->
+  <xsd:complexType name="ExtensionContentType">
+    <xsd:sequence>
+      <xsd:any namespace="##other" processContents="lax"
+               minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+            Any element in any namespace other than the UBL extension
+            namespace is allowed to be the apex element of an extension.
+            Only those elements found in the UBL schemas and in the
+            trees of schemas imported in this module are validated.
+            Any element for which there is no schema declaration in any
+            of the trees of schemas passes validation and is not
+            treated as a schema constraint violation.
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:any>
+    </xsd:sequence>
+  </xsd:complexType>
 </xsd:schema>
 <!-- ===== Copyright Notice ===== -->
 <!--
@@ -68,5 +84,5 @@
   WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
   WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
   WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
-  PARTICULAR PURPOSE.    
+  PARTICULAR PURPOSE.
 -->
