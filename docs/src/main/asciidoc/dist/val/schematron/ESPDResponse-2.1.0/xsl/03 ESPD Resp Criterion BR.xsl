@@ -250,10 +250,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(count(cac:ResponseValue) + count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=1"/>
+         <xsl:when test="(count(cac:ResponseValue)=0 and (count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=1) or ((count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=0 and count(cac:ResponseValue)&gt;0)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(count(cac:ResponseValue) + count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=1">
+                                test="(count(cac:ResponseValue)=0 and (count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=1) or ((count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=0 and count(cac:ResponseValue)&gt;0)">
                <xsl:attribute name="id">BR-TCR-03</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">

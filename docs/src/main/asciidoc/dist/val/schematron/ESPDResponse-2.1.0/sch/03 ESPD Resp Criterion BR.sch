@@ -40,8 +40,8 @@
 			<assert test="(cbc:ValidatedCriterionPropertyID)" flag="fatal" id="BR-TCR-01-01">A cross-reference ('/cbc:ValidatedCriterionPropertyID') to the criterion property is mandatory.</assert>
 			
 			<!-- BR-TCR-03: Only one of the /cac:TenderingCriterionResponse sub elements (/cac:ResponseValue, /cac:ApplicablePeriod or /cac:EvidenceSupplied) is mandatory. -->
-			<assert test="(count(cac:ResponseValue) + count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=1" flag="fatal" id="BR-TCR-03">One and only one response element ('/cac:ResponseValue', '/cac:ApplicablePeriod' or '/cac:EvidenceSupplied') per criterion response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <value-of select="cbc:ValidatedCriterionPropertyID"/>') is mandatory.</assert>
-			
+			<assert test="(count(cac:ResponseValue)=0 and (count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=1) or ((count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=0 and count(cac:ResponseValue)>0)" flag="fatal" id="BR-TCR-03">One and only one response element ('/cac:ResponseValue', '/cac:ApplicablePeriod' or '/cac:EvidenceSupplied') per criterion response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <value-of select="cbc:ValidatedCriterionPropertyID"/>') is mandatory.</assert>
+						
 			<!-- BR-TCR-01-02: /cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID must match one of the IDs within /cac:TenderingCriterionProperty/cbc:ID -->
 			<assert test="((cbc:ValidatedCriterionPropertyID) and (count(key('CriterionProperty', cbc:ValidatedCriterionPropertyID))=1)) or not(cbc:ValidatedCriterionPropertyID)" flag="fatal" id="BR-TCR-01-02">The criterion response ('cbc:ValidatedCriterionPropertyID' = '<value-of select="cbc:ValidatedCriterionPropertyID"/>') does not have a cross-reference to a criterion property ('cac:TenderingCriterionProperty/cbc:ID').</assert>
 			
