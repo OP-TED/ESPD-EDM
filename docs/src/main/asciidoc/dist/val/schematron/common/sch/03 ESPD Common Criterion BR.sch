@@ -2,11 +2,11 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<title>Common Criterion Business Rules</title>
   
-	<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-	<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
 	<ns prefix="udt" uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"/>
-	<ns prefix="espd" uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
 	
 <!--
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
@@ -44,9 +44,9 @@
 			<!-- /cac:TenderingCriterion/cbc:ID, cbc:CriterionTypeCode must match the document [RD03] -->
 			<let name="currentCode" value="cbc:CriterionTypeCode"/>
 			
-			<!-- BR-TC-02#02: /cac:TenderingCriterion/cbc:ID must match the “Element UUID” column from [RD03] -->
+			<!-- BR-TC-02#02: /cac:TenderingCriterion/cbc:ID must match the element UUID column from [RD03] -->
 			<assert test="not($currentIDExist) or ($ElementUUIDExists and ($currentIDExist))" flag="fatal" id="BR-TC-02-02">Each criterion must use the UUID supplied by e-Certis. The '/cac:TenderingCriterion/cbc:ID = <value-of select="$currentID"/>' is not defined in e-Certis.</assert>
-			<!-- BR-TC-04: /cac:TenderingCriterion /cbc:CriterionTypeCode must match the “Element Code” column from [RD03] -->
+			<!-- BR-TC-04: /cac:TenderingCriterion /cbc:CriterionTypeCode must match the element UUID column from [RD03] -->
 			<assert test="not($ElementUUIDExists) or ($ElementUUID/cbc:CriterionTypeCode = $currentCode and ($ElementUUIDExists))" flag="fatal" id="BR-TC-04">The criterion type code should match the one from e-Certis. The code '/cac:TenderingCriterion/cbc:CriterionTypeCode = <value-of select="$currentCode"/>' is not defined in e-Certis.</assert>
 		</rule>
 		

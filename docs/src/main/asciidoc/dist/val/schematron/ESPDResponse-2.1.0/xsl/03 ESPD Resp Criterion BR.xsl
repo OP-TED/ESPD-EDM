@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsl:stylesheet xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+<xsl:stylesheet xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                 xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
-                xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+                xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+                xmlns:espd-resp="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xhtml="http://www.w3.org/1999/xhtml"
                 xmlns:schold="http://www.ascc.net/xml/schematron"
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-                xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-                xmlns:espd="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"
+                xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                xmlns:espd="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
@@ -178,11 +178,14 @@
 		 <xsl:value-of select="$fileNameParameter"/>  
 		 <xsl:value-of select="$fileDirParameter"/>
          </xsl:comment>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonAggregate" prefix="cac"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:CommonBasic" prefix="cbc"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                                             prefix="cac"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                                             prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                                              prefix="ext"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" prefix="espd"/>
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
+                                             prefix="espd"/>
          <svrl:ns-prefix-in-attribute-values uri="http://www.w3.org/2005/xpath-functions" prefix="fn"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
@@ -368,24 +371,6 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>The type of answer expected by the contracting authority is 'CODE_BOOLEAN' ('cac:ResponseValue/cbc:ResponseCode' element) - ('cbc:ID' is <xsl:text/>
-                  <xsl:value-of select="cbc:ID"/>
-                  <xsl:text/>).</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( ($currentDataType = 'ECONOMIC_OPERATOR_ROLE_CODE') and (cac:ResponseValue/cbc:ResponseCode) ) or not($currentDataType = 'ECONOMIC_OPERATOR_ROLE_CODE')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( ($currentDataType = 'ECONOMIC_OPERATOR_ROLE_CODE') and (cac:ResponseValue/cbc:ResponseCode) ) or not($currentDataType = 'ECONOMIC_OPERATOR_ROLE_CODE')">
-               <xsl:attribute name="id">BR-TCR-08-27</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The type of answer expected by the contracting authority is 'ECONOMIC_OPERATOR_ROLE_CODE' ('cac:ResponseValue/cbc:ResponseCode' element) - ('cbc:ID' is <xsl:text/>
                   <xsl:value-of select="cbc:ID"/>
                   <xsl:text/>).</svrl:text>
             </svrl:failed-assert>
@@ -764,24 +749,6 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>The type of answer expected by the contracting authority is 'WEIGHT_INDICATOR' ('cac:ResponseValue/cbc:ResponseIndicator' element) - ('cbc:ID' is <xsl:text/>
-                  <xsl:value-of select="cbc:ID"/>
-                  <xsl:text/>).</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="( ($currentDataType = 'ALPHA_INDICATOR') and (cac:ResponseValue/cbc:ResponseIndicator) ) or not($currentDataType = 'ALPHA_INDICATOR')"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( ($currentDataType = 'ALPHA_INDICATOR') and (cac:ResponseValue/cbc:ResponseIndicator) ) or not($currentDataType = 'ALPHA_INDICATOR')">
-               <xsl:attribute name="id">BR-TCR-08-25</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The type of answer expected by the contracting authority is 'ALPHA_INDICATOR' ('cac:ResponseValue/cbc:ResponseIndicator' element) - ('cbc:ID' is <xsl:text/>
                   <xsl:value-of select="cbc:ID"/>
                   <xsl:text/>).</svrl:text>
             </svrl:failed-assert>

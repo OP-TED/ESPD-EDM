@@ -2,10 +2,10 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<title>ESPD Response Criterion Business Rules</title>
   
-	<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-	<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
-	<ns prefix="espd" uri="urn:X-test:UBL:Pre-award:QualificationApplicationResponse"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"/>
 	<ns prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
 	
 <!--
@@ -58,8 +58,6 @@
 			<assert test="( ($currentDataType = 'CODE_COUNTRY') and (cac:ResponseValue/cbc:ResponseCode) ) or not($currentDataType = 'CODE_COUNTRY')" flag="fatal" id="BR-TCR-08-03">The type of answer expected by the contracting authority is 'CODE_COUNTRY' ('cac:ResponseValue/cbc:ResponseCode' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- CODE_BOOLEAN = cac:ResponseValue/cbc:ResponseCode -->
 			<assert test="( ($currentDataType = 'CODE_BOOLEAN') and (cac:ResponseValue/cbc:ResponseCode) ) or not($currentDataType = 'CODE_BOOLEAN')" flag="fatal" id="BR-TCR-08-26">The type of answer expected by the contracting authority is 'CODE_BOOLEAN' ('cac:ResponseValue/cbc:ResponseCode' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
-			<!-- ECONOMIC_OPERATOR_ROLE_CODE = cac:ResponseValue/cbc:ResponseCode -->
-			<assert test="( ($currentDataType = 'ECONOMIC_OPERATOR_ROLE_CODE') and (cac:ResponseValue/cbc:ResponseCode) ) or not($currentDataType = 'ECONOMIC_OPERATOR_ROLE_CODE')" flag="fatal" id="BR-TCR-08-27">The type of answer expected by the contracting authority is 'ECONOMIC_OPERATOR_ROLE_CODE' ('cac:ResponseValue/cbc:ResponseCode' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- DATE = cac:ResponseValue/cbc:ResponseDate -->
 			<assert test="( ($currentDataType = 'DATE') and (cac:ResponseValue/cbc:ResponseDate) ) or not($currentDataType = 'DATE')" flag="fatal" id="BR-TCR-08-04">The type of answer expected by the contracting authority is 'DATE' ('cac:ResponseValue/cbc:ResponseDate' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- DESCRIPTION = cac:ResponseValue/cbc:Description -->
@@ -102,9 +100,6 @@
 			<assert test="( ($currentDataType = 'LOT_IDENTIFIER') and (cac:ResponseValue/cbc:ResponseID) ) or not($currentDataType = 'LOT_IDENTIFIER')" flag="fatal" id="BR-TCR-08-23">The type of answer expected by the contracting authority is 'LOT_IDENTIFIER' ('cac:ResponseValue/cbc:ResponseID' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- WEIGHT_INDICATOR = cac:ResponseValue/cbc:ResponseIndicator -->
 			<assert test="( ($currentDataType = 'WEIGHT_INDICATOR') and (cac:ResponseValue/cbc:ResponseIndicator) ) or not($currentDataType = 'WEIGHT_INDICATOR')" flag="fatal" id="BR-TCR-08-24">The type of answer expected by the contracting authority is 'WEIGHT_INDICATOR' ('cac:ResponseValue/cbc:ResponseIndicator' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
-			<!-- ALPHA_INDICATOR = cac:ResponseValue/cbc:ResponseIndicator -->
-			<assert test="( ($currentDataType = 'ALPHA_INDICATOR') and (cac:ResponseValue/cbc:ResponseIndicator) ) or not($currentDataType = 'ALPHA_INDICATOR')" flag="fatal" id="BR-TCR-08-25">The type of answer expected by the contracting authority is 'ALPHA_INDICATOR' ('cac:ResponseValue/cbc:ResponseIndicator' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
-			
 		</rule>
 		
 		<rule context="cac:TenderingCriterionResponse/cac:ResponseValue">

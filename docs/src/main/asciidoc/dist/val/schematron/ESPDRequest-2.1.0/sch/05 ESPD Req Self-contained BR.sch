@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fn="http://www.w3.org/2005/xpath-functions">
 	<title>ESPD Request Self-contained Business Rules</title>
-	
-	<ns prefix="cac" uri="urn:X-test:UBL:Pre-award:CommonAggregate"/>
-	<ns prefix="cbc" uri="urn:X-test:UBL:Pre-award:CommonBasic"/>
+  
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
 	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
 	<ns prefix="udt" uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"/>
-	<ns prefix="espd" uri="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
 	<ns prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
 	
 <!--
@@ -42,7 +42,7 @@
 		<rule context="cac:TenderingCriterion">
 			<let name="isSCopen" value="(/*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') and (/*[1]/cbc:ProcedureCode != 'OPEN')"/>
 			
-			<!-- BR-2P-10-S10_01: For two-phased procedure with weighted criteria the information about weighting for each criteria within “Technical and professional ability” MUST be provided -->
+			<!-- BR-2P-10-S10_01: For two-phased procedure with weighted criteria the information about weighting for each criteria within “Technical and professional ability MUST be provided -->
 			<let name="testWeightNumeric" value="$isSCopen and (cbc:EvaluationMethodTypeCode = 'WEIGHTED') and starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.')"/>			
 			<assert test="not($testWeightNumeric) or  ((cbc:WeightNumeric) and ($testWeightNumeric))" role="fatal" id="BR-2P-10-S10_01">For two-phased procedure with weighted criteria, the information about weighting (cbc:WeightNumeric) for the criteria '<value-of select="cbc:CriterionTypeCode"/>' MUST be provided-</assert>
 		
