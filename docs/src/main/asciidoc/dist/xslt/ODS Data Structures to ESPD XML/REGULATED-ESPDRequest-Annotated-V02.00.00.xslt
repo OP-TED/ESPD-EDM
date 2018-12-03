@@ -8,7 +8,7 @@
 	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
 	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
 	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
-	xmlns:espd="urn:com:grow:espd:2.0.3"
+	xmlns:espd="urn:com:grow:espd:2.1.0"
 	xmlns:util="java:java.util.UUID">
 	
 	<xsl:include href="./inc/REGULATED-RootElements-Annotated.xslt"/>
