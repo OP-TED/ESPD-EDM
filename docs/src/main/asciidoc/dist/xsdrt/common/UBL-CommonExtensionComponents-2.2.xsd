@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           UBL Pre-award Development Test Version csd02wd01pa06
-  Release Date:      04 September 2017
-  Module:            UBL-CommonExtensionComponents-Pre-award.xsd
-  Generated on:      2016-05-30 13:30z
-  Copyright (c) OASIS Open 2016. All Rights Reserved.
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            UBL-CommonExtensionComponents-2.2.xsd
+  Generated on:      2017-01-02 17:20(UTC)
+  Copyright (c) OASIS Open 2017. All Rights Reserved.
 -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
 xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
-xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
 targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
             elementFormDefault="qualified" attributeFormDefault="unqualified" 
-            version="2.1">
+            version="2.2">
 <!-- ===== Imports ===== -->
-  <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" schemaLocation="UBL-UnqualifiedDataTypes-2.2.xsd"/>
-  <xsd:import namespace="urn:X-test:UBL:Pre-award:CommonBasic" schemaLocation="UBL-CommonBasicComponents-Pre-award.xsd"/>
+  <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+              schemaLocation="UBL-UnqualifiedDataTypes-2.2.xsd"/>
+  <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+              schemaLocation="UBL-CommonBasicComponents-2.2.xsd"/>
 <!-- ===== Includes ===== -->
-<xsd:include schemaLocation="UBL-ExtensionContentDataType-Pre-award.xsd"/>
+<xsd:include schemaLocation="UBL-ExtensionContentDataType-2.2.xsd"/>
 <!-- ===== Aggregate Element and Type Declarations ===== -->
   <xsd:element name="UBLExtensions" type="UBLExtensionsType">
     <xsd:annotation>
@@ -144,7 +147,7 @@ targetNamespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionCom
   </xsd:complexType>
   <xsd:complexType name="ExtensionAgencyNameType">
     <xsd:simpleContent>
-      <xsd:extension base="udt:TextType"/>
+      <xsd:extension base="udt:NameType"/>
     </xsd:simpleContent>
   </xsd:complexType>
   <xsd:complexType name="ExtensionAgencyURIType">
