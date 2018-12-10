@@ -25,23 +25,31 @@
 			
 			<!-- BR-RESP-30: Information about compliance of exclusion grounds MUST be provided - when not registered pre-qualification system. -->
 			<let name="exclusionCriteria" value="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
-			<let name="exclusionResponses" value="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses]]/cbc:CriterionTypeCode"/>
-			<let name="exclusionNotResponses" value="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses)]]/cbc:CriterionTypeCode/text()"/>
-			
-			<assert test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = count($exclusionResponses)) )" flag="fatal" id="BR-RESP-30">Information about compliance of exclusion grounds MUST be provided. The following exclusion criterion are not provided: <value-of select="$exclusionNotResponses"/></assert>
+			<let name="exclusionResponses" value="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode"/>
+			<let name="exclusionReqResponses" value="$exclusionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT'] 
+				and cac:SubsidiaryTenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION'] ]]/cbc:CriterionTypeCode"/>
+			<let name="exclusionNotResponses" value="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses) and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode/text()"/>
+			<let name="exclusionNotReqResponses" value="$exclusionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT'] 
+				and cac:SubsidiaryTenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses) and cbc:TypeCode='QUESTION'] ]]/cbc:CriterionTypeCode"/>
+
+			<assert test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = (count($exclusionResponses) + count($exclusionReqResponses))) )" flag="fatal" id="BR-RESP-30">Information about compliance of exclusion grounds MUST be provided. The following exclusion criterion are not provided: <value-of select="$exclusionNotResponses"/>, <value-of select="$exclusionNotReqResponses"/></assert>
 		
 			<!-- BR-RESP-40: Information about compliance of selection criteria MUST be provided - when not registered pre-qualification system and role different to OENRON -->
 			<let name="selectionCriteria" value="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.')]"/>
-			<let name="selectionResponses" value="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses]]/cbc:CriterionTypeCode"/>
-			<let name="selectionNotResponses" value="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses)]]/cbc:CriterionTypeCode"/>
-			
-			<assert test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = count($selectionResponses)) )" flag="warning" id="BR-RESP-40">Information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <value-of select="$selectionNotResponses"/></assert>
+			<let name="selectionResponses" value="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode"/>
+			<let name="selectionReqResponses" value="$selectionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode!='QUESTION'] 
+				and cac:SubsidiaryTenderingCriterionPropertyGroup//cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION'] ]]/cbc:CriterionTypeCode"/>
+			<let name="selectionNotResponses" value="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses) and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode"/>
+			<let name="selectionNotReqResponses" value="$selectionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode!='QUESTION'] 
+				and count(cac:SubsidiaryTenderingCriterionPropertyGroup//cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION'])=0 ]]/cbc:CriterionTypeCode"/>
+
+			<assert test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = (count($selectionResponses) + count($selectionReqResponses))) )" flag="warning" id="BR-RESP-40">Information about compliance of selection criteria MUST be provided. The following selection criterion are not provided:<value-of select="$selectionNotResponses"/>, <value-of select="$selectionNotReqResponses"/></assert>
 			
 			<!-- BR-RESP-80-S10: When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. -->
 			<!-- isPQS = true + isOENRON = false +  hasServiceProvider = true -->
 			<let name="hasServiceProvider" value="(cac:ContractingParty/cac:Party/cac:ServiceProviderParty)"/>
 			<let name="testS10" value="$isPQS and not($isOENRON) and $hasServiceProvider"/>
-			<assert test="not($testS10) or ($testS10 and (count($selectionCriteria) = count($selectionResponses)) )" flag="warning" id="BR-RESP-80-S10">When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <value-of select="$selectionNotResponses"/></assert>
+			<assert test="not($testS10) or ($testS10 and (count($selectionCriteria) = (count($selectionResponses) + count($selectionReqResponses))) )" flag="warning" id="BR-RESP-80-S10">When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <value-of select="$selectionNotResponses"/>, <value-of select="$selectionNotReqResponses"/></assert>
 
 			<!-- BR-RESP-80-S20: When the pre-qualification system the EO is registered on covers all the selection criteria, information about compliance of selection criteria IS NOT required. -->
 			<!-- isPQS = true + isOENRON = false +  hasServiceProvider = false + isSelfcontained = true -->

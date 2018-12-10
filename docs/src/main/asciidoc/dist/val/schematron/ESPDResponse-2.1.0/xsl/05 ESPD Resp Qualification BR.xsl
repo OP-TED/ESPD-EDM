@@ -207,16 +207,20 @@
       <xsl:variable name="exclusionCriteria"
                     select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
       <xsl:variable name="exclusionResponses"
-                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses]]/cbc:CriterionTypeCode"/>
+                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode"/>
+      <xsl:variable name="exclusionReqResponses"
+                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT']      and cac:SubsidiaryTenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION'] ]]/cbc:CriterionTypeCode"/>
       <xsl:variable name="exclusionNotResponses"
-                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses)]]/cbc:CriterionTypeCode/text()"/>
+                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses) and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode/text()"/>
+      <xsl:variable name="exclusionNotReqResponses"
+                    select="$exclusionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT']      and cac:SubsidiaryTenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses) and cbc:TypeCode='QUESTION'] ]]/cbc:CriterionTypeCode"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = count($exclusionResponses)) )"/>
+         <xsl:when test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = (count($exclusionResponses) + count($exclusionReqResponses))) )"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = count($exclusionResponses)) )">
+                                test="($isPQS) or(not($isPQS) and (count($exclusionCriteria) = (count($exclusionResponses) + count($exclusionReqResponses))) )">
                <xsl:attribute name="id">BR-RESP-30</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -224,6 +228,8 @@
                </xsl:attribute>
                <svrl:text>Information about compliance of exclusion grounds MUST be provided. The following exclusion criterion are not provided: <xsl:text/>
                   <xsl:value-of select="$exclusionNotResponses"/>
+                  <xsl:text/>, <xsl:text/>
+                  <xsl:value-of select="$exclusionNotReqResponses"/>
                   <xsl:text/>
                </svrl:text>
             </svrl:failed-assert>
@@ -232,23 +238,29 @@
       <xsl:variable name="selectionCriteria"
                     select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.')]"/>
       <xsl:variable name="selectionResponses"
-                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses]]/cbc:CriterionTypeCode"/>
+                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode"/>
+      <xsl:variable name="selectionReqResponses"
+                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode!='QUESTION']      and cac:SubsidiaryTenderingCriterionPropertyGroup//cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION'] ]]/cbc:CriterionTypeCode"/>
       <xsl:variable name="selectionNotResponses"
-                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses)]]/cbc:CriterionTypeCode"/>
+                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses) and cbc:TypeCode='QUESTION']]/cbc:CriterionTypeCode"/>
+      <xsl:variable name="selectionNotReqResponses"
+                    select="$selectionCriteria[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode!='QUESTION']      and count(cac:SubsidiaryTenderingCriterionPropertyGroup//cac:TenderingCriterionProperty[cbc:ID = $allResponses and cbc:TypeCode='QUESTION'])=0 ]]/cbc:CriterionTypeCode"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = count($selectionResponses)) )"/>
+         <xsl:when test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = (count($selectionResponses) + count($selectionReqResponses))) )"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = count($selectionResponses)) )">
+                                test="(($isPQS) and not($isOENRON)) or (not(($isPQS) and not($isOENRON)) and (count($selectionCriteria) = (count($selectionResponses) + count($selectionReqResponses))) )">
                <xsl:attribute name="id">BR-RESP-40</xsl:attribute>
                <xsl:attribute name="flag">warning</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>Information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <xsl:text/>
+               <svrl:text>Information about compliance of selection criteria MUST be provided. The following selection criterion are not provided:<xsl:text/>
                   <xsl:value-of select="$selectionNotResponses"/>
+                  <xsl:text/>, <xsl:text/>
+                  <xsl:value-of select="$selectionNotReqResponses"/>
                   <xsl:text/>
                </svrl:text>
             </svrl:failed-assert>
@@ -260,10 +272,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="not($testS10) or ($testS10 and (count($selectionCriteria) = count($selectionResponses)) )"/>
+         <xsl:when test="not($testS10) or ($testS10 and (count($selectionCriteria) = (count($selectionResponses) + count($selectionReqResponses))) )"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($testS10) or ($testS10 and (count($selectionCriteria) = count($selectionResponses)) )">
+                                test="not($testS10) or ($testS10 and (count($selectionCriteria) = (count($selectionResponses) + count($selectionReqResponses))) )">
                <xsl:attribute name="id">BR-RESP-80-S10</xsl:attribute>
                <xsl:attribute name="flag">warning</xsl:attribute>
                <xsl:attribute name="location">
@@ -271,6 +283,8 @@
                </xsl:attribute>
                <svrl:text>When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <xsl:text/>
                   <xsl:value-of select="$selectionNotResponses"/>
+                  <xsl:text/>, <xsl:text/>
+                  <xsl:value-of select="$selectionNotReqResponses"/>
                   <xsl:text/>
                </svrl:text>
             </svrl:failed-assert>
