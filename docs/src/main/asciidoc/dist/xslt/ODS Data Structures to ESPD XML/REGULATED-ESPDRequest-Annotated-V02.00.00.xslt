@@ -6,8 +6,8 @@
 	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
 	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
 	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
-	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 	xmlns:espd="urn:com:grow:espd:2.1.0"
 	xmlns:util="java:java.util.UUID">
 	
@@ -21,11 +21,11 @@
 	</xsl:template>
 	<xsl:template match="office:body">
 		<QualificationApplicationRequest
-			xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-			xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
-			xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2 ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2.xsd">
 			
 			<xsl:call-template name="createRootElements"/>
 			<xsl:call-template name="createContractingAuthority"/>
