@@ -1,9 +1,44 @@
 == Release Notes
 
+=== v2.1.2 (January 2018)
+
+The ESPD EDM version 2.1.0 has focused on the stabilisation of the previous specification,
+notably of the SELF-CONTAINED flavour of the ESPD. No changes have been introduced in the UBL-2.2 XSD schemas beyond the fact that the
+namespace of the XSD Schema is now the final one (as published by the OASIS link:link:http://docs.oasis-open.org/ubl/UBL-2.2.html[UBL-2.2] TC in July 2018).
+The list below details exhaustively every change introduced since the publication of the previous release of the ESPD-EDM:
+
+* **UBL-2.2 Schemas**
+** The default namespaces for the two UBL-2.2 maindoc used in ESPD are now:
+*** _urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2_
+*** _urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2_
+
+* **Code Lists**
+
+** The criteria taxonomy has been added as a code list to the spread-sheet
+link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[ESPD-CodeLists-V2.1.0.xlsx].
+This has facilitated the automated generation of the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/gc/ESPD-CriteriaTaxonomy_V2.1.0.gc[ESPD-CriteriaTaxonomy]
+Genericode instance with the UUIDs and Codes of each criterion. The code lists can be downloaded as an
+link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[MS-Excel] or as an
+link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ODS file].
+
+** The complete set of code lists has been re-generated as Genericode 1.0 XML files, which can be
+accessed and downloaded from the GitHub repository link:https://github.com/ESPD/ESPD-EDM/tree/master/docs/src/main/asciidoc/dist/cl/gc[GC folder].
+
+* **Business Rules**
+
+The link:https://joinup.ec.europa.eu/solution/interoperability-test-bed[Interoperability Testbed]
+has been set up to cope with the link:https://www.itb.ec.europa.eu/espd/upload[validation] of
+ESPD-Request and ESPD-Response v2.1.0 documents (click on the arrow of the combo-box 'Validate as').
+
+* **ESPD-REGULATED Criteria Taxonomy**
+
+* **ESPD-SELF-CONTAINED Criteria Taxonomy**
+
+
 === v2.0.2 (May 2018)
 
 The ESPD EDM version 2.0.2 is now released and contains only bugs fixed on the basis of the received comments on GitHub.
-For further details please read the release notes. For further details please read the release notes. The release contains a definition of all relevant
+The release contains a definition of all relevant
 business rules and corresponding schematron files to validate Regulate and Self-Contained ESPD Request and Response XML instances
 (including the validation of the criteria taxonomy). The corresponding TestBed for version 2.0.2 has been set up.
 The specifications for version 2.0.2 contain an updated distribution of the ESPD Exchange Data Model and include a corresponding implementation guideline
