@@ -1,0 +1,84 @@
+
+=== VI.9 Abilities
+
+
+==== Related information requirements
+
+See formal requirements related to selection criteria in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)].
+
+.Weighting 
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*|In an open procedure the CA has to consider all tenders that pass the selection criteria. The contract is awarded based on award criteria. 
+
+For two stage procedures it should be possible to weight the "Technical and professional ability" (the rest of selection criteria should be always PASS/FAIL).
+
+Weighting can be done either using percentage or points for one procedure. The CA should have a free text where they can describe the scoring methodology.
+|===
+
+==== Differences between Regulated and Self-contained
+
+. In the *REGULATED* the contracting authority cannot specify any REQUIREMENT. It is the economic operator that provides descriptive information (free-text field) about the technicians or bodies.
+
+. In the *SELF-CONTAINED* the contracting authority can provide a specific REQUIREMENT. For this example the CA expects the economic operator to provide information about the group of technicians that will supply support to the users. The CA can add and remove as many requirements as needed.
+
+. In the *SELF-CONTAINED* the economic operator (EO) sees the REQUIREMENTs specified by the CA and can provide different groups of information (which are not disjoint).
+
+. For procurement procedures organised in two stages the *SELF-CONTAINED* version allows the *weighting* of the technical and professional abilities.
+
+. The *SELF-CONTAINED* is able to keep in the XML documents national sub-criteria defined by the MS in e-Certis.
+
+. The *REGULATED* ESPD defines two different data structures:
+
+   ** One data structure to define up to eight Criteria (sharing the same data structure):
+
+   *** Technicians or technical bodies for quality control (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_QUALITY_CONTROL)
+   *** For works contracts: technicians or technical bodies to carry out the work (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS)
+   *** Technical facilities and measures for ensuring quality (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_QUALITY_ENSURING)
+   *** Study and research facilities (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_STUDY_RESEARCH)
+   *** Supply chain management (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.SUPPLY_CHAIN_MANAGEMENT)
+   *** Educational and professional qualifications (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.PROFESSIONAL_QUALIFICATIONS)
+   *** Environmental management measures (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.ENVIRONMENTAL_MANAGEMENT_MEASURES)
+   *** Tools, plant or technical equipment (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.EQUIPMENT)
+
+   ** One data structure to define the Allowance of Checks:
+
+   *** Allowance of checks (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS)
+
+   ** One more data structure to define criteria related to the contractor's staff:
+
+   *** Number of managerial staff (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.MANAGERIAL_STAFF)
+   *** Average annual manpower (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.AVERAGE_ANNUAL_MANPOWER)
+
+. The *SELF-CONTAINED* ESPD, in turn, supplies a richer set of (five) data structures thus facilitating a greater semantic interoperability:
+
+    ** One data structure to define two ability criteria related to technicians:
+
+    *** Technicians or technical bodies for quality control (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_QUALITY_CONTROL)
+    *** For works contracts: technicians or technical bodies to carry out the work (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS)
+
+    ** One data structure to define a miscellania of five criteria that can share the same data structure:
+
+    *** Technical facilities and measures for ensuring quality (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_QUALITY_ENSURING)
+    *** Study and research facilities (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_STUDY_RESEARCH)
+    *** Supply chain management (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.SUPPLY_CHAIN_MANAGEMENT)
+    *** Environmental management measures (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.ENVIRONMENTAL_MANAGEMENT_MEASURES)
+    *** Tools, plant or technical equipment (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.EQUIPMENT)
+
+    ** One data structure to define abilities related to the education and professional qualifications of the contractor or service provider:
+
+    *** Educational and professional qualifications (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.PROFESSIONAL_QUALIFICATIONS)
+
+    ** And one more data structure to define the allowance of checks:
+
+    *** Allowance of checks (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.CHECKS.ALLOWANCE_OF_CHECKS)
+
+    ** One data structure to define two abilities related to the contractor's staff:
+
+    *** Number of managerial staff (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.MANAGERIAL_STAFF)
+    *** Average annual manpower (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.AVERAGE_ANNUAL_MANPOWER)
+
+
+
+
+

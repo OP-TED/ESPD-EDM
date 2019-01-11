@@ -1,0 +1,122 @@
+
+=== VI.7.2 Self-contained other economic or financial requirements
+
+==== Mock-ups - contracting authority perspective
+
+The contracting authority has selected the option *other economic or financial requirements* for its inclusion in the ESPD Request. 
+
+Additionally the contracting authority can specify REQUIREMENTs specific to the procurement procedure. There are two situations that need to be distinguished here, when the procurement procedure is divided into Lots and when it is not.
+
+Thus, for this criterion the contracting authority will be able to:
+
+. Either add multiple requirements. For each requirement, the CA will need to provide the description of the requirement, the minimum amount and currency and the start and end date; *or* it will need to provide the minimum rating and the rating schema.
+
+. In the ESPDResponse, the EO will be required to provide, for each requirement, the amount and currency.
+
+. When the procedure is divided into Lots: The contracting authority can specify the Lots one particular requirement applies to.
+
+Notice that in the mock-up below the first requirement is about an *economic of financial requirement* whilst the second requirement is about a *rating requirement*. See data structure and XML example for more details on this distiction.
+ 
+.Self-contained 'other economic or financial requirements' CA REQUIREMENTs edition (Procedure divided into Lots).
+image::Selfcontained_Other_EC_FIN_CA_LOTS_mock-up.png[Self-contained 'other economic or financial requirements' CA mock-up, alt="Self-contained 'other economic or financial requirements' CA mock-up", align="center"]
+
+==== Mock-up - economic operator perspective
+
+The economic operator, in its view, sees all the requirements defined by the contracting authority (circles numbered 1, 3, 4 and 5) and responds to this requirements with an amount and currency (circle numbered as 9).  See XML example below to identify where these data are placed in the XML instance. 
+
+.Self-contained 'other economic or financial requirements' EO mock-up 
+image::Selfcontained_Other_EC_FIN_EO_mock-up.png['Self-contained 'other economic or financial requirements' EO mock-up, alt="'Self-contained 'other economic or financial requirements' EO mock-up", align="center"]
+
+==== Data Structure - Self-contained
+
+The structure of this criterion 'other economic or financial requirements' for the *SELF-CONTAINED* version is also very particular (distinct from the rest of criteria data structures). Notice the following aspects:
+
+. It allows for capturing multiple national criteria;
+
+. It specifies the Legislation component for the EU parent criterion. So far so good, no differences until now;
+
+. There's a group of REQUIREMENTs and QUESTIONs.
+
+. The group of REQUIREMENTs defines a caption that is kep empty (no name, no description, no value. You will have noticed this also in other criteria. The reason for having this dummy CAPTION is that the UBL-2.2 model requires always at least one cac:TenderingCriterionProperty element instance inside a group or sub-group of properties;
+
+. Then you have the group for collecting Lots specified by the CA. This spreadsheet would generate only one Lot, unless you add more LotIDs into this sub-group. Observe that the cardinality of the REQUIREMENT (LotID) is multiple, 1..n.
+
+. The most important part comes now: You have a kind of `choice` here: one of the two subgroups the data will be shown (or not) depending on the answer of the *contracting authority* to the REQUIREMENT: *Select the type of requirement*. If the CA's answer was *economic or financial requirement* the application takes it as a *true*; otherwise it is considered *false*:
+
+** On *true* (see the group code on the right side of the data structure) three REQUIREMENTs will be shown to the *economic operator*: description, minimum amount and period. For this REQUIREMENT the economic operator will see all these requirements and will have to provide an amount.
+
+
+**  On *false* (see the group code on the right side of the data structure) three REQUIREMENTs will be shown to the *economic operator*: minimum rating and rating scheme. For this REQUIREMENT the economic operator will see all these requirements and will have to provide a rating.
+
+
+.Self-contained 'other economic or financial requirements' criterion data structure 
+image::Selfcontained_Other_EC_FIN_Data_Structure.png[Self-contained 'other economic or financial requirements' criterion data structure, alt="Self-contained 'other economic or financial requirements' criterion data structure",align="center"]
+
+==== XML Example - Self-contained
+
+.Self-contained 'other economic or financial requirements' criterion (*Procedure with Lots*)
+[source,xml]
+----
+<!-- ... header elements removed for brevity ... -->
+
+<!-- Criterion:Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure -->
+	<cac:TenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">696a75b2-6107-428f-8b74-82affb67e184</cbc:ID>
+		<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION</cbc:CriterionTypeCode>
+		<cbc:Name>Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure</cbc:Name>
+		<cbc:Description>Can the economic operator confirm that:</cbc:Description>
+		<cbc:Description>a) It has been guilty of serious misrepresentation in supplying the information required for the verification of the absence of grounds for exclusion or the fulfilment of the selection criteria,</cbc:Description>
+		<cbc:Description>b) It has withheld such information,</cbc:Description>
+		<cbc:Description>c) It has not been able, without delay, to submit the supporting documents required by a contracting authority or contracting entity, and</cbc:Description>
+		<cbc:Description>d) It has undertaken to unduly influence the decision making process of the contracting authority or contracting entity, to obtain confidential information that may confer upon it undue advantages in the procurement procedure or to negligently provide misleading information that may have a material influence on decisions concerning exclusion, selection or award?</cbc:Description>		
+		<cac:SubTenderingCriterion>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+			<cbc:Name>[Name of the National Criterion]</cbc:Name>
+			<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+			<cac:TenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">88629adc-59fc-4e59-8605-5c3209e6784a</cbc:ID>
+					<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CAPTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">NONE</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">ee6b8a38-088a-48c1-89c6-6b27f6156e12</cbc:ID>
+					<cbc:Description>Your Answer</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+			</cac:TenderingCriterionPropertyGroup>
+		</cac:SubTenderingCriterion>
+		<cac:Legislation>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">304002f5-01d9-4611-926e-17011b819265</cbc:ID>
+			<cbc:Title>[Legislation title]</cbc:Title>
+			<cbc:Description>[Legislation description]</cbc:Description>
+			<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+			<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+			<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+			<cac:Language>
+				<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="2.0.2">EN</cbc:LocaleCode>
+			</cac:Language>
+		</cac:Legislation>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">f3a6836d-2de2-4cd1-81ca-fb06178d05c5</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6f72363c-aa1e-4778-a6d9-dae4ee60141d</cbc:ID>
+				<cbc:Description>Your answer</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:TenderingCriterionPropertyGroup>
+	</cac:TenderingCriterion>
+
+<!-- ... rest of elements removed for brevity ... -->
+----
+
+
+
+
+

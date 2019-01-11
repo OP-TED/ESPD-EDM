@@ -1,0 +1,86 @@
+
+
+
+==== Compulsory attributes
+.ESPD Requirement regarding codes
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*:
+| *For codes, this ESPD V2.0.2 specification requires always three mandatory attributes: `listID`, `listAgencyID`, and `listVersionID`*.
+|===
+
+.ESPD Requirement regarding identifiers
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*:
+| *For identifiers, this ESPD V2.0.2 specification requires at least (and always) the mandatory attribute `schemeAgencyID`*.
+|===
+
+In UBL Codes and identifiers are based on ebXML Core components (UBL conforms to http://docs.oasis-open.org/ubl/UBL-conformance-to-CCTS/v1.0/UBL-conformance-to-CCTS-v1.0.html[ebXML CCTS ISO/TS 15000-5:2005] currently maintained by UN/CEFACT).
+
+One convenient characteristic of these two CCT elements (Codes and Identifiers) is that they use a rich set of attributes that allow to identify their pattern, the name of the list, the URI from where to obtain the list, the Agency that maintains the list, the version of the list, and other. 
+
+UBL-2.2 CCT are defined in the file `CCTS_CCT_SchemaModule-2.2.xsd` (see folders `xsd/common` or `xsdrt/common` in the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/espd-edm-v2.0.2.zip[distribution package]).
+
+The figure below shows the complete list of attributes for the CCT `CodeType` component. 
+
+.Code attributes
+image::CCT_CodeType_Attributes.png[Code attributes, alt="Code attributes", align="center"]
+
+And its corresponding definitions, as provided by OASIS UBL (ISO/IEC 19845):
+
+.UBL attributes for codes
+[cols="<1,<4"]
+|===
+
+|*Attribute*|*Definition*
+
+|*listID*|The identification of a list of codes (*MANDATORY in ESPD V2.0.2*).
+
+|*listAgencyID*|An agency that maintains one or more lists of codes.
+
+|*listAgencyName*|The name of the agency that maintains the list of codes (*MANDATORY in ESPD V2.0.2*).
+
+|*listName*|The name of a list of codes.
+
+|*listVersionID*|The version of the list of codes (*MANDATORY in ESPD V2.0.2*).
+
+|*name*|The textual equivalent of the code content component.
+
+|*languageID*|The identifier of the language used in the code name.
+
+|*listURI*|The Uniform Resource Identifier that identifies where the code list is located.
+
+|*listSchemeURI*|The Uniform Resource Identifier that identifies where the code list scheme is located.
+
+|===
+
+
+This other figure shows the attributes for the CCT `IdentifierType`component.
+
+.Identifier attributes
+image::CCT_IdentifierType_Attributes.png[Identifier attributes, alt="Identifier attributes", align="center"]
+
+And its corresponding definitions, as provided by OASIS UBL (ISO/IEC 19845):
+
+.UBL attributes for identifiers
+[cols="<1,<4"]
+|===
+
+|*Attribute*|*Definition*
+
+|*schemeID*|The identification of the identification scheme.
+
+|*schemeName*|The name of the identification scheme.
+
+|*schemeAgencyID*|The identification of the agency that maintains the identification scheme (*MANDATORY in ESPD V2.0.2*).
+
+|*schemeAgencyName*|The name of the agency that maintains the identification scheme.
+
+|*schemeVersionID*|The version of the identification scheme.
+
+|*schemeDataURI*|The Uniform Resource Identifier that identifies where the identification scheme data is located.
+
+|*schemeURI*|The Uniform Resource Identifier that identifies where the identification scheme is located.
+
+|===

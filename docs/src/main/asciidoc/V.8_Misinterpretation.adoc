@@ -1,0 +1,115 @@
+
+=== V.8 Misinterpretation
+
+==== Related information requirements
+
+See formal requirements related to exclusion grounds criteria in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)], and more specifically http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009[_tbr070-009_], http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004[_tbr070-004_], and http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013[_tbr070-013_].
+
+==== Differences between Regulated and Self-contained
+
+. The *SELF-CONTAINED* version the XML instances can keep the national sub-criteria defined by the MS in  e-Certis;
+
+. For both *REGULATED* and *SELF-CONTAINED*, the category 'Misinterpreation', another type of 'Conflict of Interest', share the same data structure, and is classified as:
+
+** CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION
+
+==== Mock-ups - contracting authority perspective
+
+.'Misinterpretation' criterion mock-up - contracting authority perspective
+image::Misinterpretation_CA_mock-up.png['Misinterpretation' criterion mock-up - CA perspective, alt="'Misinterpretation' criterion mock-up - CA perspective", align="center"]
+
+==== Mock-ups - economic operator perspective
+
+[IMPORTANT]
+====
+Beware that this mock-up is not showing the national criteria. For this mock-up it is presumed that *by answering 'Yes' to the general EU criterion all the national criteria QUESTION 'Your answer' will be also set to 'Yes'*.
+====
+
+.'Misinterpretation' criterion mock-up - economic operator perspective
+image::Misinterpretation_EO_mock-up.png['Misinterpretation' criterion mock-up - EO perspective, alt="'Misinterpretation' criterion mock-up - EO perspective", align="center"]
+
+[NOTE]
+====
+The UBL specification allows always multiple lines of text for the component `cbc:Description`. This feature can be used to split long descriptions into multiple lines, specially when the description contains enumerations.
+
+The data structure for the criterion "Guilty of misinterpretation [...]" below uses the feature to divide four possible cases into different lines. Software and transformation solutions can also use it to generate an XML instance where the enumeration is split in multiple `cbc:Description` lines. See screen-captures below representing the data structures of this criterion for the REGULATED and SELF-CONTAINED versions.
+     
+====
+
+==== Data structure - Regulated
+
+.'Misinterpretation' criterion  data structure - Regulated
+image::Regulated_Misinterpretation_Data_Structure.png[Misinterpretation, alt="Misinterpretation", align="center"]
+
+==== Data structure - Self-contained
+
+.'Misinterpretation' criterion  data structure - Self-contained
+image::Selfcontained_Misinterpretation_Data_Structure.png[Misinterpretation, alt="Misinterpretation", align="center"]
+
+==== XML Example - Self-contained
+
+[NOTE]
+====
+Notice that the Regulated and Self-contained XML instances are identical, except for the fact that the Regulated version does not contain national sub-criteria. 
+====
+
+.'Misinterpretation' conflict of interest
+[source,xml]
+----
+<!-- ... the rest of elements in the QualificationApplicationRequest document omitted for brevity -->
+
+<!-- Criterion:Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">696a75b2-6107-428f-8b74-82affb67e184</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CRITERION.EXCLUSION.CONFLICT_OF_INTEREST.MISINTERPRETATION</cbc:CriterionTypeCode>
+	<cbc:Name>Guilty of misinterpretation, withheld information, unable to provide required documents and obtained confidential information of this procedure</cbc:Name>
+	<cbc:Description>Can the economic operator confirm that:</cbc:Description>
+	<cac:SubTenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+		<cbc:Name>[Name of the National Criterion]</cbc:Name>
+		<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">0934d941-9680-447c-b2ca-af1f0fce53fd</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CAPTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">NONE</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">7dfc567f-1429-4ed3-a299-39f2451e69c2</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Your Answer</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:TenderingCriterionPropertyGroup>
+	</cac:SubTenderingCriterion>
+	<cac:Legislation>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">e26648ec-ba40-46d4-a4d0-79833b7da551</cbc:ID>
+		<cbc:Title>[Legislation title]</cbc:Title>
+		<cbc:Description>[Legislation description]</cbc:Description>
+		<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+		<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+		<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+		<cac:Language>
+			<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="2.0.2">EN</cbc:LocaleCode>
+		</cac:Language>
+	</cac:Legislation>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">f3a6836d-2de2-4cd1-81ca-fb06178d05c5</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">f838769c-5869-4f55-b9cb-089d9331bbf5</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Your answer</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+
+<!-- ... the rest of elements in the QualificationApplicationRequest document omitted for brevity -->
+----

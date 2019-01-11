@@ -1,0 +1,58 @@
+
+=== VII.6 Economic Operator
+
+==== Related information requirements
+
+See formal requirements related to the economic operators in the e-Sens site: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-001[(_tbr092-001, _tbr092-008_)].
+
+.Information requirement about the ESPD Response and the economic operators
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*|*One ESPD Response per economic operator*. The ESPD-EDM-2.0.2, as all the previous versions of the ESPD, requires that every economic operator that participates in one tender provide its own ESDP Response document. This affects sole traders that rely on other entities for the execution of the contract (e.g. subcontractors) and groups of economic operators, e.g. a Joint Venture or a Consortium, and all the sub-contractors on which each economic operator of the group relies on to meet the selection criteria.
+|===
+
+.Information requirement about the identifiers of the economic operators
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*|For the identification of the economic operators the UBL-2.2 element `cac:PartyIdentification/cbc:ID` must be used. The following two attributes of the cbc:ID element (CCT IdentifierType element) must be used: (1) `@schemeID`, a code from the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType] must be used; (2) `@schemeAgencyID`, the default value "EU-COM-GROW" must be used; (3) Optionally, the attribute `@schemeName` can be used to place the 'Name' of the code (see the column 'Name' in the above mentioned Code List). For the ESPD-EDM the preferred type code for the `@schemID` is VAT.
+|===	
+
+
+.Information requirement about the groups of economic operators
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*|All economic operators belonging to a group (e.g. a Joint Venture, a Consortium, etc.) must specify the name of the group exactly with the same spelling (and respecting capital and lower cases, punctuation, and symbols) in each of their ESPD Responses. 
+|===
+
+.About the definition of economic operator
+[IMPORTANT]
+====
+*Beware* that this ESPD-EDM V2.0.2 specification defines economic operator based on the one provided by the 2014 Directives, where an economic operator is "any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification".
+
+According to this definition one group of suppliers associated in a Joint Venture or in a Consortium, or any other type of undertaking is also an economic operator.
+
+However, due to the previous requirement establishing that each company participating in a tender must prepare its own ESPD Response document, the ESPD-EDM specification never uses the term "economic operator" to refer to a group of persons and/or companies but *only to refer to each natural or legal person or public entity that participates in a tender*. 
+
+Therefore, in the context of the ESPD the definition of economic operator has been rephrased as "any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification".
+
+====
+
+*A couple of examples*. According to the previous requirements:
+
+** One tender submitted by a sole trader that relies on two sub-contractors will have to include three ESPD Requests, one for the sole trader and one per each of the sub-contracted entity. 
+
+**s One tender submitted by a Consortium composed of three economic operators, two of which rely on two sub-contracted entities and the third one relies on five sub-contracted entities, will have to include 3 + 2 + 5 (ten) ESPD Requests.  
+
+
+
+==== Differences between Regulated and Self-contained
+
+. Both, *REGULATED* and *SELF-CONTAINED* versions use the same elements from the UBL-2.2 XSD Schema. Differently to version 1.0.2.
+
+. The *REGULATED* version expects the role as a *text*.The *SELF-CONTAINED* version allows for the specification of the role of the economic operator as a *code*. Depending on the role code the software applications can decide which sets of data show or hide in the GUI, validate or not, process or not. 
+
+. The  *REGULATED* version expects the identification of members of a group as a *text*. In the *SELF-CONTAINED* version the members of the group are identified separately (name, ID and type of ID, and activity in the procedure).
+
+. In the *SELF-CONTAINED* version the information required about the entities upon which the economic operator relies on or not is richer and more structured than in the *REGULATED* version.
+
+. The treatment of the data about the (pre)qualification of the economic operator varies; in the *SELF-CONTAINED* versions is more structured and aims at making possible the implementation of the Once-Only-Principle, based on the premise that all the trusted (pre)qualification systems will be registered in e-Certis.

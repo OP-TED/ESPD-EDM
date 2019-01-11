@@ -1,0 +1,36 @@
+
+=== III.9 Procurement Procedure: Self-contained ESPD
+
+[cols="<1,<5"]
+|===
+|*REQUIREMENT* 
+|*The CA must be able to provide the CPV codes to which the Procurement Procedure relates in the ESPDRequest*
+|===
+[cols="<1,<5"]
+|===
+|*REQUIREMENT* 
+|*The CA must be able to provide the object of the contract and the type of procedure*
+|===
+
+The Self-contained ESPD adds the possibility for the contracting authority to specify a few more data relevant at evaluation time and for the economic operator:
+
+. The CPV (https://simap.ted.europa.eu/cpv[Common Procurement Vocabulary]) codes for the procurement procedure so the contracting authority can assess the classification of the economic operator; and for the economic operator to confirm that the procedure falls under its competences, skills or experience.
+
+. The 'Object of the contract' (i.e. the type of procurement project: execution of works, supply of products, provision of services). Software applications may use this information to, in a dynamic way, show or hide certain objects from the GUI; or to control the coherence of the XML content. Thus for example, if the object of the contract is 'works' it does not make sense to ask for references related to supplies of goods or services.
+
+. The 'Type of procedure' (e.g. Open procedure, Restricted procedure, Competitive procedure with negotiation, Competitive dialogue, Innovation partnership). The type of procedure can be used to control how to treat certain selection criteria. Thus for example, the weighting of technical and professional ability criteria is only used in two stages procedures.
+
+==== Mock-up
+The mock-up below show how this could be implemented in an GUI. Notice that more than one CPV code can be supplied by the contracting authority.
+
+.Procurement Procedure, data collected in a Regulated ESPD
+image::Procurement_Procedure_Selfcontained_ESPD-mockup.png[Procurement Procedure in a Self-contained ESPD, alt="Procurement Procedure in a Self-contained ESPD", align="center"]
+
+==== XSD Schema
+
+For the Self-contained ESPD Request, the 'Object of the contract' needs to be expressed as a code. This code is located in the `cac:ProcurementProject` class. As a matter of fact, the class provides two codes that allow to further refine the object of the contract: the `cbc:ProcurementTypeCode` and the `cbc:ProcurementSubTypeCode`. Thus you can specify things like 'Services' and 'Maintenance and repair services, or Land transport services, including armoured car services, and courier services, except transport of mail, or other', for example (see Code List `ServicesProjectSubType` in the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[Code Lists] file).
+
+The figure below shows the elements that can be used in a Self-contained ESPD. In blue those elements that are expected. See the UBL-2.2 XSD Schema for more elements in the `cac:ProcurementProject` class (e.g. the `cac:AdditionalCommodityClassification` class for other classifications beyond the CPV).
+
+.Procurement Procedure, elements used in a Self-contained ESPD
+image::ProcurementProject_Selfcontained-XSD.png[Procurement Procedure elements used in a Self-contained ESPD, alt="Procurement Procedure elements used in a Self-contained ESPD", align="center"]

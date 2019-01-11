@@ -1,0 +1,47 @@
+
+== V. Exclusion criteria
+
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*
+
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-HighLevelBusinessRequirements[_tbr092-015_], http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-HighLevelBusinessRequirements[_br41-002_]
+|The contracting body shall provide the exclusion grounds and selection criteria for its tendering process as structured information – via ESPD template or structured list of criteria set out in a call for tender.
+|===
+
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-009[_tbr070-009_]
+|The ESPD request must contain information about the criteria that set the exclusion grounds as stated in directive 2014/24/EU Art. 57 and referred to in directive 2014/25/EU Art. 80 and/or according to national legislation. These should be retrieved from e-Certis.
+|===
+
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*
+For Procurement Projects where the value of the contract is above the threshold, all ESPDRespone XML documents MUST specify all the exclusion criteria defined in the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0007[Annex 2 of the Regulation 2016/7]. 
+|===
+
+.Differences between Regulated and Self-contained exclusion criteria
+[NOTE]
+====
+As far as the _data structures_ of exclusion  criteria are concerned *there are practically not differences* between a Regulated ESPD and a Self-contained ESPD. 
+
+The only two differences lie in:
+
+1. The way the criteria are worded; e.g. the description of a conviction criterion reads like this in the two cases:
+
+** *Regulated ESPD Request*: Has the economic operator, to its knowledge, breached its obligations in the field of environmental law? As referred to for the purposes of this procurement in national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU.
+
+** *Self-contained ESPD Request*: Has the economic operator, to its knowledge, breached its obligations in the field of environmental law? As referred to for the purposes of this procurement _in this ESPD document_ and in the national law, in the relevant notice or the procurement documents or in Article 18(2) of Directive 2014/24/EU.
+
+2. The criterion 'Contributions' (i.e. Payment of Taxes and Social Security Contributions) adds a national REQUIREMENT to set the minimum threshold of debt for taxes or social security that is allowed in the Member State.
+====
+
+As suggested in section "Criteria Data Structures" criteria may be grouped in several different categories. The figure below is intended to identify and list these categories for the Exclusion criteria (branches in text boxes), and specific subgroups within each category (leaves in text without boxes). 
+
+Each branch in this 'criteria taxonomy' corresponds to one data structure that is identical for all the leaves under that branch (e.g. compare the names of the boxes with the tabs of the spreadsheets containing the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods[Regulated] and link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods[Self-contained] taxonomies).
+
+.Exclusion criteria taxonomy 
+image::ExclusionCriteriaTaxonomy.png[Exclusion criteria taxonomy, alt="Exclusion criteria taxonomy", width="900" align="center"]
+

@@ -1,0 +1,140 @@
+
+==== Expected (and other) Elements (REGULATED and SELF-CONTAINED)
+
+This list below enumerates the elements of `cac:Evidence` that could be used in (that make sense for) an ESPD Response. Notice though that the current versions of the ESPD-EDM only use the few elements mentioned above: ID, URL, Reference/Code, Confidentiality level  and Issuer.   
+
+.Elements expected in an Evidence
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:Evidence
+|*Definition*:|A class to describe an item of evidentiary support for representations of capabilities or the ability to meet tendering requirements, which an economic operator must provide for acceptance into a tendering process.
+|*Business rule(s)*:|None
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:Evidence
+|*Context of use*:|The economic operator uses it in the ESPD Response document to provide evidentiary support to one or more criteria http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[(_tbr092-017_)]. 
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:ID*
+|Identifier
+|1
+|An identifier for this item of evidentiary support.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017_]
+
+*Rule*: The Evidence ID MUST be unique in the ESPD Response XML instance (i.e. two evidences cannot have the same ID value). It is recommended to use always a UUID  UUID of version 4 (random generated UUID).
+
+*Rule scope*: Common (BR-TCR-09, BR-OTH-0)
+
+|*cbc:EvidenceTypeCode*
+|Code
+|0..1
+|A code signifying the type of evidence.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
+
+*Rule*: A code signifying the type of evidence. Could be used in the future in alignment to e-Certis.
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-01)
+
+|*cbc:Name*
+|Text
+|0..1
+|The name of the evidence.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
+
+*Rule*: None. Could be used in the future in alignment to e-Certis.
+
+|*cbc:Description*
+|Text
+|0..1
+|The textual description for this Evidence.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
+
+*Rule*: *Use this field to keep the Reference/Code of the Evidence*. 
+
+|*cbc:CandidateStatement*
+|Text
+|0..1
+|Information about a candidate statement that the contracting authority accepts as a sufficient response.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
+
+*Rule*: None. Not currently used in ESPD.
+
+|*cbc:ConfidentialityLevelCode*
+|Code
+|0..1
+|A code specifying the confidentiality level of this evidence.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017_]
+
+*Rule*: Compulsory use of the Code List linkhttps://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ConfidentialityLevel]. Software application should set this code to CONFIDENTIAL automatically when the confidentiality level code of at least one criterion to which this evidence is associated is set to CONFIDENTIAL.
+
+*Rule scope*: SELF-CONTAINED (BR-TCR-02, BR-OTH-01, BR-OTH-01#18, BR-OTH-03)
+
+|===
+
+This other table lists the elements from `cac:Evidence/cac:DocumentReference` used in the ESPD-EDM-V2.0.2:
+
+.Elements expected from the 'cac:Evidence/cac:DocumentReference' element 
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:DocumentReference
+|*Definition*:|A reference to the evidentiary document.
+|*Business rule(s)*:|None
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:Evidence/cac:DocumentReference
+|*Context of use*:|The economic operator uses it in the ESPD Response document to supply the URL of the evidence and the party who issued the evidentiary document. http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[(_tbr092-017, tbr092-022, tbr092-006, tbr092-007_)]. 
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:ID*
+|Identifier
+|1
+|An identifier for the referenced document.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-022, tbr092-006, tbr092-007_]
+
+*Rule*: *If the reference or verification code is provided for the evidence use this element to place it.* This 'code' is used in some countries (e.g. Spain) to check that the document is authentic. If a verification code is supplied you can use an official 'end-point' to retrieve an image (or a PDF) of the document and check that the evidence is authentic. 
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-02)
+
+|*cac:Attachment/cac:ExternalReference/cbc:URI*
+|Identifier
+|1
+|The Uniform Resource Identifier (URI) that identifies the external object as an Internet resource.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-022, tbr092-006, tbr092-007_]
+
+*Rule*: None. Not currently used in ESPD.
+
+|*cac:IssuerParty/cbc:ID*
+|Identifier
+|0..1
+|The identifier of the party issuer of the documentary evidence.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
+
+*Rule*: Not currently used in ESPD, but if you decide to use it try to use the VAT number whenever possible.
+
+*Rule scope*: SELF-CONTAINED (BR-OTH-02)
+
+|*cac:IssuerParty/cbc:Name*
+|Text
+|0..1
+|The name of the party issuer of the documentary  evidence.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
+
+*Rule*: ESPD-EDM uses this element to keep the name of the evidence issuer in the ESPD Response XML instance. 
+
+|*cac:IssuerParty/cbc:WebsiteURI*
+|URI
+|0..1
+|The website of the party issuer of the documentary evidence.
+|*Information Requirement*:  http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr092-017[_tbr092-017, tbr092-007, tbr092-006_]
+
+*Rule*: None. Not currently used in ESPD-EDM V2.0.2.
+
+|===
