@@ -1,0 +1,163 @@
+
+=== VI.1.2 Self-contained suitability (enrolments)
+
+==== Mock-ups - contracting authority perspective
+
+For each criteria regarding suitability, the CA should be able to provide: the register name, its URL and the Lots to which each requirement apply.
+
+The mock-up below represents the requirements the CA should be able to specify for a suitability criterion in a procedure procurement that is *not divided into lots*:
+
+.Self-contained 'Suitability' criterion without Lots (CA perspective)' 
+image::Self-contained_Suitability_NOLOTS_CA_mockup.png[Self-contained 'Suitability' criterion (CA perspective), alt="Self-contained 'Suitability' criterion (CA perspective)", align="center"]
+
+This other mock-up represents the same situation when the procurement procedure is *divided into lots*. 
+
+The contracting authority (CA) may request that the economic operator is registered in one or multiple registers. Per each register the CA specifies to which Lots this make sense. This behaviour of “one set of lots per *group of properties* is regular for all those selection criteria where the allocation of lots to a set of 'criterion properties' make sense (e.g. see the section "References").
+
+.Self-contained 'Suitability' criterion with Lots (CA perspective)' 
+image::Self-contained_Suitability_LOTS_CA_mockup.png[Self-contained 'Suitability' criterion (CA perspective), alt="Self-contained 'Suitability' criterion (CA perspective)", align="center"]
+
+==== Mock-ups - economic operator perspective
+
+Notice that:
+
+. The Lots and registers specified by the contracting authority are presented to the economic operator (on the left side of the mock-up, circles 1 to 6);	
+
+. The expected answer is "Yes", meaning that the economic operator fulfills the criterion;
+
+. In case of answering "No" the economic operator will have to provide the reasons why it is not registered.
+
+.Self-contained 'Suitability' criterion (EO perspective)' 
+image::Self-contained_Suitability_LOTS_EO_mockup.png[Self-contained 'Suitability' criterion (EO perspective), alt="Self-contained 'Suitability' criterion (EO perspective)", width="800" align="center"]
+
+==== Data Structure (Enrolments) - Self-contained
+
+This data structure is quite different from the Regulated ESPD:
+
+. It allows the definition of multiple national sub-criteria (to be retrieved from e-Certis): cardinality "0..n" of the SUBCRITERION group;
+
+. It also allows the contracting authority to speciy multiple groups of REQUIREMENTs (in this case to specify which registers the economic operator should be registered in). 
+
+. The number of Lots is also multiple (notice the cardinality "1..n" of the LotID REQUIREMENT, thus making possible to build lists of LotsIDs.
+
+. Regarding the groups of questions, notice that the main question is addressed to get the confirmation from the economic operator that it fulfills the criterion (if "Yes" the economic operator is registered). In case of answering "No" a sub-group of one QUESTION must be shown (the one asking the economic operator to provide the reason why it is not registered in the register specified by the contracting authority).
+
+(The figure below is defined in the the tab "Suitability-I of the
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy] spread-sheet).
+
+.Self-contained 'Suitability' criterion data structure  (enrolments)
+image::Selfcontained_Suitability_Enrolments_Data_Structure.png[Self-contained 'Suitability' criterion data structure, alt="Self-contained 'Suitability' criterion data structure",align="center"]
+
+==== XML Example - Self-contained (with Lots)
+
+The following XML example illustrates how to solve the more complex situation, when the Lots are specified. If the procurement procedure is not divided into Lots, the XML would be identical, except that all the elements related to Lots would not be present.
+
+.Self-contained 'Enrolment in a relevant professional register' suitability criterion
+[source,xml]
+----
+<!... header elements removed for brevity -->
+
+<!-- Criterion:Enrolment in a relevant professional register -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT</cbc:CriterionTypeCode>
+	<cbc:Name>Enrolment in a relevant professional register</cbc:Name>
+	<cbc:Description>It is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.</cbc:Description>
+	<cac:SubTenderingCriterion> <!-- ... ELEMENTS REMOVED FOR BREVITY --> </cac:SubTenderingCriterion>
+	<cac:Legislation><!-- ... ELEMENTS REMOVED FOR BREVITY --> </cac:Legislation>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">a53561d5-6614-4dbe-987e-b96f35387f46</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">f99ee126-23b8-4d83-8a62-6df4056a77cb</cbc:ID>
+			<cbc:Description>Lots the requirement apply to</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CAPTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">NONE</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">aca46197-141d-4c96-8d97-6ed08d653e22</cbc:ID>
+			<cbc:Description>LotIDs</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">IDENTIFIER</cbc:ValueDataTypeCode>
+			<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+			<cbc:ExpectedID>[List of Lots]</cbc:ExpectedID>
+		</cac:TenderingCriterionProperty>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3aacb82e-afba-440c-b64e-1834007965a2</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">0a72759b-cdff-4132-803f-d5d8955a5059</cbc:ID>
+				<cbc:Description>Register name</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</cbc:ValueDataTypeCode>
+				<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+				<cbc:ExpectedDescription>[Register Name]</cbc:ExpectedDescription>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">b420be09-d85b-45df-ab09-a43eef0b5635</cbc:ID>
+				<cbc:Description>URL</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">URL</cbc:ValueDataTypeCode>
+				<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+			</cac:TenderingCriterionProperty>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6cce6b8e-c53d-4598-8150-ac49aba3b9c7</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">d35eff44-9405-44f3-82c9-ca30bd98e589</cbc:ID>
+				<cbc:Description>Your Answer</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">70d5bbcf-0581-4d0f-b5c7-8b604a791972</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8fa5ec56-385c-44ec-ba97-ff25e95a3287</cbc:ID>
+					<cbc:Description>Registration number</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3a4a5421-81cc-468e-b69f-b86bf8c7932d</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONFALSE</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">093d3723-461b-4782-a1a0-6cc5203b1ce3</cbc:ID>
+					<cbc:Description>Reasons why your are not registered</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">53029e73-1cfe-45dd-ae91-36e2f9c4e610</cbc:ID>
+					<cbc:Description>Is this information available electronically?</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:SubsidiaryTenderingCriterionPropertyGroup>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">012c8f70-2ba4-4273-aeec-5f8e404b75f2</cbc:ID>
+						<cbc:Description>Evidence supplied</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+					</cac:TenderingCriterionProperty>
+				</cac:SubsidiaryTenderingCriterionPropertyGroup>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+<!... rest of elements removed for brevity -->
+----
+
+
+
+
+
+

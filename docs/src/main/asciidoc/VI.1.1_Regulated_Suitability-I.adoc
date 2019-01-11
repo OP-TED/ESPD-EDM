@@ -1,0 +1,75 @@
+
+=== VI.1.1 Regulated suitability (enrolments)
+
+
+==== Mock-ups - contracting authority perspective
+
+.Regulated 'Suitability' criterion (CA perspective)' 
+image::Regulated_Suitability_CA_mockup.png[Regulated 'Suitability' criterion (CA perspective), alt="Regulated 'Suitability' criterion (CA perspective)", align="center"]
+
+==== Mock-ups - economic operator perspective
+
+Notice that, as for the exclusion criteria, for the selection criteria the MS can specify general national sub-criteria in e-Certis. Software applications can download these sub-criteria from e-Certis and shown them in their GUI. For each national sub-criteria, the economic operator will have to respond "Yes" or "No" to confirm that it fulfills them.
+
+.Regulated 'Suitability' criterion (EO perspective)' 
+image::Regulated_Suitability_EO_mockup.png[Regulated 'Suitability' criterion (EO perspective), alt="Regulated 'Suitability' criterion (EO perspective)", width="800" align="center"]
+
+==== Data Structure (Enrolments)- Regulated
+
+(The figure below is defined in the the tab "Suitability-I of the
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy] spread-sheet).
+
+.Regulated 'Suitability' criterion data structure (for ''enrolments'')
+image::Regulated_Suitability_Enrolments_Data_Structure.png[Regulated 'Suitability' criterion data structure, alt="Regulated 'Suitability' criterion data structure",align="center"]
+
+==== XML Example (Enrolment)- Regulated
+
+.Regulated 'Enrolment in a relevant professional register' suitability criterion
+[source,xml]
+----
+<!... header elements removed for brevity -->
+
+	<!-- Criterion:Enrolment in a relevant professional register -->
+	<cac:TenderingCriterion>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f</cbc:ID>
+		<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT</cbc:CriterionTypeCode>
+		<cbc:Name>Enrolment in a relevant professional register</cbc:Name>
+		<cbc:Description>It is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.</cbc:Description>
+		<cac:Legislation><!-- eliminated for brevity --></cac:Legislation>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">1768de86-a6c8-48e4-bd8e-de2f2f7424d0</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">0b0e0f5c-af55-4bc9-b1d9-4a6a152e9e17</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Your answer?</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:TenderingCriterionPropertyGroup>
+		<cac:TenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">a99c28d8-c3e0-40c9-993e-793c6f5358af</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Is this information available electronically?</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">INDICATOR</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">b2f0f738-b50a-4a1e-af47-bff423626e9e</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>Evidence supplied</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		</cac:TenderingCriterionPropertyGroup>
+	</cac:TenderingCriterion>
+
+<!... rest of elements removed for brevity -->
+----
