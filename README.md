@@ -6,7 +6,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## Documentation
 
-* v2.1.0 (Draft)
+* [v2.1.0](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
 * [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
@@ -17,12 +17,13 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 Dear ESPD implementation community, 
 
-We are happy to inform you about the release of ESPD EDM version 2.0.3.
+We are happy to inform you about the release of ESPD EDM version 2.1.0.
 
-### Version 2.0.3 (December 2018)
-
-The [ESPD EDM version 2.0.3](https://github.com/ESPD/ESPD-EDM/tree/2.0.3) is now released and contains only bugs fixed namely related to the self-contained version on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues).
-For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.3/release_notes.html).
+### Version 2.1.0 (January 2019)
+The [ESPD EDM version 2.1.0](https://github.com/ESPD/ESPD-EDM/tree/2.1.0) is now released and focuses, mainly, on the improvement of the 
+ESPD-SELF-CONTAINED features. All the changes introduced in this new version were based on the inputs from Member States and other Stakeholders
+gathered through the [GitHub](https://github.com/ESPD/ESPD-EDM/issues) issues workspace. For further details please read the 
+[release notes](https://espd.github.io/ESPD-EDM/v2.1.0/release_notes.html).
 
 ### Version 2.0.2 (May 2018)
  
