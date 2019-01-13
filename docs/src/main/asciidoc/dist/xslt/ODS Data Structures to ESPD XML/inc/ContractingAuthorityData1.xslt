@@ -30,7 +30,7 @@
 					<cbc:PostalZone>DummyValue</cbc:PostalZone>
 					<cac:Country>
 						<cbc:IdentificationCode listID="CountryCodeIdentifier"
-							listAgencyID="EU-COM-GROW" listVersionID="2.0.2"
+							listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
 							>asdasdas</cbc:IdentificationCode>
 					</cac:Country>
 				</cac:PostalAddress>

@@ -5,7 +5,7 @@
 The ESPD EDM version 2.1.0 focuses on the stabilisation of the previous specification,
 notably of the SELF-CONTAINED features. No changes have been introduced in the UBL-2.2 XSD schemas beyond the fact that the
 namespace of the XSD Schema is now the final one (as published by the OASIS link:link:http://docs.oasis-open.org/ubl/UBL-2.2.html[UBL-2.2] TC in July 2018).
-The list below details exhaustively every change introduced since the publication of the previous release (2.0.2) of the ESPD-EDM:
+The list below details exhaustively every change introduced since the publication of the previous release (2.1.0) of the ESPD-EDM:
 
 * **UBL-2.2 Schemas**
 ** The default namespaces for the two UBL-2.2 maindoc used in ESPD are now:
@@ -17,11 +17,11 @@ The list below details exhaustively every change introduced since the publicatio
 * **Code Lists**
 
 ** The criteria taxonomy has been added as a code list to the spread-sheet
-link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[ESPD-CodeLists-V2.1.0.xlsx].
+link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[ESPD-CodeLists-V2.1.0.xlsx].
 This has facilitated the automated generation of the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/gc/ESPD-CriteriaTaxonomy_V2.1.0.gc[ESPD-CriteriaTaxonomy]
 Genericode instance with the UUIDs and Codes of each criterion. The code lists can be downloaded as an
-link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[MS-Excel] or as an
-link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ODS file].
+link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[MS-Excel] or as an
+link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[ODS file].
 
 ** The complete set of code lists has been re-generated as Genericode 1.0 XML files, which can be
 accessed and downloaded from the GitHub repository link:https://github.com/ESPD/ESPD-EDM/tree/master/docs/src/main/asciidoc/dist/cl/gc[GC folder].
@@ -53,13 +53,14 @@ SC-Abilities (5_Man.Staff). See these tabs in the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-SELFCONTAINED spread-sheet].
 
 * The figure representing the Selection Criteria Taxonomy, in Section VI. Selection Criteria, has been updated to reflect the splitting of the Suitability and Ability data structures.
+* Time lapses that were treated as DESCRIPTIONS are now addressed as PERIODs; e.g. Criteria #7 and #8
 
 === v2.0.2 (May 2018)
 
 The ESPD EDM version 2.0.2 is now released and contains only bugs fixed on the basis of the received comments on GitHub.
 The release contains a definition of all relevant
 business rules and corresponding schematron files to validate Regulate and Self-Contained ESPD Request and Response XML instances
-(including the validation of the criteria taxonomy). The corresponding TestBed for version 2.0.2 has been set up.
+(including the validation of the criteria taxonomy). The corresponding TestBed for version 2.1.0 has been set up.
 The specifications for version 2.0.2 contain an updated distribution of the ESPD Exchange Data Model and include a corresponding implementation guideline
 which clarifies the ESPD validation architecture in Annex I. Also, the BIS 41 – ESPD version 2.0.2 was updated accordingly.
 
@@ -88,9 +89,9 @@ This has been corrected and now all criteria have one block "Is this information
 
 === v2.0.1 (1st February 2018)
 
-The changes specified herein have been applied in both (1) the link:++https://github.com/ESPD/ESPD-EDM++[ESPD-EDM specification], version 2.0.2 published in this Github repository; and (2) the link:++http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2++[ESPDInt BIS document].
+The changes specified herein have been applied in both (1) the link:++https://github.com/ESPD/ESPD-EDM++[ESPD-EDM specification], version 2.1.0 published in this Github repository; and (2) the link:++http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0++[ESPDInt BIS document].
 
-See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/rn/Release Notes-2.0.2.ods++[Release Notes Details] and in this Github "Issues" section.
+See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/rn/Release Notes-2.1.0.ods++[Release Notes Details] and in this Github "Issues" section.
 
 * *Code Lists*:
 
@@ -98,7 +99,7 @@ See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src
 
 * *Use of the UBL-2.2 Schemas elements*:
 
-** The UBL-2.2 element `ProfileExecutionID` is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.0.2-REGULATED", "ESPD-EDMv2.0.2-SELFCONTAINED"...see also the Guideline and XML examples. Remember also that cardinalities are to be controlled via business rule). The ESPDInt BIS document has been modified accordingly: Inclusion of the ESPD version identifier (tir070-299;tir092-299). The following Business Rules have been added: TRDM092-55, TRDM072-36 for tir92-299 and tir070-299 to control the Evidence version.
+** The UBL-2.2 element `ProfileExecutionID` is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.1.0-REGULATED", "ESPD-EDMv2.1.0-SELFCONTAINED"...see also the Guideline and XML examples. Remember also that cardinalities are to be controlled via business rule). The ESPDInt BIS document has been modified accordingly: Inclusion of the ESPD version identifier (tir070-299;tir092-299). The following Business Rules have been added: TRDM092-55, TRDM072-36 for tir92-299 and tir070-299 to control the Evidence version.
 
 ** The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID` and `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID` had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: `cac:QualificationApplicationRequest/cbc:ID` and `cac:QualificationApplicationRequest/cbc:UUID`.
 
@@ -112,7 +113,7 @@ See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src
 
 ** About elements of `cac:ProcurementProject`:
 
-*** The cardinality of `cbc:ProcurementTypeCode` is now '0..1' in both the REGULATED and the SELFCONTAINED ESPD Requests (Thus ensuring compatibility between version 2.0.2 REGULATED and v1.0.2). The ESPDInt BIS document has been modified accordingly: Cardinality for the class Procurement Project and the subordinated elements tir070-503, tir070-504, tir92-505, tir92-506 from 1..1 to 0..1 has been changed.
+*** The cardinality of `cbc:ProcurementTypeCode` is now '0..1' in both the REGULATED and the SELFCONTAINED ESPD Requests (Thus ensuring compatibility between version 2.1.0 REGULATED and v1.0.2). The ESPDInt BIS document has been modified accordingly: Cardinality for the class Procurement Project and the subordinated elements tir070-503, tir070-504, tir92-505, tir92-506 from 1..1 to 0..1 has been changed.
 
 *** The cardinality of `cbc:Name` is now 0.1 in both the REGULATED and the SELFCONTAINED ESPD Requests. If used the text must match the one used in the Contract Notice.
 
@@ -128,7 +129,7 @@ See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src
 
 ** Some codes "ON*" were erroneous and have been transformed into "ONTRUE", e.g.Criterion 22 in the REGULATED Data Structures spreadsheets book AND Criterion 22 in the SELF-CONTAINED Data Structures spreadsheets book.
 
-** Missing data types: Some data types were missing and have been added; e.g. compare criteria 9 to 11, and criteria 62 and 63 between versions 2.0.0 and version 2.0.2.
+** Missing data types: Some data types were missing and have been added; e.g. compare criteria 9 to 11, and criteria 62 and 63 between versions 2.0.0 and version 2.1.0.
 
 The ESPDInt BIS document has been aligned accordingly.
 
@@ -138,7 +139,7 @@ The ESPDInt BIS document has been aligned accordingly.
 
 *** The definitions in the Data Structure spread-sheets containing syntax and grammar errors have been corrected (based on the texts on the Regulation Annex II and ESPD Service GUI). Additional comments have also been added in the online documentation about the use of the UBL-2.2 0..n multi-line descriptions, as requested by some users.
 
-*** Requirement about LotsThe documentation (in version 2.0.2) has been modified and reads now "One Lot must be always instantiated in the REGULATED ESPD XML document, and its identifier value should be '0'. The REGULATED version of the ESPD cannot be used for procurement procedures divided into Lots. For procedures divided into Lots use the SELF-CONTAINED version.
+*** Requirement about LotsThe documentation (in version 2.1.0) has been modified and reads now "One Lot must be always instantiated in the REGULATED ESPD XML document, and its identifier value should be '0'. The REGULATED version of the ESPD cannot be used for procurement procedures divided into Lots. For procedures divided into Lots use the SELF-CONTAINED version.
 
 *** Additional explanatory texts have been added at the beginning of sections "VI.2.6 Self-contained specific yearly turnover" and "VI.2.8 Self-contained specific average turnover" to clarify the use of CPVs.
 

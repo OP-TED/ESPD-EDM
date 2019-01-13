@@ -18,10 +18,18 @@ The columns of the tables are to be interpreted as follows:
 * Column 21: *Cardinality*, indicates whether the element is mandatory or optional and its multiplicity
 * Column 22: *PropertyDataType*, the type of data expected according to the types defined in the code list `ResponseDataType`
 * Column 23: *ElementUUID*, The Universal Unique Identifier assigned to identify unambiguously a criterion, group or subgroup. These UUID are kept in e-Certis, except for those that have to be generated dynamically (e.g. UUIDs for Questions, Captions and Requirements). See also the special note "Criteria Taxonomy/Data Structures and the use of UUIDS" below
-* Column 24: *Element Code*; in the case of Criterion it contains the code that categorises the criterion in the taxonomy of exclusion and selection criteria (it maps to the taxonomy drawn in the online documentation and in the spread-sheet files "ESPD-CriteriaTaxonomy*" in folder `dist/cl`). For the rest of elements there are three types of codes:
+* Column 24: *Element Code*; in the case of Criterion it contains the code that categorises the criterion in the
+taxonomy of exclusion and selection criteria (it maps to the taxonomy drawn in the online documentation and in the
+spread-sheet files "ESPD-CriteriaTaxonomy*" in folder `dist/cl`).
+For the rest of elements there are three types of codes (see also section:
 ** `ON*`, meaning "process always" (e.g. show always or read and extract data always")
 ** `ONTRUE`, meaning "process this group only if the previous parent question (always an INDICATOR) has been answered affirmatively"
 ** `ONFALSE`, meaning "process this group only if the previous parent question (always an INDICATOR) has been answered negatively"
+* Column 25: *Code List*; it indicates which is the name of code list containing the possible values that must be used
+for this field. This value is most cases a *code* however beware that in this ESPD-EDM specification some code lists
+contain codes that *are not* intended to be used as values of codes. *_See the section titled
+link:#[#code-lists-that-strong-are-not-strong-used-for-code-values](under section
+link:#ii-4-5-codes-and-code-lists[Codes and code lists].
 
 *REGULATED*
 
@@ -48,7 +56,7 @@ Every element of the data structures has an UUID assigned, except for the CAPTIO
 
 As explained, CAPTIONs, REQUIREMENTs and QUESTIONs cannot have a "reusable" UUID allocated. The reason for this is that they are defined as "Criterion Properties" which must use non-reusable truly unique identifiers. This is especially important in the case of the responses of the economic operator (in the ESPD Response document) which will refer to one, and only one, QUESTION of the ESPD Request. For more details see sections link:#iv-4-properties[IV.4 Properties] and link:#vii-7-answering-questions[VII.7 Answering QUESTIONs]. 
 
-Beware also that the spread-sheet files in v2.0.2 defining the criteria data structures (link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-REGULATED-V2.0.2.ods[ESPD-CriteriaTaxonomy-REGULATED-V2.0.2.ods] and link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods[ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods]) are indeed functionally equivalent to those that in previous versions were named as "Criteria Taxonomy", as they do not only identify and define the criteria and their inner elements but also "classify" the criteria in different categories. Each category represents one type of criterion with identical data structures inside. This concept of "taxonomies" is better illustrated and further detailed at the beginning of the sections link:#v-exclusion-criteria[V. Exclusion criteria] and link:#vi-selection-criteria[VI. Selection criteria]. And keep in mind that, in ESPD v2.0.x, these Criteria Taxonomy spread-sheets can be used to link:#data-structures-spread-sheets-as-a-tool-to-generate-xml-instances[automatically generate XML instances of REGULATED and SELF-CONTAINED documents], which can be extremely useful for implementers and testers of the ESPD v2.0.2-based software and services.     
+Beware also that the spread-sheet files in v2.1.0 defining the criteria data structures (link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.ods[ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.ods] and link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.ods[ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.ods]) are indeed functionally equivalent to those that in previous versions were named as "Criteria Taxonomy", as they do not only identify and define the criteria and their inner elements but also "classify" the criteria in different categories. Each category represents one type of criterion with identical data structures inside. This concept of "taxonomies" is better illustrated and further detailed at the beginning of the sections link:#v-exclusion-criteria[V. Exclusion criteria] and link:#vi-selection-criteria[VI. Selection criteria]. And keep in mind that, in ESPD v2.0.x, these Criteria Taxonomy spread-sheets can be used to link:#data-structures-spread-sheets-as-a-tool-to-generate-xml-instances[automatically generate XML instances of REGULATED and SELF-CONTAINED documents], which can be extremely useful for implementers and testers of the ESPD v2.1.0-based software and services.
 ====
 
 We could say that the 'data structures' represented in the spread-sheets define a kind of 'meta-language' (or 'controlled vocabulary') that helps 'map' the structure of an ESPD-EDM criterion and the UBL-2.2 criterion data structure. The table below 'maps' both vocabularies. Please compare any of the data structures provided in this document with both the UBL-2.2 XSD Schemas and the XML examples provided herein.
@@ -69,16 +77,16 @@ We could say that the 'data structures' represented in the spread-sheets define 
 |LEGISLATION|cac:Legislation
 |===
   
-The ESPD-EDM data structures vocabulary is defined in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CriterionElementType]". Her you have the definitions provided therein:
+The ESPD-EDM data structures vocabulary is defined in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CriterionElementType]". Her you have the definitions provided therein:
 
 * *CRITERION*: A criterion (in the case of the the ESPD an Exclusion or Selection criterion); maps to a UBL-2.2 cac:TenderingCriterion class
 * *SUBCRITERION*: Used to define national sub-criteria; maps to a UBL-2.2 cac:SubTenderingCriterion class 
 * *REQUIREMENT_GROUP*: Group of requirements or remarks issued by a MS or a CA; maps to a UBL-2.2 cac:TenderingCriterionPropertyGroup
 * *REQUIREMENT_SUBGROUP*: A subgroup of requirements or remarks inside a group or subgroup of requirements; maps to a UBL-2.2 cac:SubsidiaryTenderingCriterionPropertyGroup
-* *REQUIREMENT*: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ResponseDataType]") 
+* *REQUIREMENT*: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[ResponseDataType]")
 * *QUESTION_GROUP*: Group of questions, each question requiring a datum as an answer from the EO; maps to a cac:TenderingCriterionPropertyGroup class 
 * *QUESTION_SUBGROUP*:	A subgroup of questions inside a group or a subgroup of questions; maps to a cac:SubsidiaryTenderingCriterionPropertyGroup
-* *QUESTION*: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ResponseDataType]" )
+* *QUESTION*: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[ResponseDataType]" )
 * *CAPTION*: A text label (no requirement nor answer is expected); maps to a cac:TenderingCriterionProperty class (the expected response data type is NONE) 
 * *ADDITIONAL_DESCRIPTION_LINE*:	Additional line in a description (for descriptions that can be split in several lines); maps to a cbc:Description element (namely in cac:TenderingCriterion) 
 * *LEGISLATION*:	An instance of a Legislation class; maps to a cac:Legislation class
@@ -108,5 +116,45 @@ If you examine any of the XML examples provided in this document you will observ
 
 ** A REQUIREMENT_GROUP or REQUIREMENT-SUBGROUP may contain either REQUIREMENT_SUBGROUPS and/or QUESTION_SUBGROUPS;   
 
-** The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENTs or QUESTIONs is to look into the value of the `cac:TenderingCriterionProperty/cbc:TypeCode`. The list of possible codes are the ones of the above mentioned Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[CriterionElementType]".  
+** The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENTs or QUESTIONs is to look into the value of the `cac:TenderingCriterionProperty/cbc:TypeCode`. The list of possible codes are the ones of the above mentioned Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CriterionElementType]".
 
+
+==== The ONTRUE/ONFALSE codes for GROUP and SUBGROUP control
+
+As explained above, this ESPD-EDM specification uses three codes that concern uniquely the GROUPS or SUBGROUPS of REQUIREMENTS and
+QUESTIONS. The codes, which are defined in the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[PropertyGroupType], are:
+
+. ON*, meaning that the GROUP or SUBGROUP has to be processed always;
+. ONTRUE, meaning that the GROUP or SUBGROUP has to be processed, and announcing that a GROUP or SUBGROUP is coming
+next that must not to be processed *if the value of the closer QUESTION of type INDICATOR* is `true`;
+. ONFALSE, meaning that the GROUP or SUBGROUP must be processed *if the value of the closer QUESTION of type INDICATOR* is `false`;
+
+
+These codes are used for a software application modules to know whether it has to process a concrete GROUP or SUBGROUP.
+If the objective of the module is, for example, to build dynamically the Graphic User Interface (GUI) - based on the
+ESPD-Request or an ESPD-Response XML instance-, then a GROUP or SUBGROUP marked as ONTRUE implies that the GROUP or
+SUBGROUP content is to be shown, whilst the one marked as ONFALSE needs to be hidden. GROUPS and SUBGROUPS marked as
+ON* imply that has to be always shown. Yoy can see this mechanism as a way of implementing ''choices'' or
+''switch/cases'' inside a Criterion Data Structure.
+
+The figure below illustrates how the ONTRUE and ONFALSE SUBGROUPS of a Criterion of type "Contributions
+(Exclusion Grounds)" relate to each of its ''closer QUESTION'' of type INDICATOR:
+
+.GROUP and SUBGROUP control via the ONTRUE/ONFALSE codes
+image::ONTRUE_ONFALSE_Use.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+The screen-captures below illustrate how the European Commission's ESP Service processed the GUI for the Exclusion Criterion
+''Contributions'' based on this mechanism:
+
+.Case 1: When the first QUESTION ''Your Answer?'' is set to `false`:
+image::ONTRUE_ONFALSE_Mockup_1.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 2: When the first QUESTION ''Your Answer?'' is set to `true`:
+image::ONTRUE_ONFALSE_Mockup_2.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 3: When the first QUESTION ''Your Answer?'' and the option "Has this breach of obligations been established ..." are both set to `true`:
+image::ONTRUE_ONFALSE_Mockup_3.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 4: When all the QUESTIONS that are INDICATORS are set to `true`
+image::ONTRUE_ONFALSE_Mockup_4.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
