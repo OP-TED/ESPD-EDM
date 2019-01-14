@@ -1,27 +1,27 @@
 
 === VI.1 Alpha Criterion
 
-The 'Global indication for all selection criteria' (a.k.a. 'Alpha Criterion') is a special feature only possible in
-the REGULATED ESPD. It is intended to avoid the specification of each selection criteria the economic operator satisfies
-(or not) and how.
+The criterion 'Global indication for all selection criteria' (a.k.a. 'Alpha Criterion') is a special feature only possible in
+the REGULATED ESPD. It is intended to avoid that the economic operator specifies a long list of selection criteria.
 
 The code used in the ESPD-REGULATED Criteria Taxonomy to identify this criterion is:
 
 * CRITERION.SELECTION.ALL (UUID `f4dc58dd-af45-4602-a4c8-3dca30fac082`)
 
-The use of the Alpha Criterion implies that:
-
-* The economic operator states that it fulfills *all* the selection criteria, and
-* It is close to the idea of the ESPD used as a *self-declaration*.
+The use of the Alpha Criterion implies that the economic operator states that it fulfills *all* the selection criteria.
+Fulfilling an ESPD-Response document like this is close to the idea of the ESPD used as a *self-declaration*.
 
 If this selection criterion is used then no other selection criterion can occur in the XML instance of an
 ESPD-REGULATED document. Otherwise the validation mechanisms should reject the document.
 
+[NOTE]
+====
 The use of the Alpha Criterion *is not* recommended as it does not promote the transparency and hinders the
 interoperability: no data about the selection criteria are exchanged. These are the two main reasons why the
 Alpha Criterion is not used in the SELF-CONTAINED ESPD.
+====
 
-==== Mock-ups - contracting authority perspective
+==== Mock-ups (CA perspective)
 
 The two figures below show how the EC's transitional ESPD-Service behaves when the 'Alpha Criterion' is used by the
 Contracting Authority (CA) to specify that there is no need for the Economic Operator (EO) to specify each criterion
@@ -32,17 +32,19 @@ blocks of criteria A to D are to be answered).
 image::AlphaCriterion_CA_mockup.PNG['Alpha Criterion selected' (CA perspective), alt="Alpha Criterion selected
 (CA perspective)", align="center"]
 
+
 .Alpha Criterion *unselected* (CA perspective)'
 image::AlphaCriterion_CA_mockup_unselected.PNG['Alpha Criterion unselected' (CA perspective), alt="Alpha Criterion
 unselected(CA perspective)", align="center"]
 
-==== Mock-ups - economic operator perspective
+==== Mock-ups (EO perspective)
 
 The two figures below show how the EC's transitional ESPD-Service behaves when the 'Alpha Criterion' is used by the
 Economic Operator (EO).
 
 .The Alpha Criterion *selected* (EO perspective)'
 image::AlphaCriterion_EO_mockup.png['Alpha Criterion selected' (EO perspective), alt="Alpha Criterion selected (EO perspective)", align="center"]
+
 
 .The Alpha Criterion *unselected* (EO perspective)'
 image::AlphaCriterion_EO_mockup_unselected.png['Alpha Criterion unselected' (EO perspective), alt="Alpha Criterion unselected (EO perspective)", align="center"]
@@ -60,7 +62,7 @@ image::Regulated_ALPHA_CRITERION_Data_Structure.png[Alpha Criterion data structu
 In this example, the CA creates an ESPD-Request document which contains one, and only one, selection Criterion (see the first
 fragment of XML code below).
 
-The System of the Economic Operator will import the ESPD-Request document ans will answer with a simple `true` or `false`value in
+The System of the Economic Operator will import the ESPD-Request document ans will answer with a simple `true` or `false` value in
 the its ESPD-Response document (see the second fragment of XML code below):
 
 .Alpha Selection Criterion specified by the CA in the REGULATED ESPD-Request
