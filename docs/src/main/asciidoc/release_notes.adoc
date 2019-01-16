@@ -69,8 +69,8 @@ See tabs ''Suitability-I'' and ''Suitability-II'' of the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-REGULATED spread-sheet].
 
 ** Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections
-link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-1-regulated-economic-operator-party[VII.6.1 Regulated economic operator party]
-and link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-2-self-contained-economic-operator-party[VII.6.2 Self-contained economic operator party].
+link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-1-regulated-economic-operator-party[VIII.6.1 Regulated economic operator party]
+and link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-2-self-contained-economic-operator-party[VIII.6.2 Self-contained economic operator party].
 See also link:https://github.com/ESPD/ESPD-EDM/issues/212[Issue #212])
 *** The data structure has changed, it now contains only a QUESTION asking for the list of Lots IDs as a free text field (differently to the ESPD-SELFCONTAINED which asks for a collection of LOT_IDENTIFIER data elements).
 *** The group "Is this information available electronically" has been removed
@@ -175,7 +175,7 @@ maintained in SIMAP for CodeLists (https://simap.ted.europa.eu/cpv)
 *** ID of the subcontractor has been semantised from IDENTIFIER to ECONOMIC_OPERATOR_ID
 *** The field 'Activity of the entity (for this specific procedure) can now be expressed as a set of one or more CPV codes
 
-** Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections ''VII.6.1 Regulated economic operator party'' and ''VII.6.2 Self-contained economic operator party'')
+** Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections ''VIII.6.1 Regulated economic operator party'' and ''VIII.6.2 Self-contained economic operator party'')
 *** The group "Is this information available electronically" has been removed
 *** Wrongly indented tag {QUESTION} has been corrected.
 
@@ -183,6 +183,17 @@ maintained in SIMAP for CodeLists (https://simap.ted.europa.eu/cpv)
 *** Wrongly indented tag {QUESTION} has been corrected.
 
 ** The cardinalities of the block "Is this information available electronically" have been re-adjusted
+
+* UUIDs
+
+** Criteria UUIDs are not backwards-consistent (with versions 1.0.2, 2.0.*). New UUIDs have been added for the new
+ESPD-SELF-CONTAINED groups and sub-groups where needed. All corrected and new UUIDs are red-coloured in the
+CriteriaTaxonomy spread-sheets.
+
+* XML examples
+
+** New XML samples have been produced using the ESPDInt solution. These examples can be downloaded from the
+link:https://github.com/ESPD/ESPD-EDM/tree/master/docs/src/main/asciidoc/dist/xml[dist/xml].
 
 === v2.0.2 (May 2018)
 
@@ -230,7 +241,7 @@ See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src
 
 ** The UBL-2.2 element `ProfileExecutionID` is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.1.0-REGULATED", "ESPD-EDMv2.1.0-SELFCONTAINED"...see also the Guideline and XML examples. Remember also that cardinalities are to be controlled via business rule). The ESPDInt BIS document has been modified accordingly: Inclusion of the ESPD version identifier (tir070-299;tir092-299). The following Business Rules have been added: TRDM092-55, TRDM072-36 for tir92-299 and tir070-299 to control the Evidence version.
 
-** The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID` and `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID` had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: `cac:QualificationApplicationRequest/cbc:ID` and `cac:QualificationApplicationRequest/cbc:UUID`.
+** The v2.0.0 documentation specified in section "VIII.5 Reference to publications and to the ESPD Request" that the elements `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID` and `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID` had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: `cac:QualificationApplicationRequest/cbc:ID` and `cac:QualificationApplicationRequest/cbc:UUID`.
 
 ** Element `cac:ProcurementProject` (cardinality 0..1): Use this component to identify and describe the procurement administrative procedure. The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2. Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure.
 
