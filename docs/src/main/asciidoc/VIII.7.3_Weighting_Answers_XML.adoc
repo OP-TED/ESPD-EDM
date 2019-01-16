@@ -1,7 +1,9 @@
 
 === VIII.7.3 XML Example 3: Weighting
 
-This section presents an XML Example of a WEIGHTED SELF-CONTAINED criterion (used in a two-stages procedure). The criterion properties corresponding to REQUIREMENTs and QUESTIONs are the ones that were *copied* from the ESPD Request into the ESPD Request. 
+This section presents an XML Example of a WEIGHTED SELF-CONTAINED criterion (used in a multi-staged procedure).
+The criterion properties corresponding to REQUIREMENTs and QUESTIONs are the ones that were *copied* from the
+ESPD Request into the ESPD Request.
 
 The XML example contains circled numbers aimed to map the fields in the CA and EO mock-ups:
 
@@ -12,24 +14,12 @@ The example illustrates:
 . the QUESTIONs addressed to the EO;
 
 . the answwers provided by the EO.
-  
-==== Mock-ups 
-
-*Contracting authority perspective*:
-
-.Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up 
-image::Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png[Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up", align="center"]
-
-*Economic operator perspective*:
-
-.Self-contained 'Abilities (I)' WEIGHTED EO mock-up 
-image::Selfcontained_Abilities_WEIGHTED_EO_mockup.png[Self-contained 'Abilities (I)' WEIGHTED EO mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up", align="center"]
 
 ==== XML snippet 1.a) criterion REQUIREMENTs and QUESTIONs (SELF-CONTAINED and WEIHGTED)
 
 Notice that the data is distributed in three places:
 
-. Some root elements (directly under the root element of the `/QualificationApplicationResponse`. Observe that in the case of elements `cbc:Description` UBL-2.2 does always specify a multiple cardinality. This allows for separating the lines of the text thus facilitating its presentation for layout purposes.  
+. Some root elements (directly under the root element of the `/QualificationApplicationResponse`. Observe that in the case of elements `cbc:Description` UBL-2.2 does always specify a multiple cardinality. This allows for separating the lines of the text thus facilitating its presentation for layout purposes.
 
 . The criterion itself; see circled numbers and comments beneath the XML code;
 
@@ -58,11 +48,11 @@ Notice that the data is distributed in three places:
 	<cbc:EvaluationMethodTypeCode listID="EvaluationMethodType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">WEIGHTED</cbc:EvaluationMethodTypeCode><--4-->
 		<cbc:WeightingConsiderationDescription>0 technicians -> 0 points</cbc:WeightingConsiderationDescription><--6-->
 		<cbc:WeightingConsiderationDescription>1 technician -> 30 points</cbc:WeightingConsiderationDescription><--6-->
-		<cbc:WeightingConsiderationDescription>2 technicians -> 60 points</cbc:WeightingConsiderationDescription><--6-->	
+		<cbc:WeightingConsiderationDescription>2 technicians -> 60 points</cbc:WeightingConsiderationDescription><--6-->
 		<cbc:WeightingConsiderationDescription>3 technicians -> 75 points</cbc:WeightingConsiderationDescription><--6-->
 		<cbc:WeightingConsiderationDescription>4 technicians -> 100 points</cbc:WeightingConsiderationDescription><--6-->
 		<cbc:WeightingConsiderationDescription>Minimum acceptable: 2 technicians</cbc:WeightingConsiderationDescription><--6-->
-	<cac:SubTenderingCriterion> 
+	<cac:SubTenderingCriterion>
 		<!-- ... elements removed for brevity ... -->
 	</cac:SubTenderingCriterion>
 	<cac:Legislation><!-- ... elements removed for brevity ... --></cac:Legislation>
@@ -231,7 +221,7 @@ Notice that the data is distributed in three places:
 <4> This criterion is weighted (default is set to PASS/FAIL).
 <5> The weight assigned to this criterion by the CA is 10%.
 <6> The CA provides additional information related to the evaluation of this specific criterion. The expected data value is 'DESCRIPTION' -> `cbc:Description`. As in UBL-2.2 descriptions are always multiple cardinality elements this is used to distribute the information in multiple description lines.
-<7> First Name of the technician (data about one technician starts here (circled numbers #7 to #13). Multiple technicians can be added/removed by the economic operator). 
+<7> First Name of the technician (data about one technician starts here (circled numbers #7 to #13). Multiple technicians can be added/removed by the economic operator).
 <8> Family name of the technician.
 <9> Profession of the technician.
 <10> Experience of the technician.
@@ -396,8 +386,8 @@ Beware that one subset of the data is answered in the Criterion sub-elements. Th
 <3> Datum in the root element `cbc:WeightingType`.
 <4> Datum in the criterion element `cbc:EvaluationMethodTypeCode`.
 <5> Datum in the criterion element `cbc:WeightNumeric`.
-<6> Datum in the criterion element `cbc:WeightingConsiderationDescription`. 
-<7> First Name of the technician. 
+<6> Datum in the criterion element `cbc:WeightingConsiderationDescription`.
+<7> First Name of the technician.
 <8> Family name of the technician.
 <9> Profession of the technician.
 <10> Experience of the technician.
@@ -407,7 +397,7 @@ Beware that one subset of the data is answered in the Criterion sub-elements. Th
 <14> Name of a technical body.
 <15> Area of experience of the technical body.
 <16> Additional information related to the technical body.
-<17> Reference to a an available online evidence related to this technical body. 
+<17> Reference to a an available online evidence related to this technical body.
 <18> Evidence about the prize won by this technical body.
 <19> The evidence is publicly accessible.
 <20> The URL where to get the evidence of the prize from.
