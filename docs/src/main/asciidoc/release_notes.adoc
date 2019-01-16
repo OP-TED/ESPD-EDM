@@ -90,7 +90,7 @@ been corrected and is now the same as in the REGULATED version
 *** Time lapses that were treated as DESCRIPTIONS are now addressed as PERIODs; e.g. Criteria #7 and #8
 *** The indentation of the QUESTION inside "Is this information available electronically" has been corrected
 
-**  Selection Criteria #5 to #28 (section link:https://espd.github.io/ESPD-EDM/v2.1.2/xml_guide.html#vi-2-suitability[VI.2 Suitability]):
+**  Selection Criteria #5 to #28 (section link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-2-suitability[VI.2 Suitability]):
 ***  ''Suitabilities'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts'' (see also tabs
 ''Suitability-I'' and ''Suitability-II'' of the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-SELFCONTAINED spread-sheet]).
@@ -102,20 +102,20 @@ be a `cac:TenderingCriterionProperty`
 
 ** Selection Criteria #31 and #32 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_AVERAGE and
 CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY, see section
-link:https://espd.github.io/ESPD-EDM/v2.1.2/xml_guide.html#vi-3-turnovers[VI.3 Turnovers])
+link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-3-turnovers[VI.3 Turnovers])
 *** The REQUIREMENT "Number of fiscal years" has been corrected (from AMOUNT to QUANTITY_INTEGER).
 
 ** Selection Criteria #33 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP)
 *** The property data type of the field 'Please specify' (in line 12) has changed from DESCRIPTION to DATE
 
 ** Selection Criterion #35 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE, see section
-link:https://espd.github.io/ESPD-EDM/v2.1.2/xml_guide.html#vi-6-2-self-contained-risk-indemnity-insurance[VI.6.2 Self-contained risk indemnity insurance])
+link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-6-2-self-contained-risk-indemnity-insurance[VI.6.2 Self-contained risk indemnity insurance])
 *** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
 *** Cardinality in Structure "Is this information available electronically" QUESTION has been changed to 1..n
 *** Wrongly indented QUESTION has been corrected (in the structure "Is this information available electronically")
 
 ** Selection Criterion #36 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENTS, see section
-link:https://espd.github.io/ESPD-EDM/v2.1.2/xml_guide.html#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements])
+link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements])
 *** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
 *** UUIDs added
 *** Cardinality corrected
@@ -194,6 +194,21 @@ CriteriaTaxonomy spread-sheets.
 
 ** New XML samples have been produced using the ESPDInt solution. These examples can be downloaded from the
 link:https://github.com/ESPD/ESPD-EDM/tree/master/docs/src/main/asciidoc/dist/xml[dist/xml].
+
+* Documentation
+
+** Some new sections have been added to improve the understanding of the ESPD-EDM specification:
+
+*** Section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha criterion], to explain the use of the criterion ''Global indication for all selection criteria'',
+used by the economic operator to state that it fulfills all the selection criteria and thus avoiding having to specify
+how it fulfills long lists of selection criteria.
+
+*** Section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-1-reduction-of-candidates[VII.1 Reduction of candidates],
+which is about how the the contracting authority limits the number of candidates meeting the selection criteria that they will invite to tender. 
+
+*** Section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-2-rules-on-weighting[VII.2 Rules on weighting], on
+how weighting can be used depending on the type of procedure used.
+
 
 === v2.0.2 (May 2018)
 
