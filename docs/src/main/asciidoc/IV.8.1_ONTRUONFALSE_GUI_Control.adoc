@@ -1,0 +1,37 @@
+=== ONTRUE/ONFALSE codes for GROUP and SUBGROUP control
+
+Three codes concerning the GROUPS or SUBGROUPS of REQUIREMENTS and QUESTIONS are defined in the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[PropertyGroupType]:
+
+. ON*, meaning that the GROUP or SUBGROUP has to be processed always;
+. ONTRUE, meaning that the GROUP or SUBGROUP has to be processed, and announcing that a GROUP or SUBGROUP is coming
+next which must not be processed *if the value of the closer QUESTION of type INDICATOR* is `true`;
+. ONFALSE, meaning that the GROUP or SUBGROUP must be processed *if the value of the closer QUESTION of type INDICATOR* is `false`;
+
+These codes are used for a software application modules to know whether it has to process a concrete GROUP or SUBGROUP.
+If the objective of the module is, for example, to build dynamically the Graphic User Interface (GUI) - based on the
+ESPD-Request or an ESPD-Response XML instance-, then a GROUP or SUBGROUP marked as ONTRUE implies that the GROUP or
+SUBGROUP content is to be shown, whilst the one marked as ONFALSE needs to be hidden. GROUPS and SUBGROUPS marked as
+ON* imply that has to be always shown. You can see this mechanism as a way of implementing ''choices'' or
+''switch/cases'' inside a Criterion Data Structure.
+
+The figure below illustrates how the ONTRUE and ONFALSE SUBGROUPS of a Criterion of type "Contributions
+(Exclusion Grounds)" relate to each of its ''closer QUESTION'' of type INDICATOR (see boxes and lines coloured in blue):
+
+.GROUP and SUBGROUP control via the ONTRUE/ONFALSE codes
+image::ONTRUE_ONFALSE_Use.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+The screen-captures below illustrate how the European Commission's ESP Service processed the GUI for the Exclusion Criterion
+''Contributions'' based on this mechanism:
+
+.Case 1: When the first QUESTION ''Your Answer?'' is set to `false`:
+image::ONTRUE_ONFALSE_Mockup_1.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 2: When the first QUESTION ''Your Answer?'' is set to `true`:
+image::ONTRUE_ONFALSE_Mockup_2.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 3: When the first QUESTION ''Your Answer?'' and the option "Has this breach of obligations been established ..." are both set to `true`:
+image::ONTRUE_ONFALSE_Mockup_3.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 4: When all the QUESTIONS that are INDICATORS are set to `true`
+image::ONTRUE_ONFALSE_Mockup_4.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
