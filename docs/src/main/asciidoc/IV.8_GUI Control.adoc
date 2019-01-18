@@ -122,7 +122,7 @@ The following fragment of XML code shows how this is expressed:
                         <Description>Minimum amount</Description>
                         <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</TypeCode>
                         <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">AMOUNT</ValueDataTypeCode>
-                        <MinimumAmount currencyID="EUR">100006</MinimumAmount>
+                        <MinimumAmount currencyID="EUR">100006</MinimumAmount><--4-->
                     </cac:TenderingCriterionProperty>
                     <cac:TenderingCriterionProperty>
                         <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8b4ae4f0-2849-49ea-a64b-7bb20c60bde4</ID>
@@ -140,14 +140,14 @@ The following fragment of XML code shows how this is expressed:
                         <cac:TenderingCriterionProperty>
                             <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">1d89c188-58d2-461e-a4f6-a17f689d87f4</ID>
                             <Description>Amount</Description>
-                            <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</TypeCode><--4-->
-                            <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">AMOUNT</ValueDataTypeCode><--5-->
+                            <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</TypeCode><--5-->
+                            <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">AMOUNT</ValueDataTypeCode><--6-->
                         </cac:TenderingCriterionProperty>
                     </cac:SubsidiaryTenderingCriterionPropertyGroup>
                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                     <ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">cc96aa19-a0be-4409-af58-ff3f3812741b</ID>
-                    <PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONFALSE</PropertyGroupTypeCode><--6-->
+                    <PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONFALSE</PropertyGroupTypeCode><--7-->
                     <cac:TenderingCriterionProperty>
                         <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">57d4160f-20b4-4b43-967b-76b038a2fa6b</ID>
                         <Description>Minimum rating</Description>
@@ -167,7 +167,7 @@ The following fragment of XML code shows how this is expressed:
                         <cac:TenderingCriterionProperty>
                             <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3bd1913b-c461-41eb-87c4-84e003785a56</ID>
                             <Description>Rating</Description>
-                            <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</TypeCode><--7-->
+                            <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</TypeCode><--8-->
                             <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUANTITY</ValueDataTypeCode>
                         </cac:TenderingCriterionProperty>
                     </cac:SubsidiaryTenderingCriterionPropertyGroup>
@@ -181,14 +181,192 @@ The following fragment of XML code shows how this is expressed:
 <1> This property (cac:TenderingCriterionProperty) can be used by the software application to help the contracting authority select the type of REQUIREMENT it wants to be shown to the economic operator, either an Amount limited by a threshold and a period of time or rating constrained by a threshold and a rating scheme. The expected value will be a code expressing a three-state indicator (a boolean semantised as CODE_BOOLEAN).
 <2> In this example, the contracting authority has specified the value RADIO_BUTTON_TRUE.
 <3> As the value of the element `cbc:ExpectedCode`, inside the REQUIREMENT (cac:TenderingCriterionProperty) ''Select the type of requirement'', is `RADIO_BUTTON_TRUE` the economic operator will see the first SUBGROUP of REQUIREMENTs (UUID  26ece6a2-b360-46c1-890d-8338913b8719) and will have to respond the QUESTION with the text "Amount".
-<4> This is the QUESTION that the economic operator needs to respond (the "Amount" corresponding to the economic of financial requirement (in this example: "Specify the total invoiced amount, taxes included" (cac:TenderingCriterionProperty UUID 13728a54-21e3-4c84-8b11-48666c3d260f).
-<5> The economic operator (EO) will have to respond using an element of type cbc:Amount, see the next fragment of XML below for the response of the EO. The validation mechanism checks that the type of data specified by the contracting authority in the ESPD-Request (AMOUNT) and the type of data provided in the ESPD-Response (cbc:ReponseAmount) are coherent.
-<6> This SUBGROUP is never processed (e.g. shown to the economic operator) as it contains the SUBGROUP of REQUIREMENTs and QUESTION in case the contracting authority had specified RADIO_BUTTON_FALSE as an answer to the field "Select the type of requirement".
-<7> The QUESTION that the economic operator would have had to respond in case the contracting authority had selected the second SUBGROUP of REQUIREMENTs, which is not the case in this example.
+<4> The contracting authority is specifying that an amount above 10005 Euros is expected.
+<5> This is the QUESTION that the economic operator needs to respond (the "Amount" corresponding to the economic of financial requirement (in this example: "Specify the total invoiced amount, taxes included" (cac:TenderingCriterionProperty UUID 13728a54-21e3-4c84-8b11-48666c3d260f).
+<6> The economic operator (EO) will have to respond using an element of type cbc:Amount, see the next fragment of XML below for the response of the EO. The validation mechanism checks that the type of data specified by the contracting authority in the ESPD-Request (AMOUNT) and the type of data provided in the ESPD-Response (cbc:ReponseAmount) are coherent.
+<7> This SUBGROUP is never processed (e.g. shown to the economic operator) as it contains the SUBGROUP of REQUIREMENTs and QUESTION in case the contracting authority had specified RADIO_BUTTON_FALSE as an answer to the field "Select the type of requirement".
+<8> The QUESTION that the economic operator would have had to respond in case the contracting authority had selected the second SUBGROUP of REQUIREMENTs, which is not the case in this example.
 
-.Note for the future: eBusiness Documents should not convey Process Instructions
+
+.Response of the economic operator to the REQUIREMENT "Amount"
+[source,xml]
+----
+<!-- ... -->
+<cac:TenderingCriterionResponse>
+        <ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">76085d25-05ad-4cb3-b1e0-675558e3f43e</ID>
+        <ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">1d89c188-58d2-461e-a4f6-a17f689d87f4</ValidatedCriterionPropertyID><--1-->
+        <cac:ResponseValue>
+            <ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">42245674-d305-40bf-8b58-87ba51313345</ID>
+            <ResponseAmount currencyID="EUR">10025</ResponseAmount><--2--><--3--><--4-->
+        </cac:ResponseValue>
+    </cac:TenderingCriterionResponse>
+----
+<1> This UUID is identical to the UUID of the cac:TenderingCriterionProperty selected by the contracting authority for the QUESTION "Amount:" (see XML above).
+<2> The element cbc:ResponseAmount is of type "AMOUNT", as expected by the validation mechanisms.
+<3> The value of the amount meets the REQUIREMENT, as the amount is required to be above 10005 Euros (see XML above).
+<4> Beware that, contrary to other numeric types of data, AMOUNT is not semantised and mapped to `cbc:ResponseMinimumAmount` nor
+`cbc:ResponseMaximumAmount``, as in the current ESPD-EDM specification all monetary thresholds are always "minimum".
+
+==== Use of CAPTION
+
+As explained in section link:#iv-6-data-structures[IV.6 Data Structures] (see from ''Table 25. Mapping between the
+ESPD-EDM criterion data structure spread-sheets and the UBL-2.2 vocabulary ESDP-EDM Spread-sheet vocabulary'' on,
+the term CAPTION is used in the Criteria Taxonomy data structures to inform software applications about the presence of
+a text label. Applications could use it to label boxes containing groups of REQUIREMENTS or of QUESTIONS. But in general
+software applications should know how to present the contents of the XML instances without having to recur to such resources
+(see the ''Note for the future: eBusiness Documents should not convey Process Instructions'' just below).
+
+A CAPTION is mapped to the UBL element cbc:TenderingCriterionProperty. This is the reason why the ESPD-EDM had to introduce an element
+that, in the end, is quite ''dummy'': the UBL-2.2 specification requires that the first element of a GROUP or SUBGROUP is
+has always to be a criterion property (an element `cac:TenderingCriterionProperty`).
+
+For software applications, the implication can be reduced to a very simple rule: *when encountering a `cac:TenderingCriterionProperty`
+which `cbc:TypeCode` value equals CAPTION just skip it!*
+
+
+.Note for the future: eBusiness Documents should not convey '''processing instructions''
 [NOTE]
 ===
-===
+The business domain semantics should be decoupled from the its management processes. Thus eBusiness Documents should
+not contain processing instructions but just data about the business domain. One counter-example for this statement are
+those cases when the XML instances contain processing instructions for a software GUI solution to manage how the layout
+must behave or how the data must be presented.
 
+For the time being, the ESPD-EDM does not conform 100% to this rule: the purpose of the code lists `PropertyGroupType` and
+`BooleanGUIControlType` and of the CAPTION tag aim precisely to the opposite. They are not part of the Business
+Domain Data Model.
+
+One of the reason that led to include these kind of "processing instructions" in the ESPD-Exchange Data Model is the
+high level of abstraction of the ISA2 Core Criterion and Evidence Vocabulary (CCEV) (the UBL-2.2 `cac:TenderingCriterion`
+Aggregate Business Information - ABIE - is a specialisation of this vocabulary. As GROUPs and SUBGROUPS of
+REQUIREMENTs and of QUESTIONs may be freely and unlimitedly nested, the software applications may have a
+hard time tO detect whether a GROUP or SUBGROUP contains REQUIREMENTs and QUESTIONs or just QUESTIONs (which is usual in
+the ESP-EDM specification). Or vice-versa, if a GROUP or SUBGROUP comes first with QUESTIONs followed by REQUIREMENTs
+(something that never happens in the ESPD-EDM specification).
+
+One way for the ESPD-EDM to help software applications understand that a nested data structure is a GROUP of
+REQUIREMENTs or of QUESTIONS would have been codifying it as "REQUIREMENT_GROUP" or "QUESTION_GROUP", using for that purpose
+the element `cbc:PropertyGroupTypeCode` element (similarly to what is done with the `cbc:TypeCode` element inside the
+`cac:TenderingCriterionProperty`). However for backwards compatibility reasons with the MS software applications the
+decision was made to reserve the `cbc:PropertyGroupTypeCode` to control the GUI behaviour by means of the values
+defined in the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[PropertyGroupType].
+
+The way currently used by software applications to detect whether a GROUP (or SUBGROUP) carries REQUIREMENTs or not is to
+look at the type of the first criterion property: if the first `cac:TenderingCriterionProperty` is of `cbc:TypeCode`
+value `REQUIREMENT` then it is a `REQUIREMENT_GROUP`, if it is of value `QUESTION` then the GROUP (or SUBGROUP) contains
+only QUESTIONs.
+
+In future versions, the ESPD-EDM should get rid of these codes and mechanisms that couple the eProcurement Data Model to the
+dynamic building-up of the Graphic User Interfaces or to other processing needs. One possible solutions could be to separate the
+particular software applications needs from the business data model by means of ''annotations'' that can be added up, on
+top of the data model elements, by those applications at integration data time (i.e. when acquiring the data; e.g. just after
+the reception of an eBusiness Document from another system).
+
+For this, imagine that each element of the Criteria Taxonomy data structures could be preceded by an instruction addressed
+to the software application for one particular purpose, as illustrated in the figure below:
+
+.Annotation with processing instructions of one Criterion Data Structures
+image::SELFCONTAINED_ESPD_Request-AnnotatedCriterion-Proposal.png[PI annotations, alt="PI annotations", align="center"]
+
+The fragment of XML code below illustrates how a mediation service, after reception and storage
+footnote:[Received eBusiness Document should be preserved as it was sent, unaltered, before applying any enrichment, otherwise the evidence value would be lost.],
+could enrich the XML instance containing the business data with processing instruction annotations, based on the annotated data structure shown above
+(the complete example can be found in the folder
+link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/doc/evolution/Annotations%20Proposal[Annotations Proposal]
+
+.Use of annotations to decouple the business data payload from the software application processing needs
+[source,xml]
+----
+<!-- Criterion:Enrolment in a relevant professional register -->
+<cac:TenderingCriterion>
+<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
+schemeVersionID="2.1.0">6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f</cbc:ID>
+<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW"
+listVersionID="2.1.0"
+>CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT</cbc:CriterionTypeCode>
+<cbc:Name>Enrolment in a relevant professional register</cbc:Name>
+<cbc:Description>It is enrolled in relevant professional registers kept in the
+Member State of its establishment as described in Annex XI of Directive
+2014/24/EU; economic operators from certain Member States may have to comply
+with other requirements set out in that Annex.</cbc:Description>
+<!-- ... -->
+<cac:TenderingCriterionPropertyGroup>
+<xs:annotation><--1-->
+        <xs:documentation>This is a root GROUP OF REQUIREMENTS INSIDE A CRITERION.</xs:documentation><--2-->
+        <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
+        <espd:groupVisibilityDependencyType>ON*</espd:groupVisibilityDependencyType><--2-->
+</xs:annotation>
+<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
+        schemeVersionID="2.1.0"
+        >a53561d5-6614-4dbe-987e-b96f35387f46</cbc:ID>
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType"
+        listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+        >CRITERION_REQUIREMENT_GROUP</cbc:PropertyGroupTypeCode><--3-->
+<cac:TenderingCriterionProperty>
+        <xs:annotation> <--4-->
+                <xs:documentation>This is a DUMMY PROPERTY: the XSD schema makes its presence compulsory (cardinality 1). It can be used, though, to label a GUI frame to ecompasse the group of properties below.</xs:documentation>
+        </xs:annotation>
+        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
+                schemeVersionID="2.1.0"
+                >9d5da9ce-fa74-405b-a0ce-2c8f6842b71f</cbc:ID>
+        <cbc:Description>Lots the requirement apply to</cbc:Description>
+        <cbc:TypeCode listID="CriterionElementType"
+                listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+                >CAPTION</cbc:TypeCode>
+        <cbc:ValueDataTypeCode listID="ResponseDataType"
+                listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+                >NONE</cbc:ValueDataTypeCode>
+</cac:TenderingCriterionProperty>
+<cac:TenderingCriterionProperty>
+        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
+                schemeVersionID="2.1.0"
+                >3be88342-5d6e-4160-a37d-e1dd9fc1e92e</cbc:ID>
+        <cbc:Description>LotIDs</cbc:Description>
+        <cbc:TypeCode listID="CriterionElementType"
+                listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+                >REQUIREMENT</cbc:TypeCode>
+        <cbc:ValueDataTypeCode listID="ResponseDataType"
+                listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+                >IDENTIFIER</cbc:ValueDataTypeCode>
+        <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+        <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">[List of
+                Lots]</cbc:ExpectedID>
+</cac:TenderingCriterionProperty>
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+         <xs:annotation><--6-->
+                <xs:documentation> This is a SUBGROUP OF REQUIREMENTS INSIDE A GROUP OF REQUIREMENTS.</xs:documentation>
+                <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
+                <espd:groupVisibilityDependencyType>CRITERION_REQUIREMENT_SUBGROUP</espd:groupVisibilityDependencyType>
+        </xs:annotation>
+        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
+                schemeVersionID="2.1.0"
+                >3aacb82e-afba-440c-b64e-1834007965a2</cbc:ID>
+        <cbc:PropertyGroupTypeCode listID="PropertyGroupType"
+                listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+                >CRITERION_REQUIREMENT_SUBGROUP</cbc:PropertyGroupTypeCode>
+        <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy"
+                        schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0"
+                        >04a713af-549c-4443-84a8-2bd43f6728bd</cbc:ID>
+                <cbc:Description>Register name</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType"
+                        listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+                        >REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType"
+                        listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+                        >DESCRIPTION</cbc:ValueDataTypeCode>
+                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+                <cbc:ExpectedDescription>[Register
+                        Name]</cbc:ExpectedDescription>
+        </cac:TenderingCriterionProperty>
+
+<!-- ... etc. -->
+----
+<1> Block of annotations applied to an element
+<2> Human-addressed description of what processing needs to be applied to the next data element. The description can be split in multiple lines
+<3> Instructs the software application that it must show this GROUP in any case.
+<4> Tells the software application what type of GROUP this is (in this case it is a GROUP of REQUIREMENTs).
+<5> Note about the "dumminess" of this element.
+<6> Next group of annotations, etc...
 
