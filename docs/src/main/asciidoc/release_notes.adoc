@@ -24,7 +24,7 @@ This has facilitated the automated generation of the link:https://github.com/ESP
 Genericode instance with the UUIDs and Codes of each criterion. The code lists can be downloaded as an
 link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[MS-Excel] or as an
 link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[ODS file]. The list
-of criteria has been produced based on the CriteriaTaxonomy spread-sheets (both REGULATED and SELFCONTAINED).
+of criteria has been produced based on the CriteriaTaxonomy spread-sheets (both REGULATED and SELF-CONTAINED).
 
 ** New codes have been added to the Code List
 link:link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[ResponseDataType]
@@ -63,10 +63,15 @@ the REGULATED Criteria Taxonomy spread-sheet.
 A new Section has also been added to the online documentation (see section
 link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha Criterion]).
 
+** Exclusion Criteria #7 and #8 (section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
+*** The data structures have been redone for better alignment to the ESPD Regulation
 
-** Suitabilities are now split into two types of data structure, ''Enrolments'' and ''Service Contracts''.
+** Selection criteria about ''Suitability'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts''.
 See tabs ''Suitability-I'' and ''Suitability-II'' of the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-REGULATED spread-sheet].
+
+** Selection Criterion #32 "Specific yearly turnover" (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY)
+*** The cardinality of the QUESTION_GROUP c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16 has been changed from 1 to 1..n
 
 ** Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections
 link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-1-regulated-economic-operator-party[VIII.6.1 Regulated economic operator party]
@@ -85,8 +90,8 @@ been corrected and is now the same as in the REGULATED version
 *** The cardinality of the main group of QUESTIONS, with UUID "7c637c0c-7703-4389-ba52-02997a055bd7" (line 11), has changed from 1..n to 1
 
 ** Exclusion Criteria #7 and #8 (section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
+*** The data structures have been redone for better alignment to the ESPD Regulation
 *** The descriptions of the two criteria have been modified (as there was a mistake in the wording)
-*** The Data Structure has been readjusted to the behaviour shown in the transitional link:https://ec.europa.eu/tools/espd[ESPD-Service]
 *** Time lapses that were treated as DESCRIPTIONS are now addressed as PERIODs; e.g. Criteria #7 and #8
 *** The indentation of the QUESTION inside "Is this information available electronically" has been corrected
 

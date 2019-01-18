@@ -1,0 +1,194 @@
+
+=== IV.8 GUI control elements
+
+The ESPD-EDM specification includes two sets of data elements (codes) that help software applications control
+how to show and process 1) *GROUPs/SUBGROUPs* and 2) *REQUIREMENTS*.
+These elements can be seen as ''processing instructions''.
+
+==== The ONTRUE/ONFALSE codes for GROUP and SUBGROUP control
+
+The ESPD-EDM specification uses three codes that concern uniquely the GROUPS or SUBGROUPS of REQUIREMENTS and
+QUESTIONS. The codes, which are defined in the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[PropertyGroupType], are:
+
+. ON*, meaning that the GROUP or SUBGROUP has to be processed always;
+. ONTRUE, meaning that the GROUP or SUBGROUP has to be processed, and announcing that a GROUP or SUBGROUP is coming
+next that must not to be processed *if the value of the closer QUESTION of type INDICATOR* is `true`;
+. ONFALSE, meaning that the GROUP or SUBGROUP must be processed *if the value of the closer QUESTION of type INDICATOR* is `false`;
+
+These codes are used for a software application modules to know whether it has to process a concrete GROUP or SUBGROUP.
+If the objective of the module is, for example, to build dynamically the Graphic User Interface (GUI) - based on the
+ESPD-Request or an ESPD-Response XML instance-, then a GROUP or SUBGROUP marked as ONTRUE implies that the GROUP or
+SUBGROUP content is to be shown, whilst the one marked as ONFALSE needs to be hidden. GROUPS and SUBGROUPS marked as
+ON* imply that has to be always shown. You can see this mechanism as a way of implementing ''choices'' or
+''switch/cases'' inside a Criterion Data Structure.
+
+The figure below illustrates how the ONTRUE and ONFALSE SUBGROUPS of a Criterion of type "Contributions
+(Exclusion Grounds)" relate to each of its ''closer QUESTION'' of type INDICATOR:
+
+.GROUP and SUBGROUP control via the ONTRUE/ONFALSE codes
+image::ONTRUE_ONFALSE_Use.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+The screen-captures below illustrate how the European Commission's ESP Service processed the GUI for the Exclusion Criterion
+''Contributions'' based on this mechanism:
+
+.Case 1: When the first QUESTION ''Your Answer?'' is set to `false`:
+image::ONTRUE_ONFALSE_Mockup_1.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 2: When the first QUESTION ''Your Answer?'' is set to `true`:
+image::ONTRUE_ONFALSE_Mockup_2.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 3: When the first QUESTION ''Your Answer?'' and the option "Has this breach of obligations been established ..." are both set to `true`:
+image::ONTRUE_ONFALSE_Mockup_3.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+.Case 4: When all the QUESTIONS that are INDICATORS are set to `true`
+image::ONTRUE_ONFALSE_Mockup_4.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+==== Radio-Button and Check-box controls
+
+In version 2.1.0 a new code list named link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[BooleanGUIControlType]
+has been added to help software application process REQUIREMENTs issued by
+the contracting authority when drafting SELF-CONTAINED ESPD documents. For the time being this need is only present in
+one Criterion of the SELF-CONTAINED ESPD: 'Other economic or financial requirements'
+(CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENTS). The figure below shows the data structure for that
+Criterion:
+
+.Use of the code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[BooleanGUIControlType]
+image::UseOfRadioButtons_DS.png[ONTRUE/ONFALSE choice control, alt="ONTRUE/ONFALSE choice control", align="center"]
+
+Notice that:
+
+. The property data type used is `BOOLEAN_CODE`. This is a new type that has been added to the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[ResponseDataType]
+to make obvious that the code is specifically used to identify a three state indicator (true, false or not checked). In the
+case of this particular Criterion it is used specify the type of value that will be provided by the contracting authority
+for this specific REQUIREMENT (see the XML example below).
+
+. The possible values for this property data type are defined in the code list `BooleanGUIControlType`, which are:
+`RADIO_BUTTON_TRUE`, `RADIO_BUTTON_FALSE`, `RADIO_BUTTON_UNSELECTED`, `CHECK_BOX_TRUE`, `CHECK_BOX_FALSE` and `CHECK_BOX_UNCHECKED
+footnote:[We call this the ''semantisation'' of basic elements to refer to data elements that have been specifically
+named to reflect a possible use of the element by an agent, e.g. boolean indicators named RADIO_BUTTON_TRUE, RADIO_BUTTON_TRUE, etc. or
+identifier names like LOT_IDENTIFIER or ECONOMIC_OPERATOR_IDENTIFIER]
+
+. When the value of the CODE_BOOLEAN is RADIO_BUTTON_TRUE (`true`) the SUBGROUPs of REQUIREMENTs (UUID  26ece6a2-b360-46c1-890d-8338913b8719
+) and QUESTIONs (9b3a04ff-e36d-4d4f-b47c-82ad402b9b02) are processed (e.g. shown by the GUI, processed at data integration time, other processing).
+Otherwise the software application processes the alternative SUBGROUPs of REQUIREMENTs (UUID   cc96aa19-a0be-4409-af58-ff3f3812741b) and
+QUESTIONs ( 5fe93344-ed91-4f97-bcab-b6720a131798)
+
+The following fragment of XML code shows how this is expressed:
+
+.Use of semantised boolean codes for REQUIREMENT processing control
+[source,xml]
+----
+<!-- lines with '...' refer to elements that have been removed for brevity. See complete sample in folder dist/xml of this distribution -->
+
+<cac:TenderingCriterionPropertyGroup>
+
+            <cac:TenderingCriterionProperty>
+                <!--...-->
+                <Description>Lots the requirement applies to</Description>
+                <!--...-->
+            </cac:TenderingCriterionProperty>
+            <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <!--...-->
+                <cac:TenderingCriterionProperty>
+                    <!--...-->
+                    <Description>Lot ID</Description>
+                    <!--...-->
+                </cac:TenderingCriterionProperty>
+            </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">26ece6a2-b360-46c1-890d-8338913b8719</ID>
+                <PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</PropertyGroupTypeCode>
+                <cac:TenderingCriterionProperty>
+                    <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">9c62f2c7-0c51-451d-8730-427f92ed618c</ID>
+                    <Description>Select the type of requirement</Description>
+                    <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</TypeCode>
+                    <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CODE_BOOLEAN</ValueDataTypeCode><--1-->
+                    <ExpectedCode listID="BooleanGUIControlType" listAgencyID="EU-COM-OP" listVersionID="1.0">RADIO_BUTTON_TRUE</ExpectedCode><--2-->
+                </cac:TenderingCriterionProperty>
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <!--...-->
+                    <PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONTRUE</PropertyGroupTypeCode><--3-->
+                    <cac:TenderingCriterionProperty>
+                        <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">13728a54-21e3-4c84-8b11-48666c3d260f</ID>
+                        <Description>Specify the total invoiced amount, taxes included.</Description>
+                        <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</TypeCode>
+                        <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</ValueDataTypeCode>
+                        <ExpectedDescription>__FinReqsDescription</ExpectedDescription>
+                    </cac:TenderingCriterionProperty>
+                    <cac:TenderingCriterionProperty>
+                        <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">48c7b3bf-8d1c-4497-a915-78d53ba68089</ID>
+                        <Description>Minimum amount</Description>
+                        <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</TypeCode>
+                        <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">AMOUNT</ValueDataTypeCode>
+                        <MinimumAmount currencyID="EUR">100006</MinimumAmount>
+                    </cac:TenderingCriterionProperty>
+                    <cac:TenderingCriterionProperty>
+                        <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8b4ae4f0-2849-49ea-a64b-7bb20c60bde4</ID>
+                        <Description>Start date; End date</Description>
+                        <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</TypeCode>
+                        <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">PERIOD</ValueDataTypeCode>
+                        <cac:ApplicablePeriod>
+                            <StartDate>2000-10-10</StartDate>
+                            <EndDate>2000-10-10</EndDate>
+                        </cac:ApplicablePeriod>
+                    </cac:TenderingCriterionProperty>
+                    <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                        <ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">9b3a04ff-e36d-4d4f-b47c-82ad402b9b02</ID>
+                        <PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2"></PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                            <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">1d89c188-58d2-461e-a4f6-a17f689d87f4</ID>
+                            <Description>Amount</Description>
+                            <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</TypeCode><--4-->
+                            <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">AMOUNT</ValueDataTypeCode><--5-->
+                        </cac:TenderingCriterionProperty>
+                    </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">cc96aa19-a0be-4409-af58-ff3f3812741b</ID>
+                    <PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ONFALSE</PropertyGroupTypeCode><--6-->
+                    <cac:TenderingCriterionProperty>
+                        <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">57d4160f-20b4-4b43-967b-76b038a2fa6b</ID>
+                        <Description>Minimum rating</Description>
+                        <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</TypeCode>
+                        <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUANTITY</ValueDataTypeCode>
+                    </cac:TenderingCriterionProperty>
+                    <cac:TenderingCriterionProperty>
+                        <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">f07b5174-93ae-46dd-aa26-7f451d97f6a8</ID>
+                        <Description>Rating scheme</Description>
+                        <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</TypeCode>
+                        <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</ValueDataTypeCode>
+                        <ExpectedDescription></ExpectedDescription>
+                    </cac:TenderingCriterionProperty>
+                    <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                        <ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">5fe93344-ed91-4f97-bcab-b6720a131798</ID>
+                        <PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2"></PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                            <ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3bd1913b-c461-41eb-87c4-84e003785a56</ID>
+                            <Description>Rating</Description>
+                            <TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</TypeCode><--7-->
+                            <ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUANTITY</ValueDataTypeCode>
+                        </cac:TenderingCriterionProperty>
+                    </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            <!--...-->
+        </cac:TenderingCriterionPropertyGroup>
+    </cac:TenderingCriterion>
+
+----
+<1> This property (cac:TenderingCriterionProperty) can be used by the software application to help the contracting authority select the type of REQUIREMENT it wants to be shown to the economic operator, either an Amount limited by a threshold and a period of time or rating constrained by a threshold and a rating scheme. The expected value will be a code expressing a three-state indicator (a boolean semantised as CODE_BOOLEAN).
+<2> In this example, the contracting authority has specified the value RADIO_BUTTON_TRUE.
+<3> As the value of the element `cbc:ExpectedCode`, inside the REQUIREMENT (cac:TenderingCriterionProperty) ''Select the type of requirement'', is `RADIO_BUTTON_TRUE` the economic operator will see the first SUBGROUP of REQUIREMENTs (UUID  26ece6a2-b360-46c1-890d-8338913b8719) and will have to respond the QUESTION with the text "Amount".
+<4> This is the QUESTION that the economic operator needs to respond (the "Amount" corresponding to the economic of financial requirement (in this example: "Specify the total invoiced amount, taxes included" (cac:TenderingCriterionProperty UUID 13728a54-21e3-4c84-8b11-48666c3d260f).
+<5> The economic operator (EO) will have to respond using an element of type cbc:Amount, see the next fragment of XML below for the response of the EO. The validation mechanism checks that the type of data specified by the contracting authority in the ESPD-Request (AMOUNT) and the type of data provided in the ESPD-Response (cbc:ReponseAmount) are coherent.
+<6> This SUBGROUP is never processed (e.g. shown to the economic operator) as it contains the SUBGROUP of REQUIREMENTs and QUESTION in case the contracting authority had specified RADIO_BUTTON_FALSE as an answer to the field "Select the type of requirement".
+<7> The QUESTION that the economic operator would have had to respond in case the contracting authority had selected the second SUBGROUP of REQUIREMENTs, which is not the case in this example.
+
+.Note for the future: eBusiness Documents should not convey Process Instructions
+[NOTE]
+===
+===
+
+
