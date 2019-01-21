@@ -85,7 +85,7 @@ specific CA's REQUIREMENT(s) related to Lots (see XML examples)
 .'Enrolment in a relevant professional register' suitability criterion data structure (SELF-CONTAINED)
 image::Selfcontained_Suitability_Enrolment_Data_Structure.png['Enrolment in a relevant professional register' suitability criterion, alt="'Enrolment in a relevant professional register' suitability criterion",align="center"]
 
-In this case, (''Enrolment in a relevant professional register, a selection 'Suitability' criterion), the ESPD-Request
+In this case, ''Enrolment in a relevant professional register'', the ESPD-Request
 document will contain one or more GROUP(s) of one (only one) REQUIREMENT which will apply to one or more Lots. Each GROUP
 can ask for multiple enrolments, i.e. the economic operator will be able to specify more than one enrolment satisfying
 the specific requirement.
@@ -93,15 +93,15 @@ the specific requirement.
 In the ESPD-Response, the instantiation of the elements follows this pattern (see also the
 ''Data elements ordered as expected in the ESPD-Response" in the table above).
 
-. _1st. SET OF DATA_: Lots of the procurement procedure. See the XSD schema for the link:#viii-2-espd-request-xsd-schema[/cac:ProcurementProjectLot element];
-. _2nd. SET OF DATA_: Lots to which the economic operator (EO) tenders to. See the data structure link:#lots-economic-operator-perspective[Lots tendered to] (Figure ''Figure 225. Lots tendered, data structure'');
-. _3rd. SET OF DATA_:
+* *_1st. SET OF DATA_*: Lots of the procurement procedure. See the XSD schema for the link:#viii-2-espd-request-xsd-schema[/cac:ProcurementProjectLot element];
+* *_2nd. SET OF DATA_*: Lots to which the economic operator (EO) tenders to. See the data structure link:#lots-economic-operator-perspective[Lots tendered to] (Figure ''Figure 225. Lots tendered, data structure'');
+* *_3rd. SET OF DATA_*:
   ** List of Lots affected by one criterion GROUP of REQUIREMENT(s) (only the ID is required). See the data structures about link:#data-structure-enrolments-self-contained[Enrolments]. See also the mock-ups for a better understanding:
   ** One or more GROUP(s) of two REQUIREMENT(s) (the name of a specific Register and its URL where the EO will need to have
 its personnel registered. See the data structures about link:#data-structure-enrolments-self-contained[Enrolments];
   ** One or more QUESTION(s) addressed to the EO related to the REQUIREMENT(s) above, e.g. the ''explicit statement'' by the
 EO of whether it meets the REQUIREMENT and if yes (`ONTRUE`) the additional information. See the data structures about link:#data-structure-enrolments-self-contained[Enrolments];
-. _4th. SET OF DATA_: The responses provided by the EO, i.e. an answer for each QUESTION inside the GROUP of QUESTION(s)
+* *_4th. SET OF DATA_*: The responses provided by the EO, i.e. an answer for each QUESTION inside the GROUP of QUESTION(s)
 
 
 [NOTE]
@@ -254,22 +254,21 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml
 <!-- *4th. SET OF DATA RELATED TO LOTS!* -->
 <!-- Responses provided by the economic operator (EO)-->
 <!-- The EO tenders to Lot1 and Lot3 -->
-<!-- If you count the number of QUESTIONs above you should get
 
-<cac:TenderingCriterionResponse>
+<cac:TenderingCriterionResponse><--14-->
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">051c1487-e2de-4315-87e0-7b2ee6b3d5f5</cbc:ID>
-        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8281b8e5-0e13-4ca9-9896-94825d186429</cbc:ValidatedCriterionPropertyID><--14-->
+        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8281b8e5-0e13-4ca9-9896-94825d186429</cbc:ValidatedCriterionPropertyID><--15-->
         <cac:ResponseValue>
             <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">1d0fe5f6-3c98-4443-8f8f-571293740c90</cbc:ID>
-            <cbc:ResponseID>Lot1</cbc:ResponseID><--15-->
+            <cbc:ResponseID>Lot1</cbc:ResponseID><--16-->
         </cac:ResponseValue>
 </cac:TenderingCriterionResponse>
 <cac:TenderingCriterionResponse>
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">cbe9e6b5-c6a5-4ba7-8a42-4674df56a592</cbc:ID>
-        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">838cd8f5-eb81-4cd5-891d-40ef804cb2ee</cbc:ValidatedCriterionPropertyID><--14-->
+        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">838cd8f5-eb81-4cd5-891d-40ef804cb2ee</cbc:ValidatedCriterionPropertyID><--17-->
         <cac:ResponseValue>
             <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">049bc9eb-2e9a-4fbb-8c11-5d2893911150</cbc:ID>
-            <cbc:ResponseID>Lot2</cbc:ResponseID><--15-->
+            <cbc:ResponseID>Lot2</cbc:ResponseID><--18-->
         </cac:ResponseValue>
 </cac:TenderingCriterionResponse>
 
@@ -278,9 +277,9 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml
 </cac:QualificationApplicationResponse
 
 ----
-<1> FIRST SET OF DATA: The three coming 'cac:ProcurementProjectLot' elements define the Lots into which this procurement procedure has been divided into by the CA.
-<2> SECOND SET OF DATA: Lots to which the EO tenders to.
-<3> THIRD SET OF DATA starts here. First GROUP of REQUIREMENT(s): List of Lots affected by this GROUP of REQUIREMENT(s). The GROUP of REQUIREMENT(s) is here made of two REQUIREMENT(s), the name of the Register and its URL.
+<1> *1st. SET OF DATA*: The three coming 'cac:ProcurementProjectLot' elements define the Lots into which this procurement procedure has been divided into by the CA.
+<2> *2nd. SET OF DATA*: Lots to which the EO tenders to.
+<3> *3rd. SET OF DATA*: First GROUP of REQUIREMENT(s). List of Lots affected by this GROUP of REQUIREMENT(s). The GROUP of REQUIREMENT(s) is here made of two REQUIREMENT(s), the name of the Register and its URL.
 <4> Lot2, identifier of first lot affected by this GROUP of REQUIREMENTs.
 <5> Lot3, identifier of the second lot affected by this GROUP of REQUIREMENT.
 <6> The REQUIREMENTs affecting Lot2 and Lot3 start here.
@@ -291,10 +290,11 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml
 <11> REQUIREMENT(s) affecting Lot1.
 <12> Name of this second Register (second GROUP of REQUIREMENTs).
 <13> URL of this second Register (second GROUP of REQUIREMENTs).
-<14> Identifier of the QUESTION answered by this RESPONSE (first lot identifier the EO tenders to).
-<15> Identifier of the first Lot to which the EO tenders to.
-<16> Identifier of the QUESTION answered by this RESPONSE (second lot identifier the EO tenders to)
-<17> Identifier of the second Lot to which the EO tenders to.
+<14> *4th. SET OF DATA*: Responses provided by the EO.
+<15> Identifier of the QUESTION answered by this RESPONSE (first lot identifier the EO tenders to).
+<16> Identifier of the first Lot to which the EO tenders to.
+<17> Identifier of the QUESTION answered by this RESPONSE (second lot identifier the EO tenders to)
+<18> Identifier of the second Lot to which the EO tenders to.
 
 ==== Example 2: Risk indemnity insurance
 
