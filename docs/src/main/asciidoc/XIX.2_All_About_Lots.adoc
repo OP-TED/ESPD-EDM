@@ -1,2 +1,178 @@
 
-=== IX.2 All about Lots
+=== IX.2 All about lots
+
+When a procurement procedure is divided in Lots not all the selection criteria apply to all Lots, i.e. some
+Lots need to be linked to specific criteria.
+
+In the SELF-CONTAINED ESPD-EDM specification, instead of defining criteria per each Lot, it is for the criterion to
+specify to which Lots it applies.
+
+To link a criterion with one or more Lots, the ESPD-EDM uses a GROUP (or SUBGROUP) of REQUIREMENT(s), where each REQUIREMENT
+specifies the identifier of each Lot that is affected by the criterion. The figures below show how this is represented
+in the four different criteria data structures listed above (''Suitability'', ''Professional risk indemnity'',
+''Other economic or financial requirements'' and ''References'').
+
+==== Information requirement check-list
+
+. Applies only to SELF-CONTAINED ESPD-Request and ESDP-Response documents
+. In principle could be applied to any selection criteria, but is only currently applied to these (see the
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[Criteria Taxonomy spread-sheets]
+for more details, like the Criterion description, UUID, Code, etc.):
+
+    ** Suitability I
+    *** Criterion #25 - *Enrolment in a relevant professional register
+    *** Criterion #26 - *Enrolment in a trade register
+
+    ** Suitability II - Criteria #27 and #28
+    *** Criterion #27 - *For service contracts: authorisation of particular organisation needed*
+    *** Criterion #28 - *For service contracts: membership of particular organisation needed*
+
+    ** Professional risk insurance
+    *** Criterion #35 - *Professional risk indemnity insurance*
+
+    ** Other economic or financial requirements
+    *** Criterion #36 -*Other economic or financial requirements*
+
+    ** References
+    *** Criterion #37 - *For works contracts: performance of works of the specified type*
+    *** Criterion #38 - *For supply contracts: performance of deliveries of the specified type
+    *** Criterion #39 - *For service contracts: performance of services of the specified type*
+
+. Data elements ordered as expected in the ESPD-Response:
+
+[cols="<1,<1,<2,<1,<2"]
+|===
+|*Ordinal Nº*|*Data Element*|*Description*|*Location*|*Rules*
+|1
+|*/cac:ProcurementProjectLot*
+|The Lots into which the procurement procedure has been divided into
+|At the root of the QualificationApplicationResponse document
+|Only the `cbc:ID` (the identifier of the lot) is required
+
+|2
+|*Criterion ''Lots the EO tenders to''*
+|The Lots to which the economic operator tenders
+|Inside a UBL-2.2 element `cac:TenderingCriterion'. This criterion has been defined by the ESPD-EDM (see
+criterion #62 *Lots the EO tenders to*.This criterion must occur just after `cac:ProcurementProjectLot`
+|The Lots specified by the EO in its response must be coherent with the list of Lots specified by the CA (e.g. if the
+CA has specified 5 Lots, the EO cannot tender to a ''Lot6'' (see row 1 of this table)
+
+|3
+|CA's REQUIREMENT(s) linked to Lots
+|One or more REQUERIMENT(s) linking that criterion casuistry to the lots to which it applies (see XML examples)
+|Inside a specific criterion, e.g. REQUIREMENTs defined in the ''Suitability'', ''Professional risk insurance'', ''Other economic
+or financial requirements'' and ''References criteria''
+|The Lots specified by the CA inside a criterion REQUIREMENT must be coherent with the list of Lots into which the
+procurement procedure is divided into (see row 1 or this table)
+
+|4
+|EO's response concerning Lots
+|List of Lot Identifiers provided by the Economic Operator
+|Inside `/cac:TenderingCriterionResponse/cac:ResponseValue` (as `cbc:ResponseID`) used to, for example, respond to
+specific CA's REQUIREMENT(s) related to Lots (see XML examples)
+|The Lot identifiers provided by the EO must be coherent with the ones it (the EO) tenders to (see row 2 of this table)
+|===
+
+
+
+
+
+
+
+
+
+==== Example 1: Suitability
+
+.'Enrolment in a relevant professional register' suitability criterion data structure (SELF-CONTAINED)
+image::Selfcontained_Suitability_Enrolment_Data_Structure.png['Enrolment in a relevant professional register' suitability criterion, alt="'Enrolment in a relevant professional register' suitability criterion",align="center"]
+
+In this case, (''Enrolment in a relevant professional register, a selection 'Suitability' criterion), the ESPD-Request
+document will contain one or more GROUP(s) of one (only one) REQUIREMENT which will apply to one or more Lots. Each GROUP
+can ask for multiple enrolments, i.e. the economic operator will be able to specify more than one enrolment satisfying
+the specific requirement. In its response, the economic operator (EO):
+
+. Will have to specify to which Lots it intends to tender, and
+. Per each of REQUIREMENT (i.e. per each Register) it will have to make sure that that:
+** it provides an answer for each QUESTION inside the GROUP of QUESTION(s), and
+** the Lots indicated by the CA is one for which it (the EO) tenders to.
+
+
+
+.'Risk indemnity insurance' criterion data structure (SELF-CONTAINED)
+image::Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png[Self-contained 'Risk indemnity insurance' criterion data structure, alt="Self-contained 'Risk indemnity insurance' criterion data structure",align="center"]
+
+In this case (''Risk indemnity insurance'') there is one large REQUIREMENT_GROUP (with cardinality 1) that contains a large REQUIREMENT_SUBGROUP that can
+be repeated *n* times. This repetitive SUBGROUP sets the identifier of one Lot (and only one) and a series of REQUIREMENT(s) and QUESTION(s)
+that apply to that Lot. Notice that the link has to be established only to one Lot, as each Lot has different properties (different REQUIREMENT(s) and QUESTION(s)).
+
+.Self-contained 'Other economic or financial requirements' criterion data structure
+image::Selfcontained_References_Data_Structure.png[Self-contained 'Other economic or financial requirements' criterion data structure, alt="Self-contained 'Other economic or financial requirements' criterion data structure",align="center"]
+
+In this case (''Other economic or financial requirements'') a large GROUP of one REQUIREMENT contains first one list of multiple Lots, and second the SUBGROUP of
+REQUIREMENT(s) and QUESTION(s) that are relatd to each of those Lots.
+
+.Self-contained ''references' criterion data structure
+image::Selfcontained_References_Data_Structure.png[Self-contained 'References' criterion data structure, alt="Self-contained 'References' criterion data structure",align="center"]
+
+In this other case (''References'') one large GROUP of REQUIREMENT(s) contains first a specific SUBGROUP specifying one or more REQUIREMENT(s)
+(e.g. "The references provided need to refer to works executed in more than one EU Member States.", other concrete REQUIREMENT(s) are possible here),
+and the list of Lots to which these REQUIREMENT(s) apply. Next, there is a repetitive (1..n) GROUP of QUESTION(s) intended for
+the economic operator to specify each reference linked to one or more of Lots required by the contracting authority.
+The list of Lots provided herein by the EO must be consistent with (1) the List of Lots provided by the CA for one
+GROUP if specific REQUIREMENT(s); and (2) with the List of Lots the EO declares it tenders to (provided by the EO as part of the data supplied by the Lead entity).
+
+Let's see some examples of how this is implemented in XML.
+
+Example fragment of XML for the ''Risk indemnity insurance'' criterion the following fragment of data structure.
+
+.'Risk indemnity insurance' fragment
+image::RiskIndeminityFragmentOfREQUIREMENT.png['Risk indemnity insurance' fragment, alt="'Risk indemnity insurance' fragment",align="center"]
+
+.'Risk indemnity insurance' fragment (specification of one Lot in the ESPD-Request, by the CA)
+[source,xml]
+----
+----
+
+Example fragment of XML for the ''Other economic or financial requirements'' criterion the following fragment of data structure.
+
+.'Other economic or financial requirements' fragment
+image::OtherEOReqsFragmentOfREQUIREMENT.png['Other economic or financial requirements' fragment, alt="'Other economic or financial requirements' fragment",align="center"]
+
+.'Other economic or financial requirements' fragment (specification of a group of Lots in the ESPD-Request, by the CA)
+[source,xml]
+----
+----
+
+.'Other economic or financial requirements' fragment (responses of the EO in the ESPD-Response)
+[source,xml]
+----
+----
+
+Example fragment of XML for the ''References'' criterion the following fragment of data structure.
+
+.'References' fragment
+image::ReferencesFragmentOfREQUIREMENT.png['References' fragment, alt="'References' fragment",align="center"]
+
+.'References' fragment (specification of a group of Lots in the ESPD-Request, by the CA)
+[source,xml]
+----
+----
+
+.'References' fragment (responses of the EO in the ESPD-Response)
+[source,xml]
+----
+----
+
+For more complete examples on how the SELF-CONTAINED ESPD-Request specifies the criteria above mentioned see the
+sub-sections link:#vi-6-2-self-contained-risk-indemnity-insurance[Self-contained risk indemnity insurance],
+link:#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements], and
+link:#vi-8-2-self-contained-references[VI.8.2 Self-contained references].
+
+See also the example illustrating how to respond in the case of
+''References'' in the sub-section link:#viii-7-2-xml-example-2-references[VIII.7.2 XML Example 2: References].
+
+The folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml] also contains
+complete XML instances of both REGULATED and SELF-CONTAINED ESPD-Request and ESPD-Response documents.
+
+
+
