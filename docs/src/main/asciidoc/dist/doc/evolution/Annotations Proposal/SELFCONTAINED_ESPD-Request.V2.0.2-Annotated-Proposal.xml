@@ -39,7 +39,7 @@
         <!-- Criterion:Enrolment in a relevant professional register -->
         <cac:TenderingCriterion>
                 <xs:annotation>
-                        <xs:documentation>This is an example of how the current version 2.1.0 of the ESPD-EDM can use annotations to identify whether a group or subgroup contains REQUIREMENTS or only QUESTIONS.</xs:documentation>
+                        <xs:documentation>This is an example of how the current version 2.1.0 of the ESPD-EDM can use annotations to identify whether a group or subgroup contains REQUIREMENT(s) or only QUESTION(s).</xs:documentation>
                         <xs:documentation>The annotation system introduced in this example could be used to evolve ESPD-EDMv 2.1.0 into a version 3.0.0 where the codes used to decide whether a block of properties shall be processed or not (ON*, ONTRUE, ONFALSE) are specified as annotations thus 'freeing' the cbc:PropertyGroupTypeCode element to hold true types instead of 'processing instructions'.</xs:documentation>
                         <espd:deprecationNote>In a future version 3.0.0, the codes ON*, ONTRUE and ONFALSE used to process or not blocks of requirements and questions depending on the response given to the most previous Indicator will be specified by means of the annotation property @espd:groupVisibilityDependencyType (as shown below).</espd:deprecationNote>               
                         <espd:deprecationNote>In a future version 3.0.0, the CriterionPropertyGroupType element will hold one of the following code values: CRITERION_REQUIREMENT_GROUP, CRITERION_REQUIREMENT_SUBGROUP, CRITERION_QUESTION_GROUP, CRITERION_QUESTION_SUBGROUP (instead of ON*, ONTRUE and ONFALSE).</espd:deprecationNote>
@@ -62,7 +62,7 @@
                         <cbc:Description>[Description of the National Criterion ]</cbc:Description>
                         <cac:TenderingCriterionPropertyGroup>
                                 <xs:annotation>
-                                        <xs:documentation> This is a GROUP OF QUESTIONS INSIDE A SUBCRITERION.</xs:documentation>
+                                        <xs:documentation> This is a GROUP OF QUESTION(s) INSIDE A SUBCRITERION.</xs:documentation>
                                         <espd:groupType>SUBCRITERION_REQUIREMENT_GROUP</espd:groupType>
                                         <espd:groupVisibilityDependencyType>ON*</espd:groupVisibilityDependencyType>
                                 </xs:annotation>
@@ -115,7 +115,7 @@
                 </cac:Legislation>
                 <cac:TenderingCriterionPropertyGroup>
                         <xs:annotation>
-                                <xs:documentation> This is a root GROUP OF REQUIREMENTS INSIDE A CRITERION.</xs:documentation>
+                                <xs:documentation> This is a root GROUP OF REQUIREMENT(s) INSIDE A CRITERION.</xs:documentation>
                                 <espd:groupType>CRITERION_REQUIREMENT_GROUP</espd:groupType>
                                 <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
                                 <espd:groupVisibilityDependencyType>ON*</espd:groupVisibilityDependencyType>
@@ -158,7 +158,7 @@
                         </cac:TenderingCriterionProperty>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                  <xs:annotation>
-                                        <xs:documentation> This is a SUBGROUP OF REQUIREMENTS INSIDE A GROUP OF REQUIREMENTS.</xs:documentation>
+                                        <xs:documentation> This is a SUBGROUP OF REQUIREMENT(s) INSIDE A GROUP OF REQUIREMENT(s).</xs:documentation>
                                         <espd:groupType>CRITERION_REQUIREMENT_SUBGROUP</espd:groupType>
                                         <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
                                         <espd:groupVisibilityDependencyType>ON*</espd:groupVisibilityDependencyType>
@@ -200,7 +200,7 @@
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <xs:annotation>
-                                        <xs:documentation> This is a SUBGROUP OF QUESTIONS INSIDE A GROUP OF REQUIREMENTS.</xs:documentation>
+                                        <xs:documentation> This is a SUBGROUP OF QUESTION(s) INSIDE A GROUP OF REQUIREMENT(s).</xs:documentation>
                                         <espd:groupType>CRITERION_QUESTION_SUBGROUP</espd:groupType>
                                         <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
                                         <espd:groupVisibilityDependencyType>ON*</espd:groupVisibilityDependencyType>
@@ -225,7 +225,7 @@
                                 </cac:TenderingCriterionProperty>
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <xs:annotation>
-                                        <xs:documentation> This is a SUBGROUP OF QUESTIONS INSIDE A GROUP OF QUESTIONS.</xs:documentation>
+                                        <xs:documentation> This is a SUBGROUP OF QUESTION(s) INSIDE A GROUP OF QUESTION(s).</xs:documentation>
                                         <espd:groupType>CRITERION_QUESTION_SUBGROUP</espd:groupType>
                                         <xs:documentation>This group must be processed ONLY IN CASE THE RESPONSE TO THE PREVIOUS QUESTION IS "true".</xs:documentation>
                                         <espd:groupVisibilityDependencyType>ONTRUE</espd:groupVisibilityDependencyType>
@@ -253,7 +253,7 @@
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <xs:annotation>
-                                                <xs:documentation> This is a SUBGROUP OF QUESTIONS INSIDE A GROUP OF QUESTIONS.</xs:documentation>
+                                                <xs:documentation> This is a SUBGROUP OF QUESTION(s) INSIDE A GROUP OF QUESTION(s).</xs:documentation>
                                                 <espd:groupType>CRITERION_QUESTION_SUBGROUP</espd:groupType>
                                                 <xs:documentation>This group must be processed ONLY IN CASE THE RESPONSE TO THE PREVIOUS QUESTION IS "false".</xs:documentation>
                                                 <espd:groupVisibilityDependencyType>ONFALSE</espd:groupVisibilityDependencyType>
@@ -281,7 +281,7 @@
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <xs:annotation>
-                                                <xs:documentation>This is a SUBGROUP OF QUESTIONS INSIDE A GROUP OF QUESTIONS.</xs:documentation>
+                                                <xs:documentation>This is a SUBGROUP OF QUESTION(s) INSIDE A GROUP OF QUESTION(s).</xs:documentation>
                                                 <espd:groupType>CRITERION_QUESTION_SUBGROUP</espd:groupType>
                                                 <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
                                                 <espd:groupVisibilityDependencyType>ON*</espd:groupVisibilityDependencyType>
@@ -310,9 +310,9 @@
                                         </cac:TenderingCriterionProperty>
                                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                                 <xs:annotation>
-                                                        <xs:documentation>This is a SUBGROUP OF QUESTIONS INSIDE A GROUP OF QUESTIONS.</xs:documentation>
+                                                        <xs:documentation>This is a SUBGROUP OF QUESTION(s) INSIDE A GROUP OF QUESTION(s).</xs:documentation>
                                                         <espd:groupType>CRITERION_QUESTION_SUBGROUP</espd:groupType>
-                                                        <xs:documentation>This group must be processed (e.g. shown) ONLY IF THE RESPONSE TO THE PREVIOUS QUESTIONS IS "true"</xs:documentation>
+                                                        <xs:documentation>This group must be processed (e.g. shown) ONLY IF THE RESPONSE TO THE PREVIOUS QUESTION(s) IS "true"</xs:documentation>
                                                         <espd:groupVisibilityDependencyType>ONTRUE</espd:groupVisibilityDependencyType>
                                                 </xs:annotation>
                                                 <cbc:ID schemeID="CriteriaTaxonomy"

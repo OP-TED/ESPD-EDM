@@ -18,34 +18,34 @@ tabs _SC-Suitability-I_ and _SC-Suitability-II_;
 
 . *References*, see criteria #37 to #39, in tab _SC-References_
 
-To link a criterion with one or more Lots, the ESPD-EDM uses a GROUP (or SUBGROUP) of REQUIREMENTs, where each REQUIREMENT
+To link a criterion with one or more Lots, the ESPD-EDM uses a GROUP (or SUBGROUP) of REQUIREMENT(s), where each REQUIREMENT
 specifies the identifier of each Lot that is affected by the criterion. Hence, if future evolutions of the ESPD-EDM required
 that other criteria (additionally to the ones listed above) needed to specify the Lots to which they apply, the modification
-would simply consist in adding a new GROUP of REQUIREMENTs. The figures below show how this is represented in the three different
+would simply consist in adding a new GROUP of REQUIREMENT(s). The figures below show how this is represented in the three different
 criteria data structure listed above (''Professional risk indemnity'', ''Other economic or financial requirements'' and ''References'').
 
 .'Risk indemnity insurance' criterion data structure (SELF-CONTAINED)
 image::Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png[Self-contained 'Risk indemnity insurance' criterion data structure, alt="Self-contained 'Risk indemnity insurance' criterion data structure",align="center"]
 
 In this case (''Risk indemnity insurance'') there is one large REQUIREMENT_GROUP (with cardinality 1) that contains a large REQUIREMENT_SUBGROUP that can
-be repeated *n* times. This repetitive SUBGROUP sets the identifier of one Lot (and only one) and a series of REQUIREMENTs and QUESTIONs
-that apply to that Lot. Notice that the link has to be established only to one Lot, as each Lot has different properties (different REQUIREMENTs and QUESTIONs).
+be repeated *n* times. This repetitive SUBGROUP sets the identifier of one Lot (and only one) and a series of REQUIREMENT(s) and QUESTION(s)
+that apply to that Lot. Notice that the link has to be established only to one Lot, as each Lot has different properties (different REQUIREMENT(s) and QUESTION(s)).
 
 .Self-contained 'Other economic or financial requirements' criterion data structure
 image::Selfcontained_References_Data_Structure.png[Self-contained 'Other economic or financial requirements' criterion data structure, alt="Self-contained 'Other economic or financial requirements' criterion data structure",align="center"]
 
 In this case (''Other economic or financial requirements'') a large GROUP of one REQUIREMENT contains first one list of multiple Lots, and second the SUBGROUP of
-REQUIREMENTs and QUESTIONs that are relatd to each of those Lots.
+REQUIREMENT(s) and QUESTION(s) that are relatd to each of those Lots.
 
 .Self-contained ''references' criterion data structure
 image::Selfcontained_References_Data_Structure.png[Self-contained 'References' criterion data structure, alt="Self-contained 'References' criterion data structure",align="center"]
 
-In this other case (''References'') one large GROUP of REQUIREMENTs contains first a specific SUBGROUP specifying one or more REQUIREMENTs
-(e.g. "The references provided need to refer to works executed in more than one EU Member States.", other concrete REQUIREMENTS are possible here),
-and the list of Lots to which these REQUIREMENTs apply. Next, there is a repetitive (1..n) GROUP of QUESTIONs intended for
+In this other case (''References'') one large GROUP of REQUIREMENT(s) contains first a specific SUBGROUP specifying one or more REQUIREMENT(s)
+(e.g. "The references provided need to refer to works executed in more than one EU Member States.", other concrete REQUIREMENT(s) are possible here),
+and the list of Lots to which these REQUIREMENT(s) apply. Next, there is a repetitive (1..n) GROUP of QUESTION(s) intended for
 the economic operator to specify each reference linked to one or more of Lots required by the contracting authority.
 The list of Lots provided herein by the EO must be consistent with (1) the List of Lots provided by the CA for one
-GROUP if specific REQUIREMENTs; and (2) with the List of Lots the EO declares it tenders to (provided by the EO as part of the data supplied by the Lead entity).
+GROUP if specific REQUIREMENT(s); and (2) with the List of Lots the EO declares it tenders to (provided by the EO as part of the data supplied by the Lead entity).
 
 Let's see some examples of how this is implemented in XML.
 

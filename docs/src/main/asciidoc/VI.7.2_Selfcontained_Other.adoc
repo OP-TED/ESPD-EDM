@@ -5,7 +5,7 @@
 
 The contracting authority has selected the option *other economic or financial requirements* for its inclusion in the ESPD Request. 
 
-Additionally the contracting authority can specify REQUIREMENTs specific to the procurement procedure. There are two situations that need to be distinguished here, when the procurement procedure is divided into Lots and when it is not.
+Additionally the contracting authority can specify REQUIREMENT(s) specific to the procurement procedure. There are two situations that need to be distinguished here, when the procurement procedure is divided into Lots and when it is not.
 
 Thus, for this criterion the contracting authority will be able to:
 
@@ -17,7 +17,7 @@ Thus, for this criterion the contracting authority will be able to:
 
 Notice that in the mock-up below the first requirement is about an *economic of financial requirement* whilst the second requirement is about a *rating requirement*. See data structure and XML example for more details on this distiction.
  
-.Self-contained 'other economic or financial requirements' CA REQUIREMENTs edition (Procedure divided into Lots).
+.Self-contained 'other economic or financial requirements' CA REQUIREMENT(s) edition (Procedure divided into Lots).
 image::Selfcontained_Other_EC_FIN_CA_LOTS_mock-up.png[Self-contained 'other economic or financial requirements' CA mock-up, alt="Self-contained 'other economic or financial requirements' CA mock-up", align="center"]
 
 ==== Mock-up - economic operator perspective
@@ -35,18 +35,18 @@ The structure of this criterion 'other economic or financial requirements' for t
 
 . It specifies the Legislation component for the EU parent criterion. So far so good, no differences until now;
 
-. There's a group of REQUIREMENTs and QUESTIONs.
+. There's a group of REQUIREMENT(s) and QUESTION(s).
 
-. The group of REQUIREMENTs defines a caption that is kep empty (no name, no description, no value. You will have noticed this also in other criteria. The reason for having this dummy CAPTION is that the UBL-2.2 model requires always at least one cac:TenderingCriterionProperty element instance inside a group or sub-group of properties;
+. The group of REQUIREMENT(s) defines a caption that is kep empty (no name, no description, no value. You will have noticed this also in other criteria. The reason for having this dummy CAPTION is that the UBL-2.2 model requires always at least one cac:TenderingCriterionProperty element instance inside a group or sub-group of properties;
 
 . Then you have the group for collecting Lots specified by the CA. This spreadsheet would generate only one Lot, unless you add more LotIDs into this sub-group. Observe that the cardinality of the REQUIREMENT (LotID) is multiple, 1..n.
 
 . The most important part comes now: You have a kind of `choice` here: one of the two subgroups the data will be shown (or not) depending on the answer of the *contracting authority* to the REQUIREMENT: *Select the type of requirement*. If the CA's answer was *economic or financial requirement* the application takes it as a *true*; otherwise it is considered *false*:
 
-** On *true* (see the group code on the right side of the data structure) three REQUIREMENTs will be shown to the *economic operator*: description, minimum amount and period. For this REQUIREMENT the economic operator will see all these requirements and will have to provide an amount.
+** On *true* (see the group code on the right side of the data structure) three REQUIREMENT(s) will be shown to the *economic operator*: description, minimum amount and period. For this REQUIREMENT the economic operator will see all these requirements and will have to provide an amount.
 
 
-**  On *false* (see the group code on the right side of the data structure) three REQUIREMENTs will be shown to the *economic operator*: minimum rating and rating scheme. For this REQUIREMENT the economic operator will see all these requirements and will have to provide a rating.
+**  On *false* (see the group code on the right side of the data structure) three REQUIREMENT(s) will be shown to the *economic operator*: minimum rating and rating scheme. For this REQUIREMENT the economic operator will see all these requirements and will have to provide a rating.
 
 
 .Self-contained 'other economic or financial requirements' criterion data structure 

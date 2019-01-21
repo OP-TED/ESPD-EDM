@@ -6,7 +6,7 @@ This example is based on the EO perspective of the *SELF-CONTAINED* mock-up in s
 .Self-contained 'References' EO mock-up
 image::Selfcontained_References_EO_mockup.png[Self-contained 'References' EO mock-up, alt="Self-contained 'References' EO mock-up", align="center"]
 
-==== XML snippet 1.a) REQUIREMENTs by the contracting authority (CA) (criterion properties)
+==== XML snippet 1.a) REQUIREMENT(s) by the contracting authority (CA) (criterion properties)
 
 This fragment of XML code extracts the requirement issued by the CA in a *SELF-CONTAINED ESPD Request* document. In this example the CA specifies 3 requirements: 
 
@@ -32,7 +32,7 @@ This fragment of XML code extracts the requirement issued by the CA in a *SELF-C
 		<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
 		<cbc:ExpectedValueNumeric>1</cbc:ExpectedValueNumeric>
 	</cac:TenderingCriterionProperty>
-	<!-- SUBGROUP OF REQUIREMENTS (2 textual requirements issued by the CA -->
+	<!-- SUBGROUP OF REQUIREMENT(s) (2 textual requirements issued by the CA -->
 <cac:SubsidiaryTenderingCriterionPropertyGroup>
 				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">53c9aad8-dc80-48f8-85d9-755c2aab8e95</cbc:ID>
 				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -66,7 +66,7 @@ This fragment of XML code extracts the requirement issued by the CA in a *SELF-C
 				<cac:SubsidiaryTenderingCriterionPropertyGroup>
 					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">167ab253-4fb7-4e45-81be-b049fba44b3a</cbc:ID>
 					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
-					<!-- The following REQUIREMENTS apply to lots: Lot1, Lot2, Lot4, Lot5. This information is provided by the Contracting Authority. The list of Lots to which the EO tenders to, and for which it provides references must be consistent with this list (see 'QUESTIONS' and criterion responses values provided by the EO below --><--2-->
+					<!-- The following REQUIREMENT(s) apply to lots: Lot1, Lot2, Lot4, Lot5. This information is provided by the Contracting Authority. The list of Lots to which the EO tenders to, and for which it provides references must be consistent with this list (see 'QUESTION(s)' and criterion responses values provided by the EO below --><--2-->
 					<cac:TenderingCriterionProperty>
 						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">b0c6f987-227e-426b-8023-c2f56416d3eb</cbc:ID>
 						<cbc:Description>Lots the requirement applies to</cbc:Description>
@@ -105,19 +105,19 @@ This fragment of XML code extracts the requirement issued by the CA in a *SELF-C
 			</cac:SubsidiaryTenderingCriterionPropertyGroup>
 ----
 <1> The criterion description sentence "For public works contracts only: During the reference period, the economic operator has performed ..." was removed from the example for brevity. See the XML instance document for the complete example.
-<2> List of Lots, built by the contracting authority, that are affected by these REQUIREMENTs.
+<2> List of Lots, built by the contracting authority, that are affected by these REQUIREMENT(s).
 <3> Minimum number of references. In this example the CA requires only one reference (for brevity). The normal situation is to require more than one. If three had been specified by the CA then three groups of references would have been instantiated in the XML document.
-<4> First textual requirement. This group of ONE reference has to comply to two REQUIREMENTs specified by the CA: that the EO must supply references where with 'Specific amount greater than 1,000.000 €'; and (2) the reference is recent, as it had to be 'Executed recently, after 2013 in any case.'
-<5> Second textual requirement. This group of ONE reference has to comply to two REQUIREMENTs specified by the CA: that the EO must supply references where with 'Specific amount greater than 1,000.000 €'; and (2) the reference is recent, as it had to be 'Executed recently, after 2013 in any case.'
+<4> First textual requirement. This group of ONE reference has to comply to two REQUIREMENT(s) specified by the CA: that the EO must supply references where with 'Specific amount greater than 1,000.000 €'; and (2) the reference is recent, as it had to be 'Executed recently, after 2013 in any case.'
+<5> Second textual requirement. This group of ONE reference has to comply to two REQUIREMENT(s) specified by the CA: that the EO must supply references where with 'Specific amount greater than 1,000.000 €'; and (2) the reference is recent, as it had to be 'Executed recently, after 2013 in any case.'
 
 
-==== XML snippet 1.b) QUESTIONS asked to the economic operator (criterion properties)
+==== XML snippet 1.b) QUESTION(s) asked to the economic operator (criterion properties)
 
-.QUESTIONs asked to the EO (criteron properties)
+.QUESTION(s) asked to the EO (criteron properties)
 [source,xml]
 ----
 <!-- See previous example --><--1--><--2--><--3--><--4--><--5-->
-<!-- QUESTIONS ASKED TO THE EO --> 
+<!-- QUESTION(s) ASKED TO THE EO -->
 <cac:SubsidiaryTenderingCriterionPropertyGroup>
 	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">a44e24e9-f878-4651-9ead-e0b1387dae09</cbc:ID>
 	<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -237,7 +237,7 @@ This fragment of XML code extracts the requirement issued by the CA in a *SELF-C
 <3> See previous XML example.
 <4> See previous XML example.
 <5> See previous XML example.
-<6> This criterion property (QUESTION) is used to build up the list of Lot Identifiers. In the answer all the response values of the Lot Identifiers will be linked to the UUID of this property using the element cac:Validated(Numbers <1> to <5> were assigned to the Criteron description and the CA REQUIREMENTs in the mock-up); see XML example above.
+<6> This criterion property (QUESTION) is used to build up the list of Lot Identifiers. In the answer all the response values of the Lot Identifiers will be linked to the UUID of this property using the element cac:Validated(Numbers <1> to <5> were assigned to the Criteron description and the CA REQUIREMENT(s) in the mock-up); see XML example above.
 <7> 'Reference description'. Expected data type and response value: 'DESCRIPTION' -> `cbc:Description`. See how the answer, in the XML snippet below, is linked to the UUID of this criterion property.
 <8> 'Total amount' to refer to the amount of the contract. Expected data type and response value: AMOUNT -> `cbc:ResponseAmount`. See section "link:#differences-between-regulated-and-self-contained-15[VI.7 References on similar works, deliveries or services]" for the difference between total and specific amounts in a reference.
 <9> 'Activity of the economic operator'. Expected data type and response value: 'DESCRIPTION' -> `cbc:Description`.
@@ -257,7 +257,7 @@ The figure below shows how the set of response to the criterion "For works contr
 .Set of responses to the criterion "For works contracts: performance of works of the specified type" (collapsed view)
 image::Answers_Reference_Collapsed.png[Responses to 'References' (collapsed), alt="Responses to 'References' (collapsed)", align="center"]
 
-The circled numbers map the ones in the mock-up (at the beginning of this section) and the notes in the XML examples above (<6> to <16> -> QUESTIONS, as REQUIREMENTS do not expect and answer by the EO, they are informative/prescriptive).
+The circled numbers map the ones in the mock-up (at the beginning of this section) and the notes in the XML examples above (<6> to <16> -> QUESTION(s), as REQUIREMENT(s) do not expect and answer by the EO, they are informative/prescriptive).
 
 .Responses to one criterion of type 'References'
 [source,xml]

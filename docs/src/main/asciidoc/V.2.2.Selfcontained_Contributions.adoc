@@ -20,14 +20,14 @@ image::PaymentOfTaxes_CA_mock-up.png[Regulated 'Payment of Taxes' (ESPD Service,
 This other screen-capture below represents a possible mock-up, from the contracting authority perspective, for the edition of requirements in a Self-contained 'Contributions' criterion (Payment of Taxes).
 
 .Self-contained 'Payment of Taxes', REQUIREMENT edition (CA Perspective)
-image::Selfcontained_PaymentOfTaxes_CA_REQUIREMENTS_Edition-mock-up.png[Self-contained 'Payment of Taxes' REQUIREMENT edition, alt="Self-contained 'Payment of Taxes', REQUIREMENT edition", align="center"]
+image::Selfcontained_PaymentOfTaxes_CA_REQUIREMENT(s)_Edition-mock-up.png[Self-contained 'Payment of Taxes' REQUIREMENT edition, alt="Self-contained 'Payment of Taxes', REQUIREMENT edition", align="center"]
 
 
 The differences with the Regulated Contribution version are:
 
 . The criteria specified by the Member State in e-Certis will be save in the ESPD Request XML instance;
 
-. The contracting authority has specified a pair of REQUIREMENTs for this procedure (threshold and additional information). If the REQUIREMENT is applicable to all procurement procedure (because it is in the national Law, for example) this would be defined as a national criterion in e-Certis.
+. The contracting authority has specified a pair of REQUIREMENT(s) for this procedure (threshold and additional information). If the REQUIREMENT is applicable to all procurement procedure (because it is in the national Law, for example) this would be defined as a national criterion in e-Certis.
 
 ==== Mock-ups - economic operator perspective
 
@@ -39,7 +39,7 @@ Beware that this mock-up is not showing the national criteria. For this mock-up 
 ====
 
 .Self-contained 'Payment of Taxes', (EO perspective)
-image::Selfcontained_PaymentOfTaxes_EO_REQUIREMENTS-mock-up.png[Self-contained 'Payment of Taxes' EO perspective, alt="Self-contained 'Payment of Taxes', EO  perspective", align="center"]
+image::Selfcontained_PaymentOfTaxes_EO_REQUIREMENT(s)-mock-up.png[Self-contained 'Payment of Taxes' EO perspective, alt="Self-contained 'Payment of Taxes', EO  perspective", align="center"]
 
 ==== Data structure - Self-contained
 
@@ -177,7 +177,7 @@ image::Selfcontained_ESPDRequest_Contributions_Data_Structure.png[Self-contained
 		<cbc:URI>http://eur-lex.europa.eu/legal-content/ES/TXT/?uri=celex%3A32014L0024</cbc:URI>
 	</cac:Legislation>	
 
-	<!-- Member State and contracting authority REQUIREMENTs. In this case the MS allows a maximum debt of 50 EUR, and additional information is provided for clarification purposes -->
+	<!-- Member State and contracting authority REQUIREMENT(s). In this case the MS allows a maximum debt of 50 EUR, and additional information is provided for clarification purposes -->
 	<cac:TenderingCriterionPropertyGroup>
 			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">53c9aad8-dc80-48f8-85d9-755c2aab8e95</cbc:ID>
 			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -334,9 +334,9 @@ image::Selfcontained_ESPDRequest_Contributions_Data_Structure.png[Self-contained
 <1> The MS defined this national 'Payment of Taxes' criterion in e-Certis. See also previous example for the REGULATED Payment of taxes (the behavior is identical for all exclusion criteria).
 <2> Reference to the EU Legislation. This reusable structure is identical for all the exclusion criteria.
 <3> For this *SELFCONTAINED ESPD Request Payment of Taxes* criterion, the Member State defined in e-Certis a *national REQUIREMENT* consisting in the specification of the '_threshold amount of debt that an economic operator have with the national Tax Agency_' (50 Euros in this example)
-<4> Notice that type of property used is REQUIREMENT. This entails that: (i) the ESPDRequest is of type SELFCONTAINED (REGULATED ESPDs does not work with REQUIREMENTs); (ii) a `cbc:ValueDataType` will be present indicating the type of value the contracting authority uses for this REQUIREMENT (e.g. AMOUNT, INDICATOR, DESCRIPTION, etc.; see the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[Code List `ResponseDataType`], the values are the same for contracting authorities REQUIREMENTs than for economic operator response values).
+<4> Notice that type of property used is REQUIREMENT. This entails that: (i) the ESPDRequest is of type SELFCONTAINED (REGULATED ESPDs does not work with REQUIREMENT(s)); (ii) a `cbc:ValueDataType` will be present indicating the type of value the contracting authority uses for this REQUIREMENT (e.g. AMOUNT, INDICATOR, DESCRIPTION, etc.; see the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[Code List `ResponseDataType`], the values are the same for contracting authorities REQUIREMENT(s) than for economic operator response values).
 <5> Beware that No answer is expected here from the economic operator (do not get confused by the presence of the `cbc:ValueDataType`, as said it is used by both the CA and the EO.
 <6> The value supplied by the contracting authority for this requirement (50 Euros, in this example). Notice that the currency is specified in the attibute `currencyID` of the `cbc:Amount` component.
 <7> The MS also allows the contracting authority the possibility of adding multiple additional textual requirements (in this case the CA uses this to explain that ''Beware that the national Tax Agency won't permit the existence of a debt, even if minimial, for two consecutive years''). 
 <8> Again, no answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority.
-<9> Except for the national sub-criteria and the REQUIREMENTs, the rest is identical to the Regulated version.
+<9> Except for the national sub-criteria and the REQUIREMENT(s), the rest is identical to the Regulated version.

@@ -17,14 +17,14 @@ Domain Data Model.
 
 One reason that led to include these kind of "processing instructions" in the ESPD-Exchange Data Model is the
 high level of abstraction of the ISA2 Core Criterion and Evidence Vocabulary (CCEV) (the UBL-2.2 `cac:TenderingCriterion`
-is a specialisation of this vocabulary). As GROUPs and SUBGROUPS of REQUIREMENTs and of QUESTIONs may be freely and
+is a specialisation of this vocabulary). As GROUPs and SUBGROUPS of REQUIREMENT(s) and of QUESTION(s) may be freely and
 unlimitedly nested, the software applications may have a
-hard time to detect whether a GROUP or SUBGROUP contains REQUIREMENTs and QUESTIONs or just QUESTIONs (which is usual in
-the ESP-EDM specification). Or vice-versa, if a GROUP or SUBGROUP comes first with QUESTIONs followed by REQUIREMENTs
+hard time to detect whether a GROUP or SUBGROUP contains REQUIREMENT(s) and QUESTION(s) or just QUESTION(s) (which is usual in
+the ESP-EDM specification). Or vice-versa, if a GROUP or SUBGROUP comes first with QUESTION(s) followed by REQUIREMENT(s)
 (something that never happens in the ESPD-EDM specification).
 
 One way for the ESPD-EDM to help software applications understand that a nested data structure is a GROUP of
-REQUIREMENTs or just of QUESTIONS would have been codifying it as "REQUIREMENT_GROUP" or "QUESTION_GROUP", using for that purpose
+REQUIREMENT(s) or just of QUESTION(s) would have been codifying it as "REQUIREMENT_GROUP" or "QUESTION_GROUP", using for that purpose
 the element `cbc:PropertyGroupTypeCode` element (similarly to what is done with the `cbc:TypeCode` element inside the
 `cac:TenderingCriterionProperty`). However for backwards compatibility reasons with the MS software applications the
 decision was made to reserve the `cbc:PropertyGroupTypeCode` to control the GUI behaviour by means of the values
@@ -32,10 +32,10 @@ defined in the code list
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[PropertyGroupType]
 (codes ON*, ONTRUE and ONFALSE).
 
-The way currently used by software applications to detect whether a GROUP (or SUBGROUP) carries REQUIREMENTs or not is to
+The way currently used by software applications to detect whether a GROUP (or SUBGROUP) carries REQUIREMENT(s) or not is to
 look at the type of the first criterion property: if the first `cac:TenderingCriterionProperty` is of `cbc:TypeCode`
 value `REQUIREMENT` then it is a `REQUIREMENT_GROUP`, if it is of value `QUESTION` then the GROUP (or SUBGROUP) contains
-only QUESTIONs.
+only QUESTION(s).
 
 In future versions, the ESPD-EDM should get rid of these codes and mechanisms that couple the eProcurement Data Model to the
 dynamic building-up of the Graphic User Interfaces (GUIs) or to other processing needs. One possible solution could be to separate the
@@ -74,7 +74,7 @@ with other requirements set out in that Annex.</cbc:Description>
 <!-- ... -->
 <cac:TenderingCriterionPropertyGroup>
 <xs:annotation><--1-->
-        <xs:documentation>This is a root GROUP OF REQUIREMENTS INSIDE A CRITERION.</xs:documentation><--2-->
+        <xs:documentation>This is a root GROUP OF REQUIREMENT(s) INSIDE A CRITERION.</xs:documentation><--2-->
         <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
         <espd:groupVisibilityDependencyType>ON*</espd:groupVisibilityDependencyType><--3-->
 </xs:annotation>
@@ -116,7 +116,7 @@ with other requirements set out in that Annex.</cbc:Description>
 </cac:TenderingCriterionProperty>
 <cac:SubsidiaryTenderingCriterionPropertyGroup>
          <xs:annotation><--6-->
-                <xs:documentation> This is a SUBGROUP OF REQUIREMENTS INSIDE A GROUP OF REQUIREMENTS.</xs:documentation>
+                <xs:documentation> This is a SUBGROUP OF REQUIREMENT(s) INSIDE A GROUP OF REQUIREMENT(s).</xs:documentation>
                 <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
                 <espd:groupVisibilityDependencyType>CRITERION_REQUIREMENT_SUBGROUP</espd:groupVisibilityDependencyType>
         </xs:annotation>
@@ -147,7 +147,7 @@ with other requirements set out in that Annex.</cbc:Description>
 <1> Block of annotations applied to an element.
 <2> Human-addressed description of what processing needs to be applied to the next data element. The description can be split in multiple lines.
 <3> Instructs the software application that it must show this GROUP in any case.
-<4> Tells the software application what type of GROUP this is (in this case it is a GROUP of REQUIREMENTs).
+<4> Tells the software application what type of GROUP this is (in this case it is a GROUP of REQUIREMENT(s)).
 <5> Note about the "dumminess" of this element.
 <6> Next group of annotations, etc...
 

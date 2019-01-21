@@ -1,10 +1,10 @@
 === Radio-Button and Check-box controls
 
 In version 2.1.0 a new code list named link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[BooleanGUIControlType]
-has been added to help software application process REQUIREMENTs issued by
+has been added to help software application process REQUIREMENT(s) issued by
 the contracting authority when drafting SELF-CONTAINED ESPD documents. For the time being this need is only present in
 one Criterion of the SELF-CONTAINED ESPD: 'Other economic or financial requirements'
-(CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENTS). The figure below shows the data structure for that
+(CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s)). The figure below shows the data structure for that
 Criterion:
 
 .Use of the code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[BooleanGUIControlType]
@@ -24,10 +24,10 @@ footnote:[We call this the ''semantisation'' of basic elements to refer to data 
 named to reflect a possible use of the element by an agent, e.g. boolean indicators named RADIO_BUTTON_TRUE, RADIO_BUTTON_TRUE, etc. or
 identifier names like LOT_IDENTIFIER or ECONOMIC_OPERATOR_IDENTIFIER];
 
-. When the value of the `CODE_BOOLEAN` is `RADIO_BUTTON_TRUE` (true) the SUBGROUPs of REQUIREMENTs (UUID 26ece6a2-b360-46c1-890d-8338913b8719
-) and QUESTIONs (UUID 9b3a04ff-e36d-4d4f-b47c-82ad402b9b02) are processed (e.g. shown by the GUI).
-Otherwise the software application processes the alternative SUBGROUPs of REQUIREMENTs (UUID cc96aa19-a0be-4409-af58-ff3f3812741b) and
-QUESTIONs (UUID 5fe93344-ed91-4f97-bcab-b6720a131798).
+. When the value of the `CODE_BOOLEAN` is `RADIO_BUTTON_TRUE` (true) the SUBGROUPs of REQUIREMENT(s) (UUID 26ece6a2-b360-46c1-890d-8338913b8719
+) and QUESTION(s) (UUID 9b3a04ff-e36d-4d4f-b47c-82ad402b9b02) are processed (e.g. shown by the GUI).
+Otherwise the software application processes the alternative SUBGROUPs of REQUIREMENT(s) (UUID cc96aa19-a0be-4409-af58-ff3f3812741b) and
+QUESTION(s) (UUID 5fe93344-ed91-4f97-bcab-b6720a131798).
 
 The following fragment of XML code shows how this is expressed:
 
@@ -134,12 +134,12 @@ The following fragment of XML code shows how this is expressed:
 ----
 <1> This property (cac:TenderingCriterionProperty) can be used by the software application to help the contracting authority select the type of REQUIREMENT it wants to be shown to the economic operator, either an Amount limited by a threshold and a period of time or rating constrained by a threshold and a rating scheme. The expected value will be a code expressing a three-state indicator (a boolean semantised as CODE_BOOLEAN).
 <2> In this example, the contracting authority has specified the value `RADIO_BUTTON_TRUE`.
-<3> As the value of the element `cbc:ExpectedCode`, inside the REQUIREMENT (`cac:TenderingCriterionProperty`) ''Select the type of requirement'', is `RADIO_BUTTON_TRUE` the economic operator will see the first SUBGROUP of REQUIREMENTs (UUID  26ece6a2-b360-46c1-890d-8338913b8719) and will have to respond the QUESTION with the text "Amount".
+<3> As the value of the element `cbc:ExpectedCode`, inside the REQUIREMENT (`cac:TenderingCriterionProperty`) ''Select the type of requirement'', is `RADIO_BUTTON_TRUE` the economic operator will see the first SUBGROUP of REQUIREMENT(s) (UUID  26ece6a2-b360-46c1-890d-8338913b8719) and will have to respond the QUESTION with the text "Amount".
 <4> The contracting authority is specifying that an amount above 100006 Euros is expected.
 <5> This is the QUESTION that the economic operator needs to respond (the "Amount" corresponding to the economic of financial requirement (in this example: "Specify the total invoiced amount, taxes included" (cac:TenderingCriterionProperty UUID 13728a54-21e3-4c84-8b11-48666c3d260f).
 <6> The economic operator (EO) will have to respond using an element of type cbc:Amount, see the next fragment of XML below for the response of the EO. The validation mechanism checks that the type of data specified by the contracting authority in the ESPD-Request (AMOUNT) and the type of data provided in the ESPD-Response (`cbc:ReponseAmount`) are coherent.
-<7> This SUBGROUP is never processed (e.g. shown to the economic operator) as it contains the SUBGROUP of REQUIREMENTs and QUESTION in case the contracting authority had specified RADIO_BUTTON_FALSE as an answer to the field "Select the type of requirement".
-<8> The QUESTION that the economic operator would have had to respond in case the contracting authority had selected the second SUBGROUP of REQUIREMENTs, which is not the case in this example.
+<7> This SUBGROUP is never processed (e.g. shown to the economic operator) as it contains the SUBGROUP of REQUIREMENT(s) and QUESTION in case the contracting authority had specified RADIO_BUTTON_FALSE as an answer to the field "Select the type of requirement".
+<8> The QUESTION that the economic operator would have had to respond in case the contracting authority had selected the second SUBGROUP of REQUIREMENT(s), which is not the case in this example.
 
 
 .Response of the economic operator to the REQUIREMENT "Amount"

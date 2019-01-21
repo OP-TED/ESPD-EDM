@@ -31,11 +31,21 @@ The figure below shows the data elements required to the economic operator for t
 .'Reduction of candidates' data structure
 image::ReductionOfCandidates_DS.png[Self-contained 'Reduction of candidates' data structure, alt="'Reduction of candidates' data structure", align="center"]
 
+
 ==== XML example (ESPD-Request)
 
-The XML snippet below shows how an instance of this criterion looks like in the ESPD-Request
+The XML snippet below shows how an instance of this criterion looks like in the ESPD-Request.
 
-.Reduction of Candidates - (QUESTIONs in the ESPD-Request)
+
+[NOTE]
+====
+*_This example is extensively commented in section link:#request-response-xml-example[Request/Response XML example] (both the Request and the Response). Please consult this section for
+further details._*
+====
+
+
+
+.Reduction of Candidates - (QUESTION(s) in the ESPD-Request)
 [source,xml]
 ----
 <!-- ... beginning of document removed for brevity -->
@@ -89,38 +99,3 @@ The XML snippet below shows how an instance of this criterion looks like in the 
 
 <!-- ... rest of document removed for brevity -->
 ----
-
-==== XML example (Responses to the QUESTIONs)
-
-The XML snippet below shows the responses to the two QUESTIONs expressed in the ESPD-Request for this criterion (the
-block related to evidences is omitted for the sake of clarity and brevity):
-
-.Reduction of Candidates - (answers in the ESPD-Response)
-[source,xml]
-----
-<!-- ... beginning of document removed for brevity -->
-
-<cac:TenderingCriterionResponse>
-    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d47daca4-4a27-4461-9db9-f483d3b7a114</cbc:ID>
-    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c110177c-aa9a-4acd-809a-79a2353a41ef</cbc:ValidatedCriterionPropertyID> <--1-->
-    <cac:ResponseValue>
-            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">de6f1bdd-abce-42f7-b9b8-30c4e7c4c94d</cbc:ID>
-            <cbc:ResponseIndicator>true</cbc:ResponseIndicator> <--2-->
-    </cac:ResponseValue>
-</cac:TenderingCriterionResponse>
-<cac:TenderingCriterionResponse>
-    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d47daca4-4a27-4461-9db9-f483d3b7a114</cbc:ID>
-    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">e437cac1-3a89-4f36-bcc7-3219dda49d30</cbc:ValidatedCriterionPropertyID><--1-->
-    <cac:ResponseValue>
-            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">de6f1bdd-abce-42f7-b9b8-30c4e7c4c94d</cbc:ID>
-            <cbc:Description>This Consortium fulfills all the conditions defined by the buyer in the contract notice, and notably
-             the Consortium is duly registered in the national pre-qualification system of the country of the Consortium lead where
-             all the information about its classification and documentation about its financial standing are up to the date.</cbc:Description>
-    </cac:ResponseValue><--3-->
-</cac:TenderingCriterionResponse>
-
-<!-- ... rest of document removed for brevity -->
-----
-<1> Notice this UUID is identical to the `cac:TenderingCriterionProperty` one. This is the way the UBL-2.2 Qualification Application Response document links each QUESTIONs to one response (and only one), or viceversa.
-<2> The economic operator states here that it meets the criteria.
-<3> The economic operator describes how it meets the criteria.
