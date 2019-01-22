@@ -53,13 +53,7 @@ In the ESPD-Response, the instantiation of the elements follows this pattern (se
   ** The CA can specify more than one Register and the Lots for which this enrolment makes sense;
   ** Group of QUESTION(s) addressed to the EO related to the REQUIREMENT(s) above. See the data structures about link:#data-structure-enrolments-self-contained[Enrolments];
 
-[NOTE]
-====
-*_Beware that the responses of the EO are not directly linked to (i.e. do not carry information about) the REQUIREMENT or the Lots.
-These links could nevertheless inferred though through the link between the link that each response keeps with the QUESTION it is linked to
-(via the element `cbc:ValidatedCriterionPropertyID`). See section link:#viii-7-answering-questions[VIII.7 Answering QUESTIONs] for more details on how a response is linked
-to one (and only one) QUESTION.
-====
+* *_4th. SET OF DATA_*: The responses provided by the EO where it specifies the Lots it tenders to.
 
 ===== XML example
 
@@ -206,7 +200,7 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml
     <cac::TenderingCriterionPropertyGroup><--8-->
         <cac::TenderingCriterionProperty> <Description>Lots the requirement apply to</Description><!-- ... etc. --> </cac::TenderingCriterionProperty>
         <!-- This will be used for Lot3 -->
-        <cac::TenderingCriterionProperty><--10-->
+        <cac::TenderingCriterionProperty><--9-->
             <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">d01bc240-0fd2-426c-986c-123cbb7164d8</cbc:ID>
             <cbc:Description>Lot ID</cbc:Description>
             <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
@@ -257,8 +251,30 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml
 
 <!-- The rest of criteria of this ESPD-Response document will go here -->
 
-<!-- The EO's Responses start after the last criterion (`cac:TenderingCriterion`) --> <--14-->
+<!-- EO's responses start here -->
 
+<!-- *4th. SET OF DATA RELATED TO LOTS!* -->
+<!-- Responses provided by the economic operator (EO)-->
+<!-- The EO tenders to Lot1 and Lot3 -->
+
+<cac:TenderingCriterionResponse><--12-->
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">051c1487-e2de-4315-87e0-7b2ee6b3d5f5</cbc:ID>
+        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8281b8e5-0e13-4ca9-9896-94825d186429</cbc:ValidatedCriterionPropertyID><--13-->
+        <cac:ResponseValue>
+            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">1d0fe5f6-3c98-4443-8f8f-571293740c90</cbc:ID>
+            <cbc:ResponseID>Lot1</cbc:ResponseID><--14-->
+        </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<cac:TenderingCriterionResponse>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">cbe9e6b5-c6a5-4ba7-8a42-4674df56a592</cbc:ID>
+        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">838cd8f5-eb81-4cd5-891d-40ef804cb2ee</cbc:ValidatedCriterionPropertyID><--15-->
+        <cac:ResponseValue>
+            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">049bc9eb-2e9a-4fbb-8c11-5d2893911150</cbc:ID>
+            <cbc:ResponseID>Lot3</cbc:ResponseID><--16-->
+        </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+
+<!-- The rest of responses would 1) state whether this EO fulfills the REQUIREMENT or not (registering in the Register provided by the CA) and 2) if not, the reasons -->
 </cac:QualificationApplicationResponse
 
 ----
@@ -273,4 +289,8 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml
 <9> First Lot concerning REQUIREMENT 2.
 <10> Last Lot concerning REQUIREMENT 2.
 <11> Beginning of data about REQUIREMENT 2 (specification of the name and URL of the Register by the CA)
-
+<12> *4th. SET OF DATA*: Responses provided by the EO.
+<13> Identifier of the QUESTION answered by this RESPONSE (first lot identifier the EO tenders to).
+<14> Identifier of the first Lot to which the EO tenders to.
+<15> Identifier of the QUESTION answered by this RESPONSE (second lot identifier the EO tenders to)
+<16> Identifier of the second Lot to which the EO tenders to.
