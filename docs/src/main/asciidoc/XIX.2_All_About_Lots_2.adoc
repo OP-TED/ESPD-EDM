@@ -1,0 +1,69 @@
+
+==== Example 2: Risk indemnity insurance
+
+===== Mock-up - contracting authority perspective
+
+The contracting authority has selected the option *professional risk indemnity insurance* for its inclusion in the ESPD Request.
+Additionally the contracting authority can specify REQUIREMENT(s) specific to the procurement procedure.
+There are two situations that need to be distinguished here, when the procurement procedure is divided into Lots and when it is not.
+
+For both situations (Lots and not Lots): The contracting authority can require data from the economic operator in relation
+to up to four types of insurances. Software applications should control that: no more groups of amount an currency data
+are presented to the economic operator; and that there are not two amounts referring to the same type of insurance;
+
+.'Self-contained risk indemnity insurance' CA REQUIREMENT(s) edition (Procedure without Lots)
+image::Selfcontained_Risk_Indemnity_Insurance_CA_NOLOTS_mock-up.png[Self-contained 'risk indemnity insurance' CA mock-up, alt="Self-contained 'risk indemnity insurance' CA mock-up", align="center"]
+
+When the procedure is divided into Lots: The contracting authority can specify the Lots one particular insurance applies to.
+
+.'Self-contained risk indemnity insurance' CA REQUIREMENT(s) edition (Procedure divided into Lots).
+image::Selfcontained_Risk_Indemnity_Insurance_CA_LOTS_mock-up.png[Self-contained 'risk indemnity insurance' CA mock-up, alt="Self-contained 'risk indemnity insurance' CA mock-up", align="center"]
+
+===== Mock-up - economic operator perspective
+
+The only data the economic operator needs to provide is the amount covered by the insurance and the currency for that amount:
+
+.'Economic operator setup'EO mock-up
+image::Selfcontained_Risk_Indemnity_Insurance_EO_mock-up.png['Self-contained 'risk indemnity insurance' EO mock-up, alt="'Self-contained 'risk indemnity insurance' EO mock-up", align="center"]
+
+===== Criterion data structure
+
+.'Risk indemnity insurance' criterion data structure (SELF-CONTAINED)
+image::Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png[Self-contained 'Risk indemnity insurance' criterion data structure, alt="Self-contained 'Risk indemnity insurance' criterion data structure",align="center"]
+
+In this case (''Risk indemnity insurance'') there is one large REQUIREMENT_GROUP (with cardinality 1) that contains a large REQUIREMENT_SUBGROUP that can
+be repeated *n* times. This repetitive SUBGROUP sets the identifier of one Lot (and only one) and a series of REQUIREMENT(s) and QUESTION(s)
+that apply to that Lot. Notice that the link has to be established only to one Lot, as each Lot has different properties (different REQUIREMENT(s) and QUESTION(s)).
+
+==== Sets of data occurrence in the ESPD-Response
+
+In the ESPD-Response, the instantiation of the elements follows this pattern (see also the
+''Data elements ordered as expected in the ESPD-Response" in the table above).
+
+* *_1st. SET OF DATA_*: Lots of the procurement procedure. See the XSD schema for the link:#viii-2-espd-request-xsd-schema[/cac:ProcurementProjectLot element]. This set of data is common to all teh ESPD-Request and ESPD-Response documents about procedures divided into lots;
+* *_2nd. SET OF DATA_*: Lots to which the economic operator (EO) tenders to. See the data structure link:#lots-economic-operator-perspective[Lots tendered to] (Figure ''Figure 225. Lots tendered, data structure''). This set of data is common to all teh ESDP-Response documents about procedures divided into lots;
+* *_3rd. SET OF DATA_*:
+  ** CA's REQUIREMENTs: Per each Lot, the type of insurance and a minimum threshold amount are specified by the CA. The EO
+  has to provide the Amount and additional information required by the CA, including references to evidences (see the XML for details);
+  ** Multiple insurances with identical REQUIREMENTs are possible;
+  ** Group of QUESTION(s) addressed to the EO related to the REQUIREMENT(s) above;
+* *_4th. SET OF DATA_*: The responses provided by the EO, i.e. an answer for each QUESTION inside the GROUP of QUESTION(s).
+
+===== XML example
+
+[NOTE]
+====
+*_Many compulsory elements and attributes of the XML example below have been removed to gain clarity and brevity. For
+complete XML samples download the files under folder
+link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml]._*
+
+====
+
+.'Risk indemnity insurance' XML example (data related to Lots in the ESPD-Response)
+[source,xml]
+----
+
+
+
+----
+
