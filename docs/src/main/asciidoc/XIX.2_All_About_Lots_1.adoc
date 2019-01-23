@@ -45,15 +45,20 @@ the specific requirement.
 In the ESPD-Response, the instantiation of the elements follows this pattern (see also the
 ''Data elements ordered as expected in the ESPD-Response" in the table above).
 
-* *_1st. SET OF DATA_*: Lots of the procurement procedure. See the XSD schema for the link:#viii-2-espd-request-xsd-schema[/cac:ProcurementProjectLot element]. This set of data is common to all teh ESPD-Request and ESPD-Response documents about procedures divided into lots;
-* *_2nd. SET OF DATA_*: Lots to which the economic operator (EO) tenders to. See the data structure link:#lots-economic-operator-perspective[Lots tendered to] (Figure ''Figure 225. Lots tendered, data structure''). This set of data is common to all teh ESDP-Response documents about procedures divided into lots;
-* *_3rd. SET OF DATA_*:
-  ** CA's REQUIREMENT(s): The CA specifies one particular Register where the EO has to be enroled. It also specify the Lots
+* *_1st. SET OF DATA_*, Lots of the procurement procedure. See the XSD schema for the link:#viii-2-espd-request-xsd-schema[/cac:ProcurementProjectLot element]. This set of data is common to all teh ESPD-Request and ESPD-Response documents about procedures divided into lots;
+* *_2nd. SET OF DATA_*, Requirements by the CA about the submission of tenders when the procedure is divided into Lots.
+Kind of ''participation criterion'' data structure link:l#iii-11-lots-self-contained-espd[Lots - Self-contained ESPD] (Figure ''Figure Figure 32. Requirements about Lots issued by the CA (Selfcontained ESPD), data structure'').
+This set of data is common to all the ESDP-Response documents about procedures divided into lots;
+* *_3rd. SET OF DATA_* Lots to which the economic operator (EO) tenders to. Kind of ''participation criterion'' data structure
+link:#lots-economic-operator-perspective[Lots tendered to] (Figure ''Figure 225. Lots tendered, data structure'').
+This set of data is common to all the ESDP-Response documents about procedures divided into lots;
+* *_4rd. SET OF DATA_*, The ''true'' selection Enrolment-related criterion:
+  ** CA's REQUIREMENT(s). The CA specifies one particular Register where the EO has to be enroled. It also specify the Lots
   that are affected by this REQUIREMENT;
   ** The CA can specify more than one Register and the Lots for which this enrolment makes sense;
   ** Group of QUESTION(s) addressed to the EO related to the REQUIREMENT(s) above. See the data structures about link:#data-structure-enrolments-self-contained[Enrolments];
 
-* *_4th. SET OF DATA_*: The responses provided by the EO where it specifies the Lots it tenders to.
+* *_5th. SET OF DATA_*: The responses provided by the EO where it specifies the Lots it tenders to.
 
 ===== XML example
 
@@ -70,227 +75,283 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml
 ----
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <cac:QualificationApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" ... etc. -->
-<!-- Root elements start here-->
-<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
-<!-- ... etc. (beware that some root elements are compulsory, e.g. cbc:ID -->
-<!-- Main aggregate components -->
-<cac:ContractingParty> ... </cac:ContractingParty>
-<cac:EconomicOperatorParty> ... </cac:EconomicOperatorParty>
-<cac:ProcurementProject>...</cac:ProcurementProject>
-<!-- Root elements end here -->
+    <!-- Root elements start here-->
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
+    <!-- ... etc. (beware that some root elements are compulsory, e.g. cbc:ID -->
+    <!-- Main aggregate components -->
+    <cac:ContractingParty> ... </cac:ContractingParty>
+    <cac:EconomicOperatorParty> ... </cac:EconomicOperatorParty>
+    <cac:ProcurementProject>...</cac:ProcurementProject>
+    <!-- Root elements end here -->
 
-<!-- *FIRST SET OF DATA RELATED TO LOTS!* -->
-<!-- In this example the CA informs that the Procurement Procedure is divided into three Lots -->
-<!-- Only the IDs are truly necessary, but the CA is free to provide any other additional data -->
+    <!-- *FIRST SET OF DATA RELATED TO LOTS!* -->
+    <!-- In this example the CA informs that the Procurement Procedure is divided into three Lots -->
+    <!-- Only the IDs are truly necessary, but the CA is free to provide any other additional data -->
 
-<cac:ProcurementProjectLot><--1-->
-     <cbc:ID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ID>
-</cac:ProcurementProjectLot>
-<cac:ProcurementProjectLot>
-     <cbc:ID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ID>
-</cac:ProcurementProjectLot>
-<cac:ProcurementProjectLot>
-     <cbc:ID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ID>
-</cac:ProcurementProjectLot>
-<cac:ProcurementProjectLot>
-     <cbc:ID schemeAgencyID="EU-COM-GROW">Lot4</cbc:ID>
-</cac:ProcurementProjectLot>
-<cac:ProcurementProjectLot>
-     <cbc:ID schemeAgencyID="EU-COM-GROW">Lot5</cbc:ID>
-</cac:ProcurementProjectLot>
-<cac:ProcurementProjectLot>
-     <cbc:ID schemeAgencyID="EU-COM-GROW">Lot6</cbc:ID>
-</cac:ProcurementProjectLot>
-<cac:ProcurementProjectLot>
-     <cbc:ID schemeAgencyID="EU-COM-GROW">Lot7</cbc:ID>
-</cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+         <cbc:ID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+         <cbc:ID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+         <cbc:ID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+         <cbc:ID schemeAgencyID="EU-COM-GROW">Lot4</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+         <cbc:ID schemeAgencyID="EU-COM-GROW">Lot5</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+         <cbc:ID schemeAgencyID="EU-COM-GROW">Lot6</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+         <cbc:ID schemeAgencyID="EU-COM-GROW">Lot7</cbc:ID>
+    </cac:ProcurementProjectLot>
 
-<!-- *SECOND SET OF DATA RELATED TO LOTS!* -->
-<!-- Lots to which the EO tenders to -->
-<!-- For the ESPD-Response to work properly, there is the need of having one Response per QUESTION. Therefore the EO needs to create as many `cac:TenderingCriterionProperty elements` as Lots it will tender to. This issue is being currently solved in the UBL-2.3 TC, as this should be a collection of Lot Identifiers inside one single QUESTION. -->
-<!-- BEWARE that the CA, at ESPD-Request creation time is unable to know how many Lots the EOs will tender to. This implies that the number of `cac:TenderingCriterionProperty` elements in the ESPD-Request and in the ESPD-Response will be different -->
-<!-- In this example, the EO tenders to two lots, Lot1 and Lot3 (see the EO responses to complete the understanding of this-->
-<cac:TenderingCriterion><--2-->
-    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">8b9700b7-b13c-41e6-a220-6bbf8d5fab31</cbc:ID>
-    <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.OTHER.EO_DATA.LOTS_TENDERED</cbc:CriterionTypeCode>
-    <cbc:Name>Lots the EO tenders to</cbc:Name>
-    <cbc:Description>Where applicable, indication of the lot(s) for which the economic operator wishes to tender</cbc:Description>
-    <cac:TenderingCriterionProperty>
-        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8281b8e5-0e13-4ca9-9896-94825d186429</cbc:ID>
-        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
-        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-    </cac:TenderingCriterionProperty>
-    <cac:TenderingCriterionProperty>
-        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">838cd8f5-eb81-4cd5-891d-40ef804cb2ee</cbc:ID>
-        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">QUESTION</cbc:TypeCode>
-        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-        </cac:TenderingCriterionProperty>
-    </cac:TenderingCriterionPropertyGroup>
-</cac:TenderingCriterion>
 
-<!-- *3rd. SET OF DATA RELATED TO LOTS!* -->
-<!-- List of Lots affected by one criterion GROUP of REQUIREMENT(s), i.e. the REQUIREMENT(s) related to one Register plus these particular REQUIREMENTs and QUESTIONs -->
-<!-- In this example only two Registers (REQUIREMENTs) are mentioned, the first one affects Lots 1, 2, 4 and 5. The second one affects Lots 3,6 and 7 -->
-<!-- The responses of the EO will be coherent with these REQUIREMENTs. -->
+    <!-- *2nd. SET OF DATA RELATED TO LOTS: CA's Requirements concerning the submission of tenders when a procedure is divided into Lots.
+         This is currently modelled as a kind of 'participation' criterion, however UBL-2.2 has a specific different treatment of these information requirements (see the `cac:LotDistribution` element)
+         This issue will be reviewed in future versions of the ESPD-EDM. For version 2.1 it is necessary to use this Criterion data structure.
+        *Please do not use the UBL-2.2 `cac:LotDistribution` for the time being, as it does not catter for the specification of the type of submission as a code, which is required in the ESPD-EDM. *
+        *Beware* that the data provided by the CA needs to be coherent, e.g. the Maximun number of lots that may be awarded to one tenderer
+        (2 in this example) cannot be greater than the number of Lots into which this procedure is divided, nor than the value of the Maximum number of
+        lots or with the code assigned to the field "Tenders may be submitted for" (LOT_ALL) in this case).
+    -->
 
-<cac::TenderingCriterion><--3-->
-    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f</cbc:ID>
-    <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT</cbc:CriterionTypeCode>
-    <cbc:Name>Enrolment in a relevant professional register</cbc:Name>
-    <cbc:Description>It is enrolled in relevant professional registers ...</cbc:Description>
-    <cac::Legislation> ... </cac::Legislation>
-    <cac::TenderingCriterionPropertyGroup> <--4-->
-        <cac::TenderingCriterionProperty> <Description>Lots the requirement apply to</Description><!-- ... etc. --> </cac::TenderingCriterionProperty>
-        <!-- This will be used for Lot1 -->
-        <cac::TenderingCriterionProperty><--5-->
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
-            <cbc:Description>Lot ID</cbc:Description>
-            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-            <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ExpectedID><--4-->
-        </cac::TenderingCriterionProperty>
-        <!-- This will be used for Lot2 -->
-        <cac::TenderingCriterionProperty>
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
-            <cbc:Description>LotIDs</cbc:Description>
-            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-            <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ExpectedID>
-        </cac::TenderingCriterionProperty>
-        <!-- This will be used for Lot4 -->
-        <cac::TenderingCriterionProperty>
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6f7c51c2-c2ac-47f2-9c7d-af9be815404a</cbc:ID>
-            <cbc:Description>LotIDs</cbc:Description>
-            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-            <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot4</cbc:ExpectedID>
-        </cac::TenderingCriterionProperty>
-        <!-- This will be used for Lot5 -->
-        <cac::TenderingCriterionProperty><--6-->
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">69433c3f-0277-4a8d-a41e-3aeb8ac6257a</cbc:ID>
-            <cbc:Description>LotIDs</cbc:Description>
-            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-            <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot5</cbc:ExpectedID>
-        </cac::TenderingCriterionProperty>
-        <!-- Begining of data about REQUIREMENT 1 (specification of the name and URL of the Register by the CA) -->
-        <cac::SubsidiaryTenderingCriterionPropertyGroup><--7-->
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3aacb82e-afba-440c-b64e-1834007965a2</cbc:ID>
-            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+    <cac:TenderingCriterion>
+        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">6a21c421-5c1e-46f4-9762-116fbcd33097</cbc:ID>
+        <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.OTHER.CA_DATA.LOTS_SUBMISSION</cbc:CriterionTypeCode>
+        <cbc:Name>CA Lots</cbc:Name>
+        <cbc:Description>Please take into account the following requirements regarding the lots of this procurement procedure:</cbc:Description>
+        <cac:TenderingCriterionPropertyGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">03cff8d1-4d22-4435-82fa-d6361af84be6</cbc:ID>
+            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+            <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f8804fa9-81b7-4f3a-a500-d9e49a4f1efe</cbc:ID>
+                <cbc:Description>Tenders may be submitted for</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CODE</cbc:ValueDataTypeCode>
+                <cbc:ExpectedCode listID="BidType" listAgencyID="EU-COM-GROW" listVersionID="1.0">LOT_ALL</cbc:ExpectedCode>
+            </cac:TenderingCriterionProperty>
+            <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3191b16a-37d5-48c5-88b1-8012639d24a4</cbc:ID>
+                <cbc:Description>Maximum number of lots</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUANTITY_INTEGER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedValueNumeric>7</cbc:ExpectedValueNumeric>
+            </cac:TenderingCriterionProperty>
+            <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">2a11f2ef-3fa8-460f-9cb9-869af94926be</cbc:ID>
+                <cbc:Description>Maximum number of lots that may be awarded to one tenderer</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUANTITY_INTEGER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedValueNumeric>2</cbc:ExpectedValueNumeric>
+            </cac:TenderingCriterionProperty>
+        </cac:TenderingCriterionPropertyGroup>
+    </cac:TenderingCriterion>
+
+       <!-- *3rd. SET OF DATA RELATED TO LOTS: Lots to which the EO tenders to.*
+           The next criterion data structure is not a 'true' Criterion. It is used by the Economic Operator to specify to which Lots it tenders to.
+           In this example, the EO tenders to two lots, Lot1 and Lot3 (see the EO responses to complete the understanding of this. Thus, the first QUESTION
+           (identified as a71cad4a-3b01-4dcb-9589-fc581cd25b13) will be used by a cac:TenderingCriterionResponse containing a "collection" of two cac:ResponseValues
+           connected to the QUESTION via its identifier (i.e., the cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID value will be 'a71cad4a-3b01-4dcb-9589-fc581cd25b13').
+       -->
+
+       <cac:TenderingCriterion>
+           <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">8b9700b7-b13c-41e6-a220-6bbf8d5fab31</cbc:ID>
+           <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.OTHER.EO_DATA.LOTS_TENDERED</cbc:CriterionTypeCode>
+           <cbc:Name>Lots the EO tenders to</cbc:Name>
+           <cbc:Description>Where applicable, indication of the lot(s) for which the economic operator wishes to tender</cbc:Description>
+           <cac:TenderingCriterionPropertyGroup>
+               <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">289f39b3-2a15-421a-8050-a29858031f35</cbc:ID>
+               <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                <cac:TenderingCriterionProperty>
+                   <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">a71cad4a-3b01-4dcb-9589-fc581cd25b13</cbc:ID>
+                   <cbc:Description>Lot Ids</cbc:Description>
+                   <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                   <!--
+                       The semantisation of the identifier as "LOT_IDENTIFIER" can be used by software applications to expect a collection of identifiers of Lots,
+                       i.e. several `cac:ResponseValue` linked to this QUESTION identifier (in this case to the UUID a71cad4a-3b01-4dcb-9589-fc581cd25b13).
+                   -->
+                   <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+               </cac:TenderingCriterionProperty>
+           </cac:TenderingCriterionPropertyGroup>
+           <cac:TenderingCriterionPropertyGroup>
+               <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+               <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+               <cac:TenderingCriterionProperty>
+                   <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">954b1d3a-46c1-4d5f-8047-fd285443c6c0</cbc:ID>
+                   <cbc:Description>Is this information available electronically?</cbc:Description>
+                   <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                   <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">INDICATOR</cbc:ValueDataTypeCode>
+               </cac:TenderingCriterionProperty>
+
+               <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                   <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                   <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                   <cac:TenderingCriterionProperty>
+                       <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3b1af1a3-14e8-4b26-8d2e-355a8189fcf2</cbc:ID>
+                       <cbc:Description>Evidence supplied</cbc:Description>
+                       <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                       <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+                   </cac:TenderingCriterionProperty>
+               </cac:SubsidiaryTenderingCriterionPropertyGroup>
+           </cac:TenderingCriterionPropertyGroup>
+       </cac:TenderingCriterion>
+
+
+    <!-- *4th. SET OF DATA RELATED TO LOTS: The ''true'' Selection Criterion. * -->
+    <!-- List of Lots affected by one criterion GROUP of REQUIREMENT(s), i.e. the REQUIREMENT(s) related to one Register plus these particular REQUIREMENTs and QUESTIONs -->
+    <!-- In this example only two Registers (REQUIREMENTs) are mentioned, the first one affects Lots 1, 2, 4 and 5. The second one affects Lots 3,6 and 7 -->
+    <!-- The responses of the EO will be coherent with these REQUIREMENTs. -->
+
+    <cac::TenderingCriterion>
+        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f</cbc:ID>
+        <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT</cbc:CriterionTypeCode>
+        <cbc:Name>Enrolment in a relevant professional register</cbc:Name>
+        <cbc:Description>It is enrolled in relevant professional registers ...</cbc:Description>
+        <cac::Legislation> ... </cac::Legislation>
+        <cac::TenderingCriterionPropertyGroup>
+            <cac::TenderingCriterionProperty> <Description>Lots the requirement apply to</Description><!-- ... etc. --> </cac::TenderingCriterionProperty>
+            <!-- This will be used for Lot1 -->
             <cac::TenderingCriterionProperty>
-                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">624bb66e-ba57-423f-bd08-557342ed8a07</cbc:ID>
-                <cbc:Description>Register name</cbc:Description>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
+                <cbc:Description>Lot ID</cbc:Description>
                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</cbc:ValueDataTypeCode>
-                    <cbc:ExpectedDescription>THE OFFICIAL LIST OF GAS ENGINEERS</cbc:ExpectedDescription>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ExpectedID>
             </cac::TenderingCriterionProperty>
+            <!-- This will be used for Lot2 -->
             <cac::TenderingCriterionProperty>
-                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">bd265803-ebb0-46c0-8acd-8d99c245df34</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
+                <cbc:Description>LotIDs</cbc:Description>
                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">URL</cbc:ValueDataTypeCode>
-                <cbc:ExpectedID schemeID="URI" schemeAgencyID="EU-COM-GROW">https://www.gassaferister.co.uk</cbc:ExpectedID>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ExpectedID>
             </cac::TenderingCriterionProperty>
-        </cac::SubsidiaryTenderingCriterionPropertyGroup>
-
-        <!-- QUESTIONS for REQUIREMENT 1 affecting Lots 1, 2, 4, 5 would follow -->
-
-    </cac:TenderingCriterionPropertyGroup>
-
-    <cac::TenderingCriterionPropertyGroup><--8-->
-        <cac::TenderingCriterionProperty> <Description>Lots the requirement apply to</Description><!-- ... etc. --> </cac::TenderingCriterionProperty>
-        <!-- This will be used for Lot3 -->
-        <cac::TenderingCriterionProperty><--9-->
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">d01bc240-0fd2-426c-986c-123cbb7164d8</cbc:ID>
-            <cbc:Description>Lot ID</cbc:Description>
-            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-            <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ExpectedID>
-        </cac::TenderingCriterionProperty>
-        <!-- This will be used for Lot6 -->
-        <cac::TenderingCriterionProperty>
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
-            <cbc:Description>LotIDs</cbc:Description>
-            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-            <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ExpectedID>
-        </cac::TenderingCriterionProperty>
-        <!-- This will be used for Lot7 -->
-        <cac::TenderingCriterionProperty><--10-->
-            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
-            <cbc:Description>LotIDs</cbc:Description>
-            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-            <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ExpectedID>
-        </cac::TenderingCriterionProperty>
-        <cac::SubsidiaryTenderingCriterionPropertyGroup><--11-->
-            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3aacb82e-afba-440c-b64e-1834007965a2</cbc:ID>
-            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
-            <cac::TenderingCriterionProperty><--13-->
-                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">60c1a374-f383-450d-a4f6-484ca8a1ca58</cbc:ID>
-                <cbc:Description>Register name</cbc:Description>
-                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</cbc:ValueDataTypeCode>
-                    <cbc:ExpectedDescription>AUTOMOTIVE PROFESSIONALS</cbc:ExpectedDescription>
-            </cac::TenderingCriterionProperty>
+            <!-- This will be used for Lot4 -->
             <cac::TenderingCriterionProperty>
-                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">bd265803-ebb0-46c0-8acd-8d99c245df34</cbc:ID>
-                <cbc:Description>URL</cbc:Description>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">6f7c51c2-c2ac-47f2-9c7d-af9be815404a</cbc:ID>
+                <cbc:Description>LotIDs</cbc:Description>
                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
-                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">URL</cbc:ValueDataTypeCode>
-                <cbc:ExpectedID schemeID="URI" schemeAgencyID="EU-COM-GROW">https://www.imiregister.co.uk</cbc:ExpectedID>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot4</cbc:ExpectedID>
             </cac::TenderingCriterionProperty>
-        </cac::SubsidiaryTenderingCriterionPropertyGroup>
+            <!-- This will be used for Lot5 -->
+            <cac::TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">69433c3f-0277-4a8d-a41e-3aeb8ac6257a</cbc:ID>
+                <cbc:Description>LotIDs</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot5</cbc:ExpectedID>
+            </cac::TenderingCriterionProperty>
+            <!-- Begining of data about REQUIREMENT 1 (specification of the name and URL of the Register by the CA) -->
+            <cac::SubsidiaryTenderingCriterionPropertyGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3aacb82e-afba-440c-b64e-1834007965a2</cbc:ID>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+                <cac::TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">624bb66e-ba57-423f-bd08-557342ed8a07</cbc:ID>
+                    <cbc:Description>Register name</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</cbc:ValueDataTypeCode>
+                        <cbc:ExpectedDescription>THE OFFICIAL LIST OF GAS ENGINEERS</cbc:ExpectedDescription>
+                </cac::TenderingCriterionProperty>
+                <cac::TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">bd265803-ebb0-46c0-8acd-8d99c245df34</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">URL</cbc:ValueDataTypeCode>
+                    <cbc:ExpectedID schemeID="URI" schemeAgencyID="EU-COM-GROW">https://www.gassaferister.co.uk</cbc:ExpectedID>
+                </cac::TenderingCriterionProperty>
+            </cac::SubsidiaryTenderingCriterionPropertyGroup>
 
-         <!-- QUESTIONs linked to REQUIREMENT 2 and Lots 3, 6 and 7 would follow -->
+            <!-- QUESTIONS for REQUIREMENT 1 affecting Lots 1, 2, 4, 5 would follow -->
+            <!-- ...etc. -->
 
-        <!-- ... etc. -->
-    </cac:TenderingCriterionPropertyGroup>
+        </cac:TenderingCriterionPropertyGroup>
 
-</cac::TenderingCriterion>
+        <cac::TenderingCriterionPropertyGroup>
+            <cac::TenderingCriterionProperty> <Description>Lots the requirement apply to</Description><!-- ... etc. --> </cac::TenderingCriterionProperty>
+            <!-- This will be used for Lot3 -->
+            <cac::TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">d01bc240-0fd2-426c-986c-123cbb7164d8</cbc:ID>
+                <cbc:Description>Lot ID</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ExpectedID>
+            </cac::TenderingCriterionProperty>
+            <!-- This will be used for Lot6 -->
+            <cac::TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
+                <cbc:Description>LotIDs</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ExpectedID>
+            </cac::TenderingCriterionProperty>
+            <!-- This will be used for Lot7 -->
+            <cac::TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">47d211d9-e933-4d93-b4d7-f45d46a6e83e</cbc:ID>
+                <cbc:Description>LotIDs</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ExpectedID>
+            </cac::TenderingCriterionProperty>
+            <cac::SubsidiaryTenderingCriterionPropertyGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3aacb82e-afba-440c-b64e-1834007965a2</cbc:ID>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
+                <cac::TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">60c1a374-f383-450d-a4f6-484ca8a1ca58</cbc:ID>
+                    <cbc:Description>Register name</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">DESCRIPTION</cbc:ValueDataTypeCode>
+                        <cbc:ExpectedDescription>AUTOMOTIVE PROFESSIONALS</cbc:ExpectedDescription>
+                </cac::TenderingCriterionProperty>
+                <cac::TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">bd265803-ebb0-46c0-8acd-8d99c245df34</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">REQUIREMENT</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">URL</cbc:ValueDataTypeCode>
+                    <cbc:ExpectedID schemeID="URI" schemeAgencyID="EU-COM-GROW">https://www.imiregister.co.uk</cbc:ExpectedID>
+                </cac::TenderingCriterionProperty>
+            </cac::SubsidiaryTenderingCriterionPropertyGroup>
 
-<!-- The rest of criteria of this ESPD-Response document will go here -->
+             <!-- QUESTIONs linked to REQUIREMENT 2 and Lots 3, 6 and 7 would follow -->
+             <!-- ... etc. -->
+        </cac:TenderingCriterionPropertyGroup>
 
-<!-- EO's responses start here -->
+    </cac::TenderingCriterion>
 
-<!-- *4th. SET OF DATA RELATED TO LOTS!* -->
-<!-- Responses provided by the economic operator (EO)-->
-<!-- The EO tenders to Lot1 and Lot3 -->
+    <!-- The rest of criteria of this ESPD-Response document will go here -->
 
-<cac:TenderingCriterionResponse><--12-->
-        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">051c1487-e2de-4315-87e0-7b2ee6b3d5f5</cbc:ID>
-        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8281b8e5-0e13-4ca9-9896-94825d186429</cbc:ValidatedCriterionPropertyID><--13-->
+    <!-- EO's responses start here -->
+
+    <!-- *5th. SET OF DATA RELATED TO LOTS:
+        Actual responses provided by the economic operator (EO) to specify that it tenders to Lot1 and Lot3.*
+
+        The following Response below contains a ''collection'' of two values, each one identifying the Lots to which
+        the Economic Operator tenders to. Notice that the `` cbc:ValidatedCriterionPropertyID` is the reference to
+        the QUESTION Identifier value (UUID a71cad4a-3b01-4dcb-9589-fc581cd25b13) where the CA asks for this list of
+        Lots in the ESPD-Request document (remember that the ESPD-EDM specification strongly emphasises that the
+        whole criterion data structure is to be replicated also in the ESPD-Response document).
+    -->
+
+    <cac:TenderingCriterionResponse>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f51c892a-9ee3-4109-a9d2-bf8a8a7458cd</cbc:ID>
+        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">a71cad4a-3b01-4dcb-9589-fc581cd25b13</cbc:ValidatedCriterionPropertyID>
         <cac:ResponseValue>
-            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">1d0fe5f6-3c98-4443-8f8f-571293740c90</cbc:ID>
-            <cbc:ResponseID>Lot1</cbc:ResponseID><--14-->
+            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">ffa35284-8812-408b-a8fb-a74024d973fd</cbc:ID>
+            <cbc:ResponseID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ResponseID>
         </cac:ResponseValue>
-</cac:TenderingCriterionResponse>
-<cac:TenderingCriterionResponse>
-        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">cbe9e6b5-c6a5-4ba7-8a42-4674df56a592</cbc:ID>
-        <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">838cd8f5-eb81-4cd5-891d-40ef804cb2ee</cbc:ValidatedCriterionPropertyID><--15-->
         <cac:ResponseValue>
-            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">049bc9eb-2e9a-4fbb-8c11-5d2893911150</cbc:ID>
-            <cbc:ResponseID>Lot3</cbc:ResponseID><--16-->
+            <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">817cfcff-8610-4a4b-8b71-97705e124ffd</cbc:ID>
+            <cbc:ResponseID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ResponseID>
         </cac:ResponseValue>
-</cac:TenderingCriterionResponse>
+    </cac:TenderingCriterionResponse>
 
-<!-- The rest of responses would 1) state whether this EO fulfills the REQUIREMENT or not (registering in the Register provided by the CA) and 2) if not, the reasons -->
-</cac:QualificationApplicationResponse
+    <!-- The rest of responses would 1) state whether this EO fulfills the REQUIREMENT or not (registering in the Register provided by the CA) and 2) if not, the reasons -->
+    <!-- Other responses to QUESTIONs contained in other Criteria would follow below. -->
 
+</cac:QualificationApplicationResponse>
 ----
-<1> *1st. SET OF DATA*: The three coming 'cac:ProcurementProjectLot' elements define the Lots into which this procurement procedure has been divided into by the CA.
-<2> *2nd. SET OF DATA*: Data structure "Lots to which the EO tenders to".
-<3> *3rd. SET OF DATA*: Criterion data structure "Enrolment in a relevant professional register".
-<4> Group of Lots for the REQUIREMENT 1 (first Registry) starts here.
-<5> First Lot of REQUIREMENT 1.
-<6> Last Lot of REQUIREMENT 1.
-<7> Beginning of data about REQUIREMENT 1 (specification of the name and URL of the Register by the CA)
-<8> Group of Lots for the REQUIREMENT 2 (second Registry) starts here.
-<9> First Lot concerning REQUIREMENT 2.
-<10> Last Lot concerning REQUIREMENT 2.
-<11> Beginning of data about REQUIREMENT 2 (specification of the name and URL of the Register by the CA)
-<12> *4th. SET OF DATA*: Responses provided by the EO.
-<13> Identifier of the QUESTION answered by this RESPONSE (first lot identifier the EO tenders to).
-<14> Identifier of the first Lot to which the EO tenders to.
-<15> Identifier of the QUESTION answered by this RESPONSE (second lot identifier the EO tenders to)
-<16> Identifier of the second Lot to which the EO tenders to.
