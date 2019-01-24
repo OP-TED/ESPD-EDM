@@ -26,30 +26,37 @@ image::Selfcontained_Risk_Indemnity_Insurance_EO_mock-up.png['Self-contained 'ri
 image::Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png[Self-contained 'Risk indemnity insurance' criterion data structure, alt="Self-contained 'Risk indemnity insurance' criterion data structure",align="center"]
 
 In this case (''Risk indemnity insurance'') there is one large REQUIREMENT_GROUP (with cardinality 1) that contains
-a large REQUIREMENT_SUBGROUP that can be repeated *n* times. This repetitive SUBGROUP sets the identifier of one Lot
-(and only one) and a series of REQUIREMENT(s) and QUESTION(s) that apply to that Lot. Notice that the link has to be
-established only to one Lot, as each Lot has different properties (different REQUIREMENT(s) and QUESTION(s)).
+a large REQUIREMENT_SUBGROUP that can be repeated *n* times. This REQUIREMENT_SUBGROUP contains the specific CA's
+constraint that affect the Lots, in this case the CA's specifies two REQUIREMENT(s) herein: 1)a concrete type of
+insurance, and 2) a minimum threshold for this type of insurance. This implies that the EO must subscribe this very
+specific insurance for an amount greater than the one specified by the CA.
 
-==== Sets of data occurrence in the ESPD-Response
+[NOTE]
+====
+*_If you wanted to apply the REQUIREMENT to all the Lots you could use the same trick that is used in the REGULATED ESPD:
+1) refer only to one Lot, and 2) use the value `0` to identify it, thus meaning that all the lots of the procedure are
+affected by this REQUIREMENT._*
 
-In the ESPD-Response, the instantiation of the elements follows this pattern (see also the
-''Data elements ordered as expected in the ESPD-Response" in the table above).
+*_This would prevent having to list every Lot, which is very convenient in procedures with dozens or hundreds of Lots._*
 
-* *_1st. SET OF DATA_*: Lots of the procurement procedure. See the XSD schema for the link:#viii-2-espd-request-xsd-schema[/cac:ProcurementProjectLot element]. This set of data is common to all the ESPD-Request and ESPD-Response documents about procedures divided into lots;
-* *_2nd. SET OF DATA_*: Lots to which the economic operator (EO) tenders to. See the data structure link:#lots-economic-operator-perspective[Lots tendered to] (Figure ''Figure 225. Lots tendered, data structure''). This set of data is common to all the ESDP-Response documents about procedures divided into lots;
-* *_3rd. SET OF DATA_*:
-  ** CA's REQUIREMENTs: The CA specifies one or more
-
-  ** Group of QUESTION(s) addressed to the EO related to the REQUIREMENT(s) above;
-* *_4th. SET OF DATA_*: The responses provided by the EO, i.e. an answer for each QUESTION inside the GROUP of QUESTION(s).
+====
 
 ===== XML example
+
 
 [NOTE]
 ====
 *_Many compulsory elements and attributes of the XML example below have been removed to gain clarity and brevity. For
 complete XML samples download the files under folder
 link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml]._*
+
+*_In this example the 1st., 2nd., 3rd. and 5th. blocks of data are not presented (they occur only once in the ESPD-Response
+document). See the previous example for the details on these blocks. This example presents only the 4th. block
+corresponding to the criterion 'Risk indemnity insurance' and the responses to the QUESTION(s) asked therein._*
+
+
+*_The example presented next was extracted from the file
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Lots-SelfContained-Response_V2.1.0.xml[Lots-SelfContained-Response_V2.1.0.xml]_*
 
 ====
 

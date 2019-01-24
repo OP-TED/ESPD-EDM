@@ -36,29 +36,20 @@ image::Self-contained_Suitability_LOTS_EO_mockup.png[Self-contained 'Suitability
 image::Selfcontained_Suitability_Enrolment_Data_Structure.png['Enrolment in a relevant professional register' suitability criterion, alt="'Enrolment in a relevant professional register' suitability criterion",align="center"]
 
 In this case, ''Enrolment in a relevant professional register'', the ESPD-Request
-document will contain one or more GROUP(s) of one (only one) REQUIREMENT which will apply to one or more Lots. Each GROUP
-can ask for multiple enrolments, i.e. the economic operator will be able to specify more than one enrolment satisfying
-the specific requirement.
+document will contain one or more GROUP(s) of one (only one) REQUIREMENT of multiple cardinality: it can be applied
+to refer to a subset of Lots. The REQUIREMENT_SUBGROUP, following this list of Lots, contains the specific CA's
+constraint that affect the Lots, in this case the CA's request that the EO needs to be
+registered in one concrete Register.
 
-==== Sets of data occurrence in the ESPD-Response
+[NOTE]
+====
+*_If you wanted to apply the REQUIREMENT to all the Lots you could use the same trick that is used in the REGULATED ESPD:
+1) refer only to one Lot, and 2) use the value `0` to identify it, thus meaning that all the lots of the procedure are
+affected by this REQUIREMENT._*
 
-In the ESPD-Response, the instantiation of the elements follows this pattern (see also the
-''Data elements ordered as expected in the ESPD-Response" in the table above).
+*_This would prevent having to list every Lot, which is very convenient in procedures with dozens or hundreds of Lots._*
 
-* *_1st. SET OF DATA_*, Lots of the procurement procedure. See the XSD schema for the link:#viii-2-espd-request-xsd-schema[/cac:ProcurementProjectLot element]. This set of data is common to all the ESPD-Request and ESPD-Response documents about procedures divided into lots;
-* *_2nd. SET OF DATA_*, Requirements by the CA about the submission of tenders when the procedure is divided into Lots.
-Kind of ''participation criterion'' data structure link:l#iii-11-lots-self-contained-espd[Lots - Self-contained ESPD] (Figure ''Figure Figure 32. Requirements about Lots issued by the CA (Selfcontained ESPD), data structure'').
-This set of data is common to all the ESDP-Response documents about procedures divided into lots;
-* *_3rd. SET OF DATA_* Lots to which the economic operator (EO) tenders to. Kind of ''participation criterion'' data structure
-link:#lots-economic-operator-perspective[Lots tendered to] (Figure ''Figure 225. Lots tendered, data structure'').
-This set of data is common to all the ESDP-Response documents about procedures divided into lots;
-* *_4rd. SET OF DATA_*, The ''true'' selection Enrolment-related criterion:
-  ** CA's REQUIREMENT(s). The CA specifies one particular Register where the EO has to be enroled. It also specify the Lots
-  that are affected by this REQUIREMENT;
-  ** The CA can specify more than one Register and the Lots for which this enrolment makes sense;
-  ** Group of QUESTION(s) addressed to the EO related to the REQUIREMENT(s) above. See the data structures about link:#data-structure-enrolments-self-contained[Enrolments];
-
-* *_5th. SET OF DATA_*: The responses provided by the EO where it specifies the Lots it tenders to.
+====
 
 ===== XML example
 
@@ -67,6 +58,9 @@ This set of data is common to all the ESDP-Response documents about procedures d
 *_Many compulsory elements and attributes of the XML example below have been removed to gain clarity and brevity. For
 complete XML samples download the files under folder
 link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml]._*
+
+The example presented next was extracted from the file
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Lots-SelfContained-Response_V2.1.0.xml[Lots-SelfContained-Response_V2.1.0.xml]_*
 
 ====
 

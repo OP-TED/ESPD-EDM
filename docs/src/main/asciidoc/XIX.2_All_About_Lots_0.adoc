@@ -33,9 +33,9 @@ Therefore this section focuses only the SELF-CONTAINED ESPD-Response document.
 
 ==== Lots: general information requirement check-list
 
-. *Criteria with references to Lots*: The current design of the UBL-2.2 `cac:TenderingCriterion` would allow
- references to Lots for any type of Criteria. However
-the current version of the ESPD-EDM only identifies this need to a reduced set of Selection Criteria (see the
+. *Criteria with references to Lots*: The current design of the UBL-2.2 `cac:TenderingCriterion` allows
+ referencing Lots for any type of Criteria. However
+the current version of the ESPD-EDM only identifies this need in a reduced set of Selection Criteria (see the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[Criteria Taxonomy spread-sheets]
 for more details, like the Criterion description, UUID, Code, etc.):
 
@@ -58,16 +58,18 @@ for more details, like the Criterion description, UUID, Code, etc.):
     *** Criterion #38 - For supply contracts: performance of deliveries of the specified type
     *** Criterion #39 - For service contracts: performance of services of the specified type
 
-. *Order of occurrence*: The table below presents the different ''blocks'' of data related to Lots as in the sequence
-they must occur in the ESPD-Response. The aim of this table is help implementors to identify the type of data structure,
+. *Order of occurrence*: The table below presents the different ''blocks'' of data related to Lots in the sequence
+they must occur in the ESPD-Response. The aim of this table is help implementors identify the type of data structure,
 what it is used for, where to locate its definition (in the UBL-2.2 XSD Schema and the Criteria Taxonomy spread-sheet),
-and namely which comes first and which come after (i.e. how they are sequenced).
+and which comes first and which goes after (i.e. how they are sequenced).
 
 [NOTE]
 ====
 *_A complete ESPD-Response document with the examples provided in this section can be found in the file
-link:
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Lots-SelfContained-Response_V2.1.0.xml[Lots-SelfContained-Response_V2.1.0.xml]_*
+====
 
+.Order of occurrence of the different blocks of data related to Lots
 [cols="<1,<1,<2,<2,<2"]
 |===
 |*Nº*|*Data Element*|*Description*|*Location*|*Rules*
