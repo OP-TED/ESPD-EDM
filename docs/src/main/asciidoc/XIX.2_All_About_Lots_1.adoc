@@ -5,14 +5,12 @@
 
 For each criteria regarding suitability, the CA should be able to provide: the register name, its URL and the Lots to which each requirement apply.
 
-The mock-up below represents the requirements the CA should be able to specify for a suitability criterion in a procedure procurement that is *not divided into lots*:
+This mock-up represents the situation when the procurement procedure is *divided into lots*. The contracting authority (CA) may request that
+the economic operator is registered in one or multiple registers (the REQUIREMENT). Per each register the CA specifies to
+which Lots this make sense.
 
-.Self-contained 'Suitability' criterion without Lots (CA perspective)'
-image::Self-contained_Suitability_NOLOTS_CA_mockup.png[Self-contained 'Suitability' criterion (CA perspective), alt="Self-contained 'Suitability' criterion (CA perspective)", align="center"]
-
-This other mock-up represents the same situation when the procurement procedure is *divided into lots*.
-
-The contracting authority (CA) may request that the economic operator is registered in one or multiple registers. Per each register the CA specifies to which Lots this make sense. This behaviour of “one set of lots per *group of properties* is regular for all those selection criteria where the allocation of lots to a set of 'criterion properties' make sense (e.g. see the section "References").
+This behaviour of “one set of lots per *group of properties* is regular for all those selection criteria where
+the allocation of lots to a set of 'criterion properties' make sense.
 
 .Self-contained 'Suitability' criterion with Lots (CA perspective)'
 image::Self-contained_Suitability_LOTS_CA_mockup_NO_BULLETS.png[Self-contained 'Suitability' criterion (CA perspective), alt="Self-contained 'Suitability' criterion (CA perspective)", align="center"]
@@ -28,7 +26,7 @@ Notice that:
 . In case of answering "No" the economic operator will have to provide the reasons why it is not registered.
 
 .Self-contained 'Suitability' criterion (EO perspective)'
-image::Self-contained_Suitability_LOTS_EO_mockup.png[Self-contained 'Suitability' criterion (EO perspective), alt="Self-contained 'Suitability' criterion (EO perspective)", width="800" align="center"]
+image::Self-contained_Suitability_LOTS_EO_mockup_NO_BULLETS.png[Self-contained 'Suitability' criterion (EO perspective), alt="Self-contained 'Suitability' criterion (EO perspective)", width="800" align="center"]
 
 ===== Criterion data structure
 
@@ -342,14 +340,14 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
 [NOTE]
 ====
 *_Due to one strict Naming and Design Rule (NDR) in UBL, Common Basic Components (those basic data elements for which
-the `cbc:` prefix is used in UBL), cannot have multiple cardinality (of type 0..n or 1..n).
+the `cbc:` prefix is used in UBL), cannot have multiple cardinality (of type 0..n or 1..n)._*
 
-For this reason we find REQUIREMENT(s) in ESPD that cannot refer to a list of elements of the same type. Take for
+*_For this reason we find REQUIREMENT(s) in ESPD that cannot refer to a list of elements of the same type. Take for
 example the property labelled as "LotID" in the data structure of the figure above. This is 'one' REQUIREMENT with
 cardinality `1..n`. However, inside the criterion data structure, it had to be strcutured as multiple REQUIREMENT(s) (see
-the XML fragment below).
+the XML fragment below)._*
 
-This issue is currently being discussed in the UBL-2.3 TC and a solution will be soon provided.
+*_This issue is currently being discussed in the UBL-2.3 TC and a solution will be soon provided._*
 ====
 
 Once solved, in UBL-2.3, the sequence of 5 properties below would be reduced to only one (or type REQUIREMENT):
