@@ -92,7 +92,7 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
     </cac:ProcurementProjectLot>
 
 
-    <!-- *2nd. SET OF DATA RELATED TO LOTS: CA's Requirements concerning the submission of tenders when a procedure is divided into Lots.
+    <!-- *2nd. SET OF DATA RELATED TO LOTS: conditions concerning the submission of tenders when a procedure is divided into Lots.
          This is currently modelled as a kind of 'participation' criterion, however UBL-2.2 has a specific different treatment of these information requirements (see the `cac:LotDistribution` element)
          This issue will be reviewed in future versions of the ESPD-EDM. For version 2.1 it is necessary to use this Criterion data structure.
         *Please do not use the UBL-2.2 `cac:LotDistribution` for the time being, as it does not catter for the specification of the type of submission as a code, which is required in the ESPD-EDM. *
@@ -227,7 +227,7 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
                 <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot5</cbc:ExpectedID>
             </cac:TenderingCriterionProperty>
-            <!-- Begining of data about REQUIREMENT 1 (specification of the name and URL of the Register by the CA) -->
+            <!-- Beginning of data about REQUIREMENT 1 (specification of the name and URL of the Register by the CA) -->
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
                 <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">3aacb82e-afba-440c-b64e-1834007965a2</cbc:ID>
                 <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.0.2">ON*</cbc:PropertyGroupTypeCode>
@@ -344,7 +344,7 @@ the `cbc:` prefix is used in UBL), cannot have multiple cardinality (of type 0..
 
 *_For this reason we find REQUIREMENT(s) in ESPD that cannot refer to a list of elements of the same type. Take for
 example the property labelled as "LotID" in the data structure of the figure above. This is 'one' REQUIREMENT with
-cardinality `1..n`. However, inside the criterion data structure, it had to be strcutured as multiple REQUIREMENT(s) (see
+cardinality `1..n`. However, inside the criterion data structure, it had to be structured as multiple REQUIREMENT(s) (see
 the XML fragment below)._*
 
 *_This issue is currently being discussed in the UBL-2.3 TC and a solution will be soon provided._*

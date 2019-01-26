@@ -3024,6 +3024,12 @@
             </cac:SubsidiaryTenderingCriterionPropertyGroup>
         </cac:TenderingCriterionPropertyGroup>
     </cac:TenderingCriterion>
+    
+    
+    <!-- 
+        *_See in this criterion for an example of the use of Lots_*
+        Remember that this procedure is divided into 7 lots, Lot1 to Lot7. 
+    -->
     <cac:TenderingCriterion>
         <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7604bd40-4462-4086-8763-a50da51a869c</cbc:ID>
         <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE</cbc:CriterionTypeCode>
@@ -3036,18 +3042,30 @@
             <cbc:Article>Article 58(3)</cbc:Article>
             <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.094.01.0065.01.ENG</cbc:URI>
         </cac:Legislation>
+        <!-- 
+            * FIRST GROUP OF 2 REQUIREMENTS*: 
+                ** REQUIREMENT 1*: For Lot1, Lot2, Lot4 and Lot5, the economic operator needs an insurance of type ''Professional Indemnity Insurance'';
+                ** REQUIREMENT 2*: A threshold, "The minimum amount insured must be of 50,000 €".
+        -->
         <cac:TenderingCriterionPropertyGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">83e3dcc4-c9b3-47e5-9fb8-ffd8386679f1</cbc:ID>
             <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+            <!-- 
+                This caption is addressed for the software application to use it as a group label. 
+                In UBL-2.2 the presence of a property is mandatory as the first element of a group or subgroup. The proposal for future versions 
+                of UBL is to make this element optional. 
+                 --> 
             <cac:TenderingCriterionProperty>
                 <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f960872f-5dfe-459e-adb9-9207dd4f9ce3</cbc:ID>
                 <cbc:Description>Lots the requirement applies to</cbc:Description>
                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CAPTION</cbc:TypeCode>
                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">NONE</cbc:ValueDataTypeCode>
             </cac:TenderingCriterionProperty>
+           
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
                 <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">cc1da737-6c4e-4f4e-821d-c260029058f6</cbc:ID>
                 <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                <!-- *Lot1* is affected by the REQUIREMENT(s)  -->
                 <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d4774e56-3979-47c6-8d83-9fc7da70418d</cbc:ID>
                     <cbc:Description>Lot ID</cbc:Description>
@@ -3055,6 +3073,7 @@
                     <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
                     <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ExpectedID>
                 </cac:TenderingCriterionProperty>
+                <!-- *Lot2* is affected by the REQUIREMENT(s)  -->
                 <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d4774e56-3979-47c6-8d83-9fc7da70418d</cbc:ID>
                     <cbc:Description>Lot ID</cbc:Description>
@@ -3062,30 +3081,45 @@
                     <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
                     <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ExpectedID>
                 </cac:TenderingCriterionProperty>
+                <!-- *Lot4* is affected by the REQUIREMENT(s)  -->
                 <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d4774e56-3979-47c6-8d83-9fc7da70418d</cbc:ID>
                     <cbc:Description>Lot ID</cbc:Description>
                     <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
                     <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
-                    <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ExpectedID>
+                    <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot4</cbc:ExpectedID>
+                </cac:TenderingCriterionProperty>
+                <!-- *Lot5* is affected by the REQUIREMENT(s)  -->
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">ad29bccc-af49-405b-b3f3-bb28f351f3ff</cbc:ID>
+                    <cbc:Description>Lot ID</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">LOT_IDENTIFIER</cbc:ValueDataTypeCode>
+                    <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">Lot5</cbc:ExpectedID>
                 </cac:TenderingCriterionProperty>
                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                     <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">6fc3a90b-0759-4517-af64-ce7d6eb4bf24</cbc:ID>
                     <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                    
+                    <!-- The REQUIREMENT(s) defined by the CA start here! -->
+                    
                     <cac:TenderingCriterionProperty>
                         <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9c5af342-7f25-4901-b786-4d7d87613876</cbc:ID>
                         <cbc:Description>Type of insurance</cbc:Description>
                         <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
                         <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
-                        <cbc:ExpectedDescription>__RiskInsurance</cbc:ExpectedDescription>
+                        <cbc:ExpectedDescription>Professional Indemnity Insurance</cbc:ExpectedDescription>
                     </cac:TenderingCriterionProperty>
                     <cac:TenderingCriterionProperty>
                         <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c1a9763e-f1d8-40b1-a736-4db9a8b3a8f6</cbc:ID>
                         <cbc:Description>Minimum amount</cbc:Description>
                         <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
                         <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">AMOUNT</cbc:ValueDataTypeCode>
-                        <cbc:MinimumAmount currencyID="EUR">100005</cbc:MinimumAmount>
+                        <cbc:MinimumAmount currencyID="EUR">50000</cbc:MinimumAmount>
                     </cac:TenderingCriterionProperty>
+                    
+                    <!-- The properties for the QUESTION(s) addressed to the economic operator (EO) start here! -->
+                    
                     <cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">42dc8062-974d-4201-91ba-7f2ea90338fd</cbc:ID>
                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -3108,6 +3142,8 @@
                             <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">INDICATOR</cbc:ValueDataTypeCode>
                         </cac:TenderingCriterionProperty>
                     </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    
+                    <!-- Next sub-group of properties reserved for the EO to provide evidences --> 
                     <cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -7408,14 +7444,30 @@
             <cbc:ID schemeAgencyID="ISO/IEC 9834-8:2008 - 4UUID">33916cf1-eba2-4e1d-8486-6bba88da43fa</cbc:ID>
         </cac:EvidenceSupplied>
     </cac:TenderingCriterionResponse>
+    
+    <!-- 
+        Responses to the criterion "Risk indemnity insurance" start here!
+        See C#35 -> CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE.    
+    --> 
+        
+    <!-- 
+        Response to the first QUESTION addressed to the EO: ''Amount''
+    -->
     <cac:TenderingCriterionResponse>
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">cb14048f-4d65-40f3-958c-e42be950c907</cbc:ID>
         <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">560d5a23-d7d4-4b29-8e79-9f6989248bbc</cbc:ValidatedCriterionPropertyID>
         <cac:ResponseValue>
             <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d4454b23-83cc-4a55-b700-9c43b1d0422a</cbc:ID>
-            <cbc:ResponseAmount currencyID="EUR">450.31</cbc:ResponseAmount>
+            <!-- The amount provided by the EO is greater than the threshold of 50,000.00 € established by the CA. -->
+            <cbc:ResponseAmount currencyID="EUR">121000</cbc:ResponseAmount> 
         </cac:ResponseValue>
     </cac:TenderingCriterionResponse>
+    
+    <!-- 
+        Response to the second QUESTION addressed to the EO: ''As an EO I will commit to obtain the minimum amount required''.  The EO self-declares that
+        it is subject to this obligation.  If the EO answers `true` the answer to the following QUESTION would normally be `false`.
+    -->
+    
     <cac:TenderingCriterionResponse>
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">263ec029-5a2b-4339-a916-8ed7b641c1ae</cbc:ID>
         <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">15c83cb9-964f-4cfb-9797-bb47de0c2372</cbc:ValidatedCriterionPropertyID>
@@ -7424,14 +7476,20 @@
             <cbc:ResponseIndicator>true</cbc:ResponseIndicator>
         </cac:ResponseValue>
     </cac:TenderingCriterionResponse>
+    
+    <!-- 
+        Response to the third QUESTION addressed to the EO: ''I am exempt''. The EO self-declares that it is not exempt of this obligation and therefore it reinforces the 
+        previous answer. An answer `true` would be possible but not logic.
+    -->
     <cac:TenderingCriterionResponse>
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9f8e43c3-c81c-42ea-83c9-2a43eca5780f</cbc:ID>
         <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">94bb4351-41bb-4596-88ac-36781624a460</cbc:ValidatedCriterionPropertyID>
         <cac:ResponseValue>
             <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">cb7df2aa-ad7d-4c60-8512-bdbf1a645896</cbc:ID>
-            <cbc:ResponseIndicator>true</cbc:ResponseIndicator>
+            <cbc:ResponseIndicator>false</cbc:ResponseIndicator>
         </cac:ResponseValue>
     </cac:TenderingCriterionResponse>
+    
     <cac:TenderingCriterionResponse>
         <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c706505a-8016-4d54-8f71-fb47e9edc3b9</cbc:ID>
         <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">539b1902-1b5a-485f-b321-e36cada7c395</cbc:ValidatedCriterionPropertyID>
