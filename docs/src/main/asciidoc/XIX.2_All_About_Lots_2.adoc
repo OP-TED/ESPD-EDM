@@ -25,14 +25,13 @@ image::Selfcontained_Risk_Indemnity_Insurance_EO_mock-up_NO_BULLETS.png['Self-co
 .'Risk indemnity insurance' criterion data structure (SELF-CONTAINED)
 image::Selfcontained_Risk_Indemnity_Insurance_Data_Structure.png[Self-contained 'Risk indemnity insurance' criterion data structure, alt="Self-contained 'Risk indemnity insurance' criterion data structure",align="center"]
 
-In this case (''Risk indemnity insurance'') there is one large REQUIREMENT_GROUP (with cardinality 1) that contains
+In this case (''Risk indemnity insurance'') there is one large REQUIREMENT_GROUP that contains
 a large REQUIREMENT_SUBGROUP that can be repeated *n* times. This REQUIREMENT_SUBGROUP contains the specific CA's
 constraint that affect the Lots, in this case the CA's specifies two REQUIREMENT(s) herein: 1)a concrete type of
 insurance, and 2) a minimum threshold for this type of insurance. This implies that the EO must subscribe this very
 specific insurance for an amount greater than the one specified by the CA.
 
 ===== XML example
-
 
 [NOTE]
 ====
@@ -94,11 +93,7 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
             <cbc:Article>Article 58(3)</cbc:Article>
             <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.094.01.0065.01.ENG</cbc:URI>
         </cac:Legislation>
-        <!--
-            * FIRST GROUP OF 2 REQUIREMENTS*:
-                ** REQUIREMENT 1*: For Lot1, Lot2, Lot4 and Lot5, the economic operator needs an insurance of type ''Professional Indemnity Insurance'';
-                ** REQUIREMENT 2*: A threshold, "The minimum amount insured must be of 50,000 €".
-        -->
+
         <cac:TenderingCriterionPropertyGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">83e3dcc4-c9b3-47e5-9fb8-ffd8386679f1</cbc:ID>
             <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -113,6 +108,12 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CAPTION</cbc:TypeCode>
                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">NONE</cbc:ValueDataTypeCode>
             </cac:TenderingCriterionProperty>
+
+            <!--
+                * FIRST GROUP OF 2 REQUIREMENTS*:
+                    ** REQUIREMENT 1*: For Lot1, Lot2, Lot4 and Lot5, the economic operator needs an insurance of type ''Professional Indemnity Insurance'';
+                    ** REQUIREMENT 2*: A threshold, "The minimum amount insured must be of 50,000 €".
+            -->
 
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
                 <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">cc1da737-6c4e-4f4e-821d-c260029058f6</cbc:ID>
@@ -218,6 +219,18 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
                     </cac:SubsidiaryTenderingCriterionPropertyGroup>
                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
             </cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+            <!-- THE SECOND SUB-GROUP(s) OF 2 REQUIREMENTS WOULD FOLLOW NEXT, LINKED TO Lot3, Lot6 and Lot7).-->
+
+            <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <!-- ... -->
+                <!--* SECOND GROUP OF 2 REQUIREMENTS*:
+                                    ** REQUIREMENT 1*: For Lot3, Lot6, Lot7, the economic operator needs an insurance of type ''Employers (Compulsory) Liability Insurance'';
+                                    ** REQUIREMENT 2*: A threshold, "The minimum amount insured must be of 1000000,000 €".
+                -->
+                <!-- ... -->
+            </cac:SubsidiaryTenderingCriterionPropertyGroup>
+
         </cac:TenderingCriterionPropertyGroup>
     </cac:TenderingCriterion>
 

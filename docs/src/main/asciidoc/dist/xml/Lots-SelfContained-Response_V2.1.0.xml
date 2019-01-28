@@ -3042,11 +3042,6 @@
             <cbc:Article>Article 58(3)</cbc:Article>
             <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.094.01.0065.01.ENG</cbc:URI>
         </cac:Legislation>
-        <!-- 
-            * FIRST GROUP OF 2 REQUIREMENTS*: 
-                ** REQUIREMENT 1*: For Lot1, Lot2, Lot4 and Lot5, the economic operator needs an insurance of type ''Professional Indemnity Insurance'';
-                ** REQUIREMENT 2*: A threshold, "The minimum amount insured must be of 50,000 €".
-        -->
         <cac:TenderingCriterionPropertyGroup>
             <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">83e3dcc4-c9b3-47e5-9fb8-ffd8386679f1</cbc:ID>
             <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -3062,6 +3057,11 @@
                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">NONE</cbc:ValueDataTypeCode>
             </cac:TenderingCriterionProperty>
            
+            <!-- 
+            * FIRST SUB-GROUP OF 2 REQUIREMENTS*: 
+                ** REQUIREMENT 1*: For Lot1, Lot2, Lot4 and Lot5, the economic operator needs an insurance of type ''Professional Indemnity Insurance'';
+                ** REQUIREMENT 2*: A threshold, "The minimum amount insured must be of 50,000 €".
+            -->
             <cac:SubsidiaryTenderingCriterionPropertyGroup>
                 <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">cc1da737-6c4e-4f4e-821d-c260029058f6</cbc:ID>
                 <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
@@ -3166,8 +3166,23 @@
                     </cac:SubsidiaryTenderingCriterionPropertyGroup>
                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
             </cac:SubsidiaryTenderingCriterionPropertyGroup>
-        </cac:TenderingCriterionPropertyGroup>
+            
+            <!-- A SECOND, THIRD, FOURTH, ETC. SUB-GROUP(s) OF 2 REQUIREMENTS COULD FOLLOW LINKED TO OTHER LOTS OF 
+                THE PROCEDURE (e.g. for Lots 3, 6 and 7).-->
+            <!-- ... -->
+            <!--e.g. *SECOND GROUP OF 2 REQUIREMENTS*:
+                        ** REQUIREMENT 1*: For Lot3, Lot6, Lot7, the economic operator needs an insurance of type ''Employers (Compulsory) Liability Insurance'';
+                        ** REQUIREMENT 2*: A threshold, "The minimum amount insured must be of 1000000,000 €".
+                -->
+            <!-- ... etc. -->
+            
+         </cac:TenderingCriterionPropertyGroup>
     </cac:TenderingCriterion>
+    
+    <!-- 
+        *_See in this criterion for an example of the use of Lots_*
+        Remember that this procedure is divided into 7 lots, Lot1 to Lot7. 
+    -->
     <cac:TenderingCriterion>
         <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">ab0e7f2e-6418-40e2-8870-6713123e41ad</cbc:ID>
         <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENTS</cbc:CriterionTypeCode>
