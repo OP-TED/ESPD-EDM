@@ -303,9 +303,10 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
 
     </cac:TenderingCriterion>
 
-    <!-- The rest of criteria of this ESPD-Response document will go here -->
+    <!-- OTHER SELECTION CRITERIA CONTAINING CA'S REQUIREMENTS AFFECTING CONCRETE LOTS WOULD FOLLOW, e.g. Risk
+    indemnity insurance, Other economic or financial requirements and References. -->
 
-    <!-- EO's responses start here -->
+    <!-- EO's responses follow -->
 
     <!-- *5th. SET OF DATA RELATED TO LOTS:
         Actual responses provided by the economic operator (EO) to specify that it tenders to Lot1 and Lot3.*
@@ -336,21 +337,20 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
 </cac:QualificationApplicationResponse>
 ----
 
-.Note for the future: Lists of elements in a CA's REQUIREMENT
-[NOTE]
-====
-*_Due to one strict Naming and Design Rule (NDR) in UBL, Common Basic Components (those basic data elements for which
-the `cbc:` prefix is used in UBL), cannot have multiple cardinality (of type 0..n or 1..n)._*
+==== Note for the future
 
-*_For this reason we find REQUIREMENT(s) in ESPD that cannot refer to a list of elements of the same type. Take for
-example the property labelled as "LotID" in the data structure of the figure above. This is 'one' REQUIREMENT with
-cardinality `1..n`. However, inside the criterion data structure, it had to be structured as multiple REQUIREMENT(s) (see
-the XML fragment below)._*
+Due to one strict Naming and Design Rule (NDR) in UBL, Common Basic Components (those basic data elements for which
+the `cbc:` prefix is used in UBL), cannot have multiple cardinality (of type 0..n or 1..n).
 
-*_This issue is currently being discussed in the UBL-2.3 TC and a solution will be soon provided._*
-====
+For this reason sometimes we find one REQUIREMENT that refer multiple basic elements of the same type but that, in
+the XML implementation needs to be broken down into multiple REQUIREMENT(s). Take for example the property labelled
+as "LotID" in the data structure (see figure below). This is 'one' REQUIREMENT with
+cardinality `1..n`.
 
-Once solved, in UBL-2.3, the sequence of 5 properties below would be reduced to only one (or type REQUIREMENT):
+.REQUIREMENT containing a list of elements
+image::AllAboutLots_REQUIREMENT_for_ListOf_LotIDs.png[REQUIREMENT containing a list of elements, alt="REQUIREMENT containing a list of elements", align="center"]
+
+The fragment of XML code shows how this list of lot identifiers ends up implemented as multiple REQUIREMENTs.
 
 [source,xml]
 ----
@@ -388,3 +388,6 @@ Once solved, in UBL-2.3, the sequence of 5 properties below would be reduced to 
     </cac:TenderingCriterionProperty>
 
 ----
+
+*_This issue is currently being discussed in the UBL-2.3 TC and a solution will be soon provided._* Once solved, the
+sequence of 5 properties below would be reduced to only one (of type REQUIREMENT):
