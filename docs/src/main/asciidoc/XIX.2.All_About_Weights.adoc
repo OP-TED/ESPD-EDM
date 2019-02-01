@@ -99,7 +99,7 @@ link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
 |*BEWARE* that the REQUIREMENT ''This criterion will be weighted'' is redundant with the element
 `cbc:EvaluationMethodTypeCode`, which may cause inconsistency. Therefore try and do not use this
 REQUIREMENT ''This criterion will be weighted'' and use instead the `cbc:EvaluationMethodTypeCode`. If you do not
-use this REQUIREMENT then you have to replace it with a CAPTION, because because the cardinality constraint imposed
+use this REQUIREMENT then you have to replace it with a CAPTION, because the cardinality constraint imposed
 by the UBL-2.2 requires that the first element inside a group or subgroup is a `cac:TenderingCriterionProperty` it in the XSD schema.
 
 |===
@@ -154,32 +154,23 @@ procedures (''Technicians or technical bodies for quality control'').
 * This REQUIREMENT can be replaced by a CAPTION
 * The purpose of this REQUIREMENT can be fulfilled using the element `cbc:EvaluationMethodTypeCode`
 
-.Self-contained 'Abilities (I)' WEIGHTED EO mock-up
-image::Self-contained_Weighted_Criterion.png[Self-contained 'Abilities (I)' WEIGHTED EO mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up", align="center"]
+.Weighted self-contained 'Abilities (I) - Criterion 'Technicians or technical bodies for quality control'
+image::Self-contained_Weighted_Criterion.png[Weighted self-contained 'Abilities (I) criterion, alt="Weighted self-contained 'Abilities (I) criterion", align="center"]
 
-This section presents an XML Example of a WEIGHTED SELF-CONTAINED criterion (used in a multi-staged procedure).
-The criterion properties corresponding to REQUIREMENT(s) and QUESTION(s) are the ones that were *copied* from the
-ESPD Request into the ESPD Request.
+===== XML example
 
-The XML example contains circled numbers aimed to map the fields in the CA and EO mock-ups:
+The fragment of XML code below illustrates how the elements related to the weighting are specified in an SELF-CONTAINED
+ESPD Request document.
 
-The example illustrates:
+[NOTE]
+====
+*_Many compulsory elements and attributes of the XML example below that are not related to the subject covered in
+this section have been removed to gain clarity and brevity. For complete XML samples download the files under folder
+link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml]._*
 
-. the REQUIREMENT(s) issued by the CA;
-
-. the QUESTION(s) addressed to the EO;
-
-. the answwers provided by the EO.
-
-==== XML snippet 1.a) criterion REQUIREMENT(s) and QUESTION(s) (SELF-CONTAINED and WEIHGTED)
-
-Notice that the data is distributed in three places:
-
-. Some root elements (directly under the root element of the `/QualificationApplicationResponse`. Observe that in the case of elements `cbc:Description` UBL-2.2 does always specify a multiple cardinality. This allows for separating the lines of the text thus facilitating its presentation for layout purposes.
-
-. The criterion itself; see circled numbers and comments beneath the XML code;
-
-. The data structure (see the SELF-CONTAINED spread-sheet tab link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.ods[SC-Abilities_1]).
+*_The example presented next was extracted from the file
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Lots-SelfContained-Response_V2.1.0.xml[Weighted_Criteria-Self-Contained-Request-2.1.0.xml]_*
+====
 
 .Criterion "Technicians or technical bodies for quality control" (SELF-CONTAINED and WEIHGTED)
 [source,xml]
