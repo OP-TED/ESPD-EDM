@@ -1,34 +1,5 @@
 
-=== IX. 3 All about weights
-
-
-==== Information requirement check-list
-
-. Only in SELF-CONTAINED ESPD-Request and ESDP-Response documents
-. Only in multi-staged procedures
-. Only possible for certain Selection criteria:
-
-    ** Abilities I (Persons) - Criteria #40 and #41:
-
-    *** C#40 - *Technicians or technical bodies for quality control* (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_QUALITY_CONTROL)
-    *** C#40 - *For works contracts: technicians or technical bodies to carry out the work* (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS)
-
-    ** Abilities II (Facilities, etc.) - Criteria #42 to #46:
-    *** C#42 - *Technical facilities and measures for ensuring quality* (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_QUALITY_ENSURING)
-    *** C#43 - *Study and research facilities* (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_STUDY_RESEARCH)
-    *** C#44 - *Supply chain management* (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.SUPPLY_CHAIN_MANAGEMENT)
-    *** C#45 - *Environmental management measures* (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.ENVIRONMENTAL_MANAGEMENT_MEASURES)
-    *** C#46 - *Tools, plant or technical equipment* (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.EQUIPMENT)
-
-
-
-    ** Abilities III (Education)
-
-
-. Data elements related:
-
-** Root elements of the ESPD-Request documents:
-** Each Criterion
+=== IX.2 All about weights
 
 The *SELF-CONTAINED ESPD*  caters for two methods of evaluating criteria (the REGULATED ESP does not covers this aspect).
 These two methods are identified in the code list
@@ -48,55 +19,143 @@ Hence the following general rule should be applied by software applications deal
 in order to limit the number of candidates, and 2) it should have the possibility of assigning a weight to any selection
 criterion (the value of the element cbc:EvaluationMethodTypeCode is to be set to `WEIGHTED`);
 
-The data elements related to weighting is distributed in two different places of the UBL-2.2 XSD Schemas:
+==== Information requirement check-list
 
-. At the root of the Qualification Application Request document (see section
-link:https://espd.github.io/ESPD-EDM/v2.1.2/xml_guide.html##iii-4-root-elements[III.4 Root elements], see also
-the UBL-2.2 Schema for the
-link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd[Qualification Application Request]
-(the ESPD-Request document):
+. Only in *SELF-CONTAINED* ESPD-Request and ESDP-Response documents
+. Only in multi-staged procedures
+. The need for weighting was identified only for these Selection criteria (although the data model caters for
+weighing any criterion):
 
-** Data element `cbc:WeightScoringMethodologyNote`, used for transparency motives: a text explaining clearly the
-method that will be used to select those selection criteria that will be weighted is expected from the contracting
-authority;
+    ** *Abilities I (Persons)*
 
-** Data element `cbc:WeightingTypeCode`, used to specify the type of the weighting (numeric, percentage).
+    *** Criterion #40 - Technicians or technical bodies for quality control
+    *** Criterion #41 - For works contracts: technicians or technical bodies to carry out the work
 
-.'Root elements related to criterion weighting'
+    ** *Abilities II (Facilities, etc.)*
+
+    *** Criterion #42 - Technical facilities and measures for ensuring quality
+    *** Criterion #43 - Study and research facilities
+    *** Criterion #44 - Supply chain management
+    *** Criterion #45 - Environmental management measures
+    *** Criterion #46 - Tools, plant or technical equipment
+
+    ** Abilities III (Education)
+
+    *** Criterion #47 - Educational and professional qualifications
+
+
+[NOTE]
+====
+*_A complete ESPD-Response document with the examples provided in this section can be found in the file
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Lots-SelfContained-Response_V2.1.0.xml[Weights-SelfContained-Response_V2.1.0.xml]_*
+====
+
+.Order of occurrence of the different blocks of data related to weights
+[cols="<1,<1,<2,<2,<2"]
+|===
+|*Nº*|*Data Element*|*Description*|*Location*|*Rules*
+|1
+|*The weighting methodology*
+|Method that will be used to select those selection criteria that will be weighted (used for transparency purposes)
+|Element `cbc:WeightScoringMethodologyNote`, at the root of the Qualification Application Request document (see section
+link:#iii-4-root-elements[III.4 Root elements], see also the UBL-2.2 Schema for the Qualification Application Request
+(the link:#iii-the-espd-request-document[ESPD-Request document])
+|The economic operators should be informed in detail about how the selection will be performed
+
+|2
+|*The numeric weighting type*
+|The expression method for the weighting of the selection criteria (numeric, percentage).
+|Element `cbc:WeightingTypeCode`, at the root of the Qualification Application Request document
+|The numeric can also be used to express percentages (in the form of ''0.x''). See also the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[EvaluationMethodType]
+
+|3
+|*The criterion weight value*
+|The concrete value assigned by the CA to the criterion for its weighting at evaluation time (e.g. 10%)
+|Element `cbc:WeightNumeric`, inside the `cac:TenderingCriterion` class
+(see section link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
+|None
+
+|4
+|*The criterion evaluation method type*
+|To inform that the criterion will be weighted (WEIGHTED vs PASSFAIL). See code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[EvaluationMethodType]
+|Element `cbc:EvaluationMethodTypeCode`, inside the `cac:TenderingCriterion` class (see section
+link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
+|The weight is used in second (or subsequent) stages of the evaluation. The first stage is always a PASSFAIL selection,
+even if the code WEIGHTED is assigned to this element
+
+|5
+|*Criterion-specific evaluation approach*
+|Explanation about how this specific criterion is weighted and will be evaluated (for transparency purposes)
+|Element `cbc:WeightingConsiderationDescription`, inside the `cac:TenderingCriterion` class (see section
+link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
+|
+
+|6
+|*REQUIREMENT(s) in the criterion*
+|Criteria that are weighted carry a specific REQUIREMENT stating that ''This criterion will be weighted''
+|Elements `cac:TenderingCriterion` (see the figure on the data structure and the XML example,below)
+|*BEWARE* that the REQUIREMENT ''This criterion will be weighted'' is redundant with the element
+`cbc:EvaluationMethodTypeCode`, which may cause inconsistency. Therefore try and do not use this
+REQUIREMENT ''This criterion will be weighted'' and use instead the `cbc:EvaluationMethodTypeCode`. If you do not
+use this REQUIREMENT then you have to replace it with a CAPTION, because because the cardinality constraint imposed
+by the UBL-2.2 requires that the first element inside a group or subgroup is a `cac:TenderingCriterionProperty` it in the XSD schema.
+
+|===
+
+The figure below shows elements 1 and 2 in the UBL-2.2 XSD Schema:
+
+. Elements related to the weight at the root level of the document
 image::ESPD-Response-WeightingRootElements.png[Root elements related to criterion weighting, alt="Root elements related to criterion weighting", align="center"]
 
-. Inside the `cac:TenderingCriterion` class (see section IV. Criteria, common aspects
-/link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#iv-1-general-behavior[IV.1 General behavior]:
+This other figure shows the elements inside the class Criterion:
 
-** Data element `cbc:WeightNumeric`, used namely for ability and professional selection criteria in procedures
-organised in two or multiple stages;
-
-** Data element `cbc:EvaluationMethodTypeCode`, to inform about the type of Evaluation, namely for transparency purposes
-(e.g. PASSFAIL, WEIGHTED), and
-
-** Data element `cbc:WeightingConsiderationDescription`, used to hold additional information, comments or
-considerations about the weighting and the evaluation method, namely for transparency purposes;
-e.g. '0 Points 0 IT specialists, 30 Points 1 IT specialists, 60 Points 2 IT specialists'.
-
-.'Weight-related data elements in the cac:TenderingCriterion element'
+.Elements related to the weight inside the `cac:TenderingCriterion` class
 image::Criterion-weight-related-data_elements.png[Weight-related data elements, alt="Weight-related data elements", align="center"]
 
+===== Mock-up - contracting authority perspective
 
-==== Mock-ups
+The mock-up below illustrates how the contracting authority may specify weighted criteria.
 
-The mock-up below illustrates how the contracting authority can specify weighted criteria and how the economic operator
-could respond. For a complete example of how an XML instance of Request and Responses with weighted criteria see the
-section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#viii-7-3-xml-example-3-weighting[VIII.7.3 XML Example 3: Weighting].
+Notice that:
 
-*Contracting authority perspective*:
+. The field ''One or more criteria will be weighted'' is not stored in the data model;
+. The field ''Criterion weighting type'' is generic to all the criteria and is placed in the element `cbc:WeightingTypeCode` (element #2 in the table above);
+. The field ''Provide the general method used to score and evaluate the weighted criteria" is hold by the element `cbc:WeightScoringMethodologyNote`;
+and is also generic for all the weighted criteria (element #1 in the table above);
+. The CA has chosen ''WEIGHTED'' as the value for the combo box labeled 'Criterion evaluation method'  and for the specific
+criterion ''For contracts: technicians or technical bodies to carry out the work'' (element #4 in the table above);
+. The weight assigned by the contracting authority (CA) to this criterion is `0.1`. This value will be placed in the the
+element `cbc:WeightNumeric` (element #3 in the table above);
+. The additional information about how this specific criterion will be evaluated will be place in the element
+`cbc:WeightingConsiderationDescription` (element #5 in the table above).
 
 .Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up
 image::Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png[Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up", align="center"]
 
-*Economic operator perspective*:
+===== Mock-up - economic operator perspective
+
+This mock-up illustrates how all the information specified by the contracting authority (CA), concerning
+1) the generic information about weights, and 2) the information specific of the criterion may be
+presented to the economic operator (EO):
 
 .Self-contained 'Abilities (I)' WEIGHTED EO mock-up
 image::Selfcontained_Abilities_WEIGHTED_EO_mockup.png[Self-contained 'Abilities (I)' WEIGHTED EO mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up", align="center"]
+
+===== Criterion data structure
+
+The following data structure represents the structure of one of the selection criteria that may be weighted in multi-stage
+procedures (''Technicians or technical bodies for quality control'').
+
+*Beware* that:
+
+* The fact that the criterion will be weighted is indicated by the REQUIREMENT ''This criterion will be weighted'';
+* This REQUIREMENT can be replaced by a CAPTION
+* The purpose of this REQUIREMENT can be fulfilled using the element `cbc:EvaluationMethodTypeCode`
+
+.Self-contained 'Abilities (I)' WEIGHTED EO mock-up
+image::Self-contained_Weighted_Criterion.png[Self-contained 'Abilities (I)' WEIGHTED EO mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up", align="center"]
 
 This section presents an XML Example of a WEIGHTED SELF-CONTAINED criterion (used in a multi-staged procedure).
 The criterion properties corresponding to REQUIREMENT(s) and QUESTION(s) are the ones that were *copied* from the
