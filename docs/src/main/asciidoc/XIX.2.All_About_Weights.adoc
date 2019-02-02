@@ -175,6 +175,21 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml
 .Criterion "Technicians or technical bodies for quality control" (SELF-CONTAINED and WEIHGTED)
 [source,xml]
 ----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cac:QualificationApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" ... etc. -->
+    <!-- Root elements start here-->
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
+    <!-- ... etc. (beware that some root elements are compulsory, e.g. cbc:ID -->
+    <!-- Main aggregate components -->
+    <cac:ContractingParty> ... </cac:ContractingParty>
+    <cac:EconomicOperatorParty> ... </cac:EconomicOperatorParty>
+    <cac:ProcurementProject>...</cac:ProcurementProject>
+    <!-- Root elements end here -->
+
+    <!-- *FIRST SET OF DATA RELATED TO LOTS!* -->
+    <!-- In this example the CA informs that the Procurement Procedure is divided into three Lots -->
+    <!-- Only the IDs are truly necessary, but the CA is free to provide any other additional data -->
+
 <!-- root elements that are global for all weighted criteria -->
 <cbc:WeightScoringMethodologyDescription>For weighted criteria, evaluators will allocate a score between 0 and 100 to each question reponse in accordance with the scoring guidance below:</cbc:WeightScoringMethodologyDescription><--3-->
 <cbc:WeightScoringMethodologyDescription>0 Unnaceptable</cbc:WeightScoringMethodologyDescription>
