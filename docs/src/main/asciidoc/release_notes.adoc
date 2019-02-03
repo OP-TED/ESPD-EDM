@@ -7,32 +7,33 @@ notably of the SELF-CONTAINED features. No changes have been introduced in the U
 namespace of the XSD Schema is now the final one (as published by the OASIS link:link:http://docs.oasis-open.org/ubl/UBL-2.2.html[UBL-2.2] TC in July 2018).
 The list below details exhaustively every change introduced since the publication of the previous release (2.1.0) of the ESPD-EDM:
 
-* **Online documentation**
+==== Online documentation
 
-The following sections are new, in the link:#strong-xml-implementation-guide-v2-1-0-strong[XML Implementation Guide v2.1.0]:
+The following sections are new, in the link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html[XML Implementation Guide v2.1.0].
 
-** link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#iv-8-gui-control-elements[IV.8 GUI control elements]: This section covers the sets of data elements (codes
+* link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#iv-8-gui-control-elements[IV.8 GUI control elements]: About the sets of data elements (codes
 acting as ''processing instructions'') that help software applications control how to show the Graphic User Interfaces
 (GUI). The section covers three subjects:
 
-*** The use of the link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#ontrue-onfalse-codes-for-group-and-subgroup-control[ONTRUE/ONFALSE] codes for GROUP and SUBGROUP control;
-*** The use of link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#use-of-caption[CAPTION];
-*** Ideas for link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#business-data-and-gui-decoupling[decoupling the data from the GUI] in future versions of the ESPD-EDM.
+** The use of the link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#ontrue-onfalse-codes-for-group-and-subgroup-control[ONTRUE/ONFALSE] codes for GROUP and SUBGROUP control;
+** The use of link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#use-of-caption[CAPTION];
+** Ideas for link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#business-data-and-gui-decoupling[decoupling the data from the GUI] in future versions of the ESPD-EDM.
+See also the link:[examples] provided to illustrate this idea.
 
-** link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha criterion]: This section describes how the economic operator (EO) has the possibility,
+* link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha criterion]: This section describes how the economic operator (EO) has the possibility,
 in the *REGULATED ESPD-Response* document, of specifying that it meets *_all_* the selection criteria (thus avoiding
 the specification of each one of the selection criteria specified in the ESPD-Request. This is a special feature
 only possible in the *REGULATED ESPD*;
 
-** Some selection criteria have been split in multiples sub-sections, e.g. "Abilities"; this is also explained with more detail below;
+* Some selection criteria have been split in multiples sub-sections, e.g. "Abilities"; this is also explained with more detail below;
 
-** link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-other-aspects-of-participation-and-selection[VII. Other aspects of participation and selection]:
+* link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-other-aspects-of-participation-and-selection[VII. Other aspects of participation and selection]:
 In restricted procedures, competitive procedures with negotiation, competitive dialogue procedures and innovation partnerships, contracting authorities may limit
 the number of candidates meeting the selection criteria that they will invite to tender or to conduct a dialogue. To cover this possibility,
 the ESPD Regulation introduces a section named "Reduction of the number of qualified candidates" that is not a true selection criterion.
 Hence this denomination of "participation criterion".
 
-** link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#ix-putting-pieces-together[IX Putting pieces together]:
+* link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#ix-putting-pieces-together[IX Putting pieces together]:
 The ESPD-EDM specification, notably regarding the SELF-CONTAINED ESPD, defines different complex sets of data that are
 scattered in distant locations of the corresponding XML instance. Consequently, implementors of software dealing with
 the ESPD XML instances may have a hard time to identify what needs to go in the XML instance and where.
@@ -40,28 +41,29 @@ This is the case of, specifically, the data related to three topics: 1) economic
 To help implementors understand these topics and how to deal with them, the sub-section illustrates how
 to put together the different sets of data related to each topic with abundant figures and comments.
 
-** Other new resources:
+* Other new resources:
 
-*** link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/doc/evolution/Annotations_Proposal[Examples]
+** link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/doc/evolution/Annotations_Proposal[Examples]
 related to the proposal on _how to decouple the GUI from the data structures_ in future versions of the ESPD-EDM.
-*** link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/doc/evolution/StaticPropertyUUIDGeneration_Proposal[Examples]
+** link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/doc/evolution/StaticPropertyUUIDGeneration_Proposal[Examples]
 on _how to assign *_constant_* UUIDs to the Properties of a Criterion, instead of using dynamically generated UUIDs. A method that
 is currently under discussion: see the link:https://github.com/ESPD/ESPD-EDM/issues/226[Issue #226].
-*** link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[Examples]
+** link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[Examples]
 provided by the ESPDint solution and other manually adapted for the illustration of Lots, Weights and References.
 
-* **UBL-2.2 Schemas**
-** The default namespaces for the two UBL-2.2 maindoc used in ESPD are now:
-*** _urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2_
-*** _urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2_
-*** The rest of all the XSD Schemas namespaces used in UBL-2.2 start now with _urn:oasis:names:specification:ubl:schema:xsd:_, too
-*** See also how the section
+==== UBL-2.2 Schemas
+
+* The default namespaces for the two UBL-2.2 maindoc used in ESPD are now:
+** _urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2_
+** _urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2_
+** The rest of all the XSD Schemas namespaces used in UBL-2.2 start now with _urn:oasis:names:specification:ubl:schema:xsd:_, too
+** See also how the section
 link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#ii-3-ubl-2-2-documents-and-libraries[II.3 UBL-2.2 Documents and libraries]
 in the online documentation has been adapted
 
-* **Code Lists**
+==== Code Lists
 
-** The criteria taxonomy has been added as a code list to the spread-sheet
+* The criteria taxonomy has been added as a code list to the spread-sheet
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[ESPD-CodeLists-V2.1.0.xlsx].
 This has facilitated the automated generation of the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/gc/ESPD-CriteriaTaxonomy_V2.1.0.gc[ESPD-CriteriaTaxonomy]
 Genericode instance with the UUIDs and Codes of each criterion. The code lists can be downloaded as an
@@ -69,27 +71,27 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.ods[ODS file]. The list
 of criteria has been produced based on the CriteriaTaxonomy spread-sheets (both REGULATED and SELF-CONTAINED).
 
-** New codes have been added to the Code List
+* New codes have been added to the Code List
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[ResponseDataType]
 to increase the semantics of the basic elements thus facilitating the software application to process the responses of
 the economic operator in the SELFCONTAINED ESPD-Response document (the ''semantisation'' also facilitates the validation purposes, e.g.
 to ease the validation of whether the attribute schemeID carries a code defined in the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[EOIDType] code list).
 
-*** `ECONOMIC_OPERATOR_IDENTIFIER`, to detect whether an identifier in the response corresponds to to detect an Economic Operator
-*** `LOT_IDENTIFIER`, to identify procurement procedure lots in the responses
-*** `WEIGHT_INDICATOR`, to easily detect that an indicator corresponds to the fact that a criterion is weighted or not
-*** `CODE_BOOLEAN`, to identify a specific type of GUI control element (e.g. a radio button)
+** `ECONOMIC_OPERATOR_IDENTIFIER`, to detect whether an identifier in the response corresponds to to detect an Economic Operator
+** `LOT_IDENTIFIER`, to identify procurement procedure lots in the responses
+** `WEIGHT_INDICATOR`, to easily detect that an indicator corresponds to the fact that a criterion is weighted or not
+** `CODE_BOOLEAN`, to identify a specific type of GUI control element (e.g. a radio button)
 
-** Two new codes have been added to distinguish the Sole Contractor from the Consortium's Lead Entity. The old SCL one
+* Two new codes have been added to distinguish the Sole Contractor from the Consortium's Lead Entity. The old SCL one
 has been marked as deprecated. See the code list
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[EORoleType].
 
-** The complete set of code lists has been re-generated as Genericode 1.0 XML files, which can be
+* The complete set of code lists has been re-generated as Genericode 1.0 XML files, which can be
 accessed and downloaded from the GitHub repository
 link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/gc[GC folder].
 
-* **Business Rules**
+==== Business Rules
 
 The link:https://joinup.ec.europa.eu/solution/interoperability-test-bed[Interoperability Testbed]
 has been set up to cope with the link:https://www.itb.ec.europa.eu/espd/upload[validation] of
@@ -238,25 +240,6 @@ maintained in SIMAP for CodeLists (https://simap.ted.europa.eu/cpv)
 ** Criteria UUIDs are not backwards-consistent (with versions 1.0.2, 2.0.*). New UUIDs have been added for the new
 ESPD-SELF-CONTAINED groups and sub-groups where needed. All corrected and new UUIDs are red-coloured in the
 CriteriaTaxonomy spread-sheets.
-
-* XML examples
-
-** New XML samples have been produced using the ESPDInt solution. These examples can be downloaded from the
-link:https://github.com/ESPD/ESPD-EDM/tree/master/docs/src/main/asciidoc/dist/xml[dist/xml].
-
-* Documentation
-
-** Some new sections have been added to improve the understanding of the ESPD-EDM specification:
-
-*** Section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha criterion], to explain the use of the criterion ''Global indication for all selection criteria'',
-used by the economic operator to state that it fulfills all the selection criteria and thus avoiding having to specify
-how it fulfills long lists of selection criteria.
-
-*** Section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-1-reduction-of-candidates[VII.1 Reduction of candidates],
-which is about how the the contracting authority limits the number of candidates meeting the selection criteria that they will invite to tender. 
-
-*** Section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-2-rules-on-weighting[VII.2 Rules on weighting], on
-how weighting can be used depending on the type of procedure used.
 
 
 === v2.0.2 (May 2018)
