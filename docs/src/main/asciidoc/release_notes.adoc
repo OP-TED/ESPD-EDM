@@ -13,7 +13,7 @@ The list below details exhaustively every change introduced since the publicatio
 *** _urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2_
 *** The rest of all the XSD Schemas namespaces used in UBL-2.2 start now with _urn:oasis:names:specification:ubl:schema:xsd:_, too
 *** See also how the section ''*** The section
-link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#ii-3-ubl-2-2-documents-and-libraries[II.3 UBL-2.2 Documents and libraries]
+link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#ii-3-ubl-2-2-documents-and-libraries[II.3 UBL-2.2 Documents and libraries]
 in the online documentation has been adapted
 
 * **Code Lists**
@@ -61,9 +61,9 @@ criteria indicated in the relevant notice or in the procurement documents referr
 the ESPD Working Group decided to retrieve back. Thus a new data structure for the Alpha Criterion has been added to
 the REGULATED Criteria Taxonomy spread-sheet.
 A new Section has also been added to the online documentation (see section
-link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha Criterion]).
+link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha Criterion]).
 
-** Exclusion Criteria #7 and #8 (section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
+** Exclusion Criteria #7 and #8 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
 *** The data structures have been redone for better alignment to the ESPD Regulation
 
 ** Selection criteria about ''Suitability'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts''.
@@ -74,8 +74,8 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/
 *** The cardinality of the QUESTION_GROUP c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16 has been changed from 1 to 1..n
 
 ** Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections
-link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-1-regulated-economic-operator-party[VIII.6.1 Regulated economic operator party]
-and link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-2-self-contained-economic-operator-party[VIII.6.2 Self-contained economic operator party].
+link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-1-regulated-economic-operator-party[VIII.6.1 Regulated economic operator party]
+and link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-2-self-contained-economic-operator-party[VIII.6.2 Self-contained economic operator party].
 See also link:https://github.com/ESPD/ESPD-EDM/issues/212[Issue #212])
 *** The data structure has changed, it now contains only a QUESTION asking for the list of Lots IDs as a free text field (differently to the ESPD-SELFCONTAINED which asks for a collection of LOT_IDENTIFIER data elements).
 *** The group "Is this information available electronically" has been removed
@@ -84,18 +84,18 @@ See also link:https://github.com/ESPD/ESPD-EDM/issues/212[Issue #212])
 
 * **ESPD-SELF-CONTAINED Criteria Taxonomy**
 
-** Exclusion Criteria #1 to #6 (section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-1-convictions[V.1 Convictions])
+** Exclusion Criteria #1 to #6 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-1-convictions[V.1 Convictions])
 *** The UUID of the sub-group of questions referring to the date of conviction, reason, who has been convicted, etc. has
 been corrected and is now the same as in the REGULATED version
 *** The cardinality of the main group of QUESTION(s), with UUID "7c637c0c-7703-4389-ba52-02997a055bd7" (line 11), has changed from 1..n to 1
 
-** Exclusion Criteria #7 and #8 (section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
+** Exclusion Criteria #7 and #8 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
 *** The data structures have been redone for better alignment to the ESPD Regulation
 *** The descriptions of the two criteria have been modified (as there was a mistake in the wording)
 *** Time lapses that were treated as DESCRIPTIONS are now addressed as PERIODs; e.g. Criteria #7 and #8
 *** The indentation of the QUESTION inside "Is this information available electronically" has been corrected
 
-**  Selection Criteria #5 to #28 (section link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-2-suitability[VI.2 Suitability]):
+**  Selection Criteria #5 to #28 (section link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-2-suitability[VI.2 Suitability]):
 ***  ''Suitabilities'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts'' (see also tabs
 ''Suitability-I'' and ''Suitability-II'' of the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-SELFCONTAINED spread-sheet]).
@@ -107,20 +107,20 @@ be a `cac:TenderingCriterionProperty`
 
 ** Selection Criteria #31 and #32 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_AVERAGE and
 CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY, see section
-link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-3-turnovers[VI.3 Turnovers])
+link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-3-turnovers[VI.3 Turnovers])
 *** The REQUIREMENT "Number of fiscal years" has been corrected (from AMOUNT to QUANTITY_INTEGER).
 
 ** Selection Criteria #33 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP)
 *** The property data type of the field 'Please specify' (in line 12) has changed from DESCRIPTION to DATE
 
 ** Selection Criterion #35 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE, see section
-link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-6-2-self-contained-risk-indemnity-insurance[VI.6.2 Self-contained risk indemnity insurance])
+link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-6-2-self-contained-risk-indemnity-insurance[VI.6.2 Self-contained risk indemnity insurance])
 *** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
 *** Cardinality in Structure "Is this information available electronically" QUESTION has been changed to 1..n
 *** Wrongly indented QUESTION has been corrected (in the structure "Is this information available electronically")
 
 ** Selection Criterion #36 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s), see section
-link:https://espd.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements])
+link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements])
 *** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
 *** UUIDs added
 *** Cardinality corrected
@@ -204,14 +204,14 @@ link:https://github.com/ESPD/ESPD-EDM/tree/master/docs/src/main/asciidoc/dist/xm
 
 ** Some new sections have been added to improve the understanding of the ESPD-EDM specification:
 
-*** Section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha criterion], to explain the use of the criterion ''Global indication for all selection criteria'',
+*** Section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha criterion], to explain the use of the criterion ''Global indication for all selection criteria'',
 used by the economic operator to state that it fulfills all the selection criteria and thus avoiding having to specify
 how it fulfills long lists of selection criteria.
 
-*** Section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-1-reduction-of-candidates[VII.1 Reduction of candidates],
+*** Section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-1-reduction-of-candidates[VII.1 Reduction of candidates],
 which is about how the the contracting authority limits the number of candidates meeting the selection criteria that they will invite to tender. 
 
-*** Section link:https://espd.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-2-rules-on-weighting[VII.2 Rules on weighting], on
+*** Section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-2-rules-on-weighting[VII.2 Rules on weighting], on
 how weighting can be used depending on the type of procedure used.
 
 
