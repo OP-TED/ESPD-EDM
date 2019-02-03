@@ -55,7 +55,7 @@ The data structure for references caters for:
 .Self-contained 'References' criterion data structure 
 image::Selfcontained_References_Data_Structure.png[Self-contained 'References' criterion data structure, alt="Self-contained 'References' criterion data structure",align="center"]
 
-==== XML Example - Self-contained
+==== XML Example - Self-contained (REQUIREMENTs and QUESTIONs)
 
 .Self-contained 'References for a works contract' criterion
 [source,xml]
@@ -402,14 +402,158 @@ image::Selfcontained_References_Data_Structure.png[Self-contained 'References' c
         </cac:SubsidiaryTenderingCriterionPropertyGroup>
     </cac:TenderingCriterionPropertyGroup>
 </cac:TenderingCriterion>
-
-<!... rest of elements removed for brevity -->
+ <!-- Rest of elements removed for brevity -->
 ----
 <1> The description of the Criterion.
 <2> The Lots to which the CA's REQUIREMENTs apply to (Lot1, Lot2, Lot4 and Lot5, in this example).
 <3> The minimum number of references expected by the CA (minimum one, in this example).
 <4> Additional REQUIREMENT expressed by the CA that apply for the affected Lots: Specific amount greater than a certain amount.
 <5> Additional REQUIREMENT expressed by the CA that apply for the affected Lots: Executed recently.
+<6> The Lots for which the Reference makes sense. Notice that the response of the EO is consistent, as the procedure is divided into 7 Lots.
+<7> The description of the work executed.
+<8> The Total Amount of the Reference, including the amounts that were specific to (share of) other EOs participating in the execution of the work. Notice that the attribute currencyID is set to "EUR".
+<9> The activity of this economic operator in this work.
+<10> The amount specific to the contribution of this EO in this Reference. Notice that the specific and the total amounts are identical. The EO proabably executed the work alone, as a sole contractor.
+<11> Duration of the execution of the work.
+<12> The level of confidentiality of the information regarding this Reference. Confidential references provided by the EO cannot be made accessible by the CA to third parties.
+<13> The name of the recipient of the work.
+<14> Name of the contact point, a person in this case.
+<15> Contact e-mail of the recipient of the work.
+
+
+The fragment of XML code below shows the responses to the QUESTIONs for the Criterion above. For details on how
+an ESPD-Response document specifies responses and links them to each particular QUESTION see section
+link:#viii-7-answering-questions[VIII.7 Answering QUESTIONs]
+
+==== XML Example - Self-contained (REQUIREMENTs and QUESTIONs)
+
+.Self-contained 'References for a works contract' criterion
+[source,xml]
+----
+<!... header elements removed for brevity -->
+
+<!--
+    E.g. The responses coming next are the answers to the Criterion above "References". For complete "dummy" responses to all criteria (exclusion and selection), see
+    the rest of examples in the folder dist/xml.
+-->
+
+<!--
+    Responses to the QUESTIONs in Criterion "References" above.
+    NOTICE that the EO has made a mistake and for a "Works contracts: performance of works for the specified type" it is describring a Service.
+    The Schematron-based validation solution cannot validate this situation as the description is a textual value.
+--><--1--><--2--><--3--><--4--><--5-->
+
+<!--
+    Lots for which the Reference(s) provided by the EO make sense.
+    *BEWARE* that this is a 'collection' of values of the same data type that are linked to one QUESTION.
+-->
+
+<cac:TenderingCriterionResponse><--6-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3d7d8db3-5e90-49fb-b96d-6fd53b950649</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c6eb0a5a-0d22-4123-8599-1be0e1d38697</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">daa25cac-b8c5-405d-abaa-18d29e2d5c59</cbc:ID>
+        <cbc:ResponseID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ResponseID><--6-->
+    </cac:ResponseValue>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">96995244-1cff-4b1c-8a4d-788e2cc604aa</cbc:ID>
+        <cbc:ResponseID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ResponseID><--6-->
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- The Reference Description -->
+<cac:TenderingCriterionResponse><--7-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">afb8c2dd-4dfa-4182-83e1-719cc996b1e5</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">72b19420-a904-4e4b-8465-a922dcec06b6</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3ebe542b-e220-4a08-a488-ddca5eb7d2cd</cbc:ID>
+        <cbc:Description>Implementation of the Interoperability Platform of Electronic State Sevices of the State which facilitates the exchange of information between
+        different public institutions of the Government. This platform is aimed at allowing -in this first phase- the exchange of information between 5 public
+        institutions, seeking the automation of 37 steps throught 30 information services</cbc:Description>
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- The Total Amount of the Reference, including the amounts taht were specific to (share of) other EOs participating in the execution of the work. -->
+<cac:TenderingCriterionResponse><--8-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9c8ebc58-5d0b-454c-8fe9-6c16690400c5</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c2556c58-72aa-42a6-ad45-568ef9ba1988</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9cdcb2e6-f162-4f9f-8260-2cb5a47c8690</cbc:ID>
+        <cbc:ResponseAmount currencyID="EUR">2479914.00</cbc:ResponseAmount><--8-->
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- The activity of this economic operator in this work. -->
+<cac:TenderingCriterionResponse><--9-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">bdf6bdb0-e3c7-4d5b-8ee1-726434c983c6</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">8886ec57-02d9-461d-932b-25c1bb494c7f</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">07e0e41b-235c-4d95-a9c7-15aa8eaf0215</cbc:ID>
+        <cbc:Description>The project involved the design, development and implementation of the Interoperability Platform for Electronic Services of the State. This project
+        integrated all Government Institutions, making a much more efficient and centralized information process possible.</cbc:Description>
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- The amount specific to the contribution of this EO in this Reference. Notice that the specific and the total amounts are identical.
+    The EO proabably executed the work alone, as a sole contractor. -->
+<cac:TenderingCriterionResponse><--10-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">31379d51-4b1c-40a1-b0bf-38cc85bf559d</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9c78e1d6-1bdf-4129-b86c-89da335c8918</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">a5762219-d77f-486c-8a6f-dae1b5efabe5</cbc:ID>
+        <cbc:ResponseAmount currencyID="EUR">2479914.00</cbc:ResponseAmount>
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- Duration of the execution of the work. -->
+<cac:TenderingCriterionResponse><--11-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">fc669b60-f1b4-452e-9331-1fce9d3809b4</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">4cdf40b6-a1dd-461b-81b1-a9669304302f</cbc:ValidatedCriterionPropertyID>
+    <cac:ApplicablePeriod>
+        <cbc:StartDate>2017-02-01</cbc:StartDate>
+        <cbc:EndDate>2017-02-06</cbc:EndDate>
+    </cac:ApplicablePeriod>
+</cac:TenderingCriterionResponse>
+<!-- The level of confidentiality of the information regarding this Reference. Confidential references provided by the EO cannot be made accessible by the CA to third parties. -->
+<cac:TenderingCriterionResponse><--12-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">964bdaef-a00c-4c5a-b34b-333fa9cde699</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">90da53d3-2e8f-47be-9b72-1393e6200e16</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">31bdb55b-ebdf-4cab-a5cb-2a5e73c17191</cbc:ID>
+        <cbc:ResponseIndicator>true</cbc:ResponseIndicator>
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- Sequence of data about the recepient of the work follows. -->
+<!-- The name of the recipient of the work. -->
+<cac:TenderingCriterionResponse><--13-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">1137d708-eafe-4077-bfb1-dea6cdb63de5</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">bdfb2116-0c4e-4d2c-ae5e-a2b95d767078</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d1bd1d8a-278f-40de-885c-f2cdecf28c80</cbc:ID>
+        <cbc:Description>Economics Department, Government of Spain</cbc:Description>
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- Name of the contact point, a person in this case -->
+<cac:TenderingCriterionResponse><--14-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">11ba592f-0c0d-4632-a110-4191a04d9b4f</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">95994e82-e650-4567-beab-ba4672d27008</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">4e9008d5-059f-4bc4-a654-099f29db38a3</cbc:ID>
+        <cbc:Description>Juan Rodriguez</cbc:Description>
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+<!-- The email for contacting the recipient of the work executed by the EO.  -->
+<cac:TenderingCriterionResponse><--15-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">482ae348-b3d8-4efa-a827-3aba6aa9e2b6</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">6d9355c0-129b-4f70-85f0-36f2ffa6fcb8</cbc:ValidatedCriterionPropertyID>
+    <cac:ResponseValue>
+        <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f6478bc5-31bc-4724-825c-0bb6446eb76e</cbc:ID>
+        <cbc:Description>Juan.rodriguez@mail.com</cbc:Description>
+    </cac:ResponseValue>
+</cac:TenderingCriterionResponse>
+
+<!-- Evidences would follow next. See other files in the dist/xml folder for complete examples. -->
+----
+<1> Not part of the responses (see XML example above)
+<2> Not part of the responses (see XML example above)
+<3> Not part of the responses (see XML example above)
+<4> Not part of the responses (see XML example above)
+<5> Not part of the responses (see XML example above)
 <6> The Lots for which the Reference makes sense. Notice that the response of the EO is consistent, as the procedure is divided into 7 Lots.
 <7> The description of the work executed.
 <8> The Total Amount of the Reference, including the amounts that were specific to (share of) other EOs participating in the execution of the work. Notice that the attribute currencyID is set to "EUR".
