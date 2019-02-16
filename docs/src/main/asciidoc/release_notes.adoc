@@ -97,9 +97,9 @@ The link:https://joinup.ec.europa.eu/solution/interoperability-test-bed[Interope
 has been set up to cope with the link:https://www.itb.ec.europa.eu/espd/upload[validation] of
 ESPD-Request and ESPD-Response v2.1.0 documents (click on the arrow of the combo-box 'Validate as').
 
-* **ESPD-REGULATED Criteria Taxonomy**
+==== ESPD-REGULATED Criteria Taxonomy
 
-** In previous versions it was decided not to have a criterion named 'Global indication for all selection criteria'
+* In previous versions it was decided not to have a criterion named 'Global indication for all selection criteria'
 (a.k.a. the "Alpha Criterion") which would avoid the need of specifying long lists of selection criteria. The
 description of this criterion, as shown in the transitional EC's ESPD-Service, is
 "Concerning the selection criteria the economic operator declares that It satisfies all the required selection
@@ -109,138 +109,144 @@ the REGULATED Criteria Taxonomy spread-sheet.
 A new Section has also been added to the online documentation (see section
 link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vi-1-alpha-criterion[VI.1 Alpha Criterion]).
 
-** Exclusion Criteria #7 and #8 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
-*** The data structures have been redone for better alignment to the ESPD Regulation
+* Exclusion Criteria #7 and #8 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
+** The data structures have been redone for better alignment to the ESPD Regulation
 
-** Selection criteria about ''Suitability'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts''.
+* Selection criteria about ''Suitability'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts''.
 See tabs ''Suitability-I'' and ''Suitability-II'' of the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-REGULATED spread-sheet].
 
-** Selection Criterion #32 "Specific yearly turnover" (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY)
-*** The cardinality of the QUESTION_GROUP c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16 has been changed from 1 to 1..n
+* Selection Criterion #32 "Specific yearly turnover" (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY)
+** The cardinality of the QUESTION_GROUP c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16 has been changed from 1 to 1..n
 
-** Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections
+* Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections
 link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-1-regulated-economic-operator-party[VIII.6.1 Regulated economic operator party]
 and link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#vii-6-2-self-contained-economic-operator-party[VIII.6.2 Self-contained economic operator party].
 See also link:https://github.com/ESPD/ESPD-EDM/issues/212[Issue #212])
-*** The data structure has changed, it now contains only a QUESTION asking for the list of Lots IDs as a free text field (differently to the ESPD-SELFCONTAINED which asks for a collection of LOT_IDENTIFIER data elements).
-*** The group "Is this information available electronically" has been removed
+** The data structure has changed, it now contains only a QUESTION asking for the list of Lots IDs as a free text field (differently to the ESPD-SELFCONTAINED which asks for a collection of LOT_IDENTIFIER data elements).
+** The group "Is this information available electronically" has been removed
 
-** The cardinalities of the block "Is this information available electronically" have been re-adjusted
+* Selection Criterion #63 (CRITERION.OTHER.EO_DATA.REDUCTION_OF_CANDIDATES)
+** This criterion (named "Contributions certificates") has been removed because it was redundant: the information required therein was also asked in C#58
+"EO registered in a PQS" (CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS). More details are provided in the
+link:https://github.com/ESPD/ESPD-EDM/issues/227[Issue #227].
 
-* **ESPD-SELF-CONTAINED Criteria Taxonomy**
+* The cardinalities of the block "Is this information available electronically" have been re-adjusted
 
-** Exclusion Criteria #1 to #6 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-1-convictions[V.1 Convictions])
-*** The UUID of the sub-group of questions referring to the date of conviction, reason, who has been convicted, etc. has
+==== ESPD-SELF-CONTAINED Criteria Taxonomy
+
+* Exclusion Criteria #1 to #6 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-1-convictions[V.1 Convictions])
+** The UUID of the sub-group of questions referring to the date of conviction, reason, who has been convicted, etc. has
 been corrected and is now the same as in the REGULATED version
-*** The cardinality of the main group of QUESTION(s), with UUID "7c637c0c-7703-4389-ba52-02997a055bd7" (line 11), has changed from 1..n to 1
+** The cardinality of the main group of QUESTION(s), with UUID "7c637c0c-7703-4389-ba52-02997a055bd7" (line 11), has changed from 1..n to 1
 
-** Exclusion Criteria #7 and #8 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
-*** The data structures have been redone for better alignment to the ESPD Regulation
-*** The descriptions of the two criteria have been modified (as there was a mistake in the wording)
-*** Time lapses that were treated as DESCRIPTIONS are now addressed as PERIODs; e.g. Criteria #7 and #8
-*** The indentation of the QUESTION inside "Is this information available electronically" has been corrected
+* Exclusion Criteria #7 and #8 (section link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#v-2-contributions[V.2 Contributions])
+** The data structures have been redone for better alignment to the ESPD Regulation
+** The descriptions of the two criteria have been modified (as there was a mistake in the wording)
+** Time lapses that were treated as DESCRIPTIONS are now addressed as PERIODs; e.g. Criteria #7 and #8
+** The indentation of the QUESTION inside "Is this information available electronically" has been corrected
 
-**  Selection Criteria #5 to #28 (section link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-2-suitability[VI.2 Suitability]):
-***  ''Suitabilities'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts'' (see also tabs
+*  Selection Criteria #5 to #28 (section link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-2-suitability[VI.2 Suitability]):
+**  ''Suitabilities'' are now split into two types of data structure, ''Enrolments'' and ''Service Contracts'' (see also tabs
 ''Suitability-I'' and ''Suitability-II'' of the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-SELFCONTAINED spread-sheet]).
 
-** Selection Criterion #24 (CRITERION.EXCLUSION.NATIONAL.OTHER)
-*** The data structure has been updated, a PropertyDataType NONE was missing in line 6. This is a ''dummy'' element
+* Selection Criterion #24 (CRITERION.EXCLUSION.NATIONAL.OTHER)
+** The data structure has been updated, a PropertyDataType NONE was missing in line 6. This is a ''dummy'' element
 necessary here because the UBL-2.2 XSD Schema makes mandatory that the first element inside a GROUP or SUBGROUP must
 be a `cac:TenderingCriterionProperty`
 
-** Selection Criteria #31 and #32 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_AVERAGE and
+* Selection Criteria #31 and #32 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_AVERAGE and
 CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SPECIFIC_YEARLY, see section
 link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-3-turnovers[VI.3 Turnovers])
-*** The REQUIREMENT "Number of fiscal years" has been corrected (from AMOUNT to QUANTITY_INTEGER).
+** The REQUIREMENT "Number of fiscal years" has been corrected (from AMOUNT to QUANTITY_INTEGER).
 
-** Selection Criteria #33 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP)
-*** The property data type of the field 'Please specify' (in line 12) has changed from DESCRIPTION to DATE
+* Selection Criteria #33 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.SET_UP)
+** The property data type of the field 'Please specify' (in line 12) has changed from DESCRIPTION to DATE
 
-** Selection Criterion #35 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE, see section
+* Selection Criterion #35 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE, see section
 link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-6-2-self-contained-risk-indemnity-insurance[VI.6.2 Self-contained risk indemnity insurance])
-*** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
-*** Cardinality in Structure "Is this information available electronically" QUESTION has been changed to 1..n
-*** Wrongly indented QUESTION has been corrected (in the structure "Is this information available electronically")
+** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
+** Cardinality in Structure "Is this information available electronically" QUESTION has been changed to 1..n
+** Wrongly indented QUESTION has been corrected (in the structure "Is this information available electronically")
 
-** Selection Criterion #36 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s), see section
+* Selection Criterion #36 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s), see section
 link:https://espd-edm.github.io/ESPD-EDM/v2.10/xml_guide.html#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements])
-*** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
-*** UUIDs added
-*** Cardinality corrected
+** The property data type for the identification of Lot ID in the CA requirement has changed to LOT_IDENTIFIER
+** UUIDs added
+** Cardinality corrected
 
-** Selection Criterion #36 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s))
-*** Wrongly indented QUESTION has been corrected (in the structure "Is this information available electronically")
+* Selection Criterion #36 (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s))
+** Wrongly indented QUESTION has been corrected (in the structure "Is this information available electronically")
 
-** Selection Criterion #38 (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SUPPLIES_DELIVERY_PERFORMANCE, see
+* Selection Criterion #38 (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SUPPLIES_DELIVERY_PERFORMANCE, see
 the criterion Data Structure in section ''VI.8.2 Self-contained references'' and in the SELF-CONTAINED Criteria Taxonomy
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[spread-sheet]
 tab ''SC-References'')
-*** REQUIREMENT(s) regarding the identifiers of Lots are now semantised as LOT_IDENTIFIER
-*** Cardinality of the QUESTION in the block "Is the information available electronically" has been corrected (from 1 to 1..n)
+** REQUIREMENT(s) regarding the identifiers of Lots are now semantised as LOT_IDENTIFIER
+** Cardinality of the QUESTION in the block "Is the information available electronically" has been corrected (from 1 to 1..n)
 
-** Selection Criterion #39 (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SERVICES_DELIVERY_PERFORMANCE, see the
+* Selection Criterion #39 (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.REFERENCES.SERVICES_DELIVERY_PERFORMANCE, see the
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[Criteria Taxonomy]
 for the SELF-CONTAINED ESPD and section ''VI.8.2 Self-contained references'')
-*** Description has been corrected. It now reads "For public service contracts only: During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.".
+** Description has been corrected. It now reads "For public service contracts only: During the reference period, the economic operator has provided the following main services of the type specified. Contracting authorities may require up to three years and allow experience dating from more than three years.".
 
-** Selection Criteria #40 to #51 about ''Abilities'' have been split into 5 different data structures
+* Selection Criteria #40 to #51 about ''Abilities'' have been split into 5 different data structures
 (See these tabs in the
  link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy-SELFCONTAINED spread-sheet])
 
-*** SC-Abilities_1 (Persons), Criteria #40 and #41 (technicians)
-*** SC-Abilities_2 (Facilities), Criteria #42 to #46 (about facilities, studies, supply chain, etc.)
-*** SC-Abilities_3 (Education), Criterion #47 (about educational and professional qualifications). Concerning this
+** SC-Abilities_1 (Persons), Criteria #40 and #41 (technicians)
+** SC-Abilities_2 (Facilities), Criteria #42 to #46 (about facilities, studies, supply chain, etc.)
+** SC-Abilities_3 (Education), Criterion #47 (about educational and professional qualifications). Concerning this
 Criterion, an Information Box has also been added to explain what is ESCO, the need of using URLs to identify the
 Qualifications and where to find additional information about ESCO (see also information box and XML example in
 section ''VI.9.6 Self-contained Abilities (III) - Education'')
-*** SC-Abilities_4 (Checks), Criterion #48 (about allowance of checks), and
-*** SC-Abilities_5 (Staff), about the contractor's personnel
+* SC-Abilities_4 (Checks), Criterion #48 (about allowance of checks), and
+** SC-Abilities_5 (Staff), about the contractor's personnel
 
-** Selection Criteria #41 (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS)
-*** The word _waited_ was replaced with _weighted_ in different places of the criterion.
+* Selection Criteria #41 (CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_CARRYING_WORKS)
+** The word _waited_ was replaced with _weighted_ in different places of the criterion.
 
-** Selection Criteria #52 and #53 (Samples and certificates, section 'VI.11 Samples and certificates')
-*** An indentation was corrected in Criteria 52 and 53. The QUESTION tag was misplaced and hidden.
+* Selection Criteria #52 and #53 (Samples and certificates, section 'VI.11 Samples and certificates')
+** An indentation was corrected in Criteria 52 and 53. The QUESTION tag was misplaced and hidden.
 
-** Selection Criterion #57 (CRITERION.OTHER.EO_DATA.SHELTERED_WORKSHOP)
-*** Wrongly indented tag {QUESTION} has been corrected.
+* Selection Criterion #57 (CRITERION.OTHER.EO_DATA.SHELTERED_WORKSHOP)
+** Wrongly indented tag {QUESTION} has been corrected.
 
-** Selection Criterion #58 (CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST)
-*** The data structure has changed, the CAPTION "If the relevant documentation is available electronically, please provide it" has been removed. The use of the block "Is this information available electronically" (UUID) must be used for that specific purpose.
+* Selection Criterion #58 (CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST)
+** The data structure has changed, the CAPTION "If the relevant documentation is available electronically, please provide it" has been removed. The use of the block "Is this information available electronically" (UUID) must be used for that specific purpose.
 
-** Selection Criterion #59 (CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS)
-*** The data structure of this criterion has been modified to align it to the one in the REGULATED ESPD
-*** A CODE property data type has replaced the type IDENTIFIER (which was wrongly assigned to the field 'Please indicate
+* Selection Criterion #59 (CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS)
+** The data structure of this criterion has been modified to align it to the one in the REGULATED ESPD
+** A CODE property data type has replaced the type IDENTIFIER (which was wrongly assigned to the field 'Please indicate
 the role of the economic operator in the group (leader, responsible for specific tasks...)' in line 8).
 
-** Selection Criteria #60 (Relied on entities, CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES)
-*** In Criterion 60, the DataPropertyTypes ECONOMIC_OPERATOR_IDENTIFIER has replaced IDENTIFIER in line 8
-*** CODE has replaced DESCRIPTION in line 9
-*** Wrongly indented tag {QUESTION} has also been corrected.
+* Selection Criteria #60 (Relied on entities, CRITERION.OTHER.EO_DATA.RELIES_ON_OTHER_CAPACITIES)
+** In Criterion 60, the DataPropertyTypes ECONOMIC_OPERATOR_IDENTIFIER has replaced IDENTIFIER in line 8
+** CODE has replaced DESCRIPTION in line 9
+** Wrongly indented tag {QUESTION} has also been corrected.
 
-** Selection Criterion #61 (CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES. The code list to be used is the
+* Selection Criterion #61 (CRITERION.OTHER.EO_DATA.SUBCONTRACTS_WITH_THIRD_PARTIES. The code list to be used is the
 maintained in SIMAP for CodeLists (https://simap.ted.europa.eu/cpv)
-*** ID of the subcontractor has been semantised from IDENTIFIER to ECONOMIC_OPERATOR_ID
-*** The field 'Activity of the entity (for this specific procedure) can now be expressed as a set of one or more CPV codes
+** ID of the subcontractor has been semantised from IDENTIFIER to ECONOMIC_OPERATOR_ID
+** The field 'Activity of the entity (for this specific procedure) can now be expressed as a set of one or more CPV codes
 
-** Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections ''VIII.6.1 Regulated economic operator party'' and ''VIII.6.2 Self-contained economic operator party'')
-*** The group "Is this information available electronically" has been removed
-*** Wrongly indented tag {QUESTION} has been corrected.
+* Selection Criterion #62 (CRITERION.OTHER.EO_DATA.LOTS_TENDERED, See sections ''VIII.6.1 Regulated economic operator party'' and ''VIII.6.2 Self-contained economic operator party'')
+** The group "Is this information available electronically" has been removed
+** Wrongly indented tag {QUESTION} has been corrected.
 
-** Selection Criterion #63 (CRITERION.OTHER.EO_DATA.REDUCTION_OF_CANDIDATES)
-*** Wrongly indented tag {QUESTION} has been corrected.
+* Selection Criterion #63 (CRITERION.OTHER.EO_DATA.REDUCTION_OF_CANDIDATES)
+** This criterion (named "Contributions certificates") has been removed because it was redundant: the information required therein was also asked in C#58
+"EO registered in a PQS" (CRITERION.OTHER.EO_DATA.TOGETHER_WITH_OTHERS). More details are provided in the
+link:https://github.com/ESPD/ESPD-EDM/issues/227[Issue #227].
 
-** The cardinalities of the block "Is this information available electronically" have been re-adjusted
+* The cardinalities of the block "Is this information available electronically" have been re-adjusted
 
-* UUIDs
+==== UUIDs
 
-** Criteria UUIDs are not backwards-consistent (with versions 1.0.2, 2.0.*). New UUIDs have been added for the new
+* Criteria UUIDs are not backwards-consistent (with versions 1.0.2, 2.0.*). New UUIDs have been added for the new
 ESPD-SELF-CONTAINED groups and sub-groups where needed. All corrected and new UUIDs are red-coloured in the
 CriteriaTaxonomy spread-sheets.
-
 
 === v2.0.2 (May 2018)
 
