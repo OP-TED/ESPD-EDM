@@ -1,0 +1,87 @@
+
+=== IX.3 All about UUIDs
+
+
+In the Regulated and Self-contained
+link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx[ESPD-EDM Criteria Taxonomies]
+every element of the criterion data structures has an UUID assigned, except for the CAPTIONs, REQUIREMENT(s) and
+QUESTION(s).
+
+This UUID is necessary to identify unambiguously a particular "data structure" (or "data shape"). One data
+structure identified with a unique identifier has always the same elements and in the same order.
+This allows *_the reuse_* of the same structure multiple times in the same criterion or in different criteria.
+These UUIDs map the ones maintained in link:https://ec.europa.eu/isa2/solutions/e-certis_en[e-Certis] for each criterion.
+
+==== Examples of data structure reuse
+
+* *Example 1*: There is a data structure that is reused by practically  all the criteria, the one asking whether the information
+is available electronically. You will notice that all criteria where it is used the UUIDs of the groups and
+subgroups are identical, but also the cardinalities, the PropertyDataType and the Element Code.
+
+* *Example 2*: If you look into the "Convictions" data structures you will notice a data structure
+(a QUESTION_SUBGROUP) identified with the UUID "f4978772-3126-4ded-bc30-f50da8c3a038".
+This subgroup contains one QUESTION ("Have you taken measures to demonstrate your reliability (Self-Cleaning)?"
+and a sub-group with another QUESTION ("Please describe them").
+If you search into the spread-sheet book you will observe that this very structure is also reused by other criteria
+(e.g. CRITERION.EXCLUSION.SOCIAL.\*, CRITERION.EXCLUSION.MISCONDUCT.\*, etc.), but the UUID of the main subgroup is
+different in all those cases from the one used for Convictions. This is because the Element Code in the case of
+Convictions (and for this subgroup) is "ONTRUE" whilst in the rest of criteria it is "ON*".
+
+As mentioned above, CAPTIONs, REQUIREMENT(s) and QUESTION(s) cannot have a *_reusable_* UUID pre-allocated.
+The reason for this is that each response by the economic operator (in the ESPD Response document) MUST refer to one,
+and only one, QUESTION of the ESPD Request. See other details on criterion properties in sections
+link:#iv-4-properties[IV.4 Properties] and link:#viii-7-answering-questions[VIII.7 Answering QUESTION(s)].
+
+==== Implementation challenge
+
+The fact that Criterion Properties are to be generated dynamically may pose a challenge to developers in certain
+situations. One of these situations could be when the QUESTIONs are repositoried and answered in a
+Pre-Qualification System (PQS) that is used to pre-fill ESPD-Responses to ESPD-Request instances that are
+kept in another system unknown to the PQS (e.g. a Service Provider acting on behalf of one or more Contracting
+Authorities).
+
+One possible solution may be based on the fact that **_each REQUIREMENT and QUESTION occurs always in the same
+position inside a group or a sub-group_**. If the order of the REQUIREMENTs and QUESTIONs is altered the
+Schematron-based validation would trigger a fatal exception.
+
+The proposal consists in identifying each REQUIREMENT and QUESTION by concatenating the UUIDs of the CRITERION and the
+"parent" groups and sub-groups, **_as described in the Criteria Taxonomy spread-sheets_**, produce a short hash of the
+concatenated string and add to it the position of the element in the group or subgroup.
+This casts a *constant* UUID for each REQUIREMENT and QUESTION that would be known by *_any_* stakeholder, thus
+enabling the decoupling of systems producing ESPD-Requests and systems keeping particular QUESTIONS and RESPONSES.
+
+Let's take one *_REGULATED_* criterion as an example to illustrate this proposal (this works also for *_SELF-CONTAINED
+ESPD_* criteria):
+
+==== Example: Convictions Criterion
+
+===== User Story
+
+_I, as a PQS, need to provide the information about an EO's convictions, so the  EO can produce a pre-filled ESPD-Response_.
+
+===== Algorithm
+
+The algorithm to generate the first subgroup of QUESTIONs (in convictions) would be:
+
+1. Question_UUID = "" ;
+2. Question_UUID += Criterion_UUID + "." ;
+3. Question_UUID += Group_UUID + "." ;
+4. Question_UUID += Subgroup_UUID + "." ;
+5. Question_UUID  = hash_md5(Question_UUID) ;
+6. Question_UUID += Question_UUID + "." + Group_Position() + "." + Subgroup_Position() + "." + Question_Position() ;
+
+Apply repeatedly this algorithm to the subsequent sub-subgroups.
+
+The objective of hashing the concatenation of UUIDs is to produce a non-too-verbose UUID for the QUESTION.
+
+This algorithm produces a unique digital print per each data element of the _data shape_. If this hash were added to
+an IRI, the data element could be described in a very specific namespace and its de-referencing could provide
+back a machine-readable description of the element (name, description, examples, etc.).
+
+===== Data Structure
+
+The figure below would represent how the criterion "Participation in a criminal organisation would look like in the
+Criteria Taxonomy if you applied the algorithm above:
+
+.A way of generating UUIDs that is agnostic of the ESPD-Request XML instance.
+image::TheUUID_MaltaAlgorithm.png[Self-contained 'Contributions' criterion data structure, alt="Self-contained 'Contributions' criterion data structure", align="center"]
