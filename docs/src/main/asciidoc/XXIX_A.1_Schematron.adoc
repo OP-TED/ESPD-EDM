@@ -1,0 +1,37 @@
+
+[.text-left]
+
+=== Introduction to ISO Schematron
+
+Schematron is a rule-based validation language to specify validation processes against XML documents.
+ISO Schematron is an ISO (ISO/IEC 19757-3:2006) and open standard.
+Please visit the link:http://www.schematron.com/[ISO Schematron] web-site for the technical specification and details.
+
+==== ESPD Business Rules
+
+The ESPD-EDM uses Schematron to validate business rules identified in
+ESPD_TestCases_v10.docx and ESPD_TestCases_mapping_v10.docx
+link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/doc[documents].
+The business requirements taken as input for these rules are specified in the
+link:http://wiki.ds.unipi.gr/display/ESPDInt[ESPDint Business Document].
+ 
+These business rules can be typified as:
+
+. *Semantic validations*: e.g. The "cac:TenderingCriterionResponse" in a Response document MUST match one, and only one,
+of the "cac:TenderingCriterionProperty" elements in the XML instance of the corresponding ESPD-Request;
+
+. *Assertions* about the presence or absence of patterns in XML documents: e.g. all business rules that apply to
+identifier nodes: mandatory attributes, structure of the identifier, etc.;
+
+. *Code lists* validations: e.g. values and attributes for each code list element;
+
+. *Other validations* that an XSD cannot do: e.g. Validates that one of the nodes has at least 1 child.
+
+
+The following image shows different examples of validations:
+
+image::A1_Schematron_N-CL.png[Non-code list business rules, alt="Non-code list business rules", align="center"]
+
+
+The validation of code lists is explained in sections below.  
+

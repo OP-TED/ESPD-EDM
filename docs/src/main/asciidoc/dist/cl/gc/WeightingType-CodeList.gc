@@ -7,7 +7,7 @@
    <Identification>
       <ShortName>WeightingType</ShortName>
       <LongName xml:lang="en">WEIGHTING TYPE</LongName>
-      <Version>2.0.2</Version>
+      <Version>2.1.0</Version>
       <CanonicalUri>https://github.com/ESPD/ESPD-EDM</CanonicalUri>
       <Agency>
          <LongName xml:lang="en">DG GROW (European Commission)</LongName>
@@ -19,9 +19,13 @@
          <ShortName>Code</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
-      <Column Use="optional" Id="name-Description">
-         <ShortName>Name</ShortName>
-         <Data Type="string" Lang="Description"/>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
          <ShortName>Name</ShortName>
@@ -129,6 +133,12 @@
          <Value ColumnRef="code">
             <SimpleValue>PERCENTAGE</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Percentual value</SimpleValue>
          </Value>
@@ -205,6 +215,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>NUMERIC</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Numeric value</SimpleValue>

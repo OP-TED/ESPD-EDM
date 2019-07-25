@@ -9,7 +9,7 @@ The following table lists the elements of a criterion property. Beware that the 
 |*Class name*:|cac:TenderingCriterionProperty
 |*Definition*: |Caption (i.e. a 'label'), specific MS or contracting authority requirement (e.g. 'Number of references expected: 5' or a question addressed to the economic operator (e.g. 'Your average yearly turnover for the past three years?'.
 
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]
+*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_]
 |*Business rule(s)*:|SELF-CONTAINED (BR-SC-20)
 |*File*:|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:|/QualificationApplicationRequest/cac:TenderingCriterion/cac:TenderingCriterionProperty	
@@ -23,7 +23,7 @@ The following table lists the elements of a criterion property. Beware that the 
 |1
 |Identifies one specific property.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Property identifiers must use UUID numbers (version 4) automatically generated. The responses of the economic operator (in the ESPD Response document) will refer to this UUID to link the response with one, and only one, criterion property. See the section about the ESPD Response for examples.
 
@@ -34,7 +34,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |1
 |The text of the caption, requirement or question.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: None.
 
@@ -46,9 +46,9 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The type of property. Used to verify that structure of the property is correct.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
-*Rule*: Compulsory use of the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[Code List  'CriterionElementType'].  Possible types are 'CAPTION, REQUIREMENT and QUESTION'. If the type is `CAPTION` or `REQUIREMENT` no answer is expected from the economic operator and therefore the `cbc:ValueDataTypeCode` must be set to `NONE`. Otherwise this value must be set to one of the values defined in the link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[Code List  'ResponseDataType']
+*Rule*: Compulsory use of the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[Code List  'CriterionElementType'].  Possible types are 'CAPTION, REQUIREMENT and QUESTION'. If the type is `CAPTION` or `REQUIREMENT` no answer is expected from the economic operator and therefore the `cbc:ValueDataTypeCode` must be set to `NONE`. Otherwise this value must be set to one of the values defined in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[Code List  'ResponseDataType']
 
 *Rule scope*: SELF-CONTAINED (BR-TC-20, BR-OTH-01, BR-OTH-01#14, BR-OTH-03)
 
@@ -58,7 +58,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The type of answer expected by the contracting authority in the case of a poperty of type QUESTION.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Compulsory use of the Code List “ResponseDataType”. Verify that the value is different to NONE for properties of type QUESTION.
 
@@ -70,7 +70,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The unit of measure of the numeric value as a quantity or measure in the expected response from the economic operator.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -82,7 +82,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The currency of the numeric value as an amount in the expected response from the economic operator.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -94,7 +94,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The expected identifier that the economic operator has to provide in the criterion response.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -106,7 +106,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The expected code that the economic operator has to provide in the Criterion response.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -118,7 +118,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The expected value that the economic operator has to provide in the Criterion response.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -128,7 +128,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The maximum value the response must have.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -138,7 +138,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The minimum value the response must have.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -148,7 +148,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The description of the level of the expected certification.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
@@ -158,7 +158,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |The period to which this criterion property shall apply.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: The ESPD-EDM does only expect start date and end date.
 
@@ -168,7 +168,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 |A pointer to one or more evidences that support the veracity of this criterion.
 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-013[_tbr070-013_]. 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_].
 
 *Rule*: None.
 |===

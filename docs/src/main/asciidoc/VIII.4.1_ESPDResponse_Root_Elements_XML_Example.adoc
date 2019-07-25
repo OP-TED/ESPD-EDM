@@ -1,0 +1,41 @@
+==== XML example
+
+
+The XML snippet below shows how the beginning of an ESPD Response XML instance looks like. For a complete instance of an ESPD Response XML document see the the example files in the `dist/xml` folder: link:.dist/xml/REGULATED-ESPDResponse-2.1.0.xml[REGULATED-ESPDResponse-2.1.0.xml] or link:.dist/xml/SELFCONTAINED-ESPDResponse-2.1.0.xml[SELFCONTAINED-ESPDResponse-2.1.0.xml].
+
+[source,xml]
+----
+<QualificationApplicationResponse xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:2.1.0" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:util="java:java.util.UUID" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationResponse ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- The ESPD-EDM-V2.1.0 is entirely based on OASIS UBL-2.2 -->
+	<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
+	<!-- How ESPD-EDM-V2.1.0 uses the UBL-2.2 schemas whilst keeping conformance -->
+	<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="3.0">>urn:www.cenbii.eu:transaction:biitrdm092:ver3.0</cbc:CustomizationID>
+	<!-- The transactional profile where the ESPD is used. ESPD-EDM-V2.1.0 refers to the CEN profile -->
+	<cbc:ProfileID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">41</cbc:ProfileID>
+	<!-- The identifier of this document provided by the contracting authority system -->
+	<cbc:ID schemeAgencyID="DGPE">ESPDREQ-DGPE-46be0fdd00</cbc:ID>
+	<!-- Indicator of whether this document is an original or a copy. In this case the document is the original -->
+	<cbc:CopyIndicator>false</cbc:CopyIndicator>
+	<!-- The unique identifier for this instance of the document. Copies of this document should have different UUIDs -->
+	<cbc:UUID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">901afdb9-8f7d-4c43-823b-725eeda3208d</cbc:UUID>
+	<!-- The reference number the contracting authority assigns to this procurement procedure -->
+	<cbc:ContractFolderID schemeAgencyID="DGPE">PP.20170419.1024-9</cbc:ContractFolderID>
+	<cbc:IssueDate>2017-04-13</cbc:IssueDate>
+	<cbc:IssueTime>19:09:11</cbc:IssueTime>
+	<!-- The name of the group (Consortium, Joint Venture, etc.) if the tenderer is not a sole contractor -->
+	<cbc:EconomicOperatorGroupName>ACME-Consortium</cbc:EconomicOperatorGroupName>
+	<!-- The version of the content of this document. If the document is modified the element cbc:PreviousVersionID should be instantiated -->
+	<cbc:VersionID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">1.0</cbc:VersionID>
+	<!-- The type of the procurement procedure; e.g. V = Award of contract without prior publication of a contract notice -->
+	<cbc:ProcedureCode listID="ProcedureType" listAgencyName="EU-COM-GROW" listVersionID="2.1.0">OPEN</cbc:ProcedureCode>
+	<!-- The type of the ESPD (REGULATED or SELFCONTAINED) -->
+	<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyName="EU-COM-GROW" listVersionID="2.1.0">SELFCONTAINED</cbc:QualificationApplicationTypeCode>
+	
+<!-- ... rest of document removed for brevity -->	
+----
+
+
+
+
+

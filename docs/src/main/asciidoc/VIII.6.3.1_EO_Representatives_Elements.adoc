@@ -1,0 +1,138 @@
+
+===== Expected Elements (REGULATED and SELF-CONTAINED)
+
+.Representatives of the economic operator, expected elements
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:PowerOfAttorney
+|*Definition*:|Official or legal mandate issued by an authority (e.g. an attorney or a notary) to represent the economic operator as a representative of the economic operator in public procurement procedures.
+|*Business rule(s)*:|Common (BR-RESP-20)
+|*File*:
+|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|*Path*:
+|/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney
+|*Context of use*:|The economic operator in the ESPD Response document. Use this element to refer to the natural persons that represent the economic operator. See requirement http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_].
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:FirstName*
+|Text
+|1
+|Name of the natural person.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+*Rule*: Name of the natural person is mandatory.
+
+*Rule scope*: Common (BR-RESP-20-01)
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:FamilyName*
+|Text
+|1
+|Family Name of the natural person.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: Family Name of the natural person is mandatory.
+
+*Rule scope*: Common (BR-RESP-20-02)
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:BirthDate*
+|Date
+|0..1
+|Date of birth of the natural person.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cbc:BirthplaceName*
+|Text
+|0..1
+|Place of birth of the natural person.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/cac:AddressLine*
+|Text
+|0..1
+|The main address line in an address. Usually the street name and number or post office box.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: Use it to specify the street name and number of the building of the representative natural person in one line. *Beware that specifying the address of a natural person might enter in conflict with the current Data Protection rules.*
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/cbc:PostalZone*
+|Text
+|0..1
+|The identifier for an addressable group of properties according to the relevant postal service, such as a ZIP code or Post Code.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/cbc:CityName*
+|Text
+|0..1
+|The common name of a city where the address is located.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/
+cac:Country/cbc:IdentificationCode*
+|Code
+|1
+|A code that identifies the country. 
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CountryCodeIdentifier].
+
+*Rule scope*: Common (BR-RESP-20-03, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:ResidenceAddress/
+cac:Country/cbc:Name*
+|Text
+|0..1
+|The name of the country. 
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: Try to use the name provided in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CountryCodeIdentifier] and in the language of the user.
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:Contact/cbc:ElectronicMail*
+|Text
+|0..1
+|An e-mail address for the contact point. 
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cac:AgentParty/
+cac:Person/cac:Contact/cbc:Telephone*
+|Text
+|0..1
+|A phone number for the contact point. 
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
+
+*Rule*: None.
+
+|*cac:PowerOfAttorney/cbc:Description*
+|Text
+|0..n
+|The short description for the role of the economic operstors representative and other detailed information on the representation. 
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-010[_tbr92-010_]
+
+*Rule*: Use line 1 of the description to describe the role of the representative. Use line 2 to provide detailed information on the representation (its forms, extent, purpose, etc.)
+
+|===
+
+==== Data Structure (REGULATED or SELF-CONTAINED)
+
+*None*, all the data is placed in the UBL-2.2 component `cac:PowerOfAttorney`

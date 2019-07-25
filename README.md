@@ -6,6 +6,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## Documentation
 
+* [v2.1.0](https://espd-edm.github.io/ESPD-EDM/v2.1.0/)
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
 * [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
@@ -16,12 +17,18 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 Dear ESPD implementation community, 
 
-We are happy to inform you about the release of ESPD EDM version 2.0.2.
+We are happy to inform you about the release of ESPD EDM version 2.1.0.
+
+### Version 2.1.0 (January 2019)
+The [ESPD EDM version 2.1.0](https://github.com/ESPD/ESPD-EDM/tree/2.1.0) is now released and focuses, mainly, on the improvement of the 
+ESPD-SELF-CONTAINED features. All the changes introduced in this new version were based on the inputs from Member States and other Stakeholders
+collected through the GitHub [issues](https://github.com/ESPD/ESPD-EDM/issues) workspace. For further details please read the 
+[release notes](https://espd.github.io/ESPD-EDM/v2.1.0/release_notes.html).
 
 ### Version 2.0.2 (May 2018)
  
-The [ESPD EDM version 2.0.2](https://github.com/ESPD/ESPD-EDM/tree/2.0.2) is now released and contains only bugs fixed on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues).
-For further details please read the release notes. For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.2/release_notes.html). The release contains a definition of all relevant
+The [ESPD EDM version 2.0.2](https://github.com/ESPD/ESPD-EDM/tree/2.0.2) addresses bugs fixed on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues).
+For further details please read the [release notes](https://espd.github.io/ESPD-EDM/v2.0.2/release_notes.html). The release contains a definition of all relevant
 [business rules](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/doc) and corresponding [schematron files](https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/val/schematron)
 to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy).
 The corresponding [TestBed for version 2.0.2](http://isaitb2.northeurope.cloudapp.azure.com/espd/upload) has been set up. The specifications for version 2.0.2 contain an updated distribution of the
@@ -34,20 +41,9 @@ Also, the [BIS 41 – ESPD version 2.0.2](http://wiki.ds.unipi.gr/display/ESPDIn
 
 A release of criteria taxonomy file errata [ESPD EDM version 1.0.2] was necessary as the documentation on the criteria taxonomy was not updated to reflect the changes that were made to the Commission ESPD service up until July 2017. All corrections relate to the Criteria Data Flows and result in a revision of the [criteria taxonomy for version 1.0.2](https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods) (revisions are marked within the sheet). No other change was done to the ESPD EDM version 1.0.2. The revisions should therefore have no impact on all current ESPD services based on v1.0.2 but we recommend using the revised criteria taxonomy to approve the correct Criteria Data Flows. 
 
-### Outlook: Release of ESPD EDM version 2.0.3 (foreseen October 2018)
-
-In order to support the ESPD implementation community in their efforts to establish ESPD services for version 2.0.x, we have planned another review period which will result in the release of ESPD EDM version 2.0.3 planned for the 30th of September. The release will concentrate on the removal of errors, improvements and editorial aspects. It is not planned to process any request for new features in this release. Please submit any issues on the GitHub before 31st of August so that we can process them. We are looking forward to receiving your [issues and comments on GitHub](https://github.com/ESPD/ESPD-EDM/issues) in order to improve the overall ESPD specifications. 
-For further project information please visit our [GitHub](https://github.com/ESPD/ESPD-EDM) repository.
-
-For further project information please visit our GitHub repository.
-I would like to use this chance to thank the CEF consortia ESPDint team for the great support in maintaining the ESPD data model. Without them it would have been much harder and they did in on top of their CEF engagement.  
-Best regards,
-Marc-Christopher Schmidt
-
-
 ### Version 2.0.1 (January 2018) 
 
-Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.0.2 that have been closed). 
+Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.1.0 that have been closed). 
 
 ### Version 2.0.0 (September 2017): 
 
@@ -83,7 +79,7 @@ dependencies {
 }
 ```
 
-### Version 2.0.2
+### Version 2.1.0
 
 **Please note that this version requires Java 8**
 
@@ -91,7 +87,7 @@ dependencies {
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
   <artifactId>exchange-model2</artifactId>
-  <version>2.0.2</version>
+  <version>2.1.0</version>
 </dependency>
 ```
 

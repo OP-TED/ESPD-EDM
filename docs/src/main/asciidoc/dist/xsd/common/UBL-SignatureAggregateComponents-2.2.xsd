@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           OASIS Universal Business Language (UBL) 2.2 CSD02WD01PA06
-                     http://docs.oasis-open.org/ubl/csd02wd01pa06-UBL-2.2/
-  Release Date:      04 September 2017
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
   Module:            xsd/common/UBL-SignatureAggregateComponents-2.2.xsd
-  Generated on:      2017-09-04 01:59z
-  Copyright (c) OASIS Open 2016. All Rights Reserved.
+  Generated on:      2018-07-08 20:04z
+  Copyright (c) OASIS Open 2018. All Rights Reserved.
 -->
 <xsd:schema xmlns="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
             xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
             xmlns:sbc="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2"
-            xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
+            xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
             xmlns:ccts="urn:un:unece:uncefact:documentation:2"
@@ -21,8 +21,8 @@
    <!-- ===== Imports ===== -->
    <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2"
                schemaLocation="UBL-SignatureBasicComponents-2.2.xsd"/>
-   <xsd:import namespace="urn:X-test:UBL:Pre-award:CommonBasic"
-               schemaLocation="UBL-CommonBasicComponents-Pre-award.xsd"/>
+   <xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+               schemaLocation="UBL-CommonBasicComponents-2.2.xsd"/>
 
    <!-- ===== Incorporate W3C signature specification-->
    <xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"
@@ -83,36 +83,6 @@
            </xsd:annotation>
          </xsd:element>
           </xsd:sequence>
-   </xsd:complexType>
-   <xsd:complexType name="UBLDocumentSignaturesType">
-      <xsd:annotation>
-         <xsd:documentation>
-            <ccts:Component>
-               <ccts:ComponentType>ABIE</ccts:ComponentType>
-               <ccts:DictionaryEntryName>UBL Document Signatures. Details</ccts:DictionaryEntryName>
-               <ccts:Definition>This class collects all signature information for a document.</ccts:Definition>
-               <ccts:ObjectClass>UBL Document Signatures</ccts:ObjectClass>
-            </ccts:Component>
-         </xsd:documentation>
-      </xsd:annotation>
-      <xsd:sequence>
-         <xsd:element ref="sac:SignatureInformation" minOccurs="1" maxOccurs="unbounded">
-            <xsd:annotation>
-               <xsd:documentation>
-                  <ccts:Component>
-                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>UBL Document Signatures. Signature Information</ccts:DictionaryEntryName>
-                     <ccts:Definition>Each of these is scaffolding for a single digital signature.</ccts:Definition>
-                     <ccts:Cardinality>1..n</ccts:Cardinality>
-                     <ccts:ObjectClass>UBL Document Signatures</ccts:ObjectClass>
-                     <ccts:PropertyTerm>Signature Information</ccts:PropertyTerm>
-                     <ccts:AssociatedObjectClass>Signature Information</ccts:AssociatedObjectClass>
-                     <ccts:RepresentationTerm>Signature Information</ccts:RepresentationTerm>
-                  </ccts:Component>
-               </xsd:documentation>
-            </xsd:annotation>
-         </xsd:element>
-      </xsd:sequence>
    </xsd:complexType>
 </xsd:schema>
 <!-- ===== Copyright Notice ===== -->

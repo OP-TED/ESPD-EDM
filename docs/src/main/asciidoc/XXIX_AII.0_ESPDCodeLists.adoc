@@ -1,0 +1,56 @@
+
+== Annex II Code lists used in ESPD
+
+Beware that in the ESPDD documents codes can be used in different places, e.g.:
+
+. Outside the criteria, in UBL components of type "Code Type" (e.g. cbc:ProcedureCode);
+. Inside the definition of a Criterion, in the ESPD Request, for the element Expected Code (`cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ExpectedCode`,
+it is in this element that the ESPD Request defines which code list to use); and
+. Inside the Response Value (`cac:TenderingCriterionResponse/cac:ResponseValue/cbc:ResponseCode`), where the Economic Operator has to supply a valid code picked from the list specified in the ESPD Request, in the element `cbc:ExpectedCode`.
+
+All this is explained and illustrated with XML examples all along this document. See for instance:
+
+. The XML example in section link:#iii-4-root-elements[III.4 Root elements] (use of `cbc:ProcedureCode`);
+. The XML example in section link:#iii-11-lots-self-contained-espd[III.11 Lots - Self-contained ESPD] (use of `cbc:ExpectedCode`); and
+. The XML example in section link:#viii-7-answering-questions[VIII.7 Answering QUESTION(s)] (where the use of codes, identifiers, etc. in the responses is explained).
+
+Additional information about the code lists can be found in:
+
+* The link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/ods/[spread-sheet] distributed with this documentation;
+
+* The multilingual link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/gc[Genericode] `*.gc` files automatically produced based on these spread-sheets; and
+
+* The link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-CodeLists[ESPDint BIS Document];
+
+
+The table below lists the code lists used in the ESPD documents and where they are used.
+
+[cols="<1,<1,<1"]
+|===
+|*Code List*|*Issuer Agency*|*Used In*
+
+|BidType|Publications Office of the EU|See link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.ods[Data structure] and XML examples for Criterion `CRITERION.OTHER.CA_DATA.LOTS_SUBMISSION` of the *SELF-CONTAINED ESPD Request*
+|ConfidentialityLevel|DG GROW (European Commission)|See element 'cac:Evidence/cbc:ConfidentialityLevelCode` of the UBL-2.2 XSD Schemas for QualificationApplicationResponse
+|CountryCodeIdentifier|ISO|See element 'cac:PostalAddress/cac:Country/cbc:IdentificationCode` of the UBL-2.2 XSD Schemas, e.g. the postal address of an economic operator party)
+|CriteriaType|DG GROW (European Commission, defined in e-Certis)|See each Criterion taxonomy code in the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/ods[Criteria Taxonomies] (both REGULATED and SELF-CONTAINED). See also the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/gc/ESPD-CriteriaTaxonomy_V2.1.0.gc[Genericode file].
+|CriterionElementType|DG GROW (European Commission)|See element `cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:TypeCode` of the UBL-2.2 XSD QualificationApplicationRequest Schema
+|CurrencyCode|Publications Office of the EU|All UBL-2.2 elements of type `cbc:Amount` in its attribute `@currencyID`
+|DocRefContentType|DG GROW (European Commission)|UBL-2.2 element `cac:AdditionalDocumentReference/cbc:DocumentTypeCode`. See XML example in section link:#iii-5-eu-and-national-publications[III.5 EU and national publications]
+|EOIDType|DG GROW (European Commission)|Attribute `cac:PartyIdentification/cbc:ID@SchemeID`. See 'Requirement" boxes in section link:#viii-6-economic-operator[VIII.6 Economic Operator]
+|EOIndustryClassificationCode|DG GROW (European Commission)|Used in the UBL-2.2 element cac:EconomicOperatorParty/cac:QualifyingParty/cbc:IndustryClassificationCode` to specify the size of the economic operator. See example in link:#xml-example-regulated-economic-operator[XML Example (REGULATED economic operator)]
+|EORoleType|DG GROW (European Commission)|Element `cac:EconomicOperatorRole/cbc:RoleCode`. See example in link:#xml-example-regulated-economic-operator[XML Example (REGULATED economic operator)]
+|EvaluationMethodType|DG GROW (European Commission)|Element `cbc:EvaluationMethodTypeCode` located at the root of both the UBL-2.2 QualificationApplicationRequest (ESPD Request) and QualificationApplicationResponse (ESPD Response). See XML example in section link:#ix-2-all-about-weights[IX.2 All about weights]
+|FinancialRatioType|BACH Banque de France|Used in the REQUIREMENT "Ratio Type" of the Criterion `CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.FINANCIAL_RATIO` . See data structure for this criterion in the SELF-CONTAINED ESPD Request link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.ods[spread-sheet].
+|LanguageCodeEU|DG GROW (European Commission)|e.g. in `cac:Legislation/cac:Language/cbc:LocaleCode`. See for instance XML example in section link:l#v-7-early-termination[V.7 Early termination]
+|LegislationType|DG GROW (European Commission)|It is used as a basis to supply a value for the element `cac:Legislation/cbc:JurisdictionLevel`, which is not a code but a free-text. See the XML example in the section link:#v-1-convictions[V.1 Convictions]
+|ProcedureType|DG GROW (European Commission)|Element `cbc:ProcedureCode` used at the root of the UBL-2.2 QualificationApplicationRequest XSD document. See XML example in section link:#iii-4-root-elements[III.4 Root elements]
+|ProfileExecutionID|DG GROW (European Commission)|Element `cbc:ProfileExecutionID` used at the root of the UBL-2.2 QualificationApplicationRequest and QualificationApplicationResponse documents. See table of expected elements in section link:#iii-4-root-elements[III.4 Root elements]
+|ProjectType|DG GROW (European Commission)|Element `cac:ProcurementProject/cbc:ProcurementTypeCode`. See XML example in section link:#iii-9-procurement-procedure-self-contained-espd[III.9 Procurement Procedure: Self-contained ESPD]
+|PropertyGroupType|DG GROW (European Commission)|Element `cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode`. See XML example in section link:#iii-11-lots-self-contained-espd[III.11 Lots - Self-contained ESPD], for example
+|QualificationApplicationType|DG GROW (European Commission)|Element `cbc:QualificationApplicationTypeCode` at the root of UBL-2.2 QualificationApplicationRequest and QualificationApplicationResponse documents. See XML example in section link:#iii-4-root-elements[III.4 Root elements]
+|ResponseDataType|DG GROW (European Commission)|Element `cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ValueDataTypeCode`. See XML example in section link:#iii-11-lots-self-contained-espd[III.11 Lots - Self-contained ESPD], for example
+|ServicesProjectSubType|Publications Office of the EU|Element `cac:ProcurementProject/cbc:ProcurementSubtypeCode`. See explanations in section link:#iii-9-procurement-procedure-self-contained-espd[III.9 Procurement Procedure: Self-contained ESPD], subsection XSD Schema.
+|WeightingType|DG GROW (European Commission)|Element `cbc:WeightingTypeCode` at the root of UBL-2.2 QualificationApplicationRequest and QualificationApplicationResponse documents. See XML example in section link:#iii-4-root-elements[III.4 Root elements]
+
+|===
+

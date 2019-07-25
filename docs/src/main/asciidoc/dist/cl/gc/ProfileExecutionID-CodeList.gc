@@ -7,10 +7,10 @@
    <Identification>
       <ShortName>ProfileExecutionID</ShortName>
       <LongName xml:lang="en">PROFILE EXECUTION ID</LongName>
-      <Version>2.0.2</Version>
+      <Version>2.1.0</Version>
       <CanonicalUri>https://github.com/ESPD/ESPD-EDM</CanonicalUri>
-      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2</CanonicalVersionUri>
-      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2/docs/src/main/asciidoc/dist/cl/gc/ProfileExecutionID.gc</LocationUri>
+      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0</CanonicalVersionUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0/docs/src/main/asciidoc/dist/cl/gc/ProfileExecutionID.gc</LocationUri>
       <Agency>
          <LongName xml:lang="en">DG GROW (European Commission)</LongName>
          <Identifier>EU-COM-GROW</Identifier>
@@ -19,6 +19,14 @@
    <ColumnSet>
       <Column Id="code" Use="required">
          <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
@@ -127,6 +135,12 @@
          <Value ColumnRef="code">
             <SimpleValue>ESPD-EDMv2.0.0-REGULATED</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>European Single Procurement Document version 2.0.0 REGULATED</SimpleValue>
          </Value>
@@ -204,6 +218,12 @@
          <Value ColumnRef="code">
             <SimpleValue>ESPD-EDMv2.0.0-SELFCONTAINED</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>European Single Procurement Document version 2.0.0 SELF-CONTAINED</SimpleValue>
          </Value>
@@ -279,7 +299,13 @@
       </Row>
       <Row>
          <Value ColumnRef="code">
-            <SimpleValue>ESPD-EDMv2.0.2-REGULATED</SimpleValue>
+            <SimpleValue>ESPD-EDMv2.1.0-REGULATED</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>European Single Procurement Document version 2.0.0 REGULATED</SimpleValue>
@@ -356,7 +382,13 @@
       </Row>
       <Row>
          <Value ColumnRef="code">
-            <SimpleValue>ESPD-EDMv2.0.2-SELFCONTAINED</SimpleValue>
+            <SimpleValue>ESPD-EDMv2.1.0-SELFCONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>European Single Procurement Document version 2.0.0 SELF-CONTAINED</SimpleValue>
@@ -434,6 +466,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>ESPD-EDMv1.0.2</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>European Single Procurement Document version 1.0.2</SimpleValue>

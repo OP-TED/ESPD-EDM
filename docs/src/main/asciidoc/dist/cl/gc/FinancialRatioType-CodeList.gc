@@ -10,7 +10,7 @@
       <Version>1.0</Version>
       <CanonicalUri>https://www.bach.banque-france.fr/</CanonicalUri>
       <CanonicalVersionUri>https://www.bach.banque-france.fr/</CanonicalVersionUri>
-      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2/docs/src/main/asciidoc/dist/cl/gc/FinancialRatioType.gc</LocationUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0/docs/src/main/asciidoc/dist/cl/gc/FinancialRatioType.gc</LocationUri>
       <Agency>
          <LongName xml:lang="en">BACH Banque de France</LongName>
          <Identifier>BACH</Identifier>
@@ -19,6 +19,14 @@
    <ColumnSet>
       <Column Id="code" Use="required">
          <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
@@ -127,6 +135,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R11</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Assets to Equity ratio</SimpleValue>
          </Value>
@@ -203,6 +217,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R12</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Liabilities to Equity ratio </SimpleValue>
@@ -281,6 +301,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R13</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Current assets/Total assets </SimpleValue>
          </Value>
@@ -357,6 +383,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R14</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Other financial assets and cash and bank/ Total assets</SimpleValue>
@@ -435,6 +467,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R15</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Non-current debt/ Total assets </SimpleValue>
          </Value>
@@ -511,6 +549,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R16</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Current debt/Total assets </SimpleValue>
@@ -589,6 +633,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R21</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Financial income net of charges other than interest/EBITDA</SimpleValue>
          </Value>
@@ -665,6 +715,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R22</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>EBITDA/Interest on financial debt</SimpleValue>
@@ -743,6 +799,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R23</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Interest burden</SimpleValue>
          </Value>
@@ -819,6 +881,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R24</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Interest and similar charges/Net turnove</SimpleValue>
@@ -897,6 +965,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R25</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Interest and similar charges/Gross operating profit</SimpleValue>
          </Value>
@@ -973,6 +1047,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R26</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Net financial income/Gross operating profit</SimpleValue>
@@ -1051,6 +1131,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R27</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Gross operating profit/Total net debt</SimpleValue>
          </Value>
@@ -1127,6 +1213,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R31</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Gross value added/Net turnove</SimpleValue>
@@ -1205,6 +1297,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R32</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Gross operating profit/Net turnover (ROS)</SimpleValue>
          </Value>
@@ -1281,6 +1379,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R33</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>EBITDA/Net turnove</SimpleValue>
@@ -1359,6 +1463,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R34</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Net operating profit/Net turnover</SimpleValue>
          </Value>
@@ -1435,6 +1545,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R35</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>EBIT/Net turnover</SimpleValue>
@@ -1513,6 +1629,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R36</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>EBT/Net turnover</SimpleValue>
          </Value>
@@ -1589,6 +1711,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R37</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Net financial income/Net turnover</SimpleValue>
@@ -1667,6 +1795,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R38</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Return on equity</SimpleValue>
          </Value>
@@ -1743,6 +1877,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R39</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Net operating profit/Total assets</SimpleValue>
@@ -1821,6 +1961,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R310</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Profit or loss for the year before taxes/Equity</SimpleValue>
          </Value>
@@ -1897,6 +2043,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R41</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Asset turnover ratio</SimpleValue>
@@ -1975,6 +2127,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R42</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Employee expenses/Gross value added</SimpleValue>
          </Value>
@@ -2051,6 +2209,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R51</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Inventories/Net turnover</SimpleValue>
@@ -2129,6 +2293,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R52</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Trade receivables/Net turnover</SimpleValue>
          </Value>
@@ -2206,6 +2376,12 @@
          <Value ColumnRef="code">
             <SimpleValue>R53</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Trade payables/Net turnover</SimpleValue>
          </Value>
@@ -2282,6 +2458,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>R54</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Operating working capital/Net turnover</SimpleValue>
