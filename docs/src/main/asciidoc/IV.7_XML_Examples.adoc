@@ -3,7 +3,7 @@
 
 The fact of presenting the data structures as a spread-sheet book had an additional reason: *to use the spread-sheet as an elementary prototype tool to generate the XML instances of the criteria for the ESPD Request and ESDP Response documents*.
 
-Thus the folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xslt[dist/xslt] contains four XSL style-sheets that facilitate the generation of the complete set of criteria required in an ESDP Request or in an ESDP Response XML file.
+Thus the folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/xslt[dist/xslt] contains four XSL style-sheets that facilitate the generation of the complete set of criteria required in an ESDP Request or in an ESDP Response XML file.
 
 For this you can use two different methods:
 
@@ -13,7 +13,7 @@ For this you can use two different methods:
 
 	c:\dist\xslt>Transformer.bat [ods_file_filePathName] [XSL-T_filePathName] 	[Output_XML_filePathName]
 	
-	Example: c:\dist\xslt>Transformer.bat 	..\cl\ods\ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.ods .\REGULATED-ESPDRequest-Annotated-V2.1.0.xslt ..\xml\MyREGULATED_ESPDRequestCriteria.xml
+	Example: c:\dist\xslt>Transformer.bat 	..\cl\ods\ESPD-CriteriaTaxonomy-REGULATED-V2.1.1.ods .\REGULATED-ESPDRequest-Annotated-V2.1.1.xslt ..\xml\MyREGULATED_ESPDRequestCriteria.xml
 
 ** To generate the REGULATED ESDP Response criteria (generates only the answers to the QUESTION(s)):
 
@@ -25,7 +25,7 @@ For this you can use two different methods:
 
 	c:\dist\xslt>Transformer.bat [ods_file_filePathName] [XSL-T_filePathName] Output_XML_filePathName]
 	
-	Example: c:\dist\xslt>Transformer.bat ..\cl\ods\ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.ods	.\SELFCONTAINED-ESPDRequest-Annotated-V2.1.0.xslt ..\xml\MySELFCONTAINED_ESPDRequestCriteria.xml
+	Example: c:\dist\xslt>Transformer.bat ..\cl\ods\ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.1.ods	.\SELFCONTAINED-ESPDRequest-Annotated-V2.1.1.xslt ..\xml\MySELFCONTAINED_ESPDRequestCriteria.xml
 
 ** To generate the SELF-CONTAINED ESDP Response criteria (generates only the answers to the QUESTION(s)):
 
@@ -37,7 +37,7 @@ For this you can use two different methods:
 
 Beware that this solution is a simple prototype aimed at generating the complete list of criteria that may occur in an ESDP Request and the responses (but not the the criteria properties) in an ESPD Response. 
 
-The following features *are implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.1.0.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.1.0.xslt`):
+The following features *are implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.1.1.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.1.1.xslt`):
 
 * All the root elements are created and commented;
 
@@ -49,9 +49,9 @@ The following features *are implemented* in the first set of transformation XSL-
 
 * Per each criterion a complete Legislation object is instantiated with 'dummy' values.
 
-The following features *are NOT implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.1.0.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.1.0.xslt`):
+The following features *are NOT implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.1.1.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.1.1.xslt`):
 
-* The publications and document references requested in the business requirements are not generated; but the XML examples provided in the distribution do contain examples of TED and national publications (both for the ESPD Request and ESPD Response examples. See files REGULATED-ESPDRequest-2.1.0.xml, REGULATED-ESPDResponse-2.1.0.xml, SELFCONTAINED-ESPDRequest-2.1.0.xml and SELFCONTAINED-ESPDResponse-2.1.0.xml, in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[xml folder].
+* The publications and document references requested in the business requirements are not generated; but the XML examples provided in the distribution do contain examples of TED and national publications (both for the ESPD Request and ESPD Response examples. See files REGULATED-ESPDRequest-2.1.1.xml, REGULATED-ESPDResponse-2.1.1.xml, SELFCONTAINED-ESPDRequest-2.1.1.xml and SELFCONTAINED-ESPDResponse-2.1.1.xml, in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/xml[xml folder].
 
 * The response value and cardinality are shown for informative purposes. No functionality is currently implemented based on them, but could be used in future improved versions of the prototype;
 
@@ -65,6 +65,6 @@ The following features *are implemented* in the second set of transformation XSL
 
 * A `cac:TenderingCriterionResponse` per `cac:TenderingCriterionProperty` in the ESPD Request document is created with 'dummy' values. The `cac:ResponseValue` elements are of the data type expected as specified in the ESPD Request `cac:TenderingCriterionProperty/cac:ValueDataTypeCode` element.
 
-The following features *is NOT implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.1.0.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.1.0.xslt`):
+The following features *is NOT implemented* in the first set of transformation XSL-T style-sheet (`REGULATED-ESPDRequest-Annotated-V2.1.1.xslt` and `SELFCONTAINED-ESPDRequest-Annotated-V2.1.1.xslt`):
 
-* The Criteria from the ESPD Request *are not* copied in the ESPD Response document. but the XML examples in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[xml folder] do.
+* The Criteria from the ESPD Request *are not* copied in the ESPD Response document. but the XML examples in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/xml[xml folder] do.

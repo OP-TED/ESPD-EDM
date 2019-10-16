@@ -59,16 +59,16 @@ We could say that the 'data structures' represented in the spread-sheets define 
 |LEGISLATION|cac:Legislation
 |===
   
-The ESPD-EDM data structures vocabulary is defined in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CriterionElementType]". Her you have the definitions provided therein:
+The ESPD-EDM data structures vocabulary is defined in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[CriterionElementType]". Her you have the definitions provided therein:
 
 * *CRITERION*: A criterion (in the case of the the ESPD an Exclusion or Selection criterion); maps to a UBL-2.2 cac:TenderingCriterion class
 * *SUBCRITERION*: Used to define national sub-criteria; maps to a UBL-2.2 cac:SubTenderingCriterion class 
 * *REQUIREMENT_GROUP*: Group of requirements or remarks issued by a MS or a CA; maps to a UBL-2.2 cac:TenderingCriterionPropertyGroup
 * *REQUIREMENT_SUBGROUP*: A subgroup of requirements or remarks inside a group or subgroup of requirements; maps to a UBL-2.2 cac:SubsidiaryTenderingCriterionPropertyGroup
-* *REQUIREMENT*: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[ResponseDataType]")
+* *REQUIREMENT*: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the contracting authority (CA); see see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[ResponseDataType]")
 * *QUESTION_GROUP*: Group of questions, each question requiring a datum as an answer from the EO; maps to a cac:TenderingCriterionPropertyGroup class 
 * *QUESTION_SUBGROUP*:	A subgroup of questions inside a group or a subgroup of questions; maps to a cac:SubsidiaryTenderingCriterionPropertyGroup
-* *QUESTION*: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[ResponseDataType]" )
+* *QUESTION*: A	question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[ResponseDataType]" )
 * *CAPTION*: A text label (no requirement nor answer is expected); maps to a cac:TenderingCriterionProperty class (the expected response data type is NONE) 
 * *ADDITIONAL_DESCRIPTION_LINE*:	Additional line in a description (for descriptions that can be split in several lines); maps to a cbc:Description element (namely in cac:TenderingCriterion) 
 * *LEGISLATION*:	An instance of a Legislation class; maps to a cac:Legislation class
@@ -98,5 +98,5 @@ If you examine any of the XML examples provided in this document you will observ
 
 ** A REQUIREMENT_GROUP or REQUIREMENT-SUBGROUP may contain either REQUIREMENT_SUBGROUPS and/or QUESTION_SUBGROUPS;   
 
-** The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENT(s) or QUESTION(s) is to look into the value of the `cac:TenderingCriterionProperty/cbc:TypeCode`. The list of possible codes are the ones of the above mentioned Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CriterionElementType]".
+** The only possibility in the UBL-2.2 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENT(s) or QUESTION(s) is to look into the value of the `cac:TenderingCriterionProperty/cbc:TypeCode`. The list of possible codes are the ones of the above mentioned Code List "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[CriterionElementType]".
 
