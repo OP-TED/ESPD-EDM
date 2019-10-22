@@ -1,0 +1,33 @@
+
+=== III.8 Procurement Procedure: Basic ESPD
+
+[cols="<1,<5"]
+|===
+|*REQUIREMENT* 
+|*The contracting authority must be able to provide basic data about the Procurement Procedure*
+|===
+
+There are some important differences between the data collected for a Basic ESPD Request and the data that can be required in a Extended ESPD Request.
+
+==== Mock-up
+
+For the Basic ESDP REquest only three basic data are required: the title, a short description and the file (i.e. case) reference number attributed by the Contracting Authority to the procurement procedure.
+
+The mock-up below shows a possible way of collecting this data:
+
+.Procurement Procedure, data collected in a Basic ESPD
+image::Procurement_Procedure_Basic_ESPD-mockup.png[Procurement Procedure in a Basic ESPD, alt="Procurement Procedure in a Basic ESPD", align="center"]
+
+==== XSD Schema
+
+The figure below is a fragment of the QualificationApplicationRequest XSD Schema. The placeholders for the data expected in the Basic ESPD Request have been highlighted (`cbc:ContractFolderID` and `cac:ProcuementProject`).
+
+.Procurement Procedure (Basic ESPD). XSD Schema
+image::Procurement_Procedure_Basic_ESPD-XSD.png[Procurement Procedure-Basic ESPD-XSD, alt="Procurement Procedure-Basic ESPD-XSD", align="center"]
+
+.Class cac:ProcurementProject (elements used in the Basic ESPD). XSD Schema
+image::ProcurementProject_XSD.png[ProcurementProject, alt="ProcurementProject", align="center"]
+
+
+
+

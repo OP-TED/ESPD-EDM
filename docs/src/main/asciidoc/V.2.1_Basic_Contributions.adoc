@@ -1,0 +1,196 @@
+
+=== V.2.1 Basic Contributions
+
+==== Mock-ups - contracting authority perspective
+
+For a better understanding of the behavior of the Basic 'Contributions' have a look to the two figures below. They show two different options offered by the ESPD Service GUI perspective for the economic operator:
+
+The figure below represents a possible mockup for the contracting authority perspective of the Conviction criterion 'Payment of Taxes' as retrieved from e-Certis:
+
+.Basic 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (*YES*)
+image::Basic_ESPDRequest_Contributions_CA_mockup.png[Basic 'Payment of Taxes' (ESPD Service, CA perspective), alt="Basic 'Payment of Taxes' (ESPD Service, CA perspective)", width="800" align="center"]
+
+==== Mock-ups - economic operator perspective
+
+The next mock-up shows the view of the economic operator when it answers "Yes" to the question "Has this breach of
+obligations been established by other means....?". See the next mock-up for the negative answer. See also the
+section IV.8 GUI control elements/link:#ontrue-onfalse-codes-for-group-and-subgroup-control[ONTRUE/ONFALSE codes for GROUP and SUBGROUP control].
+
+.Basic 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 1 (*YES*)
+image::PaymentOfTaxes_EO_YES_mock-up.png[Basic 'Payment of Taxes' (ESPD Service, EO perspective), alt="Basic 'Payment of Taxes' (ESPD Service, EO perspective)", align="center"]
+
+This other mock-up shows the view of the economic operator when it answers "No" to the question "Has this breach of obligations been established by other means....?". 
+
+.Basic 'Conviction' Payment of Taxes (ESPD Service, EO perspective) - OPTION 2 (*NO*)
+image::PaymentOfTaxes_EO_NO_mock-up.png[Basic 'Payment of Taxes' (ESPD Service, EO perspective), alt="Basic 'Payment of Taxes' (ESPD Service, EO perspective)", align="center"]
+
+==== Data Structure - Basic
+
+.Basic 'Contributions' criterion data structure 
+image::Basic_ESPDRequest_Contributions_Data_Structure.png[Basic 'Contributions' criterion data structure, alt="Basic 'Contributions' criterion data structure",align="center"]
+
+==== XML Example - Basic
+
+.Basic Payment of Taxes (PoT)
+[source,xml]
+----
+<!... header elements removed for brevity -->
+
+<!-- Criterion:Payment of taxes -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">b61bbeb7-690e-4a40-bc68-d6d4ecfaa3d4</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">CRITERION.EXCLUSION.CONTRIBUTIONS.PAYMENT_OF_TAXES</cbc:CriterionTypeCode>
+	
+	<cbc:Name>Payment of taxes</cbc:Name> <--1-->
+	<cbc:Description>Has the economic operator breached its obligations relating to the payment of taxes, both in the country in which it is established and in Member State of the contracting authority or contracting entity if other than the country of establishment?</cbc:Description>
+	
+	<!-- Reference to the EU Directive where 'Payment of Taxes' are covered -->
+	<cac:Legislation>	<--11-->
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">4ea7a10a-643e-4022-b67e-e06573b28ff5</cbc:ID>
+		<cbc:Title languageID="en">DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</cbc:Title>
+		<cbc:Description languageID="en">Directive 2014/24/EU</cbc:Description>
+		<cbc:JurisdictionLevel languageID="en">EU Directive</cbc:JurisdictionLevel>
+		<cbc:Article>Article 57(2)</cbc:Article>
+		<cbc:URI>http://eur-lex.europa.eu/legal-content/ES/TXT/?uri=celex%3A32014L0024</cbc:URI>
+	</cac:Legislation>	
+
+
+		<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">098fd3cc-466e-4233-af1a-affe09471bce</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">0810157d-82d8-4a31-9814-b41de9ca0f7a</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Your answer</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">INDICATOR</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">f8499787-f9f8-4355-95e2-9784426f4d7b</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ONTRUE</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">789302e2-acbe-4bee-b2a0-d0312207ef3d</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Country or member state concerned</cbc:Description> <--2-->
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">CODE_COUNTRY</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">ea565b14-4b91-4730-840f-aae117a84a0c</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Amount concerned</cbc:Description> <--3-->
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">AMOUNT</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+			<cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">7c2aec9f-4876-4c33-89e6-2ab6d6cf5d02</cbc:ID>
+				<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ON*</cbc:PropertyGroupTypeCode>
+				<cac:TenderingCriterionProperty>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">5773c0da-bccd-4378-89f3-1356f7bd2824</cbc:ID>
+					<cbc:Name/>
+					<cbc:Description>Has this breach of obligations been established by means other than a judicial or administrative decision?</cbc:Description>
+					<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+					<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">INDICATOR</cbc:ValueDataTypeCode>
+				</cac:TenderingCriterionProperty>
+				<cac:SubsidiaryTenderingCriterionPropertyGroup>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">80633323-a7b6-4206-9728-e4534eaad8b2</cbc:ID>
+					
+					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ONTRUE</cbc:PropertyGroupTypeCode>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">115b8c74-1f17-4e26-a10a-f35198978b16</cbc:ID>
+						<cbc:Name/>
+						<cbc:Description>Please describe which means were used</cbc:Description> <--4-->
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">DESCRIPTION</cbc:ValueDataTypeCode>
+					</cac:TenderingCriterionProperty>
+				</cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cac:SubsidiaryTenderingCriterionPropertyGroup>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">a49e6e25-0059-47da-9397-72c2db5fd5b1 </cbc:ID>
+					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ON*</cbc:PropertyGroupTypeCode>
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">6e00a5f4-e832-40aa-b399-2d33f5657c04</cbc:ID>
+						<cbc:Name/>
+						<cbc:Description>Has the economic operator fulfilled its obligations by paying or entering into a binding arrangement with a view to paying the taxes or social security contributions due, including, where applicable, any interest accrued or fines?</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">INDICATOR</cbc:ValueDataTypeCode>
+					</cac:TenderingCriterionProperty>
+					<cac:SubsidiaryTenderingCriterionPropertyGroup>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">42a44eb9-b8c9-4a67-8776-e77fc5356efe</cbc:ID>
+						<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ONTRUE</cbc:PropertyGroupTypeCode>
+						<cac:TenderingCriterionProperty>
+							<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">c5b50839-e117-4415-b5b9-fba95d76c443</cbc:ID>
+							<cbc:Name/>
+							<cbc:Description>Please describe them</cbc:Description> <--5-->
+							<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+							<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">DESCRIPTION</cbc:ValueDataTypeCode>
+						</cac:TenderingCriterionProperty>
+					</cac:SubsidiaryTenderingCriterionPropertyGroup>
+				</cac:SubsidiaryTenderingCriterionPropertyGroup>
+				<cac:SubsidiaryTenderingCriterionPropertyGroup>
+					<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">536417dc-8130-4981-85c5-fceba5541c58</cbc:ID>
+					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ONFALSE</cbc:PropertyGroupTypeCode> <--12-->
+					<cac:TenderingCriterionProperty>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">75545f09-5a13-40f3-af8b-6a4a131659fc</cbc:ID>
+						<cbc:Name/>
+						<cbc:Description>If this breach of obligations was established through a judicial or administrative decision, was this decision final and binding?</cbc:Description>
+						<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+						<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">INDICATOR</cbc:ValueDataTypeCode>
+					</cac:TenderingCriterionProperty>
+					<cac:SubsidiaryTenderingCriterionPropertyGroup>
+						<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">8aaac22d-1b59-442e-9210-a6e70ec05962</cbc:ID>
+						<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ONTRUE</cbc:PropertyGroupTypeCode>
+						<cac:TenderingCriterionProperty>
+							<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">63cb3683-44ce-4549-aefc-843204884011</cbc:ID>
+							<cbc:Name/>
+							<cbc:Description>Please indicate the date of conviction or decision</cbc:Description> <--9--> 
+							<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+							<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">DATE</cbc:ValueDataTypeCode>
+						</cac:TenderingCriterionProperty>
+						<cac:TenderingCriterionProperty>
+							<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">505a8da4-d7db-4870-8c3a-4229148a40e2</cbc:ID>
+							<cbc:Name/>
+							<cbc:Description>In case of a conviction insofar as established directly therein, the length of the period of exclusion</cbc:Description> <--10-->
+							<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+							<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">PERIOD</cbc:ValueDataTypeCode>
+						</cac:TenderingCriterionProperty>
+					</cac:SubsidiaryTenderingCriterionPropertyGroup>
+				</cac:SubsidiaryTenderingCriterionPropertyGroup>
+			</cac:SubsidiaryTenderingCriterionPropertyGroup>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+	</cac:TenderingCriterionPropertyGroup>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">dd5919af-59eb-4295-b27b-5dfd73466ba4</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Is this information available electronically?</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">INDICATOR</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ONTRUE</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">849d935c-7ef8-4e00-b075-9b6094464367</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Evidence supplied</cbc:Description><--6-->
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode> <--7--><--8-->
+			</cac:TenderingCriterionProperty>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+----
+<1> EU Payment of Taxes (PoT) criterion according to the Directive.
+<2> Country or Member State concerned by the conviction. This field is only shown if the the answer to the previous QUESTION was *Yes*.
+<3> Amount concerned and currency for the amount concerned. The economic operator may change the currency. Notice that the currency is specified in the `cac:Amount` attribute `@currencyID`. To see how this looks like in an XML instance open an XM example file corresponding to an ESPDResponse and search for `currencyID`. The default currency is EUR, but the economic operator may specify it in the currency of its country. 
+<4> Placeholder for the "[...] means used to" establish the obligation (See mock-up above). Beware that this sub-structure is only processed (e.g. showed in a GUI, preserved in the XML instance, other) if the answer to the previous QUESTION is *Yes* (INDICATOR value = true). Compare with the ESPD Service screen-capture above (EO perspective) when the answer is *yes*.
+<5> Placeholder for the "Please describe them" field. This sub-group of one QUESTION is only shown if the previous QUESTION was answered with a *Yes*, thus the ONTRUE code for the sub-group.
+<6> URL from where to download the evidence. Will be placed in an element of the object `cac:Evidence`. See chapter "link:#ix-evidences[IX. Evidences]". 
+<7> By specifying that the value of the expected data type is an evidence identifier (code `EVIDENCE_IDENTIFIER` of the Code List ResponseDataType`) the Response will have to contain an evidence supplied in an element of the object `cac:Evidence`, at the end of the XML Instance. See chapter "link:#vii-8-evidences[VIII.8 Evidences]".
+<8> The issuer party of this evidence (e.g. a base registry). Will be placed in the element `cac:Evidence/cac:DocumentReference/cac:Attachment/cac:IssuerParty`. Some countries use verification codes associated to evidences. To specify these verification codes you can use the Evidence ID, as in the end the code identifies uniquely the Evidence in the issuer system (see this XML example, look for 'Verification code' inside the example, bullet number 6).
+<9> Placeholder for the "Please indicate the date of conviction or decision". Beware that this sub-structure is only processed (e.g. showed in a GUI, preserved in the XML instance, other) if the answer to the previous QUESTION is *Yes* (INDICATOR value = true). Compare with the ESPD Service screen-capture above (EO perspective) when the answer is *Yes*. Notice also that this XML example contains the possible answers. This was done on purpose to show you how both branches are instantiated in the XML file. However in a real file (e.g. not in an example) it would not make sense have both XML branches, but only one: either the one corresponding to the *Yes* answer or the one for the *No* answer; which is the normal expected behaviour of a `choice` structure (this behavior is similar to the an XML `choice` structure, however UBL Naming and Design Rules (NDR) disavow the use of `choices`).
+<10> Placeholder for the "In case of a conviction, insofar as established...". It goes in the same sub-group than the previous QUESTION about the date of conviction.
+<11> Notice that the structure and elements for legislation are always the same for all exclusion criteria. Also the UUID identifying the structure is the same in all the exclusion criteria, as this  is a highly *reusable structure*. 
+<12> Beware that this sub-structure is only processed if the answer to the QUESTION was *No* (INDICATOR value = false). Compare with the mock-up. Compare with the ESPD Service screen-capture above (EO perspective) when the answer is *No*.
