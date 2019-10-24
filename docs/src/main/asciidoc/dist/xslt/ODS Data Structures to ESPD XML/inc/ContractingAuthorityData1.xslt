@@ -4,7 +4,7 @@
 	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
 	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
 	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
-	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:espd="urn:com:grow:espd:2.1.0"
+	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:espd="urn:com:grow:espd:2.1.1"
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:util="java:java.util.UUID">
 	
@@ -30,7 +30,7 @@
 					<cbc:PostalZone>DummyValue</cbc:PostalZone>
 					<cac:Country>
 						<cbc:IdentificationCode listID="CountryCodeIdentifier"
-							listAgencyID="EU-COM-GROW" listVersionID="2.1.0"
+							listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
 							>asdasdas</cbc:IdentificationCode>
 					</cac:Country>
 				</cac:PostalAddress>
