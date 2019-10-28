@@ -11,7 +11,7 @@
     Start of synthesis of rules from criterion constraints ESPD Request.
 
     Illustration of criterion constraints - 03 ESPD Req Criterion BR.sch
-	ESPD Version: 2.1.0
+	ESPD Version: 2.1.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-CR">

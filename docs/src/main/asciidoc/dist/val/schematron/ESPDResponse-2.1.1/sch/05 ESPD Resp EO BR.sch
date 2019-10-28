@@ -11,13 +11,13 @@
     Start of synthesis of rules from Economic Operator (EO) constraints ESPD Response
 
     Illustration of EO constraints - 05 ESPD Resp EO BR.sch
-	ESPD Version: 2.1.0
+	ESPD Version: 2.1.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-EO">
 		<!-- BR-RESP-10: Information about the economic operator MUST be provided. -->
 		<rule context="cac:EconomicOperatorParty">	
-			<let name="isSC" value="/*[1]/cbc:QualificationApplicationTypeCode='SELFCONTAINED'"/>	
+			<let name="isSC" value="/*[1]/cbc:QualificationApplicationTypeCode='EXTENDED'"/>	
 			
 			<!-- BR-RESP-10-02: This element is compulsory in the ESPD-EDM V02.00.00 because depending on it different sets of data will be required or not, shown or hidden, processed or skipped. -->
 			<assert test="not($isSC) or ($isSC and (cac:EconomicOperatorRole))" flag="error" id="BR-RESP-10-02">The function of the economic operator ('/cac:EconomicOperatorParty/cac:EconomicOperatorRole') is mandatory.</assert>

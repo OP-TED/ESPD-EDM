@@ -10,7 +10,8 @@
                 xmlns:iso="http://purl.oclc.org/dsdl/schematron"
                 xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
                 xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
-                xmlns:espd="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+                xmlns:espd="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
+                xmlns:fn="http://www.w3.org/2005/xpath-functions"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter"/>
@@ -164,7 +165,7 @@
    <!--SCHEMA SETUP-->
 <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                              title="ESPD Request Other Business Rules"
+                              title="ESPD Response Extended Business Rules"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -180,67 +181,59 @@
                                              prefix="ext"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
                                              prefix="udt"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
                                              prefix="espd"/>
+         <svrl:ns-prefix-in-attribute-values uri="http://www.w3.org/2005/xpath-functions" prefix="fn"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
             </xsl:attribute>
-            <xsl:attribute name="id">BR-REQ-OTHER</xsl:attribute>
-            <xsl:attribute name="name">BR-REQ-OTHER</xsl:attribute>
+            <xsl:attribute name="id">BR-RESP-SC</xsl:attribute>
+            <xsl:attribute name="name">BR-RESP-SC</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M6"/>
+         <xsl:apply-templates select="/" mode="M7"/>
       </svrl:schematron-output>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Other Business Rules</svrl:text>
+<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Response Extended Business Rules</svrl:text>
 
-   <!--PATTERN BR-REQ-OTHER-->
+   <!--PATTERN BR-RESP-SC-->
 
 
 	<!--RULE -->
-<xsl:template match="cbc:CustomizationID" priority="1000" mode="M6">
+<xsl:template match="cac:TenderingCriterionResponse/cac:ResponseValue" priority="1000"
+                 mode="M7">
+      <xsl:variable name="ppLot" select="/*[1]/cac:ProcurementProjectLot/cbc:ID"/>
+      <xsl:variable name="isSC"
+                    select="/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED'"/>
+      <xsl:variable name="TC_lot_ID"
+                    select="/*[1]/cac:TenderingCriterion[cbc:CriterionTypeCode = 'CRITERION.OTHER.EO_DATA.LOTS_TENDERED']/cac:TenderingCriterionPropertyGroup[cbc:ID='289f39b3-2a15-421a-8050-a29858031f35']/cac:TenderingCriterionProperty/cbc:ID"/>
+      <xsl:variable name="doTest"
+                    select="$isSC and $TC_lot_ID  and ancestor::*[1]/cbc:ValidatedCriterionPropertyID = $TC_lot_ID"/>
 
-		<!--ASSERT fatal-->
+		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="text()='urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'"/>
+         <xsl:when test="not($doTest) or ($doTest and cbc:ResponseID = $ppLot)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="text()='urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'">
-               <xsl:attribute name="id">BR-OTH-06-01</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
+                                test="not($doTest) or ($doTest and cbc:ResponseID = $ppLot)">
+               <xsl:attribute name="id">BR-LOT-10</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>The ESPD customization of UBL ('/cbc:CustomizationID = <xsl:text/>
-                  <xsl:value-of select="."/>
-                  <xsl:text/>') must use the value 'urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'.</svrl:text>
+               <svrl:text>The list of lots the EO tenders for MUST be provided. The lot '<xsl:text/>
+                  <xsl:value-of select="cbc:ResponseID"/>
+                  <xsl:text/>' does not exist.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-
-		    <!--ASSERT fatal-->
-<xsl:choose>
-         <xsl:when test="@schemeAgencyID='CEN-BII'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID='CEN-BII'">
-               <xsl:attribute name="id">BR-OTH-06-02</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>'/cbc:CustomizationID/@schemeAgencyID' must use the value "CEN-BII" (/cbc:CustomizationID/@schemeAgencyID = '<xsl:text/>
-                  <xsl:value-of select="@schemeAgencyID"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M6"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M6">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   <xsl:template match="text()" priority="-1" mode="M7"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M7">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
    </xsl:template>
 </xsl:stylesheet>

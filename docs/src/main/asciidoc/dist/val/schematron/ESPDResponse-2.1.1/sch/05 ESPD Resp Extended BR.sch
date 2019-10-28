@@ -13,7 +13,7 @@
     Start of synthesis of rules from other constraints ESPD Response
 
     Illustration of procurer constraints - 05 ESPD Resp Self-contained BR.sch
-	ESPD Version: 2.1.0
+	ESPD Version: 2.1.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-SC">
@@ -21,7 +21,7 @@
 		<rule context="cac:TenderingCriterionResponse/cac:ResponseValue">
 			<!-- BR-LOT-10: The list of lots the EO tenders for MUST be provided. Only if it is self-contained. -->
 			<let name="ppLot" value="/*[1]/cac:ProcurementProjectLot/cbc:ID"/>
-			<let name="isSC" value="/*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED'"/>
+			<let name="isSC" value="/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED'"/>
 			<let name="TC_lot_ID" value="/*[1]/cac:TenderingCriterion[cbc:CriterionTypeCode = 'CRITERION.OTHER.EO_DATA.LOTS_TENDERED']/cac:TenderingCriterionPropertyGroup[cbc:ID='289f39b3-2a15-421a-8050-a29858031f35']/cac:TenderingCriterionProperty/cbc:ID"/>
 			<let name="doTest" value="$isSC and $TC_lot_ID  and ancestor::*[1]/cbc:ValidatedCriterionPropertyID = $TC_lot_ID"/>
 			

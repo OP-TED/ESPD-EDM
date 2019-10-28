@@ -11,7 +11,7 @@
     Start of synthesis of rules from pre-qualification system ESPD Response
 
     Illustration of procurer constraints - 05 ESPD Resp Qualification BR.sch
-	ESPD Version: 2.1.0
+	ESPD Version: 2.1.1
 -->
     <xsl:key name="EOrole" match="cbc:RoleCode" use="." />
 	
@@ -52,7 +52,7 @@
 			<assert test="not($testS10) or ($testS10 and (count($selectionCriteria) = (count($selectionResponses) + count($selectionReqResponses))) )" flag="warning" id="BR-RESP-80-S10">When the pre-qualification system the EO is registered on does not cover all the selection criteria, information about compliance of selection criteria MUST be provided. The following selection criterion are not provided: <value-of select="$selectionNotResponses"/>, <value-of select="$selectionNotReqResponses"/></assert>
 
 			<!-- BR-RESP-80-S20: When the pre-qualification system the EO is registered on covers all the selection criteria, information about compliance of selection criteria IS NOT required. -->
-			<!-- isPQS = true + isOENRON = false +  hasServiceProvider = false + isSelfcontained = true -->
+			<!-- isPQS = true + isOENRON = false +  hasServiceProvider = false + isExtended = true -->
 			<let name="testS20" value="$isPQS and not($isOENRON) and not($hasServiceProvider)"/>
 			<assert test="not($testS20) or ($testS20 and (count($selectionResponses) = 0) )" flag="warning" id="BR-RESP-80-S20">When the pre-qualification system the EO is registered on covers all the selection criteria, information about compliance of selection criteria IS NOT required.</assert>
 					

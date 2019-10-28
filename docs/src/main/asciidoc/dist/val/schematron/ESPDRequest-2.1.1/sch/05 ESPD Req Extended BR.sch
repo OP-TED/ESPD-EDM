@@ -13,12 +13,12 @@
     Start of synthesis of rules from other constraints ESPD Request
 
     Illustration of procurer constraints - 05 ESPD Req Self-contained BR.sch
-	ESPD Version: 2.1.0
+	ESPD Version: 2.1.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-SC">
 		
-		<rule context="espd:QualificationApplicationRequest[cbc:QualificationApplicationTypeCode='SELFCONTAINED']">
+		<rule context="espd:QualificationApplicationRequest[cbc:QualificationApplicationTypeCode='EXTENDED']">
 			<!-- BR-SC-10: Information about the procurement procedure MUST be provided. -->
 			<assert test="(cbc:ProcedureCode)" role="fatal" id="BR-SC-10">Information about the procurement procedure MUST be provided ('/cbc:ProcedureCode) when the type of ESPD is self-contained.</assert>
 			
@@ -31,7 +31,7 @@
 		<!-- BR-LOT-40: The lots each criteria applies to MUST be provided. -->
 		<rule context="cac:TenderingCriterionPropertyGroup[cbc:ID='a53561d5-6614-4dbe-987e-b96f35387f46']/cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT' and cbc:ValueDataTypeCode='LOT_IDENTIFIER']">
 			<let name="allLots" value="/*[1]/cac:ProcurementProjectLot/cbc:ID"/>
-			<let name="testLots" value="(cbc:ExpectedID) and (/*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') and count($allLots)&gt;0"/>
+			<let name="testLots" value="(cbc:ExpectedID) and (/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED') and count($allLots)&gt;0"/>
 			<let name="currentExpectedID" value="cbc:ExpectedID"/>
 			
 			<let name="lotsIDs" value="/*[1]/cac:ProcurementProjectLot[cbc:ID = $currentExpectedID]/cbc:ID"/>
@@ -40,7 +40,7 @@
 		</rule>
 		
 		<rule context="cac:TenderingCriterion">
-			<let name="isSCopen" value="(/*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') and (/*[1]/cbc:ProcedureCode != 'OPEN')"/>
+			<let name="isSCopen" value="(/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED') and (/*[1]/cbc:ProcedureCode != 'OPEN')"/>
 			
 			<!-- BR-2P-10-S10_01: For two-phased procedure with weighted criteria the information about weighting for each criteria within “Technical and professional ability MUST be provided -->
 			<let name="testWeightNumeric" value="$isSCopen and (cbc:EvaluationMethodTypeCode = 'WEIGHTED') and starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.')"/>			
