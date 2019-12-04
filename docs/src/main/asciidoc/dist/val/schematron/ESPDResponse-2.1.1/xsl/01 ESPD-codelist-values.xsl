@@ -449,10 +449,10 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="( false() or ( (contains(translate('&#127;ESPD-EDMv2.0.0-BASIC&#127;ESPD-EDMv2.0.0-EXTENDED&#127;ESPD-EDMv2.1.1-BASIC&#127;ESPD-EDMv2.1.1-EXTENDED&#127;ESPD-EDMv1.0.2&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
+         <xsl:when test="( false() or ( (contains(translate('&#127;ESPD-EDMv2.0.0-REGULATED&#127;ESPD-EDMv2.0.0-SELFCONTAINED&#127;ESPD-EDMv2.1.0-REGULATED&#127;ESPD-EDMv2.1.0-SELFCONTAINED&#127;ESPD-EDMv1.0.2&#127;ESPD-EDMv2.1.1-BASIC&#127;ESPD-EDMv2.1.1-EXTENDED&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( false() or ( (contains(translate('&#127;ESPD-EDMv2.0.0-BASIC&#127;ESPD-EDMv2.0.0-EXTENDED&#127;ESPD-EDMv2.1.1-BASIC&#127;ESPD-EDMv2.1.1-EXTENDED&#127;ESPD-EDMv1.0.2&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
+                                test="( false() or ( (contains(translate('&#127;ESPD-EDMv2.0.0-REGULATED&#127;ESPD-EDMv2.0.0-SELFCONTAINED&#127;ESPD-EDMv2.1.0-REGULATED&#127;ESPD-EDMv2.1.0-SELFCONTAINED&#127;ESPD-EDMv1.0.2&#127;ESPD-EDMv2.1.1-BASIC&#127;ESPD-EDMv2.1.1-EXTENDED&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -514,10 +514,10 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="( false() or ( (contains(translate('&#127;BASIC&#127;EXTENDED&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
+         <xsl:when test="( false() or ( (contains(translate('&#127;REGULATED&#127;SELFCONTAINED&#127;BASIC&#127;EXTENDED&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( false() or ( (contains(translate('&#127;BASIC&#127;EXTENDED&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
+                                test="( false() or ( (contains(translate('&#127;REGULATED&#127;SELFCONTAINED&#127;BASIC&#127;EXTENDED&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
@@ -536,10 +536,10 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;LOT_IDENTIFIER&#127;WEIGHT_INDICATOR&#127;CODE_BOOLEAN&#127;ECONOMIC_OPERATOR_IDENTIFIER&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
+         <xsl:when test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;LOT_IDENTIFIER&#127;WEIGHT_INDICATOR&#127;CODE_BOOLEAN&#127;ECONOMIC_OPERATOR_IDENTIFIER&#127;QUAL_IDENTIFIER&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) ) "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;LOT_IDENTIFIER&#127;WEIGHT_INDICATOR&#127;CODE_BOOLEAN&#127;ECONOMIC_OPERATOR_IDENTIFIER&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
+                                test="( false() or ( (contains(translate('&#127;AMOUNT&#127;CODE&#127;CODE_COUNTRY&#127;DATE&#127;DESCRIPTION&#127;EVIDENCE_IDENTIFIER&#127;INDICATOR&#127;PERCENTAGE&#127;PERIOD&#127;QUANTITY_INTEGER&#127;QUANTITY_YEAR&#127;QUANTITY&#127;NONE&#127;IDENTIFIER&#127;URL&#127;MAXIMUM_AMOUNT&#127;MINIMUM_AMOUNT&#127;MAXIMUM_VALUE_NUMERIC&#127;MINIMUM_VALUE_NUMERIC&#127;TRANSLATION_TYPE_CODE&#127;CERTIFICATION_LEVEL_DESCRIPTION&#127;COPY_QUALITY_TYPE_CODE&#127;TIME&#127;LOT_IDENTIFIER&#127;WEIGHT_INDICATOR&#127;CODE_BOOLEAN&#127;ECONOMIC_OPERATOR_IDENTIFIER&#127;QUAL_IDENTIFIER&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;')) ) ) )">
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>

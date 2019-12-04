@@ -41,7 +41,10 @@
 			
 			<!-- BR-TCR-03: Only one of the /cac:TenderingCriterionResponse sub elements (/cac:ResponseValue, /cac:ApplicablePeriod or /cac:EvidenceSupplied) is mandatory. -->
 			<assert test="(count(cac:ResponseValue)=0 and (count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=1) or ((count(cac:ApplicablePeriod) + count(cac:EvidenceSupplied))=0 and count(cac:ResponseValue)>0)" flag="fatal" id="BR-TCR-03">One and only one response element ('/cac:ResponseValue', '/cac:ApplicablePeriod' or '/cac:EvidenceSupplied') per criterion response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <value-of select="cbc:ValidatedCriterionPropertyID"/>') is mandatory.</assert>
-						
+			
+			<!-- BR-TCR-04: Only one sub-element within /cac:TenderingCriterionResponse/cac:ResponseValue is admitted at the same time. -->
+			<assert test="not(count(cac:ResponseValue) &gt; 1)" flag="fatal" id="BR-TCR-04">Only one sub-element within '/cac:TenderingCriterionResponse/cac:ResponseValue' is admitted at the same time. The criteria response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <value-of select="cbc:ValidatedCriterionPropertyID"/>') has '<value-of select="count(cac:ResponseValue)"/>' sub-element(s).</assert>
+			
 			<!-- BR-TCR-01-02: /cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID must match one of the IDs within /cac:TenderingCriterionProperty/cbc:ID -->
 			<assert test="((cbc:ValidatedCriterionPropertyID) and (count(key('CriterionProperty', cbc:ValidatedCriterionPropertyID))=1)) or not(cbc:ValidatedCriterionPropertyID)" flag="fatal" id="BR-TCR-01-02">The criterion response ('cbc:ValidatedCriterionPropertyID' = '<value-of select="cbc:ValidatedCriterionPropertyID"/>') does not have a cross-reference to a criterion property ('cac:TenderingCriterionProperty/cbc:ID').</assert>
 			
@@ -78,6 +81,8 @@
 			<assert test="( ($currentDataType = 'QUANTITY') and (cac:ResponseValue/cbc:ResponseQuantity) ) or not($currentDataType = 'QUANTITY')" flag="fatal" id="BR-TCR-08-12">The type of answer expected by the contracting authority is 'QUANTITY' ('cac:ResponseValue/cbc:ResponseQuantity' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- IDENTIFIER = cac:ResponseValue/cbc:ResponseID -->
 			<assert test="( ($currentDataType = 'IDENTIFIER') and (cac:ResponseValue/cbc:ResponseID) ) or not($currentDataType = 'IDENTIFIER')" flag="fatal" id="BR-TCR-08-13">The type of answer expected by the contracting authority is 'IDENTIFIER' ('ac:ResponseValue/cbc:ResponseID' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
+			<!-- IDENTIFIER = cac:ResponseValue/cbc:ResponseID -->
+			<assert test="( ($currentDataType = 'QUAL_IDENTIFIER') and (cac:ResponseValue/cbc:ResponseID) ) or not($currentDataType = 'QUAL_IDENTIFIER')" flag="fatal" id="BR-TCR-08-25">The type of answer expected by the contracting authority is 'QUAL_IDENTIFIER' ('ac:ResponseValue/cbc:ResponseID' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- URL = cac:ResponseValue/cbc:ResponseURI -->
 			<assert test="( ($currentDataType = 'URL') and (cac:ResponseValue/cbc:ResponseURI) ) or not($currentDataType = 'URL')" flag="fatal" id="BR-TCR-08-14">The type of answer expected by the contracting authority is 'URL' ('cac:ResponseValue/cbc:ResponseURI' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- MAXIMUM_AMOUNT = cac:ResponseValue/cbc:ResponseAmount -->
@@ -101,12 +106,7 @@
 			<!-- WEIGHT_INDICATOR = cac:ResponseValue/cbc:ResponseIndicator -->
 			<assert test="( ($currentDataType = 'WEIGHT_INDICATOR') and (cac:ResponseValue/cbc:ResponseIndicator) ) or not($currentDataType = 'WEIGHT_INDICATOR')" flag="fatal" id="BR-TCR-08-24">The type of answer expected by the contracting authority is 'WEIGHT_INDICATOR' ('cac:ResponseValue/cbc:ResponseIndicator' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 		</rule>
-		
-		<rule context="cac:TenderingCriterionResponse/cac:ResponseValue">
-			<!-- BR-TCR-04: Only one sub-element within /cac:TenderingCriterionResponse/cac:ResponseValue is admitted at the same time. -->
-			<assert test="count(child::*) &lt;= 2" flag="fatal" id="BR-TCR-04">Only one sub-element within '/cac:TenderingCriterionResponse/cac:ResponseValue' is admitted at the same time. The criteria response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <value-of select="ancestor::*[1]/cbc:ValidatedCriterionPropertyID"/>') has '<value-of select="count(child::*)-1"/>' sub-element(s).</assert>
-		</rule>
-		
+				
 		<rule context="cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:PropertyGroupTypeCode = 'ONTRUE']/cac:TenderingCriterionProperty">
 			<!-- BR-TCR-06: Groups codified as ONTRUE must be processed if response is True. -->			
 			<let name="parentUUID" value="ancestor::*[1]/ancestor::*[1]/cac:TenderingCriterionProperty/cbc:ID"/>

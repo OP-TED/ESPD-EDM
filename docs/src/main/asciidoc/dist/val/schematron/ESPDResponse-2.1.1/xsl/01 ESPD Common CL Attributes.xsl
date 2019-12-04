@@ -2298,6 +2298,27 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
+         <xsl:when test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.1/docs/src/main/asciidoc/dist/cl/gc/WeightingType-CodeList.gc'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.1/docs/src/main/asciidoc/dist/cl/gc/WeightingType-CodeList.gc'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listSchemeURI"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.1/docs/src/main/asciidoc/dist/cl/gc/WeightingType-CodeList.gc'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
          <xsl:when test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"

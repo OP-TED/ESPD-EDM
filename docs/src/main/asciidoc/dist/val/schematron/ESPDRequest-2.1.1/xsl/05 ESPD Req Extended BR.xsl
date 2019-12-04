@@ -203,7 +203,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="espd:QualificationApplicationRequest[cbc:QualificationApplicationTypeCode='EXTENDED']"
+<xsl:template match="espd:QualificationApplicationRequest[cbc:QualificationApplicationTypeCode='EXTENDED' or cbc:QualificationApplicationTypeCode='SELFCONTAINED']"
                  priority="1002"
                  mode="M7">
 
@@ -252,7 +252,7 @@
                  mode="M7">
       <xsl:variable name="allLots" select="/*[1]/cac:ProcurementProjectLot/cbc:ID"/>
       <xsl:variable name="testLots"
-                    select="(cbc:ExpectedID) and (/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED') and count($allLots)&gt;0"/>
+                    select="(cbc:ExpectedID) and ((/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED' or /*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED')) and count($allLots)&gt;0"/>
       <xsl:variable name="currentExpectedID" select="cbc:ExpectedID"/>
       <xsl:variable name="lotsIDs"
                     select="/*[1]/cac:ProcurementProjectLot[cbc:ID = $currentExpectedID]/cbc:ID"/>
@@ -280,7 +280,7 @@
 	  <!--RULE -->
 <xsl:template match="cac:TenderingCriterion" priority="1000" mode="M7">
       <xsl:variable name="isSCopen"
-                    select="(/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED') and (/*[1]/cbc:ProcedureCode != 'OPEN')"/>
+                    select="(/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED' or /*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') and (/*[1]/cbc:ProcedureCode != 'OPEN')"/>
       <xsl:variable name="testWeightNumeric"
                     select="$isSCopen and (cbc:EvaluationMethodTypeCode = 'WEIGHTED') and starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.')"/>
 

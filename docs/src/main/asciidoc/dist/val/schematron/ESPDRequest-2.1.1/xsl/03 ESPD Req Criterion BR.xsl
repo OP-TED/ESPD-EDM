@@ -200,10 +200,10 @@
 	<!--RULE -->
 <xsl:template match="espd:QualificationApplicationRequest" priority="1000" mode="M5">
       <xsl:variable name="current_Exclusion"
-                    select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
+                    select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']"/>
       <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
       <xsl:variable name="ElementUUID_Exclusion"
-                    select="if ($applicationType!='EXTENDED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.')]"/>
+                    select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
@@ -212,11 +212,11 @@
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                                 test="count($ElementUUID_Exclusion) &lt;= count($current_Exclusion)">
                <xsl:attribute name="id">BR-REQ-30</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="flag">warning</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>Exclusion criteria MUST be retrieved from e-Certis. The current qualification application request has '<xsl:text/>
+               <svrl:text>The current qualification application request has '<xsl:text/>
                   <xsl:value-of select="count($ElementUUID_Exclusion) - count($current_Exclusion)"/>
                   <xsl:text/>' exclusion criterion missing.</svrl:text>
             </svrl:failed-assert>

@@ -206,7 +206,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="cac:TenderingCriterionProperty/cbc:ID" priority="1004" mode="M11">
+<xsl:template match="cac:TenderingCriterionProperty/cbc:ID" priority="1003" mode="M11">
       <xsl:variable name="responseIDs" select="key('CriterionResponseType', .)"/>
 
 		    <!--ASSERT -->
@@ -231,7 +231,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterionResponse" priority="1003" mode="M11">
+<xsl:template match="cac:TenderingCriterionResponse" priority="1002" mode="M11">
       <xsl:variable name="currentDataType"
                     select="key('CriterionProperty', cbc:ValidatedCriterionPropertyID)/cbc:ValueDataTypeCode/text()"/>
 
@@ -265,6 +265,26 @@
                <svrl:text>One and only one response element ('/cac:ResponseValue', '/cac:ApplicablePeriod' or '/cac:EvidenceSupplied') per criterion response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <xsl:text/>
                   <xsl:value-of select="cbc:ValidatedCriterionPropertyID"/>
                   <xsl:text/>') is mandatory.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="not(count(cac:ResponseValue) &gt; 1)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="not(count(cac:ResponseValue) &gt; 1)">
+               <xsl:attribute name="id">BR-TCR-04</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Only one sub-element within '/cac:TenderingCriterionResponse/cac:ResponseValue' is admitted at the same time. The criteria response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <xsl:text/>
+                  <xsl:value-of select="cbc:ValidatedCriterionPropertyID"/>
+                  <xsl:text/>') has '<xsl:text/>
+                  <xsl:value-of select="count(cac:ResponseValue)"/>
+                  <xsl:text/>' sub-element(s).</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -559,6 +579,24 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
+         <xsl:when test="( ($currentDataType = 'QUAL_IDENTIFIER') and (cac:ResponseValue/cbc:ResponseID) ) or not($currentDataType = 'QUAL_IDENTIFIER')"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="( ($currentDataType = 'QUAL_IDENTIFIER') and (cac:ResponseValue/cbc:ResponseID) ) or not($currentDataType = 'QUAL_IDENTIFIER')">
+               <xsl:attribute name="id">BR-TCR-08-25</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>The type of answer expected by the contracting authority is 'QUAL_IDENTIFIER' ('ac:ResponseValue/cbc:ResponseID' element) - ('cbc:ID' is <xsl:text/>
+                  <xsl:value-of select="cbc:ID"/>
+                  <xsl:text/>).</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
          <xsl:when test="( ($currentDataType = 'URL') and (cac:ResponseValue/cbc:ResponseURI) ) or not($currentDataType = 'URL')"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -751,31 +789,6 @@
                <svrl:text>The type of answer expected by the contracting authority is 'WEIGHT_INDICATOR' ('cac:ResponseValue/cbc:ResponseIndicator' element) - ('cbc:ID' is <xsl:text/>
                   <xsl:value-of select="cbc:ID"/>
                   <xsl:text/>).</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M11"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterionResponse/cac:ResponseValue" priority="1002"
-                 mode="M11">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="count(child::*) &lt;= 2"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="count(child::*) &lt;= 2">
-               <xsl:attribute name="id">BR-TCR-04</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Only one sub-element within '/cac:TenderingCriterionResponse/cac:ResponseValue' is admitted at the same time. The criteria response ('/cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID = <xsl:text/>
-                  <xsl:value-of select="ancestor::*[1]/cbc:ValidatedCriterionPropertyID"/>
-                  <xsl:text/>') has '<xsl:text/>
-                  <xsl:value-of select="count(child::*)-1"/>
-                  <xsl:text/>' sub-element(s).</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

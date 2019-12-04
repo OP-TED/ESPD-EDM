@@ -206,7 +206,7 @@
       <xsl:variable name="currentIDExist" select="(cbc:ID) and not(normalize-space(cbc:ID) = '')"/>
       <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
       <xsl:variable name="ElementUUID"
-                    select="if ($applicationType!='EXTENDED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
+                    select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
       <xsl:variable name="ElementUUIDExists" select="(count($ElementUUID/cbc:ID) = 1)"/>
 
 		    <!--ASSERT -->
@@ -292,10 +292,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="not($currentIDExist) or ($ElementUUIDExists and ($currentIDExist))"/>
+         <xsl:when test="(not($currentIDExist) or ($ElementUUIDExists and ($currentIDExist)))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($currentIDExist) or ($ElementUUIDExists and ($currentIDExist))">
+                                test="(not($currentIDExist) or ($ElementUUIDExists and ($currentIDExist)))">
                <xsl:attribute name="id">BR-TC-02-02</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -387,11 +387,11 @@
       <xsl:variable name="parentID" select="ancestor::*[1]/cbc:ID"/>
       <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
       <xsl:variable name="ElementUUID_SUB"
-                    select="if ($applicationType!='EXTENDED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+                    select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
       <xsl:variable name="ParentUUID_SUB"
                     select="$ElementUUID_SUB[parent::*[cbc:ID = $parentID]][1]"/>
       <xsl:variable name="ElementUUID_T"
-                    select="if ($applicationType!='EXTENDED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+                    select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
       <xsl:variable name="ParentUUID_T" select="$ElementUUID_T[parent::*[cbc:ID = $parentID]][1]"/>
       <xsl:variable name="ElementUUID_TExists" select="(count($ParentUUID_T/cbc:ID) &gt; 0)"/>
       <xsl:variable name="ElementUUID_SUBExists" select="(count($ParentUUID_SUB/cbc:ID) &gt; 0)"/>
@@ -399,6 +399,8 @@
                     select="$ElementUUID_SUBExists or $ElementUUID_TExists"/>
       <xsl:variable name="currentIDExist"
                     select="(cbc:ID) and not(normalize-space(cbc:ID) = '') and ($ElementUUIDExists)"/>
+      <xsl:variable name="IsSubTenderingCriterionChild"
+                    select="count(ancestor::cac:SubTenderingCriterion) &gt; 0"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
@@ -540,10 +542,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(($ElementUUIDExists) and ((cbc:ID) and not(normalize-space(cbc:ID) = ''))) or not((cbc:ID) and not(normalize-space(cbc:ID) = ''))"/>
+         <xsl:when test="$IsSubTenderingCriterionChild or (($ElementUUIDExists) and ((cbc:ID) and not(normalize-space(cbc:ID) = ''))) or not((cbc:ID) and not(normalize-space(cbc:ID) = ''))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(($ElementUUIDExists) and ((cbc:ID) and not(normalize-space(cbc:ID) = ''))) or not((cbc:ID) and not(normalize-space(cbc:ID) = ''))">
+                                test="$IsSubTenderingCriterionChild or (($ElementUUIDExists) and ((cbc:ID) and not(normalize-space(cbc:ID) = ''))) or not((cbc:ID) and not(normalize-space(cbc:ID) = ''))">
                <xsl:attribute name="id">BR-TC-13</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
@@ -627,10 +629,10 @@
       <xsl:variable name="TCPropertyGroupID" select="ancestor::*[1]/cbc:ID"/>
       <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
       <xsl:variable name="ElementUUIDSTC"
-                    select="if ($applicationType!='EXTENDED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
+                    select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
       <xsl:variable name="ElementUUID_STCExists" select="(count($ElementUUIDSTC) &gt; 0)"/>
       <xsl:variable name="ElementUUIDTC"
-                    select="if ($applicationType!='EXTENDED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
+                    select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
       <xsl:variable name="ElementUUID_TCExists" select="(count($ElementUUIDTC) &gt; 0)"/>
       <xsl:variable name="ElementUUIDExists"
                     select="$ElementUUID_TCExists or $ElementUUID_STCExists"/>
