@@ -3,14 +3,14 @@
 
 ==== Mock-ups - contracting authority perspective
 
-In the *Extended* version the contracting authority can specify a REQUIREMENT. In this example it provides the name of the ISO it expects the economic operator to be conformant to.
+In the *Extended* ESPD the contracting authority can specify a REQUIREMENT. In this example it provides the name of the ISO it expects the economic operator to be conformant to.
 
 .Extended 'Quality Assurance schemes and environmental management standards' CA mock-up 
 image::Extended_QA_CA_mockup.png[Extended 'Quality Assurance schemes and environmental management standards' CA mock-up, alt="Extended 'Quality Assurance schemes and environmental management standards' CA mock-up", align="center"]
 
 ==== Mock-ups - economic operator perspective
 
-Notice that, as for the *Regulated* version the economic operator (EO) has to answer *Yes* or *No*. In  the case the EO answers *No* the box with the text "If not, please explain why and specify which other means ..." is shown. This box is not shown for the *Yes* answer. This behaviour can be controlled with the `ONFALSE` code of the sub-group of QUESTION(s) (see data structure and XML example below, too).
+Notice that, as for the *Basic* ESPD the economic operator (EO) has to answer *Yes* or *No*. In  the case the EO answers *No* the box with the text "If not, please explain why and specify which other means ..." is shown. This box is not shown for the *Yes* answer. This behaviour can be controlled with the `ONFALSE` code of the sub-group of QUESTION(s) (see data structure and XML example below, too).
 
 When the EO answers *Yes* it will be asked whether online evidences are available online or not. This is controlled by the code `ONTRUE` assigned to the sub-group of QUESTION(s) about the evidence (see data structure and XML example).
 
@@ -21,7 +21,7 @@ image::Extended_QA_EO_mockup.png[Extended 'Quality Assurance schemes and environ
 
 Notice the following:
 
-. In principle the contracting authority (CA) has to provide at least one REQUIREMENT. But it might decide not to provide any requirement at all, in which case the behaviour of the GUI would be similar to the one for the *Regulated* version. In this case do not to alter the data structure (e.g. not to remove the REQUIREMENT_GROUP) and to provide a text for REQUIREMENT such as, for example, 'No specific requirements'.
+. In principle the contracting authority (CA) has to provide at least one REQUIREMENT. But it might decide not to provide any requirement at all, in which case the behaviour of the GUI would be similar to the one for the *Basic* ESPD. In this case do not to alter the data structure (e.g. not to remove the REQUIREMENT_GROUP) and to provide a text for REQUIREMENT such as, for example, 'No specific requirements'.
 
 . The `ONFALSE` code for the sub-group containing the sentence thats starts with 'If not, please explain why...' means: if the answer to the previous question was *No* then this sub-group must be shown/processed.
 

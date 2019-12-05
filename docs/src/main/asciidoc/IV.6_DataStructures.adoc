@@ -5,7 +5,7 @@ The ESPD-EDM 'criterion' entity is a very flexible and business-agnostic structu
 
 Hence this document proposes a way of representing the criteria following a regular method and providing concrete codes to specify types of criterion properties, and identifiers to distinguish the different criteria and *reusable* groups of properties (when studying these data groups you will observe that sub-groups of properties are reused in different criteria have identical identifiers and structures).  
 
-The following two figures below illustrate the data structure sheets for one simple exclusion criterion (EG-Contributions) from both versions of the ESPD, REGULATED and SELF-CONTAINED. Compare them with the UBL-2.2 `cac:TenderingCriterion` XSD element.
+The following two figures below illustrate the data structure sheets for one simple exclusion criterion (EG-Contributions) from both models of the ESPD, Basic and Extended. Compare them with the UBL-2.2 `cac:TenderingCriterion` XSD element.
 
 The columns of the tables are to be interpreted as follows:
 
@@ -31,15 +31,15 @@ contains codes that *are not* intended to be used as values of codes. See the se
 link:#[#code-lists-that-strong-are-not-strong-used-for-code-values](under section
 link:#ii-4-5-codes-and-code-lists[Codes and code lists].
 
-*REGULATED*
+*Basic*
 
-.Regulated 'Contributions' criterion data structure 
-image::Regulated_ESPDRequest_Contributions_Data_Structure.png[Regulated 'Contributions' criterion data structure, alt="Regulated 'Contributions' criterion data structure",align="center"]
+.Basic 'Contributions' criterion data structure 
+image::Basic_ESPDRequest_Contributions_Data_Structure.png[Basic 'Contributions' criterion data structure, alt="Basic 'Contributions' criterion data structure",align="center"]
 
-*SELF-CONTAINED*
+*Extended*
 
-.Self-contained 'Contributions' criterion data structure 
-image::Selfcontained_ESPDRequest_Contributions_Data_Structure.png[Self-contained 'Contributions' criterion data structure, alt="Self-contained 'Contributions' criterion data structure", align="center"]
+.Extended 'Contributions' criterion data structure 
+image::Extended_ESPDRequest_Contributions_Data_Structure.png[Extended 'Contributions' criterion data structure, alt="Extended 'Contributions' criterion data structure", align="center"]
 
 We could say that the 'data structures' represented in the spread-sheets define a kind of 'meta-language' (or 'controlled vocabulary') that helps 'map' the structure of an ESPD-EDM criterion and the UBL-2.2 criterion data structure. The table below 'maps' both vocabularies. Please compare any of the data structures provided in this document with both the UBL-2.2 XSD Schemas and the XML examples provided herein.
 
@@ -84,13 +84,13 @@ The ESPD-EDM data structures vocabulary is defined in the Code List "link:https:
 
 If you examine any of the XML examples provided in this document you will observe that:
 
-* SUBCRITERION is currently used to specify national criteria. The Regulated ESPD documents do not specify SUBCRITERIA. The SELF-CONTAINED version does;
+* SUBCRITERION is currently used to specify national criteria. The Basic ESPD documents do not specify SUBCRITERIA. The Extended model does;
 
-* The Regulated ESPD documents do not specify REQUIREMENT(s), only QUESTION(s). The SELF-CONTAINED version does;
+* The Basic ESPD documents do not specify REQUIREMENT(s), only QUESTION(s). The Extended model does;
 
 * The reason for having 'groups' and 'sub-groups' of properties is because UBL-2.2 defined the 'TenderingCriterionPropertyGroup' and 'SubsidiaryTenderingCriterionPropertyGroup';
 
-* In the SELF-CONTAINED version the following rules apply in a regular way:
+* In the Extended version the following rules apply in a regular way:
  
 ** When the member state (MS) or the contracting authority (CA) needs to specify REQUIREMENT(s), the outer group of the data structure is always a REQUIREMENT_GROUP (e.g. 'EG-Contributions', 'SC-Suitability', or practically all selection criteria). Otherwise the outer group is always a QUESTION_GROUP (e.g. 'EG-Convictions', 'EG-Environ-Social-Labour_Law', 'EG-Business', etc.)
 

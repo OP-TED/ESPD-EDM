@@ -5,7 +5,7 @@
 
 For criteria of type “average yearly turnover”, the following fields can be specified by the contracting authority:
 
-. The *period* (“Start Date” and “End Date”) encompassing the yearly turnovers for which the average is to be provided by the economic operator (EO);
+. The *number of fiscal years* encompassing the yearly turnovers for which the average is to be provided by the economic operator (EO);
 . The *minimum amount* for which the EO’s average yearly turnover must be equal or greater;
 . The *currency*;
 
@@ -80,19 +80,24 @@ image::Extended_Average_Yearly_Turnover_Data_Structure.png[Extended 'average yea
 	</cac:Legislation>
 	<cac:TenderingCriterionPropertyGroup>
 		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">5ca58d66-3ef1-4145-957c-45d5b18a837f</cbc:ID>
-		<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">ON*</cbc:PropertyGroupTypeCode>
-		<cac:TenderingCriterionProperty>
-			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">87194ddb-eab7-4b80-9f56-cb5c81ee2c6c</cbc:ID>
-			<cbc:Name/>
-			<cbc:Description>Start date; End date;</cbc:Description>
-			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">REQUIREMENT</cbc:TypeCode>
-			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">PERIOD</cbc:ValueDataTypeCode>
-			<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
-			<cac:ApplicablePeriod>
-				<cbc:StartDate>2016-01-01</cbc:StartDate>
-				<cbc:EndDate>2016-01-01</cbc:EndDate>
-			</cac:ApplicablePeriod>
-		</cac:TenderingCriterionProperty>
+		<cbc:PropertyGroupTypeCode listID="PropertyGroupType"
+                              listAgencyID="EU-COM-GROW"
+                              listVersionID="2.1.1">ON*
+        	</cbc:PropertyGroupTypeCode>
+            <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">57dd350d-ccd0-4505-a245-e3e664b35e8c
+                </cbc:ID>
+                <cbc:Description>Number of fiscal years</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">QUANTITY_INTEGER
+                </cbc:ValueDataTypeCode>
+                                <!-- No answer is expected
+				here from the economic operator, as this is a REQUIREMENT issued by the contracting
+				authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of
+				the requirement issued by the contracting authority -->
+                <cbc:ExpectedValueNumeric>3</cbc:ExpectedValueNumeric>
+        </cac:TenderingCriterionProperty>
+        <cac:TenderingCriterionProperty>
 		<cac:TenderingCriterionProperty>
 			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">ba3a72f0-25b8-47fc-a8a1-733249d748d7</cbc:ID>
 			<cbc:Name/>

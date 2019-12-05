@@ -11,13 +11,14 @@ The list below details exhaustively every change introduced since the publicatio
 As a part of the improvements introduced by this v2.1.1, the link:https://github.com/ESPD/ESPD-EDM/wiki[ESPD-EDM Wiki] has been refactored in order to offer
 users a **Single Information Point**, where it is possible to easly acess to all its resources: documentation, tools, assets, etc.
 
-One of the major novelties in the new v2.1.1 is the nomenclature change to refer the two different *flavours*: Regulated and Self-Contained, that from now
+One of the major novelties in the new v2.1.1 is the nomenclature change to refer the two different *models*: Regulated and Self-Contained, that from now
 on will be refered as **Basic** and **Extended**, respectively.
 
 ==== TOOP Requirements in ESPD-EDM (UBL2.2) Schema
 
 A mapping for TOOP requirements to UBL2.2 Schema (which is the one used by ESPD-EDM) has been made, and its been proved that they are
-fully mappable. For more information, please refer to the link:[dedicated section] of the online documentation.
+fully mappable. For more information, please refer to the link:https://espd-edm.github.io/ESPD-EDM/v2.1.0/xml_guide.html#II.3.1_UBL-2.2-TOOP-Requirements[dedicated section] of the online documentation. You can also directly
+access to 
 
 You can also access to link:https://github.com/ESPD/ESPD-EDM/issues/254[issue #254], where the topic was discussed.
 
@@ -30,7 +31,7 @@ link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[ResponseDataType] Code List,
 to properly identify the educational qualifications requested in Criterion 47, *SC.ABILITIES.3 (Education)*.
 
-* Two new codes to identify the "new" Basic and Extended flavours have been added to 
+* Two new codes to identify the "new" Basic and Extended models have been added to 
 link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[QualificationApplicationType] Code List.
 
 * Missing Canonical Version URI and Location URI have been added to
@@ -51,15 +52,15 @@ link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/
 
 ==== ESPD Criteria Taxonomy
 
-* The first question subgroup of Criterion #61: *NOT_RELIED_ON_ENTITITES* of **Basic *flavour* ** has been rolled-up to the its state on previous v1.0.2 to ensure maximum
+* The first question subgroup of Criterion #61: *NOT_RELIED_ON_ENTITITES* of **Basic *model* ** has been rolled-up to the its state on previous v1.0.2 to ensure maximum
 compatibility between versions. I.e. "Name of entity", "ID of the entity" and "Activity of the entity" questions have been removed.
 
-The question subgroup of Extended *flavour* maintaines the structure introduced in v2.0.2.
+The question subgroup of Extended *model* maintaines the structure introduced in v2.0.2.
 
-* New Criterion OTHER-EO-SME has been added to **Extended *flavour* **, as the UBL code "industry classification" used until now does not allow to give the yes/no answer
+* New Criterion OTHER-EO-SME has been added to **Extended *model* **, as the UBL code "industry classification" used until now does not allow to give the yes/no answer
 included in the Directives.
 
-* The type of "Number of fiscal years" requirement of Criterion #30: *SC-General_Average_Turnover* of **Extended *flavour* ** has been changed from start date/end date to
+* The type of "Number of fiscal years" requirement of Criterion #30: *SC-General_Average_Turnover* of **Extended *model* ** has been changed from start date/end date to
 QUANTITY_INTEGER.
 
 * New Criteria DEFENCE-SELECTION-OTHER and UTILITIES-SELECTION-OTHER have been created for the specific needs of procedures regulated by Directives 2009/81/EC and 2004/17/EC,
@@ -345,7 +346,7 @@ This release encompasses these other minor updates:
 
 ** All criteria have now one block "Is this information available electronically" with cardinality 0..n. See data structures spread-sheets for both
 the link:https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-REGULATED-V2.0.2.ods[REGULATED] and the
-link:https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods[SELF-CONTAINED] flavours.
+link:https://github.com/ESPD/ESPD-EDM/blob/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.0.2.ods[SELF-CONTAINED] models.
 
 ** In the *SELF-CONTAINED ESPD* CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.RISK_INDEMNITY_INSURANCE Subgroup "83e3dcc4-c9b3-47e5-9fb8-ffd8386679f1" changed its cardinality from 1 to 1..n.
 
@@ -369,7 +370,7 @@ See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src
 
 * *Use of the UBL-2.2 Schemas elements*:
 
-** The UBL-2.2 element `ProfileExecutionID` is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.1.1-REGULATED", "ESPD-EDMv2.1.1-SELFCONTAINED"...see also the Guideline and XML examples. Remember also that cardinalities are to be controlled via business rule). The ESPDInt BIS document has been modified accordingly: Inclusion of the ESPD version identifier (tir070-299;tir092-299). The following Business Rules have been added: TRDM092-55, TRDM072-36 for tir92-299 and tir070-299 to control the Evidence version.
+** The UBL-2.2 element `ProfileExecutionID` is used now to compulsorily specify the version and *model* of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.1.1-REGULATED", "ESPD-EDMv2.1.1-SELFCONTAINED"...see also the Guideline and XML examples. Remember also that cardinalities are to be controlled via business rule). The ESPDInt BIS document has been modified accordingly: Inclusion of the ESPD version identifier (tir070-299;tir092-299). The following Business Rules have been added: TRDM092-55, TRDM072-36 for tir92-299 and tir070-299 to control the Evidence version.
 
 ** The v2.0.0 documentation specified in section "VIII.5 Reference to publications and to the ESPD Request" that the elements `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID` and `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID` had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: `cac:QualificationApplicationRequest/cbc:ID` and `cac:QualificationApplicationRequest/cbc:UUID`.
 

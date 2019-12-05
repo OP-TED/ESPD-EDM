@@ -5,13 +5,13 @@
 
 See formal requirements related to exclusion grounds criteria in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)], and more specifically http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-009[_tbr070-009_], http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-004[_tbr070-004_], and http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013[_tbr070-013_].
 
-==== Differences between Regulated and Self-contained
+==== Differences between Basic and Extended
 
-.  The only difference between *REGULATED* and *SELF-CONTAINED* concerning conviction criteria is that the *SELF-CONTAINED* version allow Member States to link national sub-criteria to the EU conviction criterion. Thus:
+.  The only difference between *Basic* and *Extended* concerning conviction criteria is that the *Extended* ESPD allow Member States to link national sub-criteria to the EU conviction criterion. Thus:
 
-** For *REGULATED* ESPDs the XML file *will not* contain the national criteria specified in e-Certis. See the figure showing the data structure for Regulated ESPDs.
+** For *Basic* ESPDs the XML file *will not* contain the national criteria specified in e-Certis. See the figure showing the data structure for Basic ESPDs.
 
-** For *SELF-CONTAINED* ESPDs the XML will contain the national criteria and also the QUESTION for the economic operator to answer whether it fulfills the national criterion or not. See the figure showing the data structure for Self-contained ESPDs below. 
+** For *Extended* ESPDs the XML will contain the national criteria and also the QUESTION for the economic operator to answer whether it fulfills the national criterion or not. See the figure showing the data structure for Extended ESPDs below. 
 
 . The label ''Convictions'' groups all the criteria with identical data structures classified as:
 
@@ -20,7 +20,7 @@ See formal requirements related to exclusion grounds criteria in the http://wiki
 .Note about the ESPD Service
 [IMPORTANT]
 ====
-If you are using the https://ec.europa.eu/tools/espd/[ESPD Service] developed by the European Commission you will observe the label 'More information >>' on the left side of the mock-up. If you click on it the national criteria defined by the MS in the e-Certis will be shown. However you must be warned that, as the EC ESPD Service does only implement the Regulated ESPD V1.0.2 the national criterion will not be saved into the exported XML instance. 
+If you are using the https://ec.europa.eu/tools/espd/[ESPD Service] developed by the European Commission you will observe the label 'More information >>' on the left side of the mock-up. If you click on it the national criteria defined by the MS in the e-Certis will be shown. However you must be warned that, as the EC ESPD Service does only implement the Basic ESPD V1.0.2 the national criterion will not be saved into the exported XML instance. 
 ====
 
 ==== Mock-ups - economic operator perspective
@@ -37,20 +37,20 @@ will be also set to 'Yes'*.
 .Conviction 'Participation in criminal organisation', mock-up (EO perspective)
 image::Convictions__EO_mock-up.png[Conviction EO mock-up, alt="Conviction EO mock-up", align="center"]
 
-==== Data structure - Regulated
-Notice that the only difference between the Regulated and the Self-contained structures is that the Regulated one does not contain a 'national sub-criterion'.
+==== Data structure - Basic
+Notice that the only difference between the Basic and the Extended structures is that the Basic one does not contain a 'national sub-criterion'.
 
-.Data Structure for all 'Regulated Conviction' exclusion grounds criteria
-image::Regulated_ESPDRequest_Convictions_Data_Structure.png[Convictions data structure, alt="Convictions data structure", align="center"]
+.Data Structure for all 'Basic Conviction' exclusion grounds criteria
+image::Basic_ESPDRequest_Convictions_Data_Structure.png[Convictions data structure, alt="Convictions data structure", align="center"]
 
-==== Data structure - Self-contained
+==== Data structure - Extended
 
-.Data Structure for all 'Self-contained Conviction' exclusion grounds criteria
+.Data Structure for all 'Extended Conviction' exclusion grounds criteria
 image::Selfcontained_ESPDRequest_Convictions_Data_Structure.png[Convictions data structure, alt="Convictions data structure", align="center"]
 
-==== XML Example - Self-contained
+==== XML Example - Extended
 
-The fragment of XML code below illustrates how a 'Convictions' criterion looks like in a *Self-contained ESPD Request*. See comments beneath the example.
+The fragment of XML code below illustrates how a 'Convictions' criterion looks like in a *Extended ESPD Request*. See comments beneath the example.
 
 .'Participation in a criminal organisation' conviction
 [source,xml]
@@ -200,9 +200,9 @@ The fragment of XML code below illustrates how a 'Convictions' criterion looks l
 <11> The issuer party of this evidence (e.g. a base registry). Will be placed in the element `cac:Evidence/cac:DocumentReference/cac:Attachment/cac:IssuerParty`. Some countries use verification codes associated to evidences. To specify these verification codes you can use the Evidence ID, as in the end the code identifies uniquely the Evidence in the issuer system (see this XML example, look for 'Verification code' inside the example, bullet number 6).
 <12> National criterion defined by the MS in e-Certis (this example corresponds to Finland) related to the EU criterion on this conviction.
 <13> An additional specification for this national criterion, in this case related to the evidence that will be required by this Member State.
-<14> UUID supplied by e-Certis. See also the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-REGULATED-V2.1.1.ods[criteria taxonomy spread-sheet].
-<15> Exclusion criteria taxonomy code defined in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-REGULATED-V2.1.1.ods[criteria taxonomy spread-sheet].
-<16> Compulsory name and description for the criterion as defined in e-Certis. See also link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-REGULATED-V2.1.1.ods[criteria taxonomy spread-sheet]. Beware that UBL-2.2 allows '0..n' description lines!
+<14> UUID supplied by e-Certis. See also the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-Basic-V2.1.1.ods[criteria taxonomy spread-sheet].
+<15> Exclusion criteria taxonomy code defined in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-Basic-V2.1.1.ods[criteria taxonomy spread-sheet].
+<16> Compulsory name and description for the criterion as defined in e-Certis. See also link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPDRequest-CriteriaTaxonomy-Basic-V2.1.1.ods[criteria taxonomy spread-sheet]. Beware that UBL-2.2 allows '0..n' description lines!
 <17> This property is a caption, a mere 'label'. See Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods['CriterionElementType'] for the complete list of possible options. Beware that when a property is of type `CAPTION` the `cbc:ValueDataType` must be set to `NONE`.
 <18> As the property is a CAPTION no response is expected from the economic operator. See Code List 'ResponseDataType' for the complete list of possible options.
 <19> Notice that in the ESPD Request the criterion properties never use its element `cbc:Name`.

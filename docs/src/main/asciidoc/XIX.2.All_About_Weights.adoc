@@ -1,7 +1,7 @@
 
 === IX.2 All about weights
 
-The *SELF-CONTAINED ESPD*  caters for two methods of evaluating criteria (the REGULATED ESP does not covers this aspect).
+The *Extended ESPD*  caters for two methods of evaluating criteria (the Basic ESP does not covers this aspect).
 These two methods are identified in the code list
 link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[EvaluationMethodType] as
 1) PASSFAIL (Pass or fail), and 2) WEIGHTED (the criterion is assigned a weight).
@@ -21,7 +21,7 @@ criterion (the value of the element cbc:EvaluationMethodTypeCode is to be set to
 
 ==== Information requirement check-list
 
-. Only in *SELF-CONTAINED* ESPD-Request and ESDP-Response documents
+. Only in *Extended* ESPD-Request and ESDP-Response documents
 . Only in multi-staged procedures
 . The need for weighting was identified only for these Selection criteria (although the data model caters for
 weighing any criterion):
@@ -47,7 +47,7 @@ weighing any criterion):
 [NOTE]
 ====
 *_A complete ESPD-Response document with the examples provided in this section can be found in the file
-link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/xml/Weights-SelfContained-Request_V2.1.1.xml[Weights-SelfContained-Request_V2.1.1.xml]_*
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/xml/Weights-Extended-Request_V2.1.1.xml[Weights-Extended-Request_V2.1.1.xml]_*
 ====
 
 .Order of occurrence of the different blocks of data related to weights
@@ -97,10 +97,8 @@ link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
 |Criteria that are weighted carry a specific REQUIREMENT stating that ''This criterion will be weighted''
 |Elements `cac:TenderingCriterion` (see the figure on the data structure and the XML example,below)
 |*BEWARE* that the REQUIREMENT ''This criterion will be weighted'' is redundant with the element
-`cbc:EvaluationMethodTypeCode`, which may cause inconsistency. Therefore try and do not use this
-REQUIREMENT ''This criterion will be weighted'' and use instead the `cbc:EvaluationMethodTypeCode`. If you do not
-use this REQUIREMENT then you have to replace it with a CAPTION, because the cardinality constraint imposed
-by the UBL-2.2 requires that the first element inside a group or subgroup is a `cac:TenderingCriterionProperty` it in the XSD schema.
+`cbc:EvaluationMethodTypeCode`. However, The data about the criterion weight in criteria #40 and #50 is
+needed by the GUI for the contracting authority to be asked about the specific weight of one criterion.
 
 |===
 
@@ -118,8 +116,8 @@ image::Criterion-weight-related-data_elements.png[Weight-related data elements, 
 
 The mock-up below illustrates how the contracting authority may specify weighted criteria.
 
-.Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up
-image::Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png[Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up", align="center"]
+.Extended 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up
+image::Extended_Abilities_WEIGHTED_CA_REQ_mockup.png[Extended 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up, alt="Extended 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up", align="center"]
 
 Notice that:
 
@@ -140,8 +138,8 @@ This mock-up illustrates how all the information specified by the contracting au
 1) the generic information about weights, and 2) the information specific of the criterion may be
 presented to the economic operator (EO):
 
-.Self-contained 'Abilities (I)' WEIGHTED EO mock-up
-image::Selfcontained_Abilities_WEIGHTED_EO_mockup2.png[Self-contained 'Abilities (I)' WEIGHTED EO mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up", align="center"]
+.Extended 'Abilities (I)' WEIGHTED EO mock-up
+image::Extended_Abilities_WEIGHTED_EO_mockup2.png[Extended 'Abilities (I)' WEIGHTED EO mock-up, alt="Extended 'Abilities (I)' WEIGHTED EO mock-up", align="center"]
 
 ===== Criterion data structure
 
@@ -154,12 +152,12 @@ procedures (''Technicians or technical bodies for quality control'').
 * This REQUIREMENT can be replaced by a CAPTION
 * The purpose of this REQUIREMENT can be fulfilled using the element `cbc:EvaluationMethodTypeCode`
 
-.Weighted self-contained 'Abilities (I) - Criterion 'Technicians or technical bodies for quality control'
-image::Self-contained_Weighted_Criterion.png[Weighted self-contained 'Abilities (I) criterion, alt="Weighted self-contained 'Abilities (I) criterion", align="center"]
+.Weighted Extended 'Abilities (I) - Criterion 'Technicians or technical bodies for quality control'
+image::Extended_Weighted_Criterion.png[Weighted Extended 'Abilities (I) criterion, alt="Weighted Extended 'Abilities (I) criterion", align="center"]
 
 ===== XML example
 
-The fragment of XML code below illustrates how the elements related to the weighting are specified in an SELF-CONTAINED
+The fragment of XML code below illustrates how the elements related to the weighting are specified in an Extended
 ESPD Request document.
 
 [NOTE]
@@ -169,10 +167,10 @@ this section have been removed to gain clarity and brevity. For complete XML sam
 link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/xml[dist/xml]._*
 
 *_The example presented next was extracted from the file
-link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/xml/Weights-SelfContained-Request_V2.1.1.xml[Weights-SelfContained-Request_V2.1.1.xml]_*
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/xml/Weights-Extended-Request_V2.1.1.xml[Weights-Extended-Request_V2.1.1.xml]_*
 ====
 
-.Criterion "Technicians or technical bodies for quality control" (SELF-CONTAINED and WEIHGTED)
+.Criterion "Technicians or technical bodies for quality control" (Extended and WEIHGTED)
 [source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -185,7 +183,7 @@ xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 <cbc:ContractFolderID schemeAgencyID="TeD">__ProcurementProcedureFileRefNumber</cbc:ContractFolderID>
 <cbc:IssueDate>2019-01-23</cbc:IssueDate>
 <cbc:ProcedureCode listID="ProcedureType" listAgencyID="EU-COM-OP" listVersionID="1.0">OPEN</cbc:ProcedureCode>
-<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">SELFCONTAINED</cbc:QualificationApplicationTypeCode>
+<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyID="EU-COM-GROW" listVersionID="2.1.1">Extended</cbc:QualificationApplicationTypeCode>
 
 <!--
     *DATA ELEMENTS #1 and #2!* General information about all the weighted selection criteria.

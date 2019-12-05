@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
 
     Illustration of criterion constraints - 03 ESPD Common Criterion BR.sch
-	ESPD Version: 2.1.1
+	ESPD Version: 2.1.0
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-CR">
@@ -27,6 +27,8 @@
 			<let name="ElementUUID" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID] 
 				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
 			<let name="ElementUUIDExists" value="(count($ElementUUID/cbc:ID) = 1)"/>
+			
+			<let name="IsPurelyNationalCriteria" value="cbc:CriterionTypeCode = 'CRITERION.EXCLUSION.NATIONAL.OTHER'"/>
 			
 			<!-- Cardinality constraints -->
 			<!-- BR-TC-02#01: /cac:TenderingCriterion/cbc:ID is mandatory -->
