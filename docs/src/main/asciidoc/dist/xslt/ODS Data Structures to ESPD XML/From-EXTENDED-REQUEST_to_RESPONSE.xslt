@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2010 rel. 3 (x64) (http://www.altova.com) by everis Spain, S.L. (everis Spain, S.L.) -->
-<xsl:stylesheet version="2.0" 
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-	xmlns:fn="http://www.w3.org/2005/xpath-functions" 
-	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" 
-	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" 
-	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" 
-	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" 
-	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate"
-	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic"
-	xmlns:util="java:java.util.UUID">	
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions"
+	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
+	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
+	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:util="java:java.util.UUID">
 	
 	<xsl:include href="./inc/EXTENDED-RootElements-Annotated.xslt"/>
-	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>	
-	<xsl:include href="./inc/EconomicOperatorData.xslt"/>		
+	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>
+	<xsl:include href="./inc/EconomicOperatorData.xslt"/>
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:template match="/">
-		<QualificationApplicationResponse xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationResponse ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2-Pre-award.xsd">
+		<QualificationApplicationResponse
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+			xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2 ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.2.xsd">
 			<xsl:call-template name="createRootElements"/>
 			<xsl:call-template name="createContractingAuthority"/>
-			<xsl:call-template name="createEconomicOperator"/>	
+			<xsl:call-template name="createEconomicOperator"/>
 			<xsl:apply-templates/>
 			<xsl:call-template name="createEvidence"/>
 		</QualificationApplicationResponse>
