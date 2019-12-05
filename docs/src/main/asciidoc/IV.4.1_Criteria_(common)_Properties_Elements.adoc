@@ -10,7 +10,7 @@ The following table lists the elements of a criterion property. Beware that the 
 |*Definition*: |Caption (i.e. a 'label'), specific MS or contracting authority requirement (e.g. 'Number of references expected: 5' or a question addressed to the economic operator (e.g. 'Your average yearly turnover for the past three years?'.
 
 *Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-013[_tbr070-013_]
-|*Business rule(s)*:|SELF-CONTAINED (BR-SC-20)
+|*Business rule(s)*:|EXTENDED (BR-SC-20)
 |*File*:|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:|/QualificationApplicationRequest/cac:TenderingCriterion/cac:TenderingCriterionProperty	
 |===
@@ -50,7 +50,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: Compulsory use of the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[Code List  'CriterionElementType'].  Possible types are 'CAPTION, REQUIREMENT and QUESTION'. If the type is `CAPTION` or `REQUIREMENT` no answer is expected from the economic operator and therefore the `cbc:ValueDataTypeCode` must be set to `NONE`. Otherwise this value must be set to one of the values defined in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[Code List  'ResponseDataType']
 
-*Rule scope*: SELF-CONTAINED (BR-TC-20, BR-OTH-01, BR-OTH-01#14, BR-OTH-03)
+*Rule scope*: EXTENDED (BR-TC-20, BR-OTH-01, BR-OTH-01#14, BR-OTH-03)
 
 |*cbc:ValueDataTypeCode*
 |Code
@@ -74,7 +74,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
-*Rule scope*: SELF-CONTAINED (BR-OTH-01)
+*Rule scope*: EXTENDED (BR-OTH-01)
 
 |*cbc:ValueCurrencyCode*
 |Code
@@ -86,7 +86,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
-*Rule scope*: SELF-CONTAINED (BR-OTH-01)
+*Rule scope*: EXTENDED (BR-OTH-01)
 
 |*cbc:ExpectedID*
 |Identifier
@@ -98,7 +98,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
-*Rule scope*: SELF-CONTAINED (BR-LOT-40)
+*Rule scope*: EXTENDED (BR-LOT-40)
 
 |*cbc:ExpectedCode*
 |Code
@@ -110,7 +110,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: Verify that the value of `cac:TypeCode` is set to QUESTION and that the `cac:ValueTypeCode` is different to NONE.
 
-*Rule scope*: SELF-CONTAINED (BR-OTH-01)
+*Rule scope*: EXTENDED (BR-OTH-01)
 
 |*cbc:ExpectedValueNumeric*
 |Numeric

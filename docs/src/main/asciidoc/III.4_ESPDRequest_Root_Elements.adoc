@@ -119,7 +119,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: This UUID will be used to link the ESPD Response to its corresponding ESPD Request (thus its compulsoriness). Copies of a document must be identified with a different UUID. Compulsory use of schemeAgencyID attribute.
 
-*Rule scope*: SELF-CONTAINED (BR-OTH-02)
+*Rule scope*: EXTENDED (BR-OTH-02)
 
 |*cbc:ContractFolderID*
 |Identifier
@@ -130,7 +130,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: Try always to use the reference number issued by the contracting authority. This number in combination with a registered contracting authority ID (e.g. the VAT number) results in a *universally unique identifier of the procurement procedure*.
 
-*Rule scope*: REGULATED (BR-REG-10), SELF-CONTAINED (BR-SC-10)
+*Rule scope*: BASIC (BR-REG-10), EXTENDED (BR-SC-10)
 
 |*cbc:IssueDate*
 |Date
@@ -177,7 +177,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: *Rule*: Compulsory use of attributes listID, listAgencyName and listVersionID. Compulsory use of the code list link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[ProcedureType] (values: `Open`, `Restricted`, `Accelerated`, `Competitive dialogue`, etc.). Do not confound with the object of the procurement project (code list `ProjectType`: Works, Supplies, Services).
 
-*Rule scope*: SELF-CONTAINED (BR-SC-10#2, BR-OTH-03, BR-OTH-01, BR-OTH-01#1)
+*Rule scope*: EXTENDED (BR-SC-10#2, BR-OTH-03, BR-OTH-01, BR-OTH-01#1)
 
 |*cbc:QualificationApplicationTypeCode*
 |Code
@@ -188,7 +188,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 
 *Rule*: Compulsory use of the code list `QualificationApplicationType`. Compulsory use of attributes listID, listAgencyName and listVersionID.
 
-*Rule scope*: SELF-CONTAINED (BR-OTH-01, BR-OTH-01#2, BR-OTH-03)
+*Rule scope*: EXTENDED (BR-OTH-01, BR-OTH-01#2, BR-OTH-03)
 
 |*cbc:WeightScoringMethodologyNote*
 |Text
@@ -227,9 +227,9 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr70-002[_tbr70-002_].
 
 *Rules*: Use this component to identify and describe the procurement administrative procedure.
-The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2.
+The BASIC version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2.
 
-Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure.
+Use this component in case the ESPD is EXTENDED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure.
 
 |*cac:ProcurementProjectLot*
 |Associated class
