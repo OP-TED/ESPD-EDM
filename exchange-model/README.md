@@ -24,7 +24,7 @@ The recommended way to get started using the `exchange-model` in your Java proje
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
   <artifactId>exchange-model2</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
+  <version>2.1.1</version>
 </dependency>
 ```
 
@@ -32,7 +32,7 @@ The recommended way to get started using the `exchange-model` in your Java proje
 
 ```groovy
 dependencies {
-    compile("eu.europa.ec.grow.espd:exchange-model2:2.0.0-SNAPSHOT")
+    compile("eu.europa.ec.grow.espd:exchange-model2:2.1.1")
 }
 ```
 
