@@ -8,7 +8,7 @@
 |The contracting authority needs to be able to specify national exclusion criteria linked to one EU criterion as well as criteria particular for the procurement procedure. The economic operator, in the ESPD Response document, will have to responde "Yes" or "No" to each national criterion thus confirming that it in  breach of the Law.
 |=== 
 
-See also the REQUIREMENT http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-015[_tbr070-015_] about economic thresholds regarding unpaid taxes or social security obligations.
+See also the REQUIREMENT http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#tbr070-015[_tbr070-015_] about economic thresholds regarding unpaid taxes or social security obligations.
 
 ==== Mock-ups - contracting authority perspective
 
@@ -20,7 +20,7 @@ image::PaymentOfTaxes_CA_mock-up.png[Basic 'Payment of Taxes' (ESPD Service, CA 
 This other screen-capture below represents a possible mock-up, from the contracting authority perspective, for the edition of requirements in a Extended 'Contributions' criterion (Payment of Taxes).
 
 .Extended 'Payment of Taxes', REQUIREMENT edition (CA Perspective)
-image::Extended_PaymentOfTaxes_CA_REQUIREMENT(s)_Edition-mock-up.png[Extended 'Payment of Taxes' REQUIREMENT edition, alt="Extended 'Payment of Taxes', REQUIREMENT edition", align="center"]
+image::Extended_PaymentOfTaxes_CA_REQUIREMENTS_Edition-mock-up.png[Extended 'Payment of Taxes' REQUIREMENT edition, alt="Extended 'Payment of Taxes', REQUIREMENT edition", align="center"]
 
 
 The differences with the Basic Contribution are:
@@ -39,7 +39,7 @@ Beware that this mock-up is not showing the national criteria. For this mock-up 
 ====
 
 .Extended 'Payment of Taxes', (EO perspective)
-image::Extended_PaymentOfTaxes_EO_REQUIREMENT(s)-mock-up.png[Extended 'Payment of Taxes' EO perspective, alt="Extended 'Payment of Taxes', EO  perspective", align="center"]
+image::Extended_PaymentOfTaxes_EO_REQUIREMENTS-mock-up.png[Extended 'Payment of Taxes' EO perspective, alt="Extended 'Payment of Taxes', EO  perspective", align="center"]
 
 ==== Data structure - Extended
 
@@ -333,7 +333,7 @@ image::Extended_ESPDRequest_Contributions_Data_Structure.png[Extended 'Contribut
 ----
 <1> The MS defined this national 'Payment of Taxes' criterion in e-Certis. See also previous example for the BASIC Payment of taxes (the behavior is identical for all exclusion criteria).
 <2> Reference to the EU Legislation. This reusable structure is identical for all the exclusion criteria.
-<3> For this *EXTENDED ESPD Request Payment of Taxes* criterion, the Member State defined in e-Certis a *national REQUIREMENT* consisting in the specification of the '_threshold amount of debt that an economic operator have with the national Tax Agency_' (50 Euros in this example)
+<3> For this *EXTENDED ESPD Request Payment of Taxes* criterion, the Member State defined in e-Certis a *national REQUIREMENT* consisting in the specification of the '_threshold amount of debt that an economic operator have with the national Tax Agency_' (50 Euros in this example).
 <4> Notice that type of property used is REQUIREMENT. This entails that: (i) the ESPDRequest is of type EXTENDED (BASIC ESPDs does not work with REQUIREMENT(s)); (ii) a `cbc:ValueDataType` will be present indicating the type of value the contracting authority uses for this REQUIREMENT (e.g. AMOUNT, INDICATOR, DESCRIPTION, etc.; see the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[Code List `ResponseDataType`], the values are the same for contracting authorities REQUIREMENT(s) than for economic operator response values).
 <5> Beware that No answer is expected here from the economic operator (do not get confused by the presence of the `cbc:ValueDataType`, as said it is used by both the CA and the EO.
 <6> The value supplied by the contracting authority for this requirement (50 Euros, in this example). Notice that the currency is specified in the attibute `currencyID` of the `cbc:Amount` component.

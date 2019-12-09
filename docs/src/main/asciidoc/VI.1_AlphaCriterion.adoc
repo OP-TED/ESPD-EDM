@@ -43,16 +43,16 @@ The two figures below show how the EC's transitional ESPD-Service behaves when t
 Economic Operator (EO).
 
 .The Alpha Criterion *selected* (EO perspective)'
-image::AlphaCriterion_EO_mockup.png['Alpha Criterion selected' (EO perspective), alt="Alpha Criterion selected (EO perspective)", align="center"]
+image::AlphaCriterion_EO_mockup.PNG['Alpha Criterion selected' (EO perspective), alt="Alpha Criterion selected (EO perspective)", align="center"]
 
 
 .The Alpha Criterion *unselected* (EO perspective)'
-image::AlphaCriterion_EO_mockup_unselected.png['Alpha Criterion unselected' (EO perspective), alt="Alpha Criterion unselected (EO perspective)", align="center"]
+image::AlphaCriterion_EO_mockup_unselected.PNG['Alpha Criterion unselected' (EO perspective), alt="Alpha Criterion unselected (EO perspective)", align="center"]
 
 ==== Data Structure (ONLY Basic-ESPD)
 
 (The figure below is defined in the the tab "ALPHA-CRITERION of the
-link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-Basic-V2.1.1.xlsx[ESPD-CriteriaTaxonomy] spread-sheet).
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-BASIC-V2.1.1.ods[ESPD-CriteriaTaxonomy] spread-sheet).
 
 .The Alpha Criterion in the Basic ESPD
 image::Basic_ALPHA_CRITERION_Data_Structure.png[Alpha Criterion data structure, alt="'Alpha Criterion data structure",align="center"]
@@ -71,31 +71,33 @@ the its ESPD-Response document (see the second fragment of XML code below):
 <!... header elements removed for brevity -->
 
 <cac:TenderingCriterion>
-    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
-            schemeVersionID="2.0.2">f4dc58dd-af45-4602-a4c8-3dca30fac082</cbc:ID>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1"
+		>f4dc58dd-af45-4602-a4c8-3dca30fac082</cbc:ID>
     <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW"
-            listVersionID="2.0.2"
-            >CRITERION.SELECTION.ALL</cbc:CriterionTypeCode>
+            listVersionID="2.1.1">CRITERION.SELECTION.ALL</cbc:CriterionTypeCode>
     <cbc:Name>Global indication for all selection criteria</cbc:Name>
-    <cbc:Description>Concerning the selection criteria the economic operator declares that It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</cbc:Description>
+    <cbc:Description>Concerning the selection criteria the economic operator declares
+            that It satisfies all the required selection criteria indicated in the
+            relevant notice or in the procurement documents referred to in the
+            notice.</cbc:Description>
     <cac:TenderingCriterionPropertyGroup>
             <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
-                    schemeVersionID="2.0.2"
+                    schemeVersionID="2.1.1"
                     >8684a40f-f0ac-43ed-8571-caf9e25dd934</cbc:ID>
             <cbc:PropertyGroupTypeCode listID="PropertyGroupType"
-                    listAgencyID="EU-COM-GROW" listVersionID="2.0.2"
+                    listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
                     >ON*</cbc:PropertyGroupTypeCode>
             <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
-                            schemeVersionID="2.0.2"
-                            >743cf1cf-d203-4df2-b84b-33f208957650</cbc:ID>
-                    <cbc:Description>Your answer</cbc:Description>
+                            schemeVersionID="2.1.1"
+                            >a408122a-06ed-4318-ac68-16aed2b515b4</cbc:ID>
+                    <cbc:Description>Your answer?</cbc:Description>
                     <cbc:TypeCode listID="CriterionElementType"
-                            listAgencyID="EU-COM-GROW" listVersionID="2.0.2"
+                            listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
                             >QUESTION</cbc:TypeCode>
                     <cbc:ValueDataTypeCode listID="ResponseDataType"
-                            listAgencyID="EU-COM-GROW" listVersionID="2.0.2"
-                            >INDICATOR</cbc:ValueDataTypeCode><--1-->
+                            listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
+                            >INDICATOR</cbc:ValueDataTypeCode>
             </cac:TenderingCriterionProperty>
     </cac:TenderingCriterionPropertyGroup>
 </cac:TenderingCriterion>

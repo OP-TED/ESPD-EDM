@@ -54,7 +54,7 @@ The fragment of XML code below illustrates how a mediation service, after recept
 footnote:[Received eBusiness Document should be preserved as it was sent, unaltered, before applying any enrichment, otherwise the evidence value would be lost.],
 could enrich the XML instance containing the business data with processing instruction annotations, based on the annotated data structure shown above
 (the complete example can be found in the folder
-link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/doc/evolution/Annotations%20Proposal[Annotations Proposal]
+link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/doc/evolution/Annotations_Proposal[Annotations Proposal]
 
 .Use of annotations to decouple the business data payload from the software application processing needs
 [source,xml]
@@ -111,14 +111,14 @@ with other requirements set out in that Annex.</cbc:Description>
                 listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
                 >IDENTIFIER</cbc:ValueDataTypeCode>
         <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
-        <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">[List of
-                Lots]</cbc:ExpectedID>
+        <cbc:ExpectedID schemeAgencyID="EU-COM-GROW">[List of Lots]</cbc:ExpectedID>
 </cac:TenderingCriterionProperty>
 <cac:SubsidiaryTenderingCriterionPropertyGroup>
          <xs:annotation><--6-->
                 <xs:documentation> This is a SUBGROUP OF REQUIREMENT(s) INSIDE A GROUP OF REQUIREMENT(s).</xs:documentation>
                 <xs:documentation>This group must be processed (e.g. shown) ALWAYS.</xs:documentation>
-                <espd:groupVisibilityDependencyType>CRITERION_REQUIREMENT_SUBGROUP</espd:groupVisibilityDependencyType>
+					<espd:groupVisibilityDependencyType
+							>CRITERION_REQUIREMENT_SUBGROUP</espd:groupVisibilityDependencyType>
         </xs:annotation>
         <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
                 schemeVersionID="2.1.1"
@@ -138,8 +138,7 @@ with other requirements set out in that Annex.</cbc:Description>
                         listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
                         >DESCRIPTION</cbc:ValueDataTypeCode>
                 <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
-                <cbc:ExpectedDescription>[Register
-                        Name]</cbc:ExpectedDescription>
+                <cbc:ExpectedDescription>[Register Name]</cbc:ExpectedDescription>
         </cac:TenderingCriterionProperty>
 
 <!-- ... etc. -->

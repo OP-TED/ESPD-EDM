@@ -12,7 +12,7 @@ In the example below the contracting authority has specified seven Lots, hence t
 [source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
-<QualificationApplicationRequest xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:2.1.1"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
+<QualificationApplicationRequest xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:espd="urn:com:grow:espd:2.1.1"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2 ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2.xsd">
 	<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
 	<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrdm070:ver3.0</cbc:CustomizationID>
 	<cbc:ProfileID schemeAgencyID="CEN-BII">41</cbc:ProfileID>
@@ -21,7 +21,7 @@ In the example below the contracting authority has specified seven Lots, hence t
 	<cbc:UUID schemeID="ISO/IEC 9834-8:2008" schemeAgencyID="EU-COM-GROW" schemeVersionID="4">0fddbf2d-1e33-4267-b04f-52b59b72ccb6</cbc:UUID>
 	<cbc:ContractFolderID schemeAgencyID="DGPE">PP.20170419.1024-9</cbc:ContractFolderID>
 	<cbc:IssueDate>2019-11-29</cbc:IssueDate>
-	<cbc:ProcedureCode listID="ProcedureType" listAgencyName="EU-COM-GROW" listVersionID="2.1.1">1</cbc:ProcedureCode>
+	<cbc:ProcedureCode listID="ProcedureType" listAgencyName="EU-COM-OP" listVersionID="1.0">OPEN</cbc:ProcedureCode>
 	<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyName="EU-COM-GROW" listVersionID="2.1.1">EXTENDED</cbc:QualificationApplicationTypeCode>
 	<!-- Contracting body data left empty for the sake of brevity -->
 	<cac:ContractingParty> <cac:Party/></cac:ContractingParty>
@@ -74,6 +74,6 @@ In the example below the contracting authority has specified seven Lots, hence t
 
 ----
 <1> This procedure is divided into 7 lots. Hence their automatic identification from Lot1 to Lot7.
-<2> this Criterion has one group of properties containing a sub-group where the three requirements about the lots are actually specified: (i)The tenderers may submit tenders for the maximum number of lots; (ii) The Contracting Authority specifies a maximum number of 5 lots; and (iii) one tenderer can not win more than one lot. Notice that each element inside a criterion has a Universally Unique Identifier (UUID): these UUIDs are 'constant', meaning that they are maintained by DG GROW and need to be used compulsory as they were issued by DG GROW.
+<2> This Criterion has one group of properties containing a sub-group where the three requirements about the lots are actually specified: (i) The tenderers may submit tenders for the maximum number of lots; (ii) The Contracting Authority specifies a maximum number of 5 lots; and (iii) one tenderer can not win more than one lot. Notice that each element inside a criterion has a Universally Unique Identifier (UUID): these UUIDs are 'constant', meaning that they are maintained by DG GROW and need to be used compulsory as they were issued by DG GROW.
 <3> A code has to be provided to specify whether the economic operator is allowed to submit a tender covering one lot only, more than one but not all, or all of them. 
 <4> The value for the expected code (see bullet number 3) needs to be chosen amongst the values of the Code List `BidType`.

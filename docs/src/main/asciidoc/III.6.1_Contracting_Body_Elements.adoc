@@ -6,11 +6,9 @@
 |===
 |*Class name*:| cac:ContractParty
 |*Definition*:|The contracting authority or contracting entity who is buying supplies, services or public works using a tendering procedure as described in the applicable directive (e.g. Directives 2014/24/EU, 2014/25/EU).
-|*Business rule(s)*: Common (BR-REQ-20#1)
-|*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
-|*Path*:
-|/QualificationApplicationRequest/cac:ContractingParty
+|*Business rule(s)*:|Common (BR-REQ-20#1)
+|*File*:|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
+|*Path*:|/QualificationApplicationRequest/cac:ContractingParty
 |===
 [cols="<1,<1,<1,<2,<2"]
 |===
@@ -21,7 +19,7 @@
 |0..1
 |URL of the web section, in the contracting body web site, that contains information about the contracting body, the norms it applies when contracting, published calls for tenders, Prior Information Notices and Contract Notices as well as the related procurement documents, contract award notices, etc.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: Notices published at national level shall not contain information other than that contained in the notices dispatched to the Publications Office of the European Union or published on a buyer profile, but shall indicate the date of dispatch of the notice to the Publications Office of the European Union or its publication on the buyer profile (Directive http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32014L0024&from=ES[2014/24/EU, Art. 52.2]). 
 |===
@@ -32,7 +30,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |*Class name*:| cac:Party
 |*Definition*:|Main data placeholder structure for, in this case, the contracting body.
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:ContractingParty/cac:Party
 |===
@@ -45,10 +43,10 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |The national identifier of a contracting body as it is legally registered (e.g. VAT identification).
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-001[_tbr070-001_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-001[_tbr070-001_].
 
 *Rule*: More than one identifier can be specified. When possible use the VAT identification of the contracting body (see the http://ec.europa.eu/taxation_customs/vies/[VIES] platform for a EU cross-border national VAT number verification system).
-The code list link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[EOIDType]
+The code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[EOIDType]
 may be used to indicate the type of identifier used as a value of the `schemeID` attribute, e.g. `schemeID="VAT"`).
 
 *Rule scope*: Common (BR-REQ-20#4, BR-OTH-02)
@@ -58,7 +56,7 @@ may be used to indicate the type of identifier used as a value of the `schemeID`
 |0..1
 |The website of the contracting body.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: For online services (e.g. Web Services, REST services, etc. use the component `cac:EndPointID`.
 
@@ -67,7 +65,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |Electronic address of the contracting body.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-001[_tbr070-001_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-001[_tbr070-001_].
 
 *Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the `cac:Party/cbc:WebsiteURI`). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (contracting authority, service provider, economic operator) as an eDeliveryID.
 
@@ -76,7 +74,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |1
 |The name of the contracting body as it is registered.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-001[_tbr070-001_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-001[_tbr070-001_].
 
 *Rule*: Mandatory. Use the official name of the contracting body. The PartyName class has an associated basic element "cbc:Name". See XML example below.
 
@@ -92,7 +90,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |*Definition*:|Contractinng body address information.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:ContractingParty/cac:Party/cac:PostalAddress
 |===
@@ -105,7 +103,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |The main address line in an address. Usually the street name and number or post office box.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 
@@ -114,7 +112,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |The common name of a city where the address is located.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 
@@ -123,7 +121,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |The identifier for an addressable group of properties according to the relevant postal service, such as a ZIP code or Post Code.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 
@@ -132,7 +130,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |1
 |A code that identifies the country. The lists of valid countries are registered with the ISO 3166-1 Maintenance agency, "Codes for the representation of names of countries and their subdivisions". It is recommended to use the Country Code ISO 3166-1 2A:2006 representation.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: The country of the contracting body must always be specified. Compulsory use of the code list CountryCodeIdentifier (ISO 3166-1 2A:2006).
 
@@ -143,7 +141,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |The name of the country. 
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 
@@ -155,7 +153,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |*Class name*:|cac:Contact
 |*Definition*:|Used to provide contacting information for a party in general or a person.
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:ContractingParty/cac:Party/cac:Contact
 |===
@@ -168,7 +166,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |The name of the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 
@@ -177,7 +175,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |A phone number for the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 
@@ -186,7 +184,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |A fax number for the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 
@@ -195,7 +193,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |0..1
 |An e-mail address for the contact point.
 |*Information Requirement*: 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-006[_tbr070-006_].
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
 
 *Rule*: None.
 |===

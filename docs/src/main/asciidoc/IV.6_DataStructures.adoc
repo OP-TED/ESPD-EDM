@@ -28,8 +28,7 @@ For the rest of elements there are three types of codes (see also section:
 * Column 25: *Code List*; it indicates which is the name of code list containing the possible values that must be used
 for this field. This value is most cases a *code* however beware that in this ESPD-EDM specification at least one code list
 contains codes that *are not* intended to be used as values of codes. See the section titled
-link:#[#code-lists-that-strong-are-not-strong-used-for-code-values](under section
-link:#ii-4-5-codes-and-code-lists[Codes and code lists].
+link:#codes-and-code-lists[Codes and code lists].
 
 *Basic*
 
@@ -76,7 +75,7 @@ The ESPD-EDM data structures vocabulary is defined in the Code List "link:https:
 
 *The main differences between REQUIREMENT, CAPTION and QUESTION are*:
 
-. A REQUIREMENT is a condition, restriction or rule established by the Member State (in e-Certis, for all procurement procedures) or the contracting authority (CA, for the specific procurement procedure). REQUIREMENT(s) are not intended to be responded by the economic operator; but the economic operator must conform to (comply with) it. Examples of REQUIREMENT(s): 'Provide at least three references to similar works', 'The expected lowest general yearly turnover is 1,000,000 €', etc. (see mock-ups).
+. A REQUIREMENT is a condition, restriction or rule established by the Member State (in e-Certis, for all procurement procedures) or the contracting authority (CA, for the specific procurement procedure). REQUIREMENT(s) are not intended to be responded by the economic operator; but the economic operator must conform to (comply with) it. Examples of REQUIREMENT(s): 'Provide at least three references to similar works', 'The expected lowest general yearly turnover is 1,000,000 €', etc. (see mock-ups);
 
 . A CAPTION is a label normally used to introduce a group of REQUIREMENT(s) or QUESTION(s); e.g. 'Lots the EO tenders to' (which is followed by a list of Lots identifiers provided by the EO);
 
@@ -92,7 +91,7 @@ If you examine any of the XML examples provided in this document you will observ
 
 * In the Extended version the following rules apply in a regular way:
  
-** When the member state (MS) or the contracting authority (CA) needs to specify REQUIREMENT(s), the outer group of the data structure is always a REQUIREMENT_GROUP (e.g. 'EG-Contributions', 'SC-Suitability', or practically all selection criteria). Otherwise the outer group is always a QUESTION_GROUP (e.g. 'EG-Convictions', 'EG-Environ-Social-Labour_Law', 'EG-Business', etc.)
+** When the member state (MS) or the contracting authority (CA) needs to specify REQUIREMENT(s), the outer group of the data structure is always a REQUIREMENT_GROUP (e.g. 'EG-Contributions', 'SC-Suitability', or practically all selection criteria). Otherwise the outer group is always a QUESTION_GROUP (e.g. 'EG-Convictions', 'EG-Environ-Social-Labour_Law', 'EG-Business', etc.);
 
 ** A REQUIREMENT_GROUP always contain a first element CAPTION or REQUIREMENT. This is because in the UBL-2.2 XSD schema the first *mandatory* element is always a `cac:TenderingCriterionProperty` element;
 
