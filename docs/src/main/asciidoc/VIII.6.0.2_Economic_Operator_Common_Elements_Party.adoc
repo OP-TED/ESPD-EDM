@@ -15,7 +15,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Definition*:|Any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.
 |*Business rule(s)*:|Common (BR-RESP-10)
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty
 |*Context of use*:|The ESPD Response document.
@@ -61,7 +61,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Definition*:|The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).
 |*Business rule(s)*:|Extended (BR-RESP-10-01)
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:QualifyingParty
 |*Context of use*:|Economic Operator in the ESPD Response document.
@@ -114,7 +114,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-001[_tbr92-001_]
 
 *Rule*: The attribute `schemeAgencyID` must hold the value retrieved from eCertis that identifies unequivocally the (pre)qualification system. If, for any reason, that value is not available use the default schemeAgencyID "EU-COM-GROW" and the `cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cac:PartyIdentificaton/cbc:ID` for the value of the identifier. Additionally you can use the data structure `CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST` to specify an alternative or additional name, identifier and description.
-The code list link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[EOIDType]
+The code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[EOIDType]
 should be used to indicate the type of identifier used as a value of the `schemeID` attribute, e.g. `schemeID="VAT"`).
 
 *Rule scope*: Extended ( BR-RESP-80-S10, BR-RESP-80-S20), Common (BR-RESP-50, BR-OTH-02)
@@ -127,7 +127,7 @@ should be used to indicate the type of identifier used as a value of the `scheme
 |*Class name*:|cac:EconomicOperatorRole
 |*Definition*:|The function of the economic operator when bidding from a consortium (Sole contractor / Lead entity, member of a group, etc.).
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:EconomicOperatorRole
 |*Context of use*:|Economic Operator in the ESPD Response document.
@@ -164,7 +164,7 @@ should be used to indicate the type of identifier used as a value of the `scheme
 |*Definition*:
 |Main set of data used to identify and contact the economic operator, such as official identifiers, name, address, contact person, representatives, etc.
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party
 |===
@@ -230,7 +230,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr9
 |*Definition*:|Postal address information.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperator/cac:Party/cac:PostalAddress
 |===
@@ -294,7 +294,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr9
 |*Definition*:|Used to provide contacting information for a party in general or a person.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:Contact
 |===
@@ -351,7 +351,7 @@ Please see also the section III.6 Service Provider (for the ESPD Request) for ot
 |*Definition*:|Main information about the service provider.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:ServiceProviderParty/cac:Party
 |===
