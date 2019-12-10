@@ -207,7 +207,7 @@
                  mode="M7">
       <xsl:variable name="ppLot" select="/*[1]/cac:ProcurementProjectLot/cbc:ID"/>
       <xsl:variable name="isSC"
-                    select="/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED' or cbc:QualificationApplicationTypeCode = 'SELFCONTAINED'"/>
+                    select="upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'EXTENDED' or upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'SELFCONTAINED'"/>
       <xsl:variable name="TC_lot_ID"
                     select="/*[1]/cac:TenderingCriterion[cbc:CriterionTypeCode = 'CRITERION.OTHER.EO_DATA.LOTS_TENDERED']/cac:TenderingCriterionPropertyGroup[cbc:ID='289f39b3-2a15-421a-8050-a29858031f35']/cac:TenderingCriterionProperty/cbc:ID"/>
       <xsl:variable name="doTest"

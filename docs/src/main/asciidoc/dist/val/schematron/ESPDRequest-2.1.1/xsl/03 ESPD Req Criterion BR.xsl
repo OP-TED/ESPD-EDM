@@ -201,7 +201,8 @@
 <xsl:template match="espd:QualificationApplicationRequest" priority="1000" mode="M5">
       <xsl:variable name="current_Exclusion"
                     select="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']"/>
-      <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
+      <xsl:variable name="applicationType"
+                    select="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
       <xsl:variable name="ElementUUID_Exclusion"
                     select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']"/>
 

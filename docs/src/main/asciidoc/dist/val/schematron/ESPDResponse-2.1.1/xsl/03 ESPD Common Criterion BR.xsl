@@ -204,7 +204,8 @@
 <xsl:template match="cac:TenderingCriterion" priority="1003" mode="M6">
       <xsl:variable name="currentID" select="cbc:ID"/>
       <xsl:variable name="currentIDExist" select="(cbc:ID) and not(normalize-space(cbc:ID) = '')"/>
-      <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
+      <xsl:variable name="applicationType"
+                    select="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
       <xsl:variable name="ElementUUID"
                     select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
       <xsl:variable name="ElementUUIDExists" select="(count($ElementUUID/cbc:ID) = 1)"/>
@@ -385,7 +386,8 @@
       <xsl:variable name="currentID" select="cbc:ID"/>
       <xsl:variable name="currentCode" select="cbc:PropertyGroupTypeCode"/>
       <xsl:variable name="parentID" select="ancestor::*[1]/cbc:ID"/>
-      <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
+      <xsl:variable name="applicationType"
+                    select="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
       <xsl:variable name="ElementUUID_SUB"
                     select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
       <xsl:variable name="ParentUUID_SUB"
@@ -627,7 +629,8 @@
       <xsl:variable name="currentType" select="cbc:TypeCode"/>
       <xsl:variable name="currentValueData" select="cbc:ValueDataTypeCode"/>
       <xsl:variable name="TCPropertyGroupID" select="ancestor::*[1]/cbc:ID"/>
-      <xsl:variable name="applicationType" select="/*[1]/cbc:QualificationApplicationTypeCode"/>
+      <xsl:variable name="applicationType"
+                    select="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
       <xsl:variable name="ElementUUIDSTC"
                     select="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty      else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
       <xsl:variable name="ElementUUID_STCExists" select="(count($ElementUUIDSTC) &gt; 0)"/>
@@ -755,30 +758,10 @@
                   <xsl:text/>', does not have a '<xsl:text/>
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/cac:TenderingCriterionProperty[cbc:ID = <xsl:text/>
-                  <xsl:value-of select="cbc:ID"/>
+                  <xsl:value-of select="$currentID"/>
                   <xsl:text/>]/cbc:ValueDataTypeCode = <xsl:text/>
-                  <xsl:value-of select="cbc:ValueDataTypeCode"/>
+                  <xsl:value-of select="$currentValueData"/>
                   <xsl:text/>' defined in e-Certis.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="not($currentTypeExist and $currentValueTypeExist) or ( (cbc:TypeCode='CAPTION' and cbc:ValueDataTypeCode='NONE') or ((cbc:TypeCode='QUESTION' or cbc:TypeCode='REQUIREMENT') and not(cbc:ValueDataTypeCode='NONE')) and ($currentTypeExist and $currentValueTypeExist))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($currentTypeExist and $currentValueTypeExist) or ( (cbc:TypeCode='CAPTION' and cbc:ValueDataTypeCode='NONE') or ((cbc:TypeCode='QUESTION' or cbc:TypeCode='REQUIREMENT') and not(cbc:ValueDataTypeCode='NONE')) and ($currentTypeExist and $currentValueTypeExist))">
-               <xsl:attribute name="id">BR-TC-21-02</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The type of answer ('cbc:ValueDataTypeCode') must be different to NONE for properties ('cbc:TypeCode') of type QUESTION; or equal to NONE for properties of type CAPTION and REQUIREMENT. The current value is 'cbc:ValueDataTypeCode'='<xsl:text/>
-                  <xsl:value-of select="cbc:ValueDataTypeCode"/>
-                  <xsl:text/>' and 'cbc:TypeCode'='<xsl:text/>
-                  <xsl:value-of select="cbc:TypeCode"/>
-                  <xsl:text/>'</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

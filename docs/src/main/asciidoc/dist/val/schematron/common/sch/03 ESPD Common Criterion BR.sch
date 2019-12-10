@@ -22,7 +22,7 @@
 			<!-- Common variables -->
 			<let name="currentID" value="cbc:ID"/>
 			<let name="currentIDExist" value="(cbc:ID) and not(normalize-space(cbc:ID) = '')"/>
-			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>
+			<let name="applicationType" value="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
 			
 			<let name="ElementUUID" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID] 
 				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
@@ -71,7 +71,7 @@
 			<let name="parentID" value="ancestor::*[1]/cbc:ID"/>
 			
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
-			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>
+			<let name="applicationType" value="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
 			
 			<let name="ElementUUID_SUB" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID] 
 				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
@@ -121,7 +121,7 @@
 			<let name="currentValueData" value="cbc:ValueDataTypeCode"/>
 			
 			<let name="TCPropertyGroupID" value="ancestor::*[1]/cbc:ID"/>		
-			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>	
+			<let name="applicationType" value="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>	
 			
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
 			<let name="ElementUUIDSTC" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
@@ -150,10 +150,9 @@
 			<!-- Other rules -->
 			<!-- BR-TC-20-02 / BR-TC-21-03: /cac:TenderingCriterionProperty/cbc:TypeCode, cbc:ValueDataTypeCode must match the document [RD03] -->
 			<assert test="not($currentTypeExist) or ((count($ElementUUIDTC[cbc:TypeCode = $currentType])&gt;=1 or count($ElementUUIDSTC[cbc:TypeCode = $currentType])&gt;=1) and ($currentTypeExist))" flag="fatal" id="BR-TC-20-02">The tendering criterion property group ('<value-of select="name(ancestor::*[1])"/>The tendering criterion property type code should match the one from e-Certis. The <value-of select="name(ancestor::*[1])"/>, which 'cbc:ID = <value-of select="$TCPropertyGroupID"/>', does not have a '<value-of select="name(ancestor::*[1])"/>/cac:TenderingCriterionProperty[cbc:ID = <value-of select="$currentID"/>]/cbc:TypeCode = <value-of select="$currentType"/>' defined in e-Certis.</assert>
-			<assert test="not($currentValueTypeExist) or ((count($ElementUUIDTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1 or count($ElementUUIDSTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1) and ($currentValueTypeExist))" flag="fatal" id="BR-TC-21-03">The tendering criterion property value data type should match the one from e-Certis. The <value-of select="name(ancestor::*[1])"/>, which 'cbc:ID = <value-of select="$TCPropertyGroupID"/>', does not have a '<value-of select="name(ancestor::*[1])"/>/cac:TenderingCriterionProperty[cbc:ID = <value-of select="cbc:ID"/>]/cbc:ValueDataTypeCode = <value-of select="cbc:ValueDataTypeCode"/>' defined in e-Certis.</assert>			
+			<assert test="not($currentValueTypeExist) or ((count($ElementUUIDTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1 or count($ElementUUIDSTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1) and ($currentValueTypeExist))" flag="fatal" id="BR-TC-21-03">The tendering criterion property value data type should match the one from e-Certis. The <value-of select="name(ancestor::*[1])"/>, which 'cbc:ID = <value-of select="$TCPropertyGroupID"/>', does not have a '<value-of select="name(ancestor::*[1])"/>/cac:TenderingCriterionProperty[cbc:ID = <value-of select="$currentID"/>]/cbc:ValueDataTypeCode = <value-of select="$currentValueData"/>' defined in e-Certis.</assert>			
 			
 			<!-- BR-TC-21-02: Verify that the value is different to NONE for properties of type QUESTION. -->
-			<assert test="not($currentTypeExist and $currentValueTypeExist) or ( (cbc:TypeCode='CAPTION' and cbc:ValueDataTypeCode='NONE') or ((cbc:TypeCode='QUESTION' or cbc:TypeCode='REQUIREMENT') and not(cbc:ValueDataTypeCode='NONE')) and ($currentTypeExist and $currentValueTypeExist))" flag="fatal" id="BR-TC-21-02">The type of answer ('cbc:ValueDataTypeCode') must be different to NONE for properties ('cbc:TypeCode') of type QUESTION; or equal to NONE for properties of type CAPTION and REQUIREMENT. The current value is 'cbc:ValueDataTypeCode'='<value-of select="cbc:ValueDataTypeCode"/>' and 'cbc:TypeCode'='<value-of select="cbc:TypeCode"/>'</assert>
 		
 		</rule>
 		

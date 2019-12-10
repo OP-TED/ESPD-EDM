@@ -203,7 +203,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="espd:QualificationApplicationRequest[cbc:QualificationApplicationTypeCode='EXTENDED' or cbc:QualificationApplicationTypeCode='SELFCONTAINED']"
+<xsl:template match="espd:QualificationApplicationRequest[upper-case(cbc:QualificationApplicationTypeCode)='EXTENDED' or upper-case(cbc:QualificationApplicationTypeCode)='SELFCONTAINED']"
                  priority="1002"
                  mode="M7">
 
@@ -243,7 +243,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*" mode="M7"/>
    </xsl:template>
 
 	  <!--RULE -->
@@ -252,7 +252,7 @@
                  mode="M7">
       <xsl:variable name="allLots" select="/*[1]/cac:ProcurementProjectLot/cbc:ID"/>
       <xsl:variable name="testLots"
-                    select="(cbc:ExpectedID) and ((/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED' or /*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED')) and count($allLots)&gt;0"/>
+                    select="(cbc:ExpectedID) and ((upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'EXTENDED' or upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'SELFCONTAINED')) and count($allLots)&gt;0"/>
       <xsl:variable name="currentExpectedID" select="cbc:ExpectedID"/>
       <xsl:variable name="lotsIDs"
                     select="/*[1]/cac:ProcurementProjectLot[cbc:ID = $currentExpectedID]/cbc:ID"/>
@@ -274,13 +274,13 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*" mode="M7"/>
    </xsl:template>
 
 	  <!--RULE -->
 <xsl:template match="cac:TenderingCriterion" priority="1000" mode="M7">
       <xsl:variable name="isSCopen"
-                    select="(/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED' or /*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') and (/*[1]/cbc:ProcedureCode != 'OPEN')"/>
+                    select="(upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'EXTENDED' or upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'SELFCONTAINED') and (/*[1]/cbc:ProcedureCode != 'OPEN')"/>
       <xsl:variable name="testWeightNumeric"
                     select="$isSCopen and (cbc:EvaluationMethodTypeCode = 'WEIGHTED') and starts-with(cbc:CriterionTypeCode, 'CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.')"/>
 
@@ -341,10 +341,10 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*" mode="M7"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M7"/>
    <xsl:template match="@*|node()" priority="-2" mode="M7">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*" mode="M7"/>
    </xsl:template>
 </xsl:stylesheet>

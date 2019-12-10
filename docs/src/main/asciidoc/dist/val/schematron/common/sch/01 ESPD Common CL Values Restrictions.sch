@@ -14,15 +14,14 @@
         $Id: 01 ESPD Common CL Values Restrictions.sch,v 2.1.1 $
 
         -->
-        <let name="selfcontained" value="if (/*[1]/cbc:QualificationApplicationTypeCode = 'SELFCONTAINED') then 'SELF-CONTAINED' else 'REGULATED'"/><!-- TRUE is selfcontained / FALSE is regulated -->
-        <let name="extended" value="if (/*[1]/cbc:QualificationApplicationTypeCode = 'EXTENDED') then 'EXTENDED' else 'BASIC'"/><!-- TRUE is extended / FALSE is basic -->
+        <let name="extended" value="if (upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'EXTENDED' or upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'SELFCONTAINED') then 'EXTENDED' else 'BASIC'"/><!-- TRUE is extended / FALSE is basic -->
         <!-- CONTEXT -->
         <rule context="cbc:ValueDataTypeCode">
             <let name="gc" value="document('../../../../cl/gc/ResponseDataType-CodeList.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) or 
-                (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and (contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $selfcontained) or contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended))))" 
+                (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended)))" 
                 flag="fatal" id="BR-COM-CL-RESTR-01.01">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
          </rule>
         <rule context="cbc:WeightingTypeCode">
@@ -30,7 +29,7 @@
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) or 
-                (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and (contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $selfcontained) or contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended))))" 
+                (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended)))" 
                 flag="fatal" id="BR-COM-CL-RESTR-01.02">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cac:TenderingCriterion/cbc:EvaluationMethodTypeCode">
@@ -38,7 +37,7 @@
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
-                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and (contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $selfcontained) or contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended))))" 
+                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended)))" 
                 flag="fatal" id="BR-COM-CL-RESTR-01.03">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cbc:CriterionTypeCode">
@@ -46,7 +45,7 @@
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
-                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and (contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $selfcontained) or contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended))))" 
+                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended)))" 
                 flag="fatal" id="BR-COM-CL-RESTR-01.04">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cbc:BooleanGUIControlType">
@@ -54,7 +53,7 @@
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
-                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and (contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $selfcontained) or contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended))))" 
+                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended)))" 
                 flag="fatal" id="BR-COM-CL-RESTR-01.05">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cbc:CPVCodes">
@@ -62,7 +61,7 @@
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
-                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and (contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $selfcontained) or contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended))))" 
+                or (exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]) and contains($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue]/Value[@ColumnRef = 'context']/SimpleValue, $extended)))" 
                 flag="fatal" id="BR-COM-CL-RESTR-01.06">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>        
         <!-- STATUS -->

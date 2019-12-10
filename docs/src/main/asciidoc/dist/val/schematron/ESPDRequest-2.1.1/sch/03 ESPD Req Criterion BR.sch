@@ -18,7 +18,7 @@
 		<!-- Restrictions regarding the Exclusion criterion contraints -->
 		<rule context="espd:QualificationApplicationRequest">
 			<let name="current_Exclusion" value="cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']"/>
-			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>	
+			<let name="applicationType" value="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>	
 			<!-- TODO: Update code list and the XML filename. -->
 			<let name="ElementUUID_Exclusion" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER'] 
 				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[starts-with(cbc:CriterionTypeCode, 'CRITERION.EXCLUSION.') and cbc:CriterionTypeCode!='CRITERION.EXCLUSION.NATIONAL.OTHER']"/>

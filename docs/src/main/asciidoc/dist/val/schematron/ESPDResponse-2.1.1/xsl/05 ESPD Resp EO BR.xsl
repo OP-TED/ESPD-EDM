@@ -199,7 +199,8 @@
 
 	<!--RULE -->
 <xsl:template match="cac:EconomicOperatorParty" priority="1003" mode="M5">
-      <xsl:variable name="isSC" select="/*[1]/cbc:QualificationApplicationTypeCode='EXTENDED'"/>
+      <xsl:variable name="isSC"
+                    select="upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'EXTENDED' or upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'SELFCONTAINED'"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
