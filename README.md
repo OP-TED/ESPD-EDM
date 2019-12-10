@@ -11,7 +11,7 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 ## Documentation
 
-* v2.1.1 (NYR)
+* [v2.1.1](https://espd.github.io/ESPD-EDM/v2.1.1/)
 * [v2.1.0](https://espd.github.io/ESPD-EDM/v2.1.0/)
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
@@ -23,13 +23,13 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 Dear ESPD implementation community, 
 
-We are happy to inform you about the future release (TBA) of ESPD EDM version 2.1.1.
+We are happy to inform you about the future release of ESPD EDM version 2.1.1 on December 13th.
 
 ### Version 2.1.1 (December 2019)
 This version is currently under development and its precise release date is yet to be announced.
-v2.1.1 will mainly focus on correcting minor errors and implementing the backwards-compatible-changes suggested by Member States and other Stakeholders in the ESPD-EDM in the GitHub [issues](https://github.com/ESPD/ESPD-EDM/issues) workspace.
+v2.1.1 **focuses** mainly on correcting **minor errors** and implementing the **backwards-compatible-changes** suggested by Member States and other Stakeholders in the ESPD-EDM in the GitHub [issues](https://github.com/ESPD/ESPD-EDM/issues) workspace.
 
-ESPD nomenclature for, now former, ESPD Regulated and ESPD Self-Contained will be changed to ESPD Basic and Extended, respectively.
+**ESPD nomenclature** for, now former, **ESPD Regulated** and **ESPD Self-Contained** will be **changed** to **ESPD Basic** and **Extended**, respectively.
 
 ### Version 2.1.0 (January 2019)
 The [ESPD EDM version 2.1.0](https://github.com/ESPD/ESPD-EDM/tree/2.1.0) is now released and focuses, mainly, on the improvement of the 

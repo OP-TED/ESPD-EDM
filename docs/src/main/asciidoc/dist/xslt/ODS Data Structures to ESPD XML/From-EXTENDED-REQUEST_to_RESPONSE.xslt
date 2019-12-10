@@ -133,13 +133,13 @@
 							<cbc:Description>DUMMY_DESCRIPTION</cbc:Description>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'PERCENTAGE'">
-							<cbc:ResponseMeasure unitCode="PERCENTAGE">0.7</cbc:ResponseMeasure>
+						<cbc:ResponseQuantity unitCode="PERCENTAGE">0.7</cbc:ResponseQuantity>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY_INTEGER'">
 							<cbc:ResponseMeasure unitCode="INTEGER">1</cbc:ResponseMeasure>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY_YEAR'">
-							<cbc:ResponseMeasure unitCode="YEAR">2017</cbc:ResponseMeasure>
+						<cbc:ResponseQuantity unitCode="YEAR">2017</cbc:ResponseQuantity>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY'">
 							<cbc:ResponseQuantity>10</cbc:ResponseQuantity>
