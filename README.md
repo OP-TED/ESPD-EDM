@@ -1,5 +1,5 @@
 # ESPD Exchange Data Model (EDM)
-# v2.1.1 currently under development
+# Version 2.1.1
 
 ## Introduction
 
