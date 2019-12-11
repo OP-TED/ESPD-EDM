@@ -17,7 +17,7 @@
         <let name="extended" value="if (upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'EXTENDED' or upper-case(/*[1]/cbc:QualificationApplicationTypeCode) = 'SELFCONTAINED') then 'EXTENDED' else 'BASIC'"/><!-- TRUE is extended / FALSE is basic -->
         <!-- CONTEXT -->
         <rule context="cbc:ValueDataTypeCode">
-            <let name="gc" value="document('../../../../cl/gc/ResponseDataType-CodeList.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/ResponseDataType.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) or 
@@ -25,7 +25,7 @@
                 flag="fatal" id="BR-COM-CL-RESTR-01.01">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
          </rule>
         <rule context="cbc:WeightingTypeCode">
-            <let name="gc" value="document('../../../../cl/gc/WeightingType-CodeList.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/WeightingType.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) or 
@@ -33,7 +33,7 @@
                 flag="fatal" id="BR-COM-CL-RESTR-01.02">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cac:TenderingCriterion/cbc:EvaluationMethodTypeCode">
-            <let name="gc" value="document('../../../../cl/gc/EvaluationMethodType-CodeList.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/EvaluationMethodType.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
@@ -49,7 +49,7 @@
                 flag="fatal" id="BR-COM-CL-RESTR-01.04">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cbc:BooleanGUIControlType">
-            <let name="gc" value="document('../../../../cl/gc/BooleanGUIControlType-CodeList.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/BooleanGUIControlType.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
@@ -57,7 +57,7 @@
                 flag="fatal" id="BR-COM-CL-RESTR-01.05">The context of the value '<value-of select="local-name()"/>=<value-of select="."/>' does not match the type of 'cbc:QualificationApplicationTypeCode'.</assert>
         </rule>
         <rule context="cbc:CPVCodes">
-            <let name="gc" value="document('../../../../cl/gc/CPVCodes-CodeList.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/CPVCodes.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
@@ -66,7 +66,7 @@
         </rule>        
         <!-- STATUS -->
         <rule context="cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode">
-            <let name="gc" value="document('../../../../cl/gc/EORoleType-CodeList.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/EORoleType.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
@@ -75,7 +75,7 @@
         </rule>
         
         <rule context="cbc:QualificationApplicationTypeCode">
-            <let name="gc" value="document('../../../../cl/gc/QualificationApplicationType-CodeList.gc')//SimpleCodeList"/>
+            <let name="gc" value="document('../../../../cl/gc/QualificationApplicationType.gc')//SimpleCodeList"/>
             <let name="currentValue" value="."/>
             
             <assert test="(not(exists($gc/Row[Value[@ColumnRef = 'code']/SimpleValue = $currentValue])) 
