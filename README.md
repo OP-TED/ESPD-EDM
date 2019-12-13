@@ -1,12 +1,18 @@
 # ESPD Exchange Data Model (EDM)
+# Version 2.1.1
 
 ## Introduction
 
 The ESPD Exchange Data Model is the technical representation of the legal European Single Procurement Document. It is used to support interoperability between ESPD services provided all over Europe.
 
+## ESPD Wiki
+
+To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongly** recommend visiting the [ESPD-EDM Wiki](https://github.com/ESPD/ESPD-EDM/wiki), that aims to be the **Unique Access Point** for all of its resources: documentation, tools, assets, etc.
+
 ## Documentation
 
-* [v2.1.0](https://espd-edm.github.io/ESPD-EDM/v2.1.0/)
+* [v2.1.1](https://espd.github.io/ESPD-EDM/v2.1.1/)
+* [v2.1.0](https://espd.github.io/ESPD-EDM/v2.1.0/)
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
 * [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
 * [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
@@ -17,7 +23,13 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 Dear ESPD implementation community, 
 
-We are happy to inform you about the release of ESPD EDM version 2.1.0.
+We are happy to inform you about the future release of ESPD EDM version 2.1.1 on December 13th.
+
+### Version 2.1.1 (December 2019)
+This version is currently under development and its precise release date is yet to be announced.
+v2.1.1 **focuses** mainly on correcting **minor errors** and implementing the **backwards-compatible-changes** suggested by Member States and other Stakeholders in the ESPD-EDM in the GitHub [issues](https://github.com/ESPD/ESPD-EDM/issues) workspace.
+
+**ESPD nomenclature** for, now former, **ESPD Regulated** and **ESPD Self-Contained** will be **changed** to **ESPD Basic** and **Extended**, respectively.
 
 ### Version 2.1.0 (January 2019)
 The [ESPD EDM version 2.1.0](https://github.com/ESPD/ESPD-EDM/tree/2.1.0) is now released and focuses, mainly, on the improvement of the 

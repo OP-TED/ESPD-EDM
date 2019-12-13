@@ -2,9 +2,9 @@
 === VI.1 Alpha criterion
 
 The criterion 'Global indication for all selection criteria' (a.k.a. 'Alpha Criterion') is a special feature only possible in
-the REGULATED ESPD. It is intended to avoid that the economic operator specifies a long list of selection criteria.
+the Basic ESPD. It is intended to avoid that the economic operator specifies a long list of selection criteria.
 
-The code used in the ESPD-REGULATED Criteria Taxonomy to identify this criterion is:
+The code used in the ESPD-Basic Criteria Taxonomy to identify this criterion is:
 
 * CRITERION.SELECTION.ALL (UUID `f4dc58dd-af45-4602-a4c8-3dca30fac082`)
 
@@ -12,13 +12,13 @@ The use of the Alpha Criterion implies that the economic operator states that it
 Fulfilling an ESPD-Response document like this is close to the idea of the ESPD used as a *self-declaration*.
 
 If this selection criterion is used then no other selection criterion can occur in the XML instance of an
-ESPD-REGULATED document. Otherwise the validation mechanisms should reject the document.
+ESPD-Basic document. Otherwise the validation mechanisms should reject the document.
 
 [NOTE]
 ====
 The use of the Alpha Criterion *is not* recommended as it does not promote the transparency and hinders the
 interoperability: no data about the selection criteria are exchanged. These are the two main reasons why the
-Alpha Criterion is not used in the SELF-CONTAINED ESPD.
+Alpha Criterion is not used in the Extended ESPD.
 ====
 
 ==== Mock-ups (CA perspective)
@@ -43,21 +43,21 @@ The two figures below show how the EC's transitional ESPD-Service behaves when t
 Economic Operator (EO).
 
 .The Alpha Criterion *selected* (EO perspective)'
-image::AlphaCriterion_EO_mockup.png['Alpha Criterion selected' (EO perspective), alt="Alpha Criterion selected (EO perspective)", align="center"]
+image::AlphaCriterion_EO_mockup.PNG['Alpha Criterion selected' (EO perspective), alt="Alpha Criterion selected (EO perspective)", align="center"]
 
 
 .The Alpha Criterion *unselected* (EO perspective)'
-image::AlphaCriterion_EO_mockup_unselected.png['Alpha Criterion unselected' (EO perspective), alt="Alpha Criterion unselected (EO perspective)", align="center"]
+image::AlphaCriterion_EO_mockup_unselected.PNG['Alpha Criterion unselected' (EO perspective), alt="Alpha Criterion unselected (EO perspective)", align="center"]
 
-==== Data Structure (ONLY REGULATED-ESPD)
+==== Data Structure (ONLY Basic-ESPD)
 
 (The figure below is defined in the the tab "ALPHA-CRITERION of the
-link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-REGULATED-V2.1.0.xlsx[ESPD-CriteriaTaxonomy] spread-sheet).
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-BASIC-V2.1.1.ods[ESPD-CriteriaTaxonomy] spread-sheet).
 
-.The Alpha Criterion in the Regulated ESPD
-image::Regulated_ALPHA_CRITERION_Data_Structure.png[Alpha Criterion data structure, alt="'Alpha Criterion data structure",align="center"]
+.The Alpha Criterion in the Basic ESPD
+image::Basic_ALPHA_CRITERION_Data_Structure.png[Alpha Criterion data structure, alt="'Alpha Criterion data structure",align="center"]
 
-==== XML Example - (only for the Regulated ESPD)
+==== XML Example - (only for the Basic ESPD)
 
 In this example, the CA creates an ESPD-Request document which contains one, and only one, selection Criterion (see the first
 fragment of XML code below).
@@ -65,37 +65,39 @@ fragment of XML code below).
 The System of the Economic Operator will import the ESPD-Request document ans will answer with a simple `true` or `false` value in
 the its ESPD-Response document (see the second fragment of XML code below):
 
-.Alpha Selection Criterion specified by the CA in the REGULATED ESPD-Request
+.Alpha Selection Criterion specified by the CA in the Basic ESPD-Request
 [source,xml]
 ----
 <!... header elements removed for brevity -->
 
 <cac:TenderingCriterion>
-    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
-            schemeVersionID="2.0.2">f4dc58dd-af45-4602-a4c8-3dca30fac082</cbc:ID>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1"
+		>f4dc58dd-af45-4602-a4c8-3dca30fac082</cbc:ID>
     <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW"
-            listVersionID="2.0.2"
-            >CRITERION.SELECTION.ALL</cbc:CriterionTypeCode>
+            listVersionID="2.1.1">CRITERION.SELECTION.ALL</cbc:CriterionTypeCode>
     <cbc:Name>Global indication for all selection criteria</cbc:Name>
-    <cbc:Description>Concerning the selection criteria the economic operator declares that It satisfies all the required selection criteria indicated in the relevant notice or in the procurement documents referred to in the notice.</cbc:Description>
+    <cbc:Description>Concerning the selection criteria the economic operator declares
+            that It satisfies all the required selection criteria indicated in the
+            relevant notice or in the procurement documents referred to in the
+            notice.</cbc:Description>
     <cac:TenderingCriterionPropertyGroup>
             <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
-                    schemeVersionID="2.0.2"
+                    schemeVersionID="2.1.1"
                     >8684a40f-f0ac-43ed-8571-caf9e25dd934</cbc:ID>
             <cbc:PropertyGroupTypeCode listID="PropertyGroupType"
-                    listAgencyID="EU-COM-GROW" listVersionID="2.0.2"
+                    listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
                     >ON*</cbc:PropertyGroupTypeCode>
             <cac:TenderingCriterionProperty>
                     <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW"
-                            schemeVersionID="2.0.2"
-                            >743cf1cf-d203-4df2-b84b-33f208957650</cbc:ID>
-                    <cbc:Description>Your answer</cbc:Description>
+                            schemeVersionID="2.1.1"
+                            >a408122a-06ed-4318-ac68-16aed2b515b4</cbc:ID>
+                    <cbc:Description>Your answer?</cbc:Description>
                     <cbc:TypeCode listID="CriterionElementType"
-                            listAgencyID="EU-COM-GROW" listVersionID="2.0.2"
+                            listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
                             >QUESTION</cbc:TypeCode>
                     <cbc:ValueDataTypeCode listID="ResponseDataType"
-                            listAgencyID="EU-COM-GROW" listVersionID="2.0.2"
-                            >INDICATOR</cbc:ValueDataTypeCode><--1-->
+                            listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
+                            >INDICATOR</cbc:ValueDataTypeCode>
             </cac:TenderingCriterionProperty>
     </cac:TenderingCriterionPropertyGroup>
 </cac:TenderingCriterion>
@@ -104,15 +106,15 @@ the its ESPD-Response document (see the second fragment of XML code below):
 ----
 <1> The type of data expected by the CA, a simple `true` or false value. See the example about the EO response below.
 
-.Alpha Selection Criterion, the response provided by the EO in the REGULATED ESPD-Response
+.Alpha Selection Criterion, the response provided by the EO in the Basic ESPD-Response
 [source,xml]
 ----
 <!... header elements removed for brevity -->
 ...
 
  <cac:TenderingCriterionResponse>
-    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">acb58f0e-0fe4-4372-aa08-60d0c36bfcfe</cbc:ID>
-    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">8684a40f-f0ac-43ed-8571-caf9e25dd934</cbc:ValidatedCriterionPropertyID><--1-->
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">acb58f0e-0fe4-4372-aa08-60d0c36bfcfe</cbc:ID>
+    <cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.1">8684a40f-f0ac-43ed-8571-caf9e25dd934</cbc:ValidatedCriterionPropertyID><--1-->
     <cbc:ResponseIndicator >true</cbc:ResponseID> <--2-->
  </cac:TenderingCriterionResponse>
 ...

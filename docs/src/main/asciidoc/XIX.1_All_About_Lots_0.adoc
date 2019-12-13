@@ -4,7 +4,7 @@
 When a procurement procedure is divided in Lots not all the selection criteria apply to all Lots, i.e. some
 Lots need to be linked to specific criteria.
 
-In the SELF-CONTAINED ESPD-EDM specification, instead of defining criteria per each Lot, it is for the criterion to
+In the Extended ESPD-EDM specification, instead of defining criteria per each Lot, it is for the criterion to
 specify to which Lots it applies.
 
 To link a criterion with one or more Lots, the ESPD-EDM uses a GROUP (or SUBGROUP) of REQUIREMENT(s), where each REQUIREMENT
@@ -12,28 +12,28 @@ specifies the identifier of each Lot that is affected by the criterion. The figu
 in the four different criteria data structures listed above (''Suitability'', ''Professional risk indemnity'',
 ''Other economic or financial requirements'' and ''References'').
 
-For more complete examples on how the SELF-CONTAINED ESPD-Request specifies these criteria see the
+For more complete examples on how the Extended ESPD-Request specifies these criteria see the
 sub-sections
-link:#vi-2-2-self-contained-suitability-enrolments[VI.2.2 Self-contained suitability (enrolments)],
-link:#vi-6-2-self-contained-risk-indemnity-insurance[Self-contained risk indemnity insurance],
-link:#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements], and
-link:#vi-8-2-self-contained-references[VI.8.2 Self-contained references].
+link:#vi-2-2-Extended-suitability-enrolments[VI.2.2 Extended suitability (enrolments)],
+link:#vi-6-2-Extended-risk-indemnity-insurance[Extended risk indemnity insurance],
+link:#vi-7-2-Extended-other-economic-or-financial-requirements[VI.7.2 Extended other economic or financial requirements], and
+link:#vi-8-2-Extended-references[VI.8.2 Extended references].
 
-The folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml] also contains
-complete XML instances of both REGULATED and SELF-CONTAINED ESPD-Request and ESPD-Response documents.
+The folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/xml[dist/xml] also contains
+complete XML instances of both Basic and Extended ESPD-Request and ESPD-Response documents.
 
-The *REGULATED* ESPD documents can only define the Lots into which the procedure is divided into and the Lots to which the
+The *Basic* ESPD documents can only define the Lots into which the procedure is divided into and the Lots to which the
 economic operator tenders to. The maximum expressivity of information requirements related to Lots is only possible in
-the *SELF-CONTAINED* ESPD documents.
+the *Extended* ESPD documents.
 
-Therefore this section focuses only the SELF-CONTAINED ESPD-Response document.
+Therefore this section focuses only the Extended ESPD-Response document.
 
 ==== Lots: general information requirement check-list
 
 . *Criteria with references to Lots*: The current design of the UBL-2.2 `cac:TenderingCriterion` allows
  referencing Lots for any type of Criteria. However
 the current version of the ESPD-EDM only identifies this need in a reduced set of Selection Criteria (see the
-link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[Criteria Taxonomy spread-sheets]
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-Extended-V2.1.1.xlsx[Criteria Taxonomy spread-sheets]
 for more details, like the Criterion description, UUID, Code, etc.):
 
     ** *Suitability I*
@@ -61,7 +61,7 @@ and which comes first and which goes after (i.e. how they are sequenced).
 [NOTE]
 ====
 *_A complete ESPD-Response document with the examples provided in this section can be found in the file
-link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Lots-SelfContained-Response_V2.1.0.xml[Lots-SelfContained-Response_V2.1.0.xml]_*
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/xml/Lots-Extended-Response_V2.1.1.xml[Lots-Extended-Response_V2.1.1.xml]_*
 ====
 
 .Order of occurrence of the different blocks of data related to Lots
