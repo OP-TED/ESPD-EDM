@@ -1,5 +1,5 @@
-# ESPD Exchange Data Model (EDM)
-# Version 2.1.1
+# ESPD Exchange Data Model (EDM) **UNDER DEVELOPMENT**
+# Version 3.0.0
 
 ## Introduction
 
@@ -11,6 +11,7 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 ## Documentation
 
+* [v3.0.0](https://espd.github.io/ESPD-EDM/v3.0.0/)
 * [v2.1.1](https://espd.github.io/ESPD-EDM/v2.1.1/)
 * [v2.1.0](https://espd.github.io/ESPD-EDM/v2.1.0/)
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
@@ -23,7 +24,10 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 Dear ESPD implementation community, 
 
-We are happy to inform you about the future release of ESPD EDM version 2.1.1 on December 13th.
+We are happy to inform you about the future release of ESPD EDM version 3.0.0 on January XXth.
+
+### Version 3.0.0 (January 2021)
+
 
 ### Version 2.1.1 (December 2019)
 This version is currently under development and its precise release date is yet to be announced.
