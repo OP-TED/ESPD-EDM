@@ -24,7 +24,7 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 Dear ESPD implementation community, 
 
-We are happy to inform you about the future release of ESPD EDM version 3.0.0 on January XXth.
+We are happy to inform you about the future release of ESPD EDM version 3.0.0, which will be started to implement on January 2021
 
 ### Version 3.0.0 (January 2021)
 
