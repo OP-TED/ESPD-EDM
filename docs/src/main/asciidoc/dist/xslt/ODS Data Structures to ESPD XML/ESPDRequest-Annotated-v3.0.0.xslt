@@ -10,8 +10,8 @@
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 	xmlns:util="java:java.util.UUID">
 	
-	<xsl:include href="./inc/EXTENDED-RootElements-Annotated.xslt"/>
-	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>
+	<xsl:include href="./inc/RootElements-Annotated.xslt"/>
+	<xsl:include href="./inc/ContractingAuthorityData1.xslt"/>
 	<xsl:include href="./inc/Legislation.xslt"/>
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	<xsl:template match="/">
@@ -42,7 +42,7 @@
 			<xsl:when test="$p = '{CRITERION'">
 				<xsl:call-template name="createCriterion"/>
 			</xsl:when>
-			<xsl:when test="$p = 'CRITERION}'">
+			<xsl:when test="$p = 'CRITERION}'">				
 				<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:TenderingCriterion<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 			</xsl:when>
 			<xsl:when test="$p = '{SUBCRITERION'">
@@ -57,13 +57,13 @@
 			<xsl:when test="$p = '{REQUIREMENT_GROUP' or $p = '{QUESTION_GROUP'">
 				<xsl:call-template name="createGroup"/>
 			</xsl:when>
-			<xsl:when test="$p = 'REQUIREMENT_GROUP}' or $p = 'QUESTION_GROUP}'">
+			<xsl:when test="$p = 'REQUIREMENT_GROUP}' or $p = 'QUESTION_GROUP}'">				
 				<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:TenderingCriterionPropertyGroup<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 			</xsl:when>
 			<xsl:when test="$p = '{REQUIREMENT_SUBGROUP' or $p = '{QUESTION_SUBGROUP'">
 				<xsl:call-template name="createSubGroup"/>
 			</xsl:when>
-			<xsl:when test="$p = 'REQUIREMENT_SUBGROUP}' or $p = 'QUESTION_SUBGROUP}'">
+			<xsl:when test="$p = 'REQUIREMENT_SUBGROUP}' or $p = 'QUESTION_SUBGROUP}'">				
 				<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:SubsidiaryTenderingCriterionPropertyGroup<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 			</xsl:when>
 			<xsl:when test="$p = '{REQUIREMENT}' or $p = '{QUESTION}' or $p = '{CAPTION}'">
@@ -75,7 +75,7 @@
 	</xsl:template>
 
 	<xsl:template name="generateID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template>
@@ -89,7 +89,7 @@
 	</xsl:function>
 
 	<xsl:template name="createID">
-		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">
 			<xsl:value-of select="espd:getCellContent(., 23)"/>
 		</cbc:ID>
 	</xsl:template>
@@ -165,7 +165,8 @@
 		<xsl:call-template name="createID"/>
 		<xsl:call-template name="createTypeCode"/>
 		<xsl:call-template name="createName"/>
-		<xsl:call-template name="createDescription"/>
+		<xsl:call-template name="createDescription"/>	
+		<xsl:call-template name="createProcurementProjectLotReference"/>
 	</xsl:template>
 	<xsl:template name="createGroup">
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>cac:TenderingCriterionPropertyGroup<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
@@ -227,13 +228,13 @@
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
-						<cbc:ExpectedCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2"
-							listAgencyID="ISO" listVersionID="1.0">
+						<cbc:ExpectedCode listID="Country" listName="country"
+							listAgencyID="EU-COM-OP" listVersionID="20201216-0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'ECONOMIC_OPERATOR_ROLE_CODE'">
-						<cbc:ExpectedCode listID="EORoleType" listAgencyID="EU-COM-GROW"
+						<cbc:ExpectedCode listID="eo-role-type" listAgencyID="EU-COM-GROW"
 							listVersionID="3.0.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
@@ -330,5 +331,11 @@
 		<xsl:call-template name="createTypeCode"/>
 		<xsl:call-template name="createDataTypeValue"/>
 		<xsl:call-template name="createExpectedRequirementValue"/>
+	</xsl:template>
+	<xsl:template name="createProcurementProjectLotReference">
+		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>cac:ProcurementProjectLotReference<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>cbc:ID<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cbc:ID<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:ProcurementProjectLotReference<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	</xsl:template>
 </xsl:stylesheet>

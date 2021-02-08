@@ -18,7 +18,7 @@
 			<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
 			<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
 			<cac:Language>
-				<cbc:LocaleCode listID="language" listAgencyName="EU-COM-GROW"
+				<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP"
 					listVersionID="20201216-0">ENG</cbc:LocaleCode>
 			</cac:Language>
 		</cac:Legislation>

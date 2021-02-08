@@ -48,11 +48,10 @@
 		instantiated --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:VersionID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">1.0</cbc:VersionID>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the procurement
-		procedure; e.g. AWARD_WO_PUB = Award of contract without prior publication of a contract
-		notice --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		procedure; this information is provided by eForms and the concret notice per procedure. e.g. open = 	
+		In open procedures any interested economic operator may submit a tender in response to a call for competition.
+		--<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:ProcedureCode listID="ProcedureType" listAgencyID="EU-COM-OP" listVersionID="1.0"
-			>AWARD_WO_PUB</cbc:ProcedureCode>
-		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the ESPD (Basic
-		or Extended) --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+			>open</cbc:ProcedureCode>
 	</xsl:template>
 </xsl:stylesheet>

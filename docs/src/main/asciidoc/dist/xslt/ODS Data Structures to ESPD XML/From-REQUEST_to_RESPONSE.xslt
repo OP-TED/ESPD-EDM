@@ -8,7 +8,7 @@
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:util="java:java.util.UUID">
 	
-	<xsl:include href="./inc/EXTENDED-RootElements-Annotated.xslt"/>
+	<xsl:include href="./inc/RootElements-Annotated.xslt"/>
 	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>
 	<xsl:include href="./inc/EconomicOperatorData.xslt"/>
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
@@ -54,7 +54,7 @@
 					
 			<cac:TenderingCriterionResponse>
 					<xsl:call-template name="generateID"/>
-					<cbc:ValidatedCriterionPropertyID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0"><xsl:value-of select="cbc:ID"/></cbc:ValidatedCriterionPropertyID>
+					<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0"><xsl:value-of select="cbc:ID"/></cbc:ValidatedCriterionPropertyID>
 					<xsl:call-template name="createPeriod"/>
 					<xsl:call-template name="createEvidenceSupplied"/>		
 					<xsl:call-template name="createResponseValue"/>
