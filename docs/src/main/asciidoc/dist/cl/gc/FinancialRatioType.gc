@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gc:CodeList xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:fn="http://www.w3.org/2005/xpath-functions"
+             xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+             xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <Identification>
+      <ShortName>FinancialRatioType</ShortName>
+      <LongName xml:lang="en">FINANCIAL RATIO TYPE</LongName>
+      <Version>1.0</Version>
+      <CanonicalUri>https://www.bach.banque-france.fr/</CanonicalUri>
+      <CanonicalVersionUri>https://www.bach.banque-france.fr/</CanonicalVersionUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/gc/FinancialRatioType.gc</LocationUri>
+      <Agency>
+         <LongName xml:lang="eng">BACH Banque de France</LongName>
+         <Identifier>BACH</Identifier>
+      </Agency>
+   </Identification>
+   <ColumnSet>
+      <Column Id="code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Use="optional" Id="name-bul">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="bul"/>
+      </Column>
+      <Column Use="optional" Id="name-spa">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="spa"/>
+      </Column>
+      <Column Use="optional" Id="name-ces">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ces"/>
+      </Column>
+      <Column Use="optional" Id="name-dan">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="dan"/>
+      </Column>
+      <Column Use="optional" Id="name-deu">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="deu"/>
+      </Column>
+      <Column Use="optional" Id="name-est">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="est"/>
+      </Column>
+      <Column Use="optional" Id="name-ell">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ell"/>
+      </Column>
+      <Column Use="optional" Id="name-eng">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="eng"/>
+      </Column>
+      <Column Use="optional" Id="name-fra">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="fra"/>
+      </Column>
+      <Column Use="optional" Id="name-gle">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="gle"/>
+      </Column>
+      <Column Use="optional" Id="name-hrv">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="hrv"/>
+      </Column>
+      <Column Use="optional" Id="name-ita">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ita"/>
+      </Column>
+      <Column Use="optional" Id="name-lav">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="lav"/>
+      </Column>
+      <Column Use="optional" Id="name-lit">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="lit"/>
+      </Column>
+      <Column Use="optional" Id="name-hun">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="hun"/>
+      </Column>
+      <Column Use="optional" Id="name-mlt">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="mlt"/>
+      </Column>
+      <Column Use="optional" Id="name-nld">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="nld"/>
+      </Column>
+      <Column Use="optional" Id="name-pol">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="pol"/>
+      </Column>
+      <Column Use="optional" Id="name-por">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="por"/>
+      </Column>
+      <Column Use="optional" Id="name-ron">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ron"/>
+      </Column>
+      <Column Use="optional" Id="name-slk">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="slk"/>
+      </Column>
+      <Column Use="optional" Id="name-slv">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="slv"/>
+      </Column>
+      <Column Use="optional" Id="name-fin">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="fin"/>
+      </Column>
+      <Column Use="optional" Id="name-swe">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="swe"/>
+      </Column>
+      <Key Id="codeKey">
+         <ShortName>CodeKey</ShortName>
+         <ColumnRef Ref="code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R11</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Assets to Equity ratio</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R12</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Liabilities to Equity ratio </SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R13</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Current assets/Total assets </SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R14</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Other financial assets and cash and bank/ Total assets</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R15</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Non-current debt/ Total assets </SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R16</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Current debt/Total assets </SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R21</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>Financial income net of charges other than interest/EBITDA</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Financial income net of charges other than interest/EBITDA</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R22</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>EBITDA/Interest on financial debt</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>EBITDA/Interest on financial debt</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R23</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>Interest burden</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Interest burden</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R24</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>Interest and similar charges/Net turnove</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Interest and similar charges/Net turnove</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R25</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>Interest and similar charges/Gross operating profit</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Interest and similar charges/Gross operating profit</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R26</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>Net financial income/Gross operating profit</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Net financial income/Gross operating profit</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R27</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>Gross operating profit/Total net debt</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Gross operating profit/Total net debt</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R31</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Gross value added/Net turnove</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R32</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Gross operating profit/Net turnover (ROS)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R33</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>EBITDA/Net turnove</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R34</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Net operating profit/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R35</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>EBIT/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R36</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>EBT/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R37</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Net financial income/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R38</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Return on equity</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R39</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Net operating profit/Total assets</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R310</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Profit or loss for the year before taxes/Equity</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R41</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Asset turnover ratio</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R42</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Employee expenses/Gross value added</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R51</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Inventories/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R52</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Trade receivables/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R53</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Trade payables/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>R54</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Operating working capital/Net turnover</SimpleValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gc:CodeList>
