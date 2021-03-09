@@ -1,0 +1,287 @@
+=== 5.12 Quality assurance
+
+==== Related information requirements
+
+See formal requirements related to selection criteria in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)].
+
+==== Mock-ups - contracting authority perspective
+
+In ESPD the contracting authority can specify a REQUIREMENT. In this example it provides the name of the ISO it expects the economic operator to be conformant to.
+
+image:images\Quality_Assurance schemes_environmental_management_stand_CA.png['Quality Assurance schemes and environmental management standards' CA mock-up,width=468,height=273]
+
+_Figure 187. 'Quality Assurance schemes and environmental management standards' CA mock-up_
+
+==== Mock-ups - economic operator perspective
+
+Notice that, as for the ESPD the economic operator (EO) has to answer *Yes* or *No*. In the case the EO answers *No* the box with the text "If not, please explain why and specify which other means …​" is shown. This box is not shown for the *Yes* answer. This behaviour can be controlled with the ONFALSE code of the sub-group of QUESTION(s) (see data structure and XML example below, too).
+
+When the EO answers *Yes* it will be asked whether online evidences are available online or not. This is controlled by the code ONTRUE assigned to the sub-group of QUESTION(s) about the evidence (see data structure and XML example).
+
+image:images\Quality_Assurance schemes_environmental_management_stand.png[Quality Assurance schemes and environmental management standards' EO mock-up,width=500,height=293]
+
+_Figure 188.'Quality Assurance schemes and environmental management standards' EO mock-up_
+
+==== Data Structure
+
+Notice the following:
+
+[arabic]
+. In principle the contracting authority (CA) has to provide at least one REQUIREMENT. But it might decide not to provide any requirement at all. In this case do not to alter the data structure (e.g. not to remove the REQUIREMENT_GROUP) and to provide a text for REQUIREMENT such as, for example, 'No specific requirements'.
+. The ONFALSE code for the sub-group containing the sentence thats starts with 'If not, please explain why…​' means: if the answer to the previous question was *No* then this sub-group must be shown/processed.
+. If ONTRUE (answer to previous QUESTION = *Yes*) then the question about the online evidences is shown/processed.
+
+(Some columns have been hidden to enhance the readability of the image).
+
+image:images\Quality Assurance schemes_environmental_data_struc.png['Quality Assurance schemes and environmental management standards' criteria data structure,width=566,height=347]
+
+_Figure 189. 'Quality Assurance schemes and environmental management standards' criteria data structure_
+
+==== XML Example
+
+_'Certificates by quality control institutes' criterion_
+[source,xml]
+----
+_<!-- header elements removed for brevity -->_
+
+_<!-- Criterion:For supply contracts: certificates by quality control institutes -->_
+
+_<cac:TenderingCriterion>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">a7669d7d-9297-43e1-9d10-691a1660187c</cbc:ID>_
+
+_<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">qa-certif-inst</cbc:CriterionTypeCode>_
+
+_<cbc:Name>For supply contracts: certificates by quality control institutes</cbc:Name>_
+
+_<cbc:Description>Can the economic operator provide the required certificates drawn up by official quality control institutes or agencies of recognised competence attesting the conformity of products clearly identified by references to the technical specifications or standards, which are set out in the relevant notice or the in the ESPD, the relevant notice or ?</cbc:Description>_
+
+_<cac:ProcurementProjectLotReference>_
+
+_<cbc:ID>LOT-0000</cbc:ID>_
+
+_</cac:ProcurementProjectLotReference>_
+
+_<cac:ProcurementProjectLotReference>_
+
+_<cbc:ID>LOT-0001</cbc:ID>_
+
+_</cac:ProcurementProjectLotReference>_
+
+_<cac:SubTenderingCriterion>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>_
+
+_<cbc:Name>[Name of the National Criterion]</cbc:Name>_
+
+_<cbc:Description>[Description of the National Criterion ]</cbc:Description>_
+
+_<cac:TenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7fef0e1b-5b98-4adc-b948-e3661adc1101</cbc:ID>_
+
+_<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">dc2ba6a7-ccb2-4d19-96dd-47658f28ea68</cbc:ID>_
+
+_<cbc:Description>Your Answer</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_</cac:TenderingCriterionPropertyGroup>_
+
+_</cac:SubTenderingCriterion>_
+
+_<cac:Legislation>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">bafbf280-47f3-4e7c-a0ff-8d84a233d547</cbc:ID>_
+
+_<cbc:Title>[Legislation title]</cbc:Title>_
+
+_<cbc:Description>[Legislation description]</cbc:Description>_
+
+_<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>_
+
+_<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>_
+
+_<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>_
+
+_<cac:Language>_
+
+_<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>_
+
+_</cac:Language>_
+
+_</cac:Legislation>_
+
+_<cac:TenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">612d99eb-ea3b-4275-ac06-0db05e039c8c</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5ed58a8c-87bf-4c46-b0e5-f9dd36a3a7dc</cbc:ID>_
+
+_<cbc:Description>Requirement</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>_
+
+_<!-- No answer is expected_
+
+_here from the economic operator, as this is a REQUIREMENT issued by the contracting_
+
+_authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of_
+
+_the requirement issued by the contracting authority -->_
+
+_<cbc:ExpectedDescription>ISO 9001</cbc:ExpectedDescription>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0e50931d-4d39-4f1d-9fdc-b2cf16c0807a</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">1a80f47c-90f0-4586-a333-05db611e6ca9</cbc:ID>_
+
+_<cbc:Description>Does the EO fulfil the criteria by itself?</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fe557ed0-2387-478f-a9be-d0f3457c088e</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONFALSE</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9b9dcc1b-6edb-4c14-84c6-8f09f460f5a5</cbc:ID>_
+
+_<cbc:Description>In the case of no – Relied upon or not</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4887c3d7-05fc-4e3e-b066-f338910f0c4c</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">b710930f-1194-4cbd-8c3b-cc50b7aa0e97</cbc:ID>_
+
+_<cbc:Description>Your answer?</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">83f2f79e-0455-4918-89ff-d7829e8bf758</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONFALSE</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8f07e58f-dc91-4b62-8616-1e9fd7b3f39c</cbc:ID>_
+
+_<cbc:Description>If not, please explain why and state which other means of proof can be provided:</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">3e45c8d9-166a-4a73-84ba-67c61ab323a9</cbc:ID>_
+
+_<cbc:Description>Is this information available online?</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7544aa04-e7a6-4f44-a8b2-fa54cdba65a8</cbc:ID>_
+
+_<cbc:Description>Evidence Supplied</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_</cac:TenderingCriterionPropertyGroup>_
+
+_</cac:TenderingCriterion>_
+
+_<!-- rest of elements removed for brevity -->_

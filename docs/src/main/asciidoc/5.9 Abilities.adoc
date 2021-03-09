@@ -1,0 +1,1792 @@
+=== 5.9 Abilities
+
+==== Related information requirements
+
+See formal requirements related to selection criteria in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)].
+
+The  ESPD, supplies data structures facilitating a greater semantic interoperability:
+
+
+* One data structure to define two ability criteria related to technicians:
+
+** Technicians or technical bodies for quality control (qual-cont-tech)
+** For works contracts: technicians or technical bodies to carry out the work (work-tech)
+* {blank}
+
+* One data structure to define a miscellania of five criteria that can share the same data structure:
+
+** Technical facilities and measures for ensuring quality (qual-facil)
+** Study and research facilities (research-fac)
+** Supply chain management (chain-manage)
+** Environmental management measures (envir-measure)
+** Tools, plant or technical equipment (tech-equip)
+
+
+* One data structure to define abilities related to the education and professional qualifications of the contractor or service provider:
+
+** Educational and professional qualifications (qualification)
+
+*And one more data structure to define the allowance of checks:
+** Special requierements check (spec-req-check)
+
+* One data structure to define two abilities related to the contractor’s staff:
+
+** Number of managerial staff (manage-staff)
+** Average annual manpower (year-manpower)
+
+==== 5.9.4 Abilities (I) - Persons
+
+Note that in ESPD V3.0.0 there are not weights to keep the model as simple as possible.
+
+==== Mock-ups - contracting authority perspective
+
+image:images\Abilities_I_CA_req_mock-up.png['Abilities (I)' CA REQUIREMENT mock-up,width=565,height=328]
+
+_Figure 165. 'Abilities (I)' CA REQUIREMENT edition mock-up_
+
+==== Mock-ups - economic operator perspective
+
+As you see from the mock-up below the economic operator can add and remove technicians and bodies associated to one CA’s REQUIREMENT. In this case the REQUIREMENT specified by the CA is the type of technical assistance the EO’s teams must provide.
+
+image:images\Abilities_I_EO_mock-up.png['Abilities (I)' EO mock-up,width=505,height=463]
+
+_Figure 166. 'Abilities (I)' EO mock-up_
+
+==== Data Structure
+
+(The figure below is defined in the the tab ''SC-Abilities_1 (Persons)'' of the https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[ESPD-Criterion-V3.0.0] spread-sheet).
+
+image:images\Abilities_Persons_criterion_data structure.png['Abilities (I)(Persons)' criterion data structure,width=566,height=372]
+
+_Figure 169. 'Abilities (I)(Persons)' criterion data structure_
+
+==== XML Example
+
+The XML example below shows the REQUIREMENT(s) and QUESTION(s).
+
+[source,xml]
+----
+<!-- Criterion:Technicians or technical bodies for quality control -->
+
+<cac:TenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">3aaca389-4a7b-406b-a4b9-080845d127e7</cbc:ID>
+
+<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">qual-cont-tech</cbc:CriterionTypeCode>
+
+<cbc:Name>Technicians or technical bodies for quality control</cbc:Name>
+
+<cbc:Description>It can call upon the following technicians or technical bodies, especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in.</cbc:Description>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0000</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0001</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:SubTenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+
+<cbc:Name>[Name of the National Criterion]</cbc:Name>
+
+<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">ed74645e-b8ca-4dce-a90e-6bb0a70df1b9</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f20c69ed-b84c-48cc-8c58-ab8e9f398c57</cbc:ID>
+
+<cbc:Description>Your Answer</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:SubTenderingCriterion>
+
+<cac:Legislation>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">90ade74b-4fd7-4eef-a5f5-93998bc7ecab</cbc:ID>
+
+<cbc:Title>[Legislation title]</cbc:Title>
+
+<cbc:Description>[Legislation description]</cbc:Description>
+
+<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+
+<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+
+<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+
+<cac:Language>
+
+<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>
+
+</cac:Language>
+
+</cac:Legislation>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">1e73d705-9dc1-43f1-9b5c-2d0deac7bc5f</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fe9654ca-7a7f-4a51-9993-6702c6be10db</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f156d97a-9700-4ad9-8d21-e3ac57102278</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">57829ee9-8948-48d1-a03e-cfeaf722c68d</cbc:ID>
+
+<cbc:Description>Requirement</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+<!-- No answer is expected
+
+here from the economic operator, as this is a REQUIREMENT issued by the contracting
+
+authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of
+
+the requirement issued by the contracting authority -->
+
+<cbc:ExpectedDescription>Technical User Support Group</cbc:ExpectedDescription>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0e50931d-4d39-4f1d-9fdc-b2cf16c0807a</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">71798ea4-88e6-4adb-b7cf-95b81b73a147</cbc:ID>
+
+<cbc:Description>Does the EO fulfil the criteria by itself?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fe557ed0-2387-478f-a9be-d0f3457c088e</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONFALSE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">6942594d-16ca-4e10-b56f-3635085779d6</cbc:ID>
+
+<cbc:Description>In the case of no – Relied upon or not</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">664ff3b8-27c1-400a-9ae3-1569fbd64e79</cbc:ID>
+
+<cbc:Description>Name of the entity</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">14978a2e-23b2-43b1-8a4e-715406ecb4b8</cbc:ID>
+
+<cbc:Description>ID of the entity</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">609cc954-64be-4b4f-800a-f17589deb936</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5ec0a3df-fdc1-4173-b208-16cbb10b002b</cbc:ID>
+
+<cbc:Description/>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">52ffcf91-3598-438f-8c3d-faf97da02602</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">588ede3c-5a03-4e6f-8ad1-a3edec6caadf</cbc:ID>
+
+<cbc:Description>First name</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">381716ae-eca7-4418-8405-9024a3743771</cbc:ID>
+
+<cbc:Description>Last name</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8d191d1d-5fba-4ddc-9147-75f6019610fc</cbc:ID>
+
+<cbc:Description>Profession</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">097bd6e1-596d-46b6-8c30-13ff145178dc</cbc:ID>
+
+<cbc:Description>Experience</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">48db952e-cad5-4ef5-9841-116962dfd444</cbc:ID>
+
+<cbc:Description>Other information</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f71f83b6-6ad8-4eb9-83ef-40a8a8a426aa</cbc:ID>
+
+<cbc:Description>How long with EO</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUANTITY_YEAR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">276b03c6-8e8d-441d-a7a5-986b1607f3b2</cbc:ID>
+
+<cbc:Description>Is this information available online?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">09395101-5957-46ef-a720-2ae273ea6b49</cbc:ID>
+
+<cbc:Description>Evidence supplied</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">45a67f48-d146-4faf-8239-dd6977dffe29</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">14b10a7e-852b-448f-9716-56aa7c5a36c6</cbc:ID>
+
+<cbc:Description/>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">52ffcf91-3598-438f-8c3d-faf97da02602</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">25242241-31c8-4e4b-a0dc-af5d23d8fae1</cbc:ID>
+
+<cbc:Description>Name</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">2a2dc95f-4e4a-4d7c-84ce-11f7237f4df6</cbc:ID>
+
+<cbc:Description>Experience area</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fda3cfb8-6c46-4f14-9722-93a5c00003c5</cbc:ID>
+
+<cbc:Description>Other information</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">93977bc8-cb9a-4ec9-af91-829a88c0d00f</cbc:ID>
+
+<cbc:Description>Is this information available online?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e1831f9b-3afa-4c73-8ef4-4283103d2baa</cbc:ID>
+
+<cbc:Description>Evidence Supplied</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterion>
+----
+
+==== 5.9.5 Abilities (II) - Facilities
+
+==== Data Structure
+
+(The figure below is defined in the the tab ''SC_Abilities_2 (Facilities,…​)'' of the https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[ESPD-Criterion-V3.0.0] spread-sheet).
+
+image:images\Abilities_Facilities_criterion data structure.png['Abilities (II) (Facilities, …​.)' criterion data structure,width=526,height=188]
+
+_Figure 170. 'Abilities (II) (Facilities, …​.)' criterion data structure_
+
+==== XML Example
+
+_Criterion "Technical facilities and measures for ensuring quality" (ESPD-Request)_
+[source,xml]
+----
+_<!-- Header elements removed for brevity -->_
+
+_<!--This criterion illustrates how to prepare a selection criterion about ''abilities'', more specifically the criterion ''Technical facilities and measures for ensuring quality''.-->_
+
+_<!-- The rest of criteria above and below this criterion have been removed for brevity. -->_
+
+<!-- Criterion:Technical facilities and measures for ensuring quality -->
+
+<cac:TenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4bf996d9-439c-40c6-9ab9-980a48cb55a1</cbc:ID>
+
+<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">qual-facil</cbc:CriterionTypeCode>
+
+<cbc:Name>Technical facilities and measures for ensuring quality</cbc:Name>
+
+<cbc:Description>It uses the following technical facilities and measures for ensuring quality and its study and research facilities are as follows:</cbc:Description>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0000</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0001</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:SubTenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+
+<cbc:Name>[Name of the National Criterion]</cbc:Name>
+
+<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0c9bd3a7-64c4-48bd-b506-c417fd6b67cc</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">46128862-b123-4baa-a3df-c7235a31ba4c</cbc:ID>
+
+<cbc:Description>Your Answer</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:SubTenderingCriterion>
+
+<cac:Legislation>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">45dee840-78b7-41f3-bfff-69f6d41fe5d6</cbc:ID>
+
+<cbc:Title>[Legislation title]</cbc:Title>
+
+<cbc:Description>[Legislation description]</cbc:Description>
+
+<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+
+<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+
+<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+
+<cac:Language>
+
+<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>
+
+</cac:Language>
+
+</cac:Legislation>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">1e73d705-9dc1-43f1-9b5c-2d0deac7bc5f</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">55f551bd-3512-422c-8048-88d395848a94</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f156d97a-9700-4ad9-8d21-e3ac57102278</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f6e33426-0bf2-4229-bbc6-b6e7cdb0a997</cbc:ID>
+
+<cbc:Description>Requirement</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
+
+<cbc:ExpectedDescription>[Requirement text]</cbc:ExpectedDescription>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0e50931d-4d39-4f1d-9fdc-b2cf16c0807a</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e2c89a0b-fb89-46d5-8b09-5be38d17f8cc</cbc:ID>
+
+<cbc:Description>Does the EO fulfil the criteria by itself?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fe557ed0-2387-478f-a9be-d0f3457c088e</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONFALSE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">aef63079-c561-499a-adf5-02047598d4c0</cbc:ID>
+
+<cbc:Description>In the case of no – Relied upon or not</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">488ca189-bcdb-4bf4-80c7-3ad507fd89fb</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">830d3132-095f-4a34-8053-00531287e86d</cbc:ID>
+
+<cbc:Description>Please describe them</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">122617e3-8b9f-40dd-9015-9586fbda66e1</cbc:ID>
+
+<cbc:Description>Is this information available electronically?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4c6198ef-94eb-493a-8d51-9aba4fd3d18e</cbc:ID>
+
+<cbc:Description>Evidence Supplied</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterion>
+
+_<!-- Rest of elements removed for brevity -->_
+----
+
+==== 5.9.6 Abilities (III) - Education
+
+==== Data Structure
+
+(The figure below is defined in the the tab ''SC_Abilities_3 (Education)'' of the https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[ESPD-Criterion-V3.0.0] spread-sheet).
+
+image:images\abilitites-education-datastructure.png[Abilities (III) (Education)' criterion data structure,width=566,height=313]
+
+_Figure 171. 'Abilities (III) (Education)' criterion data structure_
+
+[NOTE]
+====
+_Use of the EC’s ESCO Taxonomy for Skills, Competences and Occupations (and Qualifications)_
+
+Notice that in the Data Structure above there is the field ''If possible please indicate the ESCO identifier for this qualification'', and that the expected type of data is 'URL'.
+
+ESCO is a multilingual classification that identifies and categorises skills, competences, qualifications and occupations relevant for the EU labour market and education. It is being developed (maintained) by the European Commission since 2010. The taxonomy can be downloaded from this https://ec.europa.eu/esco/portal[link].
+
+The reason why the expected type of data is a URL is because in ESCO taxonomy each concept is identified with a URI (A Uniform Resource Identifier, and URI can be used as locators, i.e. URL are URIs).
+
+ESCO is legally supported by the https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.L_.2016.107.01.0001.01.ENG[REGULATION (EU) 2016/589] of 13 April 2016 (the EURES Regulation) and two Implementing Decisions:
+
+* https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32018D1020&from=EN[Commission Implementing Decision No 2018/1020] establishes the list of skills, competences and occupations of the European classification (ESCO) to be used for the operation of the EURES common IT platform as provided for in Article 19 of Regulation (EU) 2016/589 and lays down the procedures to update and review this list.
+* https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32018D1021&from=EN[Commission Implementing Decision No 2018/1021] lays down the technical standards and formats necessary for the operation of the automated matching through the common IT platform using the European classification (ESCO) and the interoperability between national systems and the European classification.
+
+====
+
+==== XML Example
+
+_Criterion "Educational and professional qualifications" ESPD-Request)_
+
+[source,xml]
+----
+_< This criterion illustrates how to prepare a selection criterion about ''abilities'', more specifically the criterion ''Educational and professional qualifications'' -->_
+
+_<!-- The rest of criteria above and below this criterion have been removed for brevity. -->_
+
+<!-- Criterion:Educational and professional qualifications -->
+
+<cac:TenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">07301031-2270-41af-8e7e-66fe0c777107</cbc:ID>
+
+<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">qualification</cbc:CriterionTypeCode>
+
+<cbc:Name>Educational and professional qualifications</cbc:Name>
+
+<cbc:Description>The following educational and professional qualifications are held by the service provider or the contractor itself, and/or (depending on the requirements set out in the relevant notice or the in the ESPD, the relevant notice or by its managerial staff.</cbc:Description>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0000</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0001</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:SubTenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+
+<cbc:Name>[Name of the National Criterion]</cbc:Name>
+
+<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">40f9dfe5-0485-4c4a-8e20-a83cccc847d3</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">d9bac488-68ff-4034-920b-276bfb611261</cbc:ID>
+
+<cbc:Description>Your Answer</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:SubTenderingCriterion>
+
+<cac:Legislation>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">a3e263c7-5c34-4643-a7b8-c6d18b15eed8</cbc:ID>
+
+<cbc:Title>[Legislation title]</cbc:Title>
+
+<cbc:Description>[Legislation description]</cbc:Description>
+
+<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+
+<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+
+<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+
+<cac:Language>
+
+<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>
+
+</cac:Language>
+
+</cac:Legislation>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">d2cadc29-07e0-46b2-a74a-a0dc4bd2e5c2</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5fc76fc3-8d45-405f-97a8-2ac310a52c38</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">1be6421a-0360-449e-ae7c-ce7fad73c2c2</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">ee3a7d84-30ff-4d63-8d6d-823d7e13e321</cbc:ID>
+
+<cbc:Description>Requirement</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+<!-- No answer is expected
+
+here from the economic operator, as this is a REQUIREMENT issued by the contracting
+
+authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of
+
+the requirement issued by the contracting authority -->
+
+<cbc:ExpectedDescription/>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0e50931d-4d39-4f1d-9fdc-b2cf16c0807a</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f71b621d-a73d-469f-a78f-c9dc8f9a7287</cbc:ID>
+
+<cbc:Description>Does the EO fulfil the criteria by itself?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fe557ed0-2387-478f-a9be-d0f3457c088e</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONFALSE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">54e2ea37-e4de-4b9f-bfb2-de00259a6adb</cbc:ID>
+
+<cbc:Description>In the case of no – Relied upon or not</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4266c9f7-63f8-4072-b2db-4a58a6fe9619</cbc:ID>
+
+<cbc:Description>Name of the entity</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4658a01b-fe76-4bb9-a010-933438ff3464</cbc:ID>
+
+<cbc:Description>ID of the entity</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5df40500-a9b7-4c15-8325-a9762224a3c9</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">33153328-ec67-4dc4-890e-250574eadf63</cbc:ID>
+
+<cbc:Description/>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5476ec64-de1e-45d2-aaf1-a40a463ab7a9</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">60e913b0-0978-4c82-9aaf-25d4a11e842e</cbc:ID>
+
+<cbc:Description>First name</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">65d1331c-cc59-4577-a007-ec75eac929cf</cbc:ID>
+
+<cbc:Description>Last name</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">19db64ba-dd27-4a32-a91a-b994fc568067</cbc:ID>
+
+<cbc:Description>Please describe the educational or professional qualification</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7c7b56b2-51d7-468a-83f6-797bd25d259b</cbc:ID>
+
+<cbc:Description>If possible please indicate the ESCO identifier for this qualification</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">URL</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">65173661-f6b2-4760-8ea1-8ab09fb011c3</cbc:ID>
+
+<cbc:Description>If possible please describe the ESCO qualification</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">918868a5-ba0b-433a-8319-c9adadfdbc19</cbc:ID>
+
+<cbc:Description>Qualification name</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9b6380fb-afb0-4881-8d48-27536c91eec3</cbc:ID>
+
+<cbc:Description>Qualification number</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUAL_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e42c7ddd-959a-4512-ae49-e7606ecb9dfd</cbc:ID>
+
+<cbc:Description>Qualification issuing date</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DATE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">cb76b623-3a92-4194-954a-65aae5794e6f</cbc:ID>
+
+<cbc:Description>Qualification issuing body</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fb05de89-9706-48a2-a554-073b0bf746f7</cbc:ID>
+
+<cbc:Description>Is this information available online?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">94bb3d2a-fa33-4aec-8a6e-bc961cca1615</cbc:ID>
+
+<cbc:Description>Evidence Supplied</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterion>
+----
+
+==== 5.9.7 Abilities (IV) - Checks
+
+==== Mock-ups - contracting authority perspective
+
+The contracting authority has selected the 'allowance of checks' (in https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[ESPD-Criterion-V3.0.0] will be shown as “Special requierements check”, spec-req-check) option in a ESPD Request builder software application GUI. This software application will create a criterion of this in the ESPD Request XML instance with zero, one or more REQUIREMENT(s) by the EO.
+
+The contracting authority (CA) can specify none, one or several REQUIREMENT(s). In this case a REQUIREMENT is a descriptive text provided by the CA where the criterion is better explained or where certain conditions relating to the criterion. In this example the CA is specifying which type of premises it wants to check and for which reasons.
+
+image:images\Special_requierements_check_CA_mock-up.png['Checks' CA REQUIREMENT mock-up,width=524,height=213]
+
+_Figure 172.  Special requierements check CA REQUIREMENT edition mock-up_
+
+==== Mock-ups - economic operator perspective
+
+The EO should see as many boxes (groups) of REQUIREMENT + QUESTION as REQUIREMENT(s) specified by the CA. In this case the economic operator (EO) sees one REQUIREMENT associated to one QUESTION. The expected answer is *Yes* or *No*.
+
+image:images\Special_requierements_check' EO_mock-up.png[Special requierements check' EO mock-up,width=636,height=122]
+
+_Figure 173. 'Special requierements check' EO mock-up_
+
+==== Data Structure
+
+The data structure below shows how this criterion is organised. Notice the following:
+
+[arabic]
+. The Member State can associate one or more national criteria to this EU criterion (element sub-criterion, cardinality 0..n).
+. The criterion can be associated to one or more pieces of legislation (this spread-sheet does not focus on the edition of the legislation element; the transformation style-sheet will generate dummy values for this element).
+. At least one REQUIREMENT group will always be created. If the CA specified more than one REQUIREMENT(s), more groups of REQUIREMENT + QUESTION would be added to the ESPD Request XML instance.
+. If not specific REQUIREMENT is issued by the CA, the REQUIREMENT group should equally be created and the REQUIREMENT value should be replaced with a literal (e.g. 'No specific requirements').
+
+(Some columns have been hidden to enhance the readability of the image).
+
+(The figure below is defined in the the tab 'SC_Abilities_4 (Checks)' of the https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[ESPD-Criterion-V3.0.0] spread-sheet).
+
+image:images\Abilities_IV_Checks_criterion data_structure.png['Abilities (IV) (Checks)' criterion data structure,width=539,height=353]
+
+_Figure 174. 'Abilities (IV) (Checks)' criterion data structure_
+
+==== XML Example
+
+_Allowance of checks criterion /Special requierements check_
+[source,xml]
+----
+_<!-- header elements removed for brevity -->_
+
+<!-- Criterion:Special requierements check -->
+
+<cac:TenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">c8809aa1-29b6-4f27-ae2f-27e612e394db</cbc:ID>
+
+<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">spec-req-check</cbc:CriterionTypeCode>
+
+<cbc:Name>Special requierements check</cbc:Name>
+
+<cbc:Description>For complex products or services to be supplied or, exceptionally, for products or services which are required for a special purpose: The economic operator will allow checks to be conducted on the production capacities or the technical capacity of the economic operator and, where necessary, on the means of study and research which are available to it and on the quality control measures? The check is to be performed by the contracting authority or, in case the latter consents to this, on its behalf by a competent official body of the country in which the supplier or service provider is established.</cbc:Description>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0000</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0001</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:SubTenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+
+<cbc:Name>[Name of the National Criterion]</cbc:Name>
+
+<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">36f2a447-501a-4b5c-a2c0-157c2ad28731</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9fbabc68-2527-4a55-83ac-8ad5e309e167</cbc:ID>
+
+<cbc:Description>Your Answer</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:SubTenderingCriterion>
+
+<cac:Legislation>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">ff3ec474-0203-43a1-b459-f4e83fe5cba4</cbc:ID>
+
+<cbc:Title>[Legislation title]</cbc:Title>
+
+<cbc:Description>[Legislation description]</cbc:Description>
+
+<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+
+<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+
+<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+
+<cac:Language>
+
+<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>
+
+</cac:Language>
+
+</cac:Legislation>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">10822ddd-9ba6-42d5-9339-de0845aeafc9</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9d6324db-e923-458a-9b33-39b401c9456a</cbc:ID>
+
+<cbc:Description>Requirement</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+<!-- No answer is expected
+
+here from the economic operator, as this is a REQUIREMENT issued by the contracting
+
+authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of
+
+the requirement issued by the contracting authority -->
+
+<cbc:ExpectedDescription>The EO will allow the CA to visit the premises where the development is performed(upon pre-agreed calendar) in order to check the security measures undertaken by the EO.</cbc:ExpectedDescription>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0e50931d-4d39-4f1d-9fdc-b2cf16c0807a</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">06be7255-87e4-4637-842f-54200ffd22ab</cbc:ID>
+
+<cbc:Description>Does the EO fulfil the criteria by itself?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fe557ed0-2387-478f-a9be-d0f3457c088e</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONFALSE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">d6895b74-1dc3-4639-8984-1ecaea96975a</cbc:ID>
+
+<cbc:Description>In the case of no – Relied upon or not</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4e67b972-2f52-4d4c-b82e-1c7747b25a9f</cbc:ID>
+
+<cbc:Description>Name of the entity</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">711b2047-4e45-401c-a8a1-ca01678ccdc9</cbc:ID>
+
+<cbc:Description>ID of the entity</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">a3410620-8ed3-47f9-ab90-b5b1aeeff6a5</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">6b0442d9-1e97-4c88-ae59-5b9897fdeb75</cbc:ID>
+
+<cbc:Description>Do you allow checks?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">a3168b89-54d4-4206-9174-0beb1c8feddc</cbc:ID>
+
+<cbc:Description>Is this information available online?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">6b9678ba-ff68-4349-9b14-99f16ab74508</cbc:ID>
+
+<cbc:Description>Evidence Supplied</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterion>
+
+_<!-- rest of elements removed for brevity -->_
+----
+==== 5.9.8 Abilities (V) - Staff
+
+==== Data Structure
+
+(The figure below is defined in the the tab ''SC_Abilities_5 (Staff)'' of the https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[ESPD-Criterion-V3.0.0] spread-sheet).
+
+image:images\Abilities_V_Staff_criterion_data_structure.png['Abilities (V) (Staff)' criterion data structure,width=566,height=362]
+
+_Figure 175. 'Abilities (V) (Staff)' criterion data structure_
+
+==== XML Example
+
+_Criterion SC-Abilities (Staff) ESPD-Request_
+
+[source,xml]
+----
+_<!-- Header elements removed for brevity. -->_
+
+_<!--_
+
+_This criterion illustrates how to prepare a selection criterion about ''abilities'', more specifically the criterion_
+
+_''Number of managerial staff''._
+
+_-->_
+
+_<!-- The rest of criteria above and below this criterion have been removed for brevity. -->_
+
+<!-- Criterion:Number of managerial staff -->
+
+<cac:TenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">6346959b-e097-4ea1-89cd-d1b4c131ea4d</cbc:ID>
+
+<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">manage-staff</cbc:CriterionTypeCode>
+
+<cbc:Name>Number of managerial staff</cbc:Name>
+
+<cbc:Description>The economic operator’s number of managerial staff for the last three years were as follows:</cbc:Description>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0000</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:ProcurementProjectLotReference>
+
+<cbc:ID>LOT-0001</cbc:ID>
+
+</cac:ProcurementProjectLotReference>
+
+<cac:SubTenderingCriterion>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+
+<cbc:Name>[Name of the National Criterion]</cbc:Name>
+
+<cbc:Description>[Description of the National Criterion ]</cbc:Description>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">aa3c0614-4797-43c2-bbda-b53345d0575f</cbc:ID>
+
+<cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">9cebafbb-2341-489d-8831-2c2ae99dfbae</cbc:ID>
+
+<cbc:Description>Your Answer</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:SubTenderingCriterion>
+
+<cac:Legislation>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">225cb4db-90e1-46d2-8c30-f08497e990cf</cbc:ID>
+
+<cbc:Title>[Legislation title]</cbc:Title>
+
+<cbc:Description>[Legislation description]</cbc:Description>
+
+<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+
+<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+
+<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+
+<cac:Language>
+
+<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>
+
+</cac:Language>
+
+</cac:Legislation>
+
+<cac:TenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7f7949a8-dbe6-496c-a9f6-6f05b8648bad</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">2fe5fbee-d339-4031-98af-22504f299284</cbc:ID>
+
+<cbc:Description>Minum number of years</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUANTITY_YEAR</cbc:ValueDataTypeCode>
+
+<!-- No answer is expected
+
+here from the economic operator, as this is a REQUIREMENT issued by the contracting
+
+authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of
+
+the requirement issued by the contracting authority -->
+
+<cbc:ExpectedValueNumeric>3</cbc:ExpectedValueNumeric>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">00faa865-6b72-46bf-a176-9e04ea0f880e</cbc:ID>
+
+<cbc:Description>Additional information</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+
+<!-- No answer is expected
+
+here from the economic operator, as this is a REQUIREMENT issued by the contracting
+
+authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of
+
+the requirement issued by the contracting authority -->
+
+<cbc:ExpectedDescription>[Additional information]</cbc:ExpectedDescription>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0e50931d-4d39-4f1d-9fdc-b2cf16c0807a</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">2dde8956-123b-4de5-bd42-5ccec36da78d</cbc:ID>
+
+<cbc:Description>Does the EO fulfil the criteria by itself?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">fe557ed0-2387-478f-a9be-d0f3457c088e</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONFALSE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0d36eeb2-5eac-4605-84fa-c55fd9510b9f</cbc:ID>
+
+<cbc:Description>In the case of no – Relied upon or not</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">96defecc-7d32-4957-82e9-aad5f3c5b736</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">41ea1f26-f625-42a7-8540-3db689046ff1</cbc:ID>
+
+<cbc:Description>Year</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUANTITY_YEAR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">2a85c831-6210-4dad-acaf-7bb0c06f7173</cbc:ID>
+
+<cbc:Description>Number</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUANTITY_YEAR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4e3a1732-4d46-401f-b4e5-27604031abf7</cbc:ID>
+
+<cbc:Description>Is this information available online?</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+<cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+
+<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+
+<cac:TenderingCriterionProperty>
+
+<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">b0a7ff61-f6b4-4b42-83b6-2bd84af027e9</cbc:ID>
+
+<cbc:Description>Evidence Supplied</cbc:Description>
+
+<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+
+<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+
+</cac:TenderingCriterionProperty>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:SubsidiaryTenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterionPropertyGroup>
+
+</cac:TenderingCriterion>
+
+_<!-- Rest of elements until the end of the Request documentn removed for brevity. -->_
+----
