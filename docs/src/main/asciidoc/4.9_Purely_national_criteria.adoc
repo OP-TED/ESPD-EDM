@@ -1,0 +1,184 @@
+=== 4.9 Purely national criteria
+
+==== Related information requirements
+
+See formal requirements related to exclusion grounds criteria in the link:http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)], and more specifically link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-ESPD+V2.1.0#tbr070-009[_tbr070-009_], link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41-ESPD+V2.1.0#tbr070-004[_tbr070-004_], link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41-+ESPD+V2.1.0#tbr070-013[_tbr070-013_].
+
+Other requirements related specifically to purely national criteria are:
+
+[cols=",",]
+|===
+|*REQUIREMENT* |The Member State must be able to specify in e-Certis individual national criteria, and the economic operator must be able to answer *to each individual purely national exclusion grounds criterion*.
+|===
+
+[cols=",",]
+|===
+|*REQUIREMENT* |For the purely national exclusion grounds that have evidences related in e-Certis, the required evidences should be displayed. When the criterion has no related evidences, the text "No evidence required for this criterion" should be displayed. Per each national criterion the EO needs to be able to provide one or more evidences.
+|===
+
+The ESPD-EDM V2.1.1 *Extended ESPD* introduced and important feature: the MS can specify and save in the XML individual national criteria. The mock-ups, data structure and XML example below show how. In the ESPD-EDM V3.0.0, it is kept as the only version of the ESPD is the equivalent to the EXTENDED that was introduced in V2.1.1.
+
+==== Mock-up - economic operator perspective
+
+The figure below shows a fragment of a list of national criteria that a software application has captured from e-Certis. *Per each criterion* the economic operator has to specify whether it fulfills the Criterion or not and eventually provide references to online evidences.
+
+image:Purely_national_criteria_mockup_CA_perspective.png['Purely national criteria' mock-up - buyer perspective,width=484,height=340]
+
+_Figure 88. 'Purely natural criteria' - economic operator perspective_
+
+==== Data structure
+
+image:Purely_national_criteria_data_structure.png['Purely national criteria' data structure,width=490,height=139]
+
+_Figure 89. 'Purely national criteria' data structure_
+
+==== XML Example
+
+_'Purely national criteria'_
+
+[source,xml]
+----
+_<!-- ... the rest of elements in the QualificationApplicationRequest document omitted for brevity -->_
+
+_<!-- Criterion:Purely national exclusion grounds -->_
+
+_<cac:TenderingCriterion>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">63adb07d-db1b-4ef0-a14e-a99785cf8cf6</cbc:ID>_
+
+_<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">nati-ground</cbc:CriterionTypeCode>_
+
+_<cbc:Name>Purely national exclusion grounds</cbc:Name>_
+
+_<cbc:Description>Other exclusion grounds that may be foreseen in the national legislation of the buyer's or contracting entity's Member State. Has the economic operator breached its obligations relating to the purely national grounds of exclusion, which are specified in the relevant notice or in the procurement documents?</cbc:Description>_
+
+_<cac:Legislation>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">cf289554-e30b-41dd-938b-f47ded651268</cbc:ID>_
+
+_<cbc:Title>[Legislation title]</cbc:Title>_
+
+_<cbc:Description>[Legislation description]</cbc:Description>_
+
+_<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>_
+
+_<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>_
+
+_<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>_
+
+_<cac:Language>_
+
+_<cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>_
+
+_</cac:Language>_
+
+_</cac:Legislation>_
+
+_<cac:TenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8d79d5f7-dc21-45e9-b188-e02008b854e0</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">246b6615-8fb1-4b92-a5a7-bd3a07cc463f</cbc:ID>_
+
+_<cbc:Description/>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4f5088db-ae29-46fb-b642-30240aa2248a</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">57b18e33-2027-43cf-bfa9-0488471de26f</cbc:ID>_
+
+_<cbc:Description>[Text describing the national criterion]</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">d617818b-6ddb-4572-9403-158c250f6a49</cbc:ID>_
+
+_<cbc:Description>[Type of evidence from e-Certis]</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5834272b-cc7b-4f5a-8f28-a874bfce96e2</cbc:ID>_
+
+_<cbc:Description>Your answer?</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_</cac:TenderingCriterionPropertyGroup>_
+
+_<cac:TenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">0f7e68be-ff80-42c8-962d-79426cde9d96</cbc:ID>_
+
+_<cbc:Description>Is this information available electronically?</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_<cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>_
+
+_<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>_
+
+_<cac:TenderingCriterionProperty>_
+
+_<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">81c2d9ed-cdff-4d14-a52d-10fadc79ec5b</cbc:ID>_
+
+_<cbc:Description>Evidence Supplied</cbc:Description>_
+
+_<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>_
+
+_<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>_
+
+_</cac:TenderingCriterionProperty>_
+
+_</cac:SubsidiaryTenderingCriterionPropertyGroup>_
+
+_</cac:TenderingCriterionPropertyGroup>_
+
+_</cac:TenderingCriterion>_
+
+_<!-- ... the rest of elements in the QualificationApplicationRequest document omitted for brevity -->_
+----
