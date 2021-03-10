@@ -2,7 +2,7 @@
 
 [cols=",",]
 |===
-|*REQUIREMENT* |*The economic operator must include int its ESPD Response document the information from the ESPD Request about the official journals or gazettes where the procurement procedure is announced. For procurement projects above the threshold it is compulsory to refer to the Contract Notice published in http://ted.europa.eu/TED/[TED] by the contracting authority.*
+|*REQUIREMENT* |*The economic operator must include int its ESPD Response document the information from the ESPD Request about the official journals or gazettes where the procurement procedure is announced. For procurement projects above the threshold it is compulsory to refer to the Contract Notice published in link:http://ted.europa.eu/TED/[TED] by the contracting authority.*
 |===
 
 For EU and national publications that need to be included in the ESPD Response. See the section "2.6 EU and national publications" where this information is presented in detail and illustrated with examples.
@@ -49,39 +49,39 @@ _Table 27. Reference to the ESPD Request, expected elements_
 |===
 |*Components* |*Type* |*Card* |*Description* |*Requirements*
 |*cbc:ID* |Identifier |1 |The identifier for the referenced document, generally issued by the entity responsible for the document. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
 
 *Rule*: Use the same value that was used in the *cac:QualificationApplicationRequest/cbc:ID*.
 
 *Rule scope*: Common (BR-OTH-02)
 
 |*cbc:UUID* |Identifier |1 |A universally unique identifier that can be used to reference this ESPD document instance. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
 
 *Rule*: Use the same value that was used in the *cac:QualificationApplicationRequest/cbc:UUID*.
 
 *Rule scope*: (BR-OTH-02)
 
 |*cbc:DocumentTypeCode* |Code |1 |The type of document being referenced, expressed as a code. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
 
-*Rule*: For the ESDP-EDM it is compulsory use of the value ESPD_REQUEST from the Code List https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[_doc-ref-content-type_]. See also the XML example below on how to specify the ESPD Request.
+*Rule*: For the ESDP-EDM it is compulsory use of the value ESPD_REQUEST from the Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[_doc-ref-content-type_]. See also the XML example below on how to specify the ESPD Request.
 
 *Rule scope*: Common (BR-OTH-01, BR-COM-10#3, BR-OTH-01#3, BR-OTH-03)
 
 |*cbc:DocumentType* |Text |0..1 |The type of document being referenced, expressed as text. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
 
-*Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[_Language_] for the value of the languageID attribute.
+*Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[_Language_] for the value of the languageID attribute.
 
 *Rule scope*: Common (BR-OTH-01, BR-OTH-01#4, BR-OTH-03)
 
 |*cbc:IssueDate* |Date |0..1 |Date when the document was issued by the contracting authority. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
 
 *Rule*: Format "YYYY-MM-DD". If available in the referenced document place here the data of publication by the contracting authority.
 
-|*cbc:IssueTime* |Time |0..1 |Time when the document was issued by the contracting authority. |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-002[_tbr92-013_]. *Rule*: If available in the referenced document place here the time of publication by the contracting authority.
+|*cbc:IssueTime* |Time |0..1 |Time when the document was issued by the contracting authority. |*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-002[_tbr92-013_]. *Rule*: If available in the referenced document place here the time of publication by the contracting authority.
 |===
 
 Beware that the ESPD document does not embed the content of referenced documents but instead make a reference to its source. Thus the class DocumentReference aggregates a `cac:Attachment`class that allows for making reference to an external source of the content, which is the preferred way in the ESPD-EDM (see XSD schema above).
@@ -103,7 +103,7 @@ _Table 28. External Reference_
 |===
 |*Components* |*Type* |*Card* |*Description* |*Requirements*
 |*cbc:URI* |Identifier |0..1 |The Uniform Resource Identifier (URI) that identifies where the document is located. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-013[_tbr92-013_].
 
 *Rule*: If the document exists at a remote location, then the value should be the URL pointing to the document.
 

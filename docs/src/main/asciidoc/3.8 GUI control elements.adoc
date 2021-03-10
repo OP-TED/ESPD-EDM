@@ -4,7 +4,7 @@ The ESPD-EDM specification includes two sets of data elements (codes) that help 
 
 ONTRUE/ONFALSE codes for GROUP and SUBGROUP control
 
-Three codes concerning the GROUPS or SUBGROUPS of REQUIREMENT(s) and QUESTION(s) are defined in the code list https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/[PropertyGroupType]:
+Three codes concerning the GROUPS or SUBGROUPS of REQUIREMENT(s) and QUESTION(s) are defined in the code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/[PropertyGroupType]:
 
 [arabic]
 . ON*, meaning that the GROUP or SUBGROUP has to be processed always;
@@ -39,16 +39,16 @@ _Figure 46. Case 4: When all the QUESTION(s) that are INDICATORS are set to tru
 
 ==== Radio-Button and Check-box controls
 
-In version 2.1.0 a new code list named https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[BooleanGUIControlType] was added to help software application process REQUIREMENT(s) issued by the contracting authority when drafting Extended ESPD documents. For the time being this need is only present in one Criterion of the Extended ESPD: 'Other economic or financial requirements' (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s)). The figure below shows the data structure for that Criterion:
+In version 2.1.0 a new code list named link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[BooleanGUIControlType] was added to help software application process REQUIREMENT(s) issued by the contracting authority when drafting Extended ESPD documents. For the time being this need is only present in one Criterion of the Extended ESPD: 'Other economic or financial requirements' (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s)). The figure below shows the data structure for that Criterion:
 
 image:Use_code_list_BooleanGUIControlType.png[Use of the code list BooleanGUIControlType,width=574,height=336]
 
-_Figure 47. Use of the code list https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V3.0.0.xlsx[BooleanGUIControlType]_
+_Figure 47. Use of the code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V3.0.0.xlsx[BooleanGUIControlType]_
 
 Notice that:
 
 [arabic]
-. The property data type used is BOOLEAN_CODE. This is a new type that has been added to the code list https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V3.0.0.xlsx[ResponseDataType] to make obvious that the code is specifically used to identify a three state indicator (true, false or not checked). In the case of this particular Criterion it is used specify the type of value that will be provided by the contracting authority for this specific REQUIREMENT (see the XML example below);
+. The property data type used is BOOLEAN_CODE. This is a new type that has been added to the code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V3.0.0.xlsx[ResponseDataType] to make obvious that the code is specifically used to identify a three state indicator (true, false or not checked). In the case of this particular Criterion it is used specify the type of value that will be provided by the contracting authority for this specific REQUIREMENT (see the XML example below);
 . The possible values for this property data type are defined in the code list BooleanGUIControlType, which are: RADIO_BUTTON_TRUE, RADIO_BUTTON_FALSE, RADIO_BUTTON_UNSELECTED, CHECK_BOX_TRUE, CHECK_BOX_FALSE and CHECK_BOX_UNCHECKED;
 . When the value of the CODE_BOOLEAN is RADIO_BUTTON_TRUE (true) the SUBGROUPs of REQUIREMENT(s) (UUID 26ece6a2-b360-46c1-890d-8338913b8719 ) and QUESTION(s) (UUID 9b3a04ff-e36d-4d4f-b47c-82ad402b9b02) are processed (e.g. shown by the GUI). Otherwise the software application processes the alternative SUBGROUPs of REQUIREMENT(s) (UUID cc96aa19-a0be-4409-af58-ff3f3812741b) and QUESTION(s) (UUID 5fe93344-ed91-4f97-bcab-b6720a131798).
 
@@ -282,7 +282,7 @@ _<!-- ... -->_
 . This UUID is identical to the UUID of the cac:TenderingCriterionProperty selected by the contracting authority for the QUESTION "Amount:" (see XML above).
 . The element cbc:ResponseAmount is of type "AMOUNT", as expected by the validation mechanisms.
 . The value of the amount meets the REQUIREMENT, as the amount is required to be above 10006 Euros (see XML above, notice the currencyID type value, too).
-. Beware that, contrary to other numeric types of data, AMOUNT is not semantised and mapped to cbc:ResponseMinimumAmount nor cbc:ResponseMaximumAmount`, as in the current ESPD-EDM specification all monetary thresholds are always "minimum" (and similarly for QUANTITY or QUANTITY_INTEGER, e.g. see the REQUIREMENT ''Minimum number of years'' in criterion #49 (tab _SC-Abilities_5 (Staff)_ in the https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-EXTENDED-V2.1.1.ods[ESPD-CriteriaTaxonomy-EXTENDED] spread-sheet).
+. Beware that, contrary to other numeric types of data, AMOUNT is not semantised and mapped to cbc:ResponseMinimumAmount nor cbc:ResponseMaximumAmount`, as in the current ESPD-EDM specification all monetary thresholds are always "minimum" (and similarly for QUANTITY or QUANTITY_INTEGER, e.g. see the REQUIREMENT ''Minimum number of years'' in criterion #49 (tab _SC-Abilities_5 (Staff)_ in the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-EXTENDED-V2.1.1.ods[ESPD-CriteriaTaxonomy-EXTENDED] spread-sheet).
 
 
 ==== Use of CAPTION
@@ -301,7 +301,7 @@ For the time being, the ESPD-EDM does not conform 100% to this rule: the purpose
 
 One reason that led to include these kind of "processing instructions" in the ESPD-Exchange Data Model is the high level of abstraction of the ISA2 Core Criterion and Evidence Vocabulary (CCEV) (the UBL-2.3 cac:TenderingCriterion is a specialisation of this vocabulary). As GROUPs and SUBGROUPS of REQUIREMENT(s) and of QUESTION(s) may be freely and unlimitedly nested, the software applications may have a hard time to detect whether a GROUP or SUBGROUP contains REQUIREMENT(s) and QUESTION(s) or just QUESTION(s) (which is usual in the ESP-EDM specification). Or vice-versa, if a GROUP or SUBGROUP comes first with QUESTION(s) followed by REQUIREMENT(s) (something that never happens in the ESPD-EDM specification).
 
-One way for the ESPD-EDM to help software applications understand that a nested data structure is a GROUP of REQUIREMENT(s) or just of QUESTION(s) would have been codifying it as "REQUIREMENT_GROUP" or "QUESTION_GROUP", using for that purpose the element cbc:PropertyGroupTypeCode element (similarly to what is done with the cbc:TypeCode element inside the cac:TenderingCriterionProperty). However for backwards compatibility reasons with the MS software applications the decision was made to reserve the cbc:PropertyGroupTypeCode to control the GUI behaviour by means of the values defined in the code list https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[PropertyGroupType] (codes ON*, ONTRUE and ONFALSE).
+One way for the ESPD-EDM to help software applications understand that a nested data structure is a GROUP of REQUIREMENT(s) or just of QUESTION(s) would have been codifying it as "REQUIREMENT_GROUP" or "QUESTION_GROUP", using for that purpose the element cbc:PropertyGroupTypeCode element (similarly to what is done with the cbc:TypeCode element inside the cac:TenderingCriterionProperty). However for backwards compatibility reasons with the MS software applications the decision was made to reserve the cbc:PropertyGroupTypeCode to control the GUI behaviour by means of the values defined in the code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-Criterion-V3.0.0.xlsx[PropertyGroupType] (codes ON*, ONTRUE and ONFALSE).
 
 The way currently used by software applications to detect whether a GROUP (or SUBGROUP) carries REQUIREMENT(s) or not is to look at the type of the first criterion property: if the first cac:TenderingCriterionProperty is of cbc:TypeCode value REQUIREMENT then it is a REQUIREMENT_GROUP, if it is of value QUESTION then the GROUP (or SUBGROUP) contains only QUESTION(s).
 

@@ -44,7 +44,7 @@ image:cacResponse_Value_XSD_element.png[cac:ResponseValue XSD element,width=324,
 
 _Figure 238. cac:ResponseValue XSD element_
 
-The cac:ApplicablePeriod is used to hold the start date and the end-date provided by the economic operator to a QUESTION for which the expected data is of type 'PERIOD'. (See expected types in the Code List https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[ResponseDataType]).
+The cac:ApplicablePeriod is used to hold the start date and the end-date provided by the economic operator to a QUESTION for which the expected data is of type 'PERIOD'. (See expected types in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[ResponseDataType]).
 
 [cols=",",]
 [IMPORTANT]
@@ -84,47 +84,47 @@ _Table 40. Elements expected in an answer to a criterion property_
 |*Business rule(s)*: |BR-RESP-80, BR-RESP-80-S10, BR-RESP-80-S20, Common (BR-LEAD-10)
 |*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
 |*Path*: |/QualificationApplicationResponse/cac:TenderingCriterionResponse
-|*Context of use*: |The economic operator uses it in the ESPD Response document to answer a QUESTION. http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_].
+|*Context of use*: |The economic operator uses it in the ESPD Response document to answer a QUESTION. link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_].
 |===
 
 [cols=",,,,",options="header",]
 |===
 |*Components* |*Type* |*Card* |*Description* |*Requirements*
 |*cbc:ID* |Identifier |0..1 |A language-independent token, e.g., a number, that allows to identify a criterion response uniquely as well as allows to reference the criterion response in other documents. A criterion response describes how an economic operators fulfills an specific criterion. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
 
 *Rule*: This ID SHOULD be provided by the EO or the service provider that instantiates the ESPDResponse XML document.
 
 *Rule scope*: Common (BR-TCR-05, BR-OTH-02)
 
 |*cbc:ValidatedCriterionPropertyID* |Identifier |1 |A cross-reference to the criterion propertys which is validated thorugh this response expressed as an identifier. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
 
 *Rule*: This ID MUST point at one of the TenderingCriterionProperty/cbc:ID that were included in the Request document.
 
 *Rule scope*: Common (BR-RESP-30, BR-RESP-40, BR-RESP-60, BR-RESP-60-S10, BR-RESP-60-S20, BR-TCR-01, BR-TCR-03, BR-LEAD-10-S20, BR-LEAD-10-S30)
 
 |*cbc:ConfidentialityLevelCode* |Code |0..1 |A code specifying the confidentiality level of the given response for this criterion. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
 
 *Rule*: If the value is true, all the evidences associated to this response becomes also confidential.
 
 *Rule scope*: BR-TCR-02, BR-OTH-01, BR-OTH-01#19, BR-OTH-03
 
 |*cac:ResponseValue* |Associated class |0..n |A class to describe the criterion property response value. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: This class contains the main disjoint elements used to provide the actual answer. The UBL-2.3 model provides cardinality 0..n, this allows for building up lists of, namely, identifier and code values that are all "packaged" into one cac:TenderingCriterionResponse that in turn is linked to one cac:TenderingCriterionProperty. Beware that the cardinality is flexible (0..whatever) because some responses are not simple values, like the ones but complex ones, e.g. cac:ApplicablePeriod and cac:EvidenceSupplied).
 
 *Rule scope*: Common (BR-TCR-08, BR-TCR-04)
 
 |*cac:ApplicablePeriod* |Associated class |0..1 |A class for the economic operator to specify the start date and the end-date when the expected answer to a criterion property is a lapse of time. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: The ESPD-EDM does only expect start date and end date. Software applications may take leverage of the richness of this class though for other purposes beyond the scope of this specification.
 
 |*cac:EvidenceSupplied* |Associated class |0..1 |A reference to the evidence supporting this criterion property response. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-017[_tbr92-017_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-017[_tbr92-017_]
 
 *Rule*: Used to point at an instance of the cac:Evidence.
 
@@ -140,7 +140,7 @@ _Disjointness of the elements inside cac:ResponseValue_
 
 Thus, for example, if in the ESPD Request the expected type is DESCRIPTION the cac:ResponseValue must use the element cbc:Description, if INDICATOR cbc:ResponseIndicator, if IDENTIFIER cbc:ResponseID, etc.
 
-See the codes used for cac:ValueDataTypeCode in the Code List https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in cac:ResponseValue in the table below.
+See the codes used for cac:ValueDataTypeCode in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in cac:ResponseValue in the table below.
 
 This disjointness rule applies to the *type* of the value, but *not to the values of the same type*. Thus, for lists of values that constitute the actual answer (e.g. the list of LotIDs the economic operator tenders to, or a list of CPV codes to describe with granularity an activity), a sequence of cac:ResponseValues shall be instantiated in the XML. See the XML examples below.
 ====
@@ -152,19 +152,19 @@ _Table 41. Elements expected in the 'cac:ApplicablePeriod' class_
 |*Business rule(s)*: |None
 |*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
 |*Path*: |/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:ApplicablePeriod
-|*Context of use*: |A class for the economic operator to specify the start date and the end-date when the expected answer to a criterion property is a lapse of time; http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_].
+|*Context of use*: |A class for the economic operator to specify the start date and the end-date when the expected answer to a criterion property is a lapse of time; link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_].
 |===
 
 [cols=",,,,",options="header",]
 |===
 |*Components* |*Type* |*Card* |*Description* |*Requirements*
 |*cbc:StartDate* |Date |0..1 |The date on which this period begins. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: Expected format 'YYYY-MM-DD'.
 
 |*cbc:EndDate* |Date |0..1 |The date on which this period ends. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: Expected format 'YYYY-MM-DD'.
 
@@ -178,14 +178,14 @@ _Table 41. Elements expected in the 'cac:ApplicablePeriod' class_
 |*Business rule(s)*: |None
 |*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
 |*Path*: |/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:EvidenceSupplied
-|*Context of use*: |Used to refer to one ore more evidences that are present in the QualificationApplicationResponse XML instance; http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-017[_tbr92-017_].
+|*Context of use*: |Used to refer to one ore more evidences that are present in the QualificationApplicationResponse XML instance; link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-017[_tbr92-017_].
 |===
 
 [cols=",,,,",options="header",]
 |===
 |*Components* |*Type* |*Card* |*Description* |*Requirements*
 |*cbc:ID* |Identifier |1 |The identifier of the referenced evidence. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: The expected identifier must match the value of a cac:Evidence/cbc:ID present in the XML document.
 
@@ -211,70 +211,70 @@ _Table 43. Elements expected in the 'cac:ResponseValue' class_
 |===
 |*Components* |*Type* |*Card* |*Description* |*Requirements*
 |*cbc:ID* |Identifier |0..1 |An identifier to refer to this criterion response value. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: Recommendation: use a UUDI-version 4 number.
 
 *Rule scope*: BR-TCR-05
 
 |*cbc:Description* |Text |0..n |A description used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: *The ESPD-EDM uses this element to place a response that is a string*. UBL-2.3 instead uses cbc:Response, for this. This is something that needs to be reviewed and agreed between ESPD-EDM and future versions of the UBL. See the XML provided in this ESPD-EDM specifications for details on its usage.
 
 |*cbc:ResponseAmount* |Amount |0..1 |An amount used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: The currencyID attribute is MANDATORY (e.g. "EUR"). Compulsory use of the code list "ISO 4217 3A:2015". BEWARE that amounts can use decimal separators (e.g. 14134,95 but not hundred or thousand separators).
 
 *Rule scope*: Common (BR-OTH-01, BR-OTH-01#17, BR-OTH-03)
 
 |*cbc:ResponseCode* |Code |0..1 |A code used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
-*Rule*: Compulsory use of the attributes mentioned in the section "https://espd.github.io/ESPD-EDM/v2.1.1/xml_guide.html#ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes.
+*Rule*: Compulsory use of the attributes mentioned in the section "link:https://espd.github.io/ESPD-EDM/v2.1.1/xml_guide.html#ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes.
 
 *Rule scope*: Common (BR-OTH-01)
 
 |*cbc:ResponseDate* |Date |0..1 |A date used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: Format 'YYYY-MM-DD'.
 
 |*cbc:ResponseTime* |Time |0..1 |A time used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: Format 'HH:MM:SS'.
 
 |*cbc:ResponseID* |Identifier |0..1 |An identifier used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: Compulsory use of the attributes mentioned in the section "1.5 Codes and Identifiers" for codes.
 
 |*cbc:ResponseIndicator* |Indicator |0..1 |An indicator used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: The only possible values are False and True.
 
 *Rule scope*: Common (BR-TCR-06, BR-TCR-07)
 
 |*cbc:ResponseMeasure* |Measure |0..1 |A measure used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: None.
 
 |*cbc:ResponseNumeric* |Numeric |0..1 |A number used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: Do not format the percentage with the "%" symbol, just provide a float value like in the example (e.g. 0.4).
 
 |*cbc:ResponseQuantity* |Quantity |0..1 |A quantity used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: BEWARE that different types of Quantities can be required, some of them with a special attribute. Up to three different types of Quantities can be specified: (1) QUANTITY_INTEGER, a number representing a quantity in a specific unit of measure. The unit has to be specified (e.g. number of workers); (2) QUANTITY_YEAR, a non-negative integer (i.e. a natural number) representing a year. The unit has to be specified as YEAR, and (3) QUANTITY, a number representing a generic quantity with no unit specified (e.g. a ratio). Beware that in the case of QUANTITY_INTEGER and QUANTITY_YEAR the attribute unitCode MUST be always specified.
 
 |*cbc:ResponseURI* |URI |0..1 |A URI used as a reply to the criterion property. a|
-*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
 *Rule*: None.
 
