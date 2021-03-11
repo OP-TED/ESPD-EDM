@@ -11,7 +11,7 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 ## Documentation
 
-* [v3.0.0](https://espd.github.io/ESPD-EDM/v.3.0.0/)
+* [v3.0.0](https://espd.github.io/ESPD-EDM/v3.0.0/)
 * [v2.1.1](https://espd.github.io/ESPD-EDM/v2.1.1/)
 * [v2.1.0](https://espd.github.io/ESPD-EDM/v2.1.0/)
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
