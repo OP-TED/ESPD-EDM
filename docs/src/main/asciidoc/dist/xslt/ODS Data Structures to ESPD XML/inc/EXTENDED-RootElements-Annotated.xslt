@@ -5,21 +5,21 @@
 	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
 	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
 	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
-	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:util="java:java.util.UUID">
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2.3"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2.3" xmlns:util="java:java.util.UUID">
 
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
 	<xsl:template name="createRootElements">
-		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The ESPD-EDM-V3.0.0 is entirely
-		based on OASIS UBL-2.3 --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.3</cbc:UBLVersionID>
-		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- How ESPD-EDM-V3.0.0 uses the
-		UBL-2.3 schemas whilst keeping conformance --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The ESPD-EDM-V2.1.1 is entirely
+		based on OASIS UBL-2.2 --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
+		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- How ESPD-EDM-V2.1.1 uses the
+		UBL-2.2 schemas whilst keeping conformance --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="3.0"
-			>urn:www.cenbii.eu:transaction:biitrdm070:ver3.0</cbc:CustomizationID>
+			>urn:www.cenbii.eu:transaction:biitrdm092:ver3.0</cbc:CustomizationID>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The transactional profile where
-		the ESPD is used. ESPD-EDM-V3.0.0 refers to the CEN profile --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		the ESPD is used. ESPD-EDM-V2.1.1 refers to the CEN profile --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:ProfileID schemeAgencyID="CEN-BII" schemeVersionID="2.0">4.1</cbc:ProfileID>
 		<xsl:variable name="uuid" select="util:toString(util:randomUUID())"/>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The identifier of this document
@@ -48,10 +48,14 @@
 		instantiated --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:VersionID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">1.0</cbc:VersionID>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the procurement
-		procedure; this information is provided by eForms and the concret notice per procedure. e.g. open = 	
-		In open procedures any interested economic operator may submit a tender in response to a call for competition.
-		--<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		procedure; e.g. AWARD_WO_PUB = Award of contract without prior publication of a contract
+		notice --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:ProcedureCode listID="ProcedureType" listAgencyID="EU-COM-OP" listVersionID="1.0"
-			>open</cbc:ProcedureCode>
+			>AWARD_WO_PUB</cbc:ProcedureCode>
+		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the ESPD (Basic
+		or Extended) --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType"
+			listAgencyID="EU-COM-GROW" listVersionID="2.1.1"
+			>Extended</cbc:QualificationApplicationTypeCode>
 	</xsl:template>
 </xsl:stylesheet>

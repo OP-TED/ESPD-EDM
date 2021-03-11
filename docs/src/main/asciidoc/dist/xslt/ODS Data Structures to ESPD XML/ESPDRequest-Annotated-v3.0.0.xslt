@@ -98,13 +98,13 @@
 		<xsl:for-each select="ancestor-or-self::table:table-row/table:table-cell">
 			<xsl:choose>
 				<xsl:when test="text:p = '{CRITERION'">
-					<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW"
+					<cbc:CriterionTypeCode listID="criterion" listAgencyID="EU-COM-GROW"
 						listVersionID="3.0.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{CRITERION'">
-					<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW"
+					<cbc:CriterionTypeCode listID="criterion" listAgencyID="EU-COM-GROW"
 						listVersionID="3.0.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
@@ -228,7 +228,7 @@
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
-						<cbc:ExpectedCode listID="Country" listName="country"
+						<cbc:ExpectedCode listID="country" listName="country"
 							listAgencyID="EU-COM-OP" listVersionID="20201216-0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
@@ -334,8 +334,9 @@
 	</xsl:template>
 	<xsl:template name="createProcurementProjectLotReference">
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>cac:ProcurementProjectLotReference<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>cbc:ID<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cbc:ID<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+		<cbc:ID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">
+			LOT-00000
+		</cbc:ID>
 		<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:ProcurementProjectLotReference<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	</xsl:template>
 </xsl:stylesheet>
