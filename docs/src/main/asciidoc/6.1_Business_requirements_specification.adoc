@@ -1,0 +1,13 @@
+=== 6.1 Business requirements specification
+
+The ESPD-EDM V3.0.0 models the business and information requirements in alignment with the works developed by e-Sens, which uses the identifier *Trdm092* to refer to the business requirements regarding the ESPD Response transaction. See formal information requirements related to the ESPD Response transaction in the document link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-ESPDResponsetransaction(Trdm092)[_BIS 41 - European Single Procurement Document (Version 2.0.0)_], by e-Sens.
+
+[cols=",",]
+|===
+|*BUSINESS REQUIREMENT* |*The ESPD Response document must include all the criteria that are present in the ESPD Request. For certain *selection* criteria the economic operator can add additional properties to the criteria so it can include in the ESPD Response more responses than the minimum required by the buyer.
+|===
+
+This last requirement has a technical reason: each response of an economic operator needs to be linked to one, and only one, property of a criterion (this is explained and illustrated in the sections below). Therefore for those cases when the buyer requires a minimum number of data but gives the flexibility to the economic operator for adding more the economic operator (the software it uses) will have to add properties to the criterion.
+
+Examples: the buyer requires a minimum of 3 references to works similar to the ones being procured, but the EO decides to add 5. The ESPD REquest will contain a criterion "For works contracts: performance of works of the specified type" with the structure prepared for three references. The ESPD Response will add two more structures to contain the additional references to that criterion. The ESPD will add (at the end of the file) five responses related to the same criterion, each response will point at five different properties of the criterion. This is described and illustrated in more detail in the section "Providing additional responses" below.
+

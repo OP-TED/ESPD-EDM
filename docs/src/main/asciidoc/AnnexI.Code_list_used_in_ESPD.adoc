@@ -1,0 +1,46 @@
+== Annex I. Code list used in ESPD
+
+Note that some code list used in ESPD have been updated accordingly to the alignment with eForms carried out for ESPD 3.0.0.
+
+In some cases code list have been removed from ESPD since the information is going to be provided in eForms CN, therefore it will not be needed in ESPD.
+
+For more details on Code list removed check Release Notes.
+
+Beware that in the ESPD documents codes can be used in different places, e.g.:
+
+. Outside the criteria, in UBL components of type "Code Type";
+
+. Inside the definition of a Criterion, in the ESPD Request, for the element Expected Code (cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ExpectedCode, it is in this element that the ESPD Request defines which code list to use); and
+
+. Inside the Response Value (cac:TenderingCriterionResponse/cac:ResponseValue/cbc:ResponseCode), where the Economic Operator has to supply a valid code picked from the list specified in the ESPD Request, in the element cbc:ExpectedCode.
+
+Additional information about the code lists can be found in:
+
+
+* The link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[spread-sheet] distributed with this documentation;
+
+
+* The multilingual link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/gc[Genericode] *.gc files automatically produced based on these spread-sheets; and
+
+
+The table below lists the code lists used in the ESPD documents and where they are used.
+
+[cols=",,",options="header",]
+|===
+|*Code List* |*Issuer Agency* |*Used In*
+|access-right |Publications Office of the EU |See element 'cac:Evidence/cbc:ConfidentialityLevelCode` of the UBL-2.3 XSD Schemas for QualificationApplicationResponse
+|Country |Publications Office of the EU |See element 'cac:PostalAddress/cac:Country/cbc:IdentificationCode` of the UBL-2.3 XSD Schemas, e.g. the postal address of an economic operator party)
+|CriteriaType |DG GROW (European Commission, defined in e-Certis) |See each Criterion taxonomy code in the link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[Criteria Data] Structures. See also the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/gc/ESPD-CriteriaTaxonomy_V2.1.1.gc[+++Genericode file+++].
+|CriterionElementType |DG GROW (European Commission) |See element cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:TypeCode of the UBL-2.3 XSD QualificationApplicationRequest Schema
+|Currency |Publications Office of the EU |All UBL-2.3 elements of type cbc:Amount in its attribute @currencyID
+|docref-content-type |DG GROW (European Commission) |UBL-2.3 element cac:AdditionalDocumentReference/cbc:DocumentTypeCode. See XML example in section *2.5 EU and national publications*
+|EOIDType |DG GROW (European Commission) |Attribute cac:PartyIdentification/cbc:ID@SchemeID. See 'Requirement" boxes in section *6.6 Economic Operator*
+|economic-operator-size |Publications Office of the EU |Used in the UBL-2.3 element cac:EconomicOperatorParty/cac:QualifyingParty/cbc:IndustryClassificationCode to specify the size of the economic operator.
+|eo-role-type |DG GROW (European Commission) |Element cac:EconomicOperatorRole/cbc:RoleCode.
+|FinancialRatioType |BACH Banque de France |Used in the REQUIREMENT "Ratio Type" of the Criterion  *finan-rat*. See data structure for this criterion in the ESPD Request link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[+++spread-sheet+++].
+|Language |Publications Office of the EU |e.g. in cac:Legislation/cac:Language/cbc:LocaleCode. See for instance XML example in section *4. 7 Early termination*
+|ProfileExecutionID |DG GROW (European Commission) |Element cbc:ProfileExecutionID used at the root of the UBL-2.3 QualificationApplicationRequest and QualificationApplicationResponse documents. See table of expected elements in section *2.4 Root elements*
+|PropertyGroupType |DG GROW (European Commission) |Element cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode.
+|ResponseDataType |DG GROW (European Commission) |Element cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ValueDataTypeCode.
+|occupation |Publications Office of the EU |Element cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cac:TenderingCriterionProperty/cbc:ExpectedCode
+|===
