@@ -17,7 +17,7 @@ This other screen-capture below represents a possible mock-up, from the buyer pe
 
 image:Payment_Taxes_REQUIREMENT_edition_CA.png['Payment of Taxes', REQUIREMENT edition,width=419,height=424]
 
-_Figure 58. 'Payment of Taxes', REQUIREMENT edition (CA Perspective)_
+_Figure 58. 'Payment of Taxes', REQUIREMENT edition (Buyer Perspective)_
 
 ==== Mock-ups - economic operator perspective
 
@@ -581,7 +581,8 @@ _<!-- No answer is expected here from the economic operator, as this is a REQUIR
 . Reference to the EU Legislation. This reusable structure is identical for all the exclusion criteria.
 . For this *ESPD Request Payment of Taxes* criterion, the Member State defined in e-Certis a *national REQUIREMENT* consisting in the specification of the '_threshold amount of debt that an economic operator have with the national Tax Agency_' (50 Euros in this example).
 . Notice that type of property used is REQUIREMENT. This entails that: a cbc:ValueDataType will be present indicating the type of value the buyer uses for this REQUIREMENT (e.g. AMOUNT, INDICATOR, DESCRIPTION, etc.; see the link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[Code List ResponseDataType], the values are the same for buyers REQUIREMENT(s) than for economic operator response values).
-. Beware that No answer is expected here from the economic operator (do not get confused by the presence of the cbc:ValueDataType, as said it is used by both the CA and the EO.
+. Beware that No answer is expected here from the economic operator (do not get confused by the presence of the cbc:ValueDataType, as said it is used by both the Buyer and the EO.
 . The value supplied by the buyer for this requirement (50 Euros, in this example). Notice that the currency is specified in the attibute currencyID of the cbc:Amount component.
-. The MS also allows the buyer the possibility of adding multiple additional textual requirements (in this case the CA uses this to explain that ''Beware that the national Tax Agency won’t permit the existence of a debt, even if minimial, for two consecutive years'').
+. The MS also allows the buyer the possibility of adding multiple additional textual requirements (in this case the Buyer uses this to explain that ''Beware that the national Tax Agency won’t permit the existence of a debt, even if minimial, for two consecutive years'').
 . Again, no answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer.
+

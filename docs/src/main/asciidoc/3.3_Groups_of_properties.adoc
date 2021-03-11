@@ -55,11 +55,10 @@ See also the spreadsheet https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/ma
 *Rule*: See the rules for the class in the tables below to see the rules related to criterion properties. See also the XML examples provided in sections about exclusion and selection criteria.
 
 |*cac:SubsidiaryTenderingCriterionPropertyGroup* |Class |0..n |A second, third or n-level group inside a first level group of properties. a|
-____
+
 *Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
 
 *Rule*: subsidiary property groups 'are' property groups (i.e. it is the same component but qualified as 'subsidary'). Therefore all the rules applicable to property groups are also applicable to sub-groups: Compulsory use of the Code List PropertyGroupType. See sections below about the 'criteria data structures' and the XML examples on exclusion and selection criteria to understand the use of this code. Beware that the first element inside a group of properties (after the group ID) is always a cac:TenderingCriterionProperty. In some occasions this might entail the use of an empty CAPTION element, for instance, to produce groups of subgroups where no property does really makes sense in the first group.
-____
 
 |===
 
@@ -70,3 +69,4 @@ ____
 * How GROUPS (cac:TenderingCriterionPropertyGroup) and SUB-GROUPs (cac:cac:SubsidiaryTenderingCriterionPropertyGroup) are organised, and
 * How the codes ON*, ONTRUE and ONFALSE are used. 
 . You will notice in the examples that the elements cbc:Name and cbc:Description of groups and subgroups of properties are never used. As a common practice the ESPD documents use instead a first cac:TenderingCriterionProperty of type CAPTION (i.e. an informative property that act as a 'label').
+

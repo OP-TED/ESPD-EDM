@@ -2,7 +2,7 @@
 
 [cols=",",]
 |===
-|*REQUIREMENT* link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_] |*The CA must be able to provide information about official journals or gazettes where the procurement procedure is announced. For procurement projects above the threshold it is compulsory to refer to the Contract Notice published in link:http://ted.europa.eu/TED/[TED].*
+|*REQUIREMENT* link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_] |*The Buyer must be able to provide information about official journals or gazettes where the procurement procedure is announced. For procurement projects above the threshold it is compulsory to refer to the Contract Notice published in link:http://ted.europa.eu/TED/[TED].*
 |===
 
 ESPD conformant software applications will have to provide the means for the user to supply references to EU and national publications about the procurement procedure, and notably about the Notices to which the ESPD is related.
@@ -198,3 +198,4 @@ _<!-- Beware XML URI fields may require encoded URLs -->_
 . In the case of publication on the TED, at ESPD Request preparation time, the procurer does not have yet the OJS number, but can receive a temporary CN identifier (Received Notice Number). To save this number in the DocumentReference component create two cbc:Description elements and use the second one to place this Received Notice Number. If you do not have a description for the CN then use a 'dummy' content for the first description, e.g. <cbc:Description>_</cbc:/Description>.
 . Notice how the schemeAgencyID is used in this example to specify that the national Agency that created this reference to the national publication (e.g. "PLACE" to refer to the ID of the national electronic board where the CN was published). The pattern of the ID is the one created by the Spanish buyer.
 . In this case the code NOJCN means 'Contract Notice (CN) published on a National Government Official Journal' (see file ESPD-CodeLists-V3.0.0) in the distribution package.
+
