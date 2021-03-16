@@ -1,9 +1,8 @@
 === 7.2 Code list validation Architecture
 
-==== Business rules related to code list validates:
+Business rules related to code list validates:
 
-
-image:Codelist_business_rules.png[Code list business rules,width=563,height=324]
+image:Codelist_business_rules.png[Code list business rules,width=600,height=325]
 
 
 ==== Architecture for Code List validation
@@ -21,7 +20,7 @@ The validation of the code lists needs an extra step on the process before execu
 .. Continue with the Schematron execution process: (1) transformation of SCH files into XSLT and execution of the validations using the XSLT files to get the final report.
 
 
-image:Architecture_codelist_validation.png[Architecture for code list validation,width=587,height=292]
+image:Architecture_codelist_validation.png[Architecture for code list validation,width=750,height=350]
 
 ==== What does the SCH file contain?
 
@@ -31,7 +30,7 @@ image:Architecture_codelist_validation.png[Architecture for code list validation
 
 The implementation of the CVA file has the following structure:
 
-image:CVA_example.png[CVA example,width=607,height=258]
+image:CVA_example.png[CVA example,width=600,height=258]
 
 ==== Execution
 
@@ -40,9 +39,9 @@ As a basis of the implementation, it has been taken into account:
 [arabic]
 . Schematron implementation of CVA files for validation from link:http://www.cranesoftwrights.com/resources/ubl/[CRANE SOFTWRIGHTS LTD]
 
-image:CodeList_Validation_Execution_files.png[Code List Validation Execution files,width=524,height=209]
+image:CodeList_Validation_Execution_files.png[Code List Validation Execution files,width=600,height=210]
 
 This example describes the execution of the validation process using the link:http://saxon.sourceforge.net/[Saxon library] to execute XSLT files and the XSLT provided as a basis:
 
-image:Execution _validation process_codelists.png[Execution of the validation process in code lists,width=500,height=279]
+image:Execution _validation process_codelists.png[Execution of the validation process in code lists,width=600,height=279]
 

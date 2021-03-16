@@ -39,7 +39,7 @@ _Figure 46. Case 4: When all the QUESTION(s) that are INDICATORS are set to tru
 
 ==== Radio-Button and Check-box controls
 
-In version 2.1.0 a new code list named link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[BooleanGUIControlType] was added to help software application process REQUIREMENT(s) issued by the buyer when drafting Extended ESPD documents. For the time being this need is only present in one Criterion of the Extended ESPD: 'Other economic or financial requirements' (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.OTHER_REQUIREMENT(s)). The figure below shows the data structure for that Criterion:
+In version 2.1.0 a new code list named link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V3.0.0.xlsx[BooleanGUIControlType] was added to help software application process REQUIREMENT(s) issued by the buyer when drafting ESPD documents. For the time being this need is only present in one Criterion of ESPD: 'Other economic or financial requirements' (finan-requ). The figure below shows the data structure for that Criterion:
 
 image:Use_code_list_BooleanGUIControlType.png[Use of the code list BooleanGUIControlType,width=574,height=336]
 
@@ -96,7 +96,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">9c62f2c7-0c51-451d-8730-427f92ed618c</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">9c62f2c7-0c51-451d-8730-427f92ed618c</ID>
 
 <Description>Select the type of requirement</Description>
 
@@ -116,7 +116,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">13728a54-21e3-4c84-8b11-48666c3d260f</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">13728a54-21e3-4c84-8b11-48666c3d260f</ID>
 
 <Description>Specify the total invoiced amount, taxes included.</Description>
 
@@ -130,7 +130,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">48c7b3bf-8d1c-4497-a915-78d53ba68089</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">48c7b3bf-8d1c-4497-a915-78d53ba68089</ID>
 
 <Description>Minimum amount</Description>
 
@@ -144,7 +144,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">8b4ae4f0-2849-49ea-a64b-7bb20c60bde4</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">8b4ae4f0-2849-49ea-a64b-7bb20c60bde4</ID>
 
 <Description>Start date; End date</Description>
 
@@ -170,7 +170,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID=“3.0.0”>1d89c188-58d2-461e-a4f6-a17f689d87f4</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID=“3.0.0”>1d89c188-58d2-461e-a4f6-a17f689d87f4</ID>
 
 <Description>Amount</Description>
 
@@ -192,7 +192,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">57d4160f-20b4-4b43-967b-76b038a2fa6b</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">57d4160f-20b4-4b43-967b-76b038a2fa6b</ID>
 
 <Description>Minimum rating</Description>
 
@@ -204,7 +204,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">f07b5174-93ae-46dd-aa26-7f451d97f6a8</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">f07b5174-93ae-46dd-aa26-7f451d97f6a8</ID>
 
 <Description>Rating scheme</Description>
 
@@ -224,7 +224,7 @@ _<!--...-->_
 
 <cac:TenderingCriterionProperty>
 
-<ID schemeID="Criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">3bd1913b-c461-41eb-87c4-84e003785a56</ID>
+<ID schemeID="criterion" schemeAgencyID="EU-COM-OP" schemeVersionID="3.0.0">3bd1913b-c461-41eb-87c4-84e003785a56</ID>
 
 <Description>Rating</Description>
 
@@ -282,7 +282,7 @@ _<!-- ... -->_
 . This UUID is identical to the UUID of the cac:TenderingCriterionProperty selected by the buyer for the QUESTION "Amount:" (see XML above).
 . The element cbc:ResponseAmount is of type "AMOUNT", as expected by the validation mechanisms.
 . The value of the amount meets the REQUIREMENT, as the amount is required to be above 10006 Euros (see XML above, notice the currencyID type value, too).
-. Beware that, contrary to other numeric types of data, AMOUNT is not semantised and mapped to cbc:ResponseMinimumAmount nor cbc:ResponseMaximumAmount`, as in the current ESPD-EDM specification all monetary thresholds are always "minimum" (and similarly for QUANTITY or QUANTITY_INTEGER, e.g. see the REQUIREMENT ''Minimum number of years'' in criterion #49 (tab _SC-Abilities_5 (Staff)_ in the link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CriteriaTaxonomy-EXTENDED-V2.1.1.ods[ESPD-CriteriaTaxonomy-EXTENDED] spread-sheet).
+. Beware that, contrary to other numeric types of data, AMOUNT is not semantised and mapped to cbc:ResponseMinimumAmount nor cbc:ResponseMaximumAmount`, as in the current ESPD-EDM specification all monetary thresholds are always "minimum" (and similarly for QUANTITY or QUANTITY_INTEGER, e.g. see the REQUIREMENT ''Minimum number of years'' in criterion #49 (tab _SC-Abilities_5 (Staff)_ in the link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[ESPD-criteion-V3.0.0] spread-sheet).
 
 
 ==== Use of CAPTION

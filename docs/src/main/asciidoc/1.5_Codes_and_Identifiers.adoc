@@ -32,7 +32,7 @@ Codes are normally maintained in "code lists". The ESPD-EDM keeps and distribute
 [arabic]
 . In an Office Open XML (link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[XLSX]) file,
 . In an Open Office Document (link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods[ODS]) file,
-. Genericode 1.0 (https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/gc[GC]) files (one *.gc file per code list).
+. Genericode 1.0 (link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/gc[GC]) files (one *.gc file per code list).
 
 However, it is worth to note that those code list that are reused from EU Vocabularies in alignment with eForms are not completely shown in excel and ods files. Instead, the metadata and the location of them in EU Vocabularies is provided.
 
@@ -47,7 +47,7 @@ ESPD-EDM Code list contain the following elements:
 
 The figure below illustrate how these elements are organised in the code lists maintained in spread-sheets:
 
-image:Elements_metadata_of_ESPD_codelist.png[Elements and metadata of an ESPD code list,width=591,height=202]
+image:Elements_metadata_of_ESPD_codelist.png[Elements and metadata of an ESPD code list,width=600,height=202]
 
 _Figure 6. Elements and metadata of an ESPD code list_
 
@@ -160,7 +160,7 @@ However, this ESP-EDM specification also uses the code list link:https://github.
 
 The figure below shows the possible values of this code list. These codes are to be used as values of the schemeID attribute (attribute of the UBL-2.3 element cbc:Identifier):
 
-image:Values_schemeID_Party_Identifiers.png[Values of the schemeID for Party Identifiers,width=566,height=264]
+image:Values_schemeID_Party_Identifiers.png[Values of the schemeID for Party Identifiers,width=600,height=264]
 
 _Figure 9. Values of the schemeID for Party Identifiers_
 
@@ -191,23 +191,19 @@ _TenderingCriterionProperty (a QUESTION) asking for the identifier of the Econom
 . The identifier of the property will be used in the response to map link the response to this QUESTION.
 . The ECONOMIC_OPERATOR_IDENTIFIER is mapped to an element cbc:ResponseID in the response (which is based on the UBL-2.3. element cbc:Identifier).
 
+
+_TenderingCriterionResponse (the answer to the previous QUESTION)_
 [source,xml]
 ----
-_TenderingCriterionResponse (the answer to the previous QUESTION)_
-
 ...
-
 <cac:TenderingCriterionResponse>
-
 <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">acb58f0e-0fe4-4372-aa08-60d0c36bfcfe</cbc:ID>
-
 <cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">1fa05728-308f-43b0-b547-c903ffb0a8af</cbc:ValidatedCriterionPropertyID>
-
 <cbc:ResponseID schemeID="VAT" schemeAgencyID="ES-AEAT">B82387770</cbc:ResponseID>
-
 </cac:TenderingCriterionResponse>
 ...
 ----
+
 
 . Notice that this UUID is identical to the QUESTION UUID, which is the mechanism used in UBL to link the answer to the very specific QUESTION it is responding.
 . The element cbc:ResponseID is of type Identifier(as defined in the Core Component Type Specification library). The value ''VAT'' assigned to the attribute schemeID, taken from the code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[EOIDType], is used to indicate that the type of identifier used is the Value Added Tax identifier issued by the Spanish Tax Agency (ES-AEAT).
