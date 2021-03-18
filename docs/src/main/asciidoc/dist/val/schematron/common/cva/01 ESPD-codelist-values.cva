@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cva:ContextValueAssociation 
+	xmlns:cva="http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/1.0/" 
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron" 
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
+	xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2" 
+	xmlns:espd-resp="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2" 
+	xmlns:fn="http://www.w3.org/2005/xpath-functions"
+	id="urn:x-illustration" name="code-list-values" version="$Id: ESPD-codelist-values.cva,v 3.0.0 $">
+	
+	<Annotation>
+		<Description>
+		Value constraints that one can express for XML samples.
+		
+		The validation requirements for this scenario are as follows:
+			- Code list used in each element.
+    </Description>
+	</Annotation>
+	<Title>
+		ESPD code list values constraints - ESPD-codelist-values.cva
+		Version 3.0.0
+	</Title>
+	<!-- BR-OTH-03: List all of the genericode files -->
+	<ValueLists>
+		<ValueList xml:id="access-right" uri="../../gc/access-right.gc"/><!-- cbc:ConfidentialityLevelCode -->
+		<ValueList xml:id="country" uri="../../gc/Country.gc"/><!-- cac:Country/cbc:IdentificationCode -->
+		<ValueList xml:id="CriterionElementType" uri="../../gc/CriterionElementType.gc"/><!-- /cac:TenderingCriterionProperty/cbc:TypeCode -->
+		<ValueList xml:id="currency" uri="../../gc/Currency.gc"/><!-- cbc:ValueCurrencyCode, @currencyID -->
+		<ValueList xml:id="docref-content-type" uri="../../gc/docref-content-type.gc"/><!-- /cac:AdditionalReferenceDocument/cbc:DocumentTypeCode -->
+		<ValueList xml:id="EOIDType" uri="../../gc/EOIDType.gc"/><!-- /cac:PartyIdentification/cbc:ID/@schemeID -->
+		<ValueList xml:id="economic-operator-size" uri="../../gc/EconomicOperatorSize.gc"/><!--/cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode -->
+		<ValueList xml:id="eo-role-type" uri="../../gc/eo-role-type.gc"/><!-- /cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode -->
+		<ValueList xml:id="language" uri="../../gc/Language.gc"/><!-- @languageID -->
+		<ValueList xml:id="ProfileExecutionID" uri="../../gc/ProfileExecutionID.gc"/><!-- /cbc:ProfileExecutionID -->
+		<ValueList xml:id="PropertyGroupType" uri="../../gc/PropertyGroupType.gc"/><!-- /cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode -->
+		<ValueList xml:id="ResponseDataType" uri="../../gc/ResponseDataType.gc"/><!-- /cac:TenderingCriterionProperty/cbc:ValueDataTypeCode -->		
+		<ValueList xml:id="occupation" uri="../../gc/occupation.gc"/><!-- /cac:TenderingCriterionProperty/cbc:ExpectedCode -->		
+
+	</ValueLists>
+	
+	<!-- ESPDRequest - List of all elements and attributes where the code lists are used -->
+	<Contexts>
+		<Context address="cbc:ConfidentialityLevelCode" values="access-right">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ConfidentialityLevelCode'.</Message>
+		</Context>
+		<Context address="cac:Country/cbc:IdentificationCode" values="country">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:Country/cbc:IdentificationCode'.</Message>
+		</Context>
+		<Context address="cbc:TypeCode" values="CriterionElementType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:TypeCode'.</Message>
+		</Context>
+		<Context address="@currencyID" values="currency">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the attribute '@currencyID'.</Message>
+		</Context>
+		<Context address="cbc:ValueCurrencyCode" values="currency">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ValueCurrencyCode'.</Message>
+		</Context>
+		<Context address="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" values="docref-content-type">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:AdditionalReferenceDocument/cbc:DocumentTypeCode'.</Message>
+		</Context>
+		<Context address="cac:PartyIdentification/cbc:ID/@schemeID" values="EOIDType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the attribute 'cac:PartyIdentification/cbc:ID/@schemeID'.</Message>
+		</Context>
+		<Context address="cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode" values="economic-operator-size">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode'.</Message>
+		</Context>
+		<Context address="cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode" values="eo-role-type">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode'.</Message>
+		</Context>
+		<Context address="@languageID" values="language">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the attribute '@languageID'.</Message>
+		</Context>
+		<Context address="cbc:ProfileExecutionID" values="ProfileExecutionID">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ProfileExecutionID'.</Message>
+		</Context>
+		<Context address="cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode" values="PropertyGroupType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode'.</Message>
+		</Context>
+		<Context address="cac:TenderingCriterionProperty/cbc:ValueDataTypeCode" values="ResponseDataType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:TenderingCriterionProperty/cbc:ValueDataTypeCode'.</Message>
+		</Context>
+		<Context address="cac:TenderingCriterionPropertyGroup[cbc:ID='b01d8f8f-ceac-4b47-b7aa-88cdeb630465']/cac:TenderingCriterionProperty/cbc:ExpectedCode" values="occupation">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element '/cac:TenderingCriterionProperty/cbc:ExpectedCode'.</Message>
+		</Context>
+	</Contexts>
+</cva:ContextValueAssociation>
