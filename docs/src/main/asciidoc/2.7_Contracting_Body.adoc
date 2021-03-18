@@ -10,7 +10,7 @@ In principle, the ESPD-EDM asks for a few data about the procurer (i.e. the buye
 
 Therefore software applications may take leverage of the richness of UBL-2.3 to collect also data about the buyer contact, end-point, and other data possible in the ESPD.
 
-image:Procurer_identification_mockup.png[Procurer identification,width=600,height=100]
+image:Procurer_identification_mockup.jpg[Procurer identification,width=600,height=100]
 
 _Figure 17. Data about the procurer, mock-up_
 
@@ -18,25 +18,25 @@ _Figure 17. Data about the procurer, mock-up_
 
 The UBL-2.3 model provides a component that fits the purpose of holding data about the procurer: the common aggregate component cac:ContractingParty.
 
-image:cacContractingParty_XSD_Schema_global_vision.jpeg[cac:ContractingParty XSD Schema, global vision,width=400,height=286]
+image:cacContractingParty_XSD_Schema_global_vision.jpg[cac:ContractingParty XSD Schema, global vision,width=400,height=286]
 
 _Figure 18. cac:ContractingParty XSD Schema, global vision_
 
 The cac:ContractingParty class is a specialisation of cac:Party. Hence, the main data about the procurer is in this associated cac:Party component:
 
-image:cacParty_XSD_Schema_global vision.jpeg[cac:Party XSD Schema, global vision,width=254,height=718]
+image:cacParty_XSD_Schema_global vision.jpg[cac:Party XSD Schema, global vision,width=254,height=718]
 
 _Figure 19. cac:Party XSD Schema, global vision_
 
 The cac:Party class in turn associates a very rich class that holds the data about the Party address, including the country (see the UBL-2.3 specification for the complete list of fields):
 
-image:cacPostalAddress,_XSD_Schema.png[cac:PostalAddress, XSD Schema,width=566,height=385]
+image:cacPostalAddress,_XSD_Schema.jpg[cac:PostalAddress, XSD Schema,width=566,height=385]
 
 _Figure 20. cac:PostalAddress, XSD Schema_
 
 Notice also that the class associated to cac:Party to place the data about how to contact the contracting body:
 
-image:cacContact_XSD_Schema.png[cac:Contact, XSD Schema,width=407,height=253]
+image:cacContact_XSD_Schema.jpg[cac:Contact, XSD Schema,width=407,height=253]
 
 _Figure 21. cac:Contact, XSD Schema_
 

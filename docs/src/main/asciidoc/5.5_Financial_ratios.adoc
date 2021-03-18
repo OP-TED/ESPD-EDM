@@ -15,7 +15,7 @@ _‘Financial ratio' buyer mock-up_
 
 The buyer  has selected the financial ratio as one of the selection criteria that will go into the ESPD Request document:
 
-image:Financial ratio_CA mockup.png['Financial ratio' buyer mock-up,width=623,height=137]
+image:Financial ratio_CA mockup.jpg['Financial ratio' buyer mock-up,width=623,height=137]
 
 In ESPD the buyer  specifies procurement procedure-specific requirements, see data structure below.
 
@@ -23,7 +23,7 @@ In ESPD the buyer  specifies procurement procedure-specific requirements, see da
 
 The economic operator does only have to provide the numeric value for the financial ratio (which should be greater than the minimum requirement specified by the buyer ):
 
-image:Financial_ratio_EO_mock-up.png[‘Financial ratio' EO mock-up,width=454,height=279]
+image:Financial_ratio_EO_mock-up.jpg[‘Financial ratio' EO mock-up,width=454,height=279]
 
 _Figure 135. ‘Financial ratio' EO mock-up_
 
@@ -37,7 +37,7 @@ REQUIREMENT(s) specified by the buyers can be place outside a group of QUESTION(
 
 Notice how the spreadsheet has been used to specify the three different financial ratios of the above mock-up example: the XML example below was produced using a XSL-T transformation link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/xslt/[style-sheet] that takes the link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[ODS spreadsheet] and produced the link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/xml/[XML instance].
 
-image:Financial_ratio_criterion_data_structure.png[‘Financial ratio' criterion data structure,width=526,height=293]
+image:Financial_ratio_criterion_data_structure.jpg[‘Financial ratio' criterion data structure,width=526,height=293]
 
 _Figure 136. ‘Financial ratio' criterion data structure_
 
@@ -46,7 +46,7 @@ _Figure 136. ‘Financial ratio' criterion data structure_
 _Financial Ratio_
 [source,xml]
 ----
-<!... header elements removed for brevity -->
+<!--... header elements removed for brevity... -->
 
 <!-- Criterion:Financial ratio -->
         <cac:TenderingCriterion>
@@ -93,7 +93,7 @@ _Financial Ratio_
                                         <cbc:Description>Ratio Type</cbc:Description>
                                         <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
                                         <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CODE</cbc:ValueDataTypeCode>
-                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
+                                        <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
                                         <cbc:ExpectedCode listID="PleaseSelectTheCorrectOne" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">Assets to equity ratio</cbc:ExpectedCode>
                                 </cac:TenderingCriterionProperty>
                                 <cac:TenderingCriterionProperty>
@@ -101,7 +101,7 @@ _Financial Ratio_
                                         <cbc:Description>Definition</cbc:Description>
                                         <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
                                         <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
-                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
+                                        <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
                                         <cbc:ExpectedDescription>Total balance sheet/Total equity</cbc:ExpectedDescription>
                                 </cac:TenderingCriterionProperty>
                                 <cac:TenderingCriterionProperty>
@@ -109,7 +109,7 @@ _Financial Ratio_
                                         <cbc:Description>Minimum requirement</cbc:Description>
                                         <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
                                         <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUANTITY</cbc:ValueDataTypeCode>
-                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
+                                        <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
                                         <cbc:ExpectedValueNumeric>0.5</cbc:ExpectedValueNumeric>
                                 </cac:TenderingCriterionProperty>
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
@@ -130,8 +130,7 @@ _Financial Ratio_
                                                 <cbc:Description>In the case of no – Relied upon or not</cbc:Description>
                                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
-                                        </cac:TenderingCriterionProperty>
-                                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                        </cac:TenderingCriterionProperty>                                
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
                                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
@@ -148,6 +147,7 @@ _Financial Ratio_
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
                                         </cac:TenderingCriterionProperty>
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
+								</cac:SubsidiaryTenderingCriterionPropertyGroup>
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e9aa7763-c167-4352-8060-1a3d7d3e2662</cbc:ID>
@@ -182,7 +182,7 @@ _Financial Ratio_
                 </cac:TenderingCriterionPropertyGroup>
         </cac:TenderingCriterion>
 
-<!... rest of elements removed for brevity -->
+<!--... rest of elements removed for brevity... -->
 ----
 
 [cols=",",options="header",]

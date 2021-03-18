@@ -32,7 +32,7 @@ In the same data structures *REQUIREMENT*(s) and *QUESTION*(s) do not have a U
 
 To answer a QUESTION the ESPD-EDM V3.0.0 uses the UBL-2.3 component cac:TenderingCriterionResponse. The expected elements are highlighted in blue in the figure below:
 
-image:cacTendering_Criterion_Response_XSD_element.png[cac:TenderingCriterionResponse XSD element,width=500,height=384]
+image:cacTendering_Criterion_Response_XSD_element.jpg[cac:TenderingCriterionResponse XSD element,width=500,height=384]
 
 _Figure 237. cac:TenderingCriterionResponse XSD element_
 
@@ -40,11 +40,11 @@ To answer one QUESTION one of the different possible types of values from the c
 
 If the need is to build a list of values, a sequence of cac:ResponseValues shall be instantiated. See XML examples below.
 
-image:cacResponse_Value_XSD_element.png[cac:ResponseValue XSD element,width=350,height=413]
+image:cacResponse_Value_XSD_element.jpg[cac:ResponseValue XSD element,width=350,height=413]
 
 _Figure 238. cac:ResponseValue XSD element_
 
-The cac:ApplicablePeriod is used to hold the start date and the end-date provided by the economic operator to a QUESTION for which the expected data is of type 'PERIOD'. (See expected types in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[ResponseDataType]).
+The cac:ApplicablePeriod is used to hold the start date and the end-date provided by the economic operator to a QUESTION for which the expected data is of type 'PERIOD'. (See expected types in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[ResponseDataType]).
 
 [cols=",",]
 [IMPORTANT]
@@ -55,7 +55,7 @@ Future versions of UBL could consider moving this element inside the element ca
 ====
 
 
-image:cacApplicablePeriod_XSD_element.png[cac:ApplicablePeriod XSD element,width=350,height=275]
+image:cacApplicablePeriod_XSD_element.jpg[cac:ApplicablePeriod XSD element,width=350,height=275]
 
 _Figure 239. cac:ApplicablePeriod XSD element_
 
@@ -63,7 +63,7 @@ One answer to one QUESTION may be linked to multiple evidences. The XSD diagram 
 
 This design is an interesting feature as, by separating the evidence object instances from inside the response, *one evidence may be used for different criteria*. See the component cac:Evidence below in the section "8. Evidences". See also XML examples.
 
-image:cacEvidenceSupplied_XSD_element.png[cac:EvidenceSupplied XSD element,width=400,height=150]
+image:cacEvidenceSupplied_XSD_element.jpg[cac:EvidenceSupplied XSD element,width=400,height=150]
 
 _Figure 240. cac:EvidenceSupplied XSD element_
 

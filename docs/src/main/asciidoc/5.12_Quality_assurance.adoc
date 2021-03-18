@@ -8,7 +8,7 @@ See formal requirements related to selection criteria in the link:http://wiki.d
 
 In ESPD the buyer can specify a REQUIREMENT. In this example it provides the name of the ISO it expects the economic operator to be conformant to.
 
-image:Quality_Assurance schemes_environmental_management_stand_CA.png['Quality Assurance schemes and environmental management standards' buyer mock-up,width=468,height=273]
+image:Quality_Assurance schemes_environmental_management_stand_CA.jpg['Quality Assurance schemes and environmental management standards' buyer mock-up,width=468,height=273]
 
 _Figure 187. 'Quality Assurance schemes and environmental management standards' buyer mock-up_
 
@@ -18,7 +18,7 @@ Notice that, as for the ESPD the economic operator (EO) has to answer *Yes* or
 
 When the EO answers *Yes* it will be asked whether online evidences are available online or not. This is controlled by the code ONTRUE assigned to the sub-group of QUESTION(s) about the evidence (see data structure and XML example).
 
-image:Quality_Assurance schemes_environmental_management_stand.png[Quality Assurance schemes and environmental management standards' EO mock-up,width=500,height=293]
+image:Quality_Assurance schemes_environmental_management_stand.jpg[Quality Assurance schemes and environmental management standards' EO mock-up,width=500,height=293]
 
 _Figure 188.'Quality Assurance schemes and environmental management standards' EO mock-up_
 
@@ -33,7 +33,7 @@ Notice the following:
 
 (Some columns have been hidden to enhance the readability of the image).
 
-image:Quality Assurance schemes_environmental_data_struc.png['Quality Assurance schemes and environmental management standards' criteria data structure,width=566,height=347]
+image:Quality Assurance schemes_environmental_data_struc.jpg['Quality Assurance schemes and environmental management standards' criteria data structure,width=566,height=347]
 
 _Figure 189. 'Quality Assurance schemes and environmental management standards' criteria data structure_
 
@@ -96,7 +96,7 @@ _'Certificates by quality control institutes' criterion_
                                 <cbc:Description>Requirement</cbc:Description>
                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
-                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
+                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
                                 <cbc:ExpectedDescription>ISO 9001</cbc:ExpectedDescription>
                         </cac:TenderingCriterionProperty>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
@@ -116,8 +116,7 @@ _'Certificates by quality control institutes' criterion_
                                                 <cbc:Description>In the case of no – Relied upon or not</cbc:Description>
                                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
-                                        </cac:TenderingCriterionProperty>
-                                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                        </cac:TenderingCriterionProperty>                                
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
                                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
@@ -134,6 +133,7 @@ _'Certificates by quality control institutes' criterion_
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
                                         </cac:TenderingCriterionProperty>
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
+								</cac:SubsidiaryTenderingCriterionPropertyGroup>
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4887c3d7-05fc-4e3e-b066-f338910f0c4c</cbc:ID>

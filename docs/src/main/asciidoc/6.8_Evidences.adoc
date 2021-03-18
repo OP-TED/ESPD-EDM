@@ -6,17 +6,17 @@ See formal requirements related to evidences in the e-Sens site: link:http://wi
 
 ==== XSD Schema
 
-Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element cac:EvidenceSupplied/cbc:ID contains the identifier set in /QualificationApplicationResponse/cac:Evidence/cbc:ID. See XML example below; see also the example XML file "link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/xml/[ESPDResponse-v3.0.0.xml]" for an example.
+Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element cac:EvidenceSupplied/cbc:ID contains the identifier set in /QualificationApplicationResponse/cac:Evidence/cbc:ID. See XML example below; see also the example XML file "link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/xml/[ESPD-Response-v3.0.0.xml]" for an example.
 
 The figure below shows the XSD Diagram for the UBL-2.3 component cac:Evidence (elements in blue are the expected ones in ESPD-EDM V3.0.0):
 
-image:cacEvidence_XSD_diagram.png[cac:Evidence XSD diagram,width=403,height=339]
+image:cacEvidence_XSD_diagram.jpg[cac:Evidence XSD diagram,width=403,height=339]
 
 _Figure 241. cac:Evidence XSD diagram_
 
 The UBL-2.3 element cac:Evidence is a specialisation of cac:DocumentReference. This other XSD diagram shows this association and, in blue, highlights the elements expected in the ESPD-EDM V3.0.0:
 
-image:cacDocumentReference_inside cacEvidence_XSD_diagram.png[cac:DocumentReference inside cac:Evidence XSD diagram,width=566,height=316]
+image:cacDocumentReference_inside cacEvidence_XSD_diagram.jpg[cac:DocumentReference inside cac:Evidence XSD diagram,width=566,height=316]
 
 _Figure 242. cac:DocumentReference inside cac:Evidence XSD diagram_
 
@@ -26,7 +26,7 @@ In principle only a few elements are kept in the ESPD Response document about an
 
 This group of data repeats frequently in the many different mock-ups presented in this document. The one below is just one example and will be used to illustrate where the three element go in the XML instance of an evidence.
 
-image:Conviction_Participation_criminal organisation_mockup_EO.png[Conviction EO mock-up,width=537,height=440]
+image:Conviction_Participation_criminal organisation_mockup_EO.jpg[Conviction EO mock-up,width=537,height=440]
 
 _Figure 243. Conviction 'Participation in criminal organisation', mock-up (EO perspective)_
 

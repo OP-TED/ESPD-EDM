@@ -47,7 +47,7 @@ ESPD-EDM Code list contain the following elements:
 
 The figure below illustrate how these elements are organised in the code lists maintained in spread-sheets:
 
-image:Elements_metadata_of_ESPD_codelist.png[Elements and metadata of an ESPD code list,width=600,height=202]
+image:Elements_metadata_of_ESPD_codelist.jpg[Elements and metadata of an ESPD code list,width=600,height=202]
 
 _Figure 6. Elements and metadata of an ESPD code list_
 
@@ -81,7 +81,7 @@ UBL-2.3 CCT are defined in the file CCTS_CCT_SchemaModule-2.3.xsd (see folders
 
 The figure below shows the complete list of attributes for the CCT CodeType component.
 
-image:Code_attributes.png[Code attributes,width=226,height=306]
+image:Code_attributes.jpg[Code attributes,width=226,height=306]
 
 _Figure 7. Code attributes_
 
@@ -105,7 +105,7 @@ _Table 3. UBL attributes for codes_
 
 This other figure shows the attributes for the CCT `IdentifierType`component.
 
-image:Identifier_attributes.png[Identifier attributes,width=274,height=237]
+image:Identifier_attributes.jpg[Identifier attributes,width=274,height=237]
 
 _Figure 8. Identifier attributes_
 
@@ -156,11 +156,11 @@ This fragment of XML shows how the compulsory attributes are used for the some o
 
 Code lists contain the code identifiers that are expected as "values" for a data element of type CODE (i.e. a UBL-2.3. cbc:CodeType element). This is case of code lists such as _eo-role-type_, or _docref-content-type_, etc.
 
-However, this ESP-EDM specification also uses the code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[EOIDType] with a different purpose, "the identification of the type of scheme used to identify parties, namely Economic Operators" (but should also used to identify the schemes used to identify Buyers, Service Providers, etc.).
+However, this ESP-EDM specification also uses the code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/[EOIDType] with a different purpose, "the identification of the type of scheme used to identify parties, namely Economic Operators" (but should also used to identify the schemes used to identify Buyers, Service Providers, etc.).
 
 The figure below shows the possible values of this code list. These codes are to be used as values of the schemeID attribute (attribute of the UBL-2.3 element cbc:Identifier):
 
-image:Values_schemeID_Party_Identifiers.png[Values of the schemeID for Party Identifiers,width=600,height=264]
+image:Values_schemeID_Party_Identifiers.jpg[Values of the schemeID for Party Identifiers,width=600,height=264]
 
 _Figure 9. Values of the schemeID for Party Identifiers_
 
@@ -206,5 +206,5 @@ _TenderingCriterionResponse (the answer to the previous QUESTION)_
 
 
 . Notice that this UUID is identical to the QUESTION UUID, which is the mechanism used in UBL to link the answer to the very specific QUESTION it is responding.
-. The element cbc:ResponseID is of type Identifier(as defined in the Core Component Type Specification library). The value ''VAT'' assigned to the attribute schemeID, taken from the code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.1.xlsx[EOIDType], is used to indicate that the type of identifier used is the Value Added Tax identifier issued by the Spanish Tax Agency (ES-AEAT).
+. The element cbc:ResponseID is of type Identifier(as defined in the Core Component Type Specification library). The value ''VAT'' assigned to the attribute schemeID, taken from the code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/[EOIDType], is used to indicate that the type of identifier used is the Value Added Tax identifier issued by the Spanish Tax Agency (ES-AEAT).
 

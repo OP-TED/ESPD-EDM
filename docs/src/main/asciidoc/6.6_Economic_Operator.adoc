@@ -67,7 +67,7 @@ cac:EconomicOperatorParty
 
 The UBL-2.3 cac:EconomicOperatorParty has three common aggregate components, the XSD Schema looks like this:
 
-image:Economic_Operator_overview.png[EconomicOperator overview,width=436,height=161]
+image:Economic_Operator_overview.jpg[EconomicOperator overview,width=436,height=161]
 
 _Figure 197. cac:EconomicOperatorParty XSD, global view_
 
@@ -92,7 +92,7 @@ The diagram below shows the XSD element that will hold the data required by the 
 ** *cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode* to indicate whether the EO is a micro, small, medium or large company (or simply an SME). This code is defined in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[economic-operator-size]. See also sections "Expected Elements" and "XML example" for more details.
 * *Turnover*: For statistical purposes the ESPD-EDM asks this datum to reflect the financial capability of the economic operator (see mock-ups above). This datum is to be placed in cac:QualifyingParty/cac:FinancialCapability/ValueAmount.
 
-image:Qualifying_Party.png[Qualifying Party,width=404,height=337]
+image:Qualifying_Party.jpg[Qualifying Party,width=404,height=337]
 
 _Figure 198. cac:QualifyingParty element, XSD_
 
@@ -100,7 +100,7 @@ _Figure 198. cac:QualifyingParty element, XSD_
 
 The UBL-2.3 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair *code + description* (see Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[eo-role-type] for the codes and descriptions; see also the XML example below).
 
-image:eo-role-type.png[Role of the economic operator,width=403,height=126]
+image:eo-role-type.jpg[Role of the economic operator,width=403,height=126]
 
 _Figure 199. Role of the economic operator_
 
@@ -108,27 +108,27 @@ _Figure 199. Role of the economic operator_
 
 The XSD diagram below shows (in blue) the elements for which data are expected in the ESPD Response for the cac:Party element of the economic operator.
 
-image:Party__economic party.png[The Party of the economic party,width=295,height=439]
+image:Party__economic party.jpg[The Party of the economic party,width=295,height=439]
 
 _Figure 200. The Party of the economic party_
 
 The figures below show the `cac:QualifyingParty` sub-components `cac:BusinessClassificationScheme` and `FinancialCapability`, and `cac:CompletedTask` in a bit more of detail. At present, the ESPD-EDM only uses one field, cbc:Description for the references and classifications and `cbc:Amount`for the Turnover.
 
-image:UBL-2.3_Classification_Scheme.png[UBL-2.3 'Classification Scheme',width=485,height=349]
+image:UBL-2.3_Classification_Scheme.jpg[UBL-2.3 'Classification Scheme',width=485,height=349]
 
 _Figure 201. The rich structure of a UBL-2.3 'Classification Scheme' for the representation of taxonomies_
 
-image:UBL-2.3_Capability.png[UBL-2.3 'Capability',width=454,height=207]
+image:UBL-2.3_Capability.jpg[UBL-2.3 'Capability',width=454,height=207]
 
 _Figure 202. The structure of UBL-2.3 'Capability'_
 
-image:UBL-2.3_Completed_Task_for references.png[UBL-2.3 Completed Task (used for references),width=291,height=200]
+image:UBL-2.3_Completed_Task_for references.jpg[UBL-2.3 Completed Task (used for references),width=291,height=200]
 
 _Figure 203. The structure of the UBL-2.3 Completed Task (used for references)_
 
 UBL-2.3 provides a component to hold very specifically the data to identify the economic operator as it officially registered in a Business Register. This XSD diagram below shows the elements of this component cac:LegalEntityParty. This ESPD-EDM specification recommends to use it as an alternative (or supplementary) way to identify the economic party.
 
-image:UBL-2.3_Legal_Entity_Party.png[UBL-2.3 Legal Entity Party,width=303,height=358]
+image:UBL-2.3_Legal_Entity_Party.jpg[UBL-2.3 Legal Entity Party,width=303,height=358]
 
 _Figure 204. The UBL-2.3 Legal Entity Party_
 
@@ -470,7 +470,7 @@ If the economic operator answers *Yes* the fields about the 'percentage of dis
 
 *Data structure for a sheltered workshop or social business in case of reserved procurement*:
 
-image:Sheltered_workshop_social_business.png[Sheltered workshop or social business,width=566,height=175]
+image:Sheltered_workshop_social_business.jpg[Sheltered workshop or social business,width=566,height=175]
 
 _Figure 222. Sheltered workshop or social business - data structure_
 
@@ -487,7 +487,7 @@ In case the EO is registered on several pre-qualification systems, the EO will n
 * The identifier assigned by the (pre)qualification system to the economic operator is required. This value however is placed in the element cac:QualifyingParty/cac:Party/cac:PartyIdentification/cbc:ID and therefore is not required in the data structure.
 * The name of an alternative or additional (pre)qualification system (PQS) can also be provided by the EO. In principle this is not necessary as the PQS identifier is the value of the attribute @schemeAgencyID of the element cbc:ID.
 
-image:Pre-qualification_related_data_structure.png[Pre-qualification-related data structure,width=566,height=255]
+image:Pre-qualification_related_data_structure.jpg[Pre-qualification-related data structure,width=566,height=255]
 
 _Figure 223. Pre-qualification-related data structure_
 
@@ -501,7 +501,7 @@ Notice that:
 . The values expected for the name and activity are texts.
 . The value expected for the EO identifier is of type Identifier. For the identifier of the EO it is also required to specify the type of identifier, and a closed list of possible types is proposed (see Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[EOIDType]. EOs must use one of the available codes, but the preferred one is the VAT number. Beware that the data structure does not keep the type of the identifier. This is because this type code is placed in the attribute @schemeName of the cac:ResponseValue/cbc:ResponseID element (and the @schemeAgencyID attribute must be set to the default EU-COM-GROW). See information requirements at the beginning of the section. See also next sections about the responses, XSD schemas and XML example.
 
-image:Group_EO_data_structure.png[Group of EO, data structure,width=642,height=219]
+image:Group_EO_data_structure.jpg[Group of EO, data structure,width=642,height=219]
 
 _Figure 226. Group of EO, data structure_
 
@@ -509,7 +509,7 @@ Certificates about contributions to the Tax Agency and/or Social Security
 
 *Data structure for the certificates about contributions to the Tax Agency and/or Social Security*:
 
-image:Contributions_certificates_data_structure.png[Contributions certificates - data structure,width=642,height=170]
+image:Contributions_certificates_data_structure.jpg[Contributions certificates - data structure,width=642,height=170]
 
 _Figure 227. Contributions certificates_
 
@@ -517,13 +517,13 @@ _Figure 227. Contributions certificates_
 
 As explained above, the Sole tenderer or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V3.0.0 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
 
-image:EO_Roles_entities_relied_on.png[EO Roles-entities relied on,width=600,height=372]
+image:EO_Roles_entities_relied_on.jpg[EO Roles-entities relied on,width=600,height=372]
 
 _Figure 228. EO Roles-entities relied on, mock-up_
 
 *Data structure for the entities upon which the EO relies on*:
 
-image:Reliedon_entities_data_structure.png[Relied on entities - data structure,width=642,height=207]
+image:Reliedon_entities_data_structure.jpg[Relied on entities - data structure,width=642,height=207]
 
 _Figure 229. Relied on entities - data structure_
 
@@ -531,13 +531,13 @@ _Figure 229. Relied on entities - data structure_
 
 The Sole contractor or the Leader of a group will have also to provide information about subcontractors on whose capacity the economic operator does not rely. Remember that this information does not need to be supplied by the members of a group or other entities.
 
-image:EO_Roles_entities_not_reliedon.png[EO Roles-entities not relied on,width=600,height=226]
+image:EO_Roles_entities_not_reliedon.jpg[EO Roles-entities not relied on,width=600,height=226]
 
 _Figure 230. EO Roles-entities not relied on, mock-up_
 
 *Data structure for the entities upon which the EO does not relies on*:
 
-image:Not_reliedon_entities_data_structure.png[Not relied on entities - data structure,width=642,height=207]
+image:Not_reliedon_entities_data_structure.jpg[Not relied on entities - data structure,width=642,height=207]
 
 _Figure 231. Not relied on entities - data structure_
 
@@ -550,15 +550,15 @@ _Economic operator data - XML example_
 
 [source,xml]
 ----
-_<!-- The group of the name is at the root of the document -->_
+<!-- The group of the name is at the root of the document -->
 
-_<!-- The name of the group (Consortium, Joint Venture, etc.) if the tenderer is not a sole contractor -->_
+<!-- The name of the group (Consortium, Joint Venture, etc.) if the tenderer is not a sole contractor -->
 
 <cbc:EconomicOperatorGroupName>ACME-Consortium</cbc:EconomicOperatorGroupName>
 
-_<!-- Root elements removed for the sake of brevity -->_
+<!-- Root elements removed for the sake of brevity -->
 
-_<!-- Economic Operator Data -->_
+<!-- Economic Operator Data -->
 
 <cac:EconomicOperatorParty>
 
@@ -574,11 +574,11 @@ _<!-- Economic Operator Data -->_
 
 <cac:Party>
 
-_<!-- This EO company is NOT an SME -->_
+<!-- This EO company is NOT an SME -->
 
 <cbc:IndustryClassificationCode listID=“economic-operator-size” listAgencyID=“EU-COM-OP” listVersionID=“20200923-0”>LARGE</cbc:IndustryClassificationCode>
 
-_<!-- Notice that the ID and Name of the Pre-Qualification System is in the attributes. They would be captured from e-Certis. -->_
+<!-- Notice that the ID and Name of the Pre-Qualification System is in the attributes. They would be captured from e-Certis. -->
 
 <cac:PartyIdentification>
 
@@ -600,7 +600,7 @@ _<!-- Notice that the ID and Name of the Pre-Qualification System is in the attr
 
 <cac:Party>
 
-_<!--Additional Identifier not provided -->_
+<!--Additional Identifier not provided -->
 
 <cbc:WebsiteURI>https://everis.com/global/en</cbc:WebsiteURI>
 
@@ -648,11 +648,11 @@ _<!--Additional Identifier not provided -->_
 
 </cac:EconomicOperatorParty>
 
-_<!-- EO DATA ENDS HERE -->_
+<!-- EO DATA ENDS HERE -->
 
-_<!-- EXCLUSION CRITERIA START HERE -->_
+<!-- EXCLUSION CRITERIA START HERE -->
 
-_<!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity -->_
+<!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity -->
 ----
 
 
@@ -688,7 +688,7 @@ See formal requirements related to the representatives of the economic operator 
 
 *In this example of mock-up the economic operator is specifying two representatives:*
 
-image:EO_representatives_mock-up.png[EO representatives - mock-up, mock-up,width=543,height=522]
+image:EO_representatives_mock-up.jpg[EO representatives - mock-up, mock-up,width=543,height=522]
 
 _Figure 233. EO representatives, mock-up_
 
@@ -701,19 +701,19 @@ Thus, additionally to the expected elements, the cac:PowerOfAttorney component
 * The place of registration of the representative. The logic first element to look at is the place of birth (this is one of the expected elements). But other elements could be used complementarily: (i) cac:Person/cac:IdentityDocumentReference (A reference to a document that can precisely identify this person (e.g., a residence certificate), (ii) cac:Person/cbc:NationalityID, and/or cac:Person/cbc:CitizenshipCountry.
 * Official documentation demonstrating that the person representing has an authentic mandate (e.g. a reference to a register where this mandate is located). For this the element cac:/PowerOfAttorney/cac:MandateDocumentReference should be used.
 
-image:EO_representatives_Power_Attorney_XSD_Schema.png[EO representatives Power of Attorney, XSD Schema,width=498,height=328]
+image:EO_representatives_Power_Attorney_XSD_Schema.jpg[EO representatives Power of Attorney, XSD Schema,width=498,height=328]
 
 _Figure 234. EO representatives Power of Attorney, XSD Schema_
 
 Notice that the largest part of the data is held in the component cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney/cac:AgentParty/cac:Person. The figure below shows (in blue) the expected elements. See the table "Expecte Elements" and the XML example below for the details (e.g. how to use the cac:Person/cac:Contact element to contact the representative.
 
-image:EO_representatives_element_Person.png[EO representatives - element Person,width=284,height=496]
+image:EO_representatives_element_Person.jpg[EO representatives - element Person,width=284,height=496]
 
 _Figure 235. EO representatives - element Person, XSD Schema_
 
 Contact elements, such as telephone and e-mail are in the cac:Contact associated to the the cac:Person information element:
 
-image:EO_representatives_Contact_Person.png[EO representatives - element Contact, inside Person,width=288,height=252]
+image:EO_representatives_Contact_Person.jpg[EO representatives - element Contact, inside Person,width=288,height=252]
 
 _Figure 236. EO representatives - element Contact, inside Person, XSD Schema_
 
@@ -811,7 +811,7 @@ Notice that this XML example contains two representatives, as in the mock-up.
 _Economic operator’s representatives_
 [source,xml]
 ----
-_<!-- Economic Operator Data -->_
+<!-- Economic Operator Data -->
 
 <cac:EconomicOperatorParty>
 
@@ -823,11 +823,11 @@ _<!-- Economic Operator Data -->_
 
 <cac:Party>
 
-_<!-- This EO company is NOT an SME -->_
+<!-- This EO company is NOT an SME -->
 
 <cbc:IndustryClassificationCode listID=“economic-operator-size” listAgencyID=“EU-COM-OP” listVersionID=“20200923-0”>large</cbc:IndustryClassificationCode>
 
-_<!-- Notice that the ID and Name of the Pre-Qualification System is in the attributes. They would be captured from e-Certis. -->_
+<!-- Notice that the ID and Name of the Pre-Qualification System is in the attributes. They would be captured from e-Certis. -->
 
 <cac:PartyIdentification>
 
@@ -891,9 +891,9 @@ _<!-- Notice that the ID and Name of the Pre-Qualification System is in the attr
 
 </cac:Contact>
 
-_<!-- REPRESENTATIVES of the Economic Operator -->_
+<!-- REPRESENTATIVES of the Economic Operator -->
 
-_<!-- Representative 1 -->_
+<!-- Representative 1 -->
 
 <cac:PowerOfAttorney>
 
@@ -911,7 +911,7 @@ _<!-- Representative 1 -->_
 
 <cbc:BirthDate>1980-07-17</cbc:BirthDate>
 
-_<!-- No element for "street and number" present. The user decided not to provide it -->_
+<!-- No element for "street and number" present. The user decided not to provide it -->
 
 <cbc:BirthplaceName>Brussels</cbc:BirthplaceName>
 
@@ -945,7 +945,7 @@ _<!-- No element for "street and number" present. The user decided not to provid
 
 </cac:PowerOfAttorney>
 
-_<!-- Representative 2 -->_
+<!-- Representative 2 -->
 
 <cac:PowerOfAttorney>
 
@@ -999,7 +999,7 @@ _<!-- Representative 2 -->_
 
 </cac:EconomicOperatorParty>
 
-_<!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity -->_
+<!-- Exclusion and selection Criteria, Responses and Evidences removed for the sake of brevity -->
 ----
 
 

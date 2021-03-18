@@ -38,17 +38,17 @@ The contracting can specify the number of the past recent years for which it wil
 
 Notice that the buyer can add and remove as many groups of minimum required amounts as needed (in the example below the software application limits the number to five, see tool-tip next to the button "Add"). These requirements are, of course, particular to this procurement procedure and were not defined by the Member State in e-Certis.
 
-image:General_Yearly Turnovers_CA mock-up_ common_threshold.png[General Yearly Turnovers buyer mock-up for common threshold,width=564,height=210]
+image:General_Yearly Turnovers_CA mock-up_ common_threshold.jpg[General Yearly Turnovers buyer mock-up for common threshold,width=564,height=210]
 
 _Figure 106. 'General Yearly Turnovers' buyer mock-up for a a common threshold for all years requested._
 
-image:General_Yearly_Turnovers_CA mock-up_ commonThreshold.png[General Yearly Turnovers buyer mock-up for a a common threshold for all years requested,width=522,height=237]
+image:General_Yearly_Turnovers_CA mock-up_ commonThreshold.jpg[General Yearly Turnovers buyer mock-up for a a common threshold for all years requested,width=522,height=237]
 
 _Figure 107. 'General Yearly Turnovers' Buyer mock-up when applaying different turnover per year requested._
 
 ==== Mock-up - economic operator perspective
 
-image:General_Specific_Yearly_Turnovers_ EO_mock-up.png['General and Specific Yearly Turnovers' EO mock-up_EO,width=612,height=230]
+image:General_Specific_Yearly_Turnovers_ EO_mock-up.jpg['General and Specific Yearly Turnovers' EO mock-up_EO,width=612,height=230]
 
 _Figure 107. 'General Yearly Turnovers' EO mock-up_
 
@@ -56,7 +56,7 @@ _Figure 107. 'General Yearly Turnovers' EO mock-up_
 
 In this this figure what it is being shown is that the buyer required three general yearly turnovers, for which it defined minimum amounts in one REQUIREMENT(s) group. Next, three groups of QUESTION(s) are provided, each one of them corresponding to the past three years. Remember that the spreadsheet used in this guide to represent the criteria data structure is also used to generate sample XML instances. So by including three groups of QUESTION(s) in the spread-sheet, the tool generating sample XML instances will automatically generate three sub-groups of properties each one with distinct UUIDs.
 
-image:General_Yearly_Turnovers_criterion_data_structure.png['General Yearly Turnovers' criterion data structure,width=566,height=448]
+image:General_Yearly_Turnovers_criterion_data_structure.jpg['General Yearly Turnovers' criterion data structure,width=566,height=448]
 
 _Figure 108. 'General Yearly Turnovers' criterion data structure_
 
@@ -65,7 +65,7 @@ _Figure 108. 'General Yearly Turnovers' criterion data structure_
 _General yearly turnover_
 [source,xml]
 ----
-<!... header elements removed for brevity -->
+<!--... header elements removed for brevity... -->
 <!-- Criterion:General yearly turnover -->
         <cac:TenderingCriterion>
                 <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">499efc97-2ac1-4af2-9e84-323c2ca67747</cbc:ID>
@@ -138,8 +138,7 @@ _General yearly turnover_
                                                 <cbc:Description>In the case of no – Relied upon or not</cbc:Description>
                                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
-                                        </cac:TenderingCriterionProperty>
-                                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                        </cac:TenderingCriterionProperty>                                
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
                                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
@@ -156,6 +155,7 @@ _General yearly turnover_
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
                                         </cac:TenderingCriterionProperty>
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
+								</cac:SubsidiaryTenderingCriterionPropertyGroup>
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
@@ -226,8 +226,9 @@ _General yearly turnover_
                 </cac:TenderingCriterionPropertyGroup>
         </cac:TenderingCriterion>
 
-<! rest of elements removed for brevity -->
+<!-- rest of elements removed for brevity -->
 ----
+
 ==== 5.4.2 Average yearly turnover
 
 ==== Mock-up - buyer perspective
@@ -241,7 +242,7 @@ For criteria of type “average yearly turnover”, the following fields can be 
 
 Notice that as for the rest of criteria, the Member State may specify national sub-criteria in e-Certis for this criterion.
 
-image:average_yearly_turnover_CA_mockup.png['average yearly turnover' buyer mock-up,width=623,height=180]
+image:average_yearly_turnover_CA_mockup.jpg['average yearly turnover' buyer mock-up,width=623,height=180]
 
 _Figure 112. ‘Average yearly turnover' Buyer mock-up_
 
@@ -253,13 +254,13 @@ In turn, the economic operator:
 . Will have to provide the average amount and currency for the required period; and
 . May provide some additional information in a free-text field.
 
-image:Average_yearly turnover_EO_mockup.png['Average yearly turnover' EO mock-up_EO,width=555,height=229]
+image:Average_yearly turnover_EO_mockup.jpg['Average yearly turnover' EO mock-up_EO,width=555,height=229]
 
 _Figure 113. ‘Average yearly turnover' EO mock-up_
 
 ==== Data Structure
 
-image:Average_yearly turnover_criterion_data_structure.png[‘Average yearly turnover' criterion data structure,width=522,height=427]
+image:Average_yearly turnover_criterion_data_structure.jpg[‘Average yearly turnover' criterion data structure,width=522,height=427]
 
 _Figure 114. ‘Average yearly turnover' criterion data structure_
 
@@ -268,7 +269,7 @@ _Figure 114. ‘Average yearly turnover' criterion data structure_
 _Average yearly turnover_
 [source,xml]
 ----
-<!... header elements removed for brevity -->
+<!--... header elements removed for brevity... -->
 
 <!-- Criterion:Average yearly turnover -->
         <cac:TenderingCriterion>
@@ -350,8 +351,7 @@ _Average yearly turnover_
                                                 <cbc:Description>In the case of no – Relied upon or not</cbc:Description>
                                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
-                                        </cac:TenderingCriterionProperty>
-                                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                        </cac:TenderingCriterionProperty>                                
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
                                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
@@ -368,6 +368,7 @@ _Average yearly turnover_
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
                                         </cac:TenderingCriterionProperty>
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
+								</cac:SubsidiaryTenderingCriterionPropertyGroup>
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e1886054-ada4-473c-9afc-2fde82c24cf4</cbc:ID>
@@ -438,7 +439,7 @@ _Average yearly turnover_
                 </cac:TenderingCriterionPropertyGroup>
         </cac:TenderingCriterion>
 
-<!... rest of elements removed for brevity -->
+<!--... rest of elements removed for brevity... -->
 ----
 
 ==== 5.4.3 Specific yearly turnover
@@ -456,7 +457,7 @@ For *specific yearly turnover* criterion the following fields can be required 
 . The *minimum amount* expected from the EO, for which each specific yearly turnover must equal or be greater;
 . The *currency*.
 
-image:Specificyaer_turnoever_CA-perspective.png[specific yearly turnover' buyer mock-up_,width=494,height=182]
+image:Specificyaer_turnoever_CA-perspective.jpg[specific yearly turnover' buyer mock-up_,width=494,height=182]
 
 _Figure 118. 'specific yearly turnover' Buyer mock-up_
 
@@ -470,7 +471,7 @@ Notice that in this example:
 . The software application has produced up to five groups of properties for each of the last five Fiscal Years (FY1 to FY5);
 . The economic operator has provided answers for all the properties of each Fiscal Year.
 
-image:EO-Specific-year-turn.png['specific yearly turnover' EO mock-up,width=506,height=423]
+image:EO-Specific-year-turn.jpg['specific yearly turnover' EO mock-up,width=506,height=423]
 
 _Figure 119. 'specific yearly turnover' EO mock-up_
 
@@ -485,7 +486,7 @@ Notice that:
 . The buyer does also specifies the *minimum amount* required for this specific turnover.
 . The rest of the criterion are the questions for the economic operator to answer: *period* and *amount* (and *currency* in the amount attribute @currencyID).
 
-image:Specific_yearly turnover_criterion_data_structure.png[‘Specific yearly turnover' criterion data structure,width=509,height=403]
+image:Specific_yearly turnover_criterion_data_structure.jpg[‘Specific yearly turnover' criterion data structure,width=509,height=403]
 
 _Figure 120. ‘Specific yearly turnover' criterion data structure_
 
@@ -495,7 +496,7 @@ _Specific yearly turnover_
 
 [source,xml]
 ----
-<!... header elements removed for brevity -->
+<!--... header elements removed for brevity... -->
 
 <!-- Criterion:Specific yearly turnover -->
         <cac:TenderingCriterion>
@@ -585,8 +586,7 @@ _Specific yearly turnover_
                                                 <cbc:Description>In the case of no – Relied upon or not</cbc:Description>
                                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
-                                        </cac:TenderingCriterionProperty>
-                                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                        </cac:TenderingCriterionProperty>                                
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
                                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
@@ -603,6 +603,7 @@ _Specific yearly turnover_
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
                                         </cac:TenderingCriterionProperty>
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
+								</cac:SubsidiaryTenderingCriterionPropertyGroup>
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
@@ -673,7 +674,7 @@ _Specific yearly turnover_
                 </cac:TenderingCriterionPropertyGroup>
         </cac:TenderingCriterion>
 
-<!... rest of elements removed for brevity -->
+<!--... rest of elements removed for brevity... -->
 ----
 
 ==== 5.4.4 Specific average turnover
@@ -682,13 +683,13 @@ As for the specific yearly turnover, in the specific average turnover the buyer 
 
 ==== Mock-up - buyer perspective
 
-image:Spec-aver-year-turn-CA.png[‘Specific average turnover' buyer mock-up,width=566,height=209]
+image:Spec-aver-year-turn-CA.jpg[‘Specific average turnover' buyer mock-up,width=566,height=209]
 
 _Figure 124. ‘Specific average turnover' Buyer mock-up_
 
 ==== Mock-up - economic operator perspective
 
-image:spec-aver-year-turn-EO.png[‘Specific average turnover' EO mock-up,width=566,height=204]
+image:spec-aver-year-turn-EO.jpg[‘Specific average turnover' EO mock-up,width=566,height=204]
 
 _Figure 125. ‘Specific average turnover' EO mock-up_
 
@@ -696,7 +697,7 @@ _Figure 125. ‘Specific average turnover' EO mock-up_
 
 Notice that this  *specific average turnover* structure is *'practically identical'* to the data structure of the *specific yearly turnover* criterion. The only difference is that the *cardinality of the amount is 1* (instead of 1..n).
 
-image:Specific_average turnover_criterion_data_structure.png[Specific average turnover' criterion data structure,width=566,height=450]
+image:Specific_average turnover_criterion_data_structure.jpg[Specific average turnover' criterion data structure,width=566,height=450]
 
 _Figure 126. Specific average turnover' criterion data structure_
 
@@ -706,7 +707,7 @@ _Specific average turnover_
 
 [source,xml]
 ----
-<!... header elements removed for brevity -->
+<!--... header elements removed for brevity... -->
 
 <!-- Criterion:Specific average turnover -->
         <cac:TenderingCriterion>
@@ -760,7 +761,7 @@ _Specific average turnover_
                                 <cbc:Description>Number of fiscal years</cbc:Description>
                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUANTITY_YEAR</cbc:ValueDataTypeCode>
-                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
+                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
                                 <cbc:ExpectedValueNumeric>3</cbc:ExpectedValueNumeric>
                         </cac:TenderingCriterionProperty>
                         <cac:TenderingCriterionProperty>
@@ -768,7 +769,7 @@ _Specific average turnover_
                                 <cbc:Description>Business domain description</cbc:Description>
                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
-                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
+                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
                                 <cbc:ExpectedDescription>e.g. "IT consulting / development of semantic interoperability solutions"</cbc:ExpectedDescription>
                         </cac:TenderingCriterionProperty>
                         <cac:TenderingCriterionProperty>
@@ -776,7 +777,7 @@ _Specific average turnover_
                                 <cbc:Description>Minimum requirement</cbc:Description>
                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">REQUIREMENT</cbc:TypeCode>
                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">AMOUNT</cbc:ValueDataTypeCode>
-                                <<!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the buyer. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the buyer -->
+                                <!-- No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element 'cbc:ValueDataTypeCode' contains the type of value of the requirement issued by the contracting authority -->
                                 <cbc:ExpectedAmount currencyID="EUR">1000000</cbc:ExpectedAmount>
                         </cac:TenderingCriterionProperty>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
@@ -796,8 +797,7 @@ _Specific average turnover_
                                                 <cbc:Description>In the case of no – Relied upon or not</cbc:Description>
                                                 <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
-                                        </cac:TenderingCriterionProperty>
-                                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                        </cac:TenderingCriterionProperty>                                
                                 <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                         <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e296a1cc-83d3-48ac-b4e4-7e7d0ae0af25</cbc:ID>
                                         <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
@@ -814,6 +814,7 @@ _Specific average turnover_
                                                 <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ECONOMIC_OPERATOR_IDENTIFIER</cbc:ValueDataTypeCode>
                                         </cac:TenderingCriterionProperty>
                                 </cac:SubsidiaryTenderingCriterionPropertyGroup>
+								</cac:SubsidiaryTenderingCriterionPropertyGroup>
                         </cac:SubsidiaryTenderingCriterionPropertyGroup>
                         <cac:SubsidiaryTenderingCriterionPropertyGroup>
                                 <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">c0cd9c1c-e90a-4ff9-bce3-ac0fe31abf16</cbc:ID>
@@ -884,6 +885,6 @@ _Specific average turnover_
                 </cac:TenderingCriterionPropertyGroup>
         </cac:TenderingCriterion>
 
-<!... rest of elements removed for brevity -->
+<!--... rest of elements removed for brevity... -->
 ----
 
