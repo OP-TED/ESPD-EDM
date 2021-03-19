@@ -1,0 +1,134 @@
+=== 3.4 Properties
+
+[cols=",",]
+|===
+|*REQUIREMENT* |The buyer needs to be able to specify the type of the value it expects from the economic operator in a response; e.g. DESCRIPTION, INDICATOR, QUANTITY, URL, etc.). The economic operator must provide a value for the response that is consistent with the type specified by the buyer.
+|===
+
+This other XSD diagram shows the elements of the properties of a criterion:
+
+image:cacTenderingCriterionProperty_XSD_Schema.jpg[cac:TenderingCriterionProperty - XSD Schema,width=227,height=710]
+
+_Figure 38. cac:TenderingCriterionProperty - XSD Schema_
+
+*Notice that*: One sub-criterion 'is a' criterion:
+
+image:cacSubTenderingCriterion_XSD_Schema.jpg[cac:SubTenderingCriterion- XSD Schema,width=544,height=147]
+
+_Figure 39. cac:SubTenderingCriterion- XSD Schema_
+
+==== Expected elements
+
+The following table lists the elements of a criterion property. Beware that the majority of the elements are the possible types of responses that the buyer can specify. The economic operator, in the ESPDResponse, must provide values that are consistent with the type specified by the buyer.
+
+[cols=",",options="header",]
+_Table 23. Properties, expected elements_
+|===
+|*Class name*: |cac:TenderingCriterionProperty
+|*Definition*: a|
+Caption (i.e. a 'label'), specific MS or buyer requirement (e.g. 'Number of references expected: 5' or a question addressed to the economic operator (e.g. 'Your average yearly turnover for the past three years?'.
+
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_]
+
+|*Business rule(s)*: |BR-SC-20
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:TenderingCriterion/cac:TenderingCriterionProperty
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:ID* |Identifier |1 |Identifies one specific property. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Property identifiers must use UUID numbers (version 4) automatically generated. The responses of the economic operator (in the ESPD Response document) will refer to this UUID to link the response with one, and only one, criterion property. See the section about the ESPD Response for examples.
+
+*Rule scope*: Common (BR-TC-18, BR-OTH-02)
+
+|*cbc:Description* |Text |1 |The text of the caption, requirement or question. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: None.
+
+*Rule scope*: Common (BR-TC-19)
+
+|*cbc:TypeCode* |Code |1 |The type of property. Used to verify that structure of the property is correct. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Compulsory use of the link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[Code List 'CriterionElementType']. Possible types are 'CAPTION, REQUIREMENT and QUESTION'. If the type is CAPTION or REQUIREMENT no answer is expected from the economic operator and therefore the cbc:ValueDataTypeCode must be set to NONE. Otherwise this value must be set to one of the values defined in the link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[Code List 'ResponseDataType']
+
+*Rule scope*: BR-TC-20, BR-OTH-01, BR-OTH-01#14, BR-OTH-03
+
+|*cbc:ValueDataTypeCode* |Code |1 |The type of answer expected by the buyer in the case of a poperty of type QUESTION. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Compulsory use of the Code List “ResponseDataType”. Verify that the value is different to NONE for properties of type QUESTION.
+
+*Rule scope*: Common (BR-TC-21, BR-OTH-01, BR-OTH-03, BR-OTH-01#12, BR-OTH-03)
+
+|*cbc:ValueUnitCode* |Code |0..1 |The unit of measure of the numeric value as a quantity or measure in the expected response from the economic operator. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+*Rule scope*: BR-OTH-01
+
+|*cbc:ValueCurrencyCode* |Code |0..1 |The currency of the numeric value as an amount in the expected response from the economic operator. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+*Rule scope*: BR-OTH-01
+
+|*cbc:ExpectedID* |Identifier |0..1 |The expected identifier that the economic operator has to provide in the criterion response. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+*Rule scope*: (BR-LOT-40)
+
+|*cbc:ExpectedCode* |Code |0..1 |The expected code that the economic operator has to provide in the Criterion response. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+*Rule scope*:(BR-OTH-01)
+
+|*cbc:ExpectedValueNumeric* |Numeric |0..1 |The expected value that the economic operator has to provide in the Criterion response. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+|*cbc:MaximumValueNumeric* |Numeric |0..1 |The maximum value the response must have. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+|*cbc:MinimumValueNumeric* |Numeric |0..1 |The minimum value the response must have. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+|*cbc:CertificationLevelDescription* |Text |0..1 |The description of the level of the expected certification. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Verify that the value of cac:TypeCode is set to QUESTION and that the cac:ValueTypeCode is different to NONE.
+
+|*cac:ApplicablePeriod* |Class |0..1 |The period to which this criterion property shall apply. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: The ESPD-EDM does only expect start date and end date.
+
+|*cac:TemplateEvidence* |Class |0..n |A pointer to one or more evidences that support the veracity of this criterion. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: None.
+
+|===
+
+==== XML Examples
+
+[arabic]
+. See examples in sections about exclusion and selection criteria.
+. You will notice in the examples that the element cbc:Name is never used. Instead the cac:Description is sufficient for all the ESPD purposes.
+

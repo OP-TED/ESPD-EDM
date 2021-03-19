@@ -1,0 +1,18 @@
+=== 2.3 ESPD Request cardinalities
+
+As you can see the UBL-2.3 Schema is quite flexible as, except for a few cases practically all the elements are optional.
+
+The ESPD-EDM model, however, adds a few more restrictions regarding the cardinalities of some elements. These can be seen in the diagram below, which presents the ESPD-EDM V3.0.0 structure for the ESPD Request with its own cardinality restrictions. Notice that ESPD-EDM does not change anything else from the UBL-2.3 Schema.
+
+image:Qualification_ApplicationRequest_UML_diagram.jpg[QualificationApplicationRequest', UML diagram,width=394,height=430]
+
+_Figure 12. ESPD-EDM 'QualificationApplicationRequest', UML diagram_
+
+If you compare both figures you will observe that:
+
+[arabic]
+. The cardinalities of the root common basic components, such as cbc:ID, cbc:UUID,  are different for the ESPD than for UBL-2.3;
+. Similarly, the cardinalities of aggregate components like cac:ContractingParty, cac:ProcurementProjectLot and cac:TenderingCriterion are different to the UBL-2.3 ones.
+
+The cardinality constraints added by the ESPD are not defined in the XSD Schema. In order to control these constraints the ESPD-EDM uses link:http://schematron.com/[ISO Schematron] assertions. The ESPD-EDM V3.0.0 distribution package provides Schematron schemata and CVA files for the validation of the XML instances (folder link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/val[_dist/val_]).
+

@@ -1,0 +1,144 @@
+=== 2.8 Service Provider
+
+[cols=",",]
+|===
+|*REQUIREMENT* link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-011[_tbr070-011_] |*The ESPD request may contain information of identification regarding an ESPD service provider: Name, Party Identification, Endpoint ID.*
+|===
+
+Service providers are officially recognised organisations that can supply ESPD Request documents (on behalf of the contracting body) with pre-filled information about the contracting body and additional information (e.g. liability statements, see link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-012[_tbr070-012_])
+
+The ESPD allows the provision of data about the service provider who produced the ESPD Request document (and equally for the ESPD Response document, on behalf of the economic operator).
+
+Since the 2.1.1 does not include the cac:ServiceProvider as a 'document root component'. Instead, it uses the UBL-2.3 cac:ContractingParty/cac:Party associated class cac:ServiceProviderParty.
+
+==== XSD Schema
+
+image:cacServiceProvider_XSD_Schema.jpg[cac:ServiceProvider XSD Schema,width=566,height=453]
+
+_Figure 22. cac:ServiceProvider XSD Schema_
+
+*Notice that*:
+
+[arabic]
+. The cac:Party class aggregates the class cac:ServiceProviderParty; and
+. The cac:ServiceProviderParty class 'is a' Party. Hence it aggregates a cac:Party class too, and uses it to place the main data about the service provider (like name, address, end-point, etc.).
+
+image:cacServiceProvider.jpg[cac:ServiceProvider,width=514,height=217]
+
+_Figure 22. cac:ServiceProvider_
+
+image:cacService_provider_Party_elements.jpg[service provider's 'Party' elements,width=506,height=524]
+
+_Figure 23. cac:ServiceProvider/cac:Party elements expected for the service provider_
+
+==== Expected elements
+
+[cols=",",options="header",]
+
+_Table 12. Service provider, expected elements_
+|===
+|*Class name*: |cac:Party
+|*Definition*: |Main information about the service provider.
+|*Business rule(s)*: |None
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:ContractingParty/cac:Party/cac:ServiceProviderParty/cac:Party
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:WebsiteURI* |Identifier |0..1 |The website of the service provider. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-011[_tbr070-011_].
+
+*Rule*: Use it for the official web site of the service provider. Reserve the EndPointID for online services (e.g. web, REST, ftp services, etc.)
+
+|*cbc:EndpointID* |Identifier |0..1 |Electronic address of the service provider. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-0011[_tbr070-011_].
+
+*Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the cac:Party/cbc:WebsiteURI). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (buyer, service provider, economic operator) as an eDeliveryID.
+
+|*cac:PartyIdentification/cbc:ID* |Identifier |1 |The national identifier of a service provider as it is legally registered (e.g. VAT identification). a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-0011[_tbr070-011_].
+
+*Rule*: An identifier for the service provider must always be provided. Compulsory use of the attribute SchemeAgencyID. When possible use the VAT identification of the service provider (see the VIES platform for a EU cross-border national VAT number verification system). See XML example below. The code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V3.0.0.ods[EOIDType] may be used to indicate the type of identifier used as a value of the schemeID attribute, e.g. schemeID="VAT").
+
+*Rule scope*: Common (BR-REQ-20#5, BR-OTH-02")
+
+|*cac:PartyName/cbc:Name* |Text |1 |The name of the service provider. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-0011[_tbr070-011_].
+
+*Rule*: The name of the service provider must always be specified. Supply the official registered name of the service provider.
+
+*Rule scope*: Common (BR-REQ-20#6)
+
+|*cac:PostalAddress/cac:Country/cbc:IdentificationCode* |Identifier |1 |The code that identifies the country of the service provider. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-0011[_tbr070-011_].
+
+*Rule*: The country of the service provider must always be specified. Compulsory use of the code list “Country” from EU Vocabulary, which includes 3-character codes and it is based on ISO.
+
+*Rule scope*: BR-REQ-20#7, BR-OTH-01, BR-OTH-01#5, BR-OTH-03
+
+|===
+
+==== XML example
+
+The XML snippet below shows how an example of how to supply the expected data for the service provider.
+
+[source,xml]
+----
+...
+
+_<!--- Root elements eliminated for the sake of brevity -->_
+
+<cac:ContractingParty>
+
+<cac:Party>
+
+<cac:PartyIdentification><cbc:ID schemeAgencyID="VIES">B82387770</cbc:ID> </cac:PartyIdentification>
+
+<cac:PartyName><cbc:Name>Ministerio de Defensa</cbc:Name></cac:PartyName>
+
+<cac:PostalAddress><cac:Country><cbc:IdentificationCode listID="Country" listAgencyID="EU-COM-OP" listVersionID="20201216-0">ES</cbc:IdentificationCode></cac:Country></cac:PostalAddress>
+
+<cac:ServiceProviderParty>
+
+<cac:Party>
+
+<cbc:WebsiteURI>http://www.minhafp.gob.es/es-ES/Areas%20Tematicas/Patrimonio%20del%20Estado/Contratacion%20del%20Sector%20Publico/Paginas/ROLECE.aspx</cbc:WebsiteURI>
+
+<cbc:EndpointID>http://www.minhafp.gob.es/ESPD/endpoint</cbc:EndpointID>
+
+<cac:PartyIdentification>
+
+<cbc:ID schemeAgencyID="AEAT">B36699932</cbc:ID>
+
+</cac:PartyIdentification>
+
+<cac:PartyName>
+
+<cbc:Name>Registro Oficial de Licitadores y Empresas Clasificadas (ROLECE)</cbc:Name></cac:PartyName>
+
+<cac:PostalAddress>
+
+<cac:Country><cbc:IdentificationCode listID="Country" listAgencyID="EU-COM-OP" listVersionID=" 20201216-0">ESP</cbc:IdentificationCode></cac:Country>
+
+</cac:PostalAddress>
+
+</cac:Party>
+
+</cac:ServiceProviderParty>
+
+</cac:Party>
+
+</cac:ContractingParty>
+
+...
+----
+
+
+. ContractingParty non-compulsory elements have been omitted for the sake of brevity.
+. The service provider VAT number. The issuer Agency is the Spanish Tax Agency (AEAT). You can use the VIES platform to verify that the VAT number exists and is correct for Spain.
+. The registered name of the service provider is mandatory.
+. The country code of the service provider (ESP) is compulsory. You will need to use this code (ESP) to verify the VAT number in the VIES service.
+
+

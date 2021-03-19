@@ -1,0 +1,72 @@
+=== 3.3 Groups of properties
+
+This XSD diagram shows the sub-components of a group of criteria:
+
+image:cacTenderingCriterionPropertyGroup_XSD_Schema.jpg[cac:TenderingCriterionPropertyGroup - XSD Schema global view,width=566,height=305]
+
+_Figure 36. cac:TenderingCriterionPropertyGroup - XSD Schema, global view_
+
+One group of properties may include one or more 'sub-groups' of properties (class cac:SubsidiaryTenderingCriterionGroup).
+
+*Notice that*: One sub-group of properties 'is a' group of criteria:
+
+image:cacSubsidiaryTenderingCriterionGroup_XSD_Schema.jpg[cac:SubsidiaryTenderingCriterionGroup- XSD Schema,width=566,height=212]
+
+_Figure 37. cac:SubsidiaryTenderingCriterionGroup- XSD Schema_
+
+==== Expected elements
+
+[cols=",",options="header",]
+_Table 22. Groups of properties, expected elements_
+|===
+|*Class name*: |cac:TenderingCriterionPropertyGroup
+|*Definition*: a|
+The first level group of properties and sub-groups of properties in the structure of a criterion.
+
+link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_]
+
+|*Business rule(s)*: |Common (BR-TC-07, BR-TC-16)
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:ID* |Identifier |1 |Identifies a group of requirements uniquely. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Compulsory use of the UUIDs supplied by e-Certis.
+
+See also the spreadsheet https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-criterion-V3.0.0.xlsx[ESPD-Creterion-V3.0.0].
+
+*Rule scope*: Common (BR-TC-12, BR-OTH-02, BR-OTH-02#01)
+
+|*cbc:PropertyGroupTypeCode* |Code |1 |Code addressed to control the behavior of the group of criteria. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: Compulsory use of the Code List PropertyGroupType. See sections below about the 'criteria data structures' and the XML examples on exclusion and selection criteria to understand the use of this code. Beware that the first element inside a group of properties (after the group ID) is always a cac:TenderingCriterionProperty. In some occasions this might entail the use of an empty CAPTION element, for instance, to produce groups of subgroups where no property does really makes sense in the first group. See also the sub-section *The ONTRUE/ONFALSE codes for GROUP and SUBGROUP control*
+
+*Rule scope*: Common (BR-TC-14, BR-TC-15, BR-OTH-01, BR-OTH-01#11, BR-OTH-03)
+
+|*cac:TenderingCriterionProperty* |Class |1..n |Caption (i.e. a 'label'), specific MS or buyer requirement (e.g. 'Number of references expected: 5' or a question addressed to the economic operator (e.g. 'Your average yearly turnover for the past three years?'. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: See the rules for the class in the tables below to see the rules related to criterion properties. See also the XML examples provided in sections about exclusion and selection criteria.
+
+|*cac:SubsidiaryTenderingCriterionPropertyGroup* |Class |0..n |A second, third or n-level group inside a first level group of properties. a|
+
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-013[_tbr070-013_].
+
+*Rule*: subsidiary property groups 'are' property groups (i.e. it is the same component but qualified as 'subsidary'). Therefore all the rules applicable to property groups are also applicable to sub-groups: Compulsory use of the Code List PropertyGroupType. See sections below about the 'criteria data structures' and the XML examples on exclusion and selection criteria to understand the use of this code. Beware that the first element inside a group of properties (after the group ID) is always a cac:TenderingCriterionProperty. In some occasions this might entail the use of an empty CAPTION element, for instance, to produce groups of subgroups where no property does really makes sense in the first group.
+
+|===
+
+==== XML Examples
+
+[arabic]
+. See examples in sections about exclusion and selection criteria. Study:
+* How GROUPS (cac:TenderingCriterionPropertyGroup) and SUB-GROUPs (cac:cac:SubsidiaryTenderingCriterionPropertyGroup) are organised, and
+* How the codes ON*, ONTRUE and ONFALSE are used. 
+. You will notice in the examples that the elements cbc:Name and cbc:Description of groups and subgroups of properties are never used. As a common practice the ESPD documents use instead a first cac:TenderingCriterionProperty of type CAPTION (i.e. an informative property that act as a 'label').
+

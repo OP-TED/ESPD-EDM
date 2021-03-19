@@ -1,0 +1,49 @@
+=== 7.4. UUID Criterion Validation
+
+Each Criterion is defined in e-Certis and must use the *Universally Unique Identifier (UUID)* supplied by e-Certis:
+
+[arabic]
+. These UUIDs are 'constant', meaning that they are maintained by DG GROW and need to be used compulsory as they were issued by DG GROW.
+. The value of each UUID are defined in the spreadsheets:
+[loweralpha]
+.. link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/xlsx/[ESPD-criterion-V3.0.0]
+
+ESPD validates that the UUID defined in the ESPDRequest XML or ESPDResponse XML are the ones supplied by e-Certis:
+
+[cols=",",options="header",]
+|===
+|*Spreadsheet row* |*XSD Path*
+|\{CRITERION |cac:TenderingCriterion/cbc:ID
+|\{QUESTION_GROUP |cac:TenderingCriterion/cac:TenderingCriterionPropertyGroup/cbc:ID
+|\{QUESTION_SUBGROUP |cac:SubsidiaryTenderingCriterionPropertyGroup/cbc:ID
+|===
+
+Every QUESTION_GROUP and QUESTION_SUBGROUP that has the same structure (meaning, QUESTION or QUESTION_SUBGROUP), share the same UUID, as they are the same.
+
+Tendering Criterion
+
+The validation of each criterion (cac:TenderingCriterion element) has the aim to check:
+
+[arabic]
+. cbc:ID, cbc:CriterionTypeCode, cbc:Name and cbc:Description are mandatory;
+. cbc:ID and cbc:CriterionTypeCode values match with the ones supplied by e-Certis;
+. cac:TenderingCriterionPropertyGroup structure matches with the QUESTION_GROUP supplied by e-Certis (see Tendering Criterion Property Group and Subgroup section).
+
+Tendering Criterion Property Group and Subgroup
+
+The same validations are executed for the first level group of properties and sub-groups of properties. The rules applied are:
+
+[arabic]
+. The cbc:ID and cbc:PropertyGroupTypeCode are mandatory elements and their values are the ones supplied by e-Certis in the corresponding cbc:TenderingCriterion;
+. cac:TenderingCriterionProperty structure matches with QUESTION supplied by e-Certis (see Tendering Crtierion Property section);
+. cac:SubsidiaryTenderingCriterionPropertyGroup matches with QUESTION_SUBGROUP supplied by e-Certis (for each property group, the same validations are applied).
+
+Tendering Criterion Property
+
+The validation of Tendering Criterion Property (cac:TenderingCriterionProperty element) is checked as follows:
+
+[arabic]
+. cbc:TypeCode and cbc:ValueDataTypeCode are mandatory elements and match with the ones supplied by e-Certis;
+. cbc:ID and cbc:Description elements are mandatory, although their values are not validated;
+. If cbc:TypeCode value is "CAPTION" or "REQUIREMENT", cbc:ValueDataTypeCode value must be "NONE".
+

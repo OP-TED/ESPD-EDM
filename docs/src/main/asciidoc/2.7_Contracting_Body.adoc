@@ -1,0 +1,183 @@
+=== 2.7 Contracting Body
+
+==== Related information requirements
+
+See formal requirements related to the contracting authorities in the e-Sens site: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-001[_tbr070-001_]*
+
+==== Mock-up
+
+In principle, the ESPD-EDM asks for a few data about the procurer (i.e. the buyer, body or entity). The essential (compulsory) data for the contracting body are namely the one aimed to identify it, i.e. its official name and the country. The figure below represents a possible GUI interface for these two data. However the UBL specification provides many other data elements some of which may be interesting to include in the ESPD, notably data about the means to contact the contracting body (see below the list of elements possible in the ESPD).
+
+Therefore software applications may take leverage of the richness of UBL-2.3 to collect also data about the buyer contact, end-point, and other data possible in the ESPD.
+
+image:Procurer_identification_mockup.jpg[Procurer identification,width=600,height=100]
+
+_Figure 17. Data about the procurer, mock-up_
+
+==== XSD Schema
+
+The UBL-2.3 model provides a component that fits the purpose of holding data about the procurer: the common aggregate component cac:ContractingParty.
+
+image:cacContractingParty_XSD_Schema_global_vision.jpg[cac:ContractingParty XSD Schema, global vision,width=400,height=286]
+
+_Figure 18. cac:ContractingParty XSD Schema, global vision_
+
+The cac:ContractingParty class is a specialisation of cac:Party. Hence, the main data about the procurer is in this associated cac:Party component:
+
+image:cacParty_XSD_Schema_global vision.jpg[cac:Party XSD Schema, global vision,width=254,height=718]
+
+_Figure 19. cac:Party XSD Schema, global vision_
+
+The cac:Party class in turn associates a very rich class that holds the data about the Party address, including the country (see the UBL-2.3 specification for the complete list of fields):
+
+image:cacPostalAddress,_XSD_Schema.jpg[cac:PostalAddress, XSD Schema,width=566,height=385]
+
+_Figure 20. cac:PostalAddress, XSD Schema_
+
+Notice also that the class associated to cac:Party to place the data about how to contact the contracting body:
+
+image:cacContact_XSD_Schema.jpg[cac:Contact, XSD Schema,width=407,height=253]
+
+_Figure 21. cac:Contact, XSD Schema_
+
+==== Expected elements
+
+[cols=",",options="header",]
+
+_Table 8. Contracting body, expected elements_
+|===
+|*Class name*: |cac:ContractParty
+|*Definition*: |The buyer or contracting entity who is buying supplies, services or public works using a tendering procedure as described in the applicable directive (e.g. Directives 2014/24/EU, 2014/25/EU).
+|*Business rule(s)*: |Common (BR-REQ-20#1)
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:ContractingParty
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:BuyerProfileURI* |Identifier |0..1 |URL of the web section, in the contracting body web site, that contains information about the contracting body, the norms it applies when contracting, published calls for tenders, Prior Information Notices and Contract Notices as well as the related procurement documents, contract award notices, etc. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: Notices published at national level shall not contain information other than that contained in the notices dispatched to the Publications Office of the European Union or published on a buyer profile, but shall indicate the date of dispatch of the notice to the Publications Office of the European Union or its publication on the buyer profile (Directive link:http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32014L0024&from=ES[2014/24/EU, Art. 52.2]).
+
+|===
+
+[cols=",",options="header",]
+
+_Table 9. Contracting body party, expected elements_
+|===
+|*Class name*: |cac:Party
+|*Definition*: |Main data placeholder structure for, in this case, the contracting body.
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:ContractingParty/cac:Party
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cac:PartyIdentification/cbc:Identifier* |Identifier |0..1 |The national identifier of a contracting body as it is legally registered (e.g. VAT identification). a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-001[_tbr070-001_].
+
+*Rule*: More than one identifier can be specified. When possible use the VAT identification of the contracting body (see the link:http://ec.europa.eu/taxation_customs/vies/[VIES] platform for a EU cross-border national VAT number verification system). The code list link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[EOIDType] may be used to indicate the type of identifier used as a value of the schemeID attribute, e.g. schemeID="VAT").
+
+*Rule scope*: Common (BR-REQ-20#4, BR-OTH-02)
+
+|*cbc:WebsiteURI* |Identifier |0..1 |The website of the contracting body. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: For online services (e.g. Web Services, REST services, etc. use the component cac:EndPointID.
+
+|*cbc:EndPointID* |Identifier |0..1 |Electronic address of the contracting body. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-001[_tbr070-001_].
+
+*Rule*: Use it for online services (e.g. Web Services, REST services, Delivery ID, ftp, etc. For the official web site of the Party use always the cac:Party/cbc:WebsiteURI). An end-point identifier MUST have a scheme identifier attribute (e.g.eSENSParty Identifier Scheme). Should be considered for all actors (buyer, service provider, economic operator) as an eDeliveryID.
+
+|*cac:PartyName/cbc:Name* |Text |1 |The name of the contracting body as it is registered. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-001[_tbr070-001_].
+
+*Rule*: Mandatory. Use the official name of the contracting body. The PartyName class has an associated basic element "cbc:Name". See XML example below.
+
+*Rule scope*: Common (BR-REQ-20#2)
+
+|===
+
+[cols=",",options="header",]
+
+_Table 10. Contracting body postal address, expected elements_
+|===
+|*Class name*: |cac:PostalAddress
+|*Definition*: |Contractinng body address information.
+|*Business rule(s)*: |None
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:ContractingParty/cac:Party/cac:PostalAddress
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:StreetName* |Text |0..1 |The main address line in an address. Usually the street name and number or post office box. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|*cbc:CityName* |Text |0..1 |The common name of a city where the address is located. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|*cbc:PostalZone* |Text |0..1 |The identifier for an addressable group of properties according to the relevant postal service, such as a ZIP code or Post Code. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|*cac:Country/cbc:IdentificationCode* |Code |1 |A code that identifies the country. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: The country of the contracting body must always be specified. Compulsory use of the code list Country from EU Vocabularies).
+
+*Rule scope*: Common (BR-REQ-20#3, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
+
+|*cac:Country/cbc:Name* |Text |0..1 |The name of the country. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|===
+
+[cols=",",options="header",]
+
+_Table 11. Contact of the contracting body, expected elements_ 
+|===
+|*Class name*: |cac:Contact
+|*Definition*: |Used to provide contacting information for a party in general or a person.
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:ContractingParty/cac:Party/cac:Contact
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:Name* |Text |0..1 |The name of the contact point. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|*cbc:Telephone* |Text |0..1 |A phone number for the contact point. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|*cbc:Telefax* |Text |0..1 |A fax number for the contact point. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|*cbc:ElectronicMail* |Text |0..1 |An e-mail address for the contact point. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-006[_tbr070-006_].
+
+*Rule*: None.
+
+|===
+
+

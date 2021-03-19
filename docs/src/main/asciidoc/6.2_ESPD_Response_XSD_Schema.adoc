@@ -1,0 +1,17 @@
+=== 6.2 ESPD Response XSD Schema
+
+For the ESPD Response, the ESPD-EDM V3.0.0 uses the UBL-2.3 document named QualificationApplicationResponse.xsd XSD Schema. This schema can be found under the folder link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/xsdrt/maindoc[dist/xsdrt/maindoc] (or the equivalent documented xsd folder).
+
+The figure below shows the XSD Schema defined by UBL-2.3 for this document, which replaces the Schema UBL 2.2. Only the first level components of the schema are shown. The inner sub-elements and sub-classes are covered in detail in the following sub-sections of this document. The ESPD Response share many elements with the ESPD Request. For those elements that have already been described in the ESPD Request please see the sections above in this document where those elements were explained.
+
+Notice that, in the UBL-2.3 Schema there are only four mandatory elements: cbc:IssueDate, ContractFolderID, cac:ContractingParty (the buyer) and cac:EconomicOperatorParty (the economic operator).
+
+[NOTE]
+====
+This section about the ESPD Response does not cover those information elements that were already described in the ESPD Request, unless a characteristic related to the ESPD Response needs to be clarified. Thus for details about elements like cac:ContractingAuthorityParty, ProcurementProject, ProcurementProjectLot and AdditionalDocumentReference refer to the section *2. The ESPD Request*.
+====
+
+image:Qualification_Application_Response_XSD_Schema.jpg[QualificationApplicationResponse XSD Schema,width=397,height=678]
+
+_Figure 191. QualificationApplicationResponse XSD Schema, global view_
+

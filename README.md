@@ -1,5 +1,5 @@
-# ESPD Exchange Data Model (EDM)
-# Version 2.1.1
+# ESPD Exchange Data Model (EDM) **UNDER DEVELOPMENT**
+# Version 3.0.0
 
 ## Introduction
 
@@ -11,6 +11,7 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 ## Documentation
 
+* [v3.0.0](https://espd.github.io/ESPD-EDM/v3.0.0/)
 * [v2.1.1](https://espd.github.io/ESPD-EDM/v2.1.1/)
 * [v2.1.0](https://espd.github.io/ESPD-EDM/v2.1.0/)
 * [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
@@ -23,7 +24,11 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 Dear ESPD implementation community, 
 
-We are happy to inform you about the future release of ESPD EDM version 2.1.1 on December 13th.
+We are happy to inform you about the future release of ESPD EDM version 3.0.0 on March 2021
+
+### Version 3.0.0 (March 2021)
+This new version of the ESPD-EDM aims to align the logic to eForms for future alignment and their joint usage in procurement. With the same purpose, the ESPD-EDM has updated the UBL version to 2.3. For more information regarding the release, please refer to the [release notes](https://espd.github.io/ESPD-EDM/v3.0.0/release_notes.html).
+
 
 ### Version 2.1.1 (December 2019)
 This version is currently under development and its precise release date is yet to be announced.
@@ -91,19 +96,19 @@ dependencies {
 }
 ```
 
-### Version 2.1.0
+### Version 3.0.0
 
 **Please note that this version requires Java 8**
 
 ```xml
 <dependency>
   <groupId>eu.europa.ec.grow.espd</groupId>
-  <artifactId>exchange-model2</artifactId>
-  <version>2.1.0</version>
+  <artifactId>exchange-model3</artifactId>
+  <version>3.0.0</version>
 </dependency>
 ```
 
-Version 2 of the `Exchange Model` has a different `artifactId`, i.e. `exchange-model2`, in order to support 
+Version 3 of the `Exchange Model` has a different `artifactId`, i.e. `exchange-model2`, in order to support 
 the usage of both versions at the same time inside a `Java` `Maven` project.
 
 In order to use the snapshot version, you might have to enable the `Maven` snapshot repository in your `pom.xml`.

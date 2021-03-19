@@ -1,0 +1,56 @@
+=== 7.1 ISO Schematron
+
+Schematron is a rule-based validation language to specify validation processes against XML documents. ISO Schematron is an ISO (ISO/IEC 19757-3:2006) and open standard. Please visit the link:http://www.schematron.com/[ISO Schematron] web-site for the technical specification and details.
+
+==== ESPD Business Rules
+
+The ESPD-EDM uses Schematron to validate business rules, the business requirements taken as input for these rules are specified in the link:http://wiki.ds.unipi.gr/display/ESPDInt[ESPDint Business Document].
+
+These business rules can be typified as:
+
+[arabic]
+. *Semantic validations*: e.g. The "cac:TenderingCriterionResponse" in a Response document MUST match one, and only one, of the "cac:TenderingCriterionProperty" elements in the XML instance of the corresponding ESPD-Request;
+. *Assertions* about the presence or absence of patterns in XML documents: e.g. all business rules that apply to identifier nodes: mandatory attributes, structure of the identifier, etc.;
+. *Code lists* validations: e.g. values and attributes for each code list element;
+. *Other validations* that an XSD cannot do: e.g. Validates that one of the nodes has at least 1 child.
+
+The following image shows different examples of validations:
+
+image:Non-codelist_business_rules.jpg[Non-code list business rules,width=591,height=329]
+
+The validation of code lists is explained in sections below.
+
+==== Schematron Architecture
+
+ISO Schematron executes the validations in two stages:
+
+[arabic]
+. *Design and implementation of the SCH files*. SCH stands for Schematron Schema and contains the set of rules to be validated within the XML document.
+. *Execution of the implemented validations* in the SCH files:
+[loweralpha]
+.. Transformation of SCH files into XSLT files in order to be able to execute the validations against the XML.
+.. Execution of the validations using the XSLT files to get the final report.
+
+image:Architecture_non-codelist_validation.jpg[Architecture for non-code list validation,width=567,height=284]
+
+==== What does the SCH file contain?
+
+[arabic]
+. *Set of rules* specifying the context (the element(s) and/or attribute(s) which the assertions affect);
+. Each rule have a *set of assertions* with the tests that must be evaluated in the context.
+
+image:SCH_file_example.jpg[SCH file example,width=617,height=194]
+
+==== Execution
+
+As a basis of the implementation, it has been taken into account:
+
+[arabic]
+. Schematron "skeleton" implementation in link:https://github.com/SCHEMATRON[XSLT].
+
+image:Execution_files.jpg[Execution files,width=568,height=140]
+
+This example describes the execution of the validation process using the link:http://saxon.sourceforge.net/[Saxon library] to execute XSLT files and the XSLT provided as a basis:
+
+image:Execution_validation_process.jpg[Execution of the validation process,width=528,height=284]
+

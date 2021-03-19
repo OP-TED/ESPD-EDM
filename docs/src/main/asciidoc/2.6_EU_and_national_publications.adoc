@@ -1,0 +1,201 @@
+=== 2.6 EU and national publications
+
+[cols=",",]
+|===
+|*REQUIREMENT* link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_] |*The Buyer must be able to provide information about official journals or gazettes where the procurement procedure is announced. For procurement projects above the threshold it is compulsory to refer to the Contract Notice published in link:http://ted.europa.eu/TED/[TED].*
+|===
+
+ESPD conformant software applications will have to provide the means for the user to supply references to EU and national publications about the procurement procedure, and notably about the Notices to which the ESPD is related.
+
+==== Mock-up
+
+The Figure below is a mock-up representation of how to collect the data expected to reference publications on official gazettes or journals. This mechanism can also be used for contracts below the threshold, obviously.
+
+image:Publications_mock-up.jpg[Publications mock-up,width=500,height=459]
+
+_Figure 14. Publications, mock-up_
+
+==== XSD Schema
+
+The ESPD EDM uses the UBL component cac:AdditionalReferenceDocument to allow the inclusion of references to documents that they might consider relevant, and amongst them the reference to the Contract Notice on the TED (for above-the-threshold contracts) and to possible Notices on national journals and boards.
+
+The class used for this, cac:AdditionalDocumentReference ''is a'' cac:DocumentReference class defined in the UBL-2.3 Common Aggregate Components library).
+
+image:cacDocumentReference_XSD diagram.jpg[cac:DocumentReference, XSD diagram,width=424,height=458]
+
+_Figure 15. cac:DocumentReference, XSD diagram_
+
+The class cac:AdditionalDocumentReference aggregates a subclass cac:Attachment that is used by ESPD to place the URI, name of the document and descriptions.
+
+image:Associated_class cacExternalReference_XSD diagram.jpg[Associated class cac:ExternalReference XSD diagram,width=531,height=308]
+
+_Figure 16. Associated class cac:ExternalReference, XSD diagram_
+
+==== Expected elements
+
+As you can see from the XSD Schema the cac:DocumentReference class has a rich data structure. However, to refer to publications such as the TED and national publications, the ESPD most expects at most the following data:
+
+[cols=",",options="header",]
+
+_Table 6. Reference to additional documents, expected elements_ 
+|===
+|*Class name*: |cac:AdditionalDocumentReference
+|*Definition*: |A reference to an additional document associated with this document.
+|*Business rule(s)*: |Common (BR-COM-10)
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:AdditionalReferenceDocument
+|*Context of Use*: |In this case this reference points at a document published on the Supplement of the European Official Journal or on a national journal.
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:ID* |Identifier |1 |The identifier for the referenced document, generally issued by the entity responsible for the document. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: If the document referenced is a Contract Notice published on TED the ID must follow the scheme defined by the Publications Office: [][][][]/S [][][]-[][][][][][] (e.g. 2015/S 252-461137). If at the time of drafting the ESPD document the Publication Office has not published yet the Contract Notice the value 0000/S 000-000000 value must be used to indicate that a temporary identifier is being used.
+
+*Rule scope*: Common (BR-COM-10#1, BR-OTH-02)
+
+|*cbc:UUID* |Identifier |0..1 |A universally unique identifier that can be used to reference this ESPD document instance. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr92-013[_tbr92-013_].
+
+*Rule*: If the referenced document has a UUID to identify its particular instance refer to that UUID here.
+
+|*cbc:DocumentTypeCode* |Code |1 |The type of document being referenced, expressed as a code. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: For the ESDP-EDM it is compulsory use of the Code List “docref-content-type”. See example below on how to specify the OJS Contract Notice. If, for other documents, the type of document is not available in this list, provide the code “Other” and describe the content in the element DocumentType.
+
+*Rule scope*: Common (BR-OTH-01, BR-OTH-01#3, BR-OTH-03)
+
+|*cbc:DocumentType* |Text |0..1 |The type of document being referenced, expressed as text. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: Optionally use the attribute languageID to indicate the language of the text. Use the Code List “Language” for the value of the languageID attribute.
+
+*Rule scope*: Common (BR-OTH-01, BR-OTH-01#4, BR-OTH-03)
+
+|*cbc:IssueDate* |Date |0..1 |Date when the document was issued by the buyer. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr92-013[_tbr92-013_].
+
+*Rule*: Format "YYYY-MM-DD". If available in the referenced document place here the data of publication by the buyer.
+
+|*cbc:IssueTime* |Time |0..1 |Time when the document was issued by the buyer. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-002[_tbr92-013_].
+
+*Rule*: If available in the referenced document place here the time of publication by the buyer.
+
+|===
+
+Beware that the ESPD document do not embed the content of referenced documents but instead make a reference to its source. Thus the class ‘DocumentReference’ aggregates a ‘cac:Attachment’ class that allows for embedding the content or making reference to an external source of the content, which is the preferred way in ESPD (see XSD schema above):
+
+[cols=",",options="header",]
+
+_Table 7. External Reference_ 
+|===
+|*Component name*: |cac:ExternalReference
+|*Definition*: |A reference to the authentic source of content of this document.
+|*File*: |dist/common/xsdrt/UBL-CommonAggregateComponents-2.3.xsd
+|*Path*: |/QualificationApplicationRequest/cac:AdditionalReferenceDocument/cac:Attachment/cac:ExternalReference
+|===
+
+[cols=",,,,",options="header",]
+|===
+|*Components* |*Type* |*Card* |*Description* |*Requirements*
+|*cbc:URI* |Identifier |0..1 |The Uniform Resource Identifier (URI) that identifies where the document is located. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: None.
+
+|*cbc:FileName* |Text |0..1 |The title of the document. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: Originally this field is the placeholder for the name of the file (e.g. PLACE-ContractNotice-2017-12452.xml. However, as the UBL component does not have a placeholder for a name or title, the ESPD documents use it for a short descriptive title of the document being referenced.
+
+|*cbc:Description* |Text |0..n |Short description of the document. a|
+*Information Requirement*: link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: If the document being referenced is a Notice being published on TED, use two description lines. Use the second description line to place therein the temporary number received from TED. See example and comments below.
+
+*Rule scope*: Common (BR-COM-10#2, BR-COM-10-S10, BR-COM-10-S20, BR-COM-10-S30)
+
+|===
+
+==== XML Example
+
+The XML snippet below illustrates how to use the cac:AdditionalDocumentReference in the ESPDRequest XML document to refer to a Contract Notice published in TED and on a national procurement board:
+
+[source,xml]
+----
+<!--- Root elements eliminated for the sake of brevity -->
+
+<!-- Reference to the Contract Notice published on TED -->
+
+<cac:AdditionalDocumentReference>
+
+<cbc:ID schemeAgencyID="EU-COM-OP">2017/S 142-293520</cbc:ID>
+
+<cbc:DocumentTypeCode listID="docref-content-type" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">TED_CN</cbc:DocumentTypeCode>
+
+<cac:Attachment>
+
+<cac:ExternalReference>
+
+<!-- Beware XML URI fields may require encoded URLs -->
+
+<cbc:URI schemeAgencyID="EU-COM-OP">http://ted.europa.eu/udl?uri%3DTED:NOTICE:293520-2017:TEXT:EN:HTML%026src%3D0</cbc:URI>
+
+<cbc:FileName>Spain-Zamora: Repair and maintenance services</cbc:FileName>
+
+<cbc:Description>Repair and maintenance services. Real estate services.</cbc:Description>
+
+<cbc:Description>293520-2017</cbc:Description>
+
+</cac:ExternalReference>
+
+</cac:Attachment>
+
+</cac:AdditionalDocumentReference>
+
+<!-- Reference to the Contract Notice published on the Spanish Central Government eTendering Platform -->
+
+<cac:AdditionalDocumentReference>
+
+<!-- Contract Notice publishied on the Spanish Central eTendering Platform "PLACE" Plataforma de Contratación del Sector Público -->
+
+<cbc:ID schemeAgencyID="PLACE">3.17/20830.0160</cbc:ID>
+
+<!-- Contract Notice (CN) published on a National Government Official Journal -->
+
+<cbc:DocumentTypeCode listID="docref-content-type" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NOJCN</cbc:DocumentTypeCode>
+
+<cac:Attachment>
+
+<cac:ExternalReference>
+
+<!-- Beware XML URI fields may require encoded URLs -->
+
+<cbc:URI schemeAgencyID="PLACE">https://contrataciondelestado.es/wps/portal/!ut/p/b1/pY_LDoIwEEW_hQ8wM5S2wJKH5REUVEDbjenCGI3Axvj9gmFrMXF2Nzkncy8okDahHD2XMAYnUL1-3a76eRt6_Ziy4me6LqNIpAS9gxMjKeKm4ekUyQhIA5AQo5-w2WdORNu8rfghSxCzVMRFY7NR57_5-OUC_K-_t9j_CMqMkBkwTfwAhg3bdOguIEfMPQfthedkvoNluB8f5dWmrhJiI3KoQYbhEkYnLA-hUw8hhJ_dqV7pwLLeHJySpA!!/</cbc:URI>
+
+<cbc:FileName>Suministro y transporte de balasto</cbc:FileName>
+
+<cbc:Description>Suministro y transporte de balasto para el tramo Zamora — Pedralba de la Línea de Alta Velocidad Olmedo — Lubián — Ourense. Subtramo 8.</cbc:Description>
+
+</cac:ExternalReference>
+
+</cac:Attachment>
+
+</cac:AdditionalDocumentReference>
+
+</QualificationApplicationRequest>
+----
+
+. For TED Notices you must use the Publications Office Official Journal Supplement number in its original format [][][][]/S [][][]-[][][][][][], e.g. 2017/S 142-293520. Notice that the schemeAgencyID is EU-COM-OP (OP standing for 'Publications Office').
+. The jurisdiction scope of this document is typified in the Code List docref-content-type (see file dist/cl/ESPD-CodeLists-V3.0.0 in the distribution package). *Beware that the name and content of this Code List has changed from the previous ESPD-EDM version 2.1.1*.
+. The ESPD documents never embed the actual content. Rather the content is always referenced from its original source (alignment to the Once-Only-Principle).
+. The title of the CN has to be placed in the FileName field of the attachment. UBL does not provide a placeholder fo the title of the document.
+. In the case of publication on the TED, at ESPD Request preparation time, the procurer does not have yet the OJS number, but can receive a temporary CN identifier (Received Notice Number). To save this number in the DocumentReference component create two cbc:Description elements and use the second one to place this Received Notice Number. If you do not have a description for the CN then use a 'dummy' content for the first description, e.g. <cbc:Description>_</cbc:/Description>.
+. Notice how the schemeAgencyID is used in this example to specify that the national Agency that created this reference to the national publication (e.g. "PLACE" to refer to the ID of the national electronic board where the CN was published). The pattern of the ID is the one created by the Spanish buyer.
+. In this case the code NOJCN means 'Contract Notice (CN) published on a National Government Official Journal' (see file ESPD-CodeLists-V3.0.0) in the distribution package.
+
