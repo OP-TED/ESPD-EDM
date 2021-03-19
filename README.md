@@ -26,7 +26,7 @@ Dear ESPD implementation community,
 
 We are happy to inform you about the future release of ESPD EDM version 3.0.0 on March 2021
 
-### Version 3.0.0 (January 2021)
+### Version 3.0.0 (March 2021)
 This new version of the ESPD-EDM aims to align the logic to eForms for future alignment and their joint usage in procurement. With the same purpose, the ESPD-EDM has updated the UBL version to 2.3. For more information regarding the release, please refer to the [release notes](https://espd.github.io/ESPD-EDM/v3.0.0/release_notes.html).
 
 
