@@ -1,4 +1,4 @@
-# ESPD Exchange Data Model (EDM) **UNDER DEVELOPMENT**
+# ESPD Exchange Data Model (EDM)
 # Version 3.0.0
 
 ## Introduction
