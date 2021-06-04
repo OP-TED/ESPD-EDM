@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
 
     Illustration of criterion constraints - 03 ESPD Common Criterion BR.sch
-	ESPD Version: 2.1.0
+	ESPD Version: 2.1.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-CR">
@@ -22,10 +22,10 @@
 			<!-- Common variables -->
 			<let name="currentID" value="cbc:ID"/>
 			<let name="currentIDExist" value="(cbc:ID) and not(normalize-space(cbc:ID) = '')"/>
-			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>
+			<let name="applicationType" value="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
 			
-			<let name="ElementUUID" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.1.0.xml')//cac:TenderingCriterion[cbc:ID = $currentID] 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.1.0.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
+			<let name="ElementUUID" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID] 
+				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
 			<let name="ElementUUIDExists" value="(count($ElementUUID/cbc:ID) = 1)"/>
 			
 			<!-- Cardinality constraints -->
@@ -45,7 +45,7 @@
 			<let name="currentCode" value="cbc:CriterionTypeCode"/>
 			
 			<!-- BR-TC-02#02: /cac:TenderingCriterion/cbc:ID must match the element UUID column from [RD03] -->
-			<assert test="not($currentIDExist) or ($ElementUUIDExists and ($currentIDExist))" flag="fatal" id="BR-TC-02-02">Each criterion must use the UUID supplied by e-Certis. The '/cac:TenderingCriterion/cbc:ID = <value-of select="$currentID"/>' is not defined in e-Certis.</assert>
+			<assert test="(not($currentIDExist) or ($ElementUUIDExists and ($currentIDExist)))" flag="fatal" id="BR-TC-02-02">Each criterion must use the UUID supplied by e-Certis. The '/cac:TenderingCriterion/cbc:ID = <value-of select="$currentID"/>' is not defined in e-Certis.</assert>
 			<!-- BR-TC-04: /cac:TenderingCriterion /cbc:CriterionTypeCode must match the element UUID column from [RD03] -->
 			<assert test="not($ElementUUIDExists) or ($ElementUUID/cbc:CriterionTypeCode = $currentCode and ($ElementUUIDExists))" flag="fatal" id="BR-TC-04">The criterion type code should match the one from e-Certis. The code '/cac:TenderingCriterion/cbc:CriterionTypeCode = <value-of select="$currentCode"/>' is not defined in e-Certis.</assert>
 		</rule>
@@ -71,15 +71,15 @@
 			<let name="parentID" value="ancestor::*[1]/cbc:ID"/>
 			
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
-			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>
+			<let name="applicationType" value="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>
 			
-			<let name="ElementUUID_SUB" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.1.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID] 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.1.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+			<let name="ElementUUID_SUB" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID] 
+				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
 			<let name="ParentUUID_SUB" value="$ElementUUID_SUB[parent::*[cbc:ID = $parentID]][1]"/>
 			
 			<!-- cac:TenderingCriterionPropertyGroup -->
-			<let name="ElementUUID_T" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.1.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID] 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.1.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+			<let name="ElementUUID_T" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID] 
+				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
 			<let name="ParentUUID_T" value="$ElementUUID_T[parent::*[cbc:ID = $parentID]][1]"/>
 			
 			<let name="ElementUUID_TExists" value="(count($ParentUUID_T/cbc:ID) &gt; 0)"/>
@@ -87,6 +87,8 @@
 			
 			<let name="ElementUUIDExists" value="$ElementUUID_SUBExists or $ElementUUID_TExists"/>
 			<let name="currentIDExist" value="(cbc:ID) and not(normalize-space(cbc:ID) = '') and ($ElementUUIDExists)"/>
+			
+			<let name="IsSubTenderingCriterionChild" value="count(ancestor::cac:SubTenderingCriterion) &gt; 0"/>
 			
 			<!-- Cardinality constraints -->
 			<!-- BR-TC-12: The ID which identifies one specific property is mandatory -->
@@ -104,7 +106,7 @@
 						
 			<!-- Subsidiary Tendering Criterion Property Group (identifier, type) exists in the data_structure, and within the same tendering criterion property. -->
 			<!-- BR-TC-13: Each Criterion is defined in e-Certis and must use the UUID supplied by e-Certis. -->
-			<assert test="(($ElementUUIDExists) and ((cbc:ID) and not(normalize-space(cbc:ID) = ''))) or not((cbc:ID) and not(normalize-space(cbc:ID) = ''))" flag="fatal" id="BR-TC-13">Compulsory use of the UUIDs supplied by e-Certis. The <value-of select="name()"/> ('<value-of select="name(ancestor::*[1])"/>[cbc:ID = '<value-of select="$parentID"/>']/<value-of select="name()"/>[cbc:ID = '<value-of select="$currentID"/>']') does not exist in e-Certis.</assert>
+			<assert test="$IsSubTenderingCriterionChild or (($ElementUUIDExists) and ((cbc:ID) and not(normalize-space(cbc:ID) = ''))) or not((cbc:ID) and not(normalize-space(cbc:ID) = ''))" flag="fatal" id="BR-TC-13">Compulsory use of the UUIDs supplied by e-Certis. The <value-of select="name()"/> ('<value-of select="name(ancestor::*[1])"/>[cbc:ID = '<value-of select="$parentID"/>']/<value-of select="name()"/>[cbc:ID = '<value-of select="$currentID"/>']') does not exist in e-Certis.</assert>
 			<!-- BR-TC-15: Compulsory use of the group of criteria supplied by e-Certis. -->
 			<assert test="not($currentIDExist) or (($currentIDExist) and not($ElementUUID_TExists)) or ($ParentUUID_T/cbc:PropertyGroupTypeCode = $currentCode and ($currentIDExist) and ($ElementUUID_TExists))" flag="fatal" id="BR-TC-15-01">The property group type code should match the one from e-Certis. The tendering criterion property group ('<value-of select="$currentCode"/>') does not exisit in the e-Certis for the following element '<value-of select="name(ancestor::*[1])"/>[cbc:ID = '<value-of select="$parentID"/>']/<value-of select="name()"/>[cbc:ID = '<value-of select="$currentID"/>'].</assert>
 			<assert test="not($currentIDExist) or (($currentIDExist) and not($ElementUUID_SUBExists)) or ($ParentUUID_SUB/cbc:PropertyGroupTypeCode = $currentCode and ($currentIDExist) and ($ElementUUID_SUBExists))" flag="fatal" id="BR-TC-15-02">The property group type code should match the one from e-Certis. The subtendering criterion property group ('<value-of select="$currentCode"/>') does not exisit in the e-Certis for the following element '<value-of select="name(ancestor::*[1])"/>[cbc:ID = '<value-of select="$parentID"/>']/<value-of select="name()"/>[cbc:ID = '<value-of select="$currentID"/>'].</assert>
@@ -119,16 +121,16 @@
 			<let name="currentValueData" value="cbc:ValueDataTypeCode"/>
 			
 			<let name="TCPropertyGroupID" value="ancestor::*[1]/cbc:ID"/>		
-			<let name="applicationType" value="/*[1]/cbc:QualificationApplicationTypeCode"/>	
+			<let name="applicationType" value="upper-case(/*[1]/cbc:QualificationApplicationTypeCode)"/>	
 			
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
-			<let name="ElementUUIDSTC" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.1.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.1.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
+			<let name="ElementUUIDSTC" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
+				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
 			<let name="ElementUUID_STCExists" value="(count($ElementUUIDSTC) &gt; 0)"/>
 			
 			<!-- cac:TenderingCriterionPropertyGroup -->
-			<let name="ElementUUIDTC" value="if ($applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-REGULATED.V2.1.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
-				else document('ESPD-CriteriaTaxonomy-SELFCONTAINED.V2.1.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>		
+			<let name="ElementUUIDTC" value="if ($applicationType!='EXTENDED' and $applicationType!='SELFCONTAINED') then document('ESPD-CriteriaTaxonomy-Basic.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty 
+				else document('ESPD-CriteriaTaxonomy-Extended.V2.1.1.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>	
 			<let name="ElementUUID_TCExists" value="(count($ElementUUIDTC) &gt; 0)"/>
 			
 			<let name="ElementUUIDExists" value="$ElementUUID_TCExists or $ElementUUID_STCExists"/>
@@ -148,10 +150,9 @@
 			<!-- Other rules -->
 			<!-- BR-TC-20-02 / BR-TC-21-03: /cac:TenderingCriterionProperty/cbc:TypeCode, cbc:ValueDataTypeCode must match the document [RD03] -->
 			<assert test="not($currentTypeExist) or ((count($ElementUUIDTC[cbc:TypeCode = $currentType])&gt;=1 or count($ElementUUIDSTC[cbc:TypeCode = $currentType])&gt;=1) and ($currentTypeExist))" flag="fatal" id="BR-TC-20-02">The tendering criterion property group ('<value-of select="name(ancestor::*[1])"/>The tendering criterion property type code should match the one from e-Certis. The <value-of select="name(ancestor::*[1])"/>, which 'cbc:ID = <value-of select="$TCPropertyGroupID"/>', does not have a '<value-of select="name(ancestor::*[1])"/>/cac:TenderingCriterionProperty[cbc:ID = <value-of select="$currentID"/>]/cbc:TypeCode = <value-of select="$currentType"/>' defined in e-Certis.</assert>
-			<assert test="not($currentValueTypeExist) or ((count($ElementUUIDTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1 or count($ElementUUIDSTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1) and ($currentValueTypeExist))" flag="fatal" id="BR-TC-21-03">The tendering criterion property value data type should match the one from e-Certis. The <value-of select="name(ancestor::*[1])"/>, which 'cbc:ID = <value-of select="$TCPropertyGroupID"/>', does not have a '<value-of select="name(ancestor::*[1])"/>/cac:TenderingCriterionProperty[cbc:ID = <value-of select="cbc:ID"/>]/cbc:ValueDataTypeCode = <value-of select="cbc:ValueDataTypeCode"/>' defined in e-Certis.</assert>			
+			<assert test="not($currentValueTypeExist) or ((count($ElementUUIDTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1 or count($ElementUUIDSTC[cbc:ValueDataTypeCode = $currentValueData])&gt;=1) and ($currentValueTypeExist))" flag="fatal" id="BR-TC-21-03">The tendering criterion property value data type should match the one from e-Certis. The <value-of select="name(ancestor::*[1])"/>, which 'cbc:ID = <value-of select="$TCPropertyGroupID"/>', does not have a '<value-of select="name(ancestor::*[1])"/>/cac:TenderingCriterionProperty[cbc:ID = <value-of select="$currentID"/>]/cbc:ValueDataTypeCode = <value-of select="$currentValueData"/>' defined in e-Certis.</assert>			
 			
 			<!-- BR-TC-21-02: Verify that the value is different to NONE for properties of type QUESTION. -->
-			<assert test="not($currentTypeExist and $currentValueTypeExist) or ( (cbc:TypeCode='CAPTION' and cbc:ValueDataTypeCode='NONE') or ((cbc:TypeCode='QUESTION' or cbc:TypeCode='REQUIREMENT') and not(cbc:ValueDataTypeCode='NONE')) and ($currentTypeExist and $currentValueTypeExist))" flag="fatal" id="BR-TC-21-02">The type of answer ('cbc:ValueDataTypeCode') must be different to NONE for properties ('cbc:TypeCode') of type QUESTION; or equal to NONE for properties of type CAPTION and REQUIREMENT. The current value is 'cbc:ValueDataTypeCode'='<value-of select="cbc:ValueDataTypeCode"/>' and 'cbc:TypeCode'='<value-of select="cbc:TypeCode"/>'</assert>
 		
 		</rule>
 		

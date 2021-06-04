@@ -15,7 +15,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Definition*:|Any natural or legal person or public entity, including any temporary association of undertakings, which offers the execution of works and/or a work, the supply of products or the provision of services on the market. Information about the party submitting the qualification.
 |*Business rule(s)*:|Common (BR-RESP-10)
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty
 |*Context of use*:|The ESPD Response document.
@@ -31,9 +31,9 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-001[_tbr92-001_]
  
 
-*Rule*: This element is compulsory in the ESPD-EDM V2.1.0 as it is the natural placeholder for several relevant data about the Economic Operator.
+*Rule*: This element is compulsory in the ESPD-EDM V2.1.1 as it is the natural placeholder for several relevant data about the Economic Operator.
 
-*Rule scope*: SELF-CONTAINED (BR-RESP-10-01)
+*Rule scope*: Extended (BR-RESP-10-01)
 
 |*cac:EconomnicOperatorRole*
 |Associated class
@@ -41,7 +41,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |The function of the economic operator when bidding from a consortium (Sole contractor / Lead entity, member of a group, etc.).
 |*Information Requirement*:  
 
-*Rule*: This element is compulsory in the ESPD-EDM V2.1.0 because depending on it different sets of data will be required or not, shown or hidden, processed or skipped.
+*Rule*: This element is compulsory in the ESPD-EDM V2.1.1 because depending on it different sets of data will be required or not, shown or hidden, processed or skipped.
 
 |*cac:Party*
 |Associated class
@@ -59,9 +59,9 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |===
 |*Class name*:|cac:QualifyingParty
 |*Definition*:|The distinctive features or characteristics qualifying an economic operator to be a party in a tendering process (e.g., number of employees, number of operating units, type of business, technical and financial capabilities, completed projects).
-|*Business rule(s)*:|SELF-CONTAINED (BR-RESP-10-01)
+|*Business rule(s)*:|Extended (BR-RESP-10-01)
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:QualifyingParty
 |*Context of use*:|Economic Operator in the ESPD Response document.
@@ -84,7 +84,7 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |The text describing one official classification assigned by an official list or (pre)qualification system to the economic operator.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-001[_tbr92-001_]
 
-*Rule*: Only the 'Description' is expected, but the component cac:ClassificationScheme offers other rich possibilities (see the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/mod/UBL-Entities-2.2-Pre-award.ods[UBL-2.2 model in the distribution package] or in the https://www.oasis-open.org/committees/document.php?document_id=60554[original source] for more details).
+*Rule*: Only the 'Description' is expected, but the component cac:ClassificationScheme offers other rich possibilities (see the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/mod/UBL-Entities-2.2-Pre-award.ods[UBL-2.2 model in the distribution package] or in the https://www.oasis-open.org/committees/document.php?document_id=60554[original source] for more details).
 
 *Rule*: Integer value expected.
 
@@ -94,9 +94,9 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |A monetary amount as a measure of this capability.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-001[_tbr92-001_]
 
-*Rule*: Use it to place here the general Turnover of the EO (for statistical purposes). Compulsory assignment of a value to the attribute currency. The default value should be set to 'EUR'. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CurrencyCode].
+*Rule*: Use it to place here the general Turnover of the EO (for statistical purposes). Compulsory assignment of a value to the attribute currency. The default value should be set to 'EUR'. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[CurrencyCode].
 
-*Rule scope*: SELF-CONTAINED (BR-OTH-01#16, BR-OTH-03)
+*Rule scope*: Extended (BR-OTH-01#16, BR-OTH-03)
 
 |*cac:CompletedTask/cbc:Description*
 |Text
@@ -114,10 +114,10 @@ Please, remember that the elements `cac:ContractingAuthority`, `cac:ProcurementP
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-001[_tbr92-001_]
 
 *Rule*: The attribute `schemeAgencyID` must hold the value retrieved from eCertis that identifies unequivocally the (pre)qualification system. If, for any reason, that value is not available use the default schemeAgencyID "EU-COM-GROW" and the `cac:EconomicOperatorParty/cac:QualifyingParty/cac:Party/cac:PartyIdentificaton/cbc:ID` for the value of the identifier. Additionally you can use the data structure `CRITERION.OTHER.EO_DATA.REGISTERED_IN_OFFICIAL_LIST` to specify an alternative or additional name, identifier and description.
-The code list link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[EOIDType]
+The code list link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[EOIDType]
 should be used to indicate the type of identifier used as a value of the `schemeID` attribute, e.g. `schemeID="VAT"`).
 
-*Rule scope*: SELF-CONTAINED ( BR-RESP-80-S10, BR-RESP-80-S20), Common (BR-RESP-50, BR-OTH-02)
+*Rule scope*: Extended ( BR-RESP-80-S10, BR-RESP-80-S20), Common (BR-RESP-50, BR-OTH-02)
 
 |===
 
@@ -127,7 +127,7 @@ should be used to indicate the type of identifier used as a value of the `scheme
 |*Class name*:|cac:EconomicOperatorRole
 |*Definition*:|The function of the economic operator when bidding from a consortium (Sole contractor / Lead entity, member of a group, etc.).
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationRequest/cac:EconomicOperatorParty/cac:EconomicOperatorRole
 |*Context of use*:|Economic Operator in the ESPD Response document.
@@ -141,9 +141,9 @@ should be used to indicate the type of identifier used as a value of the `scheme
 |1
 |Identifies the role of the economic operator in the bid.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-008[_tbr92-008_]
-*Rule*: Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[EORoleType].
+*Rule*: Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[EORoleType].
 
-*Rule scope*: SELF-CONTAINED (BR-RESP-10-03, BR-OTH-01, BR-OTH-01#15, BR-OTH-03)
+*Rule scope*: Extended (BR-RESP-10-03, BR-OTH-01, BR-OTH-01#15, BR-OTH-03)
 
 |*cbc:RoleDescription*
 |Text
@@ -151,7 +151,7 @@ should be used to indicate the type of identifier used as a value of the `scheme
 |The text describing the role of the economic operator in the bid.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-008[_tbr92-008_]
 
-*Rule*: Software applications should retrieve and reuse the description from the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[EORoleType].
+*Rule*: Software applications should retrieve and reuse the description from the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[EORoleType].
 
 *Rule scope*: Common (BR-RESP-10-02)
 
@@ -164,7 +164,7 @@ should be used to indicate the type of identifier used as a value of the `scheme
 |*Definition*:
 |Main set of data used to identify and contact the economic operator, such as official identifiers, name, address, contact person, representatives, etc.
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party
 |===
@@ -230,7 +230,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr9
 |*Definition*:|Postal address information.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperator/cac:Party/cac:PostalAddress
 |===
@@ -272,7 +272,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr9
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-012[_tbr92-012_].
 
-*Rule*: The country of the contracting body must always be specified. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
+*Rule*: The country of the contracting body must always be specified. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
 
 *Rule scope*: Common (BR-RESP-10-07, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
 
@@ -294,7 +294,7 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr9
 |*Definition*:|Used to provide contacting information for a party in general or a person.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:Contact
 |===
@@ -351,7 +351,7 @@ Please see also the section III.6 Service Provider (for the ESPD Request) for ot
 |*Definition*:|Main information about the service provider.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:ServiceProviderParty/cac:Party
 |===
@@ -408,9 +408,9 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr0
 |*Information Requirement*: 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-021[_tbr070-021_].
 
-*Rule*:  The country of the service provider must always be specified. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
+*Rule*:  The country of the service provider must always be specified. Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[CountryCodeIdentifier] (ISO 3166-1 2A:2006).
 
-*Rule scope*: SELF-CONTAINED (BR-RESP-10-10, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
+*Rule scope*: Extended (BR-RESP-10-10, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
 
 |===
 

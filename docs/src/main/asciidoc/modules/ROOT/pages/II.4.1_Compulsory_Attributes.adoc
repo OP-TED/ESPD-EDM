@@ -6,24 +6,24 @@
 [cols="<1,<4"]
 |===
 |*REQUIREMENT*:
-| *For codes, this ESPD V2.1.0 specification requires always three mandatory attributes: `listID`, `listAgencyID`, and `listVersionID`*.
+| *For codes, this ESPD V2.1.1 specification requires always three mandatory attributes: `listID`, `listAgencyID`, and `listVersionID`*.
 |===
 
 .ESPD Requirement regarding identifiers
 [cols="<1,<4"]
 |===
 |*REQUIREMENT*:
-| *For identifiers, this ESPD V2.1.0 specification requires at least (and always) the mandatory attribute `schemeAgencyID`*.
+| *For identifiers, this ESPD V2.1.1 specification requires at least (and always) the mandatory attribute `schemeAgencyID`*.
 When identifying parties, like the Economic Operator, the Contracting Authority, etc., the attribute `schemeID` SHOULD
 also be used (for this use the code list
-link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[EOIDType]).
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.1/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-EXTENDED-V2.1.1.xlsx[EOIDType]).
 |===
 
 In UBL Codes and identifiers are based on ebXML Core components (UBL conforms to http://docs.oasis-open.org/ubl/UBL-conformance-to-CCTS/v1.0/UBL-conformance-to-CCTS-v1.0.html[ebXML CCTS ISO/TS 15000-5:2005] currently maintained by UN/CEFACT).
 
 One convenient characteristic of these two CCT elements (Codes and Identifiers) is that they use a rich set of attributes that allow to identify their pattern, the name of the list, the URI from where to obtain the list, the Agency that maintains the list, the version of the list, and other. 
 
-UBL-2.2 CCT are defined in the file `CCTS_CCT_SchemaModule-2.2.xsd` (see folders `xsd/common` or `xsdrt/common` in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/espd-edm-v2.1.0.zip[distribution package]).
+UBL-2.2 CCT are defined in the file `CCTS_CCT_SchemaModule-2.2.xsd` (see folders `xsd/common` or `xsdrt/common` in the link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/[distribution package]).
 
 The figure below shows the complete list of attributes for the CCT `CodeType` component. 
 
@@ -38,15 +38,15 @@ And its corresponding definitions, as provided by OASIS UBL (ISO/IEC 19845):
 
 |*Attribute*|*Definition*
 
-|*listID*|The identification of a list of codes (*MANDATORY in ESPD V2.1.0*).
+|*listID*|The identification of a list of codes (*MANDATORY in ESPD V2.1.1*).
 
 |*listAgencyID*|An agency that maintains one or more lists of codes.
 
-|*listAgencyName*|The name of the agency that maintains the list of codes (*MANDATORY in ESPD V2.1.0*).
+|*listAgencyName*|The name of the agency that maintains the list of codes (*MANDATORY in ESPD V2.1.1*).
 
 |*listName*|The name of a list of codes.
 
-|*listVersionID*|The version of the list of codes (*MANDATORY in ESPD V2.1.0*).
+|*listVersionID*|The version of the list of codes (*MANDATORY in ESPD V2.1.1*).
 
 |*name*|The textual equivalent of the code content component.
 
@@ -76,7 +76,7 @@ And its corresponding definitions, as provided by OASIS UBL (ISO/IEC 19845):
 
 |*schemeName*|The name of the identification scheme.
 
-|*schemeAgencyID*|The identification of the agency that maintains the identification scheme (*MANDATORY in ESPD V2.1.0*).
+|*schemeAgencyID*|The identification of the agency that maintains the identification scheme (*MANDATORY in ESPD V2.1.1*).
 
 |*schemeAgencyName*|The name of the agency that maintains the identification scheme.
 

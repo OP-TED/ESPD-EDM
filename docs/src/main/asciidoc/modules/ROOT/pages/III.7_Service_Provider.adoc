@@ -4,15 +4,15 @@
 [cols="<1,<5"]
 |===
 |*REQUIREMENT* 
-http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-011[_tbr070-011_]
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-011[_tbr070-011_]
 |*The ESPD request may contain information of identification regarding an ESPD service provider: Name, Party Identification, Endpoint ID.*
 |===
 
-Service providers are officially recognised organisations that can supply ESPD Request documents (on behalf of the contracting body) with pre-filled information about the contracting body and additional information (e.g. liability statements, see http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr070-012[_tbr070-012_])
+Service providers are officially recognised organisations that can supply ESPD Request documents (on behalf of the contracting body) with pre-filled information about the contracting body and additional information (e.g. liability statements, see http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-012[_tbr070-012_])
 
 The ESPD allows the provision of data about the service provider who produced the ESPD Request document (and equally for the ESPD Response document, on behalf of the economic operator).
 
-Differently to the previous version 1.0.2, the ESPD-EDM version 2.1.0 does not include the `cac:ServiceProvider` as a 'document root component'. Instead, it uses the UBL-2.2 `cac:ContractingParty/cac:Party` associated class `cac:ServiceProviderParty`.
+Since the 2.1.0 version, and unlike to the previous version 1.0.2, the ESPD-EDM, including the current version 2.1.1 does not include the `cac:ServiceProvider` as a 'document root component'. Instead, it uses the UBL-2.2 `cac:ContractingParty/cac:Party` associated class `cac:ServiceProviderParty`.
 
 ==== XSD Schema
 .cac:ServiceProvider XSD Schema
@@ -20,9 +20,9 @@ image::ServiceProvider.png[Service Provider, alt="Service Provider", align="cent
 
 *Notice that*:
 
-. The `cac:Party`class aggregates the class `cac:ServiceProviderParty`; and 
+. The `cac:Party` class aggregates the class `cac:ServiceProviderParty`; and 
 
-. The `cac:ServiceProviderParty`class 'is a' Party. Hence it aggregates a `cat:Party` class too, and uses it to place the main data about the service provider (like name, address, end-point, etc.).
+. The `cac:ServiceProviderParty` class 'is a' Party. Hence it aggregates a `cac:Party` class too, and uses it to place the main data about the service provider (like name, address, end-point, etc.).
 
 .cac:ServiceProvider/cac:Party elements expected for the service provider
 image::ServiceProviderElements.png[service provider's 'Party' elements, alt="service provider's 'Party' elements", align="center"]

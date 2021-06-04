@@ -1,14 +1,14 @@
 
-==== Expected Elements (REGULATED and SELF-CONTAINED)
+==== Expected Elements (Basic and Extended)
 
 .Elements expected in an answer to a criterion property
 [cols="<1,<4"]
 |===
 |*Class name*:|cac:TenderingCriterionResponse
 |*Definition*:|A class to describe a response to a criterion property.
-|*Business rule(s)*:|SELF-CONTAINED (BR-RESP-80, BR-RESP-80-S10, BR-RESP-80-S20), Common (BR-LEAD-10)
+|*Business rule(s)*:|Extended (BR-RESP-80, BR-RESP-80-S10, BR-RESP-80-S20), Common (BR-LEAD-10)
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:TenderingCriterionResponse
 |*Context of use*:|The economic operator uses it in the ESPD Response document to answer a QUESTION. http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_].
@@ -45,7 +45,7 @@
 
 *Rule*: If the value is true, all the evidences associated to this response becomes also confidential.
 
-*Rule scope*: SELF-CONTAINED (BR-TCR-02, BR-OTH-01, BR-OTH-01#19, BR-OTH-03)
+*Rule scope*: Extended (BR-TCR-02, BR-OTH-01, BR-OTH-01#19, BR-OTH-03)
 
 |*cac:ResponseValue*
 |Associated class
@@ -82,7 +82,7 @@
 
 Thus, for example, if in the ESPD Request the expected type is DESCRIPTION the cac:ResponseValue must use the element `cbc:Description`, if INDICATOR `cbc:ResponseIndicator`, if IDENTIFIER `cbc:ResponseID`, etc. 
 
-See the codes used for `cac:ValueDataTypeCode` in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
+See the codes used for `cac:ValueDataTypeCode` in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
 
 This disjointness rule applies to the *type* of the value, but *not to the values of the same type*. Thus, for lists of values that constitute the actual answer (e.g. the list of LotIDs the economic operator tenders to, or a list of CPV codes to describe with granularity an activity), a sequence of `cac:ResponseValues` shall be instantiated in the XML. See the XML examples below.
 
@@ -95,7 +95,7 @@ This disjointness rule applies to the *type* of the value, but *not to the value
 |*Definition*:|A class to describe a period of time.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:ApplicablePeriod
 |*Context of use*:|A class for the economic operator to specify the start date and the end-date when the expected answer to a criterion property is a lapse of time; http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_].
@@ -129,7 +129,7 @@ This disjointness rule applies to the *type* of the value, but *not to the value
 |*Definition*:|A reference to the evidence supporting this criterion property response.
 |*Business rule(s)*:|None
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:EvidenceSupplied
 |*Context of use*:|Used to refer to one ore more evidences that are present in the QualificationApplicationResponse XML instance; http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-017[_tbr92-017_].
@@ -159,7 +159,7 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |*Definition*:|A class to describe the criterion property response value.
 |*Business rule(s)*:|Common (BR-TCR-08, BR-TCR-04)
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:TenderingCriterionResponse/cac:ResponseValue
 |*Context of use*:|Used to specify one value or a collection of values (in the case of a list) as a response to one, and only one, cac:TenderingCriterionProperty that is typified as a QUESTION.
@@ -176,7 +176,7 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 
 *Rule*: Recommendation: use a UUDI-version 4 number. 
 
-*Rule scope*: SELF-CONTAINED (BR-TCR-05)
+*Rule scope*: Extended (BR-TCR-05)
 
 |*cbc:Description*
 |Text
@@ -202,7 +202,7 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |A code used as a reply to the criterion property.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
-*Rule*: Compulsory use of the attributes mentioned in the section "link:##ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes.
+*Rule*: Compulsory use of the attributes mentioned in the section "link:#ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes.
 
 *Rule scope*: Common (BR-OTH-01)
 
@@ -228,7 +228,7 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |An identifier used as a reply to the criterion property.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_]
 
-*Rule*: Compulsory use of the attributes mentioned in the section "link:##ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes. Several identifiers may be linked to one criterion property thus building a list of identifiers. See XML examples (e.g. in Self-contained references ESPD Response, 'Lots tendered the EO tenders to').
+*Rule*: Compulsory use of the attributes mentioned in the section "link:#ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes. Several identifiers may be linked to one criterion property thus building a list of identifiers. See XML examples (e.g. in Extended references ESPD Response, 'Lots tendered the EO tenders to').
 
 |*cbc:ResponseIndicator*
 |Indicator

@@ -3,7 +3,7 @@
 
 As you can see the UBL-2.2 Schema is quite flexible as, except for a few cases practically all the elements are optional.
 
-The ESPD-EDM model, however, adds a few more restrictions regarding the cardinalities of some elements. These can be seen in  the diagram below, which presents the ESPD-EDM V2.1.0 structure for the ESPD Request with its own cardinality restrictions. Notice that ESPD-EDM does not change anything else from the UBL-2.2 Schema.
+The ESPD-EDM model, however, adds a few more restrictions regarding the cardinalities of some elements. These can be seen in  the diagram below, which presents the ESPD-EDM V2.1.1 structure for the ESPD Request with its own cardinality restrictions. Notice that ESPD-EDM does not change anything else from the UBL-2.2 Schema.
 
 .ESPD-EDM 'QualificationApplicationRequest', UML diagram
 image::ESPDRequest-UML-1stLevel.png[QualificationApplicationRequest-UML, alt="QualificationApplicationRequest-UML", width="600" align="center"]
@@ -14,5 +14,5 @@ If you compare both figures you will observe that:
 
 . Similarly, the cardinalities of aggregate components like `cac:ContractingParty`, `cac:ProcurementProjectLot` and `cac:TenderingCriterion` are different to the UBL-2.2 ones.
 
-The cardinality constraints added by the ESPD are not defined in the XSD Schema. In order to control these constraints the ESPD-EDM uses http://schematron.com/[ISO Schematron] assertions. The ESPD-EDM V2.1.0 distribution package provides Schematron schemata and CVA files footnote:[CVA files are used for the validation of Codes and Identifiers. See the https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist[OASIS Genericode 1.0] specification and http://www.cranesoftwrights.com/bio/gkholman.htm#summary[CRANE SOFTWRIGHTS] site for more details] for the validation of the XML instances (folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/val[_dist/val_]).
+The cardinality constraints added by the ESPD are not defined in the XSD Schema. In order to control these constraints the ESPD-EDM uses http://schematron.com/[ISO Schematron] assertions. The ESPD-EDM V2.1.1 distribution package provides Schematron schemata and CVA files footnote:[CVA files are used for the validation of Codes and Identifiers. See the https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist[OASIS Genericode 1.0] specification and http://www.cranesoftwrights.com/bio/gkholman.htm#summary[CRANE SOFTWRIGHTS] site for more details] for the validation of the XML instances (folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/val[_dist/val_]).
 

@@ -1,5 +1,5 @@
 
-===== Expected Elements (REGULATED and SELF-CONTAINED)
+===== Expected Elements (Basic and Extended)
 
 .Representatives of the economic operator, expected elements
 [cols="<1,<4"]
@@ -8,7 +8,7 @@
 |*Definition*:|Official or legal mandate issued by an authority (e.g. an attorney or a notary) to represent the economic operator as a representative of the economic operator in public procurement procedures.
 |*Business rule(s)*:|Common (BR-RESP-20)
 |*File*:
-|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
+|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
 |*Path*:
 |/QualificationApplicationResponse/cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney
 |*Context of use*:|The economic operator in the ESPD Response document. Use this element to refer to the natural persons that represent the economic operator. See requirement http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr92-018[_tbr92-018_].
@@ -91,7 +91,7 @@ cac:Country/cbc:IdentificationCode*
 |A code that identifies the country. 
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
 
-*Rule*: Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CountryCodeIdentifier].
+*Rule*: Compulsory use of the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[CountryCodeIdentifier].
 
 *Rule scope*: Common (BR-RESP-20-03, BR-OTH-01, BR-OTH-01#5, BR-OTH-03)
 
@@ -103,7 +103,7 @@ cac:Country/cbc:Name*
 |The name of the country. 
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-009[_tbr92-009_]
 
-*Rule*: Try to use the name provided in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.0.ods[CountryCodeIdentifier] and in the language of the user.
+*Rule*: Try to use the name provided in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.1.1/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.1.1.ods[CountryCodeIdentifier] and in the language of the user.
 
 |*cac:PowerOfAttorney/cac:AgentParty/
 cac:Person/cac:Contact/cbc:ElectronicMail*
@@ -133,6 +133,6 @@ cac:Person/cac:Contact/cbc:Telephone*
 
 |===
 
-==== Data Structure (REGULATED or SELF-CONTAINED)
+==== Data Structure (Basic or Extended)
 
 *None*, all the data is placed in the UBL-2.2 component `cac:PowerOfAttorney`

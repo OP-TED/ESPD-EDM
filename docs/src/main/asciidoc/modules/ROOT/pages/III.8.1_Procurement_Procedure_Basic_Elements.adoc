@@ -1,0 +1,62 @@
+
+==== Expected elements
+
+As already explained when describing the root elements of the `QualificationApplicationRequest` document, the identification of the procurement procedure is compulsory for the ESPD documents. This is done by specifying the reference number that the contracting authority assigned to the procedure in the element `cbc:ContracFolderID`.
+
+.Basic ESPD Request: Procurement Procedure reference number
+[cols="<1,<4"]
+|===
+|*Class name*:|QualificationApplicationRequest
+|*Definition*: |"_A structured electronic business document for requesting qualification information through an ESPD (conform to an ESPD template). Directive 2014/24/EU, Art. 59._" (http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-ESPDRequesttransaction(Trdm070)[_ESPD Request transaction (Trdm070)_])
+|*Business rule(s)*:|None
+|*File*: |dist/main/xsdrt/UBL-QualificationApplicationRequest-2.2.xsd
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+|*cbc:ContractFolderID*
+|Identifier
+|1
+|An identifier that is specified by the buyer and used as a reference number for all documents in the procurement process. It is also known as procurement project identifier, procurement reference number or contract folder identifier. A reference to the procurement procedure to which this Qualification document is delivered as a response.
+|*Information Requirement*: 
+http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: Compulsory use of schemeAgencyID attribute. Although not mandatory, it is a good practice to identify the document wiht a UUID. Copies of a document should be identified with a different UUID.
+
+*Rule scope*: BASIC (BR-REG-10), EXTENDED (BR-SC-10)
+|===
+
+The rest of the data related to the Basic ESPD Request go in the `cac:ProcurementProject` class:
+
+.Basic ESPD Request: Procurement Procedure-related data 
+[cols="<1,<4"]
+|===
+|*Class name*:|cac:ProcurementProject
+|*Definition*: |An overall description of the procurement procedure.
+|*Business rule(s)*:|None
+|*File*:|dist/common/xsdrt/UBL-CommonAggregateComponents-2.2.xsd
+|===
+[cols="<1,<1,<1,<2,<2"]
+|===
+|*Components*|*Type*|*Card*|*Description*|*Requirements*
+
+|*cbc:Name*
+|Text
+|0..1
+|A title for the procurement procedure.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: Use the same name that will be used for the Contract Notice.
+
+*Rule scope*: EXTENDED (BR-SC-10#1)
+
+|*cbc:Description*
+|Text
+|0..1
+|A descriptive text for the procurement procedure.
+|*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1.0-tbr070-007[_tbr070-007_].
+
+*Rule*: Use the same description that will be used for the Contract Notice.
+
+|===
+
