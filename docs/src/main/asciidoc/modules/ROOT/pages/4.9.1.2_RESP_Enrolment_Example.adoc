@@ -1,0 +1,78 @@
+ifndef::imagesdir[:imagesdir: images]
+
+The fragment of XML below shows the implementation of the
+''Enrolment in a relevant professional register'' criterion:
+
+[source,xml]
+.XML example of a ''Enrolment in a relevant professional register'' criterion (CRITERION.SELECTION.SUITABILITY.ENROLMENT) 
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6ee55a59-6adb-4c3a-b89f-e62a7ad7be7f</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.SUITABILITY.PROFESSIONAL_REGISTER_ENROLMENT</cbc:TypeCode>
+        <cbc:Name>Enrolment in a relevant professional register</cbc:Name>
+        <cbc:Description>It is enrolled in relevant professional registers kept in the Member State of its establishment as described in Annex XI of Directive 2014/24/EU; economic operators from certain Member States may have to comply with other requirements set out in that Annex.</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>Directive 2014/24/EU</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(2)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1768de86-a6c8-48e4-bd8e-de2f2f7424d0</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">15335c12-ad77-4728-b5ad-3c06a60d65a4</cbc:ID>
+                <cbc:Description>Your answer?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator><!--1-->
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dae5670-cb75-4c97-901b-96ddac5a633a</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL"><!--2-->
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+<cbc:ID>9ac9f19b-e455-4564-a7c3-b95a345070d2</cbc:ID>
+<cac:Attachment>
+    <cac:ExternalReference>
+        <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+    </cac:ExternalReference>
+</cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>Enrolment in a relevant professional register code</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+<1> The EO is enrolled in a professional register
+<2> It provides a URL where to get an online registration certificate
+
+[NOTE]
+====
+* The general rule number 3 is respected (use of the sentence ''Your answer'' to respond the Criterion);
+* The XML structure maps the structure of the data-flow.
+====
+
+

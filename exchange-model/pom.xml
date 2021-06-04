@@ -3,13 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>eu.europa.ec.grow.espd</groupId>
-    <artifactId>exchange-model3</artifactId>
+    <artifactId>exchange-model</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.0</version>
+    <version>1.0.1</version>
 
     <name>exchange-model</name>
     <description>The ESPD Exchange Data Model is the technical representation of the legal European Single Procurement
-        Document. It is used to support interoperability between ESPD services provided all over Europe.
+        Document.
+        It is used to support interoperability between ESPD services provided all over Europe.
     </description>
     <url>https://github.com/ESPD/ESPD-EDM</url>
 
@@ -42,9 +43,10 @@
     </scm>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jaxb2-basics-runtime.version>1.11.1</jaxb2-basics-runtime.version>
+        <jaxb2-basics-runtime.version>0.9.5</jaxb2-basics-runtime.version>
+        <joda-time.version>2.9</joda-time.version>
     </properties>
 
     <distributionManagement>
@@ -64,6 +66,11 @@
             <artifactId>jaxb2-basics-runtime</artifactId>
             <version>${jaxb2-basics-runtime.version}</version>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
         <!-- Consider using this if we want to override the JAXB runtime -->
         <!--<dependency>-->
         <!--<groupId>org.glassfish.jaxb</groupId>-->
@@ -74,36 +81,12 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <!-- here the phase you need -->
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/classes/schema</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>../docs/src/main/asciidoc/dist/xsdrt</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.13.2</version>
+                <version>0.12.3</version>
                 <configuration>
                     <extension>true</extension>
-                    <!-- Use the XSD files from the distribution package in the documentation folder instead of src/main/resources -->
-                    <schemaDirectory>../docs/src/main/asciidoc/dist/xsdrt/maindoc</schemaDirectory>
+                    <schemaDirectory>src/main/resources/schema/maindoc</schemaDirectory>
                     <generateDirectory>src/main/generated</generateDirectory>
                     <removeOldOutput>true</removeOldOutput>
                     <args>
@@ -132,7 +115,7 @@
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons</groupId>
                         <artifactId>jaxb2-namespace-prefix</artifactId>
-                        <version>1.3</version>
+                        <version>1.1</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -150,7 +133,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>2.5.2</version>
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <useReleaseProfile>false</useReleaseProfile>

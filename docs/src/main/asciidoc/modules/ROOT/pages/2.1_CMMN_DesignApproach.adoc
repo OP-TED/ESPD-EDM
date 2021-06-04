@@ -1,0 +1,43 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== Design approach
+
+The ESPD Exchange Data Model (ESPD-EDM) was designed to implement the data requirements expressed in 
+the Annex 2 of the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0007[COMMISSION IMPLEMENTING REGULATION (EU) 2016/7] of 5 January 2016 (from now 
+on "*the Annex to the Regulation 2016/7*"), establishing the standard form for the European Single Document. Additionally to these requirements, the model took also into account the Information 
+Requirements Model specified by the CEN/BII-Workshops.footnote:[http://www.cenbii.eu/] (namely Workshop 3), and the latest developments relating to the Virtual Company 
+Dossier (VCD) in e-Sens.footnote:[http://www.esens.eu/].  
+
+One premise that has ruled the design and implementation life-cycle of the ESPD-EDM has been ''not to reinvent the wheel''. Thus some very early key decisions were: (1) 
+select a mature business language for the naming, design and implementation of the ESPD-EDM; (2) reuse as much as possible existing information components and libraries 
+''as-they-are''; (3) for those entities that are not defined in any standard specification, design new components in such a way that they can be reused in other situations 
+and domains, both in e-Procurement and beyond e-Procurement.
+
+http://docs.oasis-open.org/ubl/UBL-2.1.html[OASIS UBL-2.1] standard was chosen as the best candidate to base the ESPD-EDM upon. The main reasons for this decisions were: (1) The European Commission is already using 
+(and recommending) UBL-2.1 for e-Documents.footnote:[E.g. the Commission's e-Procurement platform, e.Prior, is using UBL-2.1; The ISA Program (namely Action 1.1, about semantics) is recommending UBL and implementing the Core Vocabularies defined in ISA based on UBL-2.1; Pilots and developments, both trans-European and national,  are using UBL-2.1 libraries and/or Naming and Design Rules (e.g. The large Scale Pilot PEPPOL and Open PEPPOL; BRIS, the Business Registers Interconnection System; OIOUBL, in Denmark and Northern Europe, for the e-Invoice; CODICE, the Spanish specification for e-Procurement; etc.).] ; (2) Most of the concepts and components necessary for the ESPD documents were already defined by UBL specifically 
+for e-Procurement; (3) Methodology and tools are available for the development of new documents, the extension of the existing UBL libraries, the semantic validation of 
+XML instances, etc.
+
+
+[.text-left]
+=== Data architecture overview
+
+The ESPD Exchange Data Model re-uses three other models, that were defined in parallel to the ESPD, the Core Criterion Data Model, the Core Evidence Data Model, and the OASIS UBL-2.1 common information components.
+
+[.text-center]
+[[ESPD-EDM]]
+.The ESPD-EDM contains elements defined in three other data models
+image::ESPD-EDM.png[alt="ESPD-EDM", width="300", height="200"]
+
+[.text-left]
+This approach ended up in the development of a ''data architecture''; i.e. different layers of data components. The figure below presents a high-level view of this data architecture for the entire ESPD-EDM. The blocks coloured in green represent libraries of components defined by the UBL-2.1 Technical Committee (TC), whilst the rest have been defined from scratch by COM's ESPD development team.
+
+[.text-center]
+[[data_architecture]]
+.High-level view of the ESPD-EDM data architecture
+image::data_architecture.png[alt="data_architecture", width="600", height="400"]
+
+[.text-left]
+The blocks represented in the figure above represents either a document (e.g. ESPDRequest and ESPDResponse) or a library (the rest of the blocks). Per each document or library one XSD Schema has been implemented. 
+Each Schema has been assigned its own namespace and a specific prefix representing the namespace.

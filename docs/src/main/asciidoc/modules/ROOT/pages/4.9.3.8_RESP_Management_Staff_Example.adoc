@@ -1,0 +1,123 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+The fragment of XML below shows the implementation of this criterion in the ESPD Service:
+
+[source,xml]
+.XML example of a criterion ''Number of managerial staff'' criterion (group CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.*)
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">6346959b-e097-4ea1-89cd-d1b4c131ea4d</cbc:ID>
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.MANAGEMENT.MANAGERIAL_STAFF</cbc:TypeCode>
+        <cbc:Name>Number of managerial staff</cbc:Name>
+        <cbc:Description>The economic operator’s number of managerial staff for the last three years were as follows:</cbc:Description>
+        <ccv:LegislationReference>
+            <ccv-cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</ccv-cbc:Title>
+            <cbc:Description>On public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <ccv-cbc:JurisdictionLevelCode listID="CriterionJurisdictionLevelCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">EU_DIRECTIVE</ccv-cbc:JurisdictionLevelCode>
+            <ccv-cbc:Article>58(4)</ccv-cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32014L0024</cbc:URI>
+        </ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">96defecc-7d32-4957-82e9-aad5f3c5b736</cbc:ID>
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5aacceb3-280e-42f1-b2da-3d8ac7877fe9</cbc:ID>
+                <cbc:Description>Year</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="YEAR">2014</cbc:Quantity><!--1-->
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">42037f41-53af-44df-b6b8-2395cee98087</cbc:ID>
+                <cbc:Description>Number</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="NUMBER">123</cbc:Quantity><!--2-->
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">dac727d8-2cd2-43e0-8561-6f17e25870a4</cbc:ID>
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">49a57870-7fb8-451f-a7af-fa0e7f8b97e7</cbc:ID>
+                <cbc:Description>Year</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="YEAR">2015</cbc:Quantity><!--3-->
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0bb2d3bf-160f-4904-a4e8-ee672bd5cb30</cbc:ID>
+                <cbc:Description>Number</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="NUMBER">456</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">b799d324-358c-48b0-bd5e-6d205969b4a5</cbc:ID>
+            <ccv:Requirement responseDataType="QUANTITY_YEAR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9d0cf1cb-27bc-4747-8579-47dce4d8d490</cbc:ID>
+                <cbc:Description>Year</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="YEAR">2013</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:Requirement responseDataType="QUANTITY_INTEGER">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">668dbc0d-2a3a-49b9-b8e1-8ebbeccd712a</cbc:ID>
+                <cbc:Description>Number</cbc:Description>
+                <ccv:Response>
+                    <cbc:Quantity unitCode="NUMBER">789</cbc:Quantity>
+                </ccv:Response>
+            </ccv:Requirement>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9dae5670-cb75-4c97-901b-96ddac5a633a</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">03bb1954-13ae-47d8-8ef8-b7fe0f22d700</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+<cbc:ID>c3940a02-4181-4102-b55b-5cfd583c1dcf</cbc:ID>
+<cac:Attachment>
+    <cac:ExternalReference>
+        <cbc:URI>http://www.agrismundus.eu/</cbc:URI>
+    </cac:ExternalReference>
+</cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">e2d863a0-60cb-4e58-8c14-4c1595af48b7</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code> Number of managerial staff  code</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+    </ccv:Criterion>
+----
+<1> The EO provides data for the year 2015
+<2> The EO provides the staff in 2015
+<3> Etc. (the EO provides data for the amount of years required in the procurement documents) 
+
+[NOTE]
+====
+* This type of criteria does not follow the general rules 1 and 3;
+* Therefore, *data is expected in any case* (a simple ''yes'' or ''no'', in this case; other selection criteria do also use this
+very simple structure, see  the ''suitability enrolment'' group of criteria, for example);
+* For the time being the ESPD Service only allows a fixed number of tuples (year, quantity). This will be improved in future
+releases of the ESPD Service;
+* Notice that the _unitCode_ value for the expected _QUANTITY_INTEGER_ Response data type is _NUMBER_
+====
+	

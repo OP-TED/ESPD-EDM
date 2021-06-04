@@ -1,0 +1,120 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[subs=+quotes]
+[source,xml]
+.XML example of a conviction exclusion criterion
+----
+<ccv:Criterion>
+        <cbc:ID schemeID="CriteriaID" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">005eb9ed-1347-4ca3-bb29-9bc0db64e1ab</cbc:ID><!--1-->
+        <cbc:TypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="1.0">CRITERION.EXCLUSION.CONVICTIONS.PARTICIPATION_IN_CRIMINAL_ORGANISATION</cbc:TypeCode><!--2-->
+        <cbc:Name>Participation in a criminal organisation</cbc:Name>
+        <cbc:Description>Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for participation in a criminal organisation, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 2 of Council Framework Decision 2008/841/JHA of 24 October 2008 on the fight against organised crime (OJ L 300, 11.11.2008, p. 42).</cbc:Description>
+        <ccv:LegislationReference>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7c637c0c-7703-4389-ba52-02997a055bd7</cbc:ID><!--3-->
+            <ccv:Requirement responseDataType="INDICATOR"><!--5-->
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">974c8196-9d1c-419c-9ca9-45bb9f5fd59a</cbc:ID><!--4-->
+                <cbc:Description>Your answer?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator><!--6-->
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                <ccv:Requirement responseDataType="DATE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">ecf40999-7b64-4e10-b960-7f8ff8674cf6</cbc:ID>
+                    <cbc:Description>Date of conviction</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Date>2015-12-09</cbc:Date>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7d35fb7c-da5b-4830-b598-4f347a04dceb</cbc:ID>
+                    <cbc:Description>Reason</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>Participation in a criminal organisation</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="DESCRIPTION">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c5012430-14da-454c-9d01-34cedc6a7ded</cbc:ID>
+                    <cbc:Description>Who has been convicted</cbc:Description>
+                    <ccv:Response>
+                        <cbc:Description>Mr Dragon A</cbc:Description>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="PERIOD">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">9ca9096f-edd2-4f19-b6b1-b55c83a2d5c8</cbc:ID>
+                    <cbc:Description>Length of the period of exclusion</cbc:Description>
+                    <ccv:Response>
+                        <cac:Period>
+                            <cbc:Description>6 years</cbc:Description>
+                        </cac:Period>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:RequirementGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">5f9f09f7-f701-432c-9fdc-c22c124a74c9</cbc:ID>
+                    <ccv:Requirement responseDataType="INDICATOR">
+                        <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">20c5361b-7599-4ee6-b030-7f8323174d1e</cbc:ID>
+                        <cbc:Description>Have you taken measures to demonstrate your reliability 'Self-Cleaning'?</cbc:Description>
+                        <ccv:Response>
+                            <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                        </ccv:Response>
+                    </ccv:Requirement>
+                    <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">74e6c7b4-757b-4b40-ada6-fad6a997c310</cbc:ID>
+                        <ccv:Requirement responseDataType="DESCRIPTION">
+                            <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7b07904f-e080-401a-a3a1-9a3efeeda54b</cbc:ID>
+                            <cbc:Description>Please describe them</cbc:Description>
+                            <ccv:Response>
+<cbc:Description>Many causes and conditions can impair mobility and movement. The inability to use legs, arms, or the body trunk effectively because of paralysis, stiffness, pain, or other impairments is common. It may be the result of birth defects, disease, age, or accidents. These disabilities may change from day to day. They may also contribute to other disabilities such as impaired speech, memory loss, short stature, and hearing loss.</cbc:Description>
+                            </ccv:Response>
+                        </ccv:Requirement>
+                    </ccv:RequirementGroup>
+                </ccv:RequirementGroup>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+        <ccv:RequirementGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+            <ccv:Requirement responseDataType="INDICATOR">
+                <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">c1347b74-1872-4060-a6db-f4044edcd7c4</cbc:ID>
+                <cbc:Description>Is this information available electronically?</cbc:Description>
+                <ccv:Response>
+                    <ccv-cbc:Indicator>true</ccv-cbc:Indicator>
+                </ccv:Response>
+            </ccv:Requirement>
+            <ccv:RequirementGroup pi="GROUP_FULFILLED.ON_TRUE">
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                <ccv:Requirement responseDataType="EVIDENCE_URL">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">f4313bb6-21b6-499e-bdff-debe10e11d2c</cbc:ID>
+                    <cbc:Description>URL</cbc:Description>
+                    <ccv:Response>
+                        <cev:Evidence>
+                            <cev:EvidenceDocumentReference>
+								<cbc:ID>fe3696b0-0325-404a-9fab-989b4c9dd963</cbc:ID>
+								<cac:Attachment>
+								    <cac:ExternalReference>
+								        <cbc:URI>https://www.lds.org/topics/disability/list/physical-disability?lang=eng</cbc:URI>
+								    </cac:ExternalReference>
+								</cac:Attachment>
+                            </cev:EvidenceDocumentReference>
+                        </cev:Evidence>
+                    </ccv:Response>
+                </ccv:Requirement>
+                <ccv:Requirement responseDataType="CODE">
+                    <cbc:ID schemeID="CriterionRelatedIDs" schemeAgencyID="EU-COM-GROW" schemeVersionID="1.0">1f1cd18e-3e01-4ca2-af4c-e2981924ba8d</cbc:ID>
+                    <cbc:Description>Code</cbc:Description>
+                    <ccv:Response>
+                        <ccv-cbc:Code>Participation in a criminal organisation</ccv-cbc:Code>
+                    </ccv:Response>
+                </ccv:Requirement>
+            </ccv:RequirementGroup>
+        </ccv:RequirementGroup>
+</ccv:Criterion>
+----
+<1> COM UUID in table link:./code_lists/CriteriaTaxonomy.xlsx[ESPD Criteria: Exclusion criteria] 
+<2> COM code list link:./code_lists/PDF/CriteriaTypeCode.pdf[CriteriaTypeCode]
+<3> COM UUID in table link:./code_lists/CriteriaTaxonomy.xlsx[ESPD Criteria: Exclusion criteria]
+<4> COM UUID in table link:./code_lists/CriteriaTaxonomy.xlsx[ESPD Criteria: Exclusion criteria]
+<5> Expected response of type Indicator (a boolean value _true_ or _false_)
+<6> The response (i) is of the expected type, and (2) the response answers the question in the Criterion: this EO has not participated in a criminal 
+organisation. Hence the rest of responses are empty, as the EO has not to provide any further data

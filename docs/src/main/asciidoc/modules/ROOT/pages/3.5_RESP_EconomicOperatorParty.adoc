@@ -1,0 +1,119 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== Economic Operator 
+
+The ESPDResponse was explicitly designed to hold data about one single Economic Operator.
+Thus, the ESPDResponse Exchange Data Model associates a class `EconomicOperatorParty` as 
+a placeholder for the data related to only one Economic Operator (EO) that 
+tenders solely to a procurement project, to one of the EOs that tender as part of a group 
+(e.g. a Consortium), or to one possible sub-contractor of the EO. 
+
+Consortia grouping more than one EO need to draft and submit as many ESPDResponses as Economic 
+Operators and sub-contractors participate in the tender. 
+Revisit the "Figure 7: espd::ESPDRequest UML class diagram" and check that its association
+to the epsd::EconomicOperatorParty class is restricted to 1. This element is therefore mandatory.
+
+The UML diagram below shows the details about the class EconomicOperatorParty:
+
+[.text-center]
+[[EO_UML_Details]]
+.Class EconomicOperatorParty UML diagram details
+image::EO_UML_Details.png[align="center" alt="EO details, UML", width="1000", height="900"]
+
+[.text-left]
+This other figure below shows the equivalent (abbreviated) XSD schema:
+
+[.text-center]
+[[EO_XSD_Schema_Diagram]]
+.Class EconomicOperatorParty UML diagram details
+image::EO_XSD_Details.png[align="center" alt="EO details, XSD", width="600"]
+
+[.text-left]
+==== EconomicOperatorParty
+The table below lists the attributes and associated classes expected in an XML conformant to the ESPD Service. 
+Beware that this class associates the very rich UBL-2.1 aggregate component `cac:Party`. 
+Similarly to what happens with the `cac:ContractingParty`, the ESPDResponse `espd:EconomicOperatorParty`
+only uses a reduced subset of the component `cac:Party`.
+
+[.text-left]
+.Class espd:EconomicOperatorParty
+|===
+
+5+^|"_A class representing any natural or legal person or public entity or group of such persons
+and/or entities, including any temporary association of undertakings, which offers the 
+execution of works and/or a work, the supply of products or the provision of services on the 
+market in the context for which the tender where the ESPDResponse is submitted_"footnote:[Source: http://www.cenbii.eu/deliverables/cen-wsbii-3/[CEN/BII-WS3]]
+
+|*Property*|*Description*|*Example*|*Mandatory?*|*Rules & comments*
+
+|*espd-cbc:EconomicOperatorRoleCode*
+|The code for the role of the economic operator when bidding from a consortium  
+a|
+[source,xml] 
+----
+<espd-cbc:
+EconomicOperatorRoleCode 
+listID="TendererRole" 
+listAgencyID="EU-COM-GROW" 
+listVersionID="1.0">
+MT
+</espd-cbc:
+EconomicOperatorRoleCode>
+----
+|OPTIONAL (0..1) - Currently not used in the ESPD Service
+|`*Rule*: Compulsory use of the code list link:./code_lists/PDF/EPROC-TendererRole.pdf[TendererRole].`
+
+|*espd-cbc:
+EconomicOperatorRoleDescription*
+|A short description for the role of the economic operator when bidding from a consortium  
+a|
+[source,xml] 
+----
+<espd-cbc:
+EconomicOperatorRoleDescription 
+languageID="en">
+Main tenderer
+</espd-cbc:
+EconomicOperatorRoleDescription>
+----
+|OPTIONAL (0..1) 
+|`*Comment*: Currently not used by the ESPD Service`
+
+|*espd-cbc:
+NationalDataBaseURIID*
+|Unrestricted and full direct access to tools and devices used for
+electronic communication is possible at this URL.  
+|
+|OPTIONAL (0..1) 
+|`*Comment*: Currently not used by the ESPD Service`
+
+|*espd-cbc:
+NationalDatabaseAccessCredentials*
+|Credentials (e.g. username and password) to access the national database
+|
+|OPTIONAL (0..1) 
+|`*Comment*: Currently not used by the ESPD Service`
+
+|*espd-cbc:
+SMEIndicator*
+|Indicates whether the Economic Operator is an SME or not
+|
+|OPTIONAL (0..1) 
+|`*Comment*: See COM's definition of http://ec.europa.eu/growth/smes/business-friendly-environment/sme-definition/index_en.htm[SME]`
+
+5+^|*Associated classes*
+
+|*RepresentativeNaturalPerson*
+|Information about individuals who in one way or the other represent the economic operator
+|
+|OPTIONAL (0..n) 
+|Comment: Belongs to the ESPD spacename (espd-cac:)
+
+|*cac:Party*
+|The UBL-2.1 class used to hold data about the party that, in this case, is the Economic Operator 
+|
+|OPTIONAL (0..n) 
+|`*Comment*: See below which elements from cac:Party are currently used by the ESPD Service for the EO` 
+
+|===

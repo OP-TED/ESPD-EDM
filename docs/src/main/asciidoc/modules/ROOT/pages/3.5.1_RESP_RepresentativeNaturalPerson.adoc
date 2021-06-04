@@ -1,0 +1,101 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+==== RepresentativeNaturalPerson
+
+UBL-2.1 defines a component _PowerOfAttorney_ with that is a good container for the main data about a representativefootnote[cac:PowerOfAttorney also aggregates
+the cac:AgentParty, where many data about the person can be provided.]. However the ESPD stakeholders 
+identified some data requirements that the UBL-2.1 component does not cater for; namely the role of the person (e.g. type of representation) and the 
+country where this person is registered (i.e. in a civil base register).
+
+The XSD diagram and table below show the details about the class EconomicOperatorParty:
+
+[.text-center]
+[[Representative_XSD_Details]]
+.Class RepresentativeNaturalPerson details
+image::Representative_XSD_Details.png[align="center" alt="EO details, UML", width="1000", height="900"]
+
+[.text-left]
+.Class espd:RepresentativeNaturalPerson
+|===
+
+5+^|"_A class representing an individual who in one way or the other represents the economic operator_"
+
+|*Property*|*Description*|*Example*|*Mandatory?*|*Rules & comments*
+
+|*espd-cbc:
+NaturalPersonRoleCode*
+|  
+|
+|OPTIONAL (0..1) - Currently not used (yet) in the ESPD Service
+|
+
+|*espd-cbc:
+NaturalPersonRoleDescription*
+|A short description for the role of the Economic Operator's representative
+||OPTIONAL (0..1) 
+|`*Comment*: Currently not used (yet) by the ESPD Service`
+
+|*espd-cbc:
+NaturalPersonRegistrationCountryCode*
+|Country of registration  of the natural person
+|
+|OPTIONAL (0..1) 
+|`*Comment*: Currently not used by the ESPD Service`
+
+5+^|*Associated classes*
+
+|*espd-cbc:
+NaturalPersonRegistrationCountryCode*
+|Country of registration  of the natural person
+|
+|OPTIONAL (0..1) 
+|`*Comment*: Currently not used by the ESPD Service`
+
+|*cac:PowerOfAttorney*
+|A power of attorney associated with this natural person
+|OPTIONAL (0..n) 
+|Comment: UBL-2.1 component (cac:)
+
+|===
+
+===== Power of attorney
+The ESPD reuses only a small part of the class cac:PowerOfAttorney defined in UBL-2.1, only the component _AgentParty_ and within it the subcomponent _Person_: 
+
+[[Representative_XSD_Extended_Details]]
+image::Representative_XSD_Extended_Details.png[caption="Figure XX: ", title="UBL-2.1 Person, inside AgentParty, inside PowerOfAttorney", align="center" alt="EO details, XSD", width="600", height="500"]
+
+From the subcomponent Person, also a rich UBL structure, the ESPD is interested in a small set of elements, namely the name, birth data, and contact data of the
+representative, as shown in this example:
+
+[source,xml]
+.XML example of the data related to Person required by the ESPD Service  
+----
+<cac:PowerOfAttorney>
+	<cac:AgentParty>
+		<cac:Person>
+			<cbc:FirstName>Bruce</cbc:FirstName>
+			<cbc:FamilyName>Wayne</cbc:FamilyName>
+			<cbc:BirthDate>1983-03-02</cbc:BirthDate>
+			<cbc:BirthplaceName>USA</cbc:BirthplaceName>
+			<cac:Contact>
+				<cbc:Telephone>01 234 56 78</cbc:Telephone>
+				<cbc:ElectronicMail>
+					Bruce.wayne@enterprises.com
+				</cbc:ElectronicMail>
+			</cac:Contact>
+			<cac:ResidenceAddress>
+				<cbc:Postbox>1000</cbc:Postbox>
+				<cbc:StreetName>Rue Melsens 3</cbc:StreetName>
+				<cbc:CityName>Brussels</cbc:CityName>
+				<cac:Country>
+					<cbc:IdentificationCode 
+						listAgencyID="ISO" listName="ISO 3166-1" listVersionID="1.0">
+						BE
+					</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:ResidenceAddress>
+		</cac:Person>
+	</cac:AgentParty>
+</cac:PowerOfAttorney>
+----

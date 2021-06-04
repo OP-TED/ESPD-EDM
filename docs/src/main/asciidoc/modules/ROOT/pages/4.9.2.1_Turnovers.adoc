@@ -1,0 +1,19 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+==== Turnovers
+
+The group of criteria relating to turnovers is somehow special in the sense that it introduces a kind of 
+''iterative structure'' that the criteria studied so far do not implement. As illustrated in the
+figures and example below, this iterative structure for turnovers allows repeating a specific tuple
+footnote:[i.e. a couple of values corresponding to amount and year.] of amount and year as many 
+times as required in the specific call for tender (normally values for the past three years).
+
+[.text-left]
+The simplified data structure illustrates this idea of iterative tuples (Year, Amount). The ''...'' symbol means that the subgroup is repeated as many times as required in the tender documents:
+The corresponding data-structure diagram would be this one. Notice that each tuple (Year, Amount) is treated as a subgroup of two requirements:
+
+[.text-center]
+[[selection_economic_financial_standing_turnover_representation]]
+.Detailed data-structure representation for turnovers (CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.*)
+image::29_selection_economic_financial_standing_turnover_representation_struct.png[alt="selection_economic_financial_standing_turnover_representation", width="600"]

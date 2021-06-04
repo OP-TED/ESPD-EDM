@@ -1,0 +1,34 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== The Core Criterion and Core Evidence Data Models and Vocabularies
+
+When creating a new ESPD Request XML document, the Contracting Authority (CA) footnote:[In the ESPD-EDM, the Contracting Authority is represented by "Contracting Party", the generic term representing a Contracting Body, Authority or Entity.] specifies the series of exclusion and selection ''criteria'' that the Economic Operator (EO) has 
+to satisfy for a specific Procurement Project. In the ESPD Response, the EO MAY provide where to get evidences that prove it satisfies the criteria required by the CA.
+
+Two new data models were defined from scratch by the European Commission (COM), the Core Criterion Data Model and the Core Evidence Data Model. Once implemented as XSD schemata these Data Models are named 
+''Core Criterion Vocabulary'' and ''Core Evidence Vocabulary''. Both Data Models (and therefore the vocabularies too) are interrelated. The figure below shows a (high-level) 
+simplified overview of these two data models and how they interrelate.
+
+[.text-center]
+[[core_criterion]]
+.Core Criterion and Evidence data models (simplified overview)
+image::2_RESP_ESPD-EDM_Overview.png[alt="core_criterion", width="600", height="400"]
+[.text-left]
+
+The Core Criterion and Core Evidence Data Models were designed to be reused in cross-border and cross-sector interoperability. In other words, they are ''business agnostic''. 
+Two domains where the concepts Criterion and Evidence are relevant are the e-Certis and ESPD Services. Therefore these two domains (and systems) have been originally used as 
+Study/Business Cases for the development and testing of the Core and Evidence Data Models and Vocabularies. During the development other cases in other business domains were 
+identified as potential re-users of the Core Vocabularies (e.g. http://ec.europa.eu/isa/actions/02-interoperability-architecture/2-2action_en.htm[CAMSS], Common Assessment Method for Standards and Specifications or the Grants Assessment System, both developed 
+by COM; amongst other). 
+
+The ESPDResponse uses the complete set of elements defined in the CCV and the CEV (i.e. the ones depicted in the high-level diagram above).  
+
+From the modelling perspective the main difference between the ESPDRequest and the ESPDResponse is that the ESPDRequest does not use the Response element, and therefore neither
+the XML Core Evidence Vocabulary. Thus, for the *ESPDRequest*, the model represented above in Figure above is reduced into this other one below:
+
+[.text-center]
+[[core_criterion_vocabulary]]
+.Elements of the Core Criterion Vocabulary used in the ESPD Request
+image::2_REQ_Criterion_Conceptual_Overview.png[alt="core_criterion_vocabulary", width="600", height="400"]
+[.text-left]

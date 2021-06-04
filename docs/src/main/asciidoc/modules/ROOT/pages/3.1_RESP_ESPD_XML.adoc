@@ -1,0 +1,66 @@
+ifndef::imagesdir[:imagesdir: images]
+
+[.text-left]
+=== Data Model overview
+The UML Diagram below provides a simplified view of the ESPDResponse document. Notice that the classes herein represented belong to different data-packages.  
+Hence each class name is preceded by different prefixes representing their corresponding namespaces: "espd::", "ccv::", "cev::", "cac::" (see ''
+Table 1. Schemas, namespaces and prefixes used by the ESPDResponse''). footnote:[this UML was produced using the MS-Visio tool, thus the double semicolon "::" 
+after the prefix. The XML syntax only uses one semicolon ":".]
+
+[.text-center]
+[[RESP_ESPDResponse_UML]]
+.espd::ESPDRequest UML class diagram
+image::3_RESP_ESPDResponse_UML.png[alt="ESPDResponse UML diagram"]
+
+[.text-left]
+As you can see in the diagram more than 50% of the classes were already defined in UBL-2.1 (cac-prefixed classes). Moreover, many of the "root" elements in the espd:ESPDRequest class reuse 
+UBL-2.1 Common Basic Components. This document does not represent nor describe in its entirety the entities modelled in UBL that are re-used in the ESPD. Any detail on the model, 
+schemata, and any other artefact relating to UBL-2.1 can be freely downloaded here: http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html. Nonetheless those parts of the UBL 
+components that are commonly used in the ESPD documents are herein sufficiently identified and commented.
+
+[.text-left]
+This other figure below shows a graphical view of the XSD Schema implementation corresponding to the above UML diagram.
+
+[.text-center]
+[[RESP_ESPDResponse_XSD_diagram]]
+.espd::ESPDResponse XSD diagram
+image::3_RESP_ESPDResponse_XSD_diagram.png[alt="ESPDRequest XSD diagram"]
+
+[.text-left]
+According to the UML Diagram an ESPDResponse XML document is represented by the class `espd:ESPDResponse`.
+This ''root'' class aggregates other classes (which in turn aggregate sub-classes). 
+The list below summarises the use of each of these classes. Further on, in this document, 
+each class is analysed and illustrated in more detail:
+
+[.text-left]
+. The `cac:ContractingParty`, defined in UBL-2.1,  is used to specify data relating the Contracting Authority, Body or Entity. All ESPD Requests MUST provide some basic data about 
+the Contracting Body. 
+
+. The `espd:EconomicOperator` class is defined by COM as a placeholder for all the data related to the 
+Economic Operator. This class aggregates an espd:RepresentativeNaturalPerson class intended to gather
+the data of the legal representatives of the EO. It also reuses the UBL-2.1 cac:Party class.  
+
+. The `cac:ProcurementProjectLot` class was also defined in UBL-2.1 to hold data about the Lots in which a Procurement Project has been divided. The ESPD Request XML documents MUST use 
+this class to specify whether the Procurement Project has lots or not and to identify them. Although the ESPD-EDM model was designed to support multiple lots, the 
+current version of the ESPDService, however, still does not fully uses this feature and permits only to describe them.  
+
+. The `ccv:Criterion` class belongs to the Core Criterion Vocabulary data-package, thus the ccv: prefix.footnote:[see the CCV-CommonAggregateComponents-1.0.xsd library for its XML definition] . It is a compulsory element of multiple cardinality allowing for the 
+specification of both the exclusion and selection criteria in an ESPD Request.
+
+. `cac:ServiceProviderParty` is a specialisation of the cac:Party class, both defined in UBL-2.1. It is used to inform about the party responsible of the system that provided the data 
+included in the document; e.g. a pre-qualification system, a procurement platform, etc. The absence of this element indicates that the data has been provided by the Economic Operator itself. 
+
+. `cac:Signature` class is used to include an electronic signature in the document. In general, the presence of an electronic signature aims at ensuring authenticity, integrity and 
+non-repudiation. Different methods of signing an electronic document exist, and some of them do not need embedding the signature in the document. The cardinality 0..1 of this 
+class in the `espd:ESPDRequest` document allows the use of other electronic signature methods that do not imply the use of this class in an ESPD Request XML document. Therefore, 
+the absence implies that authentic, integrity, etc. are solved by other means.
+
+. `cac:AdditionalDocumentReference` is used to include external references to information that can be accessed from a URL. In contracts above the threshold
+this element is used by the CA in the ESPDRequest to refer to the Contract Notice published in TeD. Other documents or information accessible through a URL that might be considered relevant 
+MAY be specified by the Contracting Authority (in the ESPDRequest) or by the EO (in the ESPDResponse) through 
+the use of multiple instances of this element.
+
+[.text-left]
+The next sections deal with the specific details of each one of these classes and provide guidelines, rules 
+and examples on how to produce XML documents that are conformant with the ESPD Service ESPDResponse XML document and 
+for contracts above the threshold. 
