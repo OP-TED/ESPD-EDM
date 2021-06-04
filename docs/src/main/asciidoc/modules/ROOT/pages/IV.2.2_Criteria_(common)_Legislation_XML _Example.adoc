@@ -1,0 +1,28 @@
+
+==== XML Example
+
+Snippet of XML to illustrate how to use the `cac:Legislation` component inside a criterion:
+
+[source,xml]
+----
+<cac:TenderingCriterion>
+
+ <!-- ... elements omitted for brevity -->
+ 
+	<cac:Legislation>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0.2">4ea7a10a-643e-4022-b67e-e06573b28ff5</cbc:ID><--1-->
+		<cbc:Title>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</cbc:Title> <--2-->
+		<cbc:Description>DIRECTIVE 2014/24/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</cbc:Description> <--3-->
+		<cbc:JurisdictionLevel languageID="en">EU Directive</cbc:JurisdictionLevel> <--4-->
+		<cbc:Article>57(1)</cbc:Article> <--5-->
+		<cbc:URI>http://eur-lex.europa.eu/legal-content/ES/TXT/?uri=celex%3A32014L0024</cbc:URI> <--6-->
+		</cac:Legislation>
+
+ <!-- ... elements omitted for brevity -->
+		
+</cac:TenderingCriterion>
+----
+<1> Use the UUID provided by GROW.
+<2> The official long title of the legislation is expected in the Title.
+<3> The short name that is commonly used to refer to the legislation is expected in the Description.
+<4> Use the textual values (descriptions) listed in the Code List `LegislationType` link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ESPD-CodeLists-V2.0.2.ods]

@@ -6,6 +6,7 @@
 |===
 |*Class name*:|cac:TenderingCriterionResponse
 |*Definition*:|A class to describe a response to a criterion property.
+|*Business rule(s)*:|SELF-CONTAINED (BR-RESP-80, BR-RESP-80-S10, BR-RESP-80-S20), Common (BR-LEAD-10)
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -24,6 +25,8 @@
 
 *Rule*: This ID SHOULD be provided by the EO or the service provider that instantiates the ESPDResponse XML document.
 
+*Rule scope*: Common (BR-TCR-05, BR-OTH-02)
+
 |*cbc:ValidatedCriterionPropertyID*
 |Identifier
 |1
@@ -31,6 +34,8 @@
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018, tbr92-007, tbr92-005, tbr92-006_]
 
 *Rule*: This ID MUST point at one of the TenderingCriterionProperty/cbc:ID that were included in the Request document.
+
+*Rule scope*: Common (BR-RESP-30, BR-RESP-40, BR-RESP-60, BR-RESP-60-S10, BR-RESP-60-S20, BR-TCR-01, BR-TCR-03, BR-LEAD-10-S20, BR-LEAD-10-S30)
 
 |*cbc:ConfidentialityLevelCode*
 |Code
@@ -40,6 +45,8 @@
 
 *Rule*: If the value is true, all the evidences associated to this response becomes also confidential.
 
+*Rule scope*: SELF-CONTAINED (BR-TCR-02, BR-OTH-01, BR-OTH-01#19, BR-OTH-03)
+
 |*cac:ResponseValue*
 |Associated class
 |0..n
@@ -47,6 +54,8 @@
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
 *Rule*: This class contains the main disjoint elements used to provide the actual answer. The UBL-2.2 model provides cardinality 0..n, this allows for building up lists of, namely, identifier and code values that are all "packaged" into one `cac:TenderingCriterionResponse` that in turn is linked to one `cac:TenderingCriterionProperty`. Beware that the cardinality is flexible (0..whatever) because some responses are not simple values, like the ones but complex ones, e.g. `cac:ApplicablePeriod` and `cac:EvidenceSupplied`).  
+
+*Rule scope*: Common (BR-TCR-08, BR-TCR-04)
 
 |*cac:ApplicablePeriod*
 |Associated class
@@ -62,7 +71,7 @@
 |A reference to the evidence supporting this criterion property response.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-017[_tbr92-017_]
 
-*Rule*: None.
+*Rule*: Used to point at an instance of the cac:Evidence.
 
 |===
 
@@ -73,7 +82,7 @@
 
 Thus, for example, if in the ESPD Request the expected type is DESCRIPTION the cac:ResponseValue must use the element `cbc:Description`, if INDICATOR `cbc:ResponseIndicator`, if IDENTIFIER `cbc:ResponseID`, etc. 
 
-See the codes used for `cac:ValueDataTypeCode` in the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
+See the codes used for `cac:ValueDataTypeCode` in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
 
 This disjointness rule applies to the *type* of the value, but *not to the values of the same type*. Thus, for lists of values that constitute the actual answer (e.g. the list of LotIDs the economic operator tenders to, or a list of CPV codes to describe with granularity an activity), a sequence of `cac:ResponseValues` shall be instantiated in the XML. See the XML examples below.
 
@@ -84,6 +93,7 @@ This disjointness rule applies to the *type* of the value, but *not to the value
 |===
 |*Class name*:|cac:Period
 |*Definition*:|A class to describe a period of time.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -117,6 +127,7 @@ This disjointness rule applies to the *type* of the value, but *not to the value
 |===
 |*Class name*:|cac:EvidenceSupplied
 |*Definition*:|A reference to the evidence supporting this criterion property response.
+|*Business rule(s)*:|None
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -135,6 +146,8 @@ This disjointness rule applies to the *type* of the value, but *not to the value
 
 *Rule*: The expected identifier must match the value of a `cac:Evidence/cbc:ID` present in the XML document. 
 
+*Rule scope*: Common (BR-TCR-09, BR-OTH-0)
+
 |===
 
 The table below lists the elements expected in the sub-class `cac:ResponseValue`. Remember that the elements of distinct types are all *disjoint* amongst themselves: i.e. you cannot associate one amount AND one indicator to the same `cac:TenderingCriterionProperty` element  (but several values for elements of one type may be used to build up lists, e.g. lists of Lots and lists of CPV codes). 
@@ -144,6 +157,7 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |===
 |*Class name*:|cac:ResponseValue
 |*Definition*:|A class to describe the criterion property response value.
+|*Business rule(s)*:|Common (BR-TCR-08, BR-TCR-04)
 |*File*:
 |dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:
@@ -162,6 +176,8 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 
 *Rule*: Recommendation: use a UUDI-version 4 number. 
 
+*Rule scope*: SELF-CONTAINED (BR-TCR-05)
+
 |*cbc:Description*
 |Text
 |0..n
@@ -176,7 +192,9 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |An amount used as a reply to the criterion property.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
-*Rule*: None.
+*Rule*: The currencyID attribute is MANDATORY (e.g. "EUR"). Compulsory use of the code list "ISO 4217 3A:2015". BEWARE that amounts can use decimal separators (e.g. 14134,95 but not hundred or thousand separators).
+
+*Rule scope*: Common (BR-OTH-01, BR-OTH-01#17, BR-OTH-03)
 
 |*cbc:ResponseCode*
 |Code
@@ -185,6 +203,8 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
 *Rule*: Compulsory use of the attributes mentioned in the section "link:##ii-4-codes-and-identifiers[II.4 Codes and Identifiers]" for codes.
+
+*Rule scope*: Common (BR-OTH-01)
 
 |*cbc:ResponseDate*
 |Date
@@ -216,7 +236,9 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |An indicator used as a reply to the criterion property.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
-*Rule*: None.
+*Rule*: The only possible values are False and True.
+
+*Rule scope*: Common (BR-TCR-06, BR-TCR-07)
 
 |*cbc:ResponseMeasure*
 |Measure
@@ -232,7 +254,7 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |A number used as a reply to the criterion property.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
-*Rule*: None.
+*Rule*: Do not format the percentage with the "%" symbol, just provide a float value like in the example (e.g. 0.4).
 
 |*cbc:ResponseQuantity*
 |Quantity
@@ -240,7 +262,7 @@ The table below lists the elements expected in the sub-class `cac:ResponseValue`
 |A quantity used as a reply to the criterion property.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
-*Rule*: None.
+*Rule*: BEWARE that different types of Quantities can be required, some of them with a special attribute. Up to three different types of Quantities can be specified: (1) QUANTITY_INTEGER, a number representing a quantity in a specific unit of measure. The unit has to be specified (e.g. number of workers); (2) QUANTITY_YEAR, a non-negative integer (i.e. a natural number) representing a year. The unit has to be specified as YEAR, and (3) QUANTITY, a number representing a generic quantity with no unit specified (e.g. a ratio). Beware that in the case of QUANTITY_INTEGER and QUANTITY_YEAR the attribute unitCode MUST be always specified.
 
 |*cbc:ResponseURI*
 |URI

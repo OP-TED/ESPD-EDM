@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Library:           UBL Pre-award Development Test
-  Release Date:      19 July 2017
+  Release Date:      04 September 2017
   Module:            xsd/common/UBL-CommonBasicComponents-Pre-award.xsd
-  Generated on:      2017-07-19 21:20z
+  Generated on:      2017-09-07 16:43z
   Copyright (c) OASIS Open 2017. All Rights Reserved.
 -->
 <xsd:schema xmlns="urn:X-test:UBL:Pre-award:CommonBasic"
@@ -1087,10 +1087,13 @@
    <xsd:element name="WeighingTime" type="WeighingTimeType"/>
    <xsd:element name="Weight" type="WeightType"/>
    <xsd:element name="WeightNumeric" type="WeightNumericType"/>
+   <xsd:element name="WeightScoringMethodologyNote"
+                type="WeightScoringMethodologyNoteType"/>
    <xsd:element name="WeightStatementTypeCode" type="WeightStatementTypeCodeType"/>
    <xsd:element name="WeightingAlgorithmCode" type="WeightingAlgorithmCodeType"/>
    <xsd:element name="WeightingConsiderationDescription"
                 type="WeightingConsiderationDescriptionType"/>
+   <xsd:element name="WeightingTypeCode" type="WeightingTypeCodeType"/>
    <xsd:element name="WithdrawOfferIndicator" type="WithdrawOfferIndicatorType"/>
    <xsd:element name="WorkPhase" type="WorkPhaseType"/>
    <xsd:element name="WorkPhaseCode" type="WorkPhaseCodeType"/>
@@ -5897,6 +5900,11 @@
          <xsd:restriction base="udt:NumericType"/>
       </xsd:simpleContent>
    </xsd:complexType>
+   <xsd:complexType name="WeightScoringMethodologyNoteType">
+      <xsd:simpleContent>
+         <xsd:restriction base="udt:TextType"/>
+      </xsd:simpleContent>
+   </xsd:complexType>
    <xsd:complexType name="WeightStatementTypeCodeType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:CodeType"/>
@@ -5915,6 +5923,11 @@
    <xsd:complexType name="WeightingConsiderationDescriptionType">
       <xsd:simpleContent>
          <xsd:restriction base="udt:TextType"/>
+      </xsd:simpleContent>
+   </xsd:complexType>
+   <xsd:complexType name="WeightingTypeCodeType">
+      <xsd:simpleContent>
+         <xsd:restriction base="udt:CodeType"/>
       </xsd:simpleContent>
    </xsd:complexType>
    <xsd:complexType name="WithdrawOfferIndicatorType">

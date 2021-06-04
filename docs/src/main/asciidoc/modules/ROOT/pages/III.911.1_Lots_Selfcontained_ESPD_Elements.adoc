@@ -8,6 +8,7 @@
 |*Definition*: |A sub-project into which a procurement procedure can be divided. A procurement project lot has its specific characteristics (e.g. different objectives and different selection criteria) and usually generates its own contract.
 
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-008[_tbr070-008_]
+|*Business rule(s)*:|SELF-CONTAINED (BR-LOT-30)
 |*File*:|dist/common/xsdrt/UBL-CommonAggregateComponents-Pre-award.xsd
 |*Path*:|/QualificationApplicationRequest/cac:ProcurementProjectLot	
 |===
@@ -24,6 +25,8 @@ http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070
 http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr070-008[_tbr070-008_]. 
 
 *Rule*: Compulsory use of schemeAgencyID attribute. If several lots are present check that the type of the `cbc:QualificationApplicationResponse` element is set to `SELFCONTAINED`; otherwise a fatal exception should be thrown. As for the *Regulated* version, if only one Lot is specified its ID has to be set to '0' thus indicating that the procurement procedure is not divided into Lots.
+
+*Rule scope*: SELF-CONTAINED (BR-LOT-10, BR-LOT-30-S10, BR-OTH-02)
 |===
 
 The rest of the data related to the Self-contained ESPD Request go in a `cac:TenderingCriterion` object. See the XML example below and read sections about exclusion and selection criteria for more details on this class.

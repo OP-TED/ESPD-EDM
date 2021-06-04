@@ -20,7 +20,7 @@ As you will see next, the information required about the economic operators vari
 
 . Is the procurement procedure divided into lots?
 
-One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V2.0.1 defines four different roles for the EO. The information to be provided by each role varies depending on whether the EO is:
+One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V2.0.2 defines four different roles for the EO. The information to be provided by each role varies depending on whether the EO is:
 
 . *Sole contractor / Lead entity*: Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group. In this case:
 
@@ -145,7 +145,7 @@ Notice that:
 
 . The values expected for the name and activity are texts.
 
-. The value expected for the EO identifier is of type `Identifier`. For the identifier of the EO it is also required to specify the type of identifier, and a closed list of possible types is proposed (see Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[EOIDType]. EOs must use one of the available codes, but the preferred one is the VAT number. Beware that the data structure does not keep the type of the identifier. This is because this type code is placed in the attribute `@schemeName` of the `cac:ResponseValue/cbc:ResponseID` element (and the `@schemeAgencyID` attribute must be set to the default `EU-COM-GROW`). See information requirements at the beginning of the section. See also next sections about the responses, XSD schemas and XML example.
+. The value expected for the EO identifier is of type `Identifier`. For the identifier of the EO it is also required to specify the type of identifier, and a closed list of possible types is proposed (see Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIDType]. EOs must use one of the available codes, but the preferred one is the VAT number. Beware that the data structure does not keep the type of the identifier. This is because this type code is placed in the attribute `@schemeName` of the `cac:ResponseValue/cbc:ResponseID` element (and the `@schemeAgencyID` attribute must be set to the default `EU-COM-GROW`). See information requirements at the beginning of the section. See also next sections about the responses, XSD schemas and XML example.
 
 .The user can add or delete more than one economic operator (buttons '+' and 'paper-bin').
 
@@ -163,7 +163,7 @@ image::Selfcontained_OTHER-EO-Contributions_DS.png[Contributions certificates - 
 
 ===== Mock-up: Information about reliance on the capacities of the other entities
 
-As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V2.0.1 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
+As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V2.0.2 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
 
 .EO Roles-entities relied on, mock-up
 image::Subcontractor_relied_on_mockup.png[EO Roles-entities relied on, alt="EO Roles-entities relied on", width="600", align="center"]

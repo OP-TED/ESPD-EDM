@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cva:ContextValueAssociation 
+	xmlns:cva="http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/1.0/" 
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron" 
+	xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" 
+	xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" 
+	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
+	xmlns:espd-req="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" 
+	xmlns:espd-resp="urn:X-test:UBL:Pre-award:QualificationApplicationResponse" 
+	xmlns:fn="http://www.w3.org/2005/xpath-functions"
+	id="urn:x-illustration" name="code-list-values" version="$Id: ESPD-codelist-values.cva,v 2.0.2 $">
+	
+	<Annotation>
+		<Description>
+		Value constraints that one can express for XML samples.
+		
+		The validation requirements for this scenario are as follows:
+			- Code list used in each element.
+    </Description>
+	</Annotation>
+	<Title>
+		ESPD code list values constraints - ESPD-codelist-values.cva
+		Version 2.0.2
+	</Title>
+	<!-- BR-OTH-03: List all of the genericode files -->
+	<ValueLists>
+		<!--ValueList xml:id="ActivityTypeCode" uri="../../../../cl/gc/ActivityType-CodeList.gc"/ NOT USED -->
+		<!--ValueList xml:id="AmountTypeCode" uri="../../../../cl/gc/AmountType-CodeList.gc"/ NOT USED -->
+		<ValueList xml:id="BidType" uri="../../../../cl/gc/BidType-CodeList.gc"/>
+		<ValueList xml:id="ConfidentialityLevel" uri="../../../../cl/gc/ConfidentialityLevel-CodeList.gc"/><!-- cbc:ConfidentialityLevelCode -->
+		<!--ValueList xml:id="ContractType" uri="../../../../cl/gc/ContractType-CodeList.gc"/ NOT USED-->
+		<ValueList xml:id="CountryCodeIDs" uri="../../../../cl/gc/CountryCodeIdentifier-CodeList.gc"/><!-- cac:Country/cbc:IdentificationCode -->
+		<ValueList xml:id="CriterionElementType" uri="../../../../cl/gc/CriterionElementType-CodeList.gc"/><!-- /cac:TenderingCriterionProperty/cbc:TypeCode -->
+		<ValueList xml:id="CurrencyCodeList" uri="../../../../cl/gc/CurrencyCode-CodeList.gc"/><!-- cbc:ValueCurrencyCode, @currencyID -->
+		<ValueList xml:id="DocRefContentType" uri="../../../../cl/gc/DocRefContentType-CodeList.gc"/><!-- /cac:AdditionalReferenceDocument/cbc:DocumentTypeCode -->
+		<ValueList xml:id="EOIDType" uri="../../../../cl/gc/EOIDType-CodeList.gc"/><!-- /cac:PartyIdentification/cbc:ID/@schemeID -->
+		<ValueList xml:id="EOIndustryClassificationCode" uri="../../../../cl/gc/EOIndustryClassificationCode-CodeList.gc"/><!-- /cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode -->
+		<ValueList xml:id="EORoleType" uri="../../../../cl/gc/EORoleType-CodeList.gc"/><!-- /cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode -->
+		<ValueList xml:id="LanguageCodeEU" uri="../../../../cl/gc/EULanguageCode-CodeList.gc"/><!-- @languageID -->
+		<ValueList xml:id="EvaluationMethodType" uri="../../../../cl/gc/EvaluationMethodType-CodeList.gc"/><!-- /cac:TenderingCriterion/cbc:EvaluationMethodTypeCode -->
+		<ValueList xml:id="FinancialRatioType" uri="../../../../cl/gc/FinancialRatioType-CodeList.gc"/>
+		<!--ValueList xml:id="LegislationType" uri="../../../../cl/gc/LegislationType-CodeList.gc"/ NOT USED-->
+		<ValueList xml:id="PeriodMeasureTypeCodes" uri="../../../../cl/gc/PeriodMeasureType-CodeList.gc"/>
+		<ValueList xml:id="ProcedureType" uri="../../../../cl/gc/ProcedureType-CodeList.gc"/><!-- /cbc:ProcedureCode -->
+		<ValueList xml:id="ProfileExecutionID" uri="../../../../cl/gc/ProfileExecutionID-CodeList.gc"/>
+		<ValueList xml:id="ProjectType" uri="../../../../cl/gc/ProjectType-CodeList.gc"/><!-- /cbc:ProcurementTypeCode -->
+		<ValueList xml:id="PropertyGroupType" uri="../../../../cl/gc/PropertyGroupType-CodeList.gc"/><!-- /cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode -->
+		<ValueList xml:id="QualificationApplicationType" uri="../../../../cl/gc/QualificationApplicationType-CodeList.gc"/><!-- /cbc:QualificationApplicationTypeCode -->
+		<ValueList xml:id="ResponseDataType" uri="../../../../cl/gc/ResponseDataType-CodeList.gc"/><!-- /cac:TenderingCriterionProperty/cbc:ValueDataTypeCode -->
+		<ValueList xml:id="ServicesProjectSubType" uri="../../../../cl/gc/ServicesProjectSubType-CodeList.gc"/><!-- /cac:ProcurementProject/cbc:ProcurementSubTypeCode -->
+		<ValueList xml:id="TechnicalCapabilityTypeCode" uri="../../../../cl/gc/TechnicalCapabilityType-CodeList.gc"/>
+		<ValueList xml:id="WeightingType" uri="../../../../cl/gc/WeightingType-CodeList.gc"/><!-- /cbc:WeightingTypeCode -->
+	</ValueLists>
+	
+	<!-- ESPDRequest - List of all elements and attributes where the code lists are used -->
+	<Contexts>
+		<Context address="cbc:ConfidentialityLevelCode" values="ConfidentialityLevel">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ConfidentialityLevelCode'.</Message>
+		</Context>
+		<Context address="cac:Country/cbc:IdentificationCode" values="CountryCodeIDs">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:Country/cbc:IdentificationCode'.</Message>
+		</Context>
+		<Context address="cbc:TypeCode" values="CriterionElementType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:TypeCode'.</Message>
+		</Context>
+		<Context address="@currencyID" values="CurrencyCodeList">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the attribute '@currencyID'.</Message>
+		</Context>
+		<Context address="cbc:ValueCurrencyCode" values="CurrencyCodeList">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ValueCurrencyCode'.</Message>
+		</Context>
+		<Context address="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" values="DocRefContentType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:AdditionalReferenceDocument/cbc:DocumentTypeCode'.</Message>
+		</Context>
+		<Context address="cac:PartyIdentification/cbc:ID/@schemeID" values="EOIDType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the attribute 'cac:PartyIdentification/cbc:ID/@schemeID'.</Message>
+		</Context>
+		<Context address="cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode" values="EOIndustryClassificationCode">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode'.</Message>
+		</Context>
+		<Context address="cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode" values="EORoleType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode'.</Message>
+		</Context>
+		<Context address="@languageID" values="LanguageCodeEU">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the attribute '@languageID'.</Message>
+		</Context>
+		<Context address="cac:TenderingCriterion/cbc:EvaluationMethodTypeCode" values="EvaluationMethodType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:TenderingCriterion/cbc:EvaluationMethodTypeCode'.</Message>
+		</Context>
+		<Context address="cbc:ProcedureCode" values="ProcedureType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ProcedureCode'.</Message>
+		</Context>
+		<Context address="cbc:ProcurementTypeCode" values="ProjectType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ProcurementTypeCode'.</Message>
+		</Context>
+		<Context address="cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode" values="PropertyGroupType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode'.</Message>
+		</Context>
+		<Context address="cbc:QualificationApplicationTypeCode" values="QualificationApplicationType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:QualificationApplicationTypeCode'.</Message>
+		</Context>
+		<Context address="cac:TenderingCriterionProperty/cbc:ValueDataTypeCode" values="ResponseDataType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:TenderingCriterionProperty/cbc:ValueDataTypeCode'.</Message>
+		</Context>
+		<Context address="cac:ProcurementProject/cbc:ProcurementSubTypeCode" values="ServicesProjectSubType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:ProcurementProject/cbc:ProcurementSubTypeCode'.</Message>
+		</Context>
+		<Context address="cbc:WeightingTypeCode" values="WeightingType">
+			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:WeightingTypeCode'.</Message>
+		</Context>
+	</Contexts>
+</cva:ContextValueAssociation>

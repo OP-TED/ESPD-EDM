@@ -1,17 +1,18 @@
 
+
 The information that the economic operator (EO) has to provide is relatively abundant, especially if the EO is the lead entity of a group. UBL does provide a class cac:EconomicOperator with sufficient data elements to identify the economic operator, its role, its representatives, physical location, officially registered address and other.
 
-As the whole ESDP-EDM V2.0.1 is based entirely on the UBL-2.2 XSD (W3C) Schemas, these schemas are to be used for both the *Regulated* and the *Self-contained* versions of the ESPD. 
+As the whole ESDP-EDM V2.0.2 is based entirely on the UBL-2.2 XSD (W3C) Schemas, these schemas are to be used for both the *Regulated* and the *Self-contained* versions of the ESPD. 
 
-Remember that the backwards compatibility between ESPD-EDM V2.0.1 and ESDP-EDM V1.0.2 is only ensured for the *Regulated* version.
+Remember that the backwards compatibility between ESPD-EDM V2.0.2 and ESDP-EDM V1.0.2 is only ensured for the *Regulated* version.
 
 Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes; or to ensure the transparency of the procurement procedure; other.
 
-Therefore in the ESPD-EDM-2.0.1, and for both the *REGULATED* and the *SELF-CONTAINED* versions, the information about the economic operator is spread in two different places: 
+Therefore in the ESPD-EDM-2.0.2, and for both the *REGULATED* and the *SELF-CONTAINED* versions, the information about the economic operator is spread in two different places: 
 
 . The UBL-2.2 *cac:EconomicOperatorParty* component; and
 
-. In *criteria data structures*: following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V2.0.1 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both.
+. In *criteria data structures*: following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V2.0.2 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both.
 
 ==== XSD Schemas
 
@@ -42,15 +43,15 @@ The diagram below shows the XSD element that will hold the data required by the 
 
 * *References and classification*: The references linked to the classification of the EO are place in the component `cac:QualifyingParty/cac:CompletedTask`. 
 
-** For this V2.0.1 of the ESPD the only expected data about the reference is a short description identifying the task as described in the (pre)qualification system. However if you take a look at this common aggregate component you will observe that it caters for other relevant data. 
+** For this V2.0.2 of the ESPD the only expected data about the reference is a short description identifying the task as described in the (pre)qualification system. However if you take a look at this common aggregate component you will observe that it caters for other relevant data. 
 
-** Similarly, this V2.0.1 does not expect a complex representation of possible (optional) classification schemes. However the component `cac:BusinessClassificationScheme`, associated to cac:QualifyingParty allows complex hierarchical classifications. 
+** Similarly, this V2.0.2 does not expect a complex representation of possible (optional) classification schemes. However the component `cac:BusinessClassificationScheme`, associated to cac:QualifyingParty allows complex hierarchical classifications. 
 
 * *SME and number of employees*: The number of employees determine the classification of the company as Micro, Small, Medium or Large company. The cac:QualifyingParty component provides two place-holders that are used by this ESPD-EDM (see also mock-ups above) footnote:[*Remember that the ESPD-EDM specification uses the definition of SME provided by the EU http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003H0361[Recommendation 2003/361]]; see also footnote #6:
 
 ** *cac:QualifyingParty/cbc:EmployeeQuantity*, for the number of employees; and
 
-** *cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode* to indicate whether the EO is a micro, small, medium or large company (or simply an SME). This code is defined in the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[EOIndustryClassificationCode]. See also sections "Expected Elements" and "XML example" for more details.
+** *cac:QualifyingParty/cac:Party/cbc:IndustryClassificationCode* to indicate whether the EO is a micro, small, medium or large company (or simply an SME). This code is defined in the Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EOIndustryClassificationCode]. See also sections "Expected Elements" and "XML example" for more details.
 
 * *Turnover*: For statistical purposes the ESPD-EDM asks this datum to reflect the financial capability of the economic operator (see mock-ups above). This datum is to be placed in `cac:QualifyingParty/cac:FinancialCapability/ValueAmount`.
 
@@ -59,7 +60,7 @@ image::QualifyinParty_XSD.png[cac:QualifyingParty element-XSD, alt="cac:Qualifyi
 
 ===== cac:EconomicOperatorRole
 
-The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair *code + description* (see Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[EORoleType] for the codes and descriptions; see also the XML example below).
+The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair *code + description* (see Code List link:https://github.com/ESPD/ESPD-EDM/tree/2.0.2/docs/src/main/asciidoc/dist/cl/ods/ESPD-CodeLists-V2.0.2.ods[EORoleType] for the codes and descriptions; see also the XML example below).
 
 .Role of the economic operator
 image::EO_Role_XSD.png[EO Role, alt="EO Role", align="center"]
