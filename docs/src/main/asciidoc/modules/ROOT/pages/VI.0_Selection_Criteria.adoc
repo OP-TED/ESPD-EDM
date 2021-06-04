@@ -1,0 +1,61 @@
+
+== VI. Selection criteria
+
+'_The contracting body shall provide the exclusion grounds and selection criteria for its tendering process as structured information – via ESPD template or structured list of criteria set out in a call for tender._"
+
+This chapter on selection criteria provides details on how to implement the formal requirements set in the http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[eSens ESPD BIS 41 - Single European Document] (Version 2.0.0) document. See specifically these global requirements related to selection criteria: http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#br41-002[_br41-002_],  
+http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-010[_tbr070-010_],  http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013[_tbr070-013_], 
+http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-016[_tbr070-016_], and
+http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-018[_tbr070-018_].
+
+.Differences between Regulated and Self-contained exclusion criteria
+[NOTE]
+====
+The ESPD-EDM V02.00.00 introduces important changes regarding the selection criteria. It provides the contracting authority with much more flexibility to define requirements specific to the procurement procedure. These new features affect specifically the following aspects:
+
+. Suitability, including enrolment in a relevant professional register, enrolment in a trade register, authorisation and membership of particular organisation needed for service contracts;
+
+. Turnovers (general and specific);
+
+. References to similar works and services, including confidentiality about the references;
+ 
+. Quality assurance schemes and environmental management standards;
+
+. Professional ris indemnity insurance;
+
+. Other economic or financial requirements;
+
+. Technicians or technical bodies;
+
+. Supply chain management;
+
+. Allowance of checks;
+
+. Educational and professional qualifications and Environmental management measures;
+
+. Tools, plant or technical equipment;
+
+. Criteria for a particular type of contract;
+
+. Technical, study, research, and development facilities resources;
+
+. Financial ratios;
+
+. Other: Lots management, weighting, EO Roles.
+ 
+This section  covers exhaustively each of these aspects and provides examples of XML implementation for each one of them. They will examined criterion by criterion, taking as a starting the point the requirement expressed in http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916['_BIS 41 - European Single Procurement Document (Version 2.0.0)_'].
+
+*ABOUT the compatibility between Regulated and Self-contained ESPDs*: 
+
+* Not all the selection criteria have modified their structures between versions 1.0.2 and 02.00.00.
+* The changes introduced by the Self-contained ESPD are basically 'additions'. 
+
+Therefore the compatibility from a Regulated ESPD *towards* a Self-contained ESPD should be possible to a large extent.
+====
+
+As for the exclusion criteria (and following requirement http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916#tbr070-013[_tbr070-013_]) we have grouped the selection criteria under different categories. The figure below is intended to identify and list these categories for the selection criteria (branches in text boxes), and specific subgroups within each category (leaves in text without boxes). 
+
+Each branch in this 'criteria taxonomy' corresponds to one data structure that is identical for all the leaves under that branch (e.g. compare the names of the boxes with the tabs of the spreadsheets containing the link:./dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V02.00.00.ods[Regulated] and link:./dist/cl/ods/ESPDRequest-CriteriaTaxonomy-SELFCONTAINED-V02.00.00.ods[Self-contained] taxonomies).
+
+.Selection criteria taxonomy 
+image::SelectionCriteriaTaxonomy.png[Selection criteria taxonomy, alt="Selection criteria taxonomy", width="900" align="center"]

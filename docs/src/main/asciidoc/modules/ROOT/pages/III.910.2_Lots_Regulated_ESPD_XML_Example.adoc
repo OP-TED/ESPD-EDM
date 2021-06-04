@@ -1,0 +1,33 @@
+
+==== XML Example
+
+In the example below the contracting authority has selected "No Lots", hence the Lot '0'.
+
+.Lots (*REGULATED* ESPD)
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<QualificationApplicationRequest xmlns="urn:X-test:UBL:Pre-award:QualificationApplicationRequest" xmlns:cac="urn:X-test:UBL:Pre-award:CommonAggregate" xmlns:cbc="urn:X-test:UBL:Pre-award:CommonBasic" xmlns:espd="urn:com:grow:espd:02.00.00"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:X-test:UBL:Pre-award:QualificationApplicationRequest ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.2-Pre-award.xsd">
+	<cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
+	<cbc:CustomizationID schemeAgencyID="CEN-BII" schemeVersionID="3.0">urn:www.cenbii.eu:transaction:biitrdm070:ver3.0</cbc:CustomizationID>
+	<cbc:ProfileID schemeAgencyID="CEN-BII">41</cbc:ProfileID>
+	<cbc:ID schemeAgencyID="DGPE">ESPDREQ-DGPE-3b5755dfb8</cbc:ID>
+	<cbc:CopyIndicator>false</cbc:CopyIndicator>
+	<cbc:UUID schemeID="ISO/IEC 9834-8:2008" schemeAgencyID="EU-COM-GROW" schemeVersionID="4">0fddbf2d-1e33-4267-b04f-52b59b72ccb6</cbc:UUID>
+	<cbc:ContractFolderID schemeAgencyID="DGPE">PP.20170419.1024-9</cbc:ContractFolderID>
+	<cbc:IssueDate>2017-12-31</cbc:IssueDate>
+	<cbc:ProcedureCode listID="ProcedureType" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">1</cbc:ProcedureCode>
+	<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyName="EU-COM-GROW" listVersionID="02.00.00">REGULATED</cbc:QualificationApplicationTypeCode> <--1-->
+	<!-- Contracting body data left empty for the sake of brevity -->
+	<cac:ContractingParty> <cbc:BuyerProfileURI>http://www.defensa.gob.es/isfas/perfilcontr/</cbc:BuyerProfileURI>
+		<cac:Party/>
+	</cac:ContractingParty>
+
+	<!-- Mandatory Lot of a Regulated ESPD -->
+	<cac:ProcurementProjectLot>
+		<cbc:ID schemeAgencyID="EU-COM-GROW">0</cbc:ID> <--2-->
+	</cac:ProcurementProjectLot>
+</QualificationApplicationRequest>
+----
+<1> The type of ESPD is "REGULATED". If SELFCONTAINED was specified the presence of more than one lot should be checked and a non-fatal warning should be thrown.
+<2> The Regulated ESPD requires the presence of one Lot, identified with a '0' to indicate that the procedure is not divided into Lots. Additional Lots may be specified, in which case each Lot needs to be identified differently.

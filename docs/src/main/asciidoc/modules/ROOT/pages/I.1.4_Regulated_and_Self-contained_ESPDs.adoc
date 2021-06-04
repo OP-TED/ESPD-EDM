@@ -1,0 +1,38 @@
+[.text-left]
+=== I.4 Regulated and Self-contained ESPDs
+
+[cols="<1,<4"]
+|===
+|*REQUIREMENT*|The CA must be able to select the type of ESPD (regulated or self-contained)
+|===
+
+This new version of the eESPD makes the difference between “regulated” and “self-contained” ESPD. 
+
+*Regulated ESPDs* are those XML document instances the structure and content of which are strictly adjusted to the terms expressed in the Annex 2 of the http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0007[Commission Implementing Regulation (EU) 2016/7]: Standard form for the European Single Procurement document (ESPD). 
+
+A *Regulated ESPD* usually refers to documents and information that are external; i.e. it uses sentences like "mentioned in the Contract Notice published or the Contract Documents". The criteria of a Regulated ESPD are all defined in eCertis and their structure never change.
+
+*Regulated ESPDs* do work with only two type of properties, `CAPTION` and `QUESTION`.  
+
+In a *Self-contained ESPD* all the information needed for an ESPD Request is either contained in other parts of the document or the document refers to the authentic online source from where to obtain it. Thus the criteria and requirements that are particular to the MS or to the contracting authority, generic to all Procurement Procedures or particular of the Procurement Procedure, are explicitly mentioned or defined in the ESPD Request document.
+
+Additionally, in a *Self-contained ESPD* the Member State and the contracting authority are able to introduce requirements that are particular to the national legislation or the procurement procedure. Self-contained ESPDs confer the contracting authorities a greater flexibility when preparing their ESPD Request documents.
+
+*Self-contained ESPDs* do work with three type of properties, `CAPTION`, *`REQUIREMENT`* and `QUESTION`.
+
+Thus, in the case of exclusion grounds, the Member States can define in eCertis national exclusion criteria and link them to the corresponding European criteria defined in the Directives.
+
+In  the case of selection criteria, the contracting authority may introduce requirements for certain requirements (e.g. regarding turnovers, financial ratios, or references) to specify expected minimum amounts, specific types of ratios, minimum number of references, or other requirements).
+
+This document provides descriptions about some of these situations, mock-ups and XML examples to illustrate the differences between Regulated and Self-contained ESPDs and to clarify when and how to use them. See also section "III. The ESPD Request document" for details on how to specify the type of ESPD in an XML instance.
+
+==== I.4.1 Mock-up
+
+Software applications need to be aware of this new feature introduced by the V02.00.00 of the ESPD-EDM. Depending on whether the ESPD Request document that is being prepared is regulated or self-contained, a software application should behave in different ways; e.g. for Self-contained ESPD documents, the application should allow the contracting body to define requirements for some selection criteria that are specific to the procurement procedure.
+
+One suggestion for a Graphical User Interface (GUI) aimed at editing ESPD Request documents is to facilitate the contracting body the selection  of the type of ESPD Request in an initial page:
+
+.Regulated or Self-contained ESPD, mock-up
+image::REGULATED_SELFCONTAINED_mock-up.png[regulated and Self-contained ESPD, alt="regulated and Self-contained ESPD", align="center"]
+
+

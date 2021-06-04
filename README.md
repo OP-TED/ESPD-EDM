@@ -6,8 +6,8 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## Documentation
 
-* [Version 2.0.0 in progress](https://espd.github.io/ESPD-EDM/v2.0.0/)
-* [Latest stable version v1.0.2](https://espd.github.io/ESPD-EDM/v1.0.2/)
+* [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
+* [v1.0.2](https://espd.github.io/ESPD-EDM/v1.0.2/)
 * [v1.0.1](https://github.com/ESPD/ESPD-EDM/blob/1.0.1/docs/src/main/asciidoc/index.adoc)
 
 ## Roadmap
@@ -17,6 +17,59 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
   * https://github.com/ESPD/ESPD-EDM/issues/2
 * **Version 2.0.0**: The goal of version 2.0.0 is that the ESPD-EDM is self contained. Meaning that public buyers can specify directly in their ESPD services criteria instead of defining them in the procurement document or the notice. Examples are that the public buyer can specify the number of years needed for the turnovers, the financial ratios needed for the procedure or that they can specify certificates needed. Something else that will be implemented in version 2.0.0 is the possibility to weight criteria which is important to reduce the number of participants in a procedure. Issues for this release are:
   * https://github.com/ESPD/ESPD-EDM/issues/
+  
+## Installation
+
+The recommended way to get started using the `exchange-model` in a `Java` project is with a dependency management system.
+
+### With Maven
+
+```xml
+<dependency>
+  <groupId>eu.europa.ec.grow.espd</groupId>
+  <artifactId>exchange-model</artifactId>
+  <version>1.0.2</version>
+</dependency>
+```
+
+### With Gradle
+
+```groovy
+dependencies {
+    compile("eu.europa.ec.grow.espd:exchange-model:1.0.2")
+}
+```
+
+### Version 2.0.0
+
+**Please note that this version requires Java 8**
+
+```xml
+<dependency>
+  <groupId>eu.europa.ec.grow.espd</groupId>
+  <artifactId>exchange-model2</artifactId>
+  <version>2.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+Version 2 of the `Exchange Model` has a different `artifactId`, i.e. `exchange-model2`, in order to support 
+the usage of both versions at the same time inside a `Java` `Maven` project.
+
+In order to use the snapshot version, you might have to enable the `Maven` snapshot repository in your `pom.xml`.
+
+
+```xml
+<repositories>
+  <repository>
+    <id>oss-sonatype</id>
+    <name>oss-sonatype</name>
+    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+```
 
 ## Use
 The ESPD-EDM is made publicly available through Github. 
