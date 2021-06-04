@@ -1,0 +1,110 @@
+
+=== IX.1 All about lots
+
+When a procurement procedure is divided in Lots not all the selection criteria apply to all Lots, i.e. some
+Lots need to be linked to specific criteria.
+
+In the SELF-CONTAINED ESPD-EDM specification, instead of defining criteria per each Lot, it is for the criterion to
+specify to which Lots it applies.
+
+To link a criterion with one or more Lots, the ESPD-EDM uses a GROUP (or SUBGROUP) of REQUIREMENT(s), where each REQUIREMENT
+specifies the identifier of each Lot that is affected by the criterion. The figures below show how this is represented
+in the four different criteria data structures listed above (''Suitability'', ''Professional risk indemnity'',
+''Other economic or financial requirements'' and ''References'').
+
+For more complete examples on how the SELF-CONTAINED ESPD-Request specifies these criteria see the
+sub-sections
+link:#vi-2-2-self-contained-suitability-enrolments[VI.2.2 Self-contained suitability (enrolments)],
+link:#vi-6-2-self-contained-risk-indemnity-insurance[Self-contained risk indemnity insurance],
+link:#vi-7-2-self-contained-other-economic-or-financial-requirements[VI.7.2 Self-contained other economic or financial requirements], and
+link:#vi-8-2-self-contained-references[VI.8.2 Self-contained references].
+
+The folder link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml] also contains
+complete XML instances of both REGULATED and SELF-CONTAINED ESPD-Request and ESPD-Response documents.
+
+The *REGULATED* ESPD documents can only define the Lots into which the procedure is divided into and the Lots to which the
+economic operator tenders to. The maximum expressivity of information requirements related to Lots is only possible in
+the *SELF-CONTAINED* ESPD documents.
+
+Therefore this section focuses only the SELF-CONTAINED ESPD-Response document.
+
+==== Lots: general information requirement check-list
+
+. *Criteria with references to Lots*: The current design of the UBL-2.2 `cac:TenderingCriterion` allows
+ referencing Lots for any type of Criteria. However
+the current version of the ESPD-EDM only identifies this need in a reduced set of Selection Criteria (see the
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CriteriaTaxonomy-SELFCONTAINED-V2.1.0.xlsx[Criteria Taxonomy spread-sheets]
+for more details, like the Criterion description, UUID, Code, etc.):
+
+    ** *Suitability I*
+    *** Criterion #25 - Enrolment in a relevant professional register
+    *** Criterion #26 - Enrolment in a trade register
+    *** Criterion #27 - For service contracts: authorisation of particular organisation needed
+    *** Criterion #28 - For service contracts: membership of particular organisation needed
+
+    ** *Risk insurance*
+    *** Criterion #35 - Professional risk indemnity insurance
+
+    ** *Other economic or financial requirements*
+    *** Criterion #36 -Other economic or financial requirements
+
+    ** *References*
+    *** Criterion #37 - For works contracts: performance of works of the specified type
+    *** Criterion #38 - For supply contracts: performance of deliveries of the specified type
+    *** Criterion #39 - For service contracts: performance of services of the specified type
+
+. *Order of occurrence*: The table below presents the different ''blocks'' of data related to Lots in the sequence
+they must occur in the ESPD-Response. The aim of this table is help implementors identify the type of data structure,
+what it is used for, where to locate its definition (in the UBL-2.2 XSD Schema and the Criteria Taxonomy spread-sheet),
+and which comes first and which goes after (i.e. how they are sequenced).
+
+[NOTE]
+====
+*_A complete ESPD-Response document with the examples provided in this section can be found in the file
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Lots-SelfContained-Response_V2.1.0.xml[Lots-SelfContained-Response_V2.1.0.xml]_*
+====
+
+.Order of occurrence of the different blocks of data related to Lots
+[cols="<1,<1,<2,<2,<2"]
+|===
+|*Nº*|*Data Element*|*Description*|*Location*|*Rules*
+|1
+|*Procurement Procedure Lots*
+|The Lots into which the procurement procedure has been divided into.
+|At the root of the QualificationApplicationResponse document, in the element `/cac:ProcurementProjectLot`
+|Only the `cbc:ID` (the identifier of the lot) is required. This set of data is common to all the ESPD-Request and
+ESPD-Response documents about procedures divided into lots;
+
+|2
+|*Criterion ''CA Lots''*
+|Requirements by the CA about the submission of tenders when the procedure is divided into Lots.
+|Inside a ''false'' criterion data structure C#64 ''*CA Lots*'' (CRITERION.OTHER.CA_DATA.LOTS_SUBMISSION)
+|The data provided herein by the CA must be coherent amongst themselves and with the Lots into which the procedure
+is divided into. This set of data is common to all the ESPD-Request and ESPD-Response documents about procedures
+divided into lots;
+
+|3
+|*Criterion ''Lots the EO tenders to''*
+|The Lots to which the economic operator tenders
+|Inside a UBL-2.2 element `cac:TenderingCriterion`. This criterion has been defined by the ESPD-EDM (see
+criterion #62 ''*Lots the EO tenders to*''. This criterion must occur just after `cac:ProcurementProjectLot`
+|The Lots specified by the EO in its response must be coherent with the list of Lots specified by the CA (e.g. if the
+CA has specified 5 Lots, the EO cannot tender to a ''Lot6'' (see row 1 of this table). This set of data is common to
+all the ESPD-Request and ESPD-Response documents about procedures divided into lots;
+
+|4
+|*CA's REQUIREMENT(s) and QUESTION(s) linked to specific Lots*
+|One or more REQUERIMENT(s) and QUESTION(s) linking one criterion to the lots to which it applies (see XML examples)
+|Inside a specific criterion, e.g. REQUIREMENTs defined in the ''Suitability'', ''Professional risk insurance'', ''Other economic
+or financial requirements'' and ''References criteria''
+|The Lots specified by the CA inside one REQUIREMENT must be coherent with the list of Lots into which the
+procurement procedure is divided into (see row 1 or this table)
+
+|5
+|*EO's response on its Lots*
+|List of the Lot Identifiers to which the EO tenders to
+|Inside `/cac:TenderingCriterionResponse/cac:ResponseValue` (as `cbc:ResponseID`)
+|The Lot identifiers provided by the EO must be coherent with the ones it (the EO) tenders to (see row 2 of this table)
+and with 1) the ones into which the procedure is divided into, and 2) the ones the CA has specified in the REQUIREMENT(s)
+
+|===

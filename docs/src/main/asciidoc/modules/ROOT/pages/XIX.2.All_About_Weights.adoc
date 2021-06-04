@@ -1,0 +1,411 @@
+
+=== IX.2 All about weights
+
+The *SELF-CONTAINED ESPD*  caters for two methods of evaluating criteria (the REGULATED ESP does not covers this aspect).
+These two methods are identified in the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/master/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.0.2.xlsx[EvaluationMethodType] as
+1) PASSFAIL (Pass or fail), and 2) WEIGHTED (the criterion is assigned a weight).
+
+The ''pass or fail'' method is used in open procedures and in the first stage of multi-staged procedures. In multi-staged
+procedures, once the list of candidates meeting the criteria have been selected, it makes sense to evaluate their tenders
+based on weighted selection criteria.
+
+Hence the following general rule should be applied by software applications dealing with the ESPD-EDM:
+
+. If the procedure is open 1) no reduction of candidates is possible, and 2) criteria will not be weighted
+(the value of the element cbc:EvaluationMethodTypeCode is to be set to `PASSFAIL`);
+
+. Otherwise 1) the contracting authority should have the possibility of specifying the criteria and rules to be applied
+in order to limit the number of candidates, and 2) it should have the possibility of assigning a weight to any selection
+criterion (the value of the element cbc:EvaluationMethodTypeCode is to be set to `WEIGHTED`);
+
+==== Information requirement check-list
+
+. Only in *SELF-CONTAINED* ESPD-Request and ESDP-Response documents
+. Only in multi-staged procedures
+. The need for weighting was identified only for these Selection criteria (although the data model caters for
+weighing any criterion):
+
+    ** *Abilities I (Persons)*
+
+    *** Criterion #40 - Technicians or technical bodies for quality control
+    *** Criterion #41 - For works contracts: technicians or technical bodies to carry out the work
+
+    ** *Abilities II (Facilities, etc.)*
+
+    *** Criterion #42 - Technical facilities and measures for ensuring quality
+    *** Criterion #43 - Study and research facilities
+    *** Criterion #44 - Supply chain management
+    *** Criterion #45 - Environmental management measures
+    *** Criterion #46 - Tools, plant or technical equipment
+
+    ** Abilities III (Education)
+
+    *** Criterion #47 - Educational and professional qualifications
+
+
+[NOTE]
+====
+*_A complete ESPD-Response document with the examples provided in this section can be found in the file
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Weights-SelfContained-Request_V2.1.0.xml[Weights-SelfContained-Request_V2.1.0.xml]_*
+====
+
+.Order of occurrence of the different blocks of data related to weights
+[cols="<1,<1,<2,<2,<2"]
+|===
+|*Nº*|*Data Element*|*Description*|*Location*|*Rules*
+|1
+|*The weighting methodology*
+|Method that will be used to select those selection criteria that will be weighted (used for transparency purposes)
+|Element `cbc:WeightScoringMethodologyNote`, at the root of the Qualification Application Request document (see section
+link:#iii-4-root-elements[III.4 Root elements], see also the UBL-2.2 Schema for the Qualification Application Request
+(the link:#iii-the-espd-request-document[ESPD-Request document])
+|The economic operators should be informed in detail about how the selection will be performed
+
+|2
+|*The numeric weighting type*
+|The expression method for the weighting of the selection criteria (numeric, percentage).
+|Element `cbc:WeightingTypeCode`, at the root of the Qualification Application Request document
+|The numeric can also be used to express percentages (in the form of ''0.x''). See also the code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[EvaluationMethodType]
+
+|3
+|*The criterion weight value*
+|The concrete value assigned by the CA to the criterion for its weighting at evaluation time (e.g. 10%)
+|Element `cbc:WeightNumeric`, inside the `cac:TenderingCriterion` class
+(see section link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
+|None
+
+|4
+|*The criterion evaluation method type*
+|To inform that the criterion will be weighted (WEIGHTED vs PASSFAIL). See code list
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[EvaluationMethodType]
+|Element `cbc:EvaluationMethodTypeCode`, inside the `cac:TenderingCriterion` class (see section
+link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
+|The weight is used in second (or subsequent) stages of the evaluation. The first stage is always a PASSFAIL selection,
+even if the code WEIGHTED is assigned to this element
+
+|5
+|*Criterion-specific evaluation approach*
+|Explanation about how this specific criterion is weighted and will be evaluated (for transparency purposes)
+|Element `cbc:WeightingConsiderationDescription`, inside the `cac:TenderingCriterion` class (see section
+link:#iv-1-general-behavior[IV. Criteria, common aspects /IV.1 General behavior]
+|
+
+|6
+|*REQUIREMENT(s) in the criterion*
+|Criteria that are weighted carry a specific REQUIREMENT stating that ''This criterion will be weighted''
+|Elements `cac:TenderingCriterion` (see the figure on the data structure and the XML example,below)
+|*BEWARE* that the REQUIREMENT ''This criterion will be weighted'' is redundant with the element
+`cbc:EvaluationMethodTypeCode`, which may cause inconsistency. Therefore try and do not use this
+REQUIREMENT ''This criterion will be weighted'' and use instead the `cbc:EvaluationMethodTypeCode`. If you do not
+use this REQUIREMENT then you have to replace it with a CAPTION, because the cardinality constraint imposed
+by the UBL-2.2 requires that the first element inside a group or subgroup is a `cac:TenderingCriterionProperty` it in the XSD schema.
+
+|===
+
+The figure below shows elements 1 and 2 in the UBL-2.2 XSD Schema:
+
+.Elements related to the weight at the root level of the document
+image::ESPD-Response-WeightingRootElements.png[Root elements related to criterion weighting, alt="Root elements related to criterion weighting", align="center"]
+
+This other figure shows the elements inside the class Criterion:
+
+.Elements related to the weight inside the 'cac:TenderingCriterion' class
+image::Criterion-weight-related-data_elements.png[Weight-related data elements, alt="Weight-related data elements", align="center"]
+
+===== Mock-up - contracting authority perspective
+
+The mock-up below illustrates how the contracting authority may specify weighted criteria.
+
+.Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up
+image::Selfcontained_Abilities_WEIGHTED_CA_REQ_mockup.png[Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED CA REQUIREMENT edition mock-up", align="center"]
+
+Notice that:
+
+. The field ''One or more criteria will be weighted'' is not stored in the data model;
+. The field ''Criterion weighting type'' is generic to all the criteria and is placed in the element `cbc:WeightingTypeCode` (element #2 in the table above);
+. The field ''Provide the general method used to score and evaluate the weighted criteria" is hold in the element `cbc:WeightScoringMethodologyNote`;
+and is also generic for all the weighted criteria (element #1 in the table above);
+. The CA has chosen ''WEIGHTED'' as the value for the combo box labeled 'Criterion evaluation method'  and for the specific
+criterion ''For contracts: technicians or technical bodies to carry out the work'' (element #4 in the table above);
+. The weight assigned by the contracting authority (CA) to this criterion is `0.1`. This value will be placed in the the
+element `cbc:WeightNumeric` (element #3 in the table above);
+. The additional information about how this specific criterion will be evaluated will be place in the element
+`cbc:WeightingConsiderationDescription` (element #5 in the table above).
+
+===== Mock-up - economic operator perspective
+
+This mock-up illustrates how all the information specified by the contracting authority (CA), concerning
+1) the generic information about weights, and 2) the information specific of the criterion may be
+presented to the economic operator (EO):
+
+.Self-contained 'Abilities (I)' WEIGHTED EO mock-up
+image::Selfcontained_Abilities_WEIGHTED_EO_mockup2.png[Self-contained 'Abilities (I)' WEIGHTED EO mock-up, alt="Self-contained 'Abilities (I)' WEIGHTED EO mock-up", align="center"]
+
+===== Criterion data structure
+
+The following data structure represents the structure of one of the selection criteria that may be weighted in multi-stage
+procedures (''Technicians or technical bodies for quality control'').
+
+*Beware* that:
+
+* The fact that the criterion will be weighted is indicated by the REQUIREMENT ''This criterion will be weighted'';
+* This REQUIREMENT can be replaced by a CAPTION
+* The purpose of this REQUIREMENT can be fulfilled using the element `cbc:EvaluationMethodTypeCode`
+
+.Weighted self-contained 'Abilities (I) - Criterion 'Technicians or technical bodies for quality control'
+image::Self-contained_Weighted_Criterion.png[Weighted self-contained 'Abilities (I) criterion, alt="Weighted self-contained 'Abilities (I) criterion", align="center"]
+
+===== XML example
+
+The fragment of XML code below illustrates how the elements related to the weighting are specified in an SELF-CONTAINED
+ESPD Request document.
+
+[NOTE]
+====
+*_Many compulsory elements and attributes of the XML example below that are not related to the subject covered in
+this section have been removed to gain clarity and brevity. For complete XML samples download the files under folder
+link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml[dist/xml]._*
+
+*_The example presented next was extracted from the file
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/xml/Weights-SelfContained-Request_V2.1.0.xml[Weights-SelfContained-Request_V2.1.0.xml]_*
+====
+
+.Criterion "Technicians or technical bodies for quality control" (SELF-CONTAINED and WEIHGTED)
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualificationApplicationRequest xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" >
+<!-- Some root elements remove for brevity -->
+<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">576ae724-f8e8-4b51-ae9c-2c2f4c90f433</cbc:ID>
+<cbc:ContractFolderID schemeAgencyID="TeD">__ProcurementProcedureFileRefNumber</cbc:ContractFolderID>
+<cbc:IssueDate>2019-01-23</cbc:IssueDate>
+<cbc:ProcedureCode listID="ProcedureType" listAgencyID="EU-COM-OP" listVersionID="1.0">OPEN</cbc:ProcedureCode>
+<cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">SELFCONTAINED</cbc:QualificationApplicationTypeCode>
+
+<!--
+    *DATA ELEMENTS #1 and #2!* General information about all the weighted selection criteria.
+-->
+<cbc:WeightScoringMethodologyNote>For weighted criteria, evaluators will allocate a score between 0 and 100 to each question reponse in accordance with the scoring guidance below:</cbc:WeightScoringMethodologyNote><--3-->
+<cbc:WeightScoringMethodologyNote>0 Unnaceptable</cbc:WeightScoringMethodologyNote>
+<cbc:WeightScoringMethodologyNote>25 Poor</cbc:WeightScoringMethodologyNote>
+<cbc:WeightScoringMethodologyNote>50 Acceptable</cbc:WeightScoringMethodologyNote>
+<cbc:WeightScoringMethodologyNote>75 Good</cbc:WeightScoringMethodologyNote>
+<cbc:WeightScoringMethodologyNote>100 Excellent</cbc:WeightScoringMethodologyNote>
+<cbc:WeightScoringMethodologyNote>Suppliers must pass all of the pass/fail (Yes/No) questions and score a minimum of 75 overall in this section to proceed to the next stage. This will allows us to get a short list of suppliers to take through to the next stage. The final score for a criterion (or "Weighted Question Score") results from the product of the Score obtained and the weight allocated by the Contracting Authority to the criterion.</cbc:WeightScoringMethodologyNote>
+<cbc:WeightingTypeCode listID="WeightingType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">PERCENTAGE</cbc:WeightingTypeCode><--2-->
+
+<!-- Data About the CA -->
+<cac:ContractingParty>
+    <cac:Party><!-- elements removed for brevity --></cac:Party>
+</cac:ContractingParty>
+<!-- Data About the Procedure -->
+<cac:ProcurementProject><!-- elements removed for brevity --></cac:ProcurementProject>
+<!-- Procedure divided into three Lots. Not relevant for this example about weighting. -->
+<cac:ProcurementProjectLot>
+    <cbc:ID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ID>
+</cac:ProcurementProjectLot>
+<cac:ProcurementProjectLot>
+    <cbc:ID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ID>
+</cac:ProcurementProjectLot>
+<cac:ProcurementProjectLot>
+    <cbc:ID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ID>
+</cac:ProcurementProjectLot>
+<!-- Requirements about Lots addressed to EOs. Not relevant for this example about weighting. See other examples with lots. -->
+<cac:TenderingCriterion><!-- elements removed for brevity --></cac:TenderingCriterion>
+
+<!--
+        *THE REST OF THE DATA ELEMENTS RELATED TO WEIGHTING (elements #3 to #5 in the table above)
+        GO INSIDE THE CRITERIA THAT ARE WEIGHTED. E.g. Selection Criteria about ''Abilities I (Persons),
+        II (Facilities, etc.) and 'III (Education)': Technicians or technical bodies for quality control,
+        For works contracts: technicians or technical bodies to carry out the work, Technical facilities and
+        measures for ensuring quality, Study and research facilities, Supply chain management, Environmental
+        management measures, Tools, plant or technical equipment, and Educational and professional qualifications.
+ -->
+<cac:TenderingCriterion>
+<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3aaca389-4a7b-406b-a4b9-080845d127e7</cbc:ID>
+<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.TECHNICIANS_FOR_QUALITY_CONTROL</cbc:CriterionTypeCode>
+<cbc:Name>Technicians or technical bodies for quality control</cbc:Name>
+<cbc:Description>It can call upon the following technicians or technical bodies, especially those responsible for quality control. For technicians or technical bodies not belonging directly to the economic operator's undertaking but on whose capacities the economic operator relies as set out under Part II, Section C, separate ESPD forms must be filled in.</cbc:Description>
+<cbc:WeightNumeric>0.1</cbc:WeightNumeric><--5-->
+<cbc:EvaluationMethodTypeCode listID="EvaluationMethodType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">WEIGHTED</cbc:EvaluationMethodTypeCode><--4-->
+<cbc:WeightingConsiderationDescription>0 technicians ->   0 points</cbc:WeightingConsiderationDescription><--6-->
+<cbc:WeightingConsiderationDescription>1 technician ->   30 points</cbc:WeightingConsiderationDescription><--6-->
+<cbc:WeightingConsiderationDescription>2 technicians ->  60 points</cbc:WeightingConsiderationDescription><--6-->
+<cbc:WeightingConsiderationDescription>3 technicians ->  75 points</cbc:WeightingConsiderationDescription><--6-->
+<cbc:WeightingConsiderationDescription>4 technicians -> 100 points</cbc:WeightingConsiderationDescription><--6-->
+<cbc:WeightingConsiderationDescription>Minimum acceptable: 2 technicians</cbc:WeightingConsiderationDescription><--6-->
+<cac:Legislation>
+    <cbc:Title>Public Procurement Directive 2014/24/EU</cbc:Title>
+    <cbc:Description>Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</cbc:Description>
+    <cbc:JurisdictionLevel>eu</cbc:JurisdictionLevel>
+    <cbc:Article>Article 58(4)</cbc:Article>
+    <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.094.01.0065.01.ENG</cbc:URI>
+</cac:Legislation>
+<cac:TenderingCriterionPropertyGroup>
+    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">1e73d705-9dc1-43f1-9b5c-2d0deac7bc5f</cbc:ID>
+    <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+    <cac:TenderingCriterionProperty>
+        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">2a7dcb2a-dc10-4c30-bece-66dfd0a8bc6b</cbc:ID>
+        <!--
+            NOTICE that this is a CAPTION, not a REQUIREMENT (as suggested in the Criteria Taxonomy). The fact that the criterion is weighted is
+            already stated in the data element `cbc:EvaluationMethodTypeCode`, above. The text ''This criterion will be weighted'' could thus
+            be ''calculated'' (i.e. automatically provided in the ESPD-Request, by the software application based on the value placed in the
+            element `cbc:EvaluationMethodTypeCode`.
+        -->
+        <cbc:Description>This criterion will be weighted</cbc:Description><--1-->
+        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CAPTION</cbc:TypeCode>
+        <!-- The type of value provided by the CA is `NONE`, as this is a CAPTION, not a REQUIREMENT. -->
+        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">NONE</cbc:ValueDataTypeCode>
+    </cac:TenderingCriterionProperty>
+
+    <!-- THE REST OF THE CRITERION DOES NOT REFER ANYMORE TO ANY DATA ELEMENT RELATED TO ITS WEIGHTING. -->
+
+    <cac:SubsidiaryTenderingCriterionPropertyGroup>
+        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f156d97a-9700-4ad9-8d21-e3ac57102278</cbc:ID>
+        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+        <cac:TenderingCriterionProperty>
+            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">d1936fa0-4a8a-4016-8349-9e389c80fff4</cbc:ID>
+            <cbc:Description>Requirement</cbc:Description>
+            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+            <cbc:ExpectedDescription>__TechniciansRequirement</cbc:ExpectedDescription>
+        </cac:TenderingCriterionProperty>
+        <cac:SubsidiaryTenderingCriterionPropertyGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">609cc954-64be-4b4f-800a-f17589deb936</cbc:ID>
+            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+            <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">5b878bbe-b575-43e4-a40c-6bf3ede91641</cbc:ID>
+                <cbc:Description> </cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CAPTION</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">NONE</cbc:ValueDataTypeCode>
+            </cac:TenderingCriterionProperty>
+            <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">52ffcf91-3598-438f-8c3d-faf97da02602</cbc:ID>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">acf762a6-0087-4ad3-9f95-a8b624be81b0</cbc:ID>
+                    <cbc:Description>First name</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3b4b838b-1c41-42a3-a21b-a1cac72d2971</cbc:ID>
+                    <cbc:Description>Last name</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">95912db9-df33-44b1-97fd-63f5e0202d84</cbc:ID>
+                    <cbc:Description>Profession</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9ddd05be-6194-4ad8-9f68-7ac549dff64e</cbc:ID>
+                    <cbc:Description>Experience</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f4351f24-d1f7-4039-893c-e2947ba3afac</cbc:ID>
+                    <cbc:Description>Other information</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7a348140-4d0c-421b-8142-2053835272a3</cbc:ID>
+                    <cbc:Description>How long with  EO</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUANTITY_INTEGER</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+                    <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                    <cac:TenderingCriterionProperty>
+                        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">0de6079a-3f13-4391-a8a6-1b4b350f8b2f</cbc:ID>
+                        <cbc:Description>Is this information available online?</cbc:Description>
+                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">INDICATOR</cbc:ValueDataTypeCode>
+                    </cac:TenderingCriterionProperty>
+                    <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c4d4dec1-ea76-4d1c-bcf2-2d4f265982fb</cbc:ID>
+                            <cbc:Description>Evidence supplied</cbc:Description>
+                            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+                        </cac:TenderingCriterionProperty>
+                    </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            </cac:SubsidiaryTenderingCriterionPropertyGroup>
+        </cac:SubsidiaryTenderingCriterionPropertyGroup>
+        <cac:SubsidiaryTenderingCriterionPropertyGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">45a67f48-d146-4faf-8239-dd6977dffe29</cbc:ID>
+            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+            <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c1806c05-3589-4af4-9bea-7061b30e3f4f</cbc:ID>
+                <cbc:Description> </cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CAPTION</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">NONE</cbc:ValueDataTypeCode>
+            </cac:TenderingCriterionProperty>
+            <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">52ffcf91-3598-438f-8c3d-faf97da02602</cbc:ID>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">1d07b02b-cfce-4143-8743-79943b6265a0</cbc:ID>
+                    <cbc:Description>Name</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">ef2281fc-3505-4d3b-9fbc-e7655e534b28</cbc:ID>
+                    <cbc:Description>Experience area</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9e8f3516-50fa-45d3-83cd-fa005705d4fa</cbc:ID>
+                    <cbc:Description>Other information</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                </cac:TenderingCriterionProperty>
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">9026e403-3eb6-4705-a9e9-e21a1efc867d</cbc:ID>
+                    <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                    <cac:TenderingCriterionProperty>
+                        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">89ae7f89-e17c-492c-a529-d137d7a5e22d</cbc:ID>
+                        <cbc:Description>Is this information available online?</cbc:Description>
+                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">INDICATOR</cbc:ValueDataTypeCode>
+                    </cac:TenderingCriterionProperty>
+                    <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">0a166f0a-0c5f-42b0-81e9-0fc9fa598a48</cbc:ID>
+                        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f977a875-2889-4415-920f-256c1c1a06ed</cbc:ID>
+                            <cbc:Description>Evidence supplied</cbc:Description>
+                            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+                        </cac:TenderingCriterionProperty>
+                    </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            </cac:SubsidiaryTenderingCriterionPropertyGroup>
+        </cac:SubsidiaryTenderingCriterionPropertyGroup>
+    </cac:SubsidiaryTenderingCriterionPropertyGroup>
+</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+</QualificationApplicationRequest>
+----
+<1> The contracting authority has selected that this criterion will be weighted.
+<2> Method that will be used to select those selection criteria that will be weighted (used for transparency purposes).
+<3> The expression method for the weighting of the selection criteria (numeric, percentage).
+<4> To inform that the criterion will be weighted (WEIGHTED vs PASSFAIL). See code list.
+link:https://github.com/ESPD/ESPD-EDM/blob/2.1.0/docs/src/main/asciidoc/dist/cl/xlsx/ESPD-CodeLists-V2.1.0.xlsx[EvaluationMethodType].
+<5> The concrete value assigned by the CA to the criterion for its weighting at second-stage evaluation time.
+<6> Explanation about how this specific criterion is weighted and will be evaluated (for transparency purposes).

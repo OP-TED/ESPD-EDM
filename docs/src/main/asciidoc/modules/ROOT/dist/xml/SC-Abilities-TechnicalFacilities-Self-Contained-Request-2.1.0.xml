@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ubl-qareq:QualificationApplicationRequest xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ubl-qares="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2" xmlns:ubl-qareq="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2">
+    <cbc:UBLVersionID schemeAgencyID="OASIS-UBL-TC">2.2</cbc:UBLVersionID>
+    <cbc:CustomizationID schemeName="CustomizationID" schemeAgencyID="CEN-BII" schemeVersionID="2.0">urn:www.cenbii.eu:transaction:biitrdm070:ver3.0</cbc:CustomizationID>
+    <cbc:ProfileID schemeAgencyID="CEN-BII" schemeVersionID="2.0">4.1</cbc:ProfileID>
+    <cbc:ProfileExecutionID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">ESPD-EDMv2.1.0-SELFCONTAINED</cbc:ProfileExecutionID>
+    <cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeAgencyName="DG GROW (European Commission)" schemeVersionID="1.1">576ae724-f8e8-4b51-ae9c-2c2f4c90f433</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:UUID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.0">7a186dda-ad3b-4c9d-9e1c-0b44c716b28e</cbc:UUID>
+    <cbc:ContractFolderID schemeAgencyID="TeD">__ProcurementProcedureFileRefNumber</cbc:ContractFolderID>
+    <cbc:IssueDate>2019-01-23</cbc:IssueDate>
+    <cbc:IssueTime>00:08:33</cbc:IssueTime>
+    <cbc:VersionID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">2018.01.01</cbc:VersionID>
+    <cbc:ProcedureCode listID="ProcedureType" listAgencyID="EU-COM-OP" listVersionID="1.0">OPEN</cbc:ProcedureCode>
+    <cbc:QualificationApplicationTypeCode listID="QualificationApplicationType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">SELFCONTAINED</cbc:QualificationApplicationTypeCode>
+    <cbc:WeightScoringMethodologyNote>__WeightingScoringMethodologyNote</cbc:WeightScoringMethodologyNote>
+    <cbc:WeightingTypeCode listID="WeightingType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">PERCENTAGE</cbc:WeightingTypeCode>
+    <cac:ContractingParty>
+        <cac:Party>
+            <cbc:WebsiteURI>www.__Procurer.com</cbc:WebsiteURI>
+            <cac:PartyIdentification>
+                <cbc:ID schemeAgencyID="EU-COM-GROW">GR153301872</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>__ProcurerName</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>__ProcurerStreet</cbc:StreetName>
+                <cbc:CityName>__ProcurerCity</cbc:CityName>
+                <cbc:PostalZone>12345</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="ISO" listName="CountryCodeIdentifier" listVersionID="1.0">GR</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact>
+                <cbc:Name>__ProcurerContactName</cbc:Name>
+                <cbc:Telephone>654321</cbc:Telephone>
+                <cbc:Telefax>098765</cbc:Telefax>
+                <cbc:ElectronicMail>__ProcurerContact@pr.com</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:ContractingParty>
+    <!-- Lots are not relevant for this example, i.e. this criterion does not refer to lots. -->
+    <cac:ProcurementProject>
+        <cbc:Name>__ProcurementProcedureTitle</cbc:Name>
+        <cbc:Description>__ProcurementProcedureDescription</cbc:Description>
+        <cbc:ProcurementTypeCode listID="ProjectType" listAgencyID="EU-COM-OP" listVersionID="1.0">COMBINED</cbc:ProcurementTypeCode>
+        <cac:MainCommodityClassification>
+            <cbc:ItemClassificationCode>45463100-8</cbc:ItemClassificationCode>
+        </cac:MainCommodityClassification>
+    </cac:ProcurementProject>
+    <cac:ProcurementProjectLot>
+        <cbc:ID schemeAgencyID="EU-COM-GROW">Lot1</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+        <cbc:ID schemeAgencyID="EU-COM-GROW">Lot2</cbc:ID>
+    </cac:ProcurementProjectLot>
+    <cac:ProcurementProjectLot>
+        <cbc:ID schemeAgencyID="EU-COM-GROW">Lot3</cbc:ID>
+    </cac:ProcurementProjectLot>
+ 
+    <!-- 
+            This criterion illustrates how to prepare a selection criterion about ''abilities'', more specifically the criterion
+            ''Technical facilities and measures for ensuring quality''. 
+    -->
+    <!-- The rest of criteria above and below this criterion have been removed for brevity. -->
+    <cac:TenderingCriterion>
+        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">4bf996d9-439c-40c6-9ab9-980a48cb55a1</cbc:ID>
+        <cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.SELECTION.TECHNICAL_PROFESSIONAL_ABILITY.TECHNICAL.FACILITIES_FOR_QUALITY_ENSURING</cbc:CriterionTypeCode>
+        <cbc:Name>Technical facilities and measures for ensuring quality</cbc:Name>
+        <cbc:Description>It uses the following technical facilities and measures for ensuring quality and its study and research facilities are as follows:</cbc:Description>
+        <!-- This criterion will be used in a second or subsequent evaluation stage. Its relative weight, assigned by the CA, is in this case 5%. -->
+        <cbc:WeightNumeric>0.05</cbc:WeightNumeric>
+        <!-- The fact that the criterion is weighted is announced here. -->
+        <cbc:EvaluationMethodTypeCode listID="EvaluationMethodType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">WEIGHTED</cbc:EvaluationMethodTypeCode>
+        <!-- Additional information to help EOs improve their offer, and used also for transparency. See also chapter "Putting things together" and the XML 
+            example in that chapter for details on this. --> 
+        <cbc:WeightingConsiderationDescription>Facilities and quality measures aligned to standards will score better, especially if those standards are European.</cbc:WeightingConsiderationDescription>
+        <cac:Legislation> 
+            <cbc:Title>Public Procurement Directive 2014/24/EU</cbc:Title>
+            <cbc:Description>Directive 2014/24/EU of the European Parliament and of the Council of 26 February 2014 on public procurement and repealing Directive 2004/18/EC</cbc:Description>
+            <cbc:JurisdictionLevel>eu</cbc:JurisdictionLevel>
+            <cbc:Article>Article 58(4)</cbc:Article>
+            <cbc:URI>http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2014.094.01.0065.01.ENG</cbc:URI>
+        </cac:Legislation>
+        <!-- The main group of REQUIREMENTs and QUESTIONs starts here. -->
+        <cac:TenderingCriterionPropertyGroup>
+            <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">1e73d705-9dc1-43f1-9b5c-2d0deac7bc5f</cbc:ID>
+            <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+            <!-- The following property announces that the criterion will be weigthed. It principle it had a two-fold goal: 1) to make know the EO 
+                about the fact that it will be used in a second (or subsequent) stage of the evaluation for its ranking; and 2) for the evaluator (or 
+                system proposing automated evaluation results, to use it during the evaluation phase. However it is, in fact, superfluous or redundant, 
+                as this information is also indicated in the `cbc:EvaluationMethodTypeCode` (type WEIGHTED) and of the relative weight value assigned to 
+                the element `cbc:WeightNumeric`(5% in this example). Future versions of the ESPD-EDM may deprecate this REQUIREMENT. -->
+            <cac:TenderingCriterionProperty>
+                <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">e5ca83df-73d3-4774-8621-81a7914d228c</cbc:ID>
+                <cbc:Description>This criterion will be weighted</cbc:Description>
+                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">WEIGHT_INDICATOR</cbc:ValueDataTypeCode>
+            </cac:TenderingCriterionProperty>
+            <!-- Subgroup specifically used for facilities -->
+            <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f156d97a-9700-4ad9-8d21-e3ac57102278</cbc:ID>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                <!-- The CA's REQUIREMENT -->
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">a8b8f85e-63f3-4364-a7fa-8e8e3004d3e3</cbc:ID>
+                    <cbc:Description>Requirement</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                    <cbc:ExpectedDescription>Describe with as much detail as possible the facilities where the EO is developed, and namely these ones:
+                        1) square meters of each storey; 2) quantity of exit gates per storey; 3) number of fire extinguishers per storey; 4) diagram with 
+                        the location of the exit doors and of the fire-extinguishers.</cbc:ExpectedDescription>
+                </cac:TenderingCriterionProperty>
+                <!-- Notice that multiple subgroups of REQUIREMENT + QUESTION can be used to specify multiple requirements -->
+                <!-- This is the 1st. Subgroup of REQUIREMENT and QUESTION: Subgroup specifically used to require qualifications not older than 3 years. -->
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">488ca189-bcdb-4bf4-80c7-3ad507fd89fb</cbc:ID>
+                    <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                    <!-- The UUID of this QUESTION will be used in the Response providing the text that will be used by the evaluators. --> 
+                    <cac:TenderingCriterionProperty>
+                        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">4b0ddbd4-6c8e-42f1-9b39-d372d3ad878c</cbc:ID>
+                        <cbc:Description>Please describe them</cbc:Description>
+                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                    </cac:TenderingCriterionProperty>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <!-- The EO can use this subgroup of evidences to, in the response to it (in the ESPD-Response), make the information required available online. The URL should be in the domain of the EO -->
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+                    <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                    <cac:TenderingCriterionProperty>
+                        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">ef6e3621-1098-4b68-b793-787963afe844</cbc:ID>
+                        <cbc:Description>Is this information available electronically?</cbc:Description>
+                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">INDICATOR</cbc:ValueDataTypeCode>
+                    </cac:TenderingCriterionProperty>
+                    <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">0d25f520-02dc-4252-a565-86e4f0879fe5</cbc:ID>
+                            <cbc:Description>Evidence supplied</cbc:Description>
+                            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+                        </cac:TenderingCriterionProperty>
+                    </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            <!-- Subgroup specifically used for quality measures -->
+            <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">f156d97a-9700-4ad9-8d21-e3ac57102278</cbc:ID>
+                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                <cac:TenderingCriterionProperty>
+                    <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3a901515-2bf3-435a-922d-8b42acbc61d8</cbc:ID>
+                    <cbc:Description>Requirement</cbc:Description>
+                    <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">REQUIREMENT</cbc:TypeCode>
+                    <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                    <cbc:ExpectedDescription>Describe in detail how much your facilities are aligned with the ISO 9000. Where not aligned justify profusely. 
+                        If your explanations are lengthy, make them available online and specify the URL from where to access them freely or make them 
+                        available as additional document references or as part of the tender.</cbc:ExpectedDescription>
+                </cac:TenderingCriterionProperty>
+                <!-- The following subgroup contains the QUESTION that will be used in the Response as a reference for the Response 
+                    of the EO to theREQUIREMENT in the previous subgroup. -->
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">488ca189-bcdb-4bf4-80c7-3ad507fd89fb</cbc:ID>
+                    <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                    <!-- The UUID of this QUESTION will be used in the Response providing the text that will be used by the evaluators. --> 
+                    <cac:TenderingCriterionProperty>
+                        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">c7169ea8-cce8-4d1a-83de-a862ba9d4121</cbc:ID>
+                        <cbc:Description>Please describe them</cbc:Description>
+                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                    </cac:TenderingCriterionProperty>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                <!-- The EO can use this subgroup of evidences to, in the response to it (in the ESPD-Response), 
+                    make the information required available online. The URL should be in the domain of the EO. -->
+                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                    <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+                    <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+                    <cac:TenderingCriterionProperty>
+                        <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">4d79fcb6-7b36-4208-984b-5c511d1257fa</cbc:ID>
+                        <cbc:Description>Is this information available electronically?</cbc:Description>
+                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">INDICATOR</cbc:ValueDataTypeCode>
+                    </cac:TenderingCriterionProperty>
+                    <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                        <cbc:ID schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                            <cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">e9b9ff43-4397-46a2-a19c-37e109da5407</cbc:ID>
+                            <cbc:Description>Evidence supplied</cbc:Description>
+                            <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+                            <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+                        </cac:TenderingCriterionProperty>
+                    </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+            </cac:SubsidiaryTenderingCriterionPropertyGroup>
+        </cac:TenderingCriterionPropertyGroup>
+    </cac:TenderingCriterion>
+ </ubl-qareq:QualificationApplicationRequest>

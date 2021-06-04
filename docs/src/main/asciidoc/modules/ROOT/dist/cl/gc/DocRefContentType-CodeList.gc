@@ -7,10 +7,10 @@
    <Identification>
       <ShortName>DocRefContentType</ShortName>
       <LongName xml:lang="en">ADDITIONAL DOCUMENT REFERENCE CONTENT TYPE CODE</LongName>
-      <Version>2.0.2</Version>
+      <Version>2.1.0</Version>
       <CanonicalUri>https://github.com/ESPD/ESPD-EDM</CanonicalUri>
-      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2</CanonicalVersionUri>
-      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2/docs/src/main/asciidoc/dist/cl/gc/DocRefContentType.gc</LocationUri>
+      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0</CanonicalVersionUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0/docs/src/main/asciidoc/dist/cl/gc/DocRefContentType.gc</LocationUri>
       <Agency>
          <LongName xml:lang="en">DG GROW (European Commission)</LongName>
          <Identifier>EU-COM-GROW</Identifier>
@@ -19,6 +19,14 @@
    <ColumnSet>
       <Column Id="code" Use="required">
          <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
@@ -127,6 +135,12 @@
          <Value ColumnRef="code">
             <SimpleValue>TED_CN</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract Notice published in TeD (Official Journal of the European Publications Office)</SimpleValue>
          </Value>
@@ -203,6 +217,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>ESPD_REQUEST</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>European Single Procurement Document Request issued by a Contracting Authority</SimpleValue>
@@ -281,6 +301,12 @@
          <Value ColumnRef="code">
             <SimpleValue>TECC016</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Letter of Intent </SimpleValue>
          </Value>
@@ -357,6 +383,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>TECC017</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Status of the legal entity </SimpleValue>
@@ -435,6 +467,12 @@
          <Value ColumnRef="code">
             <SimpleValue>TECC018</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Notice of appointment of the persons authorised to represent the tenderer</SimpleValue>
          </Value>
@@ -511,6 +549,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>TECC019</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>VAT registration document  </SimpleValue>
@@ -589,6 +633,12 @@
          <Value ColumnRef="code">
             <SimpleValue>TECC020</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Identity document </SimpleValue>
          </Value>
@@ -665,6 +715,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>TECC021</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Reason for VAT exemption </SimpleValue>
@@ -743,6 +799,12 @@
          <Value ColumnRef="code">
             <SimpleValue>TECC022</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Subcontracting justification </SimpleValue>
          </Value>
@@ -819,6 +881,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>TECC024</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Power of Attorney </SimpleValue>
@@ -897,6 +965,12 @@
          <Value ColumnRef="code">
             <SimpleValue>Other</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Other type of reference to a document</SimpleValue>
          </Value>
@@ -973,6 +1047,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>NOJCN</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract Notice (CN) published on a National Government Official Journal</SimpleValue>
@@ -1051,6 +1131,12 @@
          <Value ColumnRef="code">
             <SimpleValue>ROJCN</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract Notice (CN) published on a Regional Government Official Journal</SimpleValue>
          </Value>
@@ -1127,6 +1213,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>LOJCN</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract Notice (CN) published on a Local Government Official Journal</SimpleValue>
@@ -1205,6 +1297,12 @@
          <Value ColumnRef="code">
             <SimpleValue>NOJPIN</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Prior Information Notice (PIN) published on a National Government Official Journal</SimpleValue>
          </Value>
@@ -1281,6 +1379,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>ROJPIN</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Prior Information Notice (PIN) published on a Regional Government Official Journal</SimpleValue>
@@ -1359,6 +1463,12 @@
          <Value ColumnRef="code">
             <SimpleValue>LOJPIN</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Prior Information Notice (PIN) published on a Local Government Official Journal</SimpleValue>
          </Value>
@@ -1435,6 +1545,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>NOJCAN</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract Award Notice (CAN) published on a National Government Official Journal</SimpleValue>
@@ -1513,6 +1629,12 @@
          <Value ColumnRef="code">
             <SimpleValue>ROJCAN</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract Award Notice (CAN) published on a Regional Government Official Journal</SimpleValue>
          </Value>
@@ -1589,6 +1711,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>LOJCAN</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract Award Notice (CAN) published on a Local Government Official Journal</SimpleValue>

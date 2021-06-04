@@ -7,10 +7,10 @@
    <Identification>
       <ShortName>PropertyGroupType</ShortName>
       <LongName xml:lang="en">PROPERTY GROUP TYPE</LongName>
-      <Version>2.0.2</Version>
+      <Version>2.1.0</Version>
       <CanonicalUri>https://github.com/ESPD/ESPD-EDM</CanonicalUri>
-      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2</CanonicalVersionUri>
-      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2/docs/src/main/asciidoc/dist/cl/gc/PropertyGroupType.gc</LocationUri>
+      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0</CanonicalVersionUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0/docs/src/main/asciidoc/dist/cl/gc/PropertyGroupType.gc</LocationUri>
       <Agency>
          <LongName xml:lang="en">DG GROW (European Commission)</LongName>
          <Identifier>EU-COM-GROW</Identifier>
@@ -19,6 +19,14 @@
    <ColumnSet>
       <Column Id="code" Use="required">
          <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
@@ -127,6 +135,12 @@
          <Value ColumnRef="code">
             <SimpleValue>ON*</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Process the group always</SimpleValue>
          </Value>
@@ -204,6 +218,12 @@
          <Value ColumnRef="code">
             <SimpleValue>ONTRUE</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Process the group if the previous question was and INDICATOR answered with the value 'true'</SimpleValue>
          </Value>
@@ -280,6 +300,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>ONFALSE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Process the group if the previous question was and INDICATOR answered with the value 'false'</SimpleValue>

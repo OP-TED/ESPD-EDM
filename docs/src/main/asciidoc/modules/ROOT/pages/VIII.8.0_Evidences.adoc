@@ -1,0 +1,42 @@
+
+=== VIII.8 Evidences
+
+==== Related information requirements
+
+See formal requirements related to evidences in the e-Sens site: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.1.0#BIS41-ESPDV2.1-tbr092-017[(_tbr092-017_)].
+
+==== Differences between the Regulated and Self-contained versions
+ 
+There are no differences between the *REGULATED* and *SELF-CONTAINED* versions as far as evidences are concerned. 
+
+==== XSD Schema (REGULATED and SELF-CONTAINED)
+
+Remember that evidences are indirectly linked to responses based on the identifier of the evidence: in the response, the element `cac:EvidenceSupplied/cbc:ID` contains the identifier set in `/QualificationApplicationResponse/cac:Evidence/cbc:ID`. See XML example below; see also the example XML file "link:https://github.com/ESPD/ESPD-EDM/tree/2.1.0/docs/src/main/asciidoc/dist/xml/SELFCONTAINED-ESPDResponse-2.1.0.xml[SELFCONTAINED-ESPDResponse-2.1.0.xml]" for an example.
+
+The figure below shows the XSD Diagram for the UBL-2.2 component `cac:Evidence` (elements in blue are the expected ones in ESPD-EDM V2.1.0):
+
+.cac:Evidence XSD diagram
+image::Evidence_XSD.png[cac:Evidence XSD diagram, alt="cac:Evidence XSD diagram", align="center"]
+
+The UBL-2.2 element `cac:Evidence` is a specialisation of `cac:DocumentReference`. This other XSD diagram shows this association and, in blue, highlights the elements expected in the ESPD-EDM V2.1.0:
+ 
+.cac:DocumentReference inside cac:Evidence XSD diagram
+image::Evidence_DocumentReference.png[cac:DocumentReference in Evidence, alt="cac:DocumentReference in Evidence", align="center"]
+
+==== Mock-ups and data structures
+
+In principle only a few elements are kept in the ESPD Response document about an evidence: its Identifier, a URL from where to access its content, a Reference/Code, a Confidentiality indicator, and the Issuer.
+
+This group of data repeats frequently in the many different mock-ups presented in this document. The one below is just one example and will be used to illustrate where the three element go in the XML instance of an evidence (compare the circled numbers #9 to #12 with the comments in the XML snippet below). 
+
+.Conviction 'Participation in criminal organisation', mock-up (EO perspective)
+image::Convictions__EO_mock-up.png[Conviction EO mock-up, alt="Conviction EO mock-up", align="center"]
+
+.Duplicity of the Issuer
+[IMPORTANT]
+====
+*Beware that* the current modeel of UBL-2.2 provides two elements for the Issuer, one for the issuer of the evidence and another for the issuer of the document reference. 
+
+The ESPD-EDM V2.1.0 uses always the one inside the document reference to refer to the issuer of the evidence (and of the document that 'is' the evidence). Thus the element used in the ESPD is `cac:Evidence/cac:DocumentReference/cac:IssuerParty`.
+
+====

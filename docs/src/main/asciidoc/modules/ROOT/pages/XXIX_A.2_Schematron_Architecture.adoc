@@ -1,0 +1,35 @@
+
+[.text-left]
+
+=== Schematron Architecture
+
+ISO Schematron executes the validations in two stages:
+
+. *Design and implementation of the SCH files*. 
+SCH stands for Schematron Schema and contains the set of rules to be validated within the XML document.
+. *Execution of the implemented validations* in the SCH files:
+.. Transformation of SCH files into XSLT files in order to be able to execute the validations against the XML.
+.. Execution of the validations using the XSLT files to get the final report.
+
+image::A2_Architecture_N-CL.png[Architecture for non-code list validation, alt="Architecture for non-code list validation", align="center"]
+
+==== What does the SCH file contain?
+
+. *Set of rules* specifying the context (the element(s) and/or attribute(s) which the assertions affect);
+. Each rule have a *set of assertions* with the tests that must be evaluated in the context. 
+
+image::A2_Architecture_SCH.png[SCH file example, alt="SCH file example", align="center"]
+
+
+==== Execution
+
+As a basis of the implementation, it has been taken into account:
+
+. Schematron "skeleton" implementation in https://github.com/SCHEMATRON[XSLT]. 
+
+image::A3_AS_IS.png[Execution files, alt="Execution files", align="center"]
+
+
+This example describes the execution of the validation process using the http://saxon.sourceforge.net/[Saxon library] to execute XSLT files and the XSLT provided as a basis:
+
+image::A3_Batch.png[Execution of the validation process, alt="Execution of the validation process", align="center"]

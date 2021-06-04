@@ -10,7 +10,7 @@
       <Version>1.0</Version>
       <CanonicalUri>http://publications.europa.eu/mdr/authority/index.html</CanonicalUri>
       <CanonicalVersionUri>http://publications.europa.eu/mdr/authority/eprocurement/01/index.html</CanonicalVersionUri>
-      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2/docs/src/main/asciidoc/dist/cl/gc/ProcedyreType.gc</LocationUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0/docs/src/main/asciidoc/dist/cl/gc/ProcedyreType.gc</LocationUri>
       <Agency>
          <LongName xml:lang="en">Publications Office of the EU</LongName>
          <Identifier>EU-COM-OP</Identifier>
@@ -19,6 +19,14 @@
    <ColumnSet>
       <Column Id="code" Use="required">
          <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
@@ -127,6 +135,12 @@
          <Value ColumnRef="code">
             <SimpleValue>PRIOR</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Prior information or periodic indicative notice</SimpleValue>
          </Value>
@@ -203,6 +217,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>OPEN</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Открита процедура</SimpleValue>
@@ -281,6 +301,12 @@
          <Value ColumnRef="code">
             <SimpleValue>RESTRICTED</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Ограничена процедура</SimpleValue>
          </Value>
@@ -357,6 +383,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>RESTRICTED_ACCELERATED</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Accelerated restricted procedure</SimpleValue>
@@ -435,6 +467,12 @@
          <Value ColumnRef="code">
             <SimpleValue>NEGOTIATED</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Negotiated procedure</SimpleValue>
          </Value>
@@ -511,6 +549,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>OPEN_RECUR</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Open procedure with recurring quantities</SimpleValue>
@@ -589,6 +633,12 @@
          <Value ColumnRef="code">
             <SimpleValue>NEGOTIATED_ACCELERATED</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Accelerated negotiated procedure</SimpleValue>
          </Value>
@@ -665,6 +715,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>AWARD</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract awards</SimpleValue>
@@ -743,6 +799,12 @@
          <Value ColumnRef="code">
             <SimpleValue>INFO</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>General information</SimpleValue>
          </Value>
@@ -819,6 +881,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>AWARD_DIRECT</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Direct Award</SimpleValue>
@@ -897,6 +965,12 @@
          <Value ColumnRef="code">
             <SimpleValue>COMP_NEGOTIATION</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Състезателна процедура с договаряне</SimpleValue>
          </Value>
@@ -973,6 +1047,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>COMP_DIALOGUE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Състезателен диалог</SimpleValue>
@@ -1051,6 +1131,12 @@
          <Value ColumnRef="code">
             <SimpleValue>DESIGN_CONTEST</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Design contest</SimpleValue>
          </Value>
@@ -1127,6 +1213,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>CONCESSION</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Concession award procedure</SimpleValue>
@@ -1205,6 +1297,12 @@
          <Value ColumnRef="code">
             <SimpleValue>CONCESSION_WO_PUB</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Възлагане на концесия без предварително публикуване на обявление за концесия</SimpleValue>
          </Value>
@@ -1281,6 +1379,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>INNOVATION</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Партньорство за иновации</SimpleValue>
@@ -1359,6 +1463,12 @@
          <Value ColumnRef="code">
             <SimpleValue>AMI</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Call for expressions of interest</SimpleValue>
          </Value>
@@ -1435,6 +1545,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>NOT_SPECIFIED</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Not specified</SimpleValue>
@@ -1513,6 +1629,12 @@
          <Value ColumnRef="code">
             <SimpleValue>QUAL</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Qualification system</SimpleValue>
          </Value>
@@ -1589,6 +1711,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>CONTESTS_RESULT</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Results of design contests</SimpleValue>
@@ -1667,6 +1795,12 @@
          <Value ColumnRef="code">
             <SimpleValue>NEGOTIATED_WO_CALL</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Процедура на договаряне без предварителна покана за участие в състезателна процедура</SimpleValue>
          </Value>
@@ -1743,6 +1877,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>AWARD_WO_PUB</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Contract award without prior publication</SimpleValue>
@@ -1821,6 +1961,12 @@
          <Value ColumnRef="code">
             <SimpleValue>OTHER</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Other</SimpleValue>
          </Value>
@@ -1897,6 +2043,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>NOT_APPLICABLE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Not applicable</SimpleValue>
@@ -1975,6 +2127,12 @@
          <Value ColumnRef="code">
             <SimpleValue>NOT_SPECIFIED</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Not specified</SimpleValue>
          </Value>
@@ -2052,6 +2210,12 @@
          <Value ColumnRef="code">
             <SimpleValue>LOV</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Negotiated Procedure for low value contracts</SimpleValue>
          </Value>
@@ -2128,6 +2292,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>VDL</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Vendor's list</SimpleValue>

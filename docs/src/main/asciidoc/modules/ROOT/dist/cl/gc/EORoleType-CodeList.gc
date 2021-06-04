@@ -7,10 +7,10 @@
    <Identification>
       <ShortName>EORoleType</ShortName>
       <LongName xml:lang="en">ECONOMIC OPERATOR ROLE TYPE</LongName>
-      <Version>2.0.2</Version>
+      <Version>2.1.0</Version>
       <CanonicalUri>https://github.com/ESPD/ESPD-EDM</CanonicalUri>
-      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2</CanonicalVersionUri>
-      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2/docs/src/main/asciidoc/dist/cl/gc/EORoleType.gc</LocationUri>
+      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0</CanonicalVersionUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0/docs/src/main/asciidoc/dist/cl/gc/EORoleType.gc</LocationUri>
       <Agency>
          <LongName xml:lang="en">DG GROW (European Commission)</LongName>
          <Identifier>EU-COM-GROW</Identifier>
@@ -19,6 +19,14 @@
    <ColumnSet>
       <Column Id="code" Use="required">
          <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
@@ -127,6 +135,12 @@
          <Value ColumnRef="code">
             <SimpleValue>SCLE</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>DEPRECATED</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Sole contractor / Lead entity</SimpleValue>
          </Value>
@@ -203,6 +217,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>GM</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Group member</SimpleValue>
@@ -281,6 +301,12 @@
          <Value ColumnRef="code">
             <SimpleValue>OERON</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Other entity (relied upon)</SimpleValue>
          </Value>
@@ -358,6 +384,12 @@
          <Value ColumnRef="code">
             <SimpleValue>OENRON</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Other entity (not relied upon)</SimpleValue>
          </Value>
@@ -429,6 +461,172 @@
          </Value>
          <Value ColumnRef="name-swe">
             <SimpleValue>Other entity (not relied upon)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>SC</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-spa">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ces">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-dan">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-deu">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-est">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ell">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fra">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-gle">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hrv">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ita">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lav">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lit">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hun">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-mlt">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-nld">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-pol">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-por">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ron">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slk">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slv">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fin">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+         <Value ColumnRef="name-swe">
+            <SimpleValue>Sole entity </SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>LE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-spa">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ces">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-dan">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-deu">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-est">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ell">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fra">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-gle">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hrv">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ita">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lav">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lit">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hun">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-mlt">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-nld">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-pol">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-por">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ron">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slk">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slv">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fin">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-swe">
+            <SimpleValue>The leader of a Consortium, Joint Venture or another type of group.</SimpleValue>
          </Value>
       </Row>
    </SimpleCodeList>

@@ -1,0 +1,93 @@
+
+=== VI.3.3 Regulated average yearly turnover
+
+You will notice that the case of the *Regulated average yearly turnover* is identical to the *Regulated specific average turnover*. 
+
+==== Mock-up - contracting authority perspective
+In this case the contracting authority, while preparing a new ESPD Request, has selected to require only an *average yearly turnover*. The economic operator will have to specify the number of years for which it provides the average turnover.
+
+.Regulated 'average yearly turnover' CA mock-up 
+image::Regulated_Average_Yearly_Turnover_CA_mock-up.png[Regulated 'average yearly turnover' CA mock-up, alt="Regulated 'average yearly turnover' CA mock-up", align="center"]
+
+==== Mock-up - economic operator perspective
+
+Notice that, in the *REGULATED* mode it is the economic operator who specifies the number of years for the average turnover. Additional it also must provide the amount corresponding to the average and the currency for that amount.
+
+.Regulated 'average yearly turnover' EO mock-up 
+image::Regulated_Average_Yearly_Turnover_EO_mock-up.png[Regulated 'average yearly turnover' EO mock-up, alt="Regulated 'average yearly turnover' EO mock-up", align="center"]
+
+==== Data Structure - Regulated
+
+.Regulated 'average yearly turnover' criterion data structure 
+image::Regulated_Average_Yearly_Turnover_Data_Structure.png[Regulated 'average yearly turnover' criterion data structure, alt="Regulated 'yearly turnover' criterion data structure",align="center"]
+
+==== XML Example - Regulated
+
+.Regulated 'average yearly turnover'
+[source,xml]
+----
+<!... header elements removed for brevity -->
+
+<!-- Criterion:Average yearly turnover -->
+<cac:TenderingCriterion>
+	<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">b16cb9fc-6cb7-4585-9302-9533b415cf48</cbc:ID>
+	<cbc:CriterionTypeCode listID="CriteriaTypeCode" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">CRITERION.SELECTION.ECONOMIC_FINANCIAL_STANDING.TURNOVER.AVERAGE_YEARLY</cbc:CriterionTypeCode>
+	<cbc:Name>Average yearly turnover</cbc:Name>
+	<cbc:Description>Its average yearly turnover for the number of years required in the relevant notice, the in the ESPD, the relevant notice or or the ESPD is as follows:</cbc:Description>
+	<cac:Legislation>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">57e8b7f1-1329-4d3e-86d9-9bcbdeb4279f</cbc:ID>
+		<cbc:Title>[Legislation title]</cbc:Title>
+		<cbc:Description>[Legislation description]</cbc:Description>
+		<cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+		<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+		<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+		<cac:Language>
+			<cbc:LocaleCode listID="LanguageCodeEU" listAgencyName="EU-COM-GROW" listVersionID="2.1.0">EN</cbc:LocaleCode>
+		</cac:Language>
+	</cac:Legislation>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">e1886054-ada4-473c-9afc-2fde82c24cf4</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">0d0a059d-c984-465c-8baa-416c766b8a11</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Number of years</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUANTITY_INTEGER</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">dbb840c8-b6af-4cfd-a9b8-bb53ac0406ec</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Average turnover</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">AMOUNT</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+	</cac:TenderingCriterionPropertyGroup>
+	<cac:TenderingCriterionPropertyGroup>
+		<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+		<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ON*</cbc:PropertyGroupTypeCode>
+		<cac:TenderingCriterionProperty>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">3d1b7a9d-5ab0-4d5d-a34e-773a6fa09b59</cbc:ID>
+			<cbc:Name/>
+			<cbc:Description>Is this information available electronically?</cbc:Description>
+			<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+			<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">INDICATOR</cbc:ValueDataTypeCode>
+		</cac:TenderingCriterionProperty>
+		<cac:SubsidiaryTenderingCriterionPropertyGroup>
+			<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+			<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">ONTRUE</cbc:PropertyGroupTypeCode>
+			<cac:TenderingCriterionProperty>
+				<cbc:ID schemeID="CriteriaTaxonomy" schemeAgencyID="EU-COM-GROW" schemeVersionID="2.1.0">7474ed7c-a850-444a-9716-7ce800073571</cbc:ID>
+				<cbc:Name/>
+				<cbc:Description>Evidence supplied</cbc:Description>
+				<cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">QUESTION</cbc:TypeCode>
+				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="2.1.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+			</cac:TenderingCriterionProperty>
+		</cac:SubsidiaryTenderingCriterionPropertyGroup>
+	</cac:TenderingCriterionPropertyGroup>
+</cac:TenderingCriterion>
+
+<!... rest of elements removed for brevity -->
+----
+
+

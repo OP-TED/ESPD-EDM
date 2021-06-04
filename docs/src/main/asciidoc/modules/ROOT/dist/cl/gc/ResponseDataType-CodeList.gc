@@ -7,10 +7,10 @@
    <Identification>
       <ShortName>ResponseDataType</ShortName>
       <LongName xml:lang="en">Type of data expected in the response for a criterion requirement</LongName>
-      <Version>2.0.2</Version>
+      <Version>2.1.0</Version>
       <CanonicalUri>https://github.com/ESPD/ESPD-EDM</CanonicalUri>
-      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2</CanonicalVersionUri>
-      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.0.2/docs/src/main/asciidoc/dist/cl/gc/ResponseDataType.gc</LocationUri>
+      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0</CanonicalVersionUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/ESPD-EDM-V2.1.0/docs/src/main/asciidoc/dist/cl/gc/ResponseDataType.gc</LocationUri>
       <Agency>
          <LongName xml:lang="en">DG GROW (European Commission)</LongName>
          <Identifier>EU-COM-GROW</Identifier>
@@ -19,6 +19,14 @@
    <ColumnSet>
       <Column Id="code" Use="required">
          <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="context" Use="required">
+         <ShortName>Context</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
          <Data Type="normalizedString" Lang="en"/>
       </Column>
       <Column Use="optional" Id="name-bul">
@@ -127,6 +135,12 @@
          <Value ColumnRef="code">
             <SimpleValue>AMOUNT</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>An Amount, and currency, as defined in UN/CEFACT's CCTS</SimpleValue>
          </Value>
@@ -203,6 +217,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>CODE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>A code for an unespecified concept</SimpleValue>
@@ -281,6 +301,12 @@
          <Value ColumnRef="code">
             <SimpleValue>CODE_COUNTRY</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Code identifying a country (Compulsory use of ISO 3166-1 alpha 2</SimpleValue>
          </Value>
@@ -357,6 +383,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>DATE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Date values (format YYYY-DD-MM)</SimpleValue>
@@ -435,6 +467,12 @@
          <Value ColumnRef="code">
             <SimpleValue>DESCRIPTION</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Textual field</SimpleValue>
          </Value>
@@ -511,6 +549,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>EVIDENCE_IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Points at the instance of an evidence</SimpleValue>
@@ -589,6 +633,12 @@
          <Value ColumnRef="code">
             <SimpleValue>INDICATOR</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>"true" or "false" values representing "Yes" affirmative or "No" negative answers</SimpleValue>
          </Value>
@@ -665,6 +715,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>PERCENTAGE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>A decimal number representing a percent (e.g. 0.1)</SimpleValue>
@@ -743,6 +799,12 @@
          <Value ColumnRef="code">
             <SimpleValue>PERIOD</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Period object as defined in UBL-2.1</SimpleValue>
          </Value>
@@ -819,6 +881,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>QUANTITY_INTEGER</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>A number representing a quantity in a specific unit of measure. The unit has to be specified (e.g. Kg).</SimpleValue>
@@ -897,6 +965,12 @@
          <Value ColumnRef="code">
             <SimpleValue>QUANTITY_YEAR</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>A non-negative integer representing a year. The unit has to be specified as YEAR</SimpleValue>
          </Value>
@@ -973,6 +1047,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>QUANTITY</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>A number representing a generic quantity with no unit specified.</SimpleValue>
@@ -1051,6 +1131,12 @@
          <Value ColumnRef="code">
             <SimpleValue>NONE</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>No response is expected. This may be the case when a contracting authority wants to set specific requirements (e.g. requirements on lots) and the answer is calculated out of the responses to other criteria.</SimpleValue>
          </Value>
@@ -1127,6 +1213,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>An identifier for a person, entity or object (e.g. a Party, a Lot, etc.)</SimpleValue>
@@ -1205,6 +1297,12 @@
          <Value ColumnRef="code">
             <SimpleValue>URL</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>A url, including e-mail addresses</SimpleValue>
          </Value>
@@ -1281,6 +1379,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>MAXIMUM_AMOUNT</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>The maximum amount the answer must have</SimpleValue>
@@ -1359,6 +1463,12 @@
          <Value ColumnRef="code">
             <SimpleValue>MINIMUM_AMOUNT</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>The minimum amount the answer must have</SimpleValue>
          </Value>
@@ -1435,6 +1545,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>MAXIMUM_VALUE_NUMERIC</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>The maximum value the answer to a criterion question must have</SimpleValue>
@@ -1513,6 +1629,12 @@
          <Value ColumnRef="code">
             <SimpleValue>MINIMUM_VALUE_NUMERIC</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>The minimum value the answer to a criterion question must have</SimpleValue>
          </Value>
@@ -1589,6 +1711,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>TRANSLATION_TYPE_CODE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>The type of transation that a contracting authority's requirement shall be translated for example certified translation</SimpleValue>
@@ -1667,6 +1795,12 @@
          <Value ColumnRef="code">
             <SimpleValue>CERTIFICATION_LEVEL_DESCRIPTION</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>The description of the level of the expected certification that a contracting authority requires to an economic operator in a tendering process</SimpleValue>
          </Value>
@@ -1743,6 +1877,12 @@
       <Row>
          <Value ColumnRef="code">
             <SimpleValue>COPY_QUALITY_TYPE_CODE</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
          </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>The type of Copy quality required by a contracting authority, expressed as a code</SimpleValue>
@@ -1821,6 +1961,12 @@
          <Value ColumnRef="code">
             <SimpleValue>TIME</SimpleValue>
          </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
          <Value ColumnRef="name-bul">
             <SimpleValue>Time values (format HH:MM:SS)</SimpleValue>
          </Value>
@@ -1892,6 +2038,338 @@
          </Value>
          <Value ColumnRef="name-swe">
             <SimpleValue>Time values (format HH:MM:SS)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>LOT_IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-spa">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ces">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-dan">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-deu">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-est">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ell">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fra">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-gle">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hrv">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ita">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lav">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lit">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hun">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-mlt">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-nld">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-pol">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-por">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ron">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slk">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slv">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fin">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-swe">
+            <SimpleValue>The identifier of a procurement procedure lot</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>WEIGHT_INDICATOR</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-spa">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ces">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-dan">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-deu">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-est">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ell">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fra">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-gle">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hrv">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ita">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lav">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lit">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hun">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-mlt">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-nld">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-pol">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-por">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ron">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slk">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slv">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fin">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-swe">
+            <SimpleValue>Establishes whether a criterion is weighted or not.</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>CODE_BOOLEAN</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-spa">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ces">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-dan">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-deu">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-est">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ell">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fra">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-gle">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hrv">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ita">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lav">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lit">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hun">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-mlt">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-nld">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-pol">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-por">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ron">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slk">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slv">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fin">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-swe">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>ECONOMIC_OPERATOR_IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="context">
+            <SimpleValue>ESPD REGULATED, ESPD SELF-CONTAINED</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue>ACTIVE</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-bul">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-spa">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ces">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-dan">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-deu">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-est">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ell">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fra">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-gle">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hrv">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ita">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lav">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-lit">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-hun">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-mlt">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-nld">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-pol">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-por">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-ron">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slk">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-slv">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-fin">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+         <Value ColumnRef="name-swe">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
          </Value>
       </Row>
    </SimpleCodeList>
