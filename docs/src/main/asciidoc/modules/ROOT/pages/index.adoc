@@ -2,9 +2,45 @@ ifndef::imagesdir[:imagesdir: images]
 
 = *ESPD Exchange Data Model* (ESPD-EDM)
 
-v1.0.1
+v1.0.2
 
 :toc:
 :toclevels: 3
 
-include::index_response.adoc[]
+== Resources
+
+* link:++https://espd.github.io/ESPD-EDM/v1.0.2/index_response.html++[ESPD Exchange Data Model Implementation Guide V1.0.2]
+* link:++https://github.com/ESPD/ESPD-EDM/tree/1.0.2/docs/src/main/asciidoc/code_lists++[Code lists]
+* link:++https://github.com/ESPD/ESPD-EDM/tree/1.0.2/exchange-model/src/main/resources/schema++[XSD Schema files] - they are found under the `exchange-model`
+module, under the `exchange-model/src/main/resources/schema/` folder.
+
+== Requirements
+
+ * Java 8
+ * Maven 3
+
+=== Installation
+
+=== With Maven
+
+The recommended way to get started using the `exchange-model` in your Java project is with a dependency management system.
+
+[source,xml]
+.pom.xml
+----
+<dependency>
+  <groupId>eu.europa.ec.grow.espd</groupId>
+  <artifactId>exchange-model</artifactId>
+  <version>1.0.2</version>
+</dependency>
+----
+
+=== With Gradle
+
+[source,groovy]
+.build.gradle
+----
+dependencies {
+    compile("eu.europa.ec.grow.espd:exchange-model:1.0.2")
+}
+----

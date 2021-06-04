@@ -27,7 +27,10 @@ a|
 <cac:PartyIdentification>
  <cbc:ID 
  schemeAgencyID= <!--1-->
- "ES-TAX-AGENCY">
+ "ES-TAX-AGENCY"
+ schemeID= <!--2-->
+ "VAT_Number"
+ >
  B20779081
  </cbc:ID> 
 </cac:PartyIdentification>
@@ -68,19 +71,14 @@ a|
 [source,xml] 
 ----
 <cac:PostalAddress>
- <cac:Country>
-   <cbc:IdentificationCode 
-   listAgencyID="ISO" 
-   listName="ISO 3166-1" 
-   listVersionID="1.0">
-   BE
-   </cbc:IdentificationCode>
- </cac:Country>
-</cac:PostalAddress>     
+  <cac:Country>
+    <cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listName="CountryCodeIdentifier" listVersionID="1.0.2">BE</cbc:IdentificationCode>
+  </cac:Country>
+</cac:PostalAddress>
 ----
 |*MANDATORY* - (Although in the XSD Schema the cardinality is 0..1)  
 |`*Rule*: The country code MUST always be specified. Compulsory use of the
-code list link:./code_lists/PDF/CountryCodeIdentifier.pdf[CountryCodeIdentifier]
+code list link:./code_lists/pdf/CountryCodeIdentifier.pdf[CountryCodeIdentifier]
 
 |*cac:Contact*
 |The contact data of a person related to the EO  
@@ -88,15 +86,9 @@ a|
 [source,xml] 
 ----
 <cac:Contact>
-  <cbc:Name>
-  Bruce Wayne
-  </cbc:Name>
-  <cbc:Telephone>
-  01 234 56 78
-  </cbc:Telephone>
-  <cbc:ElectronicMail>
-  wayne@enterprises.com
-  </cbc:ElectronicMail>
+  <cbc:Name>Bruce Wayne</cbc:Name>
+  <cbc:Telephone>01 234 56 78</cbc:Telephone>
+  <cbc:ElectronicMail>wayne@enterprises.com</cbc:ElectronicMail>
 </cac:Contact>
 ----
 |OPTIONAL  
@@ -104,6 +96,8 @@ a|
 
 |===
 <1> The data provider SHOULD specify who is the issuer of the EO's ID
+<2> The `schemeID` attribute specifies if it is a VAT number or another national number. The
+possible values are: `VAT_Number` and `National_Number`.
 
 A complete example about the EO's Party elements expected by the ESPD Service follows: 
 
@@ -114,28 +108,25 @@ A complete example about the EO's Party elements expected by the ESPD Service fo
   <espd-cbc:SMEIndicator>false</espd-cbc:SMEIndicator>
   <espd-cac:RepresentativeNaturalPerson/>
   <cac:Party>
-     <cac:PartyIdentification>
-        <cbc:ID>B20779081</cbc:ID> 
-     </cac:PartyIdentification>
-     <cac:PartyName>
-        <cbc:Name>Wayne Enterprises</cbc:Name>
-     </cac:PartyName>
-     <cac:PostalAddress>
-        <cbc:Postbox>1000</cbc:Postbox>
-        <cbc:StreetName>Rue Melsens 3</cbc:StreetName>
-        <cbc:CityName>Brussels</cbc:CityName>
-        <cac:Country>
-           <cbc:IdentificationCode listAgencyID="ISO" listName="ISO 3166-1" 
-           listVersionID="1.0">
-           BE 
-           </cbc:IdentificationCode>
-        </cac:Country>
-     </cac:PostalAddress>
-     <cac:Contact>
-        <cbc:Name>Bruce Wayne</cbc:Name>
-        <cbc:Telephone>01 234 56 78</cbc:Telephone>
-        <cbc:ElectronicMail>wayne@enterprises.com</cbc:ElectronicMail>
-     </cac:Contact>
+    <cac:PartyIdentification>
+      <cbc:ID>B20779081</cbc:ID>
+    </cac:PartyIdentification>
+    <cac:PartyName>
+      <cbc:Name>Wayne Enterprises</cbc:Name>
+    </cac:PartyName>
+    <cac:PostalAddress>
+      <cbc:Postbox>1000</cbc:Postbox>
+      <cbc:StreetName>Rue Melsens 3</cbc:StreetName>
+      <cbc:CityName>Brussels</cbc:CityName>
+      <cac:Country>
+        <cbc:IdentificationCode listID="CountryCodeIdentifier" listAgencyID="EU-COM-GROW" listName="CountryCodeIdentifier" listVersionID="1.0.2">BE</cbc:IdentificationCode>
+      </cac:Country>
+    </cac:PostalAddress>
+    <cac:Contact>
+      <cbc:Name>Bruce Wayne</cbc:Name>
+      <cbc:Telephone>01 234 56 78</cbc:Telephone>
+      <cbc:ElectronicMail>wayne@enterprises.com</cbc:ElectronicMail>
+    </cac:Contact>
   </cac:Party>
 </espd-cac:EconomicOperatorParty>
 ----

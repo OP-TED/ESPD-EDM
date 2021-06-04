@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<axsl:stylesheet xmlns:axsl="http://www.w3.org/1999/XSL/Transform"
-				xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
-				xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
-				xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" 
-				xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" 
-				xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" 
-				xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" 
-				xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" 
-				xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1" 
-				xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" 
-				xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" 
-				xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" 
-                 version="2.0"><!--Importing stylesheet additions-->
+<axsl:stylesheet xmlns:axsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sch="http://www.ascc.net/xml/schematron" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccv-cbc="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonBasicComponents-1" xmlns:cev-cbc="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonBasicComponents-1" xmlns:cev="urn:isa:names:specification:ubl:schema:xsd:CEV-CommonAggregateComponents-1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:ccv="urn:isa:names:specification:ubl:schema:xsd:CCV-CommonAggregateComponents-1" xmlns:espd-req="urn:grow:names:specification:ubl:schema:xsd:ESPDRequest-1" xmlns:espd-cbc="urn:grow:names:specification:ubl:schema:xsd:ESPD-CommonBasicComponents-1" xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns:espd="urn:grow:names:specification:ubl:schema:xsd:ESPDResponse-1" version="2.0"><!--Importing stylesheet additions-->
    <axsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" method="xml"/><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 
@@ -204,34 +192,6 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &lt; 24)"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &lt; 24)">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>There are some EXCLUSION Criterias that are not included in the XML</svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-
-		<!--ASSERT -->
-
-      <axsl:choose>
-         <axsl:when test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &gt; 24)"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( count($TypeCodeExclusion[not(.=following::cbc:TypeCode)]) &gt; 24)">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>There are more EXCLUSION Criterias than expected</svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-
-		<!--ASSERT -->
-
-      <axsl:choose>
          <axsl:when test="( not(string(cbc:ID))=false() )"/>
          <axsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( not(string(cbc:ID))=false() )">
@@ -253,20 +213,6 @@
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
                <svrl:text>The element 'espd:ESPDResponse / cbc:IssueDate' is mandatory </svrl:text>
-            </svrl:failed-assert>
-         </axsl:otherwise>
-      </axsl:choose>
-
-		<!--ASSERT -->
-
-      <axsl:choose>
-         <axsl:when test="( not(string(cbc:ContractFolderID))=false() )"/>
-         <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="( not(string(cbc:ContractFolderID))=false() )">
-               <axsl:attribute name="location">
-                  <axsl:apply-templates select="." mode="schematron-get-full-path"/>
-               </axsl:attribute>
-               <svrl:text>The element 'espd:ESPDResponse / cbc:ContractFolderID' is mandatory </svrl:text>
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
@@ -596,13 +542,13 @@
 		<!--ASSERT -->
 
       <axsl:choose>
-         <axsl:when test="(count(cbc:ID)=0) or ( (count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))"/>
+         <axsl:when test="(count(cbc:ID)=0)  or not(cbc:DocumentTypeCode/text() = 'TED_CN') or ( (count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))"/>
          <axsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(count(cbc:ID)=0) or ( (count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))">
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(count(cbc:ID)=0) or not(cbc:DocumentTypeCode/text() = 'TED_CN') or ( (count(cbc:ID))=1 and (string-length(cbc:ID)=17 and substring(cbc:ID,5,3)='/S ' and substring(cbc:ID,11,1)='-'))">
                <axsl:attribute name="location">
                   <axsl:apply-templates select="." mode="schematron-get-full-path"/>
                </axsl:attribute>
-               <svrl:text>The value of the ID MUST follow the pattern YYYY/S DDD-DDDDDD, where “YYYY” is a year, “/S” is a constant label, and “D” represent digits. Beware of the existence of a space (a blank) between the “S” and the first “D”. </svrl:text>
+               <svrl:text>The value of the ID MUST follow the pattern YYYY/S DDD-DDDDDD, where 'YYYY' is a year, '/S' is a constant label, and 'D' represent digits. Beware of the existence of a space (a blank) between the 'S' and the first 'D'. </svrl:text>
             </svrl:failed-assert>
          </axsl:otherwise>
       </axsl:choose>
