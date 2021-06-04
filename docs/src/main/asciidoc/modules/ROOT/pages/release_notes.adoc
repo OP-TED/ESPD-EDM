@@ -1,6 +1,97 @@
 == Release Notes
 
-=== v02.00.00 (25th July 2017) 
+=== v2.0.1 (1st February 2018)
+
+The changes specified herein have been applied in both (1) the link:++https://github.com/ESPD/ESPD-EDM++[ESPD-EDM specification], version 2.0.1 published in this Github repository; and (2) the link:++http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.1++[ESPDInt BIS document]. 
+
+See also details in: link:++https://github.com/ESPD/ESPD-EDM/tree/2.0.1/docs/src/main/asciidoc/dist/rn/Release Notes-2.0.1.ods++[Release Notes Details] and in this Github "Issues" section.
+ 
+* *Code Lists*: 
+
+** The "ActivityType", "AmountTypeCode" and "ContractType" Code Lists have been removed, as they're not used. The Code List "ContractType" is covered (i.e. replaced) by the CodeList "ProcedureType". The ESPDInt BIS document has been modified accordingly: Section about Code Lists has been updated.  
+
+* *Use of the UBL-2.2 Schemas elements*: 
+
+** The UBL-2.2 element `ProfileExecutionID` is used now to compulsorily specify the version and flavour of the ESPD-EDM. See the possible values in the Code List "ProfileExecutionID" (e.g. "ESPD-EDMv2.0.0-REGULATED", "ESPD-EDMv2.0.0-SELFCONTAINED", "ESPD-EDMv2.0.1-REGULATED", "ESPD-EDMv2.0.1-SELFCONTAINED"...see also the Guideline and XML examples. Remember also that cardinalities are to be controlled via business rule). The ESPDInt BIS document has been modified accordingly: Inclusion of the ESPD version identifier (tir070-299;tir092-299). The following Business Rules have been added: TRDM092-55, TRDM072-36 for tir92-299 and tir070-299 to control the Evidence version. 
+
+** The v2.0.0 documentation specified in section "VII.5 Reference to publications and to the ESPD Request" that the elements `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:ID` and `cac:QualificationApplicationRequest/cac:AdditionalDocumentReference/cbc:UUID` had to be used to refer to other documents. This was an editorial error and has been corrected: the elements to be referred are: `cac:QualificationApplicationRequest/cbc:ID` and `cac:QualificationApplicationRequest/cbc:UUID`.  
+
+** Element `cac:ProcurementProject` (cardinality 0..1): Use this component to identify and describe the procurement administrative procedure. The REGULATED version should not contain a `cac:ProcurementProject` in order to ensure the back-wards compatibility with the version 1.0.2. Use this component in case the ESPD is SELF-CONTAINED and the procedure is divided into lots. In this case use the `ProcurementProjectLot` component to provide details specific to the lot and reserve the `ProcurementProject` component to describe the global characteristics of the procedure. 
+
+* *ESPD-EDM Cardinalities*: 
+
+** The ESPD-EDM cardinality for the element `cac:TenderingCriterionResponse/cac:ResponseValue` has been modified to 0..n (see the online ESPD-EDM documentation). 
+** The cardinality of the element `cac:Evidence/cbc:ID` is now mandatory (to be controlled via business rule, as the UBL-XSD is 0..1). The ESPDInt BIS document has been modified accordingly.
+
+** About elements of `cac:ProcurementProject`:
+
+*** The cardinality of `cbc:ProcurementTypeCode` is now '0..1' in both the REGULATED and the SELFCONTAINED ESPD Requests (Thus ensuring compatibility between version 2.0.1 REGULATED and v1.0.2). The ESPDInt BIS document has been modified accordingly: Cardinality for the class Procurement Project and the subordinated elements tir070-503, tir070-504, tir92-505, tir92-506 from 1..1 to 0..1 has been changed.
+
+*** The cardinality of `cbc:Name` is now 0.1 in both the REGULATED and the SELFCONTAINED ESPD Requests. If used the text must match the one used in the Contract Notice. 
+*** The cardinality of `cbc:Description` is now 0.n in both the REGULATED and the SELFCONTAINED ESPD Requests (thus ensuring compatibility with UBL-2.2 multi-line descriptions). If used the text must match the one used in the Contract Notice.
+
+*** ESPDInt BIS document: Adding cardinalitites for "Evidence issuer party" and "Criterion fulfillment URI".
+
+* *UUIDS reviewed*: UUIDs, names and descriptions in files ESPD-REGULATED-CriteriaTaxonomy-V02.00.01 and ESPD-SELFCONTAINED-CriteriaTaxonomy-V02.00.01.xlsx do match now the ones in ESPD-Data_Structures-REGULATED-V02.00.01 and ESPD-Data_Structures-SELFCONTAINED-V02.00.01 spreadsheet books. Some UUIDS for subgroups of requirements have also been corrected (e.g. SC-General_Turnover --> 5ca58d66-3ef1-4145-957c-45d5b18a837f,  SC-Specific_Turnover --> 19a68e37-d307-4a28-9061-c22cd767be58, SC-General_Average_Turnover --> 53882893-f4a8-40ae-99dc-cad7b0748790, SC-Specific_Average_Turnover --> 6cff132b-8d15-4f79-ae37-2f9295432381).
+
+* *Data Structures*:
+
+** Information available electronically: The group "Is this information available electronically" is now present i all the criteria data structures (see "Data Structures" in the "dist/cl" files).
+
+** Some codes "ON*" were erroneous and have been transformed into "ONTRUE", e.g.Criterion 22 in the REGULATED Data Structures spreadsheets book AND Criterion 22 in the SELF-CONTAINED Data Structures spreadsheets book.
+
+** Missing data types: Some data types were missing and have been added; e.g. compare criteria 9 to 11, and criteria 62 and 63 between versions 2.0.0 and version 2.0.1. 
+
+The ESPDInt BIS document has been aligned accordingly.
+
+* *Editorial corrections*: 
+ 
+** ESPD-EDM specification: 
+
+*** The definitions in the Data Structure spread-sheets containing syntax and grammar errors have been corrected (based on the texts on the Regulation Annex II and ESPD Service GUI). Additional comments have also been added in the online documentation about the use of the UBL-2.2 0..n multi-line descriptions, as requested by some users.     
+
+*** Requirement about LotsThe documentation (in version 2.0.1) has been modified and reads now "One Lot must be always instantiated in the REGULATED ESPD XML document, and its identifier value should be '0'. The REGULATED version of the ESPD cannot be used for procurement procedures divided into Lots. For procedures divided into Lots use the SELF-CONTAINED version.
+
+*** Additional explanatory texts have been added at the beginning of sections "VI.2.6 Self-contained specific yearly turnover" and "VI.2.8 Self-contained specific average turnover" to clarify the use of CPVs.
+
+*** Group "Is this information available electronically": Beware that in version 2.0.0 this sentence was phrased differently as "Is this information available at no cost to the authorities from an EU Member State database?".
+
+*** Enhanced description of the codes ON*, ONTRUE,ONFALSE, and other Data Structure elements: A sub-section "IV.4 Mock-ups, data structures, XML examples and tools" has been added to the online documentation explaining the meaning and use of each column of the Data Structures.
+
+*** The figures representing the criteria taxonomies (both exclusion grounds and selection criteria) are now aligned with the criteria defined in the CriteriaTaxonomy and Data Structure spread-sheets (compare images in sections "V. Exclusion criteria", "VI. Selection criteria" and these files located in the "dist/cl" folder).
+
+** ESPDInt BIS document: 
+
+*** "Customization Identifier" for the Request and the Response to the section "Identifiers" added.
+*** Name of the ListIDs named in the Business Rules TRDM092-33 and TRDM070-BR-22 has been modified.
+*** Implementation Guideline for tir070-061 and tir92-071 modified.
+*** `tir70-502` added to reflect the country name.
+*** Illustration of the differences between the regulated and the self-contained ESPD in data models and implementation guidelines.
+ 
+
+* *ESPD-EDM specification artefacts*:
+
+** The content of the "dist/xlst" folder has been enriched and reorganised as follows:
+
+*** The stylesheets used to transform the Data Structure *.ods files into ESPD-EDM XML instances are now under the folder 'dist\xslt\ODS Data Structures to ESPD XML'. New files have been added to this folder to help with the automation of the generation of the bunch of all the data structures in a go: e.g. ESPD-Transformation.jar, ESPD-Transformer.bat. The use of these files is explained in section "IV.4 Mock-ups, data structures, XML examples and tools", subsection "Data structures spread-sheets as a tool to generate XML instances" of the documentation.
+
+*** A new folder named "XLSX CodeLists to Genericode" contains a style-sheet that can be used to generate OASIS Genericode 1.0 *.gc files (see "dist/cl/gc" folder) out of the spread-sheets book containing the Code Lists (file "dist/cl/xlsx/ESPD-CodeLists-V02.00.01.xlsx"). Please read the README.txt file inside this folder with the usage instructions. 
+	
+
+* *Business Rules*:
+
+** Modifications applied to the ESPDInt BIS document (aligned to the modifications on the ESPD-EDM specification):
+ 
+*** Changing path mentioned in the following Business Rules: TRDM092-13, TRDM092-14 and in the following implementation guidelines tir92-543, tir92-309.
+*** Adding the following Business Rules: TRDM092-56, TRDM072-37 for tir070-601, tir092-601 to control the criterion requirement structure.
+*** Adding the following Business Rules: TRDM092-57 for tir92-525 to control the confidentiality of responses.
+*** Removed the element "Postbox" from all address classes.
+*** Extended requirement description of tbr070-002 and tbr92-019
+*** Adding the following elements tir070-601, tir092-601
+*** Adding the Business Rule TRDM092-58 for tir092-526 to control the Criterion Property Groups
+
+
+=== v2.0.0 (25th July 2017) 
 
 . Adoption of UBL-2.2 XSD Schemata;
 . Introduction of REGULATED and SELFCONTAINED ESPD
@@ -9,31 +100,7 @@
 
 * https://github.com/ESPD/ESPD-EDM/issues/2[Change cardinality of requirements inside requirement groups]
 
-=== v1.0.1
 
-The `eu.europa.ec.grow.espd.exchange-model` Java library was deployed to Maven Central on the 19th of July 2016.
 
-The recommended way to get started using the `exchange-model` in your Java project is with a dependency management system.
 
-==== With Maven
-
-[source,xml]
-.pom.xml
-----
-<dependency>
-  <groupId>eu.europa.ec.grow.espd</groupId>
-  <artifactId>exchange-model</artifactId>
-  <version>1.0.1</version>
-</dependency>
-----
-
-==== With Gradle
-
-[source,groovy]
-.build.gradle
-----
-dependencies {
-    compile("eu.europa.ec.grow.espd:exchange-model:1.0.1")
-}
-----
 

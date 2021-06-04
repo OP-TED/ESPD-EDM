@@ -7,7 +7,7 @@ See formal requirements related to the economic operators in the e-Sens site: fr
 
 [cols="<1,<4"]
 |===
-|*REQUIREMENT*|*One ESPD Response per economic operator*. The ESPD-EDM-02.00.00, as all the previous versions of the ESPD, requires that every economic operator that participates in one tender provide its own ESDP Response document. This affects sole traders that rely on other entities for the execution of the contract (e.g. subcontractors) and groups of economic operators, e.g. a Joint Venture or a Consortium, and all the sub-contractors on which each economic operator of the group relies on to meet the selection criteria.
+|*REQUIREMENT*|*One ESPD Response per economic operator*. The ESPD-EDM-2.0.1, as all the previous versions of the ESPD, requires that every economic operator that participates in one tender provide its own ESDP Response document. This affects sole traders that rely on other entities for the execution of the contract (e.g. subcontractors) and groups of economic operators, e.g. a Joint Venture or a Consortium, and all the sub-contractors on which each economic operator of the group relies on to meet the selection criteria.
 |===
 
 Thus:
@@ -26,7 +26,7 @@ As you will see next, the information required about the economic operators vari
 
 . Is the procurement procedure divided into lots?
 
-One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V02.00.00 defines four different roles for the EO. The information to be provided by each role varies:
+One relevant aspect is the *Role* of the economic operator. The ESPD-EDM V2.0.1 defines four different roles for the EO. The information to be provided by each role varies:
 
 . *Sole contractor / Lead entity*: Sole entity or, in case of Consortium, Joint Venture or other types of groups, the leader of the group. In this case:
 
@@ -119,7 +119,7 @@ image::Economic_Operator_Mock-up_1_Roles_Complete.png[EO Roles, alt="EO Roles", 
 
 ==== Mock-ups (6/7): Information about reliance on the capacities of the other entities
 
-As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V02.00.00 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
+As explained above, the Sole contractor or the Leader of a group will have to provide information about the entities it relies on in order to meet the selection criteria. The mock-up below shows the set of data the ESPD-EDM V2.0.1 expects from this role. Remember that this information does not need to be supplied by the members of a group or other entities.
 
 .EO Roles-entities relied on, mock-up
 
@@ -136,11 +136,11 @@ The information that the economic operator (EO) has to provide is relatively abu
 
 Nonetheless some data requested in the ESPD are not modeled in UBL-2.2, namely those aiming at purposes going beyond the identification of the economic operator; e.g. data with statistical purposes (such as the number of employees and general turnover); or to ensure the transparency of the procurement procedure (the general methodology used for the weighting); or to link all the ESPDs that belong to one single tender (through the identification of the members of the group in the case of Joint Venture or Consortium and its sub-contracted entities).
 
-Therefore in the ESPD-EDM-02.00.00 the information about the economic operator is spread in two different places: 
+Therefore in the ESPD-EDM-2.0.1 the information about the economic operator is spread in two different places: 
 
 . The UBL-2.2 `cac:EconomicOperatorParty` component; and
 
-. Following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V02.00.00 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, REGISTERED_IN_OFFICIAL_LIST, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both data structures (the *cac:EconomicOperatorParty* one and the criteria containing *the other data about economic operator*.
+. Following the solution adopted for Version 1.0.2 of the ESPD-EDM, the ESPD-EDM V2.0.1 defines several criteria classified as CRITERION.OTHER.EO_DATA.* (where the * refers to different branches and leaves of a different structures about the economic operator (e.g. SHELTERED_WORKSHOP, REGISTERED_IN_OFFICIAL_LIST, TOGETHER_WITH_OTHERS, etc.). The XML instances use criteria components (UBL-2.2 cac:TenderingCriterion) to structure these data. The sub-sections below cover both data structures (the *cac:EconomicOperatorParty* one and the criteria containing *the other data about economic operator*.
 
 The UBL-2.2 `cac:EconomicOperatorParty` has three common aggregate components, the XSD Schema looks like this:
  
@@ -183,7 +183,7 @@ image::OTHER_EO_PQS_DS.png[PQS data structure, alt="PQS data structure", align="
 
 ==== cac:EconomicOperatorRole
 
-The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair code + description (see Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[EORoleType] for the codes and descriptions; see also the XML example below).
+The UBL-2.2 element for the role of the economic operator is quite straightforward and typical in UBL: it provides a pair code + description (see Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[EORoleType] for the codes and descriptions; see also the XML example below).
 
 .Role of the economic operator
 image::EO_Role_XSD.png[EO Role, alt="EO Role", align="center"]

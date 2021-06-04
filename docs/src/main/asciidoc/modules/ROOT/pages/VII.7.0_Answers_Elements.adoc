@@ -42,11 +42,11 @@
 
 |*cac:ResponseValue*
 |Associated class
-|1..n
+|0..n
 |A class to describe the criterion property response value.
 |*Information Requirement*: http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0#BIS41-ESPDV2.0-tbr92-018[_tbr92-018_]
 
-*Rule*: This class contains the main disjoint elements used to provide the actual answer. The UBL-2.2 model provides cardinality 1..n, this allows for building up lists of, namely, identifier and code values that are all "packaged" into one `cac:TenderingCriterionResponse` that in turn is linked to one `cac:TenderingCriterionProperty`.  
+*Rule*: This class contains the main disjoint elements used to provide the actual answer. The UBL-2.2 model provides cardinality 0..n, this allows for building up lists of, namely, identifier and code values that are all "packaged" into one `cac:TenderingCriterionResponse` that in turn is linked to one `cac:TenderingCriterionProperty`. Beware that the cardinality is flexible (0..whatever) because some responses are not simple values, like the ones but complex ones, e.g. `cac:ApplicablePeriod` and `cac:EvidenceSupplied`).  
 
 |*cac:ApplicablePeriod*
 |Associated class
@@ -73,7 +73,7 @@
 
 Thus, for example, if in the ESPD Request the expected type is DESCRIPTION the cac:ResponseValue must use the element `cbc:Description`, if INDICATOR `cbc:ResponseIndicator`, if IDENTIFIER `cbc:ResponseID`, etc. 
 
-See the codes used for `cac:ValueDataTypeCode` in the Code List link:./dist/cl/ods/ESPD-CodeLists-V02.00.00.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
+See the codes used for `cac:ValueDataTypeCode` in the Code List link:./dist/cl/ods/ESPD-CodeLists-V2.0.1.ods[ResponseDataType]. For the different possible values in the response see the XSD diagrams above and the list of the expected elements in `cac:ResponseValue` in the table below.
 
 This disjointness rule applies to the *type* of the value, but *not to the values of the same type*. Thus, for lists of values that constitute the actual answer (e.g. the list of LotIDs the economic operator tenders to, or a list of CPV codes to describe with granularity an activity), a sequence of `cac:ResponseValues` shall be instantiated in the XML. See the XML examples below.
 

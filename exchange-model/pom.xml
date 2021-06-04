@@ -5,7 +5,7 @@
     <groupId>eu.europa.ec.grow.espd</groupId>
     <artifactId>exchange-model2</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 
     <name>exchange-model</name>
     <description>The ESPD Exchange Data Model is the technical representation of the legal European Single Procurement
@@ -74,13 +74,36 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/schema</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../docs/src/main/asciidoc/dist/xsdrt</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
                 <version>0.13.2</version>
                 <configuration>
                     <extension>true</extension>
                     <!-- Use the XSD files from the distribution package in the documentation folder instead of src/main/resources -->
-                    <schemaDirectory>../docs/src/main/asciidoc/dist/xsdrt/maindoc</schemaDirectory>
+                    <schemaDirectory>../docs/src/main/asciidoc/dist/xsdrt</schemaDirectory>
                     <generateDirectory>src/main/generated</generateDirectory>
                     <removeOldOutput>true</removeOldOutput>
                     <args>
