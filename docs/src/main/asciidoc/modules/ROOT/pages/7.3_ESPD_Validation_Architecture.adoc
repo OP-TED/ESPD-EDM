@@ -1,0 +1,57 @@
+=== 7.3 ESPD Validation Architecture
+
+The validation of a ESPD XML has the following life-cycle:
+
+image:ESPD_Schematorn_lyfe-cycle.jpg[ESPD Schematorn lyfe-cycle,width=370,height=436]
+
+[arabic]
+. The validation of the XML starts by ensuring that the input XML follows the *structure defined by the XSD*: QualificationApplicationRequest.xsd XSD Schema or QualificationApplicationResponse.xsd XSD Schema. These schemas can be found under the folder dist/xsdrt/maindoc (or the equivalent documented xsd folder).
+[loweralpha]
+.. If the validation of the structure is not successful, the process stops and sends the report with the list of errors.
+.. If the validation of the structure is successful, the process continues with the code list validations and business rules. All errors found (if any) are listed in the report.
+. Depending on the type of application (ESPD Request or ESPD Response), different types of validations are executed:
+
+image:Validation_Process.jpg[Validation Process,width=600,height=416]
+
+==== ESPD Request
+
+[arabic]
+. *XSD Validation* against QualificationApplicationRequest-2.3.xsd
+. *Code list validations*. These are common for both, Request and Response:
+[loweralpha]
+.. Validation of the code list values: 01 ESPD-codelist-values.cva
+.. Validation of the identification of the code list: 01 ESPD Common CL Attributes.sch
+. Business rules related to the *cardinality* of the schema, that cannot be controlled using the XSD: 02 ESPD Req Cardinality BR.sch
+. Business rules used to validate the *criteria data structure*:
+[loweralpha]
+.. Validations common for Request and Response: 03 ESPD Common Criterion BR.sch
+.. Validations specific for Request applications: 03 ESPD Req Criterion BR.sch
+. *Other* business rules:
+[loweralpha]
+.. Other validations which are common to Request and Response applications, such as the mandatory use of the attribute schemeAgencyID for identifiers: 04 ESPD Common Other BR.sch
+.. Specific business rules for Request applications, in this case, the validation of the correct value for cbc:CutomisationID element: 04 ESPD Req Other BR.sch
+.. Business rules related to the procurer: 05 ESPD Req Procurer BR.sch
+.. Specific business rules: 05 ESPD Req Specific BR.sch
+
+==== ESPD Response
+
+[arabic]
+. *XSD Validation* against UBL-QualificationApplicationResponse-2.3.xsd
+. *Code list validations*. These are common for both, Request and Response:
+[loweralpha]
+.. Validation of the code list values: 01 ESPD-codelist-values.cva
+.. Validation of the identification of the code list: 01 ESPD Common CL Attributes.sch
+. Business rules related to the *cardinality* of the schema, that cannot be controlled using the XSD: 02 ESPD Resp Cardinality BR.sch.sch
+. Business rules used to validate the *criteria data structure*:
+[loweralpha]
+.. Validations common for Request and Response: 03 ESPD Common Criterion BR.sch
+.. Validations specific for Response applications: 03 ESPD Resp Criterion BR.sch
+. *Other* business rules:
+[loweralpha]
+.. Other validations which are common to Request and Response applications, such as the mandatory use of the attribute schemeAgencyID for identifiers: 04 ESPD Common Other BR.sch
+.. Specific business rules for Response applications, in this case, the validation of the correct value for cbc:CutomisationID element: 04 ESPD Resp Other BR.sch
+.. Business rules related to the economic operator: 05 ESPD Resp EO BR.sch
+.. Response Specific business rules: 05 ESPD Resp Specific BR.sch
+.. Specific business rules for economic operators registered in a pre-qualification system: 05 ESPD Resp Qualification BR.sch
+.. Specific business rules depending on the role: 05 ESPD Resp Role BR.sch
+

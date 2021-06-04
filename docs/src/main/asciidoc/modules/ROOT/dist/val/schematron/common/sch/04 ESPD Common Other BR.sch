@@ -13,7 +13,7 @@
     Start of synthesis of rules from cardinality constraints ESPD Request and ESPD Response
 
     Illustration of cardinality constraints - 04 ESPD Common Other BR.sch
-	ESPD Version: 2.1.1
+	ESPD Version: 3.0.0
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-OTH">
@@ -29,9 +29,9 @@
 			<assert test="(cbc:DocumentTypeCode)" flag="fatal"  id="BR-COM-10-03">The type of document being referenced, expressed as a code ('/cac:AdditionalDocumentReference/cbc:DocumentTypeCode') is mandatory (cbc:ID = '<value-of select="cbc:ID"/>').</assert>
 		</rule>
 		
-		<!-- BR-OTH-05: Identifies the earliest version of the UBL 2 schema. Use the value "2.2". Use also "OASIS-UBL-TC" for the schemeAgencyID attribute. -->
+		<!-- BR-OTH-05: Identifies the earliest version of the UBL 2 schema. Use the value "2.3". Use also "OASIS-UBL-TC" for the schemeAgencyID attribute. -->
 		<rule context="cbc:UBLVersionID">
-			<assert test="text()='2.2'" flag="fatal" id="BR-OTH-05-01">'cbc:UBLVersionID' must use the value "2.2" (cbc:UBLVersionID = '<value-of select="."/>').</assert>
+			<assert test="text()='2.3'" flag="fatal" id="BR-OTH-05-01">'cbc:UBLVersionID' must use the value "2.3" (cbc:UBLVersionID = '<value-of select="."/>').</assert>
 			<assert test="@schemeAgencyID = 'OASIS-UBL-TC'" flag="fatal" id="BR-OTH-05-02">'cbc:UBLVersionID/@schemeAgencyID' must use the value "OASIS-UBL-TC" (cbc:UBLVersionID/@schemeAgencyID = '<value-of select="@schemeAgencyID"/>').</assert>
 		</rule>
 		
@@ -41,7 +41,7 @@
 			<assert test="@schemeAgencyID = 'CEN-BII'" flag="fatal" id="BR-OTH-07-02">'cbc:ProfileID/@schemeAgencyID' must use the value "CEN-BII" (cbc:ProfileID/@schemeAgencyID = '<value-of select="@schemeAgencyID"/>').</assert>
 		</rule>
 		
-		<!-- BR-OTH-01: For codes, this ESPD V02.00.00 specification requires always three mandatory attributes: listID, listAgencyID, and listVersionID. -->
+		<!-- BR-OTH-01: For codes, this ESPD V03.00.00 specification requires always three mandatory attributes: listID, listAgencyID, and listVersionID. -->
 		<rule context="cbc:ExpectedCode | cbc:IdentificationCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode">
 			<assert test="@listID" flag="fatal" id="BR-OTH-01-10">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listAgencyID" flag="fatal" id="BR-OTH-01-20">The attribute listAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
@@ -49,25 +49,25 @@
 		</rule>
 		
 		<!-- BR-OTH-01: Code types listVersionID validation: starts with 2. -->
-		<rule context="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:EvaluationMethodTypeCode | cbc:PropertyGroupTypeCode |
-			cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode | cbc:CriterionTypeCode | cbc:WeightingTypeCode">
+		<rule context="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:PropertyGroupTypeCode |
+			cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode | cbc:CriterionTypeCode">
 			<assert test="@listID" flag="fatal" id="BR-OTH-01-11">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listAgencyID" flag="fatal" id="BR-OTH-01-21">The attribute listAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listVersionID" flag="fatal" id="BR-OTH-01-31">The attribute listVersionID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			
-			<assert test="starts-with(@listVersionID, '2.') or starts-with(@listVersionID, '02.')" flag="fatal" id="BR-OTH-01-40">List version identifier '<value-of select="name()"/>/listVersionID = <value-of select="@listVersionID"/>' is not correct. ListVersionID should be '2.x.y' or '02.xx.yy'.</assert>
+			<assert test="starts-with(@listVersionID, '3.') or starts-with(@listVersionID, '03.')" flag="fatal" id="BR-OTH-01-40">List version identifier '<value-of select="name()"/>/listVersionID = <value-of select="@listVersionID"/>' is not correct. ListVersionID should be '3.x.y' or '03.xx.yy'.</assert>
 		</rule>
 		
-		<!-- BR-OTH-02: For identifiers, this ESPD V02.00.00 specification requires at least (and always) the mandatory attribute schemeAgencyID. -->
-		<rule context="ext:ExtensionAgencyID | ext:ExtensionVersionID | cbc:AccountID| cbc:AdditionalAccountID|cbc:AgencyID| cbc:AircraftID| cbc:AttributeID| cbc:AwardID| cbc:AwardingCriterionID| cbc:BarcodeSymbologyID| cbc:BrokerAssignedID| cbc:BusinessClassificationEvidenceID| 
-		cbc:BusinessIdentityEvidenceID| cbc:BuyerEventID| cbc:CV2ID| cbc:CarrierAssignedID| cbc:ChipApplicationID| cbc:CompanyID| cbc:ConsigneeAssignedID| cbc:ConsignorAssignedID| cbc:ConsumptionID| cbc:ConsumptionReportID| cbc:ContractFolderID| cbc:ContractedCarrierAssignedID|
-		cbc:CustomerAssignedAccountID| cbc:CustomizationID| cbc:DocumentID| cbc:ExchangeMarketID| cbc:ExpectedID| cbc:ExtendedID| cbc:FormatID| cbc:FreightForwarderAssignedID| cbc:HazardClassID| cbc:ID| cbc:IdentificationID| cbc:ImmobilizationCertificateID|
-		cbc:InstructionID| cbc:IssueNumberID| cbc:IssuerID| cbc:JourneyID| cbc:LanguageID| cbc:LicensePlateID| cbc:LineID| cbc:LoadingSequenceID| cbc:LocationID| cbc:LogoReferenceID| cbc:LotNumberID| cbc:LowerOrangeHazardPlacardID| cbc:MarkingID| cbc:MinimumImprovementBid|
-		cbc:NationalityID| cbc:NetworkID| cbc:OID| cbc:OpenTenderID| cbc:OriginalContractingSystemID| cbc:OriginalJobID| cbc:ParentDocumentID| cbc:ParentDocumentLineReferenceID| cbc:ParentDocumentVersionID| cbc:ParticipantID| cbc:PaymentID| cbc:PaymentMeansID|
-		cbc:PerformingCarrierAssignedID| cbc:PrepaidPaymentReferenceID| cbc:PreviousJobID| cbc:PreviousVersionID| cbc:PrimaryAccountNumberID| cbc:ProductTraceID| cbc:ProfileExecutionID| cbc:ProfileID| cbc:ProtocolID| cbc:RadioCallSignID| cbc:RailCarID| cbc:ReferenceID| 
-		cbc:ReferencedConsignmentID| cbc:RegistrationID| cbc:RegistrationNationalityID| cbc:ReleaseID| cbc:RequestForQuotationLineID| cbc:RequiredCustomsID| cbc:ResponseID| cbc:RevisedForecastLineID| cbc:SalesOrderID| cbc:SalesOrderLineID| cbc:SecurityID| cbc:SellerEventID|
-		cbc:SequenceID| cbc:SequenceNumberID| cbc:SerialID| cbc:ShippingOrderID| cbc:SignatureID| cbc:SpecificationID| cbc:SubscriberID| cbc:SuccessiveSequenceID| cbc:SupplierAssignedAccountID| cbc:TenderEnvelopeID| cbc:TraceID| cbc:TrackingID| cbc:TrainID| 
-		cbc:TransportExecutionPlanReferenceID| cbc:UBLVersionID| cbc:UUID| cbc:UpperOrangeHazardPlacardID| cbc:ValidatedCriterionPropertyID| cbc:ValidatorID| cbc:VariantID| cbc:VersionID| cbc:VesselID| cbc:WeighingDeviceID">
+		<!-- BR-OTH-02: For identifiers, this ESPD V03.00.00 specification requires at least (and always) the mandatory attribute schemeAgencyID. -->
+		<rule context="ext:ExtensionAgencyID | ext:ExtensionVersionID | cbc:AccountID | cbc:AdditionalAccountID | cbc:AgencyID | cbc:AircraftID | cbc:AttributeID | cbc:AwardID | cbc:AwardingCriterionID | cbc:BarcodeSymbologyID | cbc:BrokerAssignedID | cbc:BusinessClassificationEvidenceID | 
+		cbc:BusinessIdentityEvidenceID | cbc:BuyerEventID | cbc:CV2ID | cbc:CarrierAssignedID | cbc:ChipApplicationID | cbc:CompanyID | cbc:ConsigneeAssignedID | cbc:ConsignorAssignedID | cbc:ConsumptionID | cbc:ConsumptionReportID | cbc:ContractFolderID | cbc:ContractedCarrierAssignedID |
+		cbc:CustomerAssignedAccountID | cbc:CustomizationID | cbc:DocumentID | cbc:ExchangeMarketID | cbc:ExpectedID | cbc:ExtendedID | cbc:FormatID | cbc:FreightForwarderAssignedID | cbc:HazardClassID | cbc:ID | cbc:IdentificationID | cbc:ImmobilizationCertificateID |
+		cbc:InstructionID | cbc:IssueNumberID | cbc:IssuerID | cbc:JourneyID | cbc:LanguageID | cbc:LicensePlateID | cbc:LineID | cbc:LoadingSequenceID | cbc:LocationID | cbc:LogoReferenceID | cbc:LotNumberID | cbc:LowerOrangeHazardPlacardID | cbc:MarkingID | cbc:MinimumImprovementBid |
+		cbc:NationalityID | cbc:NetworkID | cbc:OID| cbc:OpenTenderID | cbc:OriginalContractingSystemID | cbc:OriginalJobID | cbc:ParentDocumentID | cbc:ParentDocumentLineReferenceID | cbc:ParentDocumentVersionID | cbc:ParticipantID | cbc:PaymentID | cbc:PaymentMeansID |
+		cbc:PerformingCarrierAssignedID | cbc:PrepaidPaymentReferenceID | cbc:PreviousJobID | cbc:PreviousVersionID | cbc:PrimaryAccountNumberID | cbc:ProductTraceID | cbc:ProfileExecutionID | cbc:ProfileID | cbc:ProtocolID | cbc:RadioCallSignID | cbc:RailCarID | cbc:ReferenceID | 
+		cbc:ReferencedConsignmentID | cbc:RegistrationID | cbc:RegistrationNationalityID | cbc:ReleaseID | cbc:RequestForQuotationLineID | cbc:RequiredCustomsID | cbc:ResponseID | cbc:RevisedForecastLineID | cbc:SalesOrderID | cbc:SalesOrderLineID | cbc:SecurityID | cbc:SellerEventID |
+		cbc:SequenceID | cbc:SequenceNumberID | cbc:SerialID | cbc:ShippingOrderID | cbc:SignatureID | cbc:SpecificationID| cbc:SubscriberID | cbc:SuccessiveSequenceID | cbc:SupplierAssignedAccountID | cbc:TenderEnvelopeID | cbc:TraceID | cbc:TrackingID | cbc:TrainID | 
+		cbc:TransportExecutionPlanReferenceID | cbc:UBLVersionID | cbc:UUID | cbc:UpperOrangeHazardPlacardID | cbc:ValidatedCriterionPropertyID | cbc:ValidatorID | cbc:VariantID | cbc:VersionID | cbc:VesselID | cbc:WeighingDeviceID">
 			<assert test="(@schemeAgencyID) and normalize-space(@schemeAgencyID) != ''" flag="fatal"  id="BR-OTH-02">The attribute schemeAgencyID is mandatory for the element: '<value-of select="name()"/>', and it should not be empty.</assert>
 		</rule>
 		

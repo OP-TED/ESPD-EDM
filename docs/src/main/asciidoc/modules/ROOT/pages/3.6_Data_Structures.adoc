@@ -1,0 +1,79 @@
+=== 3.6 Data Structures
+
+The ESPD-EDM 'criterion' entity is a very flexible and business-agnostic structure. This flexibility provides a convenient way to represent any type of criteria. The counterpart is that the semantics of the criteria needs to be delimited based on codes, identifiers and design rules.
+
+Hence this document proposes a way of representing the criteria following a regular method and providing concrete codes to specify types of criterion properties, and identifiers to distinguish the different criteria and *reusable* groups of properties (when studying these data groups you will observe that sub-groups of properties are reused in different criteria have identical identifiers and structures).
+
+The following figures below illustrates the data structure sheets for one simple exclusion criterion (EG-Contributions). Compare them with the UBL-2.3 cac:TenderingCriterion XSD element.
+
+The columns of the tables are to be interpreted as follows:
+
+* Column 1: an ordinal number to sort sequentially the criteria
+* Column 2: contains always the opening and closing tag for Criterion
+* Columns 3 to 17: reserved for the opening and closing tags defining the data structure (see the tag codes in code list CriterionElementType).
+* Column 18: *Name*, a short descriptive text to identify the criterion withouth having to read the description
+* Column 19: *Description*, the text describing the criterion as kept in e-Certis
+* Column 20: *Value* a possible value or description of the value used by the transformation artefacts to produce example XML instances
+* Column 21: *Cardinality*, indicates whether the element is mandatory or optional and its multiplicity
+* Column 22: *PropertyDataType*, the type of data expected according to the types defined in the code list ResponseDataType
+* Column 23: *ElementUUID*, The Universal Unique Identifier assigned to identify unambiguously a criterion, group or subgroup. These UUID are kept in e-Certis, except for those that have to be generated dynamically (e.g. UUIDs for Questions, Captions and Requirements). See also the special note "Criteria Taxonomy/Data Structures and the use of UUIDS" below
+* Column 24: *Element Code*; in the case of Criterion it contains the code that categorises the criterion in the taxonomy of exclusion and selection criteria (it maps to the taxonomy drawn in the online documentation and in the spread-sheet files "ESPD-CriteriaTaxonomy*" in folder dist/cl). For the rest of elements there are three types of codes (see also section:
+** ON*, meaning "process always" (e.g. show always or read and extract data always")
+** ONTRUE, meaning "process this group only if the previous parent question (always an INDICATOR) has been answered affirmatively"
+** ONFALSE, meaning "process this group only if the previous parent question (always an INDICATOR) has been answered negatively"
+
+image:Contributions_criterion_data_structure.jpg[Contributions' criterion data structure,width=566,height=308]
+
+_Figure 41. 'Contributions' criterion data structure_
+
+We could say that the 'data structures' represented in the spread-sheets define a kind of 'meta-language' (or 'controlled vocabulary') that helps 'map' the structure of an ESPD-EDM criterion and the UBL-2.3 criterion data structure. The table below 'maps' both vocabularies. Please compare any of the data structures provided in this document with both the UBL-2.3 XSD Schemas and the XML examples provided herein.
+
+[cols=",",options="header",]
+
+_Table 24. Mapping between the ESPD-EDM criterion data structure spread-sheets and the UBL-2.3 vocabulary_
+|===
+|*ESDP-EDM Spread-sheet vocabulary* |*UBL-2.3 vocabulary*
+|CRITERION |cac:TenderingCriterion
+|SUBCRITERION |cac:SubTenderingCriterion
+|REQUIREMENT_GROUP |cac:TenderingCriterionPropertyGroup
+|QUESTION_GROUP |cac:TenderingCriterionPropertyGroup
+|REQUIREMENT_SUBGROUP |cac:SubsidiaryTenderingCriterionPropertyGroup
+|QUESTION_SUBGROUP |cac:SubsidiaryTenderingCriterionPropertyGroup
+|CAPTION |cac:TenderingCriterionProperty
+|REQUIREMENT |cac:TenderingCriterionProperty
+|QUESTION |cac:TenderingCriterionProperty
+|ADDITIONAL_DESCRIPTION_LINE |cbc:Description (namely in cac:TenderingCriterion)
+|LEGISLATION |cac:Legislation
+|===
+
+The ESPD-EDM data structures vocabulary is defined in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[CriterionElementType]". Her you have the definitions provided therein:
+
+* *CRITERION*: A criterion (in the case of the the ESPD an Exclusion or Selection criterion); maps to a UBL-2.3 cac:TenderingCriterion class
+* *SUBCRITERION*: Used to define national sub-criteria; maps to a UBL-2.3 cac:SubTenderingCriterion class
+* *REQUIREMENT_GROUP*: Group of requirements or remarks issued by a MS or a CA; maps to a UBL-2.3 cac:TenderingCriterionPropertyGroup
+* *REQUIREMENT_SUBGROUP*: A subgroup of requirements or remarks inside a group or subgroup of requirements; maps to a UBL-2.3 cac:SubsidiaryTenderingCriterionPropertyGroup
+* *REQUIREMENT*: Requirement, remark, rule, restriction or additional information to which the EO needs to conform or comply with; maps to a cac:TenderingCriterionProperty class (one data type must be specified for the value supplied by the buyer; see see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[ResponseDataType]")
+* *QUESTION_GROUP*: Group of questions, each question requiring a datum as an answer from the EO; maps to a cac:TenderingCriterionPropertyGroup class
+* *QUESTION_SUBGROUP*: A subgroup of questions inside a group or a subgroup of questions; maps to a cac:SubsidiaryTenderingCriterionPropertyGroup
+* *QUESTION*: A question that requires an answer (a specific datum) from the EO; maps to a cac:TenderingCriterionProperty class (one, and only one, data type is expected; see codes in the Code List "link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[ResponseDataType]" )
+* *CAPTION*: A text label (no requirement nor answer is expected); maps to a cac:TenderingCriterionProperty class (the expected response data type is NONE)
+* *ADDITIONAL_DESCRIPTION_LINE*: Additional line in a description (for descriptions that can be split in several lines); maps to a cbc:Description element (namely in cac:TenderingCriterion)
+* *LEGISLATION*: An instance of a Legislation class; maps to a cac:Legislation class
+
+*The main differences between REQUIREMENT, CAPTION and QUESTION are*:
+
+[arabic]
+. A REQUIREMENT is a condition, restriction or rule established by the Member State (in e-Certis, for all procurement procedures) or the buyer (for the specific procurement procedure). REQUIREMENT(s) are not intended to be responded by the economic operator; but the economic operator must conform to (comply with) it. Examples of REQUIREMENT(s): 'Provide at least three references to similar works', 'The expected lowest general yearly turnover is 1,000,000 €', etc. (see mock-ups);
+. A CAPTION is a label normally used to introduce a group of REQUIREMENT(s) or QUESTION(s); e.g. 'Lots the EO tenders to' (which is followed by a list of Lots identifiers provided by the EO);
+. A QUESTION is a direct request for a specific datum by the MS or the Buyer addressed to the EO. The EO has to respond this QUESTION with a value of the expected type of data.
+
+If you examine any of the XML examples provided in this document you will observe that:
+
+* SUBCRITERION is currently used to specify national criteria.;
+* The reason for having 'groups' and 'sub-groups' of properties is because UBL-2.3 defined the 'TenderingCriterionPropertyGroup' and 'SubsidiaryTenderingCriterionPropertyGroup';
+* The following rules apply in a regular way:
+** When the member state (MS) or the buyer needs to specify REQUIREMENT(s), the outer group of the data structure is always a REQUIREMENT_GROUP (e.g. 'EG-Contributions', 'SC-Suitability', or practically all selection criteria). Otherwise the outer group is always a QUESTION_GROUP (e.g. 'EG-Convictions', 'EG-Environ-Social-Labour_Law', 'EG-Business', etc.);
+** A REQUIREMENT_GROUP always contain a first element CAPTION or REQUIREMENT. This is because in the UBL-2.3 XSD schema the first *mandatory* element is always a cac:TenderingCriterionProperty element;
+** A REQUIREMENT_GROUP or REQUIREMENT-SUBGROUP may contain either REQUIREMENT_SUBGROUPS and/or QUESTION_SUBGROUPS;
+** The only possibility in the UBL-2.3 model to distinguish whether a group or a subgroup of criterion properties contains REQUIREMENT(s) or QUESTION(s) is to look into the value of the cac:TenderingCriterionProperty/cbc:TypeCode. The list of possible codes are the ones of the above mentioned Code List "link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[CriterionElementType]".
+

@@ -1,0 +1,47 @@
+=== 7.2 Code list validation Architecture
+
+Business rules related to code list validates:
+
+image:Codelist_business_rules.jpg[Code list business rules,width=600,height=325]
+
+
+==== Architecture for Code List validation
+
+The validation of the code lists needs an extra step on the process before executing the Schematron process. This is because it needs link:https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=codelist[Genericode] (GC) as input files.
+
+[arabic]
+. The first step is the *generation of Genericode (GC) files*. These files contains information about the values and identifiers of each code list.
+[loweralpha]
+.. GC files are found in the link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/gc[Validation folder].
+. *Design and implementation of the CVA files*. link:http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/1.0/[CVA] stands for Context and Value Association:
+. *Execution of the implemented validations* in the CVA files:
+[loweralpha]
+.. Transformation of CVA files into SCH files.
+.. Continue with the Schematron execution process: (1) transformation of SCH files into XSLT and execution of the validations using the XSLT files to get the final report.
+
+
+image:Architecture_codelist_validation.jpg[Architecture for code list validation,width=750,height=350]
+
+==== What does the SCH file contain?
+
+[arabic]
+. Association between one or more elements of the XML and one or more code list (specified in the Genericodes).
+. The declaration of which attributes of the XML identify information of the Genericode.
+
+The implementation of the CVA file has the following structure:
+
+image:CVA_example.jpg[CVA example,width=600,height=258]
+
+==== Execution
+
+As a basis of the implementation, it has been taken into account:
+
+[arabic]
+. Schematron implementation of CVA files for validation from link:http://www.cranesoftwrights.com/resources/ubl/[CRANE SOFTWRIGHTS LTD]
+
+image:CodeList_Validation_Execution_files.jpg[Code List Validation Execution files,width=600,height=210]
+
+This example describes the execution of the validation process using the link:http://saxon.sourceforge.net/[Saxon library] to execute XSLT files and the XSLT provided as a basis:
+
+image:Execution _validation process_codelists.jpg[Execution of the validation process in code lists,width=600,height=279]
+

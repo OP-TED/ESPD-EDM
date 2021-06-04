@@ -70,17 +70,13 @@
 									<ShortName>Code</ShortName>
 									<Data Type="normalizedString" Lang="en"/>
 								</Column>
-								<Column Id="context" Use="required">
-									<ShortName>Context</ShortName>
-									<Data Type="normalizedString" Lang="en"/>
-								</Column>
 								<Column Id="status" Use="required">
 									<ShortName>Status</ShortName>
 									<Data Type="normalizedString" Lang="en"/>
 								</Column>
 								<xsl:for-each select="$vars/var">
 									<xsl:variable name="current" select="."/>
-									<xsl:if test="not($current = 'Name') and not($current = 'Description') and not($current = 'Context') and not($current = 'Status')">
+									<xsl:if test="not($current = 'Name') and not($current = 'Description') and not($current = 'Status')">
 										<Column Use="optional">
 											<xsl:attribute name="Id">name-<xsl:value-of select="."/></xsl:attribute>
 											<ShortName>Name</ShortName>
@@ -105,11 +101,6 @@
 													<xsl:value-of select="ss:Cell[1]"/>
 												</SimpleValue>
 											</Value>
-											<Value ColumnRef="context">
-												<SimpleValue>
-													<xsl:value-of select="ss:Cell[4]"/>
-												</SimpleValue>
-											</Value>
 											<Value ColumnRef="status">
 												<SimpleValue>
 													<xsl:value-of select="ss:Cell[5]"/>
@@ -121,7 +112,7 @@
 														<xsl:value-of select="count(preceding-sibling::*)"/>
 													</xsl:variable>
 													<xsl:variable name="current" select="$vars/var[($number)]"/>
-													<xsl:if test="not($current = 'Name') and not($current = 'Description') and not($current = 'Context') and not($current = 'Status')">
+													<xsl:if test="not($current = 'Name') and not($current = 'Description') and not($current = 'Status')">
 														<Value>
 															<xsl:attribute name="ColumnRef">name-<xsl:value-of select="$vars/var[($number)]"/></xsl:attribute>
 															<SimpleValue>

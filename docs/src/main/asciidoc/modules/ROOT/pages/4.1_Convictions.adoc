@@ -1,0 +1,195 @@
+=== 4.1 Convictions
+
+*Information requirement*
+
+See formal requirements related to exclusion grounds criteria in the link:http://wiki.ds.unipi.gr/pages/viewpage.action?pageId=44367916[BIS 41 - European Single Procurement Document (Version 2.0.0)], and more specifically link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-ESPD+V2.1.0#tbr070-009[_tbr070-009_], link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41-ESPD+V2.1.0#tbr070-004[_tbr070-004_], link:http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41-+ESPD+V2.1.0#tbr070-013[_tbr070-013_].
+
+The label ''Convictions'' groups all the criteria with identical data structures classified as:
+
+''participation in a criminal organisation'', ''corruption'', ''fraud'', ''terrorist offences linked to terrorist activities'', ''money laundering or terrorist financing'', ''child labour and other forms of trafficking in human beings''.
+
+[cols=",",]
+[NOTE]
+|_Note about the ESPD Service_
+
+If you are using the link:https://ec.europa.eu/tools/espd/[ESPD Service] developed by the European Commission you will observe the label 'More information >>' on the left side of the mock-up. If you click on it the national criteria defined by the MS in the e-Certis will be shown. However you must be warned that, as the EC ESPD Service does only implement the Basic ESPD V1.0.2 the national criterion will not be saved into the exported XML instance.
+
+
+
+==== Data structure
+
+image:Convictions_data_structure.jpg[Convictions data structure,width=576,height=235]
+
+_Figure 52. Data Structure for all ‘Conviction' exclusion grounds criteria_
+
+==== XML Example
+
+The fragment of XML code below illustrates how a 'Convictions' criterion looks like in *ESPD Request*. See comments beneath the example.
+
+_'Participation in a criminal organisation' conviction_
+
+[source,xml]
+----
+
+<!-- ... the rest of elements in the QualificationApplicationRequest document omitted for brevity -->
+
+<!-- Criterion:Participation in a criminal organisation -->
+        <cac:TenderingCriterion>
+                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">005eb9ed-1347-4ca3-bb29-9bc0db64e1ab</cbc:ID>
+                <cbc:CriterionTypeCode listID="criterion" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">crime-org</cbc:CriterionTypeCode>
+                <cbc:Name>Participation in a criminal organisation</cbc:Name>
+                <cbc:Description>Has the economic operator itself or any person who is a member of its administrative, management or supervisory body or has powers of representation, decision or control therein been the subject of a conviction by final judgment for participation in a criminal organisation, by a conviction rendered at the most five years ago or in which an exclusion period set out directly in the conviction continues to be applicable? As defined in Article 2 of Council Framework Decision 2008/841/JHA of 24 October 2008 on the fight against organised crime (OJ L 300, 11.11.2008, p. 42).</cbc:Description>
+                <cac:SubTenderingCriterion>
+                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e6b21867-95b5-4549-8180-f4673219b179</cbc:ID>
+                        <cbc:Name>[Name of the National Criterion]</cbc:Name>
+                        <cbc:Description>[Description of the National Criterion ]</cbc:Description>
+                        <cac:TenderingCriterionPropertyGroup>
+                                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">8c39b505-8abe-44fa-a3e0-f2d78b9d8224</cbc:ID>
+                                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+                                <cac:TenderingCriterionProperty>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">ae5e864a-f3ba-489b-ba17-b87af8b10138</cbc:ID>
+                                        <cbc:Description>[Additional information; e.g. no evidences online]</cbc:Description>
+                                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CAPTION</cbc:TypeCode>
+                                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">NONE</cbc:ValueDataTypeCode>
+                                </cac:TenderingCriterionProperty>
+                                <cac:TenderingCriterionProperty>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">a8d55a62-425a-4284-b450-b5b34622a4fa</cbc:ID>
+                                        <cbc:Description>Your Answer</cbc:Description>
+                                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+                                </cac:TenderingCriterionProperty>
+                        </cac:TenderingCriterionPropertyGroup>
+                </cac:SubTenderingCriterion>
+                <cac:Legislation>
+                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">4bd07682-ee14-4744-b7de-96c8c8adb6f3</cbc:ID>
+                        <cbc:Title>[Legislation title]</cbc:Title>
+                        <cbc:Description>[Legislation description]</cbc:Description>
+                        <cbc:JurisdictionLevel>EU</cbc:JurisdictionLevel>
+                        <cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
+                        <cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
+                        <cac:Language>
+                                <cbc:LocaleCode listID="language" listAgencyName="EU-COM-OP" listVersionID="20201216-0">ENG</cbc:LocaleCode>
+                        </cac:Language>
+                </cac:Legislation>
+                <cac:TenderingCriterionPropertyGroup>
+                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7c637c0c-7703-4389-ba52-02997a055bd7</cbc:ID>
+                        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">c31b6447-bf88-4172-901a-f9b105205391</cbc:ID>
+                                <cbc:Description>Your answer</cbc:Description>
+                                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+                        </cac:TenderingCriterionProperty>
+                        <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f5276600-a2b6-4ff6-a90e-b31fe19dae41</cbc:ID>
+                                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                                <cac:TenderingCriterionProperty>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">a1534624-95cf-4519-bdaa-856d5acf59b6</cbc:ID>
+                                        <cbc:Description>Date of conviction</cbc:Description>
+                                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DATE</cbc:ValueDataTypeCode>
+                                </cac:TenderingCriterionProperty>
+                                <cac:TenderingCriterionProperty>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f36ee1fb-210b-4786-b351-e0194ba2df89</cbc:ID>
+                                        <cbc:Description>Reason</cbc:Description>
+                                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                                </cac:TenderingCriterionProperty>
+                                <cac:TenderingCriterionProperty>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">05bd1155-a780-4eef-9526-09d90b1b5359</cbc:ID>
+                                        <cbc:Description>Who has been convicted</cbc:Description>
+                                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                                </cac:TenderingCriterionProperty>
+                                <cac:TenderingCriterionProperty>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5969410e-0884-41c6-ae13-e7f4666b2e81</cbc:ID>
+                                        <cbc:Description>Length of the period of exclusion</cbc:Description>
+                                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">PERIOD</cbc:ValueDataTypeCode>
+                                </cac:TenderingCriterionProperty>
+                                <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5f9f09f7-f701-432c-9fdc-c22c124a74c9</cbc:ID>
+                                        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+                                        <cac:TenderingCriterionProperty>
+                                                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">108399ae-0332-4c14-bd3b-69d5035a2c53</cbc:ID>
+                                                <cbc:Description>Have you taken measures to demonstrate your reliability (Self-Cleaning)?</cbc:Description>
+                                                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+                                        </cac:TenderingCriterionProperty>
+                                        <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">74e6c7b4-757b-4b40-ada6-fad6a997c310</cbc:ID>
+                                                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                                                <cac:TenderingCriterionProperty>
+                                                  <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">f59271bd-8049-41cc-a4d7-06a4f0762d09</cbc:ID>
+                                                  <cbc:Description>Please describe them</cbc:Description>
+                                                  <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                                  <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">DESCRIPTION</cbc:ValueDataTypeCode>
+                                                </cac:TenderingCriterionProperty>
+                                        </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                        </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:TenderingCriterionPropertyGroup>
+                <cac:TenderingCriterionPropertyGroup>
+                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">7458d42a-e581-4640-9283-34ceb3ad4345</cbc:ID>
+                        <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ON*</cbc:PropertyGroupTypeCode>
+                        <cac:TenderingCriterionProperty>
+                                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">e33c4da3-fbd4-4b84-b716-def041300c12</cbc:ID>
+                                <cbc:Description>Is this information available electronically?</cbc:Description>
+                                <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">INDICATOR</cbc:ValueDataTypeCode>
+                        </cac:TenderingCriterionProperty>
+                        <cac:SubsidiaryTenderingCriterionPropertyGroup>
+                                <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">41dd2e9b-1bfd-44c7-93ee-56bd74a4334b</cbc:ID>
+                                <cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">ONTRUE</cbc:PropertyGroupTypeCode>
+                                <cac:TenderingCriterionProperty>
+                                        <cbc:ID schemeID="criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">5b633586-4ef3-454b-ba76-74db49b1844d</cbc:ID>
+                                        <cbc:Description>Evidence Supplied</cbc:Description>
+                                        <cbc:TypeCode listID="CriterionElementType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">QUESTION</cbc:TypeCode>
+                                        <cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">EVIDENCE_IDENTIFIER</cbc:ValueDataTypeCode>
+                                </cac:TenderingCriterionProperty>
+                        </cac:SubsidiaryTenderingCriterionPropertyGroup>
+                </cac:TenderingCriterionPropertyGroup>
+        </cac:TenderingCriterion>
+
+<!-- ... the rest of elements in the QualificationApplicationRequest document omitted for brevity -->
+----
+
+[cols=",",options="header",]
+
+. Date of conviction. Mandatory format 'YYYY-MM-DD'
+. The reason of convictions. A descriptive text.
+. The natural person or legal entity convicted. A text.
+. Length of the period of exclusion. A cac:Period will be used in the response by the economic operator. The EO may specify a starting date and an end-date or, alternatively, a text to commenting the length. See XML example in the ESPD Response section.
+. If the answer is *No* the QUESTION 'Please describe them' should not be shown.
+. Text box to describe the measures to demonstrate the economic operator’s reliability.
+. A whole group related to one conviction can be repeated multiple times (or deleted).
+. If answered as *No* the group of QUESTION(s) relating the online evidence should not be shown. Beware that the ESPD Response behaves totally differently as far as evidences are concerned. The data concerning the evidence in the ESPDRequest document is placed in the ESPD Response document in a component cac:Evidence in a different manner. See the section ESPD Response for more details on this. See also the XML examples.
+. The URL where to access the evidence. Will be placed in an element of the object cac:Evidence. See chapter "link:https://espd.github.io/ESPD-EDM/v3.0.0/xml_technical_handbook.html#6-8-evidences[6.8 Evidences]".
+. By specifying that the value of the expected data type is an evidence identifier (code EVIDENCE_IDENTIFIER of the Code List ResponseDataType`) the Response will have to contain an evidence supplied in an element of the object cac:Evidence, at the end of the XML Instance. See chapter "link:https://espd.github.io/ESPD-EDM/v3.0.0/xml_technical_handbook.html#6-8-evidences[6.8 Evidences]".
+. The issuer party of this evidence (e.g. a base registry). Will be placed in the element cac:Evidence/cac:DocumentReference/cac:Attachment/cac:IssuerParty. Some countries use verification codes associated to evidences. To specify these verification codes you can use the Evidence ID, as in the end the code identifies uniquely the Evidence in the issuer system (see this XML example, look for 'Verification code' inside the example, bullet number 6).
+. National criterion defined by the MS in e-Certis (this example corresponds to Finland) related to the EU criterion on this conviction.
+. An additional specification for this national criterion, in this case related to the evidence that will be required by this Member State.
+. UUID supplied by e-Certis. See also the criterion spread-sheet.
+. Exclusion criteria taxonomy code defined in the criterion spread-sheet.
+. Compulsory name and description for the criterion as defined in e-Certis. See also link:https://github.com/ESPD/ESPD-EDM/blob/3.0.0/docs/src/main/asciidoc/dist/cl/ods/[ESPD-criterion-V3.0.0 spreadsheet]. Beware that UBL-2.3 allows '0..n' description lines!
+. This property is a caption, a mere 'label'. See Code List link:https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/ods/['CriterionElementType'] for the complete list of possible options. Beware that when a property is of type CAPTION the cbc:ValueDataType must be set to NONE.
+. As the property is a CAPTION no response is expected from the economic operator. See Code List 'ResponseDataType' for the complete list of possible options.
+. Notice that in the ESPD Request the criterion properties never use its element cbc:Name.
+. EU legislation data related to this criterion. Notice that all the textual fields have multiple cardinality and *may* specify the language (attribute languageID. This can be used to express the same content in different languages. No language specified defaults to en (English).
+. The complete title as published in Eurlex or in a national official electronic bulletin board is expected for this field.
+. A quick reference name to refer to the legislation is expected for this field.
+. The jurisdiction level (or scope) covered by this legislation.
+. One or more articles from this legislation where the criterion is defined and referred to. Beware that the cardinality of this field is multiple.
+. Groups codified as ON* must be processed always (e.g. all its elements shown on a GUI or automatically parsed and saved, etc.).
+. Pay attention to this type of QUESTION(s). It is intended to act as a *decision point*. If answered with *yes* (INDICATOR value = true) some additional questions will be asked to the economic operator. Thus the value of the code of the next sub-group (set to ONTRUE).
+. This property is a QUESTION, therefore a specific type of value will be expected from the economic operator in the ESPD Response (an INDICATOR, i.e. a 'boolean' value true/false, in this case).
+. The cbc:ValueDataType indicates the type of value that the buyer requires for this QUESTION. Therefore, in its answer (inside the ESPD Request document) the economic operator will have to use also an INDICATOR value (true/false). Otherwise the mechanism used to validate the ESPD Response should consider the XML instance as invalid (should be treated as a FATAL error).
+. Data structures defined by GROW are *re-usable*. This is specially the case (but not uniquelly) of the structure 'Is this information available electronically?' Notice that the UUID that identifies this structure is always the same in all the criteria that include it. Similarly structures that are reused in different criteria do have the same UUID (as they are the same). Beware that the group of properties (URI, Reference/Code, Issuer) will only be shown if the answer is 'Yes', thus the sub-group code ONTRUE.
+
+[NOTE]
+====
+_Note for the future: Cross-border/cross-sector codes_
+
+Some relevant trans-European initiatives like ECRIS, BRIS, EESSI, and other, have defined Code Lists and other reference data that could be used in e-Procurement, and specifically by the ESPD. This would enhance the cross-border and cross-sector semantic and technical interoperability.
+Thus, in the case of Convictions, a new requirement could be introduced in G1 (see figures above) asking for the ECRIS Code corresponding to the offence that will be specified in the Response in case the Economic Operator answered ''yes'' to the first Requirement. The ECRIS Codes can be consulted in the Annex to the COUNCIL DECISION 2009/316/JHA of 6 April 2009 on the establishment of the European Criminal Records Information System (ECRIS) in application of Article 11 of Framework Decision 2009/315/JHA.
+==== 
