@@ -11,14 +11,11 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 
 ## Documentation
 
-* [v3.0.0](https://espd.github.io/ESPD-EDM/v3.0.0/)
-* [v2.1.1](https://espd.github.io/ESPD-EDM/v2.1.1/)
-* [v2.1.0](https://espd.github.io/ESPD-EDM/v2.1.0/)
-* [v2.0.2](https://espd.github.io/ESPD-EDM/v2.0.2/)
-* [v2.0.1](https://espd.github.io/ESPD-EDM/v2.0.1/)
-* [v2.0.0](https://espd.github.io/ESPD-EDM/v2.0.0/)
-* [v1.0.2](https://espd.github.io/ESPD-EDM/v1.0.2/)
-* [v1.0.1](https://github.com/ESPD/ESPD-EDM/blob/1.0.1/docs/src/main/asciidoc/index.adoc)
+* [v3.0.0](https://docs.ted.europa.eu/ESPD-EDM/3.0.0/index.html)
+* [v2.1.1](https://docs.ted.europa.eu/ESPD-EDM/2.1.1/index.html)
+* [v2.1.0](https://docs.ted.europa.eu/ESPD-EDM/2.1.0/index.html)
+* [v2.0.2](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/index.html)
+* [v1.0.2](https://docs.ted.europa.eu/ESPD-EDM/1.0.2/index.html)
 
 ## Roadmap
 
