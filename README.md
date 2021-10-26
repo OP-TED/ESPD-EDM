@@ -34,10 +34,10 @@ v2.1.1 **focuses** mainly on correcting **minor errors** and implementing the **
 **ESPD nomenclature** for, now former, **ESPD Regulated** and **ESPD Self-Contained** will be **changed** to **ESPD Basic** and **Extended**, respectively.
 
 ### Version 2.1.0 (January 2019)
-The [ESPD EDM version 2.1.0](https://github.com/ESPD/ESPD-EDM/tree/2.1.0) is now released and focuses, mainly, on the improvement of the 
+The [ESPD EDM version 2.1.0](https://github.com/OP-TED/ESPD-EDM/tree/1b7620bda3beb5ac038bbfe3a3d6f24d62d045b2) is now released and focuses, mainly, on the improvement of the 
 ESPD-SELF-CONTAINED features. All the changes introduced in this new version were based on the inputs from Member States and other Stakeholders
 collected through the GitHub [issues](https://github.com/ESPD/ESPD-EDM/issues) workspace. For further details please read the 
-[release notes](https://espd.github.io/ESPD-EDM/v2.1.0/release_notes.html).
+[release notes](https://docs.ted.europa.eu/ESPD-EDM/2.1.0/release_notes.html).
 
 ### Version 2.0.2 (May 2018)
  
