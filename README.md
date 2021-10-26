@@ -46,7 +46,7 @@ For further details please read the [release notes](https://docs.ted.europa.eu/E
 [business rules](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e/docs/src/main/asciidoc/modules/ROOT/dist/doc) and corresponding [schematron files](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e/docs/src/main/asciidoc/modules/ROOT/dist/val/schematron)
 to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy).
 The corresponding [TestBed for version 2.0.2](http://isaitb2.northeurope.cloudapp.azure.com/espd/upload) has been set up. The specifications for version 2.0.2 contain an updated distribution of the
-[ESPD Exchange Data Model](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e/docs/src/main/asciidoc/modules/ROOT/dist/val/schematron) and include a corresponding [implementation guideline](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/xml_guide.html)
+[ESPD Exchange Data Model](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e) and include a corresponding [implementation guideline](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/xml_guide.html)
 which clarifies the [ESPD validation architecture in Annex I](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/xml_guide.html#_annex_i_xml_validation).
 Also, the [BIS 41 – ESPD version 2.0.2](http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2) was updated accordingly.
 
