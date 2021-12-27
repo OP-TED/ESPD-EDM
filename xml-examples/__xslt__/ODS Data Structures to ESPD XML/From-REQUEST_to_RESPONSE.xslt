@@ -11,6 +11,8 @@
 	<xsl:include href="./inc/RootElements-Annotated.xslt"/>
 	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>
 	<xsl:include href="./inc/EconomicOperatorData.xslt"/>
+	<xsl:include href="./inc/ProcurementProject.xslt"/>
+	<xsl:include href="./inc/ProcurementProjectLot.xslt"/>
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:template match="/">
@@ -23,6 +25,8 @@
 			<xsl:call-template name="createRootElements"/>
 			<xsl:call-template name="createContractingAuthority"/>
 			<xsl:call-template name="createEconomicOperator"/>
+			<xsl:call-template name="createProcurementProject"/>		
+			<xsl:call-template name="createProcurementProjectLot"/>	
 			<xsl:apply-templates/>
 			<xsl:call-template name="createEvidence"/>
 		</QualificationApplicationResponse>

@@ -12,6 +12,7 @@
 	
 	<xsl:include href="./inc/RootElements-Annotated.xslt"/>
 	<xsl:include href="./inc/ContractingAuthorityData1.xslt"/>
+	<xsl:include href="./inc/ProcurementProject.xslt"/>
 	<xsl:include href="./inc/Legislation.xslt"/>
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	<xsl:template match="/">
@@ -26,6 +27,7 @@
 			xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2 ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.3.xsd">
 			<xsl:call-template name="createRootElements"/>
 			<xsl:call-template name="createContractingAuthority"/>
+			<xsl:call-template name="createProcurementProject"/>
 			<xsl:apply-templates select="office:spreadsheet/table:table"/>
 		</QualificationApplicationRequest>
 	</xsl:template>
