@@ -91,6 +91,9 @@
 					</cac:ExternalReference>
 				</cac:Attachment>
 				<cac:IssuerParty>
+					<cac:PartyIdentification>
+						<cbc:ID schemeAgencyID="EU-COM-GROW">XXXXXXXX</cbc:ID>
+					</cac:PartyIdentification>
 					<cac:PartyName>
 						<cbc:Name>USA DoD</cbc:Name>
 					</cac:PartyName>
