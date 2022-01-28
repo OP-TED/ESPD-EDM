@@ -10,7 +10,7 @@
 <!--
     Start of synthesis of rules from pre-qualification system ESPD Response
 
-    Illustration of procurer constraints - 05 ESPD Resp Qualification BR.sch
+    Illustration of procurer constraints - 05-ESPD-resp-qualification-br.sch
 	ESPD Version: 3.0.0
 -->
     <xsl:key name="EOrole" match="cbc:RoleCode" use="." />

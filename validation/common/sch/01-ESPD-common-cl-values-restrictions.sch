@@ -8,10 +8,10 @@
     <pattern id="BR-COM-CL-RESTR">
         
         <!--
-		ESPD code list values restrictions - 01 ESPD Common CL Values Resitrctions.sch
+		ESPD code list values restrictions - 01-ESPD-common-cl-values-restrictions.sch
 		Version 3.0.0
 	
-        $Id: 01 ESPD Common CL Values Restrictions.sch,v 3.0.0 $
+        $Id: 01-ESPD-common-cl-values-restrictions.sch,v 3.0.0 $
 
         -->
         <!-- STATUS -->

@@ -8,10 +8,10 @@
     <pattern id="BR-COM-CL-ATT">
         
         <!--
-		ESPD code list values constraints - 01 ESPD Common CL Attributes.sch
+		ESPD code list values constraints - 01-ESPD-common-cl-attributes.sch
 		Version 3.0.0
 	
-        $Id: 01 ESPD Common CL Attributes.sch,v 3.0.0 $
+        $Id: 01-ESPD-common-cl-attributes.sch,v 3.0.0 $
         
         -->
         <!-- BR-OTH-03: Compulsory use of the code list identified within the document. -->

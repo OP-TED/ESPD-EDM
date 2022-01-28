@@ -17,7 +17,7 @@
 	<!--
     Start of synthesis of rules from other constraints ESPD Request
 
-    Illustration of procurer constraints - 05 ESPD Req Extended BR.sch
+    Illustration of procurer constraints - 05-ESPD-req-specific-br.sch
 	ESPD Version: 3.0.0
 -->
 

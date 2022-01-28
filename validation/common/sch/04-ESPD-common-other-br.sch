@@ -12,7 +12,7 @@
 <!--
     Start of synthesis of rules from cardinality constraints ESPD Request and ESPD Response
 
-    Illustration of cardinality constraints - 04 ESPD Common Other BR.sch
+    Illustration of cardinality constraints - 04-ESPD-common-other-br.sch
 	ESPD Version: 3.0.0
 -->
 	

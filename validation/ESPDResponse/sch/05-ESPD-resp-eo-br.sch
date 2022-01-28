@@ -10,7 +10,7 @@
 <!--
     Start of synthesis of rules from Economic Operator (EO) constraints ESPD Response
 
-    Illustration of EO constraints - 05 ESPD Resp EO BR.sch
+    Illustration of EO constraints - 05-ESPD-resp-eo-br.sch
 	ESPD Version: 3.0.0
 -->
 	

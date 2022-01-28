@@ -11,7 +11,7 @@
 <!--
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
 
-    Illustration of criterion constraints - 03 ESPD Common Criterion BR.sch
+    Illustration of criterion constraints - 03-ESPD-common-criterion-br.sch
 	ESPD Version: 3.0.0
 -->
 	

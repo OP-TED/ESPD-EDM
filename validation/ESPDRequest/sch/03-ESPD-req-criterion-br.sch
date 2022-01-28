@@ -14,7 +14,7 @@
 	<!--
     Start of synthesis of rules from criterion constraints ESPD Request.
 
-    Illustration of criterion constraints - 03 ESPD Req Criterion BR.sch
+    Illustration of criterion constraints - 03-ESPD-req-criterion-br.sch
 	ESPD Version: 3.0.0
 -->
 

@@ -10,7 +10,7 @@
 <!--
     Start of synthesis of rules from other constraints ESPD Response
 
-    Illustration of procurer constraints - 04 ESPD Resp Other BR.sch
+    Illustration of procurer constraints - 04-ESPD-resp-other-br.sch
 	ESPD Version: 3.0.0
 -->
 	
