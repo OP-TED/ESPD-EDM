@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ESPD-EDM-UBLTechnicalView (TOV)::cac::TemplateEvidence</title>
+<title>ESPD-EDM-UBLTechnicalView (TOV)::cac::SubTenderingCriterion</title>
 <link href="../../css/ea.css" rel="stylesheet" type="text/css" />
 <script>
 function initPage(src) {	
@@ -34,11 +34,11 @@ function nameClassifier(name, separator)
 <div class="pageHeader"></div>
 <div class="PageBody">
 	<div id="name_classifier" style="display: none;"></div>
-	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("cac::TemplateEvidence", " : "))</script>  : Public   Class</span>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("cac::SubTenderingCriterion", " : "))</script>  : Public   Class</span>
 	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
 		<tr>
 			<td width="15%" class="ObjectDetailsTopic">Created:</td>
-			<td width="85%" class="ObjectDetailsValue">01-10-2021 11:43:44</td>
+			<td width="85%" class="ObjectDetailsValue">28-07-2021 19:07:02</td>
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
@@ -87,21 +87,78 @@ function nameClassifier(name, separator)
 		</tr>
 		<tr id="adv00" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
-			<td class="ObjectDetailsValue">{AB1D3C16-2C1A-4ba0-B961-A5D70AEC02D7}</td>
+			<td class="ObjectDetailsValue">{53B222D4-C5DE-4056-87B8-444C82366416}</td>
 		</tr>
 		<tr id="adv01" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
-			<td class="ObjectDetailsValue"><a href="EA72.html">ESPD-EDM-Response-TOV</a></td>
+			<td class="ObjectDetailsValue"><a href="EA70.html">ESPD-EDM-Request-TOV</a>, <a href="EA72.html">ESPD-EDM-Response-TOV</a></td>
 		</tr>
 	</table>
-	<div class="ObjectDetailsNotes">An evidence that can be used to meet this criterion property.&lt;br/&gt;&lt;br/&gt;Business element: TemplateEvidence&lt;br/&gt;&lt;br/&gt;25/11/2021&lt;br/&gt;</div>
+	<div class="ObjectDetailsNotes">One or more tendering subcriteria.&lt;br/&gt;&lt;br/&gt;Business element: SubCriterion&lt;br/&gt;&lt;br/&gt;25/112021&lt;br/&gt;&lt;br/&gt;</div>
 
 	<div class="TableGroup" id="TableGroup">
 		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('AssociationsTo');" id="AssociationsToTitle">Associations To</li>
 			<li onClick="parent.toggleItem('AssociationsFrom');" id="AssociationsFromTitle">Associations From</li>
 			<li onClick="parent.toggleItem('CustomProperties');" id="CustomPropertiesTitle">Advanced</li>
 			<li onClick="parent.toggleItem('Links');" id="LinksTitle">Other Links</li>
 		</ul>
+		<div class="ItemBody" id="AssociationsToTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="40%" class="TableHeading">Element</td>
+					<td width="30%" class="TableHeading">Source Role</td>
+					<td width="30%" class="TableHeading">Target Role</td>
+				</tr>
+				<tr>
+					<td width="40%" class="TableRow" valign="top">
+						<a href="EA128.html">cac::TenderingCriterionPropertyGroup</a><br />
+						Class &nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;	
+					</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink518" onclick="parent.toggleDiv('detailsDIVLink518','DetailsImageLink518')" />Details:
+							<div id="detailsDIVLink518" class="DetailsDiv" >
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="40%" class="TableRow" valign="top">
+						<a href="EA129.html">cac::TenderingCriterionPropertyGroup</a><br />
+						Class &nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;	
+					</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink519" onclick="parent.toggleDiv('detailsDIVLink519','DetailsImageLink519')" />Details:
+							<div id="detailsDIVLink519" class="DetailsDiv" >
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
 		<div class="ItemBody" id="AssociationsFromTable">
 			<table border="0" cellspacing="0" cellpadding="0" class="Table">
 				<tr>
@@ -111,7 +168,7 @@ function nameClassifier(name, separator)
 				</tr>
 				<tr>
 					<td width="40%" class="TableRow" valign="top">
-						<a href="EA124.html">cac::TenderingCriterionProperty</a><br />
+						<a href="EA124.html">cac::TenderingCriterion</a><br />
 						Class &nbsp;
 					</td>
 					<td width="30%" class="TableRow" valign="top">
@@ -125,32 +182,10 @@ function nameClassifier(name, separator)
 				</tr>
 				<tr>
 					<td class="TableRowBottomDashed"  colspan="3">
-						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink514" onclick="parent.toggleDiv('detailsDIVLink514','DetailsImageLink514')" />Details:
-							<div id="detailsDIVLink514" class="DetailsDiv" >
-							&nbsp;
-							</div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td width="40%" class="TableRow" valign="top">
-						<a href="EA125.html">cac::TenderingCriterionProperty</a><br />
-						Class &nbsp;
-					</td>
-					<td width="30%" class="TableRow" valign="top">
-						<strong>Name:</strong> &nbsp;<br />
-						&nbsp;
-					</td>
-					<td width="30%" class="TableRow" valign="top">
-						<strong>Name:</strong> &nbsp;<br />
-						&nbsp;	
-					</td>
-				</tr>
-				<tr>
-					<td class="TableRowBottomDashed"  colspan="3">
-						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink515" onclick="parent.toggleDiv('detailsDIVLink515','DetailsImageLink515')" />Details:
-							<div id="detailsDIVLink515" class="DetailsDiv" >
-							&nbsp;
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink520" onclick="parent.toggleDiv('detailsDIVLink520','DetailsImageLink520')" />Details:
+							<div id="detailsDIVLink520" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">0..1 in XML file for testing purposes&lt;br/&gt;</div>
+
 							</div>
 						</div>
 					</td>
@@ -181,7 +216,7 @@ function nameClassifier(name, separator)
 					<td width="40%" class="TableHeading">Notes</td>
 				</tr>
 				<tr>
-					<td width="30%" class="TableRow" valign="top"><a href="EA101.html">cac::Evidence</a></td>
+					<td width="30%" class="TableRow" valign="top"><a href="EA124.html">cac::TenderingCriterion</a></td>
 					<td width="10%" class="TableRow" valign="top">Class</td>
 					<td width="10%" class="TableRow" valign="top">Generalization</td>
 					<td width="10%" class="TableRow" valign="top">To</td>
