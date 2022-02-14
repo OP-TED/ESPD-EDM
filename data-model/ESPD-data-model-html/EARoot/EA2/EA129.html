@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ESPD-EDM-UBLTechnicalView (TOV)::cac::TenderingCriterionResponse</title>
+<title>ESPD-EDM-UBLTechnicalView (TOV)::cac::TenderingCriterionPropertyGroup</title>
 <link href="../../css/ea.css" rel="stylesheet" type="text/css" />
 <script>
 function initPage(src) {	
@@ -34,15 +34,15 @@ function nameClassifier(name, separator)
 <div class="pageHeader"></div>
 <div class="PageBody">
 	<div id="name_classifier" style="display: none;"></div>
-	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("cac::TenderingCriterionResponse", " : "))</script>  : Public   Class</span>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("cac::TenderingCriterionPropertyGroup", " : "))</script>  : Public   Class</span>
 	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
 		<tr>
 			<td width="15%" class="ObjectDetailsTopic">Created:</td>
-			<td width="85%" class="ObjectDetailsValue">30-07-2021 00:14:48</td>
+			<td width="85%" class="ObjectDetailsValue">28-07-2021 19:06:52</td>
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">26-11-2021 10:02:44</td>
+			<td class="ObjectDetailsValue">26-11-2021 10:02:43</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -87,14 +87,14 @@ function nameClassifier(name, separator)
 		</tr>
 		<tr id="adv00" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
-			<td class="ObjectDetailsValue">{951426F4-7E77-4c63-B6AA-0CB9633B63C1}</td>
+			<td class="ObjectDetailsValue">{BF75C929-281F-487b-AD24-2EEB4BC933A6}</td>
 		</tr>
 		<tr id="adv01" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
-			<td class="ObjectDetailsValue"><a href="EA72.html">ESPD-EDM-Response-TOV</a></td>
+			<td class="ObjectDetailsValue"><a href="EA70.html">ESPD-EDM-Request-TOV</a>, <a href="EA72.html">ESPD-EDM-Response-TOV</a></td>
 		</tr>
 	</table>
-	<div class="ObjectDetailsNotes">A class to describe a response to a criterion property.&lt;br/&gt;&lt;br/&gt;Business element: CriterionResponse&lt;br/&gt;&lt;br/&gt;25/11/2021&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;</div>
+	<div class="ObjectDetailsNotes">The sets of properties that can be used to fulfil the tendering criterion.&lt;br/&gt;&lt;br/&gt;Business element: RequirementGroup&lt;br/&gt;&lt;br/&gt;25/11/2021&lt;br/&gt;</div>
 
 	<div class="TableGroup" id="TableGroup">
 		<ul class="ItemTitle">
@@ -111,7 +111,7 @@ function nameClassifier(name, separator)
 		</tr>
 						<tr>
 				<td width="100%" class="TableRow">
-					<i>Public Code</i><br /><strong>&nbsp;&nbsp;cbc::ConfidentialityLevelCode</strong>
+					<i>Public Identifier</i><br /><strong>&nbsp;&nbsp;cbc::ID</strong>
 				</td>
 			</tr>
 			<tr>
@@ -137,7 +137,7 @@ function nameClassifier(name, separator)
 						</tr>
 						<tr id="DetailsImageAttributes579_04" style="display: none;">
 							<td width="75"><i>Range: </i></td>
-							<td>Range:0 to 1</td>
+							<td></td>
 						</tr>
 						<tr id="DetailsImageAttributes579_05" style="display: none;">
 							<td width="75"><i>Transient: </i></td>
@@ -160,7 +160,7 @@ function nameClassifier(name, separator)
 			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
 		</td>
 		<td>
-			Business element: ResponseConfidentialityLevelCode&lt;br/&gt;A code specifying the confidentiality level of the response to this criterion.&lt;br/&gt;&lt;br/&gt;ESPD definition: Idem.&lt;br/&gt;Additional comments: if the value is true, all the evidences associated to this response becomes also confidential. &lt;br/&gt;&lt;br/&gt;17/09/2021&lt;br/&gt;
+			An identifier for the group.&lt;br/&gt;&lt;br/&gt;Business element: Identifier&lt;br/&gt;&lt;br/&gt;26/11/2021&lt;br/&gt;
 		</td>
 	</tr>
 </table></div>
@@ -169,7 +169,7 @@ function nameClassifier(name, separator)
 				</td>
 			</tr>			<tr>
 				<td width="100%" class="TableRow">
-					<i>Public Identifier</i><br /><strong>&nbsp;&nbsp;cbc::ID</strong>
+					<i>Public Code</i><br /><strong>&nbsp;&nbsp;cbc::PropertyGroupTypeCode</strong>
 				</td>
 			</tr>
 			<tr>
@@ -195,7 +195,7 @@ function nameClassifier(name, separator)
 						</tr>
 						<tr id="DetailsImageAttributes580_04" style="display: none;">
 							<td width="75"><i>Range: </i></td>
-							<td>Range:0 to 1</td>
+							<td></td>
 						</tr>
 						<tr id="DetailsImageAttributes580_05" style="display: none;">
 							<td width="75"><i>Transient: </i></td>
@@ -218,65 +218,7 @@ function nameClassifier(name, separator)
 			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
 		</td>
 		<td>
-			Business element: CriterionResponseIdentifier&lt;br/&gt;An identifier for this criterion property response.&lt;br/&gt;&lt;br/&gt;ESPD definition: a language independent token, e.g., a number, that allows to identify a criterion response uniquely as well as allows to reference the criterion response in other documents; criterion response describes how an economic operators fulfills an specific criterion. &lt;br/&gt;Additional comments: this ID should be provided by the Economic Operator or the Service Provider that instantiates the ESPD Response XML document. &lt;br/&gt;&lt;br/&gt;17/09/2021&lt;br/&gt;
-		</td>
-	</tr>
-</table></div>
-
-						
-				</td>
-			</tr>			<tr>
-				<td width="100%" class="TableRow">
-					<i>Public Identifier</i><br /><strong>&nbsp;&nbsp;cbc::ValidatedCriterionPropertyID</strong>
-				</td>
-			</tr>
-			<tr>
-				<td class="TableRowBottomDashed"  colspan="1">										
-					<a href="#" onclick="parent.toggleData('DetailsImageAttributes581')" style="text-decoration: none; color: #000000;"><img src="../../images/plus03.gif" align="absmiddle" id="DetailsImageAttributes581" border="0" />Details:</a>
-					<table border="0" cellspacing="0" cellpadding="0" class="Table" style="padding: 4px 18px;">
-					
-						<tr id="DetailsImageAttributes581_00" style="display: none;">
-							<td width="75"><i>Alias:</i></td>
-							<td></td>
-						</tr>
-						<tr id="DetailsImageAttributes581_01" style="display: none;">
-							<td width="75"><i>Initial:</i></td>
-							<td></td>
-						</tr>
-						<tr id="DetailsImageAttributes581_02" style="display: none;">
-							<td width="75"><i>Stereotype: </i></td>
-							<td></td>
-						</tr>
-						<tr id="DetailsImageAttributes581_03" style="display: none;">
-							<td width="75"><i>Ordered: </i></td>
-							<td></td>
-						</tr>
-						<tr id="DetailsImageAttributes581_04" style="display: none;">
-							<td width="75"><i>Range: </i></td>
-							<td></td>
-						</tr>
-						<tr id="DetailsImageAttributes581_05" style="display: none;">
-							<td width="75"><i>Transient: </i></td>
-							<td>False</td>
-						</tr>
-						<tr id="DetailsImageAttributes581_06" style="display: none;">
-							<td width="75"><i>Derived: </i></td>
-							<td>False</td>
-						</tr>
-							<tr id="DetailsImageAttributes581_07" style="display: none;">
-							<td width="75"><i>IsID: </i></td>
-						<td>False</td>
-						</tr>
-					</table>
-					
-					
-						<div class="ObjectDetailsNotes"><table>
-	<tr>
-		<td valign="top">
-			<i>Notes: </i><span style="margin-left: .4cm;"> </span>
-		</td>
-		<td>
-			Business element: ValidatedCriterionRequirementIdentifier&lt;br/&gt;An identifier for this item of criterion support.&lt;br/&gt;&lt;br/&gt;ESPD definition: a cross-reference to the criterion property which is validated thorugh this response expressed as an identifier.&lt;br/&gt;Additional comments: this ID MUST point at one of the TenderingCriterionProperty (cbc:ID) that were included in the Request document.; the ID of the Criterion Property (Requeriment, Question) will be used by the element cac:ValidatedCriterionPropertyID as the means to link the response to the question.&lt;br/&gt;&lt;br/&gt;17/09/2021&lt;br/&gt;&lt;br/&gt;
+			An identifier for the group.&lt;br/&gt;&lt;br/&gt;Business element: TypeCode&lt;br/&gt;&lt;br/&gt;26/11/2021&lt;br/&gt;
 		</td>
 	</tr>
 </table></div>
@@ -295,7 +237,30 @@ function nameClassifier(name, separator)
 				</tr>
 				<tr>
 					<td width="40%" class="TableRow" valign="top">
-						<a href="EA123.html">cac::TenderingCriterion</a><br />
+						<a href="EA120.html">cac::SubsidiaryTenderingCriterionPropertyGroup</a><br />
+						Class &nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;	
+					</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink581" onclick="parent.toggleDiv('detailsDIVLink581','DetailsImageLink581')" />Details:
+							<div id="detailsDIVLink581" class="DetailsDiv" >
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="40%" class="TableRow" valign="top">
+						<a href="EA126.html">cac::TenderingCriterionProperty</a><br />
 						Class &nbsp;
 					</td>
 					<td width="30%" class="TableRow" valign="top">
@@ -318,7 +283,7 @@ function nameClassifier(name, separator)
 				</tr>
 				<tr>
 					<td width="40%" class="TableRow" valign="top">
-						<a href="EA93.html">cac::ApplicablePeriod</a><br />
+						<a href="EA127.html">cac::TenderingCriterionProperty</a><br />
 						Class &nbsp;
 					</td>
 					<td width="30%" class="TableRow" valign="top">
@@ -339,9 +304,19 @@ function nameClassifier(name, separator)
 						</div>
 					</td>
 				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="AssociationsFromTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="40%" class="TableHeading">Element</td>
+					<td width="30%" class="TableHeading">Source Role</td>
+					<td width="30%" class="TableHeading">Target Role</td>
+				</tr>
 				<tr>
 					<td width="40%" class="TableRow" valign="top">
-						<a href="EA117.html">cac::ResponseValue</a><br />
+						<a href="EA122.html">cac::SubTenderingCriterion</a><br />
 						Class &nbsp;
 					</td>
 					<td width="30%" class="TableRow" valign="top">
@@ -364,7 +339,7 @@ function nameClassifier(name, separator)
 				</tr>
 				<tr>
 					<td width="40%" class="TableRow" valign="top">
-						<a href="EA102.html">cac::EvidenceSupplied</a><br />
+						<a href="EA124.html">cac::TenderingCriterion</a><br />
 						Class &nbsp;
 					</td>
 					<td width="30%" class="TableRow" valign="top">
@@ -380,39 +355,6 @@ function nameClassifier(name, separator)
 					<td class="TableRowBottomDashed"  colspan="3">
 						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink585" onclick="parent.toggleDiv('detailsDIVLink585','DetailsImageLink585')" />Details:
 							<div id="detailsDIVLink585" class="DetailsDiv" >
-							&nbsp;
-							</div>
-						</div>
-					</td>
-				</tr>
-
-			</table>
-		</div>
-		<div class="ItemBody" id="AssociationsFromTable">
-			<table border="0" cellspacing="0" cellpadding="0" class="Table">
-				<tr>
-					<td width="40%" class="TableHeading">Element</td>
-					<td width="30%" class="TableHeading">Source Role</td>
-					<td width="30%" class="TableHeading">Target Role</td>
-				</tr>
-				<tr>
-					<td width="40%" class="TableRow" valign="top">
-						<a href="EA114.html">cac::QualificationApplicationResponse</a><br />
-						Class &nbsp;
-					</td>
-					<td width="30%" class="TableRow" valign="top">
-						<strong>Name:</strong> &nbsp;<br />
-						&nbsp;
-					</td>
-					<td width="30%" class="TableRow" valign="top">
-						<strong>Name:</strong> &nbsp;<br />
-						&nbsp;	
-					</td>
-				</tr>
-				<tr>
-					<td class="TableRowBottomDashed"  colspan="3">
-						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageLink586" onclick="parent.toggleDiv('detailsDIVLink586','DetailsImageLink586')" />Details:
-							<div id="detailsDIVLink586" class="DetailsDiv" >
 							&nbsp;
 							</div>
 						</div>
@@ -444,11 +386,18 @@ function nameClassifier(name, separator)
 					<td width="40%" class="TableHeading">Notes</td>
 				</tr>
 				<tr>
-					<td width="30%" class="TableRow" valign="top"><a href="EA80.html">at-voc:access-right</a></td>
+					<td width="30%" class="TableRow" valign="top"><a href="EA120.html">cac::SubsidiaryTenderingCriterionPropertyGroup</a></td>
+					<td width="10%" class="TableRow" valign="top">Class</td>
+					<td width="10%" class="TableRow" valign="top">Generalization</td>
+					<td width="10%" class="TableRow" valign="top">From</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="EA136.html">espd:PropertyGroupType</a></td>
 					<td width="10%" class="TableRow" valign="top">Enumeration</td>
 					<td width="10%" class="TableRow" valign="top">Dependency</td>
 					<td width="10%" class="TableRow" valign="top">To</td>
-					<td width="40%" class="TableRow" valign="top">A code specifying the confidentiality level of the given response for this criterion</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
 				</tr>
 
 			</table>
