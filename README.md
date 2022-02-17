@@ -21,10 +21,20 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 ## Version 3.0.1 (Early 2022)
 This new version of the ESPD-EDM includes:
 * Reorganisation of the distribution package folders
-* Updated ESPD-EDM conceptual model
-* Documented handbooks migration to [Ted Developer Docs](https://docs.ted.europa.eu/home/index.html)
 
-For more information regarding the release, please refer to the **release notes**.
+  ![image](https://user-images.githubusercontent.com/67598083/154528710-f29c4d2b-7a23-49e0-9cb4-7448a5056821.png)
+
+  * **\__ESPDTeam__**: contains files for ESPD Team internal use in maintenance tasks of the ESPD-EDM;
+  * **codelists**: contains the different code lists used in ESPD in Genericode format and the criterion structure definition.
+  * **conceptual-model**: contains the UML conceptual model of the ESPD in .eap, .xmi and HTML format.
+  * **java-library**: contains the XML schemas used to generate the JAXB annotated Java classes.
+  * **ubl-2.3**: contains a redistribution package from UBL 2.3.
+  * **validation**: contains business rules validation files for Schematron and Testbed.
+  * **xml-examples**: contains default ESPDRequest and ESPDResponse xml samples and the criterion xml schema.
+* Updated ESPD-EDM conceptual model
+* Documented handbook migration to [Ted Developer Docs](https://docs.ted.europa.eu/home/index.html)
+
+For more information regarding the release, please refer to the [release notes](https://docs.ted.europa.eu/ESPD-EDM/3.0.1/release_notes.html).
 
 ## Use
 The ESPD-EDM is made publicly available through Github. 
