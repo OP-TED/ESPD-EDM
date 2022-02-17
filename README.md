@@ -1,130 +1,216 @@
-# ESPD Exchange Data Model (EDM)
-# Version 3.0.0
+# Release Notes
+include::partial$attributes.adoc[]
 
-## Introduction
+## v3.0.1 (early 2022)
 
-The ESPD Exchange Data Model is the technical representation of the legal European Single Procurement Document. It is used to support interoperability between ESPD services provided all over Europe.
+### Online documentation
+Documentation updated as follow:
 
-## ESPD Wiki
+#### Technical Handbook
 
-To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongly** recommend visiting the [ESPD-EDM Wiki](https://github.com/ESPD/ESPD-EDM/wiki), that aims to be the **Unique Access Point** for all of its resources: documentation, tools, assets, etc.
+1. **Section 2.3 ESPD Request cardinalities**
+   * Removed sentence _'Notice that ESPD-EDM does not change anything else from the UBL-2.3 Schema.'_ because it did not help understanding what is kept from *UBL-2.3* and what is changed.
 
-## Documentation
+   * **Figure 12. ESPD-EDM 'QualificationApplicationRequest', UML diagram**
+     * _cac:EconomicOperatorParty_ 
+       * _Component_: removed because it is not used in the *ESPD Request*.
+     * _cac:ProcurementProject_
+       * _Component_: replaced by _cac:ProcurementProject/cbc:Description_ in alignment with *eForms*.
+     * _cac:ProcurementProjectLot_
+       * _Component_: replaced by _cac:TenderingCriterion/cac:ProcurementProjectLotReference/cbc:ID_.
+       * _Cardinality_: updated from _1..n_ to _0..n_.
+     * _cbc:QualificationApplicationTypeCode_
+       * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
+     * _cbc:WeightScoringMethodologyDescription_
+       * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
+     * _cbc:WeightingType_ 
+       * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
 
-* [v3.0.0](https://docs.ted.europa.eu/ESPD-EDM/3.0.0/index.html)
-* [v2.1.1](https://docs.ted.europa.eu/ESPD-EDM/2.1.1/index.html)
-* [v2.1.0](https://docs.ted.europa.eu/ESPD-EDM/2.1.0/index.html)
-* [v2.0.2](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/index.html)
-* [v1.0.2](https://docs.ted.europa.eu/ESPD-EDM/1.0.2/index.html)
+2. *Section 2.4 Root elements*
+   * *Table 5.* Class QualificationApplicationRequest, components required by the ESPD-EDM
+     * _cac:ProcurementProject_
+       * _Component_: replaced by _cac:ProcurementProject/cbc:Description_ in alignment with *eForms*.
+       * _Type_: updated from _Associated class_ to _Text_ in alignment with *eForms*.
+       * _Cardinality_: updated from _0..1_ to _1_ according to _Figure 12. ESPD-EDM 'QualificationApplicationRequest', UML diagram_.
+       * _Requirement_: updated from _'This information is not required for the ESPD 3.0.0 since the information related to the procedure will come from eForms.'_ to _'This element is required in the ESPD, however it should be identical to that provided in eForms. In general the corresponding eForm should feed the corresponding ESPD with the corresponding data.'_.
+     * _cac:ProcurementProjectLot_
+       * _Component_: replaced by _cac:TenderingCriterion/cac:ProcurementProjectLotReference/cbc:ID_.
+       * _Type_: updated from _Associated class_ to _Identifier_.
+       * _Cardinality_: updated from _1..n_ to _0..n_.
+    * _cbc:ProcedureCode_
+       * _Cardinality_: updated from _0..1_ to _1_ according to _Figure 12. ESPD-EDM 'QualificationApplicationRequest', UML diagram_.
 
-## Roadmap
+3. *Section 2.5 Lot Management*
+   * _cac:ProcurementLotReference_
+     * Element replaced by _cac:ProcurementProjectLotReference_.
 
-Dear ESPD implementation community, 
+4. *Section 2.6 EU and notice publications*
+   * *XSD Schema* 
+     * _cac:AdditionalReferenceDocument_ 
+     * _Component_: replaced by _cac:AdditionalDocumentReference_.
+   * *Table 6.* Reference to additional documents, expected elements
+     * _cac:AdditionalDocumentReference_
+       * _Path_: replaced _/QualificationApplicationRequest/cac:AdditionalReferenceDocument_ by _/QualificationApplicationRequest/cac:AdditionalDocumentReference_.
+   * *Table 7.* External Reference
+     * _cac:AdditionalDocumentReference_
+       * _Path_: replaced _/QualificationApplicationRequest/cac:AdditionalReferenceDocument/cac:Attachment/cac:ExternalReference_ by _/QualificationApplicationRequest/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference_.
 
-We are happy to inform you about the future release of ESPD EDM version 3.0.0 on March 2021
+5. *Section 2.7 Contracting Body* 
+   * *Table 8.* Contracting body, expected elements
+     * _cac:ContractParty_ 
+       * _Component_: replaced by _cac:ContractingParty_ according to _Figure 11: QualificationApplicationRequest-2.3 main elements._.
 
-### Version 3.0.0 (March 2021)
-This new version of the ESPD-EDM aims to align the logic to eForms for future alignment and their joint usage in procurement. With the same purpose, the ESPD-EDM has updated the UBL version to 2.3. For more information regarding the release, please refer to the [release notes](https://docs.ted.europa.eu/ESPD-EDM/3.0.0/release_notes.html).
+   * *Table 9.* Contracting body party, expected elements
+     * _cac:PartyIdentification/cbc:Identifier_ 
+       * _Requirement_: updated from _'More than one identifier can be specified. When possible use the VAT identification of the contracting body (see the VIES platform for a EU cross-border national VAT number verification system). '_ to _'When possible use the VAT identification of the contracting body (see the link:https://ec.europa.eu/taxation_customs/vies/[VIES] platform for a EU cross-border national VAT number verification system). When not possible a different identifier may be used.'_ because previous text was ambiguous.
 
+6. *Section 2.8. Service Provider*
+   * *Table 38.* Service provider, expected elements
+     * _cac:PostalAddress/cac:Country/cbc:IdentificationCode_
+       * _Type_: updated from _Identifier_ to _Code_.
 
-### Version 2.1.1 (December 2019)
-This version is currently under development and its precise release date is yet to be announced.
-v2.1.1 **focuses** mainly on correcting **minor errors** and implementing the **backwards-compatible-changes** suggested by Member States and other Stakeholders in the ESPD-EDM in the GitHub [issues](https://github.com/ESPD/ESPD-EDM/issues) workspace.
+7. *Section 3. Common aspects for criteria*
+   * *Figure 33.* Criterion - UML diagram
+     * Updated wrong cardinalities _1..*..*_ to _1..*_ to fix the typo. Cardinalities corrected are: _cac:TenderingCriterionPropertyGroup_, _cac:TenderingCriterionProperty_ and _cac:ProcurementProjectLotReference_.
+     * _cac:EconomicOperatorParty_ 
+       * _Component_: removed because it is not used in the *ESPD Request*.
+     * _cac:ProcurementProject_
+       * _Component_: replaced by _cac:ProcurementProject/cbc:Description_ in alignment with *eForms*.
+     * _cac:ProcurementProjectLot_
+       * _Component_: removed because it is replaced by _cac:TenderingCriterion/cac:ProcurementProjectLotReference_ in the same figure.
+     * _cac:TenderingCriterion/cac:ProcurementProjectLotReference_
+       * _Cardinality_: update from _1..n_ to _0..n_.
+     * _cbc:QualificationApplicationTypeCode_
+       * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
+     * _cbc:WeightScoringMethodologyDescription_
+       * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
+     * _cbc:WeightingType_ 
+       * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
 
-**ESPD nomenclature** for, now former, **ESPD Regulated** and **ESPD Self-Contained** will be **changed** to **ESPD Basic** and **Extended**, respectively.
+8. *Section 3.1 General behavior*
+   * *Table 20.* Criterion, expected elements
+     * _cac:ProcurementProjectLotReference_
+       * _Type_: updated from _Text_ to _Class_.
+       * _Cardinality_: updated from _1..n_ to _0..n_.
 
-### Version 2.1.0 (January 2019)
-The [ESPD EDM version 2.1.0](https://github.com/OP-TED/ESPD-EDM/tree/1b7620bda3beb5ac038bbfe3a3d6f24d62d045b2) is now released and focuses, mainly, on the improvement of the 
-ESPD-SELF-CONTAINED features. All the changes introduced in this new version were based on the inputs from Member States and other Stakeholders
-collected through the GitHub [issues](https://github.com/ESPD/ESPD-EDM/issues) workspace. For further details please read the 
-[release notes](https://docs.ted.europa.eu/ESPD-EDM/2.1.0/release_notes.html).
+9. *Section 3.2 Legislation*
+   * *Table 21.* Legislation, expected elements
+     * _cbc:ID_
+       * _Component_: added.
+     * _cbc:Description_
+       * _Type_: updated from _Code_ to _Text_.
+     * _cbc:LegislationTitle_
+       * _Component_: replaced by _cbc:Title_.
 
-### Version 2.0.2 (May 2018)
- 
-The [ESPD EDM version 2.0.2](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e) addresses bugs fixed on the basis of the received comments on [GitHub](https://github.com/ESPD/ESPD-EDM/issues).
-For further details please read the [release notes](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/release_notes.html). The release contains a definition of all relevant
-[business rules](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e/docs/src/main/asciidoc/modules/ROOT/dist/doc) and corresponding [schematron files](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e/docs/src/main/asciidoc/modules/ROOT/dist/val/schematron)
-to validate Regulate and Self-Contained ESPD Request and Response XML instances (including the validation of the criteria taxonomy).
-The corresponding [TestBed for version 2.0.2](http://isaitb2.northeurope.cloudapp.azure.com/espd/upload) has been set up. The specifications for version 2.0.2 contain an updated distribution of the
-[ESPD Exchange Data Model](https://github.com/OP-TED/ESPD-EDM/tree/f96696695c0bfa489cb448518d2802b0bdc7ae3e) and include a corresponding [implementation guideline](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/xml_guide.html)
-which clarifies the [ESPD validation architecture in Annex I](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/xml_guide.html#_annex_i_xml_validation).
-Also, the [BIS 41 – ESPD version 2.0.2](http://wiki.ds.unipi.gr/display/ESPDInt/BIS+41+-+ESPD+V2.0.2) was updated accordingly.
+10. *Section 3.4 Properties*
+    * *Table 23.* Properties, expected elements
+      * _cbc:ExpectedAmount_
+        * _Component_: added.
+      * _cbc:ExpectedDescription
+        * _Component_: added.
 
-
-### Release of criteria taxonomy file errata [ESPD EDM version 1.0.2] (May 2018)
-
-A release of criteria taxonomy file errata [ESPD EDM version 1.0.2] was necessary as the documentation on the criteria taxonomy was not updated to reflect the changes that were made to the Commission ESPD service up until July 2017. All corrections relate to the Criteria Data Flows and result in a revision of the [criteria taxonomy for version 1.0.2](https://github.com/OP-TED/ESPD-EDM/blob/f96696695c0bfa489cb448518d2802b0bdc7ae3e/docs/src/main/asciidoc/modules/ROOT/dist/cl/ods/CriteriaTaxonomy-V1.0.2-errata.ods) (revisions are marked within the sheet). No other change was done to the ESPD EDM version 1.0.2. The revisions should therefore have no impact on all current ESPD services based on v1.0.2 but we recommend using the revised criteria taxonomy to approve the correct Criteria Data Flows. 
-
-### Version 2.0.1 (January 2018) 
-
-Bug fixes detected in the previous versions; change requests related to these bugs were collected in this Github Issues space (see Issues for the details. See also the Release Notes above and the 'dist/rn' folder for details on those issues related to v2.1.0 that have been closed). 
-
-### Version 2.0.0 (September 2017): 
-
-The goal of version 2.0.0 is that the ESPD-EDM is self contained. Meaning that public buyers can specify directly in their ESPD services criteria instead of defining them in the procurement document or the notice. Examples are that the public buyer can specify the number of years needed for the turnovers, the financial ratios needed for the procedure or that they can specify certificates needed. Something else that will be implemented in version 2.0.0 is the possibility to weight criteria which is important to reduce the number of participants in a procedure. Issues for this release are in *https://github.com/ESPD/ESPD-EDM/issues*.
-
-### Version 1.0.2 (July 2016) 
-
-Version 1.0.2 has no impact on current implementation. It fixes the issue *https://github.com/ESPD/ESPD-EDM/issues*.
-  
-### Version 1.0.1 (December 2015)
-
-Very first version of the ESPD-EDM. Partially based on UBL 2.1.
-
-## Installation
-
-The recommended way to get started using the `exchange-model` in a `Java` project is with a dependency management system.
-
-### With Maven
-
-```xml
-<dependency>
-  <groupId>eu.europa.ec.grow.espd</groupId>
-  <artifactId>exchange-model</artifactId>
-  <version>1.0.2</version>
-</dependency>
-```
-
-### With Gradle
-
-```groovy
-dependencies {
-    compile("eu.europa.ec.grow.espd:exchange-model:1.0.2")
-}
-```
-
-### Version 3.0.0
-
-**Please note that this version requires Java 8**
-
-```xml
-<dependency>
-  <groupId>eu.europa.ec.grow.espd</groupId>
-  <artifactId>exchange-model3</artifactId>
-  <version>3.0.0</version>
-</dependency>
-```
-
-Version 3 of the `Exchange Model` has a different `artifactId`, i.e. `exchange-model2`, in order to support 
-the usage of both versions at the same time inside a `Java` `Maven` project.
-
-In order to use the snapshot version, you might have to enable the `Maven` snapshot repository in your `pom.xml`.
+11. *Section 5.1 Lot Management approach for Selection Criteria*
+    * Text updated from _'The buyer may specify the criteria that each selection criteria apply by using the element cac:ProcurementProjectLotReference that includes cbc:TenderingCriterion.'_ to _'The buyer may specify the criteria that each selection criteria apply by using the element cac:TenderingCriterion that includes cac:ProcurementProjectLotReference.'_.
+    * _cac:ProcurementLotReference_
+      * Element replaced by _cac:ProcurementProjectLotReference_.
 
 
-```xml
-<repositories>
-  <repository>
-    <id>oss-sonatype</id>
-    <name>oss-sonatype</name>
-    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    <snapshots>
-      <enabled>true</enabled>
-    </snapshots>
-  </repository>
-</repositories>
-```
+12. *Section 6.2 ESPD Response XSD Schema*
+    * _cac:ContractingAuthorityParty_ 
+      * _Component_: replaced by _cac:ContractingParty_ according to _Figure 191. QualificationApplicationResponse XSD Schema, global view_.
 
-## Use
-The ESPD-EDM is made publicly available through Github. 
-* If you just want to browse or access the model, you don't need to be registered in Github.
-* If you want to create issues concerning the ESPD-EDM you have to be a registered user in Github. Please assign all issues in this repository to paulakeen
+
+13. *Section 6.3 ESPD Response cardinalities*
+    * *Figure 193.* ESPD-EDM 'QualificationApplicationResponse', UML diagram
+      * _cac:ProcurementProject_
+        * _Component_: replaced by _cac:ProcurementProject/cbc:Description_ in alignment with *eForms*.
+      * _cac:ProcurementProjectLot_
+        * _Cardinality_: updated from _1..n_ to _1_.
+      * _cbc:ProfileExecutionID_
+        * _Cardinality_: updated from _0..1_ to _1_.
+      * _cbc:QualificationApplicationTypeCode_
+        * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
+      * _cbc:WeightScoringMethodologyDescription_
+        * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
+      * _cbc:WeightingType_ 
+        * _Component_: removed because it is not used in *ESPD-EDM v3.0.x*.
+
+14. *Section 6.4 Root elements*
+    * *Table 26.* Class QualificationApplicationResponse, components required by the ESPD-EDM
+      * _cac:ContractingParty_ 
+        * _Desciption_: updated with text _'See section xref:2.7_Contracting_Body.adoc[Contracting Body] for more specification details.'_ where this element is described.
+      * _cac:EconomicOperator_
+        * _Component_: replaced by _cac:EconomicOperatorParty_ according to _Figure 193. ESPD-EDM 'QualificationApplicationResponse', UML diagram._.
+        * _Cardinality_: updated from _0..1_ to _1_.
+      * _cac:ProcurementProject_ 
+        * _Component_: replaced by _cac:ProcurementProject/cbc:Description_ in alignment with *eForms*.
+        * _Type_: updated from _Associated class_ to _Text_ in alignment with *eForms*.
+        * _Cardinality_: updated from _0..1_ to _1_ according to _Figure 193. ESPD-EDM 'QualificationApplicationResponse', UML diagram._. 
+        * _Requirement_: updated from _'Use this component to identify and describe the procurement administrative procedure. If the procurement procedure is divided into lots use the ProcurementProjectLot component to provide details specific to the lot and reserve the ProcurementProject component to describe the global characteristics of the procedure.'_ to _'This element is required in the ESPD, however it should be identical to that provided in eForms. In general the corresponding eForm should feed the corresponding ESPD with the corresponding data.'_.
+     * _cac:ProcurementProjectLot_ 
+       * _Cardinality_: updated from _0..1_ to _1_ according to _Figure 193. ESPD-EDM 'QualificationApplicationResponse', UML diagram._.
+       * _Description_: updated from _'One of the procurement project lots into which this contract can be divided.'_ to _'The procurement project lot or group of lots this ESPD Response tenders to.'.'
+    * _cbc:EconomicOperatorGroupName_ 
+      * _Type_: updated from _Code_ to _Text_.
+    * _cbc:ProcedureCode_ 
+      * _Cardinality_: updated from _0..1_ to _1_ according to _Figure 193. ESPD-EDM 'QualificationApplicationResponse', UML diagram._. 
+      * _Type_: updated from _Identifier_ to _Code_.
+    * _cbc:ProfileExecutionID_ 
+      * _Component_: added.
+      * _Cardinality_: added _1_.
+    * _cbc:UUID_ 
+      * _Cardinality_: updated from _0..1_ to _1_.
+
+15. *Section 6.5 Reference to publications and to the ESPD Request*
+    * *Table 27.* Reference to the ESPD Request, expected elements
+      * _cac:AdditionalDocumentReference_
+        *_Path:_ replaced _/QualificationApplicationResponse/cac:AdditionalReferenceDocument_ by _/QualificationApplicationResponse/cac:AdditionalDocumentReference_.
+      * _cbc:DocumentDescription_
+        * _Component_: added.
+        * _Cardinality_: added _0..1_.
+
+    * *Table 28.* External Reference
+      * _cac:ExternalReference_
+        *_Path:_ replaced _/QualificationApplicationResponse/cac:AdditionalReferenceDocument_ by _/QualificationApplicationResponse/cac:AdditionalDocumentReference_.
+
+16. *Section 6.6 Economic Operator*
+    * _cac:EconomicOperator_
+      * _Component_: replaced by _cac:EconomicOperatorParty_ according to _Figure 193. ESPD-EDM 'QualificationApplicationResponse', UML diagram_.
+
+    * *Table 33.* Qualifying Party, expected elements
+      * _cac:Party/cac:PartyIdentifier/cbc:ID_
+        * _Component_: repleaced by _cac:Party/cac:PartyIdentification/cbc:ID_.
+
+    * *Table 34.* Economic operator role, expected elements
+      * _cbc:RoleDescription_
+        * _Cardinality_: updated from _0..n_ to _0..1_.
+
+    * *Table 35.* (Qualifying) economic operator party, expected elements
+      * _cac:PartyIdentification/cbc:Identifier_ 
+        * _Requirement_: updated from _'More than one identifier can be specified. Compulsory use of the attribute schemeAgencyID and highly recommended the use of the attribute schemeAgencyID. The preferred identifier is the national VAT number. Additional identifiers may be used'_ to _'When possible use the VAT identification of the contracting body (see the link:https://ec.europa.eu/taxation_customs/vies/[VIES] platform for a EU cross-border national VAT number verification system). When not possible a different identifier may be used.'_ because previous text was ambiguous.
+
+    * *Table 36.* Economic operator postal address, expected elements
+      * _cac:PostalAddress_
+        * _Path_: updated from _/QualificationApplicationResponse/​cac:EconomicOperator/​cac:Party/​cac:PostalAddress_ to _/QualificationApplicationResponse/​cac:EconomicOperatorParty/​cac:Party/​cac:PostalAddress_ according to _Figure 198. cac:QualifyingParty element, XSD_.
+
+    * *Table 38.* Service provider, expected elements
+      * _cac:PostalAddress/cac:Country/cbc:IdentificationCode_
+        * _Type_: updated from _Identifier_ to _Code_.
+
+17. *Section 6.8 Evidences*
+    * _cac:Evidence/cac:DocumentReference/cac:IssuerParty_
+      * Element replaced by _cac:Evidence/cac:DocumentReference/cac:IssuerParty/cac:Party/cac:PartyIdentification/cbc:ID_.
+
+    * *Table 44*. Elements expected in an Evidence
+      * _cbc:CandidateStatement_ 
+        * _Requirement_: updated from _'None. Not currently used in ESPD.'_ to _'None. No rule is applied.'_ because previous text was misleading.
+
+    * *Table 45.* Elements expected from the 'cac:Evidence/cac:DocumentReference' element
+      * _cac:Attachment/cac:ExternalReference/cbc:URI_ 
+        * _Requirement_: updated from _'None. Not currently used in ESPD.'_ to _'None. No rule is applied.'_ because previous text was misleading.
+      * _cac:IssuerParty/cbc:ID_
+        * _Component_: replaced by _cac:IssuerParty/cac:PartyIdentification/cbc:ID_.
+      * _cac:IssuerParty/cbc:Name_
+        * _Component_: replaced by _cac:IssuerParty/cac:PartyName/cbc:Name_.
+      * _cac:IssuerParty/cbc:WebsiteURI_
+        * _Requirement_: updated from _'None. Not currently used in ESPD.'_ to _'None. No rule is applied.'_ because previous text was misleading.
