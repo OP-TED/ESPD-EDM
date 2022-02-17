@@ -24,7 +24,7 @@ This new version of the ESPD-EDM includes:
 
   ![image](https://user-images.githubusercontent.com/67598083/154528710-f29c4d2b-7a23-49e0-9cb4-7448a5056821.png)
 
-  * **\__ESPDTeam__**: contains files for ESPD Team internal use in maintenance tasks of the ESPD-EDM;
+  * **\_\_ESPDTeam__**: contains files for ESPD Team internal use in maintenance tasks of the ESPD-EDM;
   * **codelists**: contains the different code lists used in ESPD in Genericode format and the criterion structure definition.
   * **conceptual-model**: contains the UML conceptual model of the ESPD in .eap, .xmi and HTML format.
   * **java-library**: contains the XML schemas used to generate the JAXB annotated Java classes.
