@@ -1,5 +1,5 @@
 # ESPD Exchange Data Model (EDM)
-# Version 3.0.1
+# Version 3.0.1 (Early 2022)
 
 ## Introduction
 
@@ -18,7 +18,7 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongl
 * [v2.0.2](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/index.html)
 * [v1.0.2](https://docs.ted.europa.eu/ESPD-EDM/1.0.2/index.html)
 
-## Version 3.0.1 (Early 2022)
+## Version Content
 This new version of the ESPD-EDM includes:
 * Reorganisation of the distribution package folders
 
