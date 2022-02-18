@@ -22,7 +22,8 @@ To have a comprehensive view of what ESPD-EDM is and how to use it, we strongly 
 This new version of the ESPD-EDM includes:
 * Reorganisation of the distribution package folders
 
-  ![image](https://user-images.githubusercontent.com/67598083/154528710-f29c4d2b-7a23-49e0-9cb4-7448a5056821.png)
+  ![Distribution_package](https://user-images.githubusercontent.com/67598083/154658178-422f2c59-99b8-452d-85ee-f1b7964b3e95.jpg)
+
 
   * **\_\_ESPDTeam__**: contains files for ESPD Team internal use in maintenance tasks of the ESPD-EDM;
   * **codelists**: contains the different code lists used in ESPD in Genericode format and the criterion structure definition.
