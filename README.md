@@ -1,5 +1,5 @@
 # ESPD Exchange Data Model (EDM)
-# Version 3.0.1 (Early 2022)
+# Version 3.0.1 (February 2022)
 
 ## Introduction
 
@@ -7,7 +7,7 @@ The ESPD Exchange Data Model is the technical representation of the legal Europe
 
 ## ESPD Wiki
 
-To have a comprehensive view of what ESPD-EDM is and how to use it, we **strongly** recommend visiting the [ESPD-EDM Wiki](https://github.com/ESPD/ESPD-EDM/wiki), that aims to be the **Unique Access Point** for all of its resources: documentation, tools, assets, etc.
+To have a comprehensive view of what ESPD-EDM is and how to use it, we strongly recommend visiting the [ESPD-EDM Wiki](https://github.com/ESPD/ESPD-EDM/wiki), that aims to be the **Unique Access Point** for all of its resources: tools, assets, etc.
 
 ## Documentation
 
@@ -37,6 +37,6 @@ This new version of the ESPD-EDM includes:
 For more information regarding the release, please refer to the [release notes](https://docs.ted.europa.eu/ESPD-EDM/3.0.1/release_notes.html).
 
 ## Use
-The ESPD-EDM is made publicly available through Github. 
-* If you just want to browse or access the model, you don't need to be registered in Github.
-* If you want to create issues concerning the ESPD-EDM you have to be a registered user in Github.
+The ESPD-EDM is made publicly available through GitHub. 
+* To browse or access the model, there is no need to be registered in Github.
+* To create issues concerning the ESPD-EDM a GitHub registered user is needed.
