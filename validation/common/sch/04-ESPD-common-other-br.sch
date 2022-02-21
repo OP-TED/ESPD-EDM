@@ -48,9 +48,8 @@
 			<assert test="@listVersionID" flag="fatal"  id="BR-OTH-01-30">The attribute listVersionID is mandatory for the element: '<value-of select="name()"/>').</assert>
 		</rule>
 		
-		<!-- BR-OTH-01: Code types listVersionID validation: starts with 2. -->
-		<rule context="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:PropertyGroupTypeCode |
-			cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode | cbc:CriterionTypeCode">
+		<!-- BR-OTH-01: Code types listVersionID validation: starts with 3. -->
+		<rule context="cbc:TypeCode | cbc:DocumentTypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode">
 			<assert test="@listID" flag="fatal" id="BR-OTH-01-11">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listAgencyID" flag="fatal" id="BR-OTH-01-21">The attribute listAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listVersionID" flag="fatal" id="BR-OTH-01-31">The attribute listVersionID is mandatory for the element: '<value-of select="name()"/>').</assert>

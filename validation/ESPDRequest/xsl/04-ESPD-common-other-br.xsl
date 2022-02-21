@@ -397,7 +397,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ConfidentialityLevelCode | cbc:TypeCode | cbc:DocumentTypeCode | cbc:IndustryClassificationCode | cbc:RoleCode | cbc:PropertyGroupTypeCode |    cbc:QualificationApplicationTypeCode | cbc:ValueDataTypeCode | cbc:CriterionTypeCode"
+<xsl:template match="cbc:TypeCode | cbc:DocumentTypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode"
                  priority="1002"
                  mode="M7">
 
