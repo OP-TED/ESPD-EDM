@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
 
     Illustration of criterion constraints - 03-ESPD-common-criterion-br.sch
-	ESPD Version: 3.0.0
+	ESPD Version: 3.0.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-CR">
@@ -23,7 +23,7 @@
 			<let name="currentID" value="cbc:ID"/>
 			<let name="currentIDExist" value="(cbc:ID) and not(normalize-space(cbc:ID) = '')"/>
 						
-			<let name="ElementUUID" value="document('ESPD-criterion.V3.0.0.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
+			<let name="ElementUUID" value="document('ESPD-criterion.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
 			<let name="ElementUUIDExists" value="(count($ElementUUID/cbc:ID) = 1)"/>
 			
 			<!-- Cardinality constraints -->
@@ -70,11 +70,11 @@
 			
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
 						
-			<let name="ElementUUID_SUB" value="document('ESPD-criterion.V3.0.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+			<let name="ElementUUID_SUB" value="document('ESPD-criterion.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
 			<let name="ParentUUID_SUB" value="$ElementUUID_SUB[parent::*[cbc:ID = $parentID]][1]"/>
 			
 			<!-- cac:TenderingCriterionPropertyGroup -->
-			<let name="ElementUUID_T" value="document('ESPD-criterion.V3.0.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+			<let name="ElementUUID_T" value="document('ESPD-criterion.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
 			<let name="ParentUUID_T" value="$ElementUUID_T[parent::*[cbc:ID = $parentID]][1]"/>
 			
 			<let name="ElementUUID_TExists" value="(count($ParentUUID_T/cbc:ID) &gt; 0)"/>
@@ -118,11 +118,11 @@
 			<let name="TCPropertyGroupID" value="ancestor::*[1]/cbc:ID"/>		
 						
 			<!-- cac:SubsidiaryTenderingCriterionPropertyGroup -->
-			<let name="ElementUUIDSTC" value="document('ESPD-criterion.V3.0.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
+			<let name="ElementUUIDSTC" value="document('ESPD-criterion.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
 			<let name="ElementUUID_STCExists" value="(count($ElementUUIDSTC) &gt; 0)"/>
 			
 			<!-- cac:TenderingCriterionPropertyGroup -->
-			<let name="ElementUUIDTC" value="document('ESPD-criterion.V3.0.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>	
+			<let name="ElementUUIDTC" value="document('ESPD-criterion.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>	
 			<let name="ElementUUID_TCExists" value="(count($ElementUUIDTC) &gt; 0)"/>
 			
 			<let name="ElementUUIDExists" value="$ElementUUID_TCExists or $ElementUUID_STCExists"/>

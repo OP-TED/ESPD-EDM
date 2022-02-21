@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion constraints ESPD Response
 
     Illustration of procurer constraints - 03-ESPD-resp-criterion-br.sch
-	ESPD Version: 3.0.0
+	ESPD Version: 3.0.1
 -->
 	
 	<xsl:key name="CriterionProperty" match="cac:TenderingCriterionProperty" use="cbc:ID"/>

@@ -11,7 +11,7 @@
     Start of synthesis of rules from Economic Operator (EO) constraints ESPD Response
 
     Illustration of EO constraints - 05-ESPD-resp-eo-br.sch
-	ESPD Version: 3.0.0
+	ESPD Version: 3.0.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-EO">

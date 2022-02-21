@@ -205,7 +205,7 @@
       <xsl:variable name="currentID" select="cbc:ID"/>
       <xsl:variable name="currentIDExist" select="(cbc:ID) and not(normalize-space(cbc:ID) = '')"/>
       <xsl:variable name="ElementUUID"
-                    select="document('ESPD-criterion.V3.0.0.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
+                    select="document('ESPD-criterion.xml')//cac:TenderingCriterion[cbc:ID = $currentID]"/>
       <xsl:variable name="ElementUUIDExists" select="(count($ElementUUID/cbc:ID) = 1)"/>
 
 		    <!--ASSERT -->
@@ -385,11 +385,11 @@
       <xsl:variable name="currentCode" select="cbc:PropertyGroupTypeCode"/>
       <xsl:variable name="parentID" select="ancestor::*[1]/cbc:ID"/>
       <xsl:variable name="ElementUUID_SUB"
-                    select="document('ESPD-criterion.V3.0.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+                    select="document('ESPD-criterion.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
       <xsl:variable name="ParentUUID_SUB"
                     select="$ElementUUID_SUB[parent::*[cbc:ID = $parentID]][1]"/>
       <xsl:variable name="ElementUUID_T"
-                    select="document('ESPD-criterion.V3.0.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
+                    select="document('ESPD-criterion.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $currentID]"/>
       <xsl:variable name="ParentUUID_T" select="$ElementUUID_T[parent::*[cbc:ID = $parentID]][1]"/>
       <xsl:variable name="ElementUUID_TExists" select="(count($ParentUUID_T/cbc:ID) &gt; 0)"/>
       <xsl:variable name="ElementUUID_SUBExists" select="(count($ParentUUID_SUB/cbc:ID) &gt; 0)"/>
@@ -626,10 +626,10 @@
       <xsl:variable name="currentValueData" select="cbc:ValueDataTypeCode"/>
       <xsl:variable name="TCPropertyGroupID" select="ancestor::*[1]/cbc:ID"/>
       <xsl:variable name="ElementUUIDSTC"
-                    select="document('ESPD-criterion.V3.0.0.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
+                    select="document('ESPD-criterion.xml')//cac:SubsidiaryTenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
       <xsl:variable name="ElementUUID_STCExists" select="(count($ElementUUIDSTC) &gt; 0)"/>
       <xsl:variable name="ElementUUIDTC"
-                    select="document('ESPD-criterion.V3.0.0.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
+                    select="document('ESPD-criterion.xml')//cac:TenderingCriterionPropertyGroup[cbc:ID = $TCPropertyGroupID][1]/cac:TenderingCriterionProperty"/>
       <xsl:variable name="ElementUUID_TCExists" select="(count($ElementUUIDTC) &gt; 0)"/>
       <xsl:variable name="ElementUUIDExists"
                     select="$ElementUUID_TCExists or $ElementUUID_STCExists"/>

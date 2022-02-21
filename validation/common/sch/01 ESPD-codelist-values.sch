@@ -8,9 +8,9 @@
         xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2">
    <pattern id="code-list-values"><!--
 		ESPD code list values constraints - ESPD-codelist-values.cva
-		Version 2.1.1
+		Version 3.0.1
 	
-$Id: ESPD-codelist-values.cva,v 2.1.1 $
+$Id: ESPD-codelist-values.cva,v 3.0.1 $
 
     Required namespace declarations as indicated in this set of rules:
 

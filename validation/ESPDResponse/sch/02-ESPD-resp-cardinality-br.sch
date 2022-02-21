@@ -11,7 +11,7 @@
     Start of synthesis of rules from cardinality constraints ESPD Response.
 
     Illustration of cardinality constraints - 02-ESPD-resp-cardinality-br.sch
-	ESPD Version: 3.0.0
+	ESPD Version: 3.0.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-CARD">

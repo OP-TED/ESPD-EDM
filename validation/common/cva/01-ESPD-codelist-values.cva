@@ -26,9 +26,9 @@
 	<ValueLists>
 		<ValueList xml:id="access-right" uri="../../gc/access-right.gc"/><!-- cbc:ConfidentialityLevelCode -->
 		<ValueList xml:id="country" uri="../../gc/Country.gc"/><!-- cac:Country/cbc:IdentificationCode -->
-		<ValueList xml:id="CriterionElementType" uri="../../gc/CriterionElementType.gc"/><!-- /cac:TenderingCriterionProperty/cbc:TypeCode -->
+		<ValueList xml:id="criterion-element-type" uri="../../gc/CriterionElementType.gc"/><!-- /cac:TenderingCriterionProperty/cbc:TypeCode -->
 		<ValueList xml:id="currency" uri="../../gc/Currency.gc"/><!-- cbc:ValueCurrencyCode, @currencyID -->
-		<ValueList xml:id="docref-content-type" uri="../../gc/docref-content-type.gc"/><!-- /cac:AdditionalReferenceDocument/cbc:DocumentTypeCode -->
+		<ValueList xml:id="DocRefContentType" uri="../../gc/DocRefContentType.gc"/><!-- /cac:AdditionalReferenceDocument/cbc:DocumentTypeCode -->
 		<ValueList xml:id="EOIDType" uri="../../gc/EOIDType.gc"/><!-- /cac:PartyIdentification/cbc:ID/@schemeID -->
 		<ValueList xml:id="economic-operator-size" uri="../../gc/EconomicOperatorSize.gc"/><!--/cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode -->
 		<ValueList xml:id="eo-role-type" uri="../../gc/eo-role-type.gc"/><!-- /cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode -->
@@ -48,7 +48,7 @@
 		<Context address="cac:Country/cbc:IdentificationCode" values="country">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:Country/cbc:IdentificationCode'.</Message>
 		</Context>
-		<Context address="cbc:TypeCode" values="CriterionElementType">
+		<Context address="cbc:TypeCode" values="criterion-element-type">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:TypeCode'.</Message>
 		</Context>
 		<Context address="@currencyID" values="currency">
@@ -57,7 +57,7 @@
 		<Context address="cbc:ValueCurrencyCode" values="currency">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cbc:ValueCurrencyCode'.</Message>
 		</Context>
-		<Context address="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" values="docref-content-type">
+		<Context address="cac:AdditionalReferenceDocument/cbc:DocumentTypeCode" values="DocRefContentType">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:AdditionalReferenceDocument/cbc:DocumentTypeCode'.</Message>
 		</Context>
 		<Context address="cac:PartyIdentification/cbc:ID/@schemeID" values="EOIDType">

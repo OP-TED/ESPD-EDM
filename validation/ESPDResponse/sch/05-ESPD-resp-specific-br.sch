@@ -13,7 +13,7 @@
     Start of synthesis of rules from other constraints ESPD Response
 
     Illustration of procurer constraints - 05-ESPD-resp-specific-br.sch
-	ESPD Version: 3.0.0
+	ESPD Version: 3.0.1
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-SC">
