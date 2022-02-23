@@ -31,12 +31,12 @@ This new version of the ESPD-EDM includes:
   * **ubl-2.3**: contains a redistribution package from UBL 2.3.
   * **validation**: contains business rules validation files for Schematron and Testbed.
   * **xml-examples**: contains default ESPDRequest and ESPDResponse xml samples and the criterion xml schema.
+* Documented handbook migration to [Ted Developer Docs](https://docs.ted.europa.eu/home/index.html).
 * Updated ESPD-EDM conceptual model:
   * [_.eap_ and _.xmi_ files](https://github.com/OP-TED/ESPD-EDM/tree/v3.0.1/conceptual-model) with two views and diagrams: 
     * **Business oriented view (BOV)** aimed at facilitating the understanding of the model and the business context, with references to the technical model, and;
     * **Technically oriented view (TOV)** providing an UBL based schema with references to business oriented view and aligned with the eProcurement ontology.
   * [_HTML_ version](https://github.com/OP-TED/ESPD-EDM/tree/v3.0.1/conceptual-model/ESPD_CM_html) of the UML conceptual model.If you do not want to download the folder to view the model you can view it on the documentation page under [ESPD-EDM CONCEPTUAL MODEL HTML](https://docs.ted.europa.eu/ESPD-EDM/3.0.1/_attachments/ESPD_CM_html/index.html).
-* Documented handbook migration to [Ted Developer Docs](https://docs.ted.europa.eu/home/index.html).
 * EU Vocabularies code lists version update (specific files can be found in folder [codelists/gc](https://github.com/OP-TED/ESPD-EDM/tree/v3.0.1/codelists/gc))
   * **access-right** version updated to	20211208-0.
   * **country**	version updated to 20211208-0.
