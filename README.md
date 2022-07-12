@@ -1,5 +1,5 @@
 # ESPD Exchange Data Model (EDM)
-# Ongoing work for specific feature (February 2022)
+# Ongoing work for specific feature
 
 ## Introduction
 
