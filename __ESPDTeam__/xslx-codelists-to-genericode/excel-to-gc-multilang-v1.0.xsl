@@ -103,7 +103,7 @@
 											</Value>
 											<Value ColumnRef="status">
 												<SimpleValue>
-													<xsl:value-of select="ss:Cell[5]"/>
+													<xsl:value-of select="ss:Cell[4]"/>
 												</SimpleValue>
 											</Value>
 											<xsl:for-each select="ss:Cell">
