@@ -8,10 +8,12 @@
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
 	
-	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/> 
+	
 	<xsl:template name="createEconomicOperator">
 		<cac:EconomicOperatorParty>
 			<cac:Party/>
 		</cac:EconomicOperatorParty>
-	</xsl:template>
+	</xsl:template> 
+	
 </xsl:stylesheet>

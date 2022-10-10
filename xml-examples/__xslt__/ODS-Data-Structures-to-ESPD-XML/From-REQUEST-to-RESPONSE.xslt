@@ -1,19 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions"
+<xsl:stylesheet version="2.0" 
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:fn="http://www.w3.org/2005/xpath-functions"
 	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
 	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
 	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
-	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" 
+	xmlns:espd="urn:com:grow:espd:3.0.0" 
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:util="java:java.util.UUID">
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+	xmlns:util="java:java.util.UUID">
 	
 	<xsl:include href="./inc/RootElements-Annotated.xslt"/>
-	<xsl:include href="./inc/ContractingAuthorityData.xslt"/>
-	<xsl:include href="./inc/EconomicOperatorData.xslt"/>
-	<xsl:include href="./inc/ProcurementProject.xslt"/>
-	<xsl:include href="./inc/ProcurementProjectLot.xslt"/>
+	<xsl:include href="./inc/ContractingAuthorityData-RequestResponse.xslt"/> 
+	
+	<xsl:include href="./inc/EconomicOperatorData.xslt"/> 
+	
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+	
+	<xsl:template name="generateID">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.1.0">
+			<xsl:value-of select="util:toString(util:randomUUID())"/>
+		</cbc:ID>
+	</xsl:template> 
+	
+	<xsl:template name="createProcurementProject">
+		<cac:ProcurementProject>
+			<!-- <xsl:call-template name="generateID"/> -->
+			<cbc:Description>Description of Project.</cbc:Description>
+		</cac:ProcurementProject>
+	</xsl:template> 
+	
+	<xsl:template name="createProcurementProjectLot">
+		<cac:ProcurementProjectLot>
+			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.1.0">LOT-00000</cbc:ID>
+		</cac:ProcurementProjectLot>
+	</xsl:template> 
 	
 	<xsl:template match="/">
 		<QualificationApplicationResponse
@@ -30,14 +53,15 @@
 			<xsl:apply-templates/>
 			<xsl:call-template name="createEvidence"/>
 		</QualificationApplicationResponse>
-	</xsl:template>
+	</xsl:template> 
+	
 	<xsl:template match="*">
 		<xsl:for-each select="descendant::cac:TenderingCriterion">
 			<xsl:variable name="criterionName" select="cbc:Name"/>
 			<xsl:for-each select="descendant::cac:TenderingCriterionProperty">
-			<xsl:call-template name="createAnswer">
-				<xsl:with-param name="criterion" select="$criterionName"/>
-			</xsl:call-template>
+				<xsl:call-template name="createAnswer">
+					<xsl:with-param name="criterion" select="$criterionName"/>
+				</xsl:call-template>
 			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
@@ -58,33 +82,41 @@
 					
 			<cac:TenderingCriterionResponse>
 					<xsl:call-template name="generateID"/>
-					<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0"><xsl:value-of select="cbc:ID"/></cbc:ValidatedCriterionPropertyID>
+				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.1.0"> 
+						<xsl:value-of select="cbc:ID"/> 
+					</cbc:ValidatedCriterionPropertyID>
 					<xsl:call-template name="createPeriod"/>
 					<xsl:call-template name="createEvidenceSupplied"/>		
 					<xsl:call-template name="createResponseValue"/>
-				</cac:TenderingCriterionResponse>
+			</cac:TenderingCriterionResponse>
 		</xsl:if>
 	</xsl:template>
-
-	<xsl:template name="generateID">
-		<cbc:ID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="EU-COM-GROW" schemeVersionID="3.0.0">
-			<xsl:value-of select="util:toString(util:randomUUID())"/>
-		</cbc:ID>
-	</xsl:template>
+	
+	<xsl:template name="createPeriod">
+		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>
+		<xsl:if test="$propertyDataType = 'PERIOD'">
+			<cac:ApplicablePeriod>
+				<cbc:StartDate>2017-01-01</cbc:StartDate>
+				<cbc:EndDate>2017-12-12</cbc:EndDate>
+			</cac:ApplicablePeriod>	
+		</xsl:if>
+	</xsl:template>	
 	
 	<xsl:template name="createEvidenceSupplied">
 		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>		
 		<xsl:if test="$propertyDataType = 'EVIDENCE_IDENTIFIER'">
-			<cac:EvidenceSupplied><cbc:ID schemeAgencyID="EU-COM-GROW">EVIDENCE-00001</cbc:ID></cac:EvidenceSupplied>	
+			<cac:EvidenceSupplied>
+				<cbc:ID schemeAgencyID="OP">EVIDENCE-00001</cbc:ID>
+			</cac:EvidenceSupplied>	
 		</xsl:if>
 	</xsl:template>
 
 	<xsl:template name="createEvidence">
 		<cac:Evidence>
-			<cbc:ID schemeAgencyID="EU-COM-GROW">EVIDENCE-00001</cbc:ID>
-			<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="EU-COM-GROW" listVersionID="3.0.0">CONFIDENTIAL</cbc:ConfidentialityLevelCode>
+			<cbc:ID schemeAgencyID="XXXAGENCYXXX">EVIDENCE-00001</cbc:ID>
+			<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="OP" listVersionID="3.1.0">CONFIDENTIAL</cbc:ConfidentialityLevelCode>
 			<cac:DocumentReference>
-				<cbc:ID schemeAgencyID="EU-COM-GROW">SAT-11121233</cbc:ID>
+				<cbc:ID schemeAgencyID="XXXAGENCYXXX">SAT-11121233</cbc:ID>
 				<cac:Attachment>
 					<cac:ExternalReference>
 						<cbc:URI>http:dod.gov.usa/sat/it/soft/prk?id=11121233</cbc:URI>
@@ -92,7 +124,7 @@
 				</cac:Attachment>
 				<cac:IssuerParty>
 					<cac:PartyIdentification>
-						<cbc:ID schemeAgencyID="EU-COM-GROW">XXXXXXXX</cbc:ID>
+						<cbc:ID schemeAgencyID="XXXAGENCYXXX">XXXXXXXX</cbc:ID>
 					</cac:PartyIdentification>
 					<cac:PartyName>
 						<cbc:Name>USA DoD</cbc:Name>
@@ -102,16 +134,6 @@
 		</cac:Evidence>
 	</xsl:template>
 		
-	<xsl:template name="createPeriod">
-		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>
-			<xsl:if test="$propertyDataType = 'PERIOD'">
-					<cac:ApplicablePeriod>
-						<cbc:StartDate>2017-01-01</cbc:StartDate><cbc:EndDate>2017-12-12</cbc:EndDate>
-					</cac:ApplicablePeriod>	
-			</xsl:if>
-		</xsl:template>	
-
-
 	<xsl:template name="createResponseValue">
 		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>
 		<xsl:if test="$propertyDataType != 'PERIOD' and $propertyDataType != 'EVIDENCE_IDENTIFIER'">
@@ -125,10 +147,10 @@
 							<cbc:ResponseAmount currencyID="EUR">10000000</cbc:ResponseAmount>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'IDENTIFIER'">
-							<cbc:ResponseID schemeAgencyID="EU-COM-GROW">DUMMY_ID</cbc:ResponseID>
+							<cbc:ResponseID schemeAgencyID="OP">DUMMY_ID</cbc:ResponseID>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
-							<cbc:ResponseCode listAgencyID="EU-COM-GROW" listVersionID="3.0.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.1.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
 							<cbc:ResponseCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2" listAgencyID="ISO" listVersionID="1.0">DUMMY_COUNTRY_CODE</cbc:ResponseCode>
@@ -157,5 +179,6 @@
 				</xsl:choose>
 			</cac:ResponseValue>
 		</xsl:if>
-	</xsl:template>
+	</xsl:template> 
+	
 </xsl:stylesheet>
