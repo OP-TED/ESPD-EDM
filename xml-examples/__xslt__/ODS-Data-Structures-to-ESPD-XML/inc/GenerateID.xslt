@@ -9,20 +9,16 @@
 	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" 
 	xmlns:espd="urn:com:grow:espd:3.0.0"
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-	
-	<xsl:include href="./GenerateID.xslt"/>
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:util="java:java.util.UUID">
 	
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
-	<!-- Procurement Project component -->
-	<xsl:template name="createProcurementProject">
-		<cac:ProcurementProject>
-			<!-- <xsl:call-template name="generateID"/> --> 
-			<cbc:Description>Description of Project.</cbc:Description>
-		</cac:ProcurementProject>
-	</xsl:template>
-	
-	<!-- <xsl:template name="generateID"/> --> 
+	<!-- Generate ID -->
+	<xsl:template name="generateID">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.1.0">
+			<xsl:value-of select="util:toString(util:randomUUID())"/>
+		</cbc:ID>
+	</xsl:template> 
 	
 </xsl:stylesheet>
