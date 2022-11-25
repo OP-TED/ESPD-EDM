@@ -1,5 +1,7 @@
 # ESPD Exchange Data Model Java library
 
+### NOTE: This section is related to older ESPD versions and it´s no longer maintaned. Currently the ESPD services can be implemented and maintained using different technologies, not only Java.
+
 ## Overview
 
 The `exchange-model` Maven module contains the XML schemas used to generate the [JAXB](https://jaxb.java.net) annotated Java classes.
