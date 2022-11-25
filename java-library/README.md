@@ -1,6 +1,6 @@
 # ESPD Exchange Data Model Java library
 
-### NOTE: This section is related to older ESPD versions and it´s no longer maintaned. Currently the ESPD services can be implemented and maintained using different technologies, not only Java.
+### NOTE: This section is related to older ESPD versions and it´s no longer maintaned. Currently the ESPD services can be implemented and maintained using different technologies, according to business and technical needs/requirement of implementers, and not only Java.
 
 ## Overview
 
