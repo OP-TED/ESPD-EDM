@@ -16,7 +16,7 @@ Therefore, the changes that can be found in this branch will be related to the f
 
 ## Documentation
 
-* [v3.0.1](https://docs.ted.europa.eu/ESPD-EDM/3.0.1/index.html)
+* [v3.0.1](https://docs.ted.europa.eu/ESPD-EDM/latest/index.html)
 * [v2.1.1](https://docs.ted.europa.eu/ESPD-EDM/2.1.1/index.html)
 * [v2.1.0](https://docs.ted.europa.eu/ESPD-EDM/2.1.0/index.html)
 * [v2.0.2](https://docs.ted.europa.eu/ESPD-EDM/2.0.2/index.html)
