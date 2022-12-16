@@ -134,13 +134,13 @@
 		<xsl:for-each select="ancestor-or-self::table:table-row/table:table-cell">
 			<xsl:choose>
 				<xsl:when test="text:p = '{CRITERION'">
-					<cbc:CriterionTypeCode listID="criterion" listAgencyID="OP"
+					<cbc:CriterionTypeCode listID="http://publications.europa.eu/resource/authority/criterion" listAgencyID="OP"
 						listVersionID="3.1.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{CRITERION'">
-					<cbc:CriterionTypeCode listID="criterion" listAgencyID="OP"
+					<cbc:CriterionTypeCode listID="http://publications.europa.eu/resource/authority/criterion" listAgencyID="OP"
 						listVersionID="3.1.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
@@ -290,8 +290,8 @@
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
-						<cbc:ExpectedCode listID="country" listName="country"
-							listAgencyID="ISO" listVersionID="20201216-0">
+						<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/country" listName="country"
+							listAgencyID="OP" listVersionID="20220928-0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>

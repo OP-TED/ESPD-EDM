@@ -153,7 +153,7 @@
 							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.1.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
-							<cbc:ResponseCode listID="CountryCodeIdentifier" listName="ISO-1-ALPHA-2" listAgencyID="ISO" listVersionID="1.0">DUMMY_COUNTRY_CODE</cbc:ResponseCode>
+						<cbc:ResponseCode listID="http://publications.europa.eu/resource/authority/country" listName="country" listAgencyID="OP" listVersionID="1.0">BEL</cbc:ResponseCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'DATE'">
 							<cbc:ResponseDate>2014-01-01</cbc:ResponseDate>

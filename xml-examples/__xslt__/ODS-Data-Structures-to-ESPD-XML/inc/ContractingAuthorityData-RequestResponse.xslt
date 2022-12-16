@@ -34,7 +34,7 @@
 					<cbc:CityName>DummyValue</cbc:CityName>
 					<cbc:PostalZone>DummyValue</cbc:PostalZone>
 					<cac:Country>
-						<cbc:IdentificationCode listID="Country" listAgencyID="ISO" listVersionID="20201216-0">asdasdas</cbc:IdentificationCode>
+						<cbc:IdentificationCode listID="http://publications.europa.eu/resource/authority/country" listAgencyID="OP" listVersionID="20201216-0">BEL</cbc:IdentificationCode>
 					</cac:Country>
 				</cac:PostalAddress>
 				<cac:Contact>
