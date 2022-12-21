@@ -11,15 +11,13 @@
     Start of synthesis of rules from cardinality constraints ESPD Request.
 
     Illustration of cardinality constraints - 02-ESPD-req-cardinality-br.sch
-	ESPD Version: 3.0.1
+	ESPD Version: 3.1.0
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-CARD">
 		<!-- BR-OTH-04: The ESPD-EDM model adds a few more restrictions regarding the cardinalities of some elements. -->
 		<rule context="espd:QualificationApplicationRequest">
 			<assert test="(cbc:UBLVersionID)" flag="fatal" id="BR-OTH-04-01">The element '/cbc:UBLVersionID' is mandatory.</assert>
-			
-			<assert test="(cbc:CustomizationID)" flag="fatal" id="BR-OTH-04-02">The element '/cbc:CustomizationID' is mandatory.</assert>
 			
 			<assert test="(cbc:ID)" flag="fatal" id="BR-OTH-04-03">The element '/cbc:ID' is mandatory.</assert>
 			

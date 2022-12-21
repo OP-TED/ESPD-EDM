@@ -179,61 +179,9 @@
                                              prefix="ext"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
                                              prefix="espd"/>
-         <svrl:active-pattern>
-            <xsl:attribute name="document">
-               <xsl:value-of select="document-uri(/)"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">BR-RESP-OTHER</xsl:attribute>
-            <xsl:attribute name="name">BR-RESP-OTHER</xsl:attribute>
-            <xsl:apply-templates/>
-         </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M5"/>
       </svrl:schematron-output>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Response Other Business Rules</svrl:text>
-
-   <!--PATTERN BR-RESP-OTHER-->
-
-
-	<!--RULE -->
-<xsl:template match="cbc:CustomizationID" priority="1000" mode="M5">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="text()='urn:www.cenbii.eu:transaction:biitrdm092:ver3.0'">
-               <xsl:attribute name="id">BR-OTH-06-01</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>For the ESPD customization of UBL ('/cbc:CustomizationID') we use the value urn:www.cenbii.eu:transaction:biitrdm092:ver3.0</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="@schemeAgencyID='CEN-BII'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID='CEN-BII'">
-               <xsl:attribute name="id">BR-OTH-06-02</xsl:attribute>
-               <xsl:attribute name="flag">error</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M5"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M5">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
-   </xsl:template>
 </xsl:stylesheet>

@@ -217,21 +217,6 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(cbc:CustomizationID)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:CustomizationID)">
-               <xsl:attribute name="id">BR-OTH-04-02</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The element '/cbc:CustomizationID' is mandatory.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
          <xsl:when test="(cbc:ID)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ID)">

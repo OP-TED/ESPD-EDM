@@ -13,7 +13,7 @@
     Start of synthesis of rules from cardinality constraints ESPD Request and ESPD Response
 
     Illustration of cardinality constraints - 04-ESPD-common-other-br.sch
-	ESPD Version: 3.0.1
+	ESPD Version: 3.1.0
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-OTH">
@@ -35,12 +35,6 @@
 			<assert test="@schemeAgencyID = 'OASIS-UBL-TC'" flag="fatal" id="BR-OTH-05-02">'cbc:UBLVersionID/@schemeAgencyID' must use the value "OASIS-UBL-TC" (cbc:UBLVersionID/@schemeAgencyID = '<value-of select="@schemeAgencyID"/>').</assert>
 		</rule>
 		
-		<!-- BR-OTH-07: Identification of the specification. Use the value "4.1". Use also "CEN-BII" for the schemeAgencyID attribute. -->
-		<rule context="cbc:ProfileID">
-			<assert test="text()='4.1'" flag="fatal" id="BR-OTH-07-01">'cbc:ProfileID' must use the value "4.1" (cbc:ProfileID = '<value-of select="."/>').</assert>
-			<assert test="@schemeAgencyID = 'CEN-BII'" flag="fatal" id="BR-OTH-07-02">'cbc:ProfileID/@schemeAgencyID' must use the value "CEN-BII" (cbc:ProfileID/@schemeAgencyID = '<value-of select="@schemeAgencyID"/>').</assert>
-		</rule>
-		
 		<!-- BR-OTH-01: For codes, this ESPD V03.00.01 specification requires always three mandatory attributes: listID, listAgencyID, and listVersionID. -->
 		<rule context="cbc:ExpectedCode | cbc:IdentificationCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode">
 			<assert test="@listID" flag="fatal" id="BR-OTH-01-10">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
@@ -57,7 +51,7 @@
 			<assert test="starts-with(@listVersionID, '3.') or starts-with(@listVersionID, '03.')" flag="fatal" id="BR-OTH-01-40">List version identifier '<value-of select="name()"/>/listVersionID = <value-of select="@listVersionID"/>' is not correct. ListVersionID should be '3.x.y' or '03.xx.yy'.</assert>
 		</rule>
 		
-		<!-- BR-OTH-02: For identifiers, this ESPD V03.00.01 specification requires at least (and always) the mandatory attribute schemeAgencyID. -->
+		<!-- BR-OTH-02: For identifiers, this ESPD V03.1.0 specification requires at least (and always) the mandatory attribute schemeAgencyID. -->
 		<rule context="ext:ExtensionAgencyID | ext:ExtensionVersionID | cbc:AccountID | cbc:AdditionalAccountID | cbc:AgencyID | cbc:AircraftID | cbc:AttributeID | cbc:AwardID | cbc:AwardingCriterionID | cbc:BarcodeSymbologyID | cbc:BrokerAssignedID | cbc:BusinessClassificationEvidenceID | 
 		cbc:BusinessIdentityEvidenceID | cbc:BuyerEventID | cbc:CV2ID | cbc:CarrierAssignedID | cbc:ChipApplicationID | cbc:CompanyID | cbc:ConsigneeAssignedID | cbc:ConsignorAssignedID | cbc:ConsumptionID | cbc:ConsumptionReportID | cbc:ContractFolderID | cbc:ContractedCarrierAssignedID |
 		cbc:CustomerAssignedAccountID | cbc:CustomizationID | cbc:DocumentID | cbc:ExchangeMarketID | cbc:ExpectedID | cbc:ExtendedID | cbc:FormatID | cbc:FreightForwarderAssignedID | cbc:HazardClassID | cbc:ID | cbc:IdentificationID | cbc:ImmobilizationCertificateID |

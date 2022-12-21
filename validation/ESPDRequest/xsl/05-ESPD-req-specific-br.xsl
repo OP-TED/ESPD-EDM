@@ -164,8 +164,7 @@
 
    <!--SCHEMA SETUP-->
 <xsl:template match="/">
-      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                              title="ESPD Request Extended Business Rules"
+      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="ESPD Request Business Rules"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -197,7 +196,7 @@
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Extended Business Rules</svrl:text>
+<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Business Rules</svrl:text>
 
    <!--PATTERN BR-REQ-SC-->
 

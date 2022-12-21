@@ -182,65 +182,9 @@
                                              prefix="udt"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
                                              prefix="espd"/>
-         <svrl:active-pattern>
-            <xsl:attribute name="document">
-               <xsl:value-of select="document-uri(/)"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">BR-REQ-OTHER</xsl:attribute>
-            <xsl:attribute name="name">BR-REQ-OTHER</xsl:attribute>
-            <xsl:apply-templates/>
-         </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M6"/>
       </svrl:schematron-output>
    </xsl:template>
 
    <!--SCHEMATRON PATTERNS-->
 <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Other Business Rules</svrl:text>
-
-   <!--PATTERN BR-REQ-OTHER-->
-
-
-	<!--RULE -->
-<xsl:template match="cbc:CustomizationID" priority="1000" mode="M6">
-
-		<!--ASSERT fatal-->
-<xsl:choose>
-         <xsl:when test="text()='urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="text()='urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'">
-               <xsl:attribute name="id">BR-OTH-06-01</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>The ESPD customization of UBL ('/cbc:CustomizationID = <xsl:text/>
-                  <xsl:value-of select="."/>
-                  <xsl:text/>') must use the value 'urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT fatal-->
-<xsl:choose>
-         <xsl:when test="@schemeAgencyID='CEN-BII'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID='CEN-BII'">
-               <xsl:attribute name="id">BR-OTH-06-02</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>'/cbc:CustomizationID/@schemeAgencyID' must use the value "CEN-BII" (/cbc:CustomizationID/@schemeAgencyID = '<xsl:text/>
-                  <xsl:value-of select="@schemeAgencyID"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M6"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M6">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
-   </xsl:template>
 </xsl:stylesheet>

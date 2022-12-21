@@ -2,7 +2,7 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:fn="http://www.w3.org/2005/xpath-functions">
-	<title>ESPD Request Extended Business Rules</title>
+	<title>ESPD Request Business Rules</title>
 
 	<ns prefix="cac"
 		uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
@@ -18,7 +18,7 @@
     Start of synthesis of rules from other constraints ESPD Request
 
     Illustration of procurer constraints - 05-ESPD-req-specific-br.sch
-	ESPD Version: 3.0.1
+	ESPD Version: 3.1.0
 -->
 
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-SC">
