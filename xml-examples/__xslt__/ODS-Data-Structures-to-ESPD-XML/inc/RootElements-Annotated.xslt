@@ -33,7 +33,7 @@
 			<xsl:value-of select="current-date()"/>
 		</cbc:IssueDate>
 		<cbc:IssueTime>
-			<xsl:value-of select="current-time()"/>
+			<xsl:value-of select="format-time(current-time(),'[H01]:[m01]:[s01][Z]')"/>
 		</cbc:IssueTime>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The version of the content of this document. If the document is modified the element cbc:PreviousVersionID should be instantiated --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:VersionID schemeAgencyID="OP" schemeVersionID="3.1.0">3.1.0</cbc:VersionID>
