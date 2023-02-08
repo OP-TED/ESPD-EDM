@@ -20,7 +20,7 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:template name="generateID">
-		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.1.0">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.2.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template> 
@@ -34,7 +34,7 @@
 	
 	<xsl:template name="createProcurementProjectLot">
 		<cac:ProcurementProjectLot>
-			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.1.0">LOT-00000</cbc:ID>
+			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">LOT-00000</cbc:ID>
 		</cac:ProcurementProjectLot>
 	</xsl:template> 
 	
@@ -82,7 +82,7 @@
 					
 			<cac:TenderingCriterionResponse>
 					<xsl:call-template name="generateID"/>
-				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.1.0"> 
+				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.2.0"> 
 						<xsl:value-of select="cbc:ID"/> 
 					</cbc:ValidatedCriterionPropertyID>
 					<xsl:call-template name="createPeriod"/>
@@ -114,7 +114,7 @@
 	<xsl:template name="createEvidence">
 		<cac:Evidence>
 			<cbc:ID schemeAgencyID="XXXAGENCYXXX">EVIDENCE-00001</cbc:ID>
-			<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="OP" listVersionID="3.1.0">CONFIDENTIAL</cbc:ConfidentialityLevelCode>
+			<cbc:ConfidentialityLevelCode listID="ConfidentialityLevel" listAgencyID="OP" listVersionID="3.2.0">CONFIDENTIAL</cbc:ConfidentialityLevelCode>
 			<cac:DocumentReference>
 				<cbc:ID schemeAgencyID="XXXAGENCYXXX">SAT-11121233</cbc:ID>
 				<cac:Attachment>
@@ -150,7 +150,7 @@
 							<cbc:ResponseID schemeAgencyID="OP">DUMMY_ID</cbc:ResponseID>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.1.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
 						<cbc:ResponseCode listID="http://publications.europa.eu/resource/authority/country" listName="country" listAgencyID="OP" listVersionID="1.0">BEL</cbc:ResponseCode>

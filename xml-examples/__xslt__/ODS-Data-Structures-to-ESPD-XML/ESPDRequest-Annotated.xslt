@@ -19,7 +19,7 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/> 
 	
 	<xsl:template name="generateID">
-		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.1.0">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.2.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template> 
@@ -124,7 +124,7 @@
 	</xsl:template>
 
 	<xsl:template name="createID">
-		<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.1.0">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">
 			<xsl:value-of select="espd:getCellContent(., 23)"/>
 		</cbc:ID>
 	</xsl:template> 
@@ -135,40 +135,40 @@
 			<xsl:choose>
 				<xsl:when test="text:p = '{CRITERION'">
 					<cbc:CriterionTypeCode listID="http://publications.europa.eu/resource/authority/criterion" listAgencyID="OP"
-						listVersionID="3.1.0">
+						listVersionID="3.2.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{CRITERION'">
 					<cbc:CriterionTypeCode listID="http://publications.europa.eu/resource/authority/criterion" listAgencyID="OP"
-						listVersionID="3.1.0">
+						listVersionID="3.2.0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{REQUIREMENT_GROUP'">
 					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="OP"
-						listVersionID="3.1.0">
+						listVersionID="3.2.0">
 						<xsl:value-of select="$code"/>
 					</cbc:PropertyGroupTypeCode>
 				</xsl:when>
 				<xsl:when
 					test="text:p = '{REQUIREMENT_GROUP' or text:p = '{QUESTION_GROUP' or text:p = '{REQUIREMENT_SUBGROUP' or text:p = '{QUESTION_SUBGROUP'">
 					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="OP"
-						listVersionID="3.1.0">
+						listVersionID="3.2.0">
 						<xsl:value-of select="$code"/>
 					</cbc:PropertyGroupTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{CAPTION}'">
 					<cbc:TypeCode listID="CriterionElementType" listAgencyID="OP"
-						listVersionID="3.1.0">CAPTION</cbc:TypeCode>
+						listVersionID="3.2.0">CAPTION</cbc:TypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{REQUIREMENT}'">
 					<cbc:TypeCode listID="CriterionElementType" listAgencyID="OP"
-						listVersionID="3.1.0">REQUIREMENT</cbc:TypeCode>
+						listVersionID="3.2.0">REQUIREMENT</cbc:TypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{QUESTION}'">
 					<cbc:TypeCode listID="CriterionElementType" listAgencyID="OP"
-						listVersionID="3.1.0">QUESTION</cbc:TypeCode>
+						listVersionID="3.2.0">QUESTION</cbc:TypeCode>
 				</xsl:when>
 			</xsl:choose>
 		</xsl:for-each>
@@ -191,7 +191,7 @@
 	
 	<xsl:template name="createProcurementProjectLotReference">
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>cac:ProcurementProjectLotReference<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.1.0">LOT-00000</cbc:ID>
+		<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">LOT-00000</cbc:ID>
 		<xsl:text disable-output-escaping="yes">&lt;/</xsl:text>cac:ProcurementProjectLotReference<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	</xsl:template>
 	
@@ -243,11 +243,11 @@
 		<xsl:choose>
 			<xsl:when test="$captionValue = ''">
 				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="OP"
-					listVersionID="3.1.0">NONE</cbc:ValueDataTypeCode>
+					listVersionID="3.2.0">NONE</cbc:ValueDataTypeCode>
 			</xsl:when>
 			<xsl:when test="$captionValue != ''">
 				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="OP"
-					listVersionID="3.1.0">
+					listVersionID="3.2.0">
 					<xsl:value-of select="$captionValue"/>
 				</cbc:ValueDataTypeCode>
 			</xsl:when>
@@ -279,13 +279,13 @@
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
 						<cbc:ExpectedCode listID="PleaseSelectTheCorrectOne"
-							listAgencyID="OP" listVersionID="3.1.0">
+							listAgencyID="OP" listVersionID="3.2.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_BOOLEAN'">
 						<cbc:ExpectedCode listID="BooleanGUIControlType" listAgencyID="OP"
-							listVersionID="3.1.0">
+							listVersionID="3.2.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
@@ -297,7 +297,7 @@
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'ECONOMIC_OPERATOR_ROLE_CODE'">
 						<cbc:ExpectedCode listID="eo-role-type" listAgencyID="OP"
-							listVersionID="3.1.0">
+							listVersionID="3.2.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when> 
