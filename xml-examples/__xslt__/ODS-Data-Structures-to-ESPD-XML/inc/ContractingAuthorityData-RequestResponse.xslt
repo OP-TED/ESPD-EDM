@@ -20,7 +20,7 @@
 			<cbc:BuyerProfileURI>DummyValue</cbc:BuyerProfileURI>
 			<cac:Party>
 				<cbc:WebsiteURI>DummyValue</cbc:WebsiteURI>
-				<cbc:EndpointID schemeAgencyID="OP">DummyValue</cbc:EndpointID>
+				<cbc:EndpointID schemeID="Dummy" schemeAgencyID="OP">DummyValue</cbc:EndpointID>
 				<cac:PartyIdentification>
 					<cbc:ID schemeAgencyID="VIES">B82387770</cbc:ID>
 				</cac:PartyIdentification>
@@ -34,7 +34,7 @@
 					<cbc:CityName>DummyValue</cbc:CityName>
 					<cbc:PostalZone>DummyValue</cbc:PostalZone>
 					<cac:Country>
-						<cbc:IdentificationCode listID="Country" listAgencyID="ISO" listVersionID="20201216-0">asdasdas</cbc:IdentificationCode>
+						<cbc:IdentificationCode listID="Country" listAgencyID="ISO" listVersionID="20220928-0">asdasdas</cbc:IdentificationCode>
 					</cac:Country>
 				</cac:PostalAddress>
 				<cac:Contact>
