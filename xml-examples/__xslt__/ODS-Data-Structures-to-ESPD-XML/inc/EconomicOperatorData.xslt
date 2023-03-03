@@ -11,9 +11,41 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/> 
 	
 	<xsl:template name="createEconomicOperator">
+		
+		<!--  
 		<cac:EconomicOperatorParty>
 			<cac:Party/>
 		</cac:EconomicOperatorParty>
+		--> 
+		<cac:EconomicOperatorParty>
+			<cac:EconomicOperatorRole>
+				<cbc:RoleCode listID="http://publications.europa.eu/resource/authority/eo-role-type" listAgencyID="OP" listVersionID="20211208-0">group-mem</cbc:RoleCode>
+			</cac:EconomicOperatorRole>
+			<cac:Party>
+				<cbc:WebsiteURI>www.Procurer.com</cbc:WebsiteURI>
+				<cbc:IndustryClassificationCode listID="economic-operator-size" listAgencyID="OP" listVersionID="20210317-0">sme</cbc:IndustryClassificationCode>
+				<cac:PartyIdentification>
+					<cbc:ID schemeAgencyID="OP">AD123456789</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>__ProcurerName</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>__ProcurerStreet</cbc:StreetName>
+					<cbc:CityName>__ProcurerCity</cbc:CityName>
+					<cbc:PostalZone>12345</cbc:PostalZone>
+					<cac:Country>
+						<cbc:IdentificationCode listID="http://publications.europa.eu/resource/authority/country" listAgencyID="OP" listName="country" listVersionID="20220928-0">AND</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+				<cac:Contact>
+					<cbc:Name>__ProcurerContactName</cbc:Name>
+					<cbc:Telephone>654321</cbc:Telephone>
+					<cbc:Telefax>098765</cbc:Telefax>
+					<cbc:ElectronicMail>__ProcurerContact@pr.com</cbc:ElectronicMail>
+				</cac:Contact></cac:Party>
+		</cac:EconomicOperatorParty>
+		
 	</xsl:template> 
 	
 </xsl:stylesheet>
