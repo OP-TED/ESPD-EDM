@@ -152,6 +152,12 @@
 					<xsl:when test="$propertyDataType = 'ECONOMIC_OPERATOR_IDENTIFIER'">
 						<cbc:ResponseID schemeAgencyID="XXXEOIDXXX">DUMMY_EO_ID</cbc:ResponseID>
 					</xsl:when>
+					<xsl:when test="$propertyDataType = 'QUAL_IDENTIFIER'">
+						<cbc:ResponseID schemeAgencyID="XXXQUALIDXXX">DUMMY_QUAL_ID</cbc:ResponseID>
+					</xsl:when>
+					<xsl:when test="$propertyDataType = 'URL'">
+						<cbc:ResponseURI>www.dummyURL.com</cbc:ResponseURI>
+					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE'">
 							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
 					</xsl:when>
@@ -179,12 +185,6 @@
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'TIME'">
 							<cbc:ResponseTime>09:00:00</cbc:ResponseTime>
-					</xsl:when>
-					<xsl:when test="$propertyDataType = 'URL'">
-						<cbc:ResponseURI>www.dummyURL.com</cbc:ResponseURI>
-					</xsl:when>
-					<xsl:when test="$propertyDataType = 'QUAL_IDENTIFIER'">
-						<cbc:ResponseID schemeAgencyID="XXXQUALIDXXX">DUMMY_QUAL_ID</cbc:ResponseID>
 					</xsl:when>
 				</xsl:choose>
 			</cac:ResponseValue>
