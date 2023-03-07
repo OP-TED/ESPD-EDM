@@ -70,8 +70,10 @@
 		<xsl:param name="criterion"/>
 		<xsl:variable name="propertyName" select="./cbc:Description"/>
 		<xsl:variable name="propertyID" select="./cbc:ID"/>		
+		<xsl:variable name="propertyGroupType" select="cbc:PropertyGroupTypeCode"/>
 		<xsl:variable name="propertyType" select="cbc:TypeCode"/>
-		<xsl:if test="$propertyType = 'QUESTION'">
+		
+		<xsl:if test="$propertyType = 'QUESTION'"> <!-- and $propertyGroupType != 'ONFALSE' -->
 			<xsl:text disable-output-escaping="yes">&lt;!-- Answer to Criterion:</xsl:text>
 			<xsl:value-of select="$criterion"/>
 			<xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
@@ -90,6 +92,7 @@
 					<xsl:call-template name="createResponseValue"/>
 			</cac:TenderingCriterionResponse>
 		</xsl:if>
+		
 	</xsl:template>
 	
 	<xsl:template name="createPeriod">
