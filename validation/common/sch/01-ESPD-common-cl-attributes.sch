@@ -9,9 +9,9 @@
         
         <!--
 		ESPD code list values constraints - 01-ESPD-common-cl-attributes.sch
-		Version 3.1.0
+		Version 3.2.0
 	
-        $Id: 01-ESPD-common-cl-attributes.sch,v 3.1.0 $
+        $Id: 01-ESPD-common-cl-attributes.sch,v 3.2.0 $
         
         -->
         <!-- BR-OTH-03: Compulsory use of the code list identified within the document. -->
@@ -39,7 +39,7 @@
             <!--(CriterionElementType)-->            
             <assert test="(false() or not(@listName != 'CriterionElementType'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listName"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listName = CriterionElementType'.</assert>
             <assert test="(false() or not(@listID != 'CriterionElementType'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listID"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listID = CriterionElementType'.</assert>
-            <assert test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.1.0/codelists/gc/CriterionElementType.gc'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listSchemeURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.1.0/codelists/gc/CriterionElementType.gc'.</assert>
+            <assert test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/CriterionElementType.gc'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listSchemeURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/CriterionElementType.gc'.</assert>
             <assert test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listURI = https://github.com/ESPD/ESPD-EDM'.</assert>
         </rule>
         <rule context="cbc:ValueCurrencyCode">
@@ -72,14 +72,14 @@
             <!--(PropertyGroupType)-->
             <assert test="(false() or not(@listName != 'PropertyGroupType'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listName"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listName = PropertyGroupType'.</assert>
             <assert test="(false() or not(@listID != 'PropertyGroupType'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listID"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listID = PropertyGroupType'.</assert>
-            <assert test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.1.0/codelists/gc/PropertyGroupType.gc'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listSchemeURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.1.0/codelists/gc/PropertyGroupType.gc'.</assert>
+            <assert test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/PropertyGroupType.gc'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listSchemeURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/PropertyGroupType.gc'.</assert>
             <assert test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listURI = https://github.com/ESPD/ESPD-EDM'.</assert>
         </rule>
         <rule context="cac:TenderingCriterionProperty/cbc:ValueDataTypeCode">
             <!--(ResponseDataType)-->
             <assert test="(false() or not(@listName != 'ResponseDataType'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listName"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listName = ResponseDataType'.</assert>
             <assert test="(false() or not(@listID != 'ResponseDataType'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listID"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listID = ResponseDataType'.</assert>
-            <assert test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.1.0/codelists/gc/ResponseDataType.gc'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listSchemeURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.1.1/codelists/gc/ResponseDataType.gc'.</assert>
+            <assert test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/ResponseDataType.gc'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listSchemeURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/ResponseDataType.gc'.</assert>
             <assert test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))" flag="fatal">Invalid codelist attribute value '<value-of select="@listURI"/>'. The element '<value-of select="name(ancestor::*[1])"/>/<value-of select="name()"/>' must have the following attribute and value: 'listURI = https://github.com/ESPD/ESPD-EDM'.</assert>
         </rule>
         <rule context="cbc:CriterionTypeCode">
