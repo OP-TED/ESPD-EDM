@@ -34,7 +34,7 @@
 	
 	<xsl:template name="createProcurementProjectLot">
 		<cac:ProcurementProjectLot>
-			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">LOT-00000</cbc:ID>
+			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">LOT-0000</cbc:ID>
 		</cac:ProcurementProjectLot>
 	</xsl:template> 
 	
@@ -58,11 +58,14 @@
 	<xsl:template match="*">
 		<xsl:for-each select="descendant::cac:TenderingCriterion">
 			<xsl:variable name="criterionName" select="cbc:Name"/>
-			<xsl:for-each select="descendant::cac:TenderingCriterionProperty">
-				<xsl:call-template name="createAnswer">
-					<xsl:with-param name="criterion" select="$criterionName"/>
-				</xsl:call-template>
-			</xsl:for-each>
+			<xsl:variable name="propertyGroupType" select="cbc:PropertyGroupTypeCode"/> 
+			<!-- <xsl:if test="$propertyGroupType != 'ONFALSE'"> -->
+				<xsl:for-each select="descendant::cac:TenderingCriterionProperty">
+					<xsl:call-template name="createAnswer">
+						<xsl:with-param name="criterion" select="$criterionName"/>
+					</xsl:call-template>
+				</xsl:for-each>
+			<!-- </xsl:if> --> 
 		</xsl:for-each>
 	</xsl:template>
 	
@@ -70,10 +73,9 @@
 		<xsl:param name="criterion"/>
 		<xsl:variable name="propertyName" select="./cbc:Description"/>
 		<xsl:variable name="propertyID" select="./cbc:ID"/>		
-		<xsl:variable name="propertyGroupType" select="cbc:PropertyGroupTypeCode"/>
 		<xsl:variable name="propertyType" select="cbc:TypeCode"/>
 		
-		<xsl:if test="$propertyType = 'QUESTION'"> <!-- and $propertyGroupType != 'ONFALSE' -->
+		<xsl:if test="$propertyType = 'QUESTION'"> 
 			<xsl:text disable-output-escaping="yes">&lt;!-- Answer to Criterion:</xsl:text>
 			<xsl:value-of select="$criterion"/>
 			<xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
