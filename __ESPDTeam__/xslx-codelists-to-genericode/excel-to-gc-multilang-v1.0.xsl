@@ -13,7 +13,12 @@
 								</ShortName>
 							</xsl:if>
 							<xsl:if test="ss:Cell[1]/ss:Data='LongName' and not(string(ss:Cell[1]/following-sibling::*[1]))=false()">
-								<LongName xml:lang="en">
+								<LongName>
+									<xsl:value-of select="ss:Cell[1]/following-sibling::*[1]"/>
+								</LongName>
+							</xsl:if>
+							<xsl:if test="ss:Cell[1]/ss:Data='ListID' and not(string(ss:Cell[1]/following-sibling::*[1]))=false()">
+								<LongName Identifier="listId">
 									<xsl:value-of select="ss:Cell[1]/following-sibling::*[1]"/>
 								</LongName>
 							</xsl:if>
