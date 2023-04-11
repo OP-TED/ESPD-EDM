@@ -23,7 +23,7 @@
 			</cac:EconomicOperatorRole>
 			<cac:Party>
 				<cbc:WebsiteURI>www.Procurer.com</cbc:WebsiteURI>
-				<cbc:IndustryClassificationCode listID="economic-operator-size" listAgencyID="OP" listVersionID="20210317-0">sme</cbc:IndustryClassificationCode>
+				<cbc:IndustryClassificationCode listID="http://publications.europa.eu/resource/authority/economic-operator-size" listAgencyID="OP" listVersionID="20210317-0">sme</cbc:IndustryClassificationCode>
 				<cac:PartyIdentification>
 					<cbc:ID schemeAgencyID="OP">AD123456789</cbc:ID>
 				</cac:PartyIdentification>

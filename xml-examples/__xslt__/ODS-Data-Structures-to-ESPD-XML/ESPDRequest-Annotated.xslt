@@ -40,7 +40,7 @@
 			<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
 			<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
 			<cac:Language>
-				<cbc:LocaleCode listID="language" listAgencyName="ISO"
+				<cbc:LocaleCode listID="http://publications.europa.eu/resource/authority/language" listAgencyName="ISO"
 					listVersionID="20201216-0">ENG</cbc:LocaleCode>
 			</cac:Language>
 		</cac:Legislation>
@@ -155,21 +155,21 @@
 				</xsl:when>
 				<xsl:when
 					test="text:p = '{REQUIREMENT_GROUP' or text:p = '{QUESTION_GROUP' or text:p = '{REQUIREMENT_SUBGROUP' or text:p = '{QUESTION_SUBGROUP'">
-					<cbc:PropertyGroupTypeCode listID="PropertyGroupType" listAgencyID="OP"
+					<cbc:PropertyGroupTypeCode listID="property-group-type" listAgencyID="OP"
 						listVersionID="3.2.0">
 						<xsl:value-of select="$code"/>
 					</cbc:PropertyGroupTypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{CAPTION}'">
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="OP"
+					<cbc:TypeCode listID="criterion-element-type" listAgencyID="OP"
 						listVersionID="3.2.0">CAPTION</cbc:TypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{REQUIREMENT}'">
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="OP"
+					<cbc:TypeCode listID="criterion-element-type" listAgencyID="OP"
 						listVersionID="3.2.0">REQUIREMENT</cbc:TypeCode>
 				</xsl:when>
 				<xsl:when test="text:p = '{QUESTION}'">
-					<cbc:TypeCode listID="CriterionElementType" listAgencyID="OP"
+					<cbc:TypeCode listID="criterion-element-type" listAgencyID="OP"
 						listVersionID="3.2.0">QUESTION</cbc:TypeCode>
 				</xsl:when>
 			</xsl:choose>
@@ -244,11 +244,11 @@
 		<xsl:variable name="dataTypeValue" select="espd:getCellContent(., $propertyDataTypeCol)"/>
 		<xsl:choose>
 			<xsl:when test="$dataTypeValue = ''">
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="OP"
+				<cbc:ValueDataTypeCode listID="response-data-type" listAgencyID="OP"
 					listVersionID="3.2.0">NONE</cbc:ValueDataTypeCode>
 			</xsl:when>
 			<xsl:when test="$dataTypeValue != ''">
-				<cbc:ValueDataTypeCode listID="ResponseDataType" listAgencyID="OP"
+				<cbc:ValueDataTypeCode listID="response-data-type" listAgencyID="OP"
 					listVersionID="3.2.0">
 					<xsl:value-of select="$dataTypeValue"/> 
 				</cbc:ValueDataTypeCode>
@@ -289,7 +289,7 @@
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_BOOLEAN'">
-						<cbc:ExpectedCode listID="BooleanGUIControlType" listAgencyID="OP"
+						<cbc:ExpectedCode listID="boolean-gui-control-type" listAgencyID="OP"
 							listVersionID="3.2.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
@@ -301,7 +301,7 @@
 						</cbc:ExpectedCode>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'ECONOMIC_OPERATOR_ROLE_CODE'">
-						<cbc:ExpectedCode listID="eo-role-type" listAgencyID="OP"
+						<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/eo-role-type" listAgencyID="OP"
 							listVersionID="3.2.0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>

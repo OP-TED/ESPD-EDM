@@ -50,7 +50,7 @@
 		<cbc:VersionID schemeAgencyID="OP" schemeVersionID="3.1.0">1.0</cbc:VersionID>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the procurement procedure; this information is provided from eForms and the concret notice per procedure. e.g. open = 	
 		In open procedures any interested economic operator may submit a tender in response to a call for competition. --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:ProcedureCode listID="ProcedureType" listAgencyName="EU-COM-GROW" listVersionID="3.1.0">open</cbc:ProcedureCode>
+		<cbc:ProcedureCode listID="Dummy_ProcedureType" listAgencyName="OP" listVersionID="3.1.0">open</cbc:ProcedureCode>
 	</xsl:template> 
 	
 </xsl:stylesheet>
