@@ -265,6 +265,8 @@
 				the requirement issued by the contracting authority --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 				<xsl:variable name="propertyDataType" select="espd:getCellContent(., $propertyDataTypeCol)"/>
 				<xsl:variable name="value" select="espd:getCellContent(., $valueExampleCol)"/>
+				<xsl:variable name="codelistName" select="espd:getCellContent(., $codelistCol)"/>
+				
 				<xsl:choose> 
 					
 					<xsl:when test="$propertyDataType = 'AMOUNT'">
@@ -283,11 +285,23 @@
 					</xsl:when>
 					
 					<xsl:when test="$propertyDataType = 'CODE'">
-						<cbc:ExpectedCode listID="PleaseSelectTheCorrectOne"
-							listAgencyID="OP" listVersionID="3.2.0">
-							<xsl:value-of select="$value"/>
-						</cbc:ExpectedCode>
+						<xsl:if test="$codelistName = 'Occupation'">
+							<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/occupation" listAgencyID="OP" listVersionID="3.2.0">
+								<xsl:value-of select="$value"/>
+							</cbc:ExpectedCode>
+						</xsl:if>
+						<xsl:if test="$codelistName = 'FinancialRatioType'">
+							<cbc:ExpectedCode listID="financial-ratio-type" listAgencyID="OP" listVersionID="3.2.0">
+								<xsl:value-of select="$value"/>
+							</cbc:ExpectedCode>
+						</xsl:if>
+						<xsl:if test="$codelistName = 'EORoleType'">
+							<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/eo-role-type" listAgencyID="OP" listVersionID="3.2.0">
+								<xsl:value-of select="$value"/>
+							</cbc:ExpectedCode>
+						</xsl:if>
 					</xsl:when>
+					
 					<xsl:when test="$propertyDataType = 'CODE_BOOLEAN'">
 						<cbc:ExpectedCode listID="boolean-gui-control-type" listAgencyID="OP"
 							listVersionID="3.2.0">
@@ -395,6 +409,7 @@
 					</xsl:when>
 					
 				</xsl:choose>
+				
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
