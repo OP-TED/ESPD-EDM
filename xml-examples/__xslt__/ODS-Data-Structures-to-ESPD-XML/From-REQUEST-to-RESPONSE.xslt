@@ -141,6 +141,7 @@
 		
 	<xsl:template name="createResponseValue">
 		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>
+		<xsl:variable name="codelistNameListID" select="cbc:ExpectedCode/@listID"/>
 		<xsl:if test="$propertyDataType != 'PERIOD' and $propertyDataType != 'EVIDENCE_IDENTIFIER'">
 			<cac:ResponseValue>
 				<xsl:call-template name="generateID"/>
@@ -163,12 +164,24 @@
 					<xsl:when test="$propertyDataType = 'URL'">
 						<cbc:ResponseURI>www.dummyURL.com</cbc:ResponseURI>
 					</xsl:when>
+					
 					<xsl:when test="$propertyDataType = 'CODE'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode>
+						<!-- <cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode> -->
+						<xsl:if test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/occupation'">
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
+						</xsl:if>
+						<xsl:if test="$codelistNameListID = 'financial-ratio-type'">
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
+						</xsl:if>
+						<xsl:if test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/eo-role-type'">
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="http://publications.europa.eu/resource/authority/eo-role-type">DUMMY_CODE</cbc:ResponseCode>
+						</xsl:if>
 					</xsl:when>
+					
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
 						<cbc:ResponseCode listID="http://publications.europa.eu/resource/authority/country" listName="country" listAgencyID="OP" listVersionID="1.0">BEL</cbc:ResponseCode>
 					</xsl:when>
+					
 					<xsl:when test="$propertyDataType = 'AMOUNT'">
 						<cbc:ResponseAmount currencyID="EUR">10000000</cbc:ResponseAmount>
 					</xsl:when>
