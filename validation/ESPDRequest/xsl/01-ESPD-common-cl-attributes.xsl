@@ -522,10 +522,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listID != 'CriterionElementType'))"/>
+         <xsl:when test="(false() or not(@listID != 'criterion-element-type'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listID != 'CriterionElementType'))">
+                                test="(false() or not(@listID != 'criterion-element-type'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -536,7 +536,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listID = CriterionElementType'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listID = criterion-element-type'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -988,10 +988,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listID != 'PropertyGroupType'))"/>
+         <xsl:when test="(false() or not(@listID != 'property-group-type'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listID != 'PropertyGroupType'))">
+                                test="(false() or not(@listID != 'property-group-type'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1002,7 +1002,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listID = PropertyGroupType'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listID = property-group-type'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -1078,10 +1078,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listID != 'ResponseDataType'))"/>
+         <xsl:when test="(false() or not(@listID != 'response-data-type'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listID != 'ResponseDataType'))">
+                                test="(false() or not(@listID != 'response-data-type'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1092,7 +1092,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listID = ResponseDataType'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listID = response-data-type'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
