@@ -16,7 +16,7 @@
 	<!-- Procurement Project Lot component -->
 	<xsl:template name="createProcurementProjectLot">
 		<cac:ProcurementProjectLot>
-			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">LOT-00000</cbc:ID>
+			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">LOT-0000</cbc:ID>
 		</cac:ProcurementProjectLot>
 	</xsl:template> 
 	

@@ -44,7 +44,7 @@
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the procurement procedure; e.g. AWARD_WO_PUB = Award of contract without prior publication of a contract notice --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:ProcedureCode listID="Dummy_ProcedureType" listAgencyID="OP" listVersionID="3.2.0">AWARD_WO_PUB</cbc:ProcedureCode>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the ESPD (Basic	or Extended) --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:QualificationApplicationTypeCode listID="Dummy_QualificationApplicationType"	listAgencyID="OP" listVersionID="3.2.0">Basic</cbc:QualificationApplicationTypeCode>
+		<cbc:QualificationApplicationTypeCode listID="Dummy_qualification-application-type"	listAgencyID="OP" listVersionID="3.2.0">Basic</cbc:QualificationApplicationTypeCode>
 	</xsl:template> 
 	
 </xsl:stylesheet>
