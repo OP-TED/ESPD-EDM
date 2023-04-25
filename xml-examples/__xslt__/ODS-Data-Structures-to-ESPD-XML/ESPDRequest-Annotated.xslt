@@ -149,7 +149,7 @@
 			<xsl:choose>
 				<xsl:when test="text:p = '{CRITERION'">
 					<cbc:CriterionTypeCode listID="http://publications.europa.eu/resource/authority/criterion" listAgencyID="OP"
-						listVersionID="20210616-0">
+						listVersionID="20230315-0">
 						<xsl:value-of select="$code"/>
 					</cbc:CriterionTypeCode>
 				</xsl:when>
@@ -286,7 +286,7 @@
 					
 					<xsl:when test="$propertyDataType = 'CODE'">
 						<xsl:if test="$codelistName = 'Occupation'">
-							<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/occupation" listAgencyID="OP" listVersionID="3.2.0">
+							<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/occupation" listAgencyID="OP" listVersionID="20221214-0">
 								<xsl:value-of select="$value"/>
 							</cbc:ExpectedCode>
 						</xsl:if>
