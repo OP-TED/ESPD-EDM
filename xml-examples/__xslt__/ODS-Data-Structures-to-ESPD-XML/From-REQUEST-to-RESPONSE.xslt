@@ -168,7 +168,7 @@
 					<xsl:when test="$propertyDataType = 'CODE'">
 						<!-- <cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode> -->
 						<xsl:if test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/occupation'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="20221214-0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
 						</xsl:if>
 						<xsl:if test="$codelistNameListID = 'financial-ratio-type'">
 							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
