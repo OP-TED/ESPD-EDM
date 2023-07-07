@@ -23,7 +23,7 @@
 			</cac:EconomicOperatorRole>
 			<cac:Party>
 				<cbc:WebsiteURI>www.Procurer.com</cbc:WebsiteURI>
-				<cbc:IndustryClassificationCode listID="http://publications.europa.eu/resource/authority/economic-operator-size" listAgencyID="OP" listVersionID="20210317-0">sme</cbc:IndustryClassificationCode>
+				<cbc:IndustryClassificationCode listID="http://publications.europa.eu/resource/authority/economic-operator-size" listAgencyID="OP" listVersionID="20220316-0">sme</cbc:IndustryClassificationCode>
 				<cac:PartyIdentification>
 					<cbc:ID schemeAgencyID="OP">AD123456789</cbc:ID>
 				</cac:PartyIdentification>
@@ -35,7 +35,7 @@
 					<cbc:CityName>__ProcurerCity</cbc:CityName>
 					<cbc:PostalZone>12345</cbc:PostalZone>
 					<cac:Country>
-						<cbc:IdentificationCode listID="http://publications.europa.eu/resource/authority/country" listAgencyID="OP" listName="country" listVersionID="20220928-0">AND</cbc:IdentificationCode>
+						<cbc:IdentificationCode listID="http://publications.europa.eu/resource/authority/country" listAgencyID="OP" listName="country" listVersionID="20220928-0">DUMMY_COUNTRY_CODE</cbc:IdentificationCode>
 					</cac:Country>
 				</cac:PostalAddress>
 				<cac:Contact>

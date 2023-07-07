@@ -26,7 +26,7 @@
 			<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
 			<cac:Language>
 				<cbc:LocaleCode listID="http://publications.europa.eu/resource/authority/language" listAgencyName="ISO"
-					listVersionID="20201216-0">ENG</cbc:LocaleCode>
+					listVersionID="20220928-0">ENG</cbc:LocaleCode>
 			</cac:Language>
 		</cac:Legislation>
 	</xsl:template>

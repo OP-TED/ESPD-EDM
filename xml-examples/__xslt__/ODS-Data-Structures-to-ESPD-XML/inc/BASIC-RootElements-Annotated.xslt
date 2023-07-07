@@ -26,7 +26,7 @@
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- Indicates whether this document is an original or a copy. In this case the document is the original --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		<cbc:CopyIndicator>false</cbc:CopyIndicator>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The unique identifier for this instance of the document. Copies of this document should have different UUIDs --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:UUID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.2.0"> 
+		<cbc:UUID schemeID="ISO/IEC 9834-8:2008 - 4UUID" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0"> 
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:UUID>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The reference number the contracting authority assigns to this procurement procedure --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
@@ -38,13 +38,13 @@
 			<xsl:value-of select="format-time(current-time(),'[H01]:[m01]:[s01][Z]')"/>
 		</cbc:IssueTime>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The version of the content of this document. If the document is modified the element cbc:PreviousVersionID should be instantiated --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:VersionID schemeAgencyID="OP" schemeVersionID="3.2.0">
+		<cbc:VersionID schemeAgencyID="OP" schemeVersionID="3.3.0">
 			<xsl:value-of select="'2.1.1'"/>
 		</cbc:VersionID>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the procurement procedure; e.g. AWARD_WO_PUB = Award of contract without prior publication of a contract notice --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:ProcedureCode listID="Dummy_ProcedureType" listAgencyID="OP" listVersionID="3.2.0">AWARD_WO_PUB</cbc:ProcedureCode>
+		<cbc:ProcedureCode listID="Dummy_procurement-procedure-type" listAgencyID="OP" listVersionID="yyyymmdd-0">AWARD_WO_PUB</cbc:ProcedureCode>
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!-- The type of the ESPD (Basic	or Extended) --<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-		<cbc:QualificationApplicationTypeCode listID="Dummy_qualification-application-type"	listAgencyID="OP" listVersionID="3.2.0">Basic</cbc:QualificationApplicationTypeCode>
+		<cbc:QualificationApplicationTypeCode listID="Dummy_qualification-application-type"	listAgencyID="OP" listVersionID="yyyymmdd-0">Basic</cbc:QualificationApplicationTypeCode>
 	</xsl:template> 
 	
 </xsl:stylesheet>
