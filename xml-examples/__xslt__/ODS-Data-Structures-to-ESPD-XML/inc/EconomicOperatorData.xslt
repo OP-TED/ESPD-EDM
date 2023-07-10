@@ -35,7 +35,7 @@
 					<cbc:CityName>__ProcurerCity</cbc:CityName>
 					<cbc:PostalZone>12345</cbc:PostalZone>
 					<cac:Country>
-						<cbc:IdentificationCode listID="http://publications.europa.eu/resource/authority/country" listAgencyID="OP" listName="country" listVersionID="20220928-0">DUMMY_COUNTRY_CODE</cbc:IdentificationCode>
+						<cbc:IdentificationCode listID="http://publications.europa.eu/resource/authority/country" listAgencyID="ISO" listName="country" listVersionID="20220928-0">DUMMY_COUNTRY_CODE</cbc:IdentificationCode>
 					</cac:Country>
 				</cac:PostalAddress>
 				<cac:Contact>
