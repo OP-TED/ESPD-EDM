@@ -20,7 +20,7 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:template name="generateID">
-		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.2.0">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template> 
@@ -34,7 +34,7 @@
 	
 	<xsl:template name="createProcurementProjectLot">
 		<cac:ProcurementProjectLot>
-			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.2.0">LOT-0000</cbc:ID>
+			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.3.0">LOT-0000</cbc:ID>
 		</cac:ProcurementProjectLot>
 	</xsl:template> 
 	
@@ -86,7 +86,7 @@
 					
 			<cac:TenderingCriterionResponse>
 					<xsl:call-template name="generateID"/>
-				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.2.0"> 
+				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0"> 
 						<xsl:value-of select="cbc:ID"/> 
 					</cbc:ValidatedCriterionPropertyID>
 					<xsl:call-template name="createPeriod"/>
@@ -166,27 +166,27 @@
 					</xsl:when>
 					
 					<xsl:when test="$propertyDataType = 'CODE'">
-						<!-- <cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode> -->
+						<!-- <cbc:ResponseCode listAgencyID="OP" listVersionID="yyyymmdd-0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode> -->
 						<xsl:if test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/occupation'">
 							<cbc:ResponseCode listAgencyID="OP" listVersionID="20221214-0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
 						</xsl:if>
 						<xsl:if test="$codelistNameListID = 'financial-ratio-type'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.3.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
 						</xsl:if>
 						<xsl:if test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/eo-role-type'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.2.0" listID="http://publications.europa.eu/resource/authority/eo-role-type">DUMMY_CODE</cbc:ResponseCode>
+							<cbc:ResponseCode listAgencyID="OP" listVersionID="20211208-0" listID="http://publications.europa.eu/resource/authority/eo-role-type">DUMMY_CODE</cbc:ResponseCode>
 						</xsl:if>
 					</xsl:when>
 					
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
-						<cbc:ResponseCode listID="http://publications.europa.eu/resource/authority/country" listName="country" listAgencyID="OP" listVersionID="1.0">BEL</cbc:ResponseCode>
+						<cbc:ResponseCode listID="http://publications.europa.eu/resource/authority/country" listName="country" listAgencyID="OP" listVersionID="20220928-0">DUMMY_COUNTRY_CODE</cbc:ResponseCode>
 					</xsl:when>
 					
 					<xsl:when test="$propertyDataType = 'AMOUNT'">
 						<cbc:ResponseAmount currencyID="EUR">10000000</cbc:ResponseAmount>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'PERCENTAGE'">
-						<cbc:ResponseQuantity unitCode="PERCENTAGE">0.7</cbc:ResponseQuantity>
+						<cbc:ResponseNumeric unitCode="PERCENTAGE">0.7</cbc:ResponseNumeric>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY_INTEGER'">
 						<!-- <cbc:ResponseMeasure unitCode="INTEGER">1</cbc:ResponseMeasure> -->
