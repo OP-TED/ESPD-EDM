@@ -169,7 +169,7 @@
 						<!-- <cbc:ResponseCode listAgencyID="OP" listVersionID="yyyymmdd-0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode> -->
 						<xsl:choose>
 							<xsl:when test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/occupation'">
-								<cbc:ResponseCode listAgencyID="OP" listVersionID="20221214-0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
+								<cbc:ResponseCode listAgencyID="EMPL" listVersionID="20221214-0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
 							</xsl:when>
 							<xsl:when test="$codelistNameListID = 'financial-ratio-type'">
 								<cbc:ResponseCode listAgencyID="OP" listVersionID="3.3.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>

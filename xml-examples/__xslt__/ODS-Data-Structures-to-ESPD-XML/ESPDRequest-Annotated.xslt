@@ -286,7 +286,7 @@
 					
 					<xsl:when test="$propertyDataType = 'CODE'">
 						<xsl:if test="$codelistName = 'Occupation'">
-							<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/occupation" listAgencyID="OP" listVersionID="20221214-0">
+							<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/occupation" listAgencyID="EMPL" listVersionID="20221214-0">
 								<xsl:value-of select="$value"/>
 							</cbc:ExpectedCode>
 						</xsl:if>
