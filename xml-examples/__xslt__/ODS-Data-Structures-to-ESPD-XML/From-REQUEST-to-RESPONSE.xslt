@@ -184,7 +184,7 @@
 					</xsl:when>
 					
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
-						<cbc:ResponseCode listID="http://publications.europa.eu/resource/authority/country" listName="country" listAgencyID="OP" listVersionID="20220928-0">DUMMY_COUNTRY_CODE</cbc:ResponseCode>
+						<cbc:ResponseCode listID="http://publications.europa.eu/resource/authority/country" listName="country" listAgencyID="ISO" listVersionID="20220928-0">BEL</cbc:ResponseCode>
 					</xsl:when>
 					
 					<xsl:when test="$propertyDataType = 'AMOUNT'">
