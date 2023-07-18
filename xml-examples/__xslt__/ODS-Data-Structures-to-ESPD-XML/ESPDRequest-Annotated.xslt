@@ -40,7 +40,7 @@
 			<cbc:Article>[Article, e.g. Article 2.I.a]</cbc:Article>
 			<cbc:URI>http://eur-lex.europa.eu/</cbc:URI>
 			<cac:Language>
-				<cbc:LocaleCode listID="http://publications.europa.eu/resource/authority/language" listAgencyName="ISO"
+				<cbc:LocaleCode listID="http://publications.europa.eu/resource/authority/language" listAgencyID="ISO"
 					listVersionID="20220928-0">ENG</cbc:LocaleCode>
 			</cac:Language>
 		</cac:Legislation>
@@ -310,7 +310,7 @@
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
 						<cbc:ExpectedCode listID="http://publications.europa.eu/resource/authority/country" listName="country"
-							listAgencyID="OP" listVersionID="20220928-0">
+							listAgencyID="ISO" listVersionID="20220928-0">
 							<xsl:value-of select="$value"/>
 						</cbc:ExpectedCode>
 					</xsl:when>
