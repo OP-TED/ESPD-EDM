@@ -167,15 +167,20 @@
 					
 					<xsl:when test="$propertyDataType = 'CODE'">
 						<!-- <cbc:ResponseCode listAgencyID="OP" listVersionID="yyyymmdd-0" listID="PleaseSpecifyTheCorrectOne">DUMMY_CODE</cbc:ResponseCode> -->
-						<xsl:if test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/occupation'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="20221214-0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
-						</xsl:if>
-						<xsl:if test="$codelistNameListID = 'financial-ratio-type'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="3.3.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
-						</xsl:if>
-						<xsl:if test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/eo-role-type'">
-							<cbc:ResponseCode listAgencyID="OP" listVersionID="20211208-0" listID="http://publications.europa.eu/resource/authority/eo-role-type">DUMMY_CODE</cbc:ResponseCode>
-						</xsl:if>
+						<xsl:choose>
+							<xsl:when test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/occupation'">
+								<cbc:ResponseCode listAgencyID="OP" listVersionID="20221214-0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
+							</xsl:when>
+							<xsl:when test="$codelistNameListID = 'financial-ratio-type'">
+								<cbc:ResponseCode listAgencyID="OP" listVersionID="3.3.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
+							</xsl:when>
+							<xsl:when test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/eo-role-type'">
+								<cbc:ResponseCode listAgencyID="OP" listVersionID="20211208-0" listID="http://publications.europa.eu/resource/authority/eo-role-type">DUMMY_CODE</cbc:ResponseCode>
+							</xsl:when>
+							<xsl:otherwise>
+								<cbc:ResponseCode listAgencyID="OP" listVersionID="20211208-0" listID="http://publications.europa.eu/resource/authority/eo-role-type">DUMMY_CODE</cbc:ResponseCode> 
+							</xsl:otherwise>
+						</xsl:choose> 
 					</xsl:when>
 					
 					<xsl:when test="$propertyDataType = 'CODE_COUNTRY'">
