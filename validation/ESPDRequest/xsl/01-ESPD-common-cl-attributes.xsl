@@ -193,7 +193,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="cbc:ConfidentialityLevelCode" priority="1009" mode="M3">
+<xsl:template match="cbc:ConfidentialityLevelCode" priority="1010" mode="M3">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -281,10 +281,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listURI != 'http://publications.europa.eu/resource/authority/access-right'))"/>
+         <xsl:when test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/access-right'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listURI != 'http://publications.europa.eu/resource/authority/access-right'))">
+                                test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/access-right'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -338,6 +338,116 @@
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>' must have the following attribute and value: 'listAgencyID = OP'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M3"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="cbc:TypeCode" priority="1009" mode="M3">
+
+		<!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listName != 'CriterionElementType'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listName != 'CriterionElementType'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listName"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listName = CriterionElementType'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listID != 'criterion-element-type'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listID != 'criterion-element-type'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listID = criterion-element-type'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listVersionID != '3.3.0'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listVersionID != '3.3.0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 3.3.0'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/CriterionElementType.gc'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/CriterionElementType.gc'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listSchemeURI"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/CriterionElementType.gc'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listURI"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listURI = https://github.com/ESPD/ESPD-EDM'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -451,60 +561,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(false() or not(@listAgencyName != 'Publications Office of the European Union'))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listAgencyName != 'Publications Office of the European Union'))">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Invalid codelist attribute value '<xsl:text/>
-                  <xsl:value-of select="@listAgencyName"/>
-                  <xsl:text/>'. The element '<xsl:text/>
-                  <xsl:value-of select="name(ancestor::*[1])"/>
-                  <xsl:text/>/<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listAgencyName = Publications Office of the European Union'.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(false() or not(@listAgencyID != 'OP'))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listAgencyID != 'OP'))">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Invalid codelist attribute value '<xsl:text/>
-                  <xsl:value-of select="@listAgencyID"/>
-                  <xsl:text/>'. The element '<xsl:text/>
-                  <xsl:value-of select="name(ancestor::*[1])"/>
-                  <xsl:text/>/<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listAgencyID = OP'.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
       <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M3"/>
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:TypeCode" priority="1007" mode="M3">
+<xsl:template match="cac:Language/cbc:LocaleCode" priority="1007" mode="M3">
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listName != 'CriterionElementType'))"/>
+         <xsl:when test="(false() or not(@listName != 'language'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listName != 'CriterionElementType'))">
+                                test="(false() or not(@listName != 'language'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -515,17 +583,17 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listName = CriterionElementType'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listName = language'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listID != 'criterion-element-type'))"/>
+         <xsl:when test="(false() or not(@listID != 'http://publications.europa.eu/resource/authority/language'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listID != 'criterion-element-type'))">
+                                test="(false() or not(@listID != 'http://publications.europa.eu/resource/authority/language'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -536,17 +604,38 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listID = criterion-element-type'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listID = http://publications.europa.eu/resource/authority/language'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/CriterionElementType.gc'))"/>
+         <xsl:when test="(false() or not(@listVersionID != '20220928-0'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/CriterionElementType.gc'))">
+                                test="(false() or not(@listVersionID != '20220928-0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20220928-0'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/language/20220928-0/xml/gc/Language.gc'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/language/20220928-0/xml/gc/Language.gc'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -557,17 +646,17 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/CriterionElementType.gc'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/language/20220928-0/xml/gc/Language.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))"/>
+         <xsl:when test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/language'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listURI != 'https://github.com/ESPD/ESPD-EDM'))">
+                                test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/language'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -578,7 +667,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listURI = https://github.com/ESPD/ESPD-EDM'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listURI = http://publications.europa.eu/resource/dataset/language'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -674,10 +763,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listURI != 'http://publications.europa.eu/resource/authority/currency'))"/>
+         <xsl:when test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/currency'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listURI != 'http://publications.europa.eu/resource/authority/currency'))">
+                                test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/currency'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -688,49 +777,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listURI = http://publications.europa.eu/resource/authority/currency'.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(false() or not(@listAgencyName != 'Publications Office of the European Union'))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listAgencyName != 'Publications Office of the European Union'))">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Invalid codelist attribute value '<xsl:text/>
-                  <xsl:value-of select="@listAgencyName"/>
-                  <xsl:text/>'. The element '<xsl:text/>
-                  <xsl:value-of select="name(ancestor::*[1])"/>
-                  <xsl:text/>/<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listAgencyName = Publications Office of the European Union'.</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="(false() or not(@listAgencyID != 'OP'))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listAgencyID != 'OP'))">
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>Invalid codelist attribute value '<xsl:text/>
-                  <xsl:value-of select="@listAgencyID"/>
-                  <xsl:text/>'. The element '<xsl:text/>
-                  <xsl:value-of select="name(ancestor::*[1])"/>
-                  <xsl:text/>/<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listAgencyID = OP'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listURI = http://publications.europa.eu/resource/dataset/currency'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -779,6 +826,27 @@
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>' must have the following attribute and value: 'listID = http://publications.europa.eu/resource/authority/docrefcontent-type'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listVersionID != '20220928-0'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listVersionID != '20220928-0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20220928-0'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -876,6 +944,27 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
+         <xsl:when test="(false() or not(@listVersionID != '20211208-0'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listVersionID != '20211208-0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20211208-0'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
          <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/eo-role-type/20211208-0/xml/gc/EoRoleType.gc'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
@@ -897,10 +986,10 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listURI != 'http://publications.europa.eu/resource/authority/eo-role-type'))"/>
+         <xsl:when test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/eo-role-type'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listURI != 'http://publications.europa.eu/resource/authority/eo-role-type'))">
+                                test="(false() or not(@listURI != 'http://publications.europa.eu/resource/dataset/eo-role-type'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1009,10 +1098,31 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/PropertyGroupType.gc'))"/>
+         <xsl:when test="(false() or not(@listVersionID != '3.3.0'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/PropertyGroupType.gc'))">
+                                test="(false() or not(@listVersionID != '3.3.0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 3.3.0'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/PropertyGroupType.gc'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/PropertyGroupType.gc'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1023,7 +1133,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/PropertyGroupType.gc'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/PropertyGroupType.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -1099,10 +1209,31 @@
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/ResponseDataType.gc'))"/>
+         <xsl:when test="(false() or not(@listVersionID != '3.3.0'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/ResponseDataType.gc'))">
+                                test="(false() or not(@listVersionID != '3.3.0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 3.3.0'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/ResponseDataType.gc'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listSchemeURI != 'https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/ResponseDataType.gc'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1113,7 +1244,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.2.0/codelists/gc/ResponseDataType.gc'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = https://github.com/ESPD/ESPD-EDM/tree/v3.3.0/codelists/gc/ResponseDataType.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -1146,10 +1277,10 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="(false() or not(@listName != 'criterion'))"/>
+         <xsl:when test="(false() or not(@listName != 'Criterion'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listName != 'criterion'))">
+                                test="(false() or not(@listName != 'Criterion'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1182,6 +1313,48 @@
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>' must have the following attribute and value: 'listID = http://publications.europa.eu/resource/authority/criterion'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listVersionID != '20230315-0'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listVersionID != '20230315-0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20230315-0'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/criterion/20230315-0/xml/gc/Criterion.gc'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/criterion/20230315-0/xml/gc/Criterion.gc'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listSchemeURI"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/criterion/20230315-0/xml/gc/Criterion.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -1252,7 +1425,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:occupation" priority="1000" mode="M3">
+<xsl:template match="cbc:Occupation" priority="1000" mode="M3">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -1292,6 +1465,48 @@
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>' must have the following attribute and value: 'listID = http://publications.europa.eu/resource/authority/occupation'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listVersionID != '20221214-0'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listVersionID != '20221214-0'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listVersionID"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20221214-0'.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/occupation/20221214-0/xml/gc/Occupation.gc'))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/occupation/20221214-0/xml/gc/Occupation.gc'))">
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>Invalid codelist attribute value '<xsl:text/>
+                  <xsl:value-of select="@listSchemeURI"/>
+                  <xsl:text/>'. The element '<xsl:text/>
+                  <xsl:value-of select="name(ancestor::*[1])"/>
+                  <xsl:text/>/<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/occupation/20221214-0/xml/gc/Occupation.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
