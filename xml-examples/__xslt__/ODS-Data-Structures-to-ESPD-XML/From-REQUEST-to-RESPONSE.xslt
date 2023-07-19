@@ -191,7 +191,7 @@
 						<cbc:ResponseAmount currencyID="EUR">10000000</cbc:ResponseAmount>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'PERCENTAGE'">
-						<cbc:ResponseNumeric unitCode="PERCENTAGE">0.7</cbc:ResponseNumeric>
+						<cbc:ResponseNumeric format="PERCENTAGE">0.7</cbc:ResponseNumeric>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'QUANTITY_INTEGER'">
 						<!-- <cbc:ResponseMeasure unitCode="INTEGER">1</cbc:ResponseMeasure> -->
