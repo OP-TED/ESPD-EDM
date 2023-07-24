@@ -295,7 +295,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listURI = http://publications.europa.eu/resource/authority/access-right'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listURI = http://publications.europa.eu/resource/dataset/access-right'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>

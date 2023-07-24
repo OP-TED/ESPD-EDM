@@ -36,14 +36,14 @@
 		</rule>
 		
 		<!-- BR-OTH-01: For codes, this ESPD V03.00.01 specification requires always three mandatory attributes: listID, listAgencyID, and listVersionID. -->
-		<rule context="cbc:ExpectedCode | cbc:IdentificationCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode">
+		<rule context="cbc:ExpectedCode | cbc:IdentificationCode | cbc:DocumentTypeCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode">
 			<assert test="@listID" flag="fatal" id="BR-OTH-01-10">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listAgencyID" flag="fatal" id="BR-OTH-01-20">The attribute listAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listVersionID" flag="fatal"  id="BR-OTH-01-30">The attribute listVersionID is mandatory for the element: '<value-of select="name()"/>').</assert>
 		</rule>
 		
 		<!-- BR-OTH-01: Code types listVersionID validation: starts with 3. -->
-		<rule context="cbc:TypeCode | cbc:DocumentTypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode">
+		<rule context="cbc:TypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode">
 			<assert test="@listID" flag="fatal" id="BR-OTH-01-11">The attribute listID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listAgencyID" flag="fatal" id="BR-OTH-01-21">The attribute listAgencyID is mandatory for the element: '<value-of select="name()"/>').</assert>
 			<assert test="@listVersionID" flag="fatal" id="BR-OTH-01-31">The attribute listVersionID is mandatory for the element: '<value-of select="name()"/>').</assert>

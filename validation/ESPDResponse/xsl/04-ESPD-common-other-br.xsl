@@ -300,7 +300,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ExpectedCode | cbc:IdentificationCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode"
+<xsl:template match="cbc:ExpectedCode | cbc:IdentificationCode | cbc:DocumentTypeCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode"
                  priority="1003"
                  mode="M7">
 
@@ -358,7 +358,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:TypeCode | cbc:DocumentTypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode"
+<xsl:template match="cbc:TypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode"
                  priority="1002"
                  mode="M7">
 
