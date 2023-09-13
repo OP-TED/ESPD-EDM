@@ -7,7 +7,7 @@
 	xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
 	xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
 	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" 
-	xmlns:espd="urn:com:grow:espd:3.0.0" 
+	xmlns:espd="urn:com:grow:espd:4.0.0" 
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
 	xmlns:util="java:java.util.UUID">
@@ -20,7 +20,7 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	
 	<xsl:template name="generateID">
-		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0">
+		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="4.0.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template> 
@@ -34,7 +34,7 @@
 	
 	<xsl:template name="createProcurementProjectLot">
 		<cac:ProcurementProjectLot>
-			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.3.0">LOT-0000</cbc:ID>
+			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="4.0.0">LOT-0000</cbc:ID>
 		</cac:ProcurementProjectLot>
 	</xsl:template> 
 	
@@ -86,7 +86,7 @@
 					
 			<cac:TenderingCriterionResponse>
 					<xsl:call-template name="generateID"/>
-				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0"> 
+				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="4.0.0"> 
 						<xsl:value-of select="cbc:ID"/> 
 					</cbc:ValidatedCriterionPropertyID>
 					<xsl:call-template name="createPeriod"/>
@@ -172,7 +172,7 @@
 								<cbc:ResponseCode listAgencyID="EMPL" listVersionID="20221214-0" listID="http://publications.europa.eu/resource/authority/occupation">DUMMY_CODE</cbc:ResponseCode>
 							</xsl:when>
 							<xsl:when test="$codelistNameListID = 'financial-ratio-type'">
-								<cbc:ResponseCode listAgencyID="OP" listVersionID="3.3.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
+								<cbc:ResponseCode listAgencyID="OP" listVersionID="4.0.0" listID="financial-ratio-type">DUMMY_CODE</cbc:ResponseCode>
 							</xsl:when>
 							<xsl:when test="$codelistNameListID = 'http://publications.europa.eu/resource/authority/eo-role-type'">
 								<cbc:ResponseCode listAgencyID="OP" listVersionID="20211208-0" listID="http://publications.europa.eu/resource/authority/eo-role-type">DUMMY_CODE</cbc:ResponseCode>
