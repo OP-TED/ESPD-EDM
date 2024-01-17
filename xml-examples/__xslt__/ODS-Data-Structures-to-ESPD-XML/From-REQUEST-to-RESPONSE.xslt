@@ -59,13 +59,11 @@
 		<xsl:for-each select="descendant::cac:TenderingCriterion">
 			<xsl:variable name="criterionName" select="cbc:Name"/>
 			<xsl:variable name="propertyGroupType" select="cbc:PropertyGroupTypeCode"/> 
-			<!-- <xsl:if test="$propertyGroupType != 'ONFALSE'"> -->
 				<xsl:for-each select="descendant::cac:TenderingCriterionProperty">
 					<xsl:call-template name="createAnswer">
 						<xsl:with-param name="criterion" select="$criterionName"/>
 					</xsl:call-template>
 				</xsl:for-each>
-			<!-- </xsl:if> --> 
 		</xsl:for-each>
 	</xsl:template>
 	
