@@ -3,7 +3,7 @@
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" omit-xml-declaration="no" standalone="yes" indent="yes"/>
 	<xsl:template match="/">
 		<xsl:for-each select="/ss:Workbook/ss:Worksheet">
-			<xsl:result-document method="xml" href="{@ss:Name}-CodeList.gc">
+			<xsl:result-document method="xml" href="{@ss:Name}.gc">
 				<gc:CodeList>
 					<Identification>
 						<xsl:for-each select="ss:Table/ss:Row">
