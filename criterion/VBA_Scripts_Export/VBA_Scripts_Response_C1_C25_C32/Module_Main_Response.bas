@@ -310,14 +310,44 @@ ElseIf InStr(1, Cells(r_nr, c_nr), "{CAPTION", 1) > 0 Then
     ca(lvl_current) = ca(lvl_current) + 1
     Cells(r_nr, c_nr2).Value = "CA" & ca(lvl_current)
 ElseIf InStr(1, Cells(r_nr, c_nr), "{QUESTION_GROUP", 1) > 0 Then
-    qg(lvl_current) = qg(lvl_current) + 1
+    If InStr(1, Cells(r_nr, c_occ), "(", 1) > 0 Then
+        If qg(lvl_current) = 0 Then
+            qg(lvl_current) = 1
+        ElseIf InStr(1, Cells(r_nr, c_occ), "(1)", 1) > 0 Then
+            qg(lvl_current) = qg(lvl_current) + 1
+        End If
+    Else
+        qg(lvl_current) = qg(lvl_current) + 1
+    End If
     Cells(r_nr, c_nr2).Value = "QG" & qg(lvl_current)
+    'qg(lvl_current) = qg(lvl_current) + 1
+    'Cells(r_nr, c_nr2).Value = "QG" & qg(lvl_current)
 ElseIf InStr(1, Cells(r_nr, c_nr), "{QUESTION_SUBGROUP", 1) > 0 Then
-    qsg(lvl_current) = qsg(lvl_current) + 1
+    If InStr(1, Cells(r_nr, c_occ), "(", 1) > 0 Then
+        If qsg(lvl_current) = 0 Then
+            qsg(lvl_current) = 1
+        ElseIf InStr(1, Cells(r_nr, c_occ), "(1)", 1) > 0 Then
+            qsg(lvl_current) = qsg(lvl_current) + 1
+        End If
+    Else
+        qsg(lvl_current) = qsg(lvl_current) + 1
+    End If
     Cells(r_nr, c_nr2).Value = "QSG" & qsg(lvl_current)
+    'qsg(lvl_current) = qsg(lvl_current) + 1
+    'Cells(r_nr, c_nr2).Value = "QSG" & qsg(lvl_current)
 ElseIf InStr(1, Cells(r_nr, c_nr), "{QUESTION", 1) > 0 Then
-    q(lvl_current) = q(lvl_current) + 1
+    If InStr(1, Cells(r_nr, c_occ), "(", 1) > 0 Then
+        If q(lvl_current) = 0 Then
+            q(lvl_current) = 1
+        ElseIf InStr(1, Cells(r_nr, c_occ), "(1)", 1) > 0 Then
+            q(lvl_current) = q(lvl_current) + 1
+        End If
+    Else
+        q(lvl_current) = q(lvl_current) + 1
+    End If
     Cells(r_nr, c_nr2).Value = "Q" & q(lvl_current)
+    'q(lvl_current) = q(lvl_current) + 1
+    'Cells(r_nr, c_nr2).Value = "Q" & q(lvl_current)
 ElseIf InStr(1, Cells(r_nr, c_nr), "{LEGISLATION", 1) > 0 Then
     l(lvl_current) = l(lvl_current) + 1
     Cells(r_nr, c_nr2).Value = "L" & l(lvl_current)

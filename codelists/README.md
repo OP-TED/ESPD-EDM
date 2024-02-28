@@ -4,3 +4,4 @@ This folder contains the different code lists used in ESPD in Excel format and G
 * **ESPD-CodeLists.xlsx.** Source definition to use with _/XLSX CodeLists to Genericode/Excel_to_GC_Multilang_v1.0.xsl_.
 * **/XLSX CodeLists to Genericode.** Style sheet to generate genericode code lists from the definition in _ESPD-CodeLists.xlsx_.
 * **/gc.** Genericode generated. 
+* **BACH-DataBase-Ratios.xlsx.** Source for the creation of code list _financial-ratio-type_.
