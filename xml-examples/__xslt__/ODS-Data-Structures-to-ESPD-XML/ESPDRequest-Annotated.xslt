@@ -184,7 +184,7 @@
 	
 	<xsl:template name="createName">
 		<xsl:variable name="name" select="espd:getCellContent(., $nameCol)"/>
-		<xsl:if test="string-length($name) &gt; 1">
+		<xsl:if test="string-length(fn:normalize-space($name)) &gt; 0">
 			<cbc:Name>
 				<xsl:value-of select="$name"/>
 			</cbc:Name>

@@ -18,13 +18,13 @@
 	<xsl:include href="./inc/EconomicOperatorData.xslt"/> 
 	
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
-	
+		
 	<xsl:template name="generateID">
 		<cbc:ID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0">
 			<xsl:value-of select="util:toString(util:randomUUID())"/>
 		</cbc:ID>
 	</xsl:template> 
-	
+
 	<xsl:template name="createProcurementProject">
 		<cac:ProcurementProject>
 			<!-- <xsl:call-template name="generateID"/> -->
@@ -37,7 +37,7 @@
 			<cbc:ID schemeID="Criterion" schemeAgencyID="OP" schemeVersionID="3.3.0">LOT-0000</cbc:ID>
 		</cac:ProcurementProjectLot>
 	</xsl:template> 
-	
+		
 	<xsl:template match="/">
 		<QualificationApplicationResponse
 			xmlns="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
@@ -56,9 +56,13 @@
 	</xsl:template> 
 	
 	<xsl:template match="*">
+	
+		<!-- only for development do not use in Production --> 		
+		<!--  --><xsl:copy-of select="descendant::cac:TenderingCriterion"/> 
+		
 		<xsl:for-each select="descendant::cac:TenderingCriterion">
 			<xsl:variable name="criterionName" select="cbc:Name"/>
-			<xsl:variable name="propertyGroupType" select="cbc:PropertyGroupTypeCode"/> 
+			<xsl:variable name="propertyGroupType" select="cbc:PropertyGroupTypeCode"/>
 				<xsl:for-each select="descendant::cac:TenderingCriterionProperty">
 					<xsl:call-template name="createAnswer">
 						<xsl:with-param name="criterion" select="$criterionName"/>
@@ -74,23 +78,54 @@
 		<xsl:variable name="propertyType" select="cbc:TypeCode"/>
 		
 		<xsl:if test="$propertyType = 'QUESTION'"> 
+			<xsl:variable name="indicator" select="./cbc:ValueDataTypeCode"/>		
+			<xsl:variable name="pgtc" select="../cbc:PropertyGroupTypeCode"/>
+			<xsl:variable name="onfalse" select="./ancestor::cac:SubsidiaryTenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode[.='ONFALSE']"/>
+				
 			<xsl:text disable-output-escaping="yes">&lt;!-- Answer to Criterion:</xsl:text>
 			<xsl:value-of select="$criterion"/>
 			<xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
-	
+			
 			<xsl:text disable-output-escaping="yes">&lt;!-- Property:</xsl:text>
-			<xsl:value-of select="$propertyName"/> (PropertyID:<xsl:value-of select="$propertyID"/>)
+			 <xsl:value-of select="$propertyName"/> (PropertyID:<xsl:value-of select="$propertyID"/>) 
 			<xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
-					
-			<cac:TenderingCriterionResponse>
-					<xsl:call-template name="generateID"/>
-				<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0"> 
-						<xsl:value-of select="cbc:ID"/> 
-					</cbc:ValidatedCriterionPropertyID>
-					<xsl:call-template name="createPeriod"/>
-					<xsl:call-template name="createEvidenceSupplied"/>		
-					<xsl:call-template name="createResponseValue"/>
-			</cac:TenderingCriterionResponse>
+			
+			<!--
+			<xsl:comment>  Answer to Criterion: <xsl:value-of select="$criterion"/> </xsl:comment>
+			<xsl:comment>  Property: <xsl:value-of select="$propertyName"/> (PropertyID:<xsl:value-of select="$propertyID"/>) </xsl:comment>
+			-->
+			
+			<xsl:choose> 				
+				<!-- It is a switch question that does contain ONTRUE and/or ON* --> <!-- and not($pgtc = 'ONFALSE') -->
+				<xsl:when test="$indicator = 'INDICATOR' and not($onfalse = 'ONFALSE')">
+					<cac:TenderingCriterionResponse>
+							<xsl:call-template name="generateID"/>
+							<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0"> 
+								<xsl:value-of select="cbc:ID"/> 
+							</cbc:ValidatedCriterionPropertyID>
+							<xsl:call-template name="createPeriod"/>
+							<xsl:call-template name="createEvidenceSupplied"/>		
+							<xsl:call-template name="createResponseValue">
+								<xsl:with-param name="booleanVal">true</xsl:with-param>
+							</xsl:call-template>
+					</cac:TenderingCriterionResponse>
+				</xsl:when>
+				
+				<!-- It is a non switch question/normal simple question --> <!-- and not($pgtc = 'ONFALSE') --> 
+				<xsl:when test="not($indicator = 'INDICATOR') and not($onfalse = 'ONFALSE')">
+					<cac:TenderingCriterionResponse>
+							<xsl:call-template name="generateID"/>
+							<cbc:ValidatedCriterionPropertyID schemeID="Criterion" schemeAgencyID="XXXESPD-SERVICEXXX" schemeVersionID="3.3.0"> 
+								<xsl:value-of select="cbc:ID"/> 
+							</cbc:ValidatedCriterionPropertyID>
+							<xsl:call-template name="createPeriod"/>
+							<xsl:call-template name="createEvidenceSupplied"/>		
+							<xsl:call-template name="createResponseValue">
+								<xsl:with-param name="booleanVal">true</xsl:with-param>
+							</xsl:call-template>
+					</cac:TenderingCriterionResponse>
+				</xsl:when>
+			</xsl:choose>
 		</xsl:if>
 		
 	</xsl:template>
@@ -116,7 +151,7 @@
 
 	<xsl:template name="createEvidence">
 		<cac:Evidence>
-			<cbc:ID schemeAgencyID="XXXAGENCYXXX">EVIDENCE-00001</cbc:ID>
+			<cbc:ID schemeAgencyID="XXXAGENCYXXX">EVIDENCE-0001</cbc:ID>
 			<cbc:ConfidentialityLevelCode listID="http://publications.europa.eu/resource/authority/access-right" listAgencyID="OP" listVersionID="20220316-0">CONFIDENTIAL</cbc:ConfidentialityLevelCode>
 			<cac:DocumentReference>
 				<cbc:ID schemeAgencyID="XXXAGENCYXXX">SAT-11121233</cbc:ID>
@@ -138,6 +173,7 @@
 	</xsl:template>
 		
 	<xsl:template name="createResponseValue">
+		<xsl:param name="booleanVal" />
 		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>
 		<xsl:variable name="codelistNameListID" select="cbc:ExpectedCode/@listID"/>
 		<xsl:if test="$propertyDataType != 'PERIOD' and $propertyDataType != 'EVIDENCE_IDENTIFIER'">
@@ -148,7 +184,7 @@
 						<cbc:Description>DUMMY_DESCRIPTION</cbc:Description>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'INDICATOR'">
-							<cbc:ResponseIndicator>true</cbc:ResponseIndicator>
+							<cbc:ResponseIndicator><xsl:value-of select="$booleanVal"/></cbc:ResponseIndicator>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'IDENTIFIER'">
 							<cbc:ResponseID schemeAgencyID="OP">DUMMY_ID</cbc:ResponseID>
