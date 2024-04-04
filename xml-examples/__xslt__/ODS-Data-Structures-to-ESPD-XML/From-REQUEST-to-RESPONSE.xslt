@@ -144,7 +144,7 @@
 		<xsl:variable name="propertyDataType" select="cbc:ValueDataTypeCode"/>		
 		<xsl:if test="$propertyDataType = 'EVIDENCE_IDENTIFIER'">
 			<cac:EvidenceSupplied>
-				<cbc:ID schemeAgencyID="OP">EVIDENCE-00001</cbc:ID>
+				<cbc:ID schemeAgencyID="OP">EVIDENCE-0001</cbc:ID>
 			</cac:EvidenceSupplied>	
 		</xsl:if>
 	</xsl:template>
