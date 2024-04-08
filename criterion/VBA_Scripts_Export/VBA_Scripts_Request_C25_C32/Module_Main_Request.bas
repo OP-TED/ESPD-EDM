@@ -31,11 +31,15 @@ Sheets(s_nr).Activate
 If InStr(1, ActiveSheet.Name, "EG", 1) = 1 Or InStr(1, ActiveSheet.Name, "SC", 1) = 1 Or InStr(1, ActiveSheet.Name, "OTHER", 1) = 1 Then
 
 'Set up (module 2)
+
 Call variables_reset
 Call column_selection
 Call type_selection
+
+'Call xmlpath_bve
+
 Call xmlpath_crequest
-Call xmlpath_bve
+
 Call column_number
 
 'Procedure (module 3)
@@ -115,7 +119,7 @@ For r = 1 To r_heading
             c_desc = c
         ElseIf InStr(1, Cells(r, c), "Buyer Value (example)", 1) > 0 Then
             c_vex = c
-            c_bve = c 'c - 1
+            c_bve = c 
         ElseIf InStr(1, Cells(r, c), "Comment", 1) > 0 Then
             c_comm = c
         End If
@@ -164,7 +168,7 @@ If InStr(1, Cells(r_insert, c_bve).Value, "Buyer Value (example)", 1) = 0 Then
     Cells(r_insert, c_vex).Value = "Buyer Value (example)"
     c_code = c_code + 1
     c_bve = c_vex
-    c_vex = c_vex + 1
+    'c_vex = c_vex + 1
     c_occ = c_occ + 1
     c_insert = c_insert + 1
     c_request = c_request + 1

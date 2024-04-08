@@ -3,7 +3,7 @@ Attribute VB_Name = "Module_Main_Response"
 Public s_max, s_nr As Integer
 Public s_type As String
 Public s_next As Boolean
-Public c, c_max, c_heading, c_insert, c_request, c_resstruc, c_rescont, c_rescont2, c_rescont3, c_prop, c_occ, c_code, c_desc, c_bve, c_vex, c_comm, c_nr, c_nr2, c_nr3, c_nr4, c_rq, c_num As Integer
+Public c, c_max, c_heading, c_insert, c_request, c_resstruc, c_rescont, c_rescont2, c_rescont3, c_prop, c_occ, c_code, c_desc, c_bve, c_sve, c_vex, c_comm, c_nr, c_nr2, c_nr3, c_nr4, c_rq, c_num As Integer
 Public r, r2, r_heading, r_insert, r_max, r_min, r_smax, r_nr, r_nr2, r_nr3, r_nr4, r_rq, r_bve, r_rndmax, r_rndmin, r_rnd As Integer
 Public lvl_max, lvl_min, lvl_current, lvl_master, lvl_above, lvl_end As Integer
 Public lvl(), lvl_row(), lvl_col() As Integer
@@ -31,15 +31,18 @@ Sheets(s_nr).Activate
 If InStr(1, ActiveSheet.Name, "EG", 1) = 1 Or InStr(1, ActiveSheet.Name, "SC", 1) = 1 Or InStr(1, ActiveSheet.Name, "OTHER", 1) = 1 Then
 
 'Set up (module 2)
-'Call randomvariable_setup
+
+'Call randomvariable_setup 
+
 Call variables_reset
 Call column_selection
 Call type_selection
 
-Call xmlpath_crequest
-Call xmlpath_bve
+'Call xmlpath_bve
 
+Call xmlpath_crequest
 Call xmlpath_cresponse
+
 Call column_number
 
 'Procedure (module 3)
@@ -98,6 +101,7 @@ c_code = 0
 c_prop = 0
 c_desc = 0
 c_bve = 0
+c_sve = 0
 c_com = 0
 c_num = 0
 r_max = 0
@@ -127,8 +131,10 @@ For r = 1 To r_heading
         ElseIf InStr(1, Cells(r, c), "Description", 1) > 0 Then
             c_desc = c
         ElseIf InStr(1, Cells(r, c), "Buyer Value (example)", 1) > 0 Then
-            c_vex = c
-            c_bve = c 'c - 1
+            c_vex = c 
+            c_bve = c  
+        ElseIf InStr(1, Cells(r, c), "Seller Value (example)", 1) > 0 Then
+            c_sve = c 
         ElseIf InStr(1, Cells(r, c), "Comment", 1) > 0 Then
             c_comm = c
         End If
@@ -180,7 +186,7 @@ If InStr(1, Cells(r_insert, c_bve).Value, "Buyer Value (example)", 1) = 0 Then
     Cells(r_insert, c_vex).Value = "Buyer Value (example)"
     c_code = c_code + 1
     c_bve = c_vex
-    c_vex = c_vex + 1
+    c_sve = c_vex + 1
     c_occ = c_occ + 1
     c_insert = c_insert + 1
     c_request = c_request + 1
@@ -469,7 +475,7 @@ If InStr(1, Cells(r_nr, c_nr), "{QUESTION", 1) > 0 And InStr(1, Cells(r_nr, c_nr
             If InStr(1, Cells(r_nr, c_prop), "PERIOD", 1) > 0 Then
                 rescont = reqval & "/RAP"
             ElseIf InStr(1, Cells(r_nr, c_prop), "EVIDENCE_IDENTIFIER", 1) > 0 Then
-                rescont = reqval & "/RES"
+                rescont = Cells(r_nr, c_sve).Value & "/" & reqval & "/RES"
             Else
                 rescont = reqval & "/RV"
             End If
