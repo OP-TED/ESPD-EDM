@@ -1,0 +1,44 @@
+name: 💡 Clarification Request
+description: Clarification request about ESPD EDM
+title: "[Clarification]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this new clarification request! The ESPD Team will be back to you with an answer!
+  - type: textarea
+    id: user-requirements
+    attributes:
+      label: Full details of the clarification request
+      description: Full description of the clarification request
+      placeholder: "Please provide the following information: full description of clarification request, the reference to the ANNEX 2 of Regulation (EU) 2016/7"  
+      value: |
+        Please provide the following information: 
+         - full description of clarification request, 
+         - the reference to the ANNEX 2 of Regulation (EU) 2016/7, if applicable
+         - you may add print screens in the comments after creating the CLARIFICATION request
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: ESPD Version
+      description: What version of ESPD EDM is this CLARIFICATION refering to?
+      options:
+        - 1.0.1
+        - 1.0.2
+        - 2.0.0
+        - 2.0.1
+        - 2.0.2
+        - 2.1.0
+        - 2.1.1
+        - 3.0.0
+        - 3.0.1
+        - 3.1.0
+        - 3.2.0
+        - 3.3.0 (Default)
+        - none
+      default: 0
+    validations:
+      required: true
