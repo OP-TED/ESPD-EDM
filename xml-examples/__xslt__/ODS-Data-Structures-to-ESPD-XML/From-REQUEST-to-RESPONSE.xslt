@@ -87,7 +87,7 @@
 			<xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
 			
 			<xsl:text disable-output-escaping="yes">&lt;!-- Property:</xsl:text>
-			 <xsl:value-of select="$propertyName"/> (PropertyID:<xsl:value-of select="$propertyID"/>) 
+			<xsl:value-of select="$propertyName"/> (PropertyID:<xsl:value-of select="$propertyID"/>) 
 			<xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
 			
 			<!--
@@ -184,7 +184,7 @@
 						<cbc:Description>DUMMY_DESCRIPTION</cbc:Description>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'INDICATOR'">
-							<cbc:ResponseIndicator><xsl:value-of select="$booleanVal"/></cbc:ResponseIndicator>
+						<cbc:ResponseIndicator><xsl:value-of select="$booleanVal"/></cbc:ResponseIndicator>
 					</xsl:when>
 					<xsl:when test="$propertyDataType = 'IDENTIFIER'">
 							<cbc:ResponseID schemeAgencyID="OP">DUMMY_ID</cbc:ResponseID>
