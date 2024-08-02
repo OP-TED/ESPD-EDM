@@ -12,18 +12,7 @@
     Start of synthesis of rules from other constraints ESPD Request
 
     Illustration of procurer constraints - 04-ESPD-req-other-br.sch
-	ESPD Version: 3.0.1
+	ESPD Version: 4.0.0
 -->
 	
-	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-OTHER">
-		
-		<rule context="cbc:CustomizationID">
-			<!-- BR-OTH-06: For the ESPD we use the value “urn:www.cenbii.eu:transaction:biitrdm070:ver3.0 -->
-			<assert test="text()='urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'" role="fatal" id="BR-OTH-06-01">The ESPD customization of UBL ('/cbc:CustomizationID = <value-of select="."/>') must use the value 'urn:www.cenbii.eu:transaction:biitrdm070:ver3.0'.</assert>
-			
-			<!-- BR-OTH-06: Compulsory use of the value "CEN-BII" for the schemeAgencyID attribute. -->
-			<assert test="@schemeAgencyID='CEN-BII'" role="fatal" id="BR-OTH-06-02">'/cbc:CustomizationID/@schemeAgencyID' must use the value "CEN-BII" (/cbc:CustomizationID/@schemeAgencyID = '<value-of select="@schemeAgencyID"/>').</assert>
-		</rule>
-		
-	</pattern>
 </schema>

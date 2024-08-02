@@ -202,7 +202,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="cac:AdditionalDocumentReference" priority="1006" mode="M7">
+<xsl:template match="cac:AdditionalDocumentReference" priority="1005" mode="M7">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -260,7 +260,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:UBLVersionID" priority="1005" mode="M7">
+<xsl:template match="cbc:UBLVersionID" priority="1004" mode="M7">
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -300,46 +300,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:ProfileID" priority="1004" mode="M7">
-
-		<!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="text()='4.1'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="text()='4.1'">
-               <xsl:attribute name="id">BR-OTH-07-01</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>'cbc:ProfileID' must use the value "4.1" (cbc:ProfileID = '<xsl:text/>
-                  <xsl:value-of select="."/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
-		    <!--ASSERT -->
-<xsl:choose>
-         <xsl:when test="@schemeAgencyID = 'CEN-BII'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@schemeAgencyID = 'CEN-BII'">
-               <xsl:attribute name="id">BR-OTH-07-02</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>'cbc:ProfileID/@schemeAgencyID' must use the value "CEN-BII" (cbc:ProfileID/@schemeAgencyID = '<xsl:text/>
-                  <xsl:value-of select="@schemeAgencyID"/>
-                  <xsl:text/>').</svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
-   </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cbc:ExpectedCode | cbc:IdentificationCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode"
+<xsl:template match="cbc:ExpectedCode | cbc:IdentificationCode | cbc:DocumentTypeCode | cbc:ValueCurrencyCode | cbc:ProcedureCode | cbc:ProcurementTypeCode | cbc:ProcurementSubTypeCode"
                  priority="1003"
                  mode="M7">
 
@@ -397,7 +358,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="cbc:TypeCode | cbc:DocumentTypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode"
+<xsl:template match="cbc:TypeCode | cbc:PropertyGroupTypeCode | cbc:ValueDataTypeCode"
                  priority="1002"
                  mode="M7">
 

@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion constraints ESPD Response
 
     Illustration of procurer constraints - 03-ESPD-resp-criterion-br.sch
-	ESPD Version: 3.0.1
+	ESPD Version: 3.1.0
 -->
 	
 	<xsl:key name="CriterionProperty" match="cac:TenderingCriterionProperty" use="cbc:ID"/>
@@ -70,7 +70,7 @@
 			<!-- INDICATOR = cac:ResponseValue/cbc:ResponseIndicator -->
 			<assert test="( ($currentDataType = 'INDICATOR') and (cac:ResponseValue/cbc:ResponseIndicator) ) or not($currentDataType = 'INDICATOR')" flag="fatal" id="BR-TCR-08-07">The type of answer expected by the contracting authority is 'INDICATOR' ('cac:ResponseValue/cbc:ResponseIndicator' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- PERCENTAGE = cac:ResponseValue/cbc:ResponseQuantity/unitCode="PERCENTAGE" -->
-			<assert test="( ($currentDataType = 'PERCENTAGE') and (cac:ResponseValue/cbc:ResponseQuantity/@unitCode = 'PERCENTAGE') ) or not($currentDataType = 'PERCENTAGE')" flag="fatal" id="BR-TCR-08-08">The type of answer expected by the contracting authority is 'PERCENTAGE' ('cac:ResponseValue/cbc:ResponseQuantity' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
+			<assert test="( ($currentDataType = 'PERCENTAGE') and (cac:ResponseValue/cbc:ResponseNumeric/@format = 'PERCENTAGE') ) or not($currentDataType = 'PERCENTAGE')" flag="fatal" id="BR-TCR-08-08">The type of answer expected by the contracting authority is 'PERCENTAGE' ('cac:ResponseValue/cbc:ResponseNumeric' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- PERIOD = cac:ApplicablePeriod -->
 			<assert test="( ($currentDataType = 'PERIOD') and (cac:ApplicablePeriod) ) or not($currentDataType = 'PERIOD')" flag="fatal" id="BR-TCR-08-09">The type of answer expected by the contracting authority is 'PERIOD' ('cac:ApplicablePeriod' element) - ('cbc:ID' is <value-of select="cbc:ID"/>).</assert>
 			<!-- QUANTITY_INTEGER = cac:ResponseValue/cbc:ResponseQuantity -->
