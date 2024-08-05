@@ -1,0 +1,30 @@
+{
+    "name": "espd-demo_lws",
+    "version": "1.0.0",
+    "description": "ESPD Demo local dev Webserver",
+    "private": false,
+    "main": "dev_server.js",
+    "type": "commonjs",
+    "author": "Dragos-Constantin Stoica",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OP-TED/espd-demo.git"
+    },
+    "license": "EUPL",
+    "scripts": {
+        "start": "node dev_server.js",
+        "codelist" : "node codelist.js",
+        "clean" : "rmdir /s /q node_modules"
+    },
+    "overrides": {
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
+    },
+    "dependencies": {
+        "fastify": "^4.25.2",
+        "@fastify/static": "^6.12.*",
+        "caporal": "1.4.0",
+        "chalk": "4.1.2",
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz",
+        "axios":"1.6.8"
+    }
+}

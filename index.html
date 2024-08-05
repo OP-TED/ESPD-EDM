@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+
+    <title>ESPD Demo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" sizes="any" type="image/ico">
+
+    <!-- Required Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@2.23.0/dist/bootstrap-vue.css" />
+
+    <!-- Load polyfills to support older browsers -->
+    <!-- Blocked by Edge so getting rid of it
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
+    -->
+    
+    <!-- Required scripts -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
+
+    <script src="https://unpkg.com/bootstrap-vue@2.23.0/dist/bootstrap-vue.js"></script>
+    <!-- Load the following for BootstrapVueIcons support -->
+    <script src="https://unpkg.com/bootstrap-vue@2.23.0/dist/bootstrap-vue-icons.min.js"></script>
+
+    <!-- Extra libraries needed by BootstrapVue -->
+    <script src="https://unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/portal-vue@2.1.7/dist/portal-vue.umd.min.js"></script>
+
+    <!-- Vue Internationalization framework -->
+    <script src="https://unpkg.com/vue-i18n@8"></script>
+    <!-- Vue flag icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css" />
+
+    <!-- Custom  stylesheet -->
+    <link rel="stylesheet" href="src/css/footer.css" />
+
+    <!-- PDFMake framework -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"
+        integrity="sha512-a9NgEEK7tsCvABL7KqtUTQjl69z7091EVPpw5KxPlZ93T141ffe1woLtbXTX+r2/8TtTvRX/v4zTL2UlMUPgwg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.min.js"
+        integrity="sha512-P0bOMePRS378NwmPDVPU455C/TuxDS+8QwJozdc7PGgN8kLqR4ems0U/3DeJkmiE31749vYWHvBOtR+37qDCZQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Handlebars famework -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- SheetJS framework -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+
+    <!-- JSZip v3.10.1 for archiving and export of XML distribution -->
+    <script src="src/jszip/jszip.min.js"></script>
+    <script src="src/jszip/jszip-utils.min.js"></script>
+
+    <!-- ExcelJS v4.4.0 for Excel export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+
+
+    <!-- XML Builder for ESPD Request and Response -->
+    <script src="https://cdn.jsdelivr.net/npm/xmlbuilder2/lib/xmlbuilder2.min.js"></script>
+
+    <!-- Translation file -->
+    <script src="src/js/messages.js"></script>
+    <!-- Vuejs utility functions -->
+    <script src="src/js/utils.js"></script>
+
+    <!-- Vue components and application logic -->
+    <script src="ESPD/model/espd_v3.3.0.js"></script>
+    <script src="ESPD/model/espd_response_v3.3.0.js"></script>
+    <script src="ESPD/examples/startComponent.js"></script>
+    <script src="ESPD/examples/procedureComponent.js"></script>
+    <script src="ESPD/examples/exclusionGrounds.js"></script>
+    <script src="ESPD/examples/selectionCriteria.js"></script>
+    <script src="ESPD/examples/ESPDdownload.js"></script>
+
+    <script src="src/js/header.js"></script>
+    <script src="src/js/footer.js"></script>
+    <script src="src/js/home.js"></script>
+    <script src="src/js/distribution.js"></script>
+    <script src="src/js/codelists.js"></script>
+    <script src="src/js/model.js"></script>
+    <script src="src/js/service.js"></script>
+    <script src="src/js/uuid.js"></script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Our application root element -->
+    <div id="app">
+        <header>
+            <component v-bind:is="currentHeader"></component>
+        </header>
+        <main>
+            <!-- We want main content here -->
+            <component v-bind:is="mainComponent"></component>
+        </main>
+        <footer class="footer">
+            <!-- We want footer content here -->
+            <component v-bind:is="currentFooter"></component>
+        </footer>
+    </div>
+
+    <!-- Start running your app -->
+    <script src="src/js/app.js"></script>
+    <script>
+        window.app.showLayout({ currentHeader: 'publicHeader', mainComponent: 'home', currentFooter: 'publicFooter' })
+    </script>
+
+</body>
+
+</html>

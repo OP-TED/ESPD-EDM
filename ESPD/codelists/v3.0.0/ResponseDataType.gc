@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gc:CodeList xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:fn="http://www.w3.org/2005/xpath-functions"
+             xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+             xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <Identification>
+      <ShortName>ResponseDataType</ShortName>
+      <LongName xml:lang="en">Type of data expected in the response for a criterion requirement</LongName>
+      <Version>3.0.0</Version>
+      <CanonicalUri>https://github.com/ESPD/ESPD-EDM</CanonicalUri>
+      <CanonicalVersionUri>https://github.com/ESPD/ESPD-EDM/tree/3.0.0</CanonicalVersionUri>
+      <LocationUri>https://github.com/ESPD/ESPD-EDM/tree/3.0.0/docs/src/main/asciidoc/dist/cl/gc/ResponseDataType.gc</LocationUri>
+      <Agency>
+         <LongName xml:lang="eng">DG GROW (European Commission)</LongName>
+         <Identifier>EU-COM-GROW</Identifier>
+      </Agency>
+   </Identification>
+   <ColumnSet>
+      <Column Id="code" Use="required">
+         <ShortName>Code</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Id="status" Use="required">
+         <ShortName>Status</ShortName>
+         <Data Type="normalizedString" Lang="en"/>
+      </Column>
+      <Column Use="optional" Id="name-bul">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="bul"/>
+      </Column>
+      <Column Use="optional" Id="name-spa">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="spa"/>
+      </Column>
+      <Column Use="optional" Id="name-ces">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ces"/>
+      </Column>
+      <Column Use="optional" Id="name-dan">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="dan"/>
+      </Column>
+      <Column Use="optional" Id="name-deu">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="deu"/>
+      </Column>
+      <Column Use="optional" Id="name-est">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="est"/>
+      </Column>
+      <Column Use="optional" Id="name-ell">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ell"/>
+      </Column>
+      <Column Use="optional" Id="name-eng">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="eng"/>
+      </Column>
+      <Column Use="optional" Id="name-fra">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="fra"/>
+      </Column>
+      <Column Use="optional" Id="name-gle">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="gle"/>
+      </Column>
+      <Column Use="optional" Id="name-hrv">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="hrv"/>
+      </Column>
+      <Column Use="optional" Id="name-ita">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ita"/>
+      </Column>
+      <Column Use="optional" Id="name-lav">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="lav"/>
+      </Column>
+      <Column Use="optional" Id="name-lit">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="lit"/>
+      </Column>
+      <Column Use="optional" Id="name-hun">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="hun"/>
+      </Column>
+      <Column Use="optional" Id="name-mlt">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="mlt"/>
+      </Column>
+      <Column Use="optional" Id="name-nld">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="nld"/>
+      </Column>
+      <Column Use="optional" Id="name-pol">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="pol"/>
+      </Column>
+      <Column Use="optional" Id="name-por">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="por"/>
+      </Column>
+      <Column Use="optional" Id="name-ron">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="ron"/>
+      </Column>
+      <Column Use="optional" Id="name-slk">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="slk"/>
+      </Column>
+      <Column Use="optional" Id="name-slv">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="slv"/>
+      </Column>
+      <Column Use="optional" Id="name-fin">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="fin"/>
+      </Column>
+      <Column Use="optional" Id="name-swe">
+         <ShortName>Name</ShortName>
+         <Data Type="string" Lang="swe"/>
+      </Column>
+      <Key Id="codeKey">
+         <ShortName>CodeKey</ShortName>
+         <ColumnRef Ref="code"/>
+      </Key>
+   </ColumnSet>
+   <SimpleCodeList>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>AMOUNT</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>An Amount, and currency, as defined in UN/CEFACT's CCTS</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>CODE</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>A code for an unespecified concept</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>CODE_COUNTRY</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Code identifying a country (Compulsory use of ISO 3166-1 alpha 2</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>DATE</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Date values (format YYYY-DD-MM)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>DESCRIPTION</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Textual field</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>EVIDENCE_IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Points at the instance of an evidence</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>INDICATOR</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>"true" or "false" values representing "Yes" affirmative or "No" negative answers</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>PERCENTAGE</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>A decimal number representing a percent (e.g. 0.1)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>PERIOD</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Period object as defined in UBL-2.1</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>QUANTITY_INTEGER</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>A number representing a quantity in a specific unit of measure. The unit has to be specified (e.g. Kg).</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>QUANTITY_YEAR</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>A non-negative integer representing a year. The unit has to be specified as YEAR</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>QUANTITY</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>A number representing a generic quantity with no unit specified.</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>NONE</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>No response is expected. This may be the case when a contracting authority wants to set specific requirements (e.g. requirements on lots) and the answer is calculated out of the responses to other criteria.</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>An identifier for a person, entity or object (e.g. a Party, a Lot, etc.)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>URL</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>A url, including e-mail addresses</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>MAXIMUM_AMOUNT</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The maximum amount the answer must have</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>MINIMUM_AMOUNT</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The minimum amount the answer must have</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>MAXIMUM_VALUE_NUMERIC</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The maximum value the answer to a criterion question must have</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>MINIMUM_VALUE_NUMERIC</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The minimum value the answer to a criterion question must have</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>TRANSLATION_TYPE_CODE</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The type of transation that a contracting authority's requirement shall be translated for example certified translation</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>CERTIFICATION_LEVEL_DESCRIPTION</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The description of the level of the expected certification that a contracting authority requires to an economic operator in a tendering process</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>COPY_QUALITY_TYPE_CODE</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>The type of Copy quality required by a contracting authority, expressed as a code</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>TIME</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Time values (format HH:MM:SS)</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>CODE_BOOLEAN</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Code identifying a type of GUI control element.</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>ECONOMIC_OPERATOR_IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Code used to detect an identifier referred to an Economic Operator</SimpleValue>
+         </Value>
+      </Row>
+      <Row>
+         <Value ColumnRef="code">
+            <SimpleValue>QUAL_IDENTIFIER</SimpleValue>
+         </Value>
+         <Value ColumnRef="status">
+            <SimpleValue/>
+         </Value>
+         <Value ColumnRef="name-eng">
+            <SimpleValue>Code identifying an educational or professional qualifications held by the service provider or contractor</SimpleValue>
+         </Value>
+      </Row>
+   </SimpleCodeList>
+</gc:CodeList>

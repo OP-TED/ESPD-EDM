@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vuetify</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" />
+
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.6.8/dist/vuetify-labs.min.css"
+        integrity="sha256-fo+mGnhumRjGBtDf+pqaPyn+ZL56SMprXP9T1OYU6/Q=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.6.8/dist/vuetify.min.js"
+        integrity="sha256-kbsXz6G/U3CWEFPSmU6KJHJjrnz7LUgp9IyCmzUtwVg=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <v-app id="inspire">
+
+            <v-app-bar :elevation="5">
+                <template v-slot:prepend>
+                    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                </template>
+
+                <v-app-bar-title>Application Bar</v-app-bar-title>
+
+                <template v-slot:append>
+                    <v-btn icon="mdi-heart"></v-btn>
+
+                    <v-btn icon="mdi-magnify"></v-btn>
+
+                    <v-btn icon="mdi-dots-vertical"></v-btn>
+                </template>
+            </v-app-bar>
+
+
+
+            <v-main>
+                <v-stepper :items="['Step 1', 'Step 2', 'Step 3']">
+                    <template v-slot:item.1>
+                      <v-card title="Step One" flat>...</v-card>
+                    </template>
+                  
+                    <template v-slot:item.2>
+                      <v-card title="Step Two" flat>...</v-card>
+                    </template>
+                  
+                    <template v-slot:item.3>
+                      <v-card title="Step Three" flat>...</v-card>
+                    </template>
+                  </v-stepper>
+            </v-main>
+        </v-app>
+    </div>
+
+
+
+    <script>
+
+        const { createApp, ref } = Vue
+        const { createVuetify } = Vuetify
+
+        const vuetify = createVuetify()
+
+        const app = createApp(
+            {
+                setup() {
+                    const drawer = ref(null);
+                    return {
+                        drawer: ref(null),
+                    };
+                },
+                data() {
+                    return {
+                        drawer: true
+                    }
+                }
+            })
+        app.use(vuetify).mount('#app')
+
+    </script>
+</body>
+
+</html>
