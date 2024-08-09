@@ -36,7 +36,8 @@
 		<ValueList xml:id="PropertyGroupType" uri="../../gc/PropertyGroupType.gc"/><!-- /cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode -->
 		<ValueList xml:id="ResponseDataType" uri="../../gc/ResponseDataType.gc"/><!-- /cac:TenderingCriterionProperty/cbc:ValueDataTypeCode -->		
 		<ValueList xml:id="occupation" uri="../../gc/Occupation.gc"/><!-- /cac:TenderingCriterionProperty/cbc:ExpectedCode -->		
-		<!-- Missing from this list: BooleanGUIControlType.gc, Criterion.gc -->
+		<ValueList xml:id="criterion" uri="../../gc/Criterion.gc"/> <!-- cbc:CriterionTypeCode -->
+		<!-- Missing from this list: BooleanGUIControlType.gc -->
 	</ValueLists>
 	
 	<!-- ESPDRequest - List of all elements and attributes where the code lists are used -->
@@ -80,7 +81,7 @@
 		<Context address="cac:TenderingCriterionProperty/cbc:ValueDataTypeCode" values="ResponseDataType">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element 'cac:TenderingCriterionProperty/cbc:ValueDataTypeCode'.</Message>
 		</Context>
-		<Context address="cac:TenderingCriterionPropertyGroup[cbc:ID='b01d8f8f-ceac-4b47-b7aa-88cdeb630465']/cac:TenderingCriterionProperty/cbc:ExpectedCode" values="occupation">
+		<Context address="cac:TenderingCriterionPropertyGroup[cbc:ID='C25_SC_prof-regist/RG1/RSG1']/cac:TenderingCriterionProperty/cbc:ExpectedCode" values="occupation">
 			<Message>Invalid value: '<sch:value-of select="."/>' for the element '/cac:TenderingCriterionProperty/cbc:ExpectedCode'.</Message>
 		</Context>
 	</Contexts>

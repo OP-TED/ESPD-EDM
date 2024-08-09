@@ -3,13 +3,10 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<title>ESPD Request Criterion Business Rules</title>
 
-	<ns prefix="cac"
-		uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+	<ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
 	<ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
-	<ns prefix="ext"
-		uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
-	<ns prefix="espd"
-		uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
+	<ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
+	<ns prefix="espd" uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"/>
 
 	<!--
     Start of synthesis of rules from criterion constraints ESPD Request.
