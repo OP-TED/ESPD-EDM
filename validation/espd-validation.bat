@@ -162,7 +162,7 @@ REM [-THE END-]
 :done
 echo.
 echo [-THE END-]
-echo -----------
+echo ___________
 echo.
 endlocal
 REM ___________
