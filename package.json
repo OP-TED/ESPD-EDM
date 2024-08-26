@@ -1,9 +1,9 @@
 {
     "name": "espd-tools",
-    "version": "1.0.0",
+    "version": "1.4.0",
     "description": "ESPD Tools to process Excel files",
     "private": false,
-    "main": "codelist.js",
+    "main": "check.js",
     "type": "commonjs",
     "author": "Dragos-Constantin Stoica",
     "repository": {
@@ -16,20 +16,23 @@
         "node": ">=18.0.0"
     },
     "scripts": {
-        "codelist" : "node codelist.js",
-        "checkjs": "node excel2espd.js",
+        "check": "node check.js",
+        "codelist": "node codelist.js",
+        "espd_examples": "node excel2espd.js",
+        "UUID_tools": "node uuid_tools.js",
+        "convert_to": "node convert_to.js",
         "clean": "rmdir /s /q node_modules"
     },
     "overrides": {
-        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
     },
     "dependencies": {
-        "fastify": "^4.25.2",
         "@fastify/static": "^6.12.*",
+        "axios": "^1.7.5",
         "caporal": "1.4.0",
         "chalk": "4.1.2",
-        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz",
-        "xmlbuilder2":"3.1.1",
-        "axios":"1.6.8"
+        "fastify": "^4.25.2",
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+        "xmlbuilder2": "3.1.1"
     }
 }

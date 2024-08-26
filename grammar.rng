@@ -1,0 +1,50 @@
+start = criterion
+
+criterion = element CRITERION { 
+    subcriterion, 
+    additional_description_line, 
+    legislation, 
+    question_group, 
+    requirement_group
+}
+
+subcriterion = element SUBCRITERION { 
+    question_group 
+}
+
+question_group = element QUESTION_GROUP {
+    caption,
+    question,
+    legislation,
+    question_subgroup
+}
+
+question_subgroup = element QUESTION_SUBGROUP {
+    question,
+    question_subgroup,
+    caption,
+    legislation
+}
+
+requirement_group = element REQUIREMENT_GROUP {
+    requirement,
+    requirement_subgroup,
+    question_subgroup
+}
+
+requirement_subgroup = element REQUIREMENT_SUBGROUP {
+    requirement,
+    requirement_subgroup,
+    question_subgroup,
+    caption
+}
+
+legislation = element LEGISLATION{text}
+
+additional_description_line = element ADDITIONAL_DESCRIPTION_LINE{text}
+
+question = element QUESTION{text}
+
+caption = element CAPTION{text}
+
+requirement = element REQUIREMENT{text}

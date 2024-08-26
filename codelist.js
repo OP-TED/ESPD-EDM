@@ -36,28 +36,6 @@ program
     .name("codelist")
     .description("Tool to handle Code List Excel files")
 
-    .command("all_JSON", "Print all spreadsheets as JSON")
-    .action(({ args, options, logger }) => {
-        // Combine styled and normal strings
-        log(chalk.blue.bold('Dump code list'), chalk.red(ESPD_version));
-        log('\n\n')
-
-        in_excel_we_trust.forEach(xcl => {
-            var wbk = XLSX.readFile(`${path_to_folder}${xcl}`)
-            log(chalk.bold(xcl))
-
-            var sheet_name_list = wbk.SheetNames;
-
-            for (const i in sheet_name_list) {
-                log(''.padStart(80, '_'))
-                log(chalk.bold(sheet_name_list[i]))
-                print_all(wbk.Sheets[sheet_name_list[i]])
-                log('\n\n')
-            }
-        })
-
-    })
-
     .command("process_code_lists", "Process Code Lists")
     .option('--user [user]', 'proxy server user', {default: ''})
     .option('--password [password]', 'proxy server password', {default: ''})
@@ -321,13 +299,6 @@ function process_code_lists(sph) {
             log(`Unknown type: ${json_structure.type}!`)
             break;
     }
-}
-
-
-//dump Excel to JSON
-function print_all(sph) {
-    var xlData = XLSX.utils.sheet_to_json(sph, { header: "A" })
-    log(xlData)
 }
 
 //auxiliary function to write a JSON to a file
