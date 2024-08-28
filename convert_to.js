@@ -4,8 +4,8 @@
  * NodeJS application to convert Excel for ESPD Criterion to
  * various formats: 
  *   - BoostarpVueJs
- *   - Salt for PlantUML 
- *   - Dia for ???
+ *   - Salt wireframes for PlantUML 
+ *   - Salt tree tables for PlantUML
  * 
  */
 
@@ -14,15 +14,16 @@ var XLSX = require("xlsx")
 var chalk = require('chalk')
 var fs = require("fs")
 const { program } = require("@caporal/core")
-const path = require("path")
-const { readFileSync } = require('fs')
-
-
-const { type } = require("os");
-const { count } = require("console");
 
 var {JSON2file} = require("./modules/espd_utils.cjs");
 const {cols, tag_map} = require("./modules/espd_constants.cjs")
+
+const in_excel_we_trust = [
+    //"ESPD-criterion-request-multiple-C25-C32.xlsx",
+    //"./criterion/ESPD-criterion-res_v4.0.0.xlsx",
+    "./criterion/ESPD-criterion-req_v4.0.0.xlsx"
+
+]
 
 var counter = {
     'C': 0,
@@ -41,25 +42,13 @@ var counter = {
     'RES': 1,
     'RAP': 1,
 }
-
-var vue_stream = null
-
-const in_excel_we_trust = [
-    //"ESPD-criterion-request-multiple-C25-C32.xlsx",
-    "ESPD-criterion-response-multiple-C1-C25-C32.xlsx"
-]
-
-//Check the complete list of invalid CRITERION
-const invalid_criterion = [33, 62, 64]
-
+ 
 const log = console.log, ESDP_version = 'ESDP release v4.0.0'
 XLSX.set_fs(fs)
-var element_children = {}, UUID_list = {}, espd_json = {}, name_version = '';
-
-
+var vue_stream = null, espd_json = {}, name_version = '';
 
 program
-    .version("1.0.0")
+    .version("1.6.0")
     .name("convert_to")
     .description("Tool to convert Criterion Excel file to other fromats")
 
@@ -104,31 +93,6 @@ program
             vue_stream = fs.createWriteStream(`.\\espd_response_${name_version}.js`, { flags: 'a' });
             J2V4ESPD(espd_json)
             vue_stream.end()
-
-        })
-
-
-    })
-
-    .command("excel2bv", "Transform Excel to BootstrapVue UI mockups")
-    .action(({ logger, args, options }) => {
-        // Combine styled and normal strings
-        log(chalk.blue.bold('UUID checking'), chalk.red('for ESPD realease v4.0.0.'));
-        log('\n\n')
-
-        in_excel_we_trust.forEach(xcl => {
-            var wbk = XLSX.readFile(xcl)
-            log(chalk.bold(xcl))
-
-            var sheet_name_list = wbk.SheetNames;
-            counter[tag_map['CRITERION']] = 0
-
-            for (const i in sheet_name_list) {
-                log(''.padStart(80, '_'))
-                log(chalk.bold(sheet_name_list[i]))
-                excel2bv(wbk.Sheets[sheet_name_list[i]])
-                log('\n\n')
-            }
         })
     })
 
@@ -154,7 +118,7 @@ program
         })
     })
 
-    .command("excel2dia", "Transform Excel to PlantUML diagrams")
+    .command("excel2treetrable", "Transform Excel to PlantUML tree table diagram")
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
         log(chalk.blue.bold('UUID checking'), chalk.red('for ESPD realease v4.0.0.'));
@@ -170,7 +134,7 @@ program
             for (const i in sheet_name_list) {
                 log(''.padStart(80, '_'))
                 log(chalk.bold(sheet_name_list[i]))
-                excel2diagram(wbk.Sheets[sheet_name_list[i]])
+                excel2treetable(wbk.Sheets[sheet_name_list[i]])
                 log('\n\n')
             }
         })
@@ -180,13 +144,12 @@ program
 program.run()
 
 
-//detect and transform the structure from Excel to JSON
-//then create for each Criteria a Vue component
-//as described in col2-col17
 /**
- * 
- * @param {spreadsheet object} sph 
- * @param {spreadsheet name} sheet_name 
+ * Detect and transform the structure from Excel to JSON
+ * used to create for each Criteria a Vue component
+ * follows the description in col2-col17
+ * @param {*} sph - spreasheet object 
+ * @param {string} sheet_name - the name of current spreadsheet 
  */
 function excel2bootstrapvue(sph, sheet_name) {
     /**
@@ -223,7 +186,7 @@ function excel2bootstrapvue(sph, sheet_name) {
 
         do {
             //no entry
-            if (typeof element[col_idx] === 'undefined') {
+            if (!Object.hasOwn(element, col_idx)) {
                 col_idx++
                 continue
             }
@@ -232,18 +195,17 @@ function excel2bootstrapvue(sph, sheet_name) {
                 col_idx++
                 continue
             }
-            let elm = element[col_idx].toString().trim()
+            let elm = element[col_idx].toString().trim(), tag = elm.replace('{', '').replace('}', '')
             //start tag
             if (elm.startsWith('{') && !elm.endsWith('}')) {
-                tag = elm.replace('{', '').replace('}', '')
                 //log(tag)
                 switch (tag) {
                     case 'CRITERION':
                         c_obj.tag = `C${element[col_idx - 1]} - ${c_type}`
                         c_obj.type = tag
                         for (const key in cols) {
-                            let lbl = cols[key].label, clm = cols[key].column
-                            if (clm > 0 && typeof element[clm] !== 'undefined' && element[clm].toString().trim().length > 0) {
+                            let clm = cols[key].column
+                            if (clm > 0 && Object.hasOwn(element, clm) && element[clm].toString().trim().length > 0) {
                                 c_obj[key] = element[clm].toString().trim()
                             }
                         }
@@ -253,6 +215,7 @@ function excel2bootstrapvue(sph, sheet_name) {
                     case 'SUBCRITERION': case 'REQUIREMENT_GROUP':
                     case 'QUESTION_GROUP': case 'QUESTION_SUBGROUP':
                     case 'REQUIREMENT_SUBGROUP':
+                        
                         if (!Object.hasOwn(c_obj, 'components')) c_obj.components = {}
                         parent = c_obj.components
                         if (element_map.length > 0) {
@@ -266,12 +229,16 @@ function excel2bootstrapvue(sph, sheet_name) {
                         tmp_elm = {}
                         tmp_elm.type = tag
                         for (const key in cols) {
-                            let lbl = cols[key].label, clm = cols[key].column
-                            if (clm > 0 && typeof element[clm] !== 'undefined' && element[clm].toString().trim().length > 0) {
+                            let clm = cols[key].column
+                            if (clm > 0 && Object.hasOwn(element, clm) && element[clm].toString().trim().length > 0) {
                                 tmp_elm[key] = element[clm].toString().trim()
                             }
                         }
-                        if (!Object.hasOwn(tmp_elm, 'cardinality')) tmp_elm['cardinality'] = 1
+                        if (!Object.hasOwn(tmp_elm, 'cardinality')) tmp_elm['cardinality'] = '1'
+                        //skip multiple occurences, keep only the 1st occurence
+                        tmp_elm['cardinality'] = tmp_elm['cardinality'].replace('(1)','').trim()
+                        if (tmp_elm['cardinality'].indexOf('(')!=-1) break
+
                         tmp_elm.components = {}
                         parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
                         element_map.push(`${tag_map[tag]}${counter[tag_map[tag]]}`)
@@ -281,13 +248,11 @@ function excel2bootstrapvue(sph, sheet_name) {
                     default:
                         break;
                 }
-
                 break
             }
 
             //one line tag
             if (elm.startsWith('{') && elm.endsWith('}')) {
-                tag = elm.replace('{', '').replace('}', '')
                 //log(tag)
                 switch (tag) {
                     case 'ADDITIONAL_DESCRIPTION_LINE': case 'LEGISLATION':
@@ -303,16 +268,19 @@ function excel2bootstrapvue(sph, sheet_name) {
                         }
                         counter[tag_map[tag]]++
 
-
                         tmp_elm = {}
                         tmp_elm.type = tag
                         for (const key in cols) {
-                            let lbl = cols[key].label, clm = cols[key].column
-                            if (clm > 0 && typeof element[clm] !== 'undefined' && element[clm].toString().trim().length > 0) {
+                            let clm = cols[key].column
+                            if (clm > 0 && Object.hasOwn(element, clm) && element[clm].toString().trim().length > 0) {
                                 tmp_elm[key] = element[clm].toString().trim()
                             }
                         }
-                        if (!Object.hasOwn(tmp_elm, 'cardinality')) tmp_elm['cardinality'] = 1
+                        if (!Object.hasOwn(tmp_elm, 'cardinality')) tmp_elm['cardinality'] = '1'
+                        //skip multiple occurences, keep only the 1st occurence
+                        tmp_elm['cardinality'] = tmp_elm['cardinality'].replace('(1)','').trim()
+                        if (tmp_elm['cardinality'].indexOf('(')!=-1) break
+
                         parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
                         break;
 
@@ -325,9 +293,7 @@ function excel2bootstrapvue(sph, sheet_name) {
 
             //end tag
             if (!elm.startsWith('{') && elm.endsWith('}')) {
-                tag = elm.replace('{', '').replace('}', '')
                 //log(tag)
-
                 switch (tag) {
                     case 'CRITERION':
                         //log(c_obj)
@@ -349,7 +315,6 @@ function excel2bootstrapvue(sph, sheet_name) {
                     default:
                         break;
                 }
-
                 break
             }
             //some other text or empty line
@@ -366,7 +331,12 @@ function excel2bootstrapvue(sph, sheet_name) {
 
 }
 
-//auxiliary function to transform espd_json to VueJS component
+/**
+ * Auxiliary function to transform espd_json to VueJS component for view
+ * JSON to BootstrapVue for ESPD v4.0.0
+ * @param {*} fragment - JSON Object to be processed
+ * @param {*} result - JSON Object to carry information from one call to another
+ */
 function JSON2Vue(fragment,
     result = {
         sel_count: 0,
@@ -455,11 +425,14 @@ function JSON2Vue(fragment,
                                         result.sel_count++
                                         local_indicator = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
+                                        <!--
                                         <b-form-group label="${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]">
                                             <b-form-radio-group id="radio-group-${local_indicator}" v-model="selected${local_indicator}" :options="options" name="radio-options${local_indicator}">
                                             </b-form-radio-group>
-                                        </b-form-group>`
-                                        result[`selected${local_indicator}`] = 'yes'
+                                        </b-form-group>
+                                        -->
+                                        <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" switch>${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]<b>({{ selected${local_indicator}?'Yes':'No' }})</b-form-checkbox>`
+                                        result[`selected${local_indicator}`] = true
                                     } else {
                                         result.template += `
                                         <b-form-group label="${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]" 
@@ -471,9 +444,9 @@ function JSON2Vue(fragment,
 
                                 if (['QUESTION_GROUP', 'QUESTION_SUBGROUP'].indexOf(tmp_cmp.type) != -1) {
                                     if (['ONTRUE', 'ONFALSE'].indexOf(tmp_cmp.elementcode) != -1) {
-                                        let choice = tmp_cmp.elementcode == 'ONTRUE' ? 'yes' : 'no'
+                                        let choice = tmp_cmp.elementcode == 'ONTRUE'
                                         result.template += `
-                                    <div v-if="selected${local_indicator} ==='${choice}'">
+                                    <div v-if="${choice?'':'!'}selected${local_indicator}">
                                     <b-card class="my-1"> <p>Cardinality [<em>${tmp_cmp.cardinality ?? '1'}</em>]</p>`
                                         //if (Object.hasOwn(tmp_cmp, 'components')) result = JSON2Vue(tmp_cmp.components, result)
                                         result = JSON2Vue({ e: tmp_cmp }, result)
@@ -514,11 +487,14 @@ function JSON2Vue(fragment,
                                         result.sel_count++
                                         local_indicator_qsg = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
-                                            <b-form-group label="${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]">
+                                        <!--    
+                                        <b-form-group label="${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]">
                                                 <b-form-radio-group id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" :options="options" name="radio-options${local_indicator_qsg}">
                                                 </b-form-radio-group>
-                                            </b-form-group>`
-                                        result[`selected${local_indicator_qsg}`] = 'yes'
+                                            </b-form-group>
+                                            -->
+                                        <b-form-checkbox id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" name="radio-options${local_indicator_qsg}" switch>${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]<b>({{ selected${local_indicator_qsg}?'Yes':'No' }})</b-form-checkbox>`
+                                        result[`selected${local_indicator_qsg}`] = true
                                     } else {
                                         result.template += `
                                             <b-form-group label="${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]" 
@@ -530,9 +506,9 @@ function JSON2Vue(fragment,
 
                                 if (['QUESTION_GROUP', 'QUESTION_SUBGROUP'].indexOf(tmp_cmp.type) != -1) {
                                     if (['ONTRUE', 'ONFALSE'].indexOf(tmp_cmp.elementcode) != -1) {
-                                        let choice = tmp_cmp.elementcode == 'ONTRUE' ? 'yes' : 'no'
+                                        let choice = tmp_cmp.elementcode == 'ONTRUE'
                                         result.template += `
-                                        <div v-if="selected${local_indicator_qsg} ==='${choice}'">
+                                        <div v-if="${choice?'':'!'}selected${local_indicator_qsg}">
                                         <b-card class="my-1"> <p>Cardinality [<em>${tmp_cmp.cardinality ?? '1'}</em>]</p>`
                                         //if (Object.hasOwn(tmp_cmp, 'components')) result = JSON2Vue(tmp_cmp.components, result)
                                         result = JSON2Vue({ e: tmp_cmp }, result)
@@ -570,11 +546,15 @@ function JSON2Vue(fragment,
                         result.sel_count++
                         let local_indicator = `${result.sel_count}`.padStart(2, '0')
                         result.template += `
+                        <!--
                         <b-form-group label="${fragment[el].type} - ${fragment[el].description} [${fragment[el].cardinality ?? '1'}]">
                             <b-form-radio-group id="radio-group-${local_indicator}" v-model="selected${local_indicator}" :options="options" name="radio-options${local_indicator}">
                             </b-form-radio-group>
-                        </b-form-group>`
-                        result[`selected${local_indicator}`] = 'yes'
+                        </b-form-group>
+                        -->
+                        <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" switch>${fragment[el].type} - ${fragment[el].description} [${fragment[el].cardinality ?? '1'}]<b>({{ selected${local_indicator}?'Yes':'No' }})</b-form-checkbox>
+                        `
+                        result[`selected${local_indicator}`] = true
                     }
                     break;
 
@@ -606,7 +586,12 @@ function JSON2Vue(fragment,
     return result
 }
 
-//auxiliary function to transform espd_json to Vue components that can be used in ESPD Response
+/**
+ * Auxiliary function to transform espd_json to Vue components that can be used in ESPD Response
+ * JSON to BootstrapVue for ESPD v4.0.0 tranformation
+ * @param {*} fragment - JSON object to be processed
+ * @param {*} result - JSON object to conserver the result
+ */
 function J2V4ESPD(fragment,
     result = {
         sel_count: 0,
@@ -841,190 +826,10 @@ function J2V4ESPD(fragment,
     return result
 } 
 
-//transform the Excel structure to BooststarpVue component
-//TODO
-function excel2bv(sph) {
-    let template = "",
-        js = {
-            options: [
-                { text: 'Yes', value: 'yes' },
-                { text: 'No', value: 'no' }
-            ]
-        },
-        qg_qsg_level = [],
-        q_level_count = {},
-        sel_count = 0;
-
-    var xlData = XLSX.utils.sheet_to_json(sph)
-
-    let cols = {
-        cardinality: {
-            label: "Cardinality",
-            column: 1
-        },
-        elementcode: {
-            label: "Element Code",
-            column: 1
-        },
-        name: {
-            label: "Name",
-            column: 1
-        },
-        description: {
-            label: "Description",
-            column: 1
-        },
-        buyervalue: {
-            label: "Buyer Value (example)",
-            column: 1
-        },
-        propertydatatype: {
-            label: "PropertyDataType",
-            column: 1
-        }
-    };
-
-    xlData.forEach(element => {
-
-        //log(element)
-        for (const key in cols) {
-            let lbl = cols[key].label
-            if (Object.values(element).indexOf(lbl) != -1) {
-                cols[key].column = Object.keys(element)[Object.values(element).indexOf(lbl)]
-                //log(cols[key].label, cols[key].label)
-            }
-        }
-
-        //get the tag
-        let col_idx = 1, tag = ''
-
-        do {
-            //no entry
-            if (typeof element[col_idx] === 'undefined') {
-                col_idx++
-                continue
-            }
-            //empty entry
-            if (element[col_idx].trim().length == 0) {
-                col_idx++
-                continue
-            }
-            //tag
-            if (element[col_idx].trim().startsWith('{') || element[col_idx].trim().endsWith('}')) {
-                tag = element[col_idx].trim()
-                switch (tag) {
-                    case '{CRITERION':
-                        template = `<div>
-                          <b-card>
-                            ${element[col_idx - 1]} - ${element[cols.name.column]}
-                            <p>${element[cols.description.column]}</p>
-                        `
-                        break;
-                    case '{SUBCRITERION': case "{REQUIREMENT_GROUP": case "{REQUIREMENT_SUBGROUP":
-                        template += `
-                            <b-card>
-                         `
-                        break;
-                    case "{QUESTION_GROUP": case "{QUESTION_SUBGROUP":
-                        if (element[cols.elementcode.column] == 'ONTRUE') {
-                            template += `
-                            <b-card>
-                            <div v-if="selected${q_level_count[col_idx]} === 'yes'">
-                            `
-                            qg_qsg_level.unshift(col_idx)
-                        } else if (element[cols.elementcode.column] == 'ONFALSE') {
-                            template += `
-                            <div v-if="selected${q_level_count[col_idx]} === 'no'">
-                            `
-                            qg_qsg_level.unshift(col_idx)
-                        } else {
-                            template += `
-                            <b-card>
-                            `
-                        }
-                        break;
-                    case "CRITERION}":
-                        template += `
-                        </b-card>
-                        </div>`
-                        log(template)
-                        log("\n{\n data() { \n return ", JSON.stringify(js), "\n} \n}")
-                        break;
-                    case 'SUBCRITERION}': case "REQUIREMENT_GROUP}": case "REQUIREMENT_SUBGROUP}":
-                        template += '</b-card>'
-                        break;
-                    case "QUESTION_SUBGROUP}": case "QUESTION_GROUP}":
-                        if (qg_qsg_level[0] == col_idx) {
-                            template += `
-                            </div>`
-                            qg_qsg_level.shift()
-                        } else {
-                            template += `
-                            </b-card>`
-                        }
-                        break;
-                    case "{LEGISLATION}":
-                        template += `
-                        <p>${element[col_idx - 1]} - LEGISLATION</p>
-                        `
-                        break;
-                    case "{ADDITIONAL_DESCRIPTION_LINE}": case "{CAPTION}": 
-                        template += `
-                        <p>${element[col_idx - 1]} - ${element[cols.description.column]} :: ${element[cols.propertydatatype.column]}</p>
-                        
-                        `
-                        break;
-                    case "{REQUIREMENT}":
-                        template += `
-                        <b-form-group label="${element[col_idx - 1]} - ${element[cols.description.column]}">
-                        <b-form-input placeholder="${element[cols.propertydatatype.column]}"></b-form-input>
-                        </b-form-group>
-                        `
-                        break;
-                    case "{QUESTION}":
-                        if (element[cols.propertydatatype.column] == 'INDICATOR') {
-                            //It is a Yes/No option group
-                            sel_count++
-                            template += `
-                            <b-form-group label="${element[col_idx - 1]} - ${element[cols.description.column]}">
-                                <b-form-radio-group id="radio-group-${sel_count}" v-model="selected${sel_count}" :options="options" name="radio-options${sel_count}">
-                                </b-form-radio-group>
-                            </b-form-group>`
-                            js[`selected${sel_count}`] = 'yes'
-                            q_level_count[col_idx] = sel_count
-
-                        } else {
-                            template += `
-                            <b-form-group label="${element[col_idx - 1]} - ${element[cols.description.column]}">
-                            <b-form-input placeholder="${element[cols.propertydatatype.column]}"></b-form-input>
-                            </b-form-group>
-                            `
-                        }
-                        break;
-                    default:
-                        template += `${tag} UNKNOWN`
-                        log(''.padStart(col_idx - 1, '+'), tag, 'UNKNOWN')
-                        break;
-                }
-                //log(tag)
-                break
-            }
-            //some other text
-            col_idx++
-        } while (col_idx <= 17)
-
-        if (col_idx == 18 && tag == '') {
-            //empty line or does not contain any tag
-            //log(chalk.bgRed.white('Empty row'))
-            return
-        }
-
-    });
-}
-
-
-
-//transform the Excel structure to PlantUML Salt
+/**
+ * Transform the Excel structure to PlantUML Salt
+ * @param {Object} sph - spreadsheet Object
+ */
 function excel2salt(sph) {
 
     var xlData = XLSX.utils.sheet_to_json(sph)
@@ -1073,7 +878,7 @@ function excel2salt(sph) {
 
         do {
             //no entry
-            if (typeof element[col_idx] === 'undefined') {
+            if (!Object.hasOwn(element, col_idx)) {
                 col_idx++
                 continue
             }
@@ -1140,9 +945,12 @@ function excel2salt(sph) {
 
 }
 
-//transform the Excel structure to PlantUML diagram
-//we map all to a tree and display the Description where applicable
-function excel2diagram(sph) {
+/**
+ * Transform the Excel structure to PlantUML diagram
+ * we map all to a tree and display the Description where applicable
+ * @param {Object} sph - spredsheet Object
+ */
+function excel2treetable(sph) {
     log("@startsalt\n{")
     var xlData = XLSX.utils.sheet_to_json(sph)
 
@@ -1162,7 +970,7 @@ function excel2diagram(sph) {
 
         do {
             //no entry
-            if (typeof element[col_idx] === 'undefined') {
+            if (!Object.hasOwn(element, col_idx)) {
                 col_idx++
                 continue
             }

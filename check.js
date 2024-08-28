@@ -14,7 +14,6 @@ var chalk = require('chalk');
 var fs = require("fs")
 
 const { program } = require("@caporal/core");
-const path = require("path");
 
 //Tags mapped to elements from the Excel 
 /**
@@ -142,8 +141,8 @@ const namespace_map = {
 }
 
 const in_excel_we_trust = [
-    "ESPD-criterion-request-multiple-C25-C32.xlsx",
-    "ESPD-criterion-response-multiple-C1-C25-C32.xlsx"
+    "./criterion/ESPD-criterion-req_v4.0.0.xlsx",
+    "./criterion/ESPD-criterion-res_v4.0.0.xlsx"
 ]
 
 //Check the complete list of invalid CRITERION
@@ -409,12 +408,14 @@ function check_tags(sph, IS_REQUEST) {
     });
 }
 
-//check the XML like path that is generated for each element
-//the path for Request is in the column 23 and is only for opening tags or one line tags
-//the path for Response is in the columns 24 as Request and for each variant of response in cols: 26, 27, 28, 29
-//the namespace is composed from: CRITERION-NUMBER::namespace_map::Element Code (Crierion line, column 25 for Reques and column 30 for Response)
-//the other rules:
-// - concatenate the path for each child element
+/**
+ * check the XML like path that is generated for each element
+ * the path for Request is in the column 23 and is only for opening tags or one line tags
+ * the path for Response is in the columns 24 as Request and for each variant of response in cols: 26, 27, 28, 29
+ * the namespace is composed from: CRITERION-NUMBER::namespace_map::Element Code (Crierion line, column 25 for Reques and column 30 for Response)
+ * the other rules:
+ *   - concatenate the path for each child element
+ */
 function check_UUID_path(sph, IS_REQUEST, sheetname) {
     //IS_REQUEST = true -> Request Excel file, otehrwise Response Excel file
 
@@ -443,7 +444,7 @@ function check_UUID_path(sph, IS_REQUEST, sheetname) {
 
         do {
             //no entry
-            if (typeof element[col_idx] === 'undefined') {
+            if (!Object.hasOwn(element, col_idx)) {
                 col_idx++
                 continue
             }
@@ -727,8 +728,8 @@ function print_structures(sph) {
 //root -> child elements
 function detect_structure(sph) {
     var xlData = XLSX.utils.sheet_to_json(sph)
-    var parent = null, parent_col = 0
-    let cardinality = 1
+    var parent = ''
+    let cardinality = 1, path_structure = []
     xlData.forEach(element => {
 
         if (Object.values(element).indexOf('Cardinality') != -1) {
@@ -741,7 +742,7 @@ function detect_structure(sph) {
 
         do {
             //no entry
-            if (typeof element[col_idx] === 'undefined') {
+            if (!Object.hasOwn(element, col_idx)) {
                 col_idx++
                 continue
             }
@@ -752,26 +753,37 @@ function detect_structure(sph) {
             }
             //tag
             //open tag that may contain sub tags
-            if ((element[col_idx].trim().startsWith('{') && !element[col_idx].trim().endsWith('}'))) {
-                tag = element[col_idx].trim().replace('{', '')
+            let elm = element[col_idx].toString().trim(), tag = elm.replace('{', '').replace('}', '')
+            if (elm.startsWith('{') && !elm.endsWith('}')) {
+                if(tag == 'CRITERION') path_structure=[]
+                if(tag != 'CRITERION') parent = path_structure.at(-1)??''
+
+                path_structure.push(tag)
                 //log(tag)
                 if (!Object.hasOwn(element_children, tag)) element_children[tag] = []
-                if (parent && parent_col < col_idx &&
-                    element_children[parent].indexOf(`${tag}  ${element[cardinality] ? element[cardinality] : '?!?'}`) == -1) element_children[parent].push(`${tag}  ${element[cardinality] ? element[cardinality] : '?!?'}`)
-                parent = tag
-                parent_col = col_idx
-
+                if (parent.length > 0 && 
+                    element_children[parent].indexOf(`${tag}  ${element[cardinality] ? `${element[cardinality]}`.trim() : '?!?'}`) == -1) 
+                    element_children[parent].push(`${tag}  ${element[cardinality] ? `${element[cardinality]}`.trim() : '?!?'}`)
+                
                 if (tag != 'CRITERION' && (!element[cardinality] || (element[cardinality] && `${element[cardinality]}`.trim() == ''))) log(`No cardinality ${parent}:${tag} __ ${typeof element[cardinality]}`)
                 break
             }
             //one line tag - most probably the leaf
-            if ((element[col_idx].trim().startsWith('{') && element[col_idx].trim().endsWith('}'))) {
-                tag = element[col_idx].trim().replace('{', '').replace('}', '')
+            if (elm.startsWith('{') && elm.endsWith('}')) {
                 //log(tag)
                 //if (typeof element_children[tag] === 'undefined') element_children[tag] = []
-                if (parent && element_children[parent].indexOf(`${tag}  ${element[cardinality] ? element[cardinality] : '?!?'}`) == -1) element_children[parent].push(`${tag}  ${element[cardinality] ? element[cardinality] : '?!?'}`)
+                parent = path_structure.at(-1)??''
+                if (parent.length > 0 && element_children[parent].indexOf(`${tag}  ${element[cardinality] ? `${element[cardinality]}`.trim() : '?!?'}`) == -1) 
+                    element_children[parent].push(`${tag}  ${element[cardinality] ? `${element[cardinality]}`.trim() : '?!?'}`)
 
                 if (!element[cardinality] || (element[cardinality] && `${element[cardinality]}`.trim() == '')) log(`No cardinality ${parent}:${tag} __ ${typeof element[cardinality]}`)
+                break
+            }
+            //end of tag
+            if(!elm.startsWith('{') && elm.endsWith('}')){
+                path_structure.pop()
+                if(tag == 'CRITERION') path_structure=[]
+                break
             }
 
             //some other text

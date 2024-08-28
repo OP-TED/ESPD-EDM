@@ -235,13 +235,12 @@ program
 // launch the main loop
 program.run()
 
-
-//create the ESPD Request and Response XML JSON structures
 /**
- * 
+ * create the ESPD Request and Response XML JSON structures
+ * @param {*} sph - spreadsheet object
+ * @param {str} sheetname - name of the spreadsheet
  */
 function espd_JSON(sph, sheetname) {
-    //TODO
     var xlData = XLSX.utils.sheet_to_json(sph)
 
     let c_obj = {},
@@ -288,7 +287,7 @@ function espd_JSON(sph, sheetname) {
                         c_obj.tag = `C${element[col_idx - 1]} - ${c_type}` //this assumes that the CRITERION number is in column 1
                         c_obj.type = tag
                         for (const key in cols) {
-                            let lbl = cols[key].label, clm = cols[key].column
+                            let clm = cols[key].column
                             if (clm > 0 && typeof element[clm] !== 'undefined' && element[clm].toString().trim().length > 0) {
                                 c_obj[key] = element[clm].toString().trim()
                             }
@@ -312,8 +311,8 @@ function espd_JSON(sph, sheetname) {
                         tmp_elm = {}
                         tmp_elm.type = tag
                         for (const key in cols) {
-                            let lbl = cols[key].label, clm = cols[key].column
-                            if (clm > 0 && typeof element[clm] !== 'undefined' && element[clm].toString().trim().length > 0) {
+                            let clm = cols[key].column
+                            if (clm > 0 && Object.hasOwn(element, clm) && element[clm].toString().trim().length > 0) {
                                 tmp_elm[key] = element[clm].toString().trim()
                             }
                         }
@@ -353,8 +352,8 @@ function espd_JSON(sph, sheetname) {
                         tmp_elm = {}
                         tmp_elm.type = tag
                         for (const key in cols) {
-                            let lbl = cols[key].label, clm = cols[key].column
-                            if (clm > 0 && typeof element[clm] !== 'undefined' && element[clm].toString().trim().length > 0) {
+                            let clm = cols[key].column
+                            if (clm > 0 && Object.hasOwn(element, clm) && element[clm].toString().trim().length > 0) {
                                 tmp_elm[key] = element[clm].toString().trim()
                             }
                         }
@@ -412,7 +411,9 @@ function espd_JSON(sph, sheetname) {
 
 }
 
-//auxiliary function to write ESPD Request and Response XML to a file
+/**
+ * Auxiliary function to write ESPD Request and Response XML to a file
+ */
 function writeXMLfiles() {
     espd_request.doc()
     fs.writeFile('ESPD_Request.xml', espd_request.end({ prettyPrint: true }), (err) => {
@@ -433,7 +434,9 @@ function writeXMLfiles() {
     });
 }
 
-//Generate Request header
+/**
+ * Generate Request header
+ */
 function createRootElements() {
     espd_request.com(` The ESPD-EDM-V${schemeVersionID} is entirely based on OASIS UBL-2.3 `)
         .ele('@cbc', 'UBLVersionID', { 'schemeAgencyID': 'OASIS-UBL-TC' }).txt('2.3').up()
@@ -479,7 +482,9 @@ function createRootElements() {
 
 }
 
-//Generate Request Contracting Authority
+/**
+ * Generate Request Contracting Authority
+ */
 function createContractingAuthority() {
 
     espd_request.ele('@cac', 'ContractingParty')
@@ -570,7 +575,9 @@ function createContractingAuthority() {
     createProcurementProject()
 }
 
-//Generate Request Procurement Project
+/**
+ * Generate Request Procurement Project
+ */
 function createProcurementProject() {
     espd_request.ele('@cac', 'ProcurementProject')
         .ele('@cbc', 'Description').txt('Description of Project.').up()
@@ -588,7 +595,9 @@ function createProcurementProject() {
 
 }
 
-//create Evidence for ESPD Response
+/**
+ * Create Evidence for ESPD Response
+ */
 function createEvidence() {
     evidence_ids.forEach((evid) => {
         espd_response.ele('@cac', 'Evidence')
@@ -613,7 +622,9 @@ function createEvidence() {
     })
 }
 
-//render the elementes of JSON to XML ESPD Request, and ESPD Response - the Request part
+/**
+ * Render the elementes of JSON to XML ESPD Request, and ESPD Response - the Request part
+ */
 function render_request(obj, part = espd_request, EG_FLAG = true) {
     let tmp = part
     for (const elm in obj) {
@@ -799,9 +810,8 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
     }
 }
 
-//render the elements of JSON to XML ESPD Response
 /**
- * 
+ * Render the elements of JSON to XML ESPD Response 
  * @param {JSON} obj 
  * @param {JSON} part 
  */
