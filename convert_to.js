@@ -21,7 +21,7 @@ const {cols, tag_map} = require("./modules/espd_constants.cjs")
 const in_excel_we_trust = [
     //"ESPD-criterion-request-multiple-C25-C32.xlsx",
     //"./criterion/ESPD-criterion-res_v4.0.0.xlsx",
-    "./criterion/ESPD-criterion-req_v4.0.0.xlsx"
+    "./criterion/ESPD-criterion_v4.0.0.xlsx"
 
 ]
 
@@ -431,7 +431,7 @@ function JSON2Vue(fragment,
                                             </b-form-radio-group>
                                         </b-form-group>
                                         -->
-                                        <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" switch>${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]<b>({{ selected${local_indicator}?'Yes':'No' }})</b-form-checkbox>`
+                                        ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" inline="true"  switch><b>({{ selected${local_indicator}?'Yes':'No' }})</b></b-form-checkbox>`
                                         result[`selected${local_indicator}`] = true
                                     } else {
                                         result.template += `
@@ -493,7 +493,7 @@ function JSON2Vue(fragment,
                                                 </b-form-radio-group>
                                             </b-form-group>
                                             -->
-                                        <b-form-checkbox id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" name="radio-options${local_indicator_qsg}" switch>${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]<b>({{ selected${local_indicator_qsg}?'Yes':'No' }})</b-form-checkbox>`
+                                        ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" name="radio-options${local_indicator_qsg}" inline="true"  switch><b>({{ selected${local_indicator_qsg}?'Yes':'No' }})</b></b-form-checkbox>`
                                         result[`selected${local_indicator_qsg}`] = true
                                     } else {
                                         result.template += `
@@ -552,7 +552,7 @@ function JSON2Vue(fragment,
                             </b-form-radio-group>
                         </b-form-group>
                         -->
-                        <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" switch>${fragment[el].type} - ${fragment[el].description} [${fragment[el].cardinality ?? '1'}]<b>({{ selected${local_indicator}?'Yes':'No' }})</b-form-checkbox>
+                        ${fragment[el].type}  ${fragment[el].description} [${fragment[el].cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" inline="true" switch><b>({{ selected${local_indicator}?'Yes':'No' }})</b></b-form-checkbox>
                         `
                         result[`selected${local_indicator}`] = true
                     }

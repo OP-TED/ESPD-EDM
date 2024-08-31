@@ -141,8 +141,7 @@ const namespace_map = {
 }
 
 const in_excel_we_trust = [
-    "./criterion/ESPD-criterion-req_v4.0.0.xlsx",
-    "./criterion/ESPD-criterion-res_v4.0.0.xlsx"
+    "./criterion/ESPD-criterion_v4.0.0.xlsx"
 ]
 
 //Check the complete list of invalid CRITERION
@@ -188,8 +187,7 @@ program
         log('\n\n')
 
         in_excel_we_trust.forEach(xcl => {
-            var wbk = XLSX.readFile(xcl),
-                what = xcl.indexOf('-request-') != -1
+            var wbk = XLSX.readFile(xcl)
             log(chalk.bold(xcl))
 
             var sheet_name_list = wbk.SheetNames;
