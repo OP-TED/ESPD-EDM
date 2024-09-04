@@ -281,6 +281,28 @@ program
         })
     })
 
+    .command("extract_codelists", "List elements that have a Code List associated with")
+    .action(({ logger, args, options }) => {
+        // Combine styled and normal strings
+        log(chalk.blue.bold('Code List extraction'), chalk.red('for ESPD realease v4.0.0.'));
+        log('\n\n')
+
+        in_excel_we_trust.forEach(xcl => {
+            var wbk = XLSX.readFile(xcl),
+                what = xcl.indexOf('-request-') != -1
+            log(chalk.bold(xcl))
+
+            var sheet_name_list = wbk.SheetNames;
+            counter[tag_map['CRITERION']] = 0
+
+            for (const i in sheet_name_list) {
+                log(''.padStart(80, '_'))
+                log(chalk.bold(sheet_name_list[i]))
+                extract_codelists(wbk.Sheets[sheet_name_list[i]])
+                log('\n\n')
+            }
+        })
+    })
 
 // launch the main loop
 program.run()
@@ -753,8 +775,12 @@ function detect_structure(sph) {
             //open tag that may contain sub tags
             let elm = element[col_idx].toString().trim(), tag = elm.replace('{', '').replace('}', '')
             if (elm.startsWith('{') && !elm.endsWith('}')) {
-                if(tag == 'CRITERION') path_structure=[]
-                if(tag != 'CRITERION') parent = path_structure.at(-1)??''
+                if(tag == 'CRITERION') {
+                    path_structure=[]
+                    parent = ''
+                }else{
+                    parent = path_structure.at(-1)??''
+                }
 
                 path_structure.push(tag)
                 //log(tag)
@@ -794,6 +820,61 @@ function detect_structure(sph) {
             return
         }
     });
+}
+
+/**
+ * Extract Code Lists from Excel
+ * Not all Code Lists are present in Excel
+ */
+function extract_codelists(sph) {
+    var xlData = XLSX.utils.sheet_to_json(sph)
+
+    let codelist = 0
+
+    xlData.forEach(element => {
+
+        //log(element)
+        if (Object.values(element).indexOf('Code List') != -1) {
+            codelist = Object.keys(element)[Object.values(element).indexOf('Code List')]
+            //log(codelist, element[codelist])
+        }
+
+        //get the tag
+        let col_idx = 1
+        let tag = ''
+
+        do {
+            //no entry
+            if (typeof element[col_idx] === 'undefined') {
+                col_idx++
+                continue
+            }
+            //empty entry
+            if (element[col_idx].trim().length == 0) {
+                col_idx++
+                continue
+            }
+            //tag
+            if (element[col_idx].trim().startsWith('{') || element[col_idx].trim().endsWith('}')) {
+                tag = element[col_idx].trim().replace('{', '').replace('}', '')
+                //log(tag)
+                break
+            }
+            //some other text
+            col_idx++
+        } while (col_idx <= 17)
+
+        if (col_idx == 18 && tag == '') {
+            //empty line or does not contain any tag
+            //log(chalk.bgRed.white('Empty row'))
+            return
+        }
+
+        if(typeof element[codelist] !== 'undefined' && element[codelist].trim().length > 0)
+        log(''.padStart(col_idx - 2, '\t'), chalk.blueBright(tag), '\t', element[codelist])
+
+    });
+
 }
 
 //dump Excel to JSON
