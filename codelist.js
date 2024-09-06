@@ -25,7 +25,7 @@ const in_excel_we_trust = [
 
 const log = console.log, 
       ESPD_version = 'ESPD release v4.0.0', 
-      path_to_folder = '.\\codelists\\gc\\';
+      path_to_folder = '.\\cl\\gc\\';
 
 XLSX.set_fs(fs);
 

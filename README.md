@@ -9,39 +9,44 @@ This is a technical branch of ESPD-EDM repository and is intended to be used as 
 - ESPD-EDM Excel Criterion file
 - Code Lists Excel file 
 
-and processes them producing usable output files for ESPD.
+and processes them producing usable output files for ESPD-EDM.
 
 ## Usage
 
-The JavaScrpit utility check.js is a NodeJS command line application and is delivered as an integrated package.
-Minumum NodeJS version: 18.X
-All libraries and commands are contained in package.json file - this is a standard npm file.
-All commands have to be launched in the root folder from the command line (CMD, PowerShell or any terminal)
+The main utility tools are in the root folder and they are build in NodeJS.
 
-To setup and install all necessary JavaScript libraries:
+Minumum required NodeJS version: 18.X  
+All libraries and commands are contained in `package.json` file - this is a standard `npm` file. All commands have to be launched in the root folder from the command line (CMD, PowerShell or any terminal) using Windows Operating System. Tools work with Linux or OS X Operating Systems too, except some of utility commands, mentioned bellow.
 
+To setup and install all necessary JavaScript libraries:  
 ```npm install```
 
-To cleanup the libraries:
-
+To cleanup the libraries folders (this works only under Windows):  
 ```npm run clean```
 
-The Excel files: ESPD-criterion-request-multiple-C25-C32.xlsx and ESPD-criterion-response-multiple-C1-C25-C32.xlsx are the files that contain the fixes for tags and
-especially for Response multiple occurence examples.
+The folder `XSLT` contains the XSL Tranform files that were used until ESPD-EDM v4.0.0 to process and transform the Excel files.  
+`XSLT/xslx-codelists-to-genericode/excel-to-gc-multilang-v1.0.xls` was used to transfor the Excel Codelists file to genericode XML files.  
+`XSLT/xslx-criterion-to-UBL/ODS-Data-Structures-to-ESPD-XML/ESPDRequest-Annotated.xslt` was used to process the Excel Criterion file and produce the ESPD Request XML file, and `XSLT/xslx-criterion-to-UBL/ODS-Data-Structures-to-ESPD-XML/From-RESQUEST-to-RESDPONSE.xslt` was used to process the ESPD Request XML and produce the ESPD Response XML file.  
+All auxiliary support files are in `XSLT/xslx-criterion-to-UBL/ODS-Data-Structures-to-ESPD-XML/inc` folder.  
+The XSLT tools were deprecated starting with ESPD-EDM v4.0.0 and replaced by JavaScript tools. The XSLT scripts were preserved for archiving.
 
-To check the TAGS for both Excel files:
+The folder `xslx-criterion-VBA` contains the VBA code that was used for ESPD-EDM v4.0.0 to generate the tags for each element in Excel Criterion files and to produce the XML Path like IDs. The code can only be used in conjunction with those specific Excel files.
 
-```npm run checkjs check_tag > tag_check.txt```
+The folder `criterion` contains Excel criterion files that are used by JavaScript tools. Those files are from corresponding tags for each ESPD-EDM release from GitHub ESPD-EDM repository.
 
-The results will be in tag_check.txt file and if there is a tag that does not fit the rules then the [NOK] label is present at the begginign or the report line.
+The folder `codelists` contains Excel Codelists file that is used by JavaScript tools to process and produce genericode XML files. The Excel files belong to a specific ESPD-EDM version.
 
-To check the XML Like path IDs for both Excel files:
+In order to run a JavaScript utility using **NodeJS**, use the command line and type the name of the utility file, e.g:  `node check.js`
+For a list of avaiable commands for each tool use `--help` option: `node check.js --help`.
 
-```npm run checkjs check_UUID > path_check.txt```
+| Tool | Description | Commands
+|---|---| --- |
+| `check.js` | Tool to process and check Excel Criterion file for v4.0.0 |        **all_JSON** - Print all spreadsheets as JSON<br>**full_structures** - Print full structure of each spreadsheet <br>**each_structure** - Print the element and child structure<br>**check_tag** - Check the TAGS for each element<br>**check_UUID** - Check the XML like path IDs for each element<br>**extract_codelists** - List elements that have a Code List associated with|
+| `codelist.js` | Tool to process Excel Codelists to generate genericode XML files, and downloading EU Vocabularies codelists. This uses the internal proxy for downloads, please adjust according to your network environment. | **process_code_lists** - Process Code Lists |
+| `convert_to.js` | Tool to convert Excel Criterion file to other formats.  | **excel2vue** - Generate BootstrapVue components for each criteria<br>**excel2salt** - Transform Excel to PlantUML Salt UI mockups<br>**excel2treetrable** - Transform Excel to PlantUML tree table diagram|
+| `excel2espd.js` | Tool to transform Excel Criterion file v3.3.0 and v4.0.0 and generate ESPD Request XML file and ESPD Response XML file | **espd_XML** - Generate ESPD Request and Response XML files |
 
-The results will be in tag_check.txt file and if there is a tag that does not fit the rules then the [NOK] label is present at the begginign or the report line.
-For Response file the QUESTION extra XML like IDs paths are checked too - there are 2 extra lines for all QUESTION tags.
-
+The Excel files are specified inside each script and should be modfied accordingly.
 
 ## Licence
 
