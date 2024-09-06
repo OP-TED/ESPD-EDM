@@ -17,7 +17,7 @@ const { program } = require("@caporal/core");
 
 const {cols, tag_map, namespace_map, invalid_criterion} = require("./modules/espd_constants.cjs")
 
-const in_excel_we_trust = [
+var in_excel_we_trust = [
     "./criterion/ESPD-criterion_v4.0.0.xlsx"
 ]
 
@@ -40,7 +40,8 @@ var counter = {
     'RES': 1,
     'RAP': 1,
 },
-element_children = {};
+element_children = {},
+pdt_list=[];
 
 XLSX.set_fs(fs);
  
@@ -48,7 +49,7 @@ program
     .version("1.0.0")
     .name("checkjs")
     .description("Tool to handle Criterion Excel files")
-
+    
     .command("all_JSON", "Print all spreadsheets as JSON")
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
@@ -70,7 +71,6 @@ program
                 log('\n\n')
             }
         })
-
     })
 
     .command("full_structures", "Print full structure of each spreadsheet")
@@ -196,6 +196,30 @@ program
             }
         })
     })
+
+    .command("extract_pdt", "Extract Property Data Type from Excel Criterion file")
+    .argument('<excelfile>', 'Excel Criterion file to be processed')
+    .action(({logger, args, options}) =>{
+        log(chalk.bold(`Processing ${args.excelfile}`), '\n\n')
+
+        in_excel_we_trust = [ args.excelfile ]
+
+        in_excel_we_trust.forEach( xcl => {
+            var wbk = XLSX.readFile(xcl)
+            log(chalk.bold(xcl))
+
+            var sheet_name_list = wbk.SheetNames
+            for (const key in sheet_name_list) {
+                if (Object.hasOwn(sheet_name_list, key)) {
+                    extract_propertydatatype(wbk.Sheets[sheet_name_list[key]])
+                }
+            }
+        })
+
+        log(chalk.blue((pdt_list.sort()).join('\n')))
+        
+    })
+
 
 // launch the main loop
 program.run()
@@ -738,7 +762,7 @@ function extract_codelists(sph) {
 
         do {
             //no entry
-            if (typeof element[col_idx] === 'undefined') {
+            if (!Object.hasOwn(element, col_idx)) {
                 col_idx++
                 continue
             }
@@ -768,6 +792,71 @@ function extract_codelists(sph) {
 
     });
 
+}
+
+/**
+ * Extract Propety Data Type from Excel
+ * PDT have to be translated to UBL elements
+ */
+function extract_propertydatatype(sph){
+    var xlData = XLSX.utils.sheet_to_json(sph)
+
+    let pdt_col = 0, cl_col = 0
+
+    xlData.forEach(element => {
+
+        //log(element)
+        if (Object.values(element).indexOf('PropertyDataType') != -1) {
+            pdt_col = Object.keys(element)[Object.values(element).indexOf('PropertyDataType')]
+            //log(codelist, element[codelist])
+        }
+        if (Object.values(element).indexOf('Code List') != -1) {
+            cl_col = Object.keys(element)[Object.values(element).indexOf('Code List')]
+            //log(codelist, element[codelist])
+        }
+
+        //get the tag
+        let col_idx = 1, tag = ''
+        do {
+            //no entry
+            if (!Object.hasOwn(element, col_idx)) {
+                col_idx++
+                continue
+            }
+            //empty entry
+            if (element[col_idx].trim().length == 0) {
+                col_idx++
+                continue
+            }
+            //tag
+            if (element[col_idx].trim().startsWith('{') || element[col_idx].trim().endsWith('}')) {
+                tag = element[col_idx].trim().replace('{', '').replace('}', '')
+                //log(tag)
+                if(Object.hasOwn(element, pdt_col) && element[pdt_col].trim().length > 0){
+                    if(element[pdt_col] == 'CODE'){
+                        if(Object.hasOwn(element, cl_col) && 
+                           element[pdt_col].trim().length > 0 && 
+                           pdt_list.indexOf(`${tag}::${element[pdt_col].trim()} - ${element[cl_col].trim()}`) == -1)
+                        pdt_list.push(`${tag}::${element[pdt_col].trim()} - ${element[cl_col].trim()}`)
+                    }else{
+                     if(pdt_list.indexOf(`${tag}::${element[pdt_col].trim()}`) == -1)
+                        pdt_list.push(`${tag}::${element[pdt_col].trim()}`)
+                    }
+                }
+                    
+                break
+            }
+            //some other text
+            col_idx++
+        } while (col_idx <= 17)
+
+        if (col_idx == 18 && tag == '') {
+            //empty line or does not contain any tag
+            //log(chalk.bgRed.white('Empty row'))
+            return
+        }
+
+    });
 }
 
 //dump Excel to JSON

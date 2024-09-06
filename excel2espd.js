@@ -35,7 +35,7 @@ const schemeVersionID = '4.0.0'
 
 var in_excel_we_trust = [
     //"ESPD-criterion-request-multiple-C25-C32.xlsx",
-    "ESPD-criterion-response-multiple-C1-C25-C32.xlsx"
+    "criterion/ESPD-criterion-response-multiple-C1-C25-C32.xlsx"
 ]
 
 const log = console.log;
@@ -179,6 +179,8 @@ function espd_JSON(sph, sheetname) {
                     case 'CRITERION':
                         c_obj.tag = `C${element[col_idx - 1]} - ${c_type}` //this assumes that the CRITERION number is in column 1
                         c_obj.type = tag
+                        //default lot for Selection Criteria
+                        if(c_type == 'SC') c_obj.lots = []
                         for (const key in cols) {
                             let clm = cols[key].column
                             if (clm > 0 && typeof element[clm] !== 'undefined' && element[clm].toString().trim().length > 0) {
@@ -253,6 +255,12 @@ function espd_JSON(sph, sheetname) {
                         parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
                         if(tag == 'REQUIREMENT' && tmp_elm.propertydatatype == 'LOT_IDENTIFIER'){
                             if(lot_ids.indexOf(tmp_elm.buyervalue) == -1)lot_ids.push(tmp_elm.buyervalue)
+                            //add LOT to CRITERION
+                            if(!Object.hasOwn(c_obj, 'lots')){
+                                c_obj.lots = []
+                            }
+                            if(c_obj.lots.indexOf(tmp_elm.buyervalue.trim()) == -1) c_obj.lots.push(tmp_elm.buyervalue.trim())
+                            //log(JSON.stringify(c_obj.lots, null, 4))
                         }
                         break;
 
@@ -271,6 +279,7 @@ function espd_JSON(sph, sheetname) {
                 switch (tag) {
                     case 'CRITERION':
                         //log(c_obj)
+                        if(c_type == 'SC' && c_obj.lots.length == 0) c_obj.lots.push('LOT-0000')
                         espd_json[c_obj.tag.substring(0, c_obj.tag.indexOf('-') - 1)] = c_obj
                         c_obj = {}
                         //reset the level counter
@@ -478,14 +487,15 @@ function createProcurementProject() {
         .ele('@cbc', 'Description').txt('Description of Project.').up()
         .up()
 
-    lot_ids.forEach((lotid) =>{
-        log(lotid)
+    lot_ids.sort().forEach((lotid) =>{
+        //log(lotid)
         espd_request.ele('@cac', 'ProcurementProjectLot')
                     .ele('@cbc', 'ID', {'schemeID': "Criterion", 'schemeAgencyID':"OP", 'schemeVersionID':schemeVersionID}).txt(lotid).up()
                     .up()    
     })
 
     //Procurement Projet and Prourement Project Lot
+    //Respond only to LOT-0000, default lot - check in lots array of CRITERION
     espd_response.ele('@cac', 'ProcurementProject')
         .ele('@cbc', 'Description').txt('Description of Project.').up()
         .up()
@@ -493,8 +503,6 @@ function createProcurementProject() {
     espd_response.ele('@cac', 'ProcurementProjectLot')
         .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "OP", 'schemeVersionID': schemeVersionID }).txt('LOT-0000').up()
         .up()
-
-
 }
 
 /**
@@ -545,9 +553,11 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                         
                     //add lot for SC only
                     if(element.tag.endsWith('- SC')){ 
-                        tmp = tmp.ele('@cac', 'ProcurementProjectLotReference')
-                              .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "OP", 'schemeVersionID': schemeVersionID }).txt('LOT-0000').up()
-                              .up()
+                        for (let index = 0; index < element.lots.length; index++) {
+                            tmp = tmp.ele('@cac', 'ProcurementProjectLotReference')
+                            .ele('@cbc', 'ID', {'schemeID': "Criterion", 'schemeAgencyID':"OP", 'schemeVersionID':schemeVersionID}).txt(element.lots[index]).up()
+                            .up()    
+                          }
                     }
                     //create the inner elements
                     if (Object.hasOwn(element, 'components')) render_request(element.components, tmp, element.tag.endsWith('- EG'))
@@ -639,62 +649,68 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
 
                     switch (element.propertydatatype) {
                         case 'AMOUNT':
-                            tmp.ele('@cbc', 'ExpectedAmount', { 'currencyID': 'EUR' }).txt(element.sellervalue ? element.sellervalue : 0).up()
+                            tmp.ele('@cbc', 'ExpectedAmount', { 'currencyID': 'EUR' }).txt(element.buyervalue ? element.buyervalue : 0).up()
                             break;
                         case 'IDENTIFIER': case "EVIDENCE_IDENTIFIER": case "ECONOMIC_OPERATOR_IDENTIFIER": case "LOT_IDENTIFIER":
-                            tmp.ele('@cbc', 'ExpectedID', { 'schemeAgencyID': 'OP' }).txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'ExpectedID', { 'schemeAgencyID': 'OP' }).txt(element.buyervalue).up()
                             break;
                         case 'CODE_BOOLEAN':
-                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': 'boolean-gui-control-type', 'listAgencyID': 'OP', 'listVersionID': schemeVersionID }).txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': 'boolean-gui-control-type', 'listAgencyID': 'OP', 'listVersionID': schemeVersionID }).txt(element.buyervalue).up()
                             break;
                         case 'CODE_COUNTRY':
-                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "ISO", 'listVersionID': "20220928-0" }).txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "ISO", 'listVersionID': "20220928-0" }).txt(element.buyervalue).up()
                             break;
                         case 'ECONOMIC_OPERATOR_ROLE_CODE':
-                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt(element.buyervalue).up()
                             break;
                         case 'DESCRIPTION':
-                            tmp.ele('@cbc', 'ExpectedDescription').txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'ExpectedDescription').txt(element.buyervalue).up()
                             break;
                         case 'PERCENTAGE':
                             tmp.ele('@cbc', 'ValueUnitCode').txt('PERCENTAGE').up()
-                                .ele('@cbc', 'ExpectedValueNumeric').txt(element.sellervalue ? element.sellervalue : 0).up()
+                                .ele('@cbc', 'ExpectedValueNumeric').txt(element.buyervalue ? element.buyervalue : 0).up()
                             break;
-                        case 'DATE': case 'PERIOD':
+                        case 'PERIOD':
+                            //in Excel file the value for PERIOD is: 2016-01-01; 2017-01-01
+                            //.ele('@cbc', 'StartDate').txt(element.buyervalue ? element.buyervalue.substring(0, element.buyervalue.indexOf(';')).trim() : '2000-01-01').up()
+                            //.ele('@cbc', 'EndDate').txt(element.buyervalue ? element.buyervalue.substring(element.buyervalue.indexOf(';')+1).trim() : '2050-12-31').up()
+
                             tmp.ele('@cac', 'ApplicablePeriod')
-                                .ele('@cbc', 'StartDate').txt(element.sellervalue ? element.sellervalue : '2000-01-01').up()
-                                .ele('@cbc', 'EndDate').txt(element.sellervalue ? element.sellervalue : '2000-12-31').up()
+                                .ele('@cbc', 'StartDate').txt('2000-01-01').up()
+                                .ele('@cbc', 'EndDate').txt('2050-12-31').up()
                                 .up()
                             break;
-                        case 'QUANTITY_INTEGER': case 'QUANTITY_YEAR': case 'QUANTITY':
-                            tmp.ele('@cbc', 'ExpectedValueNumeric').txt(element.sellervalue ? element.sellervalue : 0).up()
+                        case 'MINIMUM_QUANTITY_INTEGER': case 'MINIMUM_QUANTITY_YEAR': case 'MINIMUM_QUANTITY':
+                            tmp.ele('@cbc', 'ExpectedValueNumeric').txt(element.buyervalue ? element.buyervalue : 0).up()
                             break;
                         case 'MAXIMUM_AMOUNT':
-                            tmp.ele('@cbc', 'MaximumAmount', { 'currencyID': 'EUR' }).txt(element.sellervalue ? element.sellervalue : 0).up()
+                            tmp.ele('@cbc', 'MaximumAmount', { 'currencyID': 'EUR' }).txt(element.buyervalue ? element.buyervalue : 0).up()
                             break;
                         case 'MINIMUM_AMOUNT':
-                            tmp.ele('@cbc', 'MinimumAmount', { 'currencyID': 'EUR' }).txt(element.sellervalue ? element.sellervalue : 0).up()
+                            tmp.ele('@cbc', 'MinimumAmount', { 'currencyID': 'EUR' }).txt(element.buyervalue ? element.buyervalue : 0).up()
                             break;
                         case 'MAXIMUM_VALUE_NUMERIC':
-                            tmp.ele('@cbc', 'MaximumValueNumeric').txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'MaximumValueNumeric').txt(element.buyervalue).up()
                             break;
                         case 'MINIMUM_VALUE_NUMERIC':
-                            tmp.ele('@cbc', 'MinimumValuenumeric').txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'MinimumValuenumeric').txt(element.buyervalue).up()
                             break;
                         case 'TRANSLATION_TYPE_CODE':
-                            tmp.ele('@cbc', 'TranslationTypeCode').txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'TranslationTypeCode').txt(element.buyervalue).up()
                             break;
                         case 'COPY_QUALITY_TYPE_CODE':
-                            tmp.ele('@cbc', 'CopyQualityTypeCode').txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'CopyQualityTypeCode').txt(element.buyervalue).up()
                             break;
                         case 'CERTIFICATION_LEVEL_DESCRIPTION':
-                            tmp.ele('@cbc', 'CertificationLevelDescription').txt(element.sellervalue).up()
+                            tmp.ele('@cbc', 'CertificationLevelDescription').txt(element.buyervalue).up()
                             break;
-
+                        case 'URL':
+                            tmp.ele('@cbc', 'ExpectedURI', { 'schemeAgencyID': 'OP' }).txt(element.buyervalue).up()
+                            break;
                         case 'CODE':
-                            if (element.codelist == 'Occupation') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/occupation", 'listAgencyID': "EMPL", 'listVersionID': "20221214-0" }).txt(element.sellervalue).up()
-                            if (element.codelist == 'FinancialRatioType') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "financial-ratio-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(element.sellervalue).up()
-                            if (element.codelist == 'EORoleType') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt(element.sellervalue).up()
+                            if (element.codelist == 'Occupation') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/occupation", 'listAgencyID': "EMPL", 'listVersionID': "20221214-0" }).txt(element.buyervalue).up()
+                            if (element.codelist == 'FinancialRatioType') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "financial-ratio-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(element.buyervalue).up()
+                            if (element.codelist == 'EoRoleType') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt(element.buyervalue).up()
                             break;
 
                         default:
@@ -726,6 +742,8 @@ function render_response(obj, part = espd_response, crt_criterion = 'NONE') {
 
             switch (element.type) {
                 case 'CRITERION':
+                    //check for Selection Criteria and LOT-0000
+                    if(element.tag.endsWith('-SC') && element.lots.indexOf('LOT-0000') == -1) break;
                     //create the inner elements
                     if (Object.hasOwn(element, 'components')) render_response(element.components, tmp, element.name)
                     break;
@@ -762,6 +780,21 @@ function render_response(obj, part = espd_response, crt_criterion = 'NONE') {
 
                     break;
                 case "REQUIREMENT_GROUP":
+                    //the structure is CRITERION -> REQUIREMENT_GROUP -> REQUIREMENT
+                    //check if one of the REQUIREMENTS has LOT-0000
+                    let lot_OK = false
+                    if(Object.hasOwn(element, 'components')){
+                        for (const cmp in element['components']) {
+                            if (Object.hasOwn(element['components'], cmp) && !lot_OK) {
+                                const el = element['components'][cmp];
+                                if(el.type == 'REQUIREMENT' && el.propertydatatype == 'LOT_IDENTIFIER' && el.buyervalue == 'LOT-0000'){
+                                    lot_OK = true
+                                }
+                            }
+                        }
+                    }
+                    if(lot_OK) render_response(element.components, tmp, crt_criterion)
+                    break;
                 case "REQUIREMENT_SUBGROUP":
                 case 'SUBCRITERION':
                 case 'LEGISLATION': case 'ADDITIONAL_DESCRIPTION_LINE':
@@ -874,7 +907,7 @@ function render_response(obj, part = espd_response, crt_criterion = 'NONE') {
                                 .up()
                             break;
                         case 'CODE':
-                            if (element.codelist == 'occupation') {
+                            if (element.codelist == 'Occupation') {
                                 tmp.ele('@cac', 'ResponseValue')
                                     .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "XXXESPD-SERVICEXXX", 'schemeVersionID': schemeVersionID }).txt(element.responsecontent3).up()
                                     .ele('@cbc', 'ResponseCode', { 'listAgencyID': "EMPL", 'listVersionID': "20221214-0", 'listID': "http://publications.europa.eu/resource/authority/occupation" }).txt('dummy-value').up()
@@ -896,6 +929,11 @@ function render_response(obj, part = espd_response, crt_criterion = 'NONE') {
                             break;
                     }
 
+                    //add the reference to the LOT only for SC
+                    if(element.responsepath.indexOf('_SC_') != -1)
+                    tmp = tmp.ele('@cac', 'ProcurementProjectLotReference')
+                            .ele('@cbc', 'ID', {'schemeID': "Criterion", 'schemeAgencyID':"OP", 'schemeVersionID':schemeVersionID}).txt('LOT-0000').up()
+                            .up() 
                     tmp.up()
                     //part.up()
                     break;
