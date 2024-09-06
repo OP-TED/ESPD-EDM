@@ -10,27 +10,10 @@ var chalk = require('chalk')
 var fs = require("fs")
 const { create } = require('xmlbuilder2')
 const { program } = require("@caporal/core")
-const path = require("path")
 const uuid_v4 = require('crypto')
 
-//Tags mapped to elements from the Excel 
-const tag_map = {
-    'CRITERION': 'C',
-    'ADDITIONAL_DESCRIPTION_LINE': 'ADL',
-    'SUBCRITERION': 'SBC',
-    'LEGISLATION': 'L',
-    'REQUIREMENT_GROUP': 'RG',
-    'QUESTION_GROUP': 'QG',
-    'REQUIREMENT_SUBGROUP': 'RSG',
-    'QUESTION_SUBGROUP': 'QSG',
-    'CAPTION': 'CA',
-    'REQUIREMENT': 'RQ',
-    'QUESTION': 'Q',
-    'RESPONSE': 'R',
-    'RESPONSE VALUE': 'RV',
-    'EVIDENCE SUPPLIED': 'RES',
-    'APPLICABLE PERIOD': 'RAP',
-}
+const {cols, tag_map} = require("./modules/espd_constants.cjs")
+
 var counter = {
     'C': 0,
     'ADL': 0,
@@ -48,108 +31,17 @@ var counter = {
     'RES': 0,
     'RAP': 0,
 }
-const namespace_map = {
-    'EG-': '_EG_',
-    'SC-': '_SC_',
-    'SC_': '_SC_',
-    'OTHER-': '_OT_',
-    'OTHER.': '_OT_'
-}
 const schemeVersionID = '4.0.0'
 
-//Tags mapped to elements from the Excel 
-/**
- * Name	
- * Description	
- * Buyer Value (example)	
- * Seller Value (example)	
- * Cardinality	
- * PropertyDataType	
- * XML PATH Like VARIANT ID Request	
- * ElementUUID	
- * XML PATH LIKE VARIANT ID Response Structure	
- * XML PATH LIKE VARIANT ID Response Contents (1)	
- * XML PATH LIKE VARIANT ID Response Contents (2)	
- * XML PATH LIKE VARIANT ID Response Contents (3)	
- * Element Code	
- * Code List	
- * Comment
- */
-const cols = {
-    name: {
-        label: "Name",
-        column: 0
-    },
-    description: {
-        label: "Description",
-        column: 0
-    },
-    buyervalue: {
-        label: "Buyer Value (example)",
-        column: 0
-    },
-    sellervalue: {
-        label: "Seller Value (example)",
-        column: 0
-    },
-    cardinality: {
-        label: "Cardinality",
-        column: 0
-    },
-    propertydatatype: {
-        label: "PropertyDataType",
-        column: 0
-    },
-    elementUUID: {
-        label: 'ElementUUID',
-        column: 0
-    },
-    elementcode: {
-        label: "Element Code",
-        column: 0
-    },
-    codelist: {
-        label: "Code List",
-        column: 0
-    },
-    comment: {
-        label: "Comment",
-        column: 0
-    },
-    requestpath: {
-        label: "XML PATH Like VARIANT ID Request",
-        column: 0
-    },
-    responsepath: {
-        label: "XML PATH LIKE VARIANT ID Response Structure",
-        column: 0
-    },
-    responsecontent1: {
-        label: "XML PATH LIKE VARIANT ID Response Contents (1)",
-        column: 0
-    },
-    responsecontent2: {
-        label: "XML PATH LIKE VARIANT ID Response Contents (2)",
-        column: 0
-    },
-    responsecontent3: {
-        label: "XML PATH LIKE VARIANT ID Response Contents (3)",
-        column: 0
-    }
-};
-
-const in_excel_we_trust = [
+var in_excel_we_trust = [
     //"ESPD-criterion-request-multiple-C25-C32.xlsx",
     "ESPD-criterion-response-multiple-C1-C25-C32.xlsx"
 ]
 
-//Check the complete list of invalid CRITERION
-const invalid_criterion = [33, 62, 64]
-
 const log = console.log;
 XLSX.set_fs(fs);
 
-var espd_json = {}, evidence_ids = []
+var espd_json = {}, evidence_ids = [], lot_ids = []
 
 var espd_request = create({
     version: '1.0',
@@ -164,11 +56,6 @@ var espd_request = create({
     .att('@xmlns', 'xmlns:cac', 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')
     .att('@xmlns', 'xmlns:cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')
     .att('@xmlns', 'xmlns:espd', `urn:com:grow:espd:${schemeVersionID}`)
-    .att('@xmlns', 'xmlns:text', 'urn:oasis:names:tc:opendocument:xmlns:text:1.0')
-    .att('@xmlns', 'xmlns:util', 'java:java.util.UUID')
-    .att('@xmlns', 'xmlns:style', 'urn:oasis:names:tc:opendocument:xmlns:style:1.0')
-    .att('@xmlns', 'xmlns:table', 'urn:oasis:names:tc:opendocument:xmlns:table:1.0')
-    .att('@xmlns', 'xmlns:office', 'urn:oasis:names:tc:opendocument:xmlns:office:1.0')
     ,
     espd_response = create({
         version: '1.0',
@@ -186,16 +73,21 @@ var espd_request = create({
 
 
 program
-    .version("1.0.0")
+    .version("1.6.8")
     .name("excel2espd")
     .description("Tool to generate ESDP XML file from Excel Criterion files")
 
     .command("espd_XML", "Generate ESPD Request and Response XML files")
+    .argument("<excelfile>", "Excel Criterion file to process")
     .action(({ logger, args, options }) => {
-        log(chalk.blue.bold('Excel to XML transformation'), chalk.red('for ESPD realease v4.0.0.'));
-        log('\n\n')
+        //log(JSON.stringify(args))
 
-        createRootElements()
+        if(args.excelfile.length > 0){
+            in_excel_we_trust = [ args.excelfile ]
+            log(chalk.bold(`Processing ${args.excelfile}`))
+        }
+        //log(chalk.blue.bold('Excel to XML transformation'), chalk.red('for ESPD realease v4.0.0.'));
+        log('\n\n')
 
         in_excel_we_trust.forEach(xcl => {
             var wbk = XLSX.readFile(xcl)
@@ -214,9 +106,11 @@ program
             }
         })
 
-        log(JSON.stringify(espd_json, null, ' '))
+        //log(JSON.stringify(espd_json, null, ' '))
 
         //render the JSON
+        createRootElements()
+
         render_request(espd_json)
         render_request(espd_json, espd_response)
         render_response(espd_json, espd_response)
@@ -224,7 +118,6 @@ program
         createEvidence()
         //log(espd_request.end({ prettyPrint: true }))
         writeXMLfiles()
-
 
         //espd_response.doc()
         //log(espd_response.end({ prettyPrint: true }))
@@ -348,7 +241,6 @@ function espd_JSON(sph, sheetname) {
                         }
                         counter[tag_map[tag]]++
 
-
                         tmp_elm = {}
                         tmp_elm.type = tag
                         for (const key in cols) {
@@ -359,6 +251,9 @@ function espd_JSON(sph, sheetname) {
                         }
                         if (!Object.hasOwn(tmp_elm, 'cardinality')) tmp_elm['cardinality'] = 1
                         parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
+                        if(tag == 'REQUIREMENT' && tmp_elm.propertydatatype == 'LOT_IDENTIFIER'){
+                            if(lot_ids.indexOf(tmp_elm.buyervalue) == -1)lot_ids.push(tmp_elm.buyervalue)
+                        }
                         break;
 
 
@@ -582,6 +477,13 @@ function createProcurementProject() {
     espd_request.ele('@cac', 'ProcurementProject')
         .ele('@cbc', 'Description').txt('Description of Project.').up()
         .up()
+
+    lot_ids.forEach((lotid) =>{
+        log(lotid)
+        espd_request.ele('@cac', 'ProcurementProjectLot')
+                    .ele('@cbc', 'ID', {'schemeID': "Criterion", 'schemeAgencyID':"OP", 'schemeVersionID':schemeVersionID}).txt(lotid).up()
+                    .up()    
+    })
 
     //Procurement Projet and Prourement Project Lot
     espd_response.ele('@cac', 'ProcurementProject')

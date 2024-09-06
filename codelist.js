@@ -16,8 +16,6 @@ const { create } = require('xmlbuilder2')
 const axios = require("axios")
 
 const { program } = require("@caporal/core");
-const path = require("path");
-const { type } = require("os");
 
 const in_excel_we_trust = [
     "ESPD-CodeLists.xlsx",
@@ -28,8 +26,8 @@ const log = console.log,
       path_to_folder = '.\\cl\\gc\\';
 
 XLSX.set_fs(fs);
-
-let name_version = '4.0.0',  json_external = [], proxy_user = '', proxy_password = '';
+var name_version = '4.0.0', 
+    proxy_user = '', proxy_password = '', proxy_server = 'proxy-t2-lu.welcome.ec.europa.eu', proxy_port = '8012';
 
 program
     .version("1.0.0")
@@ -276,8 +274,8 @@ function process_code_lists(sph) {
             axios.get(json_structure.LocationUri, {
                 proxy: {
                     protocol: "http",           
-                    host: "proxy-t2-lu.welcome.ec.europa.eu",
-                    port: "8012",
+                    host: proxy_server,
+                    port: proxy_port,
                     auth: { username: proxy_user, password: proxy_password }
                 }
             })

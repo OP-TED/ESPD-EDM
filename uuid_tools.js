@@ -41,7 +41,7 @@ const in_excel_we_trust = [
 
 const log = console.log, ESDP_version = 'ESDP release v4.0.0';
 XLSX.set_fs(fs);
-var element_children = {}, UUID_list = {};
+var UUID_list = {};
 
 program
     .version("1.3.0")
