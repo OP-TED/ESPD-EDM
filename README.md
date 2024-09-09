@@ -8,7 +8,7 @@ The ESPD-EDM is the technical representation of the legal [European Single Procu
 - **ESPD Request** created by the Contracting Authority
 - **ESPD Response** created by the Economic Operator as a direct response to the ESPD Request.
 
-Your feedback is higly appreciated via [GitHub issues](https://github.com/OP-TED/ESPD-EDM/issues/new/choose) of this repository. You will need to be a registered GitHub user to create an issue or to contribute actively to an existing one.
+Any feedback will be higly appreciated and can be submitted via the [GitHub issues](https://github.com/OP-TED/ESPD-EDM/issues/new/choose) tab of this repository. You will need to be a registered GitHub user to create an issue, or to contribute actively to an existing one.
 
 <details>
 
