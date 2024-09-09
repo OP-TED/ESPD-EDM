@@ -96,16 +96,18 @@ program
     })
 
     .command("each_structure", "Print the element and child structure")
+    .argument('<excelfile>', 'Excel Criterion file to be processed')
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
-        log(chalk.blue.bold('UUID checking'), chalk.red('for ESPD realease v4.0.0.'));
+        log(chalk.bold(`Processing ${args.excelfile}`), '\n\n')
+
+        in_excel_we_trust = [ args.excelfile ]
         log('\n\n')
 
         element_children = {};
 
         in_excel_we_trust.forEach(xcl => {
-            var wbk = XLSX.readFile(xcl),
-                what = xcl.indexOf('-request-') != -1
+            var wbk = XLSX.readFile(xcl)
             log(chalk.bold(xcl))
 
             var sheet_name_list = wbk.SheetNames;
@@ -121,7 +123,7 @@ program
             //print the structure
             for (const elm in element_children) {
                 log(chalk.greenBright(elm))
-                for (const child of element_children[elm]) {
+                for (const child of element_children[elm].sort()) {
                     log('\t', chalk.blue(child))
                 }
             }
@@ -181,8 +183,7 @@ program
         log('\n\n')
 
         in_excel_we_trust.forEach(xcl => {
-            var wbk = XLSX.readFile(xcl),
-                what = xcl.indexOf('-request-') != -1
+            var wbk = XLSX.readFile(xcl)
             log(chalk.bold(xcl))
 
             var sheet_name_list = wbk.SheetNames;
@@ -630,7 +631,7 @@ function print_structures(sph) {
 
         do {
             //no entry
-            if (typeof element[col_idx] === 'undefined') {
+            if (!Object.hasOwn(element, col_idx)) {
                 col_idx++
                 continue
             }
@@ -661,8 +662,12 @@ function print_structures(sph) {
 
 }
 
-//detect elemets structure only the 1st level
-//root -> child elements
+/**
+ * Detect elemets structure only the 1st level
+ * root -> child elements
+ * 
+ * @param {*} sph - spreadsheet to be processed 
+ */
 function detect_structure(sph) {
     var xlData = XLSX.utils.sheet_to_json(sph)
     var parent = ''

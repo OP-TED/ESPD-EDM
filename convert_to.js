@@ -15,8 +15,8 @@ var chalk = require('chalk')
 var fs = require("fs")
 const { program } = require("@caporal/core")
 
-var {JSON2file} = require("./modules/espd_utils.cjs");
-const {cols, tag_map} = require("./modules/espd_constants.cjs")
+var { JSON2file } = require("./modules/espd_utils.cjs");
+const { cols, tag_map } = require("./modules/espd_constants.cjs")
 
 const in_excel_we_trust = [
     //"ESPD-criterion-request-multiple-C25-C32.xlsx",
@@ -42,7 +42,7 @@ var counter = {
     'RES': 1,
     'RAP': 1,
 }
- 
+
 const log = console.log, ESDP_version = 'ESDP release v4.0.0'
 XLSX.set_fs(fs)
 var vue_stream = null, espd_json = {}, name_version = '';
@@ -77,18 +77,28 @@ program
             name_version = xcl.substring(xcl.indexOf('_v') + 1, xcl.length - ".xlsx".length)
 
             JSON2file(`.\\espd_edm_${name_version}.json`, espd_json)
-            fs.writeFileSync(`.\\espd_${name_version}.js`, `/**\n * VueJS components for ESDP-EDM \n * generated on ${(new Date(Date.now())).toISOString()} \n */\n\n`,
-                (err) => {
-                    if (err) {
-                        log(err)
-                    } else {
-                        log('Vuefication 100%')
-                    }
-                })
+
+
+            if (fs.existsSync(`.\\espd_${name_version}.js`)) {
+                try {
+                    fs.unlinkSync(`.\\espd_${name_version}.js`)
+                } catch (error) {
+                    log(error)
+                }
+            }
+            fs.writeFileSync(`.\\espd_${name_version}.js`, `/**\n * VueJS components for ESDP-EDM \n * generated on ${(new Date(Date.now())).toISOString()} \n */\n\n`)
 
             vue_stream = fs.createWriteStream(`.\\espd_${name_version}.js`, { flags: 'a' });
             JSON2Vue(espd_json)
             vue_stream.end()
+
+            if (fs.existsSync(`.\\espd_response_${name_version}.js`)) {
+                try {
+                    fs.unlinkSync(`.\\espd_response_${name_version}.js`)
+                } catch (error) {
+                    log(error)
+                }
+            }
 
             vue_stream = fs.createWriteStream(`.\\espd_response_${name_version}.js`, { flags: 'a' });
             J2V4ESPD(espd_json)
@@ -140,7 +150,7 @@ program
         })
     })
 
-    // launch the main loop
+// launch the main loop
 program.run()
 
 
@@ -215,7 +225,7 @@ function excel2bootstrapvue(sph, sheet_name) {
                     case 'SUBCRITERION': case 'REQUIREMENT_GROUP':
                     case 'QUESTION_GROUP': case 'QUESTION_SUBGROUP':
                     case 'REQUIREMENT_SUBGROUP':
-                        
+
                         if (!Object.hasOwn(c_obj, 'components')) c_obj.components = {}
                         parent = c_obj.components
                         if (element_map.length > 0) {
@@ -236,8 +246,8 @@ function excel2bootstrapvue(sph, sheet_name) {
                         }
                         if (!Object.hasOwn(tmp_elm, 'cardinality')) tmp_elm['cardinality'] = '1'
                         //skip multiple occurences, keep only the 1st occurence
-                        tmp_elm['cardinality'] = tmp_elm['cardinality'].replace('(1)','').trim()
-                        if (tmp_elm['cardinality'].indexOf('(')!=-1) break
+                        tmp_elm['cardinality'] = tmp_elm['cardinality'].replace('(1)', '').trim()
+                        if (tmp_elm['cardinality'].indexOf('(') != -1) break
 
                         tmp_elm.components = {}
                         parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
@@ -278,8 +288,8 @@ function excel2bootstrapvue(sph, sheet_name) {
                         }
                         if (!Object.hasOwn(tmp_elm, 'cardinality')) tmp_elm['cardinality'] = '1'
                         //skip multiple occurences, keep only the 1st occurence
-                        tmp_elm['cardinality'] = tmp_elm['cardinality'].replace('(1)','').trim()
-                        if (tmp_elm['cardinality'].indexOf('(')!=-1) break
+                        tmp_elm['cardinality'] = tmp_elm['cardinality'].replace('(1)', '').trim()
+                        if (tmp_elm['cardinality'].indexOf('(') != -1) break
 
                         parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
                         break;
@@ -366,7 +376,7 @@ function JSON2Vue(fragment,
                     </div>`
                     //Produce Vue component
                     let data_part = {}
-                    data_part.options = options
+                    //data_part.options = options
                     for (const key in result) {
                         if (Object.hasOwn(result, key)) {
                             if (key != 'template' && key != 'sel_count')
@@ -431,7 +441,9 @@ function JSON2Vue(fragment,
                                             </b-form-radio-group>
                                         </b-form-group>
                                         -->
-                                        ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" inline="true"  switch><b>({{ selected${local_indicator}?'Yes':'No' }})</b></b-form-checkbox>`
+                                        <b-form-group> 
+                                        ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" inline="true"  switch><b>({{ selected${local_indicator}?'Yes':'No' }})</b></b-form-checkbox>
+                                        </b-form-group>`
                                         result[`selected${local_indicator}`] = true
                                     } else {
                                         result.template += `
@@ -446,7 +458,7 @@ function JSON2Vue(fragment,
                                     if (['ONTRUE', 'ONFALSE'].indexOf(tmp_cmp.elementcode) != -1) {
                                         let choice = tmp_cmp.elementcode == 'ONTRUE'
                                         result.template += `
-                                    <div v-if="${choice?'':'!'}selected${local_indicator}">
+                                    <div v-if="${choice ? '' : '!'}selected${local_indicator}">
                                     <b-card class="my-1"> <p>Cardinality [<em>${tmp_cmp.cardinality ?? '1'}</em>]</p>`
                                         //if (Object.hasOwn(tmp_cmp, 'components')) result = JSON2Vue(tmp_cmp.components, result)
                                         result = JSON2Vue({ e: tmp_cmp }, result)
@@ -493,7 +505,9 @@ function JSON2Vue(fragment,
                                                 </b-form-radio-group>
                                             </b-form-group>
                                             -->
-                                        ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" name="radio-options${local_indicator_qsg}" inline="true"  switch><b>({{ selected${local_indicator_qsg}?'Yes':'No' }})</b></b-form-checkbox>`
+                                            <b-form-group>
+                                        ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" name="radio-options${local_indicator_qsg}" inline="true"  switch><b>({{ selected${local_indicator_qsg}?'Yes':'No' }})</b></b-form-checkbox>
+                                        </b-form-group>`
                                         result[`selected${local_indicator_qsg}`] = true
                                     } else {
                                         result.template += `
@@ -508,7 +522,7 @@ function JSON2Vue(fragment,
                                     if (['ONTRUE', 'ONFALSE'].indexOf(tmp_cmp.elementcode) != -1) {
                                         let choice = tmp_cmp.elementcode == 'ONTRUE'
                                         result.template += `
-                                        <div v-if="${choice?'':'!'}selected${local_indicator_qsg}">
+                                        <div v-if="${choice ? '' : '!'}selected${local_indicator_qsg}">
                                         <b-card class="my-1"> <p>Cardinality [<em>${tmp_cmp.cardinality ?? '1'}</em>]</p>`
                                         //if (Object.hasOwn(tmp_cmp, 'components')) result = JSON2Vue(tmp_cmp.components, result)
                                         result = JSON2Vue({ e: tmp_cmp }, result)
@@ -621,8 +635,10 @@ function J2V4ESPD(fragment,
                             if (key != 'template' && key != 'sel_count')
                                 if (key.startsWith('selected')) {
                                     if (Number.parseInt(key.substring(8)) > last_sel_count) data_part[key] = result[key]
-                                } else {
+                                } else if (key.startsWith(fragment[el].responsepath)) {
                                     data_part[key] = result[key]
+                                } else if(key.startsWith('opt_') || key.startsWith('val_')){
+                                    data_part[key] = result [key]
                                 }
                         }
                     }
@@ -655,16 +671,106 @@ function J2V4ESPD(fragment,
 
                     break;
 
-                case 'SUBCRITERION': case 'REQUIREMENT_GROUP': case 'REQUIREMENT_SUBGROUP':
+                case 'SUBCRITERION':
                     result.template += `<div>`
-                    //TODO - handle cardinality - if ..n then allow to add multiple sections
-
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
                     result.template += `</div>`
+                    break;
+                case 'REQUIREMENT_GROUP':
+                    result[fragment[el].requestpath] = []
+                    result.template += `<div>`
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<b-card footer-tag="footer">`
+                    }
+
+                    if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<template #footer>
+                    <b-button variant="success"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    </template>
+                    </b-card>`
+                    }
+                    result.template += `</div>`
+
+                    break;
+
+                case 'REQUIREMENT_SUBGROUP':
+                    result[fragment[el].requestpath] = []
+                    result.template += `<div>`
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<b-card footer-tag="footer">`
+                    }
+
+                    let is_radio_group = false, select_variable = "", option_variable = ""
+                    if (Object.hasOwn(fragment[el], 'components')) {
+                        for (const e in fragment[el].components) {
+                            if (Object.hasOwn(fragment[el].components, e)) {
+                                const tmp_cmp = fragment[el].components[e]
+
+                                //log(JSON.stringify(tmp_cmp, null, 2))
+
+                                if (tmp_cmp.type == 'REQUIREMENT') {
+                                    if (tmp_cmp.buyervalue == 'RADIO_BUTTON_TRUE') {
+                                        //The list of values is in elementcode field
+                                        //This is a list of exclusive values for a group or radio buttons
+                                        result.sel_count++
+                                        let local_indicator = (result.sel_count + '').padStart(2, '0')
+                                        is_radio_group = true
+                                        select_variable = `val_${tmp_cmp.responsepath.replaceAll("-","_").substring(0,tmp_cmp.responsepath.indexOf("/"))}`
+                                        option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0,tmp_cmp.responsepath.indexOf("/"))}`
+                                        let tc = 0
+                                        result[option_variable] = tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })
+                                        result[select_variable] = result[option_variable][0].value
+                                        result.template += `<b-form-group label="${tmp_cmp.description}" v-slot="{ ariaDescribedby }">
+                                    <b-form-radio-group
+                                        id="radio-group-${local_indicator}"
+                                        v-model="${select_variable}"
+                                        :options="${option_variable}"
+                                        :aria-describedby="ariaDescribedby"
+                                        name="radio-options"
+                                    ></b-form-radio-group>
+                                    </b-form-group>
+                                    `
+                                    } else {
+                                        //render normally this element
+                                        result = J2V4ESPD({ e: tmp_cmp }, result)
+                                    }
+                                }else if (tmp_cmp.type == 'REQUIREMENT_SUBGROUP') {
+                                    if (is_radio_group) {
+                                        //The section is shown depending on the value in elementcode field
+                                        result.template += `<template v-if="${select_variable}===${result[option_variable].find(ae => ae.text==tmp_cmp.elementcode).value}">`
+                                        result = J2V4ESPD({ e: tmp_cmp }, result)
+                                        result.template += `</template>`
+                                    } else {
+                                        //render normally this element
+                                        result = J2V4ESPD({ e: tmp_cmp }, result)
+                                    }
+                                }else {
+                                    //render normally this element
+                                    result = J2V4ESPD({ e: tmp_cmp }, result)
+                                }
+
+                            }
+                        }
+                        //result = J2V4ESPD(fragment[el].components, result)
+                    }
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<template #footer>
+                        <b-button variant="success"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                        </template>
+                        </b-card>`
+                    }
+                    result.template += `</div>`
+
                     break;
 
                 case 'QUESTION_GROUP':
                     let local_indicator = ''
+                    result[fragment[el].responsepath] = []
                     result.template += `
                         <div>`
                     if (Object.hasOwn(fragment[el], 'components')) {
@@ -674,6 +780,7 @@ function J2V4ESPD(fragment,
                                 if (tmp_cmp.type == 'QUESTION') {
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
+                                        result[tmp_cmp.responsepath] = false
                                         result.sel_count++
                                         local_indicator = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
@@ -683,6 +790,7 @@ function J2V4ESPD(fragment,
                                             `
                                         result[`selected${local_indicator}`] = false
                                     } else {
+                                        result[tmp_cmp.responsepath] = ''
                                         result.template += `
                                             <b-form-group label="${tmp_cmp.description}" 
                                             label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
@@ -725,6 +833,8 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION_SUBGROUP':
                     let local_indicator_qsg = ''
+                    result[fragment[el].responsepath] = []
+
                     if (Object.hasOwn(fragment[el], 'components')) {
                         for (const e in fragment[el].components) {
                             if (Object.hasOwn(fragment[el].components, e)) {
@@ -732,6 +842,7 @@ function J2V4ESPD(fragment,
                                 if (tmp_cmp.type == 'QUESTION') {
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
+                                        result[tmp_cmp.responsepath] = false
                                         result.sel_count++
                                         local_indicator_qsg = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
@@ -741,6 +852,7 @@ function J2V4ESPD(fragment,
                                             `
                                         result[`selected${local_indicator_qsg}`] = false
                                     } else {
+                                        result[tmp_cmp.responsepath] = ''
                                         result.template += `
                                             <b-form-group label="${tmp_cmp.description}" 
                                             label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
@@ -781,6 +893,7 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION':
                     if (fragment[el].propertydatatype != 'INDICATOR') {
+                        result[fragment[el].responsepath] = true
                         result.template += `
                         <b-form-group label="${fragment[el].description}" 
                         label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
@@ -788,6 +901,7 @@ function J2V4ESPD(fragment,
                         </b-form-group>`
                     } else {
                         //This should be rendered inside the QG/QSG
+                        result[fragment[el].responsepath] = ''
                         result.sel_count++
                         let local_indicator = `${result.sel_count}`.padStart(2, '0')
                         result.template += `
@@ -807,6 +921,7 @@ function J2V4ESPD(fragment,
                     break;
 
                 case 'REQUIREMENT':
+                    result[fragment[el].responsepath] = ''
                     result.template += `
                     <b-form-group label="${fragment[el].description}"
                     label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
@@ -824,7 +939,7 @@ function J2V4ESPD(fragment,
     }
 
     return result
-} 
+}
 
 /**
  * Transform the Excel structure to PlantUML Salt

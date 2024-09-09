@@ -1,15 +1,20 @@
 var fs = require("fs")
 
-const JSON2file = function(where, what) {
+const JSON2file = function (where, what) {
     //log(where)
     //log(JSON.stringify(what, null, 4))
-    fs.writeFile(where, JSON.stringify(what, null, 4), (err) => {
-        if (err) {
-            console.log('Error writing to file:', err);
-        } else {
-            console.log(`JSON data written to ${where}`);
+    if (fs.existsSync(where)) {
+        try {
+            fs.unlinkSync(where)
+        } catch (error) {
+            console.log(error)
         }
-    });
+    }
+
+    fs.writeFileSync(where, JSON.stringify(what, null, 4))
+    console.log(`File ${where} successfuly saved to disk!`)
+
+
 };
 
 
