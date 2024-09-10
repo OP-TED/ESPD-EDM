@@ -65,10 +65,10 @@ program
             var sheet_name_list = wbk.SheetNames;
 
             for (const i in sheet_name_list) {
-                log(''.padStart(80, '_'))
-                log(chalk.bold(sheet_name_list[i]))
+                //log(''.padStart(80, '_'))
+                //log(chalk.bold(sheet_name_list[i]))
                 excel2bootstrapvue(wbk.Sheets[sheet_name_list[i]], sheet_name_list[i])
-                log('\n\n')
+                //log('\n\n')
             }
 
             //espd_json contains all information from Excel in JSON format
@@ -91,6 +91,7 @@ program
             vue_stream = fs.createWriteStream(`.\\espd_${name_version}.js`, { flags: 'a' });
             JSON2Vue(espd_json)
             vue_stream.end()
+            log(`File .\\espd_${name_version}.js successfuly saved to disk!`)
 
             if (fs.existsSync(`.\\espd_response_${name_version}.js`)) {
                 try {
@@ -103,6 +104,7 @@ program
             vue_stream = fs.createWriteStream(`.\\espd_response_${name_version}.js`, { flags: 'a' });
             J2V4ESPD(espd_json)
             vue_stream.end()
+            log(`File .\\espd_response_${name_version}.js successfuly saved to disk!`)
         })
     })
 
@@ -353,11 +355,6 @@ function JSON2Vue(fragment,
         template: ''
     }) {
 
-    const options = [
-        { text: 'Yes', value: 'yes' },
-        { text: 'No', value: 'no' }
-    ]
-
     var last_sel_count = 0
 
     for (const el in fragment) {
@@ -366,6 +363,12 @@ function JSON2Vue(fragment,
                 case 'CRITERION':
                     last_sel_count = Math.min(last_sel_count, result.sel_count)
                     //log(last_sel_count)
+                    //Cleanup result fileds
+                    for (const key in result) {
+                        if (Object.hasOwn(result, key)) {
+                            if (key != "sel_count") delete result[key];
+                        }
+                    }
                     result.template =
                         `<div>
                         <b-card title="${fragment[el].tag} - ${fragment[el].name}">
@@ -376,13 +379,13 @@ function JSON2Vue(fragment,
                     </div>`
                     //Produce Vue component
                     let data_part = {}
-                    //data_part.options = options
+
                     for (const key in result) {
                         if (Object.hasOwn(result, key)) {
                             if (key != 'template' && key != 'sel_count')
                                 if (key.startsWith('selected')) {
                                     if (Number.parseInt(key.substring(8)) > last_sel_count) data_part[key] = result[key]
-                                } else {
+                                } else if(key.startsWith('opt_') || key.startsWith('val_')){
                                     data_part[key] = result[key]
                                 }
                         }
@@ -414,10 +417,65 @@ function JSON2Vue(fragment,
 
                     break;
 
-                case 'SUBCRITERION': case 'REQUIREMENT_GROUP': case 'REQUIREMENT_SUBGROUP':
+                case 'SUBCRITERION': case 'REQUIREMENT_GROUP':
                     result.template += `<b-card>`
                     if (Object.hasOwn(fragment[el], 'name') && Object.hasOwn(fragment[el], 'description')) result.template += `<p>${fragment[el].name} <em>${fragment[el].description}</em> [<em>${fragment[el].cardinality ?? '1'}</em>]</p>`
                     if (Object.hasOwn(fragment[el], 'components')) result = JSON2Vue(fragment[el].components, result)
+                    result.template += `</b-card>`
+                    break;
+
+                case 'REQUIREMENT_SUBGROUP':
+                    result.template += `<b-card>`
+                    if (Object.hasOwn(fragment[el], 'name') && Object.hasOwn(fragment[el], 'description')) result.template += `<p>${fragment[el].name} <em>${fragment[el].description}</em> [<em>${fragment[el].cardinality ?? '1'}</em>]</p>`
+                    
+                    //Deal with radio group
+                    let is_radio_group = false, select_variable = '', option_variable = ''
+                    if (Object.hasOwn(fragment[el], 'components')) {
+                        for (const e in fragment[el].components) {
+                            if (Object.hasOwn(fragment[el].components, e)) {
+                                let tmp_cmp = fragment[el].components[e]
+                                if (tmp_cmp.type == 'REQUIREMENT') {
+                                    if (tmp_cmp.buyervalue == 'RADIO_BUTTON_TRUE') {
+                                        result.sel_count++
+                                        let local_indicator = `${result.sel_count}`.padStart(2, '0')
+                                        is_radio_group = true
+                                        select_variable = `val_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
+                                        option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
+                                        let tc = 0
+                                        result[option_variable] = tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })
+                                        result[select_variable] = result[option_variable][0].value
+                                        result.template += `<b-form-group label="${tmp_cmp.description}" v-slot="{ ariaDescribedby }">
+                                                                <b-form-radio-group
+                                                                    id="radio-group-${local_indicator}"
+                                                                    v-model="${select_variable}"
+                                                                    :options="${option_variable}"
+                                                                    :aria-describedby="ariaDescribedby"
+                                                                    name="radio-options"
+                                                                ></b-form-radio-group>
+                                                            </b-form-group>
+                                                            `
+                                        
+                                    } else {
+                                        result = JSON2Vue({ e: tmp_cmp }, result)
+                                    }
+                                }else if(tmp_cmp.type == 'REQUIREMENT_SUBGROUP'){
+                                    if (is_radio_group){
+                                        result.template += `<template v-if="${select_variable}===${result[option_variable].find(ae => ae.text == tmp_cmp.elementcode).value}">`
+                                        result = JSON2Vue({ e: tmp_cmp }, result)
+                                        result.template += `</template>`
+                                    }else{
+                                        result = JSON2Vue({ e: tmp_cmp }, result)
+                                    }
+                                }else{
+                                    result = JSON2Vue({ e: tmp_cmp }, result)
+                                }
+                            }
+                        }
+                    }
+
+
+                    //if (Object.hasOwn(fragment[el], 'components')) result = JSON2Vue(fragment[el].components, result)
+
                     result.template += `</b-card>`
                     break;
 
@@ -435,12 +493,6 @@ function JSON2Vue(fragment,
                                         result.sel_count++
                                         local_indicator = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
-                                        <!--
-                                        <b-form-group label="${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]">
-                                            <b-form-radio-group id="radio-group-${local_indicator}" v-model="selected${local_indicator}" :options="options" name="radio-options${local_indicator}">
-                                            </b-form-radio-group>
-                                        </b-form-group>
-                                        -->
                                         <b-form-group> 
                                         ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" inline="true"  switch><b>({{ selected${local_indicator}?'Yes':'No' }})</b></b-form-checkbox>
                                         </b-form-group>`
@@ -499,12 +551,6 @@ function JSON2Vue(fragment,
                                         result.sel_count++
                                         local_indicator_qsg = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
-                                        <!--    
-                                        <b-form-group label="${tmp_cmp.type} - ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}]">
-                                                <b-form-radio-group id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" :options="options" name="radio-options${local_indicator_qsg}">
-                                                </b-form-radio-group>
-                                            </b-form-group>
-                                            -->
                                             <b-form-group>
                                         ${tmp_cmp.type} ${tmp_cmp.description} [${tmp_cmp.cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator_qsg}" v-model="selected${local_indicator_qsg}" name="radio-options${local_indicator_qsg}" inline="true"  switch><b>({{ selected${local_indicator_qsg}?'Yes':'No' }})</b></b-form-checkbox>
                                         </b-form-group>`
@@ -560,12 +606,6 @@ function JSON2Vue(fragment,
                         result.sel_count++
                         let local_indicator = `${result.sel_count}`.padStart(2, '0')
                         result.template += `
-                        <!--
-                        <b-form-group label="${fragment[el].type} - ${fragment[el].description} [${fragment[el].cardinality ?? '1'}]">
-                            <b-form-radio-group id="radio-group-${local_indicator}" v-model="selected${local_indicator}" :options="options" name="radio-options${local_indicator}">
-                            </b-form-radio-group>
-                        </b-form-group>
-                        -->
                         ${fragment[el].type}  ${fragment[el].description} [${fragment[el].cardinality ?? '1'}] <b-form-checkbox id="radio-group-${local_indicator}" v-model="selected${local_indicator}" name="radio-options${local_indicator}" inline="true" switch><b>({{ selected${local_indicator}?'Yes':'No' }})</b></b-form-checkbox>
                         `
                         result[`selected${local_indicator}`] = true
@@ -637,8 +677,8 @@ function J2V4ESPD(fragment,
                                     if (Number.parseInt(key.substring(8)) > last_sel_count) data_part[key] = result[key]
                                 } else if (key.startsWith(fragment[el].responsepath)) {
                                     data_part[key] = result[key]
-                                } else if(key.startsWith('opt_') || key.startsWith('val_')){
-                                    data_part[key] = result [key]
+                                } else if (key.startsWith('opt_') || key.startsWith('val_')) {
+                                    data_part[key] = result[key]
                                 }
                         }
                     }
@@ -719,8 +759,8 @@ function J2V4ESPD(fragment,
                                         result.sel_count++
                                         let local_indicator = (result.sel_count + '').padStart(2, '0')
                                         is_radio_group = true
-                                        select_variable = `val_${tmp_cmp.responsepath.replaceAll("-","_").substring(0,tmp_cmp.responsepath.indexOf("/"))}`
-                                        option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0,tmp_cmp.responsepath.indexOf("/"))}`
+                                        select_variable = `val_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
+                                        option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
                                         let tc = 0
                                         result[option_variable] = tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })
                                         result[select_variable] = result[option_variable][0].value
@@ -738,17 +778,17 @@ function J2V4ESPD(fragment,
                                         //render normally this element
                                         result = J2V4ESPD({ e: tmp_cmp }, result)
                                     }
-                                }else if (tmp_cmp.type == 'REQUIREMENT_SUBGROUP') {
+                                } else if (tmp_cmp.type == 'REQUIREMENT_SUBGROUP') {
                                     if (is_radio_group) {
                                         //The section is shown depending on the value in elementcode field
-                                        result.template += `<template v-if="${select_variable}===${result[option_variable].find(ae => ae.text==tmp_cmp.elementcode).value}">`
+                                        result.template += `<template v-if="${select_variable}===${result[option_variable].find(ae => ae.text == tmp_cmp.elementcode).value}">`
                                         result = J2V4ESPD({ e: tmp_cmp }, result)
                                         result.template += `</template>`
                                     } else {
                                         //render normally this element
                                         result = J2V4ESPD({ e: tmp_cmp }, result)
                                     }
-                                }else {
+                                } else {
                                     //render normally this element
                                     result = J2V4ESPD({ e: tmp_cmp }, result)
                                 }
