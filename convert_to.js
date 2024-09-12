@@ -5,10 +5,9 @@
  * various formats: 
  *   - BoostarpVueJs
  *   - Salt wireframes for PlantUML 
- *   - Salt tree tables for PlantUML
+ *   - Salt tree table for PlantUML
  * 
  */
-
 
 var XLSX = require("xlsx")
 var chalk = require('chalk')
@@ -18,11 +17,10 @@ const { program } = require("@caporal/core")
 var { JSON2file } = require("./modules/espd_utils.cjs");
 const { cols, tag_map } = require("./modules/espd_constants.cjs")
 
-const in_excel_we_trust = [
+var in_excel_we_trust = [
     //"ESPD-criterion-request-multiple-C25-C32.xlsx",
     //"./criterion/ESPD-criterion-res_v4.0.0.xlsx",
     "./criterion/ESPD-criterion_v4.0.0.xlsx"
-
 ]
 
 var counter = {
@@ -44,8 +42,9 @@ var counter = {
 }
 
 const log = console.log, ESDP_version = 'ESDP release v4.0.0'
-XLSX.set_fs(fs)
 var vue_stream = null, espd_json = {}, name_version = '';
+
+XLSX.set_fs(fs)
 
 program
     .version("1.6.0")
@@ -53,10 +52,12 @@ program
     .description("Tool to convert Criterion Excel file to other fromats")
 
     .command("excel2vue", "Generate BootstrapVue components for each criteria")
+    .argument('<excelfile>', 'Excel Criterion file to be processed')
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
-        log(chalk.blue.bold('Vuefy Excel'), chalk.red(ESDP_version));
-        log('\n\n')
+        log(chalk.bold(`Processing ${args.excelfile}`), '\n\n')
+
+        in_excel_we_trust = [args.excelfile]
 
         in_excel_we_trust.forEach(xcl => {
             var wbk = XLSX.readFile(xcl)
@@ -385,7 +386,7 @@ function JSON2Vue(fragment,
                             if (key != 'template' && key != 'sel_count')
                                 if (key.startsWith('selected')) {
                                     if (Number.parseInt(key.substring(8)) > last_sel_count) data_part[key] = result[key]
-                                } else if(key.startsWith('opt_') || key.startsWith('val_')){
+                                } else if (key.startsWith('opt_') || key.startsWith('val_')) {
                                     data_part[key] = result[key]
                                 }
                         }
@@ -427,7 +428,7 @@ function JSON2Vue(fragment,
                 case 'REQUIREMENT_SUBGROUP':
                     result.template += `<b-card>`
                     if (Object.hasOwn(fragment[el], 'name') && Object.hasOwn(fragment[el], 'description')) result.template += `<p>${fragment[el].name} <em>${fragment[el].description}</em> [<em>${fragment[el].cardinality ?? '1'}</em>]</p>`
-                    
+
                     //Deal with radio group
                     let is_radio_group = false, select_variable = '', option_variable = ''
                     if (Object.hasOwn(fragment[el], 'components')) {
@@ -454,19 +455,19 @@ function JSON2Vue(fragment,
                                                                 ></b-form-radio-group>
                                                             </b-form-group>
                                                             `
-                                        
+
                                     } else {
                                         result = JSON2Vue({ e: tmp_cmp }, result)
                                     }
-                                }else if(tmp_cmp.type == 'REQUIREMENT_SUBGROUP'){
-                                    if (is_radio_group){
+                                } else if (tmp_cmp.type == 'REQUIREMENT_SUBGROUP') {
+                                    if (is_radio_group) {
                                         result.template += `<template v-if="${select_variable}===${result[option_variable].find(ae => ae.text == tmp_cmp.elementcode).value}">`
                                         result = JSON2Vue({ e: tmp_cmp }, result)
                                         result.template += `</template>`
-                                    }else{
+                                    } else {
                                         result = JSON2Vue({ e: tmp_cmp }, result)
                                     }
-                                }else{
+                                } else {
                                     result = JSON2Vue({ e: tmp_cmp }, result)
                                 }
                             }
@@ -659,42 +660,33 @@ function J2V4ESPD(fragment,
             switch (fragment[el].type) {
                 case 'CRITERION':
                     last_sel_count = Math.min(last_sel_count, result.sel_count)
+                    result.data_part = ''
                     //log(last_sel_count)
-                    result.template =
-                        `<div>
-                        <strong>${fragment[el].name}</strong>
-                        <p>${fragment[el].description}</p>
+                    if (fragment[el].tag.endsWith('- SC')) {
+                        result.data_part += `"cb_${el}": window.espd_model['${el}'].selected, \n`
+                        result.template =
+                            `<div>
+                        <b-form-checkbox id="checkbox-${el}" v-model="cb_${el}" :disabled="window.espd_doc.role === 'eo'" name="checkbox-${el}" value="OK" unchecked-value="KO">
+                            <strong>${fragment[el].name}</strong>
+                            <p>${fragment[el].description}</p>
+                        </b-form-checkbox>
+                        <template v-if="cb_${el} ==='OK'">
                         `
+                    } else {
+                        result.template =
+                            `<div>
+                            <strong>${fragment[el].name}</strong>
+                            <p>${fragment[el].description}</p>
+                            `
+                    }
+
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
+
+                    if (fragment[el].tag.endsWith('- SC')) result.template += `</template>`
+
                     result.template += `
                     </div>`
                     //Produce Vue component
-                    let data_part = {}
-                    for (const key in result) {
-                        if (Object.hasOwn(result, key)) {
-                            if (key != 'template' && key != 'sel_count')
-                                if (key.startsWith('selected')) {
-                                    if (Number.parseInt(key.substring(8)) > last_sel_count) data_part[key] = result[key]
-                                } else if (key.startsWith(fragment[el].responsepath)) {
-                                    data_part[key] = result[key]
-                                } else if (key.startsWith('opt_') || key.startsWith('val_')) {
-                                    data_part[key] = result[key]
-                                }
-                        }
-                    }
-
-                    //log('\n\n/**')
-                    //log(` * Component - ${fragment[el].tag} - ${fragment[el].name}`)
-                    //log(' */')
-                    //log(`Vue.component("${el}",
-                    //{ 
-                    //    data(){
-                    //        return ${JSON.stringify(data_part, null, ' ')}
-                    //    },
-                    //    template: \`${result.template}\`
-                    //})`)
-
-                    //log(result.template)
 
                     last_sel_count = Math.max(last_sel_count, result.sel_count)
 
@@ -702,12 +694,14 @@ function J2V4ESPD(fragment,
                     vue_stream.write(` * Component - ${fragment[el].tag} - ${fragment[el].name}\n`)
                     vue_stream.write(' */\n')
                     vue_stream.write(`Vue.component("${name_version}-${el}",
-                    { 
-                        data(){
-                            return ${JSON.stringify(data_part, null, ' ')}
-                        },
-                        template: \`${result.template}\`
-                    })`)
+                        { 
+                            data(){
+                                return {
+                                ${result.data_part}
+                                }
+                            },
+                            template: \`${result.template}\`
+                        })`)
 
                     break;
 
@@ -717,7 +711,8 @@ function J2V4ESPD(fragment,
                     result.template += `</div>`
                     break;
                 case 'REQUIREMENT_GROUP':
-                    result[fragment[el].requestpath] = []
+                    //result[fragment[el].requestpath] = []
+                    result.data_part += `"${fragment[el].requestpath}" : [],\n`
                     result.template += `<div>`
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
@@ -737,7 +732,8 @@ function J2V4ESPD(fragment,
                     break;
 
                 case 'REQUIREMENT_SUBGROUP':
-                    result[fragment[el].requestpath] = []
+                    //result[fragment[el].requestpath] = []
+                    result.data_part += `"${fragment[el].requestpath}" : [],\n`
                     result.template += `<div>`
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
@@ -762,9 +758,12 @@ function J2V4ESPD(fragment,
                                         select_variable = `val_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
                                         option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
                                         let tc = 0
+                                        result.data_part += `"${option_variable}" : ${JSON.stringify(tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } }))},\n`
+                                        result.data_part += `"${select_variable}" : ${tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })[0].value},\n`
+
                                         result[option_variable] = tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })
                                         result[select_variable] = result[option_variable][0].value
-                                        result.template += `<b-form-group label="${tmp_cmp.description}" v-slot="{ ariaDescribedby }">
+                                        result.template += `<b-form-group label-class="font-weight-bold"  label="[R] ${tmp_cmp.description}" v-slot="{ ariaDescribedby }">
                                     <b-form-radio-group
                                         id="radio-group-${local_indicator}"
                                         v-model="${select_variable}"
@@ -810,7 +809,8 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION_GROUP':
                     let local_indicator = ''
-                    result[fragment[el].responsepath] = []
+                    result.data_part += `"${fragment[el].responsepath}" : [],\n`
+                    //result[fragment[el].responsepath] = []
                     result.template += `
                         <div>`
                     if (Object.hasOwn(fragment[el], 'components')) {
@@ -820,19 +820,22 @@ function J2V4ESPD(fragment,
                                 if (tmp_cmp.type == 'QUESTION') {
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
-                                        result[tmp_cmp.responsepath] = false
+                                        result.data_part += `"${tmp_cmp.requestpath}" : false,\n`
+                                        //result[tmp_cmp.responsepath] = false
                                         result.sel_count++
                                         local_indicator = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
-                                            <br/>${tmp_cmp.description} <b-form-checkbox v-model="selected${local_indicator}" name="check-button" inline="true" switch>
+                                            <br/>[Q] ${tmp_cmp.description} <b-form-checkbox v-model="selected${local_indicator}" name="check-button" inline="true" switch>
                                                      <b>[{{ selected${local_indicator}?'Yes':'No' }}]</b>
                                             </b-form-checkbox>
                                             `
-                                        result[`selected${local_indicator}`] = false
+                                        result.data_part += `"selected${local_indicator}" : false,\n`
+                                        //result[`selected${local_indicator}`] = false
                                     } else {
-                                        result[tmp_cmp.responsepath] = ''
+                                        result.data_part += `"${tmp_cmp.requestpath}" : '',\n`
+                                        //result[tmp_cmp.responsepath] = ''
                                         result.template += `
-                                            <b-form-group label="${tmp_cmp.description}" 
+                                            <b-form-group label="[Q] ${tmp_cmp.description}" 
                                             label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
                                             <b-form-input placeholder="${tmp_cmp.propertydatatype}"></b-form-input>
                                             </b-form-group>`
@@ -858,7 +861,7 @@ function J2V4ESPD(fragment,
                                 }
 
                                 if (tmp_cmp.type == 'CAPTION') {
-                                    result.template += `<em>${tmp_cmp.description}</em>`
+                                    result.template += `<em>${tmp_cmp.description ? tmp_cmp.description : 'CAPTION'}</em>`
                                 }
 
                                 if (tmp_cmp.type == 'LEGISLATION') {
@@ -873,7 +876,8 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION_SUBGROUP':
                     let local_indicator_qsg = ''
-                    result[fragment[el].responsepath] = []
+                    result.data_part += `"${fragment[el].responsepath}" : [],\n`
+                    //result[fragment[el].responsepath] = []
 
                     if (Object.hasOwn(fragment[el], 'components')) {
                         for (const e in fragment[el].components) {
@@ -882,19 +886,22 @@ function J2V4ESPD(fragment,
                                 if (tmp_cmp.type == 'QUESTION') {
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
-                                        result[tmp_cmp.responsepath] = false
+                                        result.data_part += `"${tmp_cmp.responsepath}" : false,\n`
+                                        //result[tmp_cmp.responsepath] = false
                                         result.sel_count++
                                         local_indicator_qsg = (result.sel_count + '').padStart(2, '0')
                                         result.template += `
-                                            <br/>${tmp_cmp.description} <b-form-checkbox v-model="selected${local_indicator_qsg}" name="check-button" inline="true" switch>
+                                            <br/>[Q] ${tmp_cmp.description} <b-form-checkbox v-model="selected${local_indicator_qsg}" name="check-button" inline="true" switch>
                                                      <b>[{{ selected${local_indicator_qsg}?'Yes':'No' }}]</b>
                                             </b-form-checkbox>
                                             `
-                                        result[`selected${local_indicator_qsg}`] = false
+                                        result.data_part += `"selected${local_indicator_qsg}" : false,\n`
+                                        //result[`selected${local_indicator_qsg}`] = false
                                     } else {
-                                        result[tmp_cmp.responsepath] = ''
+                                        result.data_part += `"${tmp_cmp.responsepath}" : '',\n`
+                                        //result[tmp_cmp.responsepath] = ''
                                         result.template += `
-                                            <b-form-group label="${tmp_cmp.description}" 
+                                            <b-form-group label="[Q] ${tmp_cmp.description}" 
                                             label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
                                             <b-form-input placeholder="${tmp_cmp.propertydatatype}"></b-form-input>
                                             </b-form-group>`
@@ -920,7 +927,7 @@ function J2V4ESPD(fragment,
                                 }
 
                                 if (tmp_cmp.type == 'CAPTION') {
-                                    result.template += `<em>${tmp_cmp.description}</em>`
+                                    result.template += `<em>${tmp_cmp.description ? tmp_cmp.description : 'CAPTION'}</em>`
                                 }
 
                                 if (tmp_cmp.type == 'LEGISLATION') {
@@ -933,22 +940,25 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION':
                     if (fragment[el].propertydatatype != 'INDICATOR') {
-                        result[fragment[el].responsepath] = true
+                        result.data_part += `"${fragment[el].responsepath}" : true,\n`
+                        //result[fragment[el].responsepath] = true
                         result.template += `
-                        <b-form-group label="${fragment[el].description}" 
+                        <b-form-group label="[Q] ${fragment[el].description}" 
                         label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
                         <b-form-input placeholder="${fragment[el].propertydatatype}"></b-form-input>
                         </b-form-group>`
                     } else {
                         //This should be rendered inside the QG/QSG
-                        result[fragment[el].responsepath] = ''
+                        result.data_part += `"${fragment[el].responsepath}" : '',\n`
+                        //result[fragment[el].responsepath] = ''
                         result.sel_count++
                         let local_indicator = `${result.sel_count}`.padStart(2, '0')
                         result.template += `
-                        ${fragment[el].description} <b-form-checkbox v-model="selected${local_indicator}" name="check-button" inline="true" switch>
+                        [Q] ${fragment[el].description} <b-form-checkbox v-model="selected${local_indicator}" name="check-button" inline="true" switch>
                         <b>[{{ selected${local_indicator}?'Yes':'No' }}]</b>
                         </b-form-checkbox>`
-                        result[`selected${local_indicator}`] = false
+                        result.data_part += `"selected${local_indicator}" : false,\n`
+                        //result[`selected${local_indicator}`] = false
                     }
                     break;
 
@@ -961,13 +971,43 @@ function J2V4ESPD(fragment,
                     break;
 
                 case 'REQUIREMENT':
-                    result[fragment[el].responsepath] = ''
-                    result.template += `
-                    <b-form-group label="${fragment[el].description}"
+                    result.data_part += `"${fragment[el].responsepath}" : '',\n`
+                    //result[fragment[el].responsepath] = ''    
+                    //LOT management
+                    if (fragment[el].propertydatatype == 'LOT_IDENTIFIER') {
+                        result.data_part += `"lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}" : window.espd_model['C${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}'].lots,\n`
+                        //result[`lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}`] = `window.espd_model[C${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}].lots`
+                        result.template += `
+                        <b-form-group label-class="font-weight-bold" label="[R] ${fragment[el].description}" label-for="tags-component-select_item">
+                            <b-form-tags id="tags-component-select_item" v-model="lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}"
+                                size="lg" class="mb-2" add-on-change no-outer-focus>
+                                <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                                <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
+                                    <li v-for="tag in tags" :key="tag" class="list-inline-item">
+                                    <b-form-tag @remove="removeTag(tag)" :title="tag" :disabled="disabled" variant="info">{{ tag }}</b-form-tag>
+                                    </li>
+                                </ul>
+                                <b-form-select v-bind="inputAttrs" v-on="inputHandlers"
+                                :disabled="disabled || window.espd_doc.options.filter(opt => lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}.indexOf(opt) === -1).length === 0" 
+                                :options="window.espd_doc.options.filter(opt => lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}.indexOf(opt) === -1)">
+                                    <template #first>
+                                    <!-- This is required to prevent bugs with Safari -->
+                                    <option disabled value="">Choose a tag...</option>
+                                </b-form-select>
+                                </template>
+                            </b-form-tags>
+                            </b-form-group>
+                        `
+
+                    } else {
+
+                        result.template += `
+                    <b-form-group label-class="font-weight-bold" label="[R] ${fragment[el].description}"
                     label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
                     <b-form-input placeholder="${fragment[el].propertydatatype}"></b-form-input>
                     </b-form-group>
                     `
+                    }
                     break;
 
                 default:
