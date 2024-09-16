@@ -707,9 +707,21 @@ function J2V4ESPD(fragment,
 
                 case 'SUBCRITERION':
                     result.template += `<div>`
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<b-card footer-tag="footer">`
+                    }
+
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<template #footer>
+                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                        </template>
+                        </b-card>`
+                    }
                     result.template += `</div>`
                     break;
+                
                 case 'REQUIREMENT_GROUP':
                     //result[fragment[el].requestpath] = []
                     result.data_part += `"${fragment[el].requestpath}" : [],\n`
@@ -723,7 +735,7 @@ function J2V4ESPD(fragment,
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                    <b-button variant="success"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                     </template>
                     </b-card>`
                     }
@@ -755,13 +767,14 @@ function J2V4ESPD(fragment,
                                         result.sel_count++
                                         let local_indicator = (result.sel_count + '').padStart(2, '0')
                                         is_radio_group = true
-                                        select_variable = `val_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
-                                        option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "_").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
-                                        let tc = 0
-                                        result.data_part += `"${option_variable}" : ${JSON.stringify(tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } }))},\n`
-                                        result.data_part += `"${select_variable}" : ${tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })[0].value},\n`
+                                        select_variable = `val_${tmp_cmp.responsepath.replaceAll("-", "__").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
+                                        option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "__").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
+                                        let tc = 0,
+                                            opt_var = tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })
+                                        result.data_part += `"${option_variable}" : ${JSON.stringify(opt_var)},\n`
+                                        result.data_part += `"${select_variable}" : ${opt_var[0].value},\n`
 
-                                        result[option_variable] = tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })
+                                        result[option_variable] = opt_var
                                         result[select_variable] = result[option_variable][0].value
                                         result.template += `<b-form-group label-class="font-weight-bold"  label="[R] ${tmp_cmp.description}" v-slot="{ ariaDescribedby }">
                                     <b-form-radio-group
@@ -794,12 +807,11 @@ function J2V4ESPD(fragment,
 
                             }
                         }
-                        //result = J2V4ESPD(fragment[el].components, result)
                     }
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                        <b-button variant="success"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                         </template>
                         </b-card>`
                     }
@@ -813,6 +825,9 @@ function J2V4ESPD(fragment,
                     //result[fragment[el].responsepath] = []
                     result.template += `
                         <div>`
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<b-card footer-tag="footer">`
+                    }
                     if (Object.hasOwn(fragment[el], 'components')) {
                         for (const e in fragment[el].components) {
                             if (Object.hasOwn(fragment[el].components, e)) {
@@ -820,7 +835,7 @@ function J2V4ESPD(fragment,
                                 if (tmp_cmp.type == 'QUESTION') {
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
-                                        result.data_part += `"${tmp_cmp.requestpath}" : false,\n`
+                                        result.data_part += `"${tmp_cmp.responsepath}" : false,\n`
                                         //result[tmp_cmp.responsepath] = false
                                         result.sel_count++
                                         local_indicator = (result.sel_count + '').padStart(2, '0')
@@ -832,6 +847,9 @@ function J2V4ESPD(fragment,
                                         result.data_part += `"selected${local_indicator}" : false,\n`
                                         //result[`selected${local_indicator}`] = false
                                     } else {
+                                        //render normally
+                                        result = J2V4ESPD({e: tmp_cmp}, result)
+                                        /*
                                         result.data_part += `"${tmp_cmp.requestpath}" : '',\n`
                                         //result[tmp_cmp.responsepath] = ''
                                         result.template += `
@@ -839,6 +857,7 @@ function J2V4ESPD(fragment,
                                             label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
                                             <b-form-input placeholder="${tmp_cmp.propertydatatype}"></b-form-input>
                                             </b-form-group>`
+                                        */
                                     }
                                 }
 
@@ -870,6 +889,14 @@ function J2V4ESPD(fragment,
                             }
                         }
                     }
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<template #footer>
+                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    </template>
+                    </b-card>`
+                    }
+
                     result.template += `
                         </div>`
                     break;
@@ -878,6 +905,10 @@ function J2V4ESPD(fragment,
                     let local_indicator_qsg = ''
                     result.data_part += `"${fragment[el].responsepath}" : [],\n`
                     //result[fragment[el].responsepath] = []
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<b-card footer-tag="footer">`
+                    }
 
                     if (Object.hasOwn(fragment[el], 'components')) {
                         for (const e in fragment[el].components) {
@@ -898,6 +929,9 @@ function J2V4ESPD(fragment,
                                         result.data_part += `"selected${local_indicator_qsg}" : false,\n`
                                         //result[`selected${local_indicator_qsg}`] = false
                                     } else {
+                                        //render as usual
+                                        result = J2V4ESPD({e: tmp_cmp}, result)
+                                        /*
                                         result.data_part += `"${tmp_cmp.responsepath}" : '',\n`
                                         //result[tmp_cmp.responsepath] = ''
                                         result.template += `
@@ -905,6 +939,7 @@ function J2V4ESPD(fragment,
                                             label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
                                             <b-form-input placeholder="${tmp_cmp.propertydatatype}"></b-form-input>
                                             </b-form-group>`
+                                        */
                                     }
                                 }
 
@@ -936,20 +971,33 @@ function J2V4ESPD(fragment,
                             }
                         }
                     }
+
+                    if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                        result.template += `<template #footer>
+                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    </template>
+                    </b-card>`
+                    }
                     break;
 
                 case 'QUESTION':
                     if (fragment[el].propertydatatype != 'INDICATOR') {
-                        result.data_part += `"${fragment[el].responsepath}" : true,\n`
+                        result.data_part += `"${fragment[el].responsepath.replaceAll("-", "__").replaceAll('/','$')}" : [],\n`
                         //result[fragment[el].responsepath] = true
-                        result.template += `
-                        <b-form-group label="[Q] ${fragment[el].description}" 
-                        label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
-                        <b-form-input placeholder="${fragment[el].propertydatatype}"></b-form-input>
-                        </b-form-group>`
+                        if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
+                            result.template += `<b-form-group label="[Q] ${fragment[el].description}" 
+                                label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
+                            <b-form-tags v-model="${fragment[el].responsepath.replaceAll("-", "__").replaceAll('/','$')}" placeholder="Add value"></b-form-tags></b-form-group>`
+                        } else {
+                            result.template += `
+                                <b-form-group label="[Q] ${fragment[el].description}" 
+                                label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
+                                <b-form-input placeholder="${fragment[el].propertydatatype}" v-model="${fragment[el].responsepath.replaceAll("-", "__").replaceAll('/','$')}[0]"></b-form-input>
+                                </b-form-group>`
+                        }
                     } else {
                         //This should be rendered inside the QG/QSG
-                        result.data_part += `"${fragment[el].responsepath}" : '',\n`
+                        result.data_part += `"${fragment[el].responsepath}" : true,\n`
                         //result[fragment[el].responsepath] = ''
                         result.sel_count++
                         let local_indicator = `${result.sel_count}`.padStart(2, '0')
