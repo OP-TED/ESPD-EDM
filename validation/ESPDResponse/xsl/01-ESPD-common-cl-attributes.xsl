@@ -349,7 +349,7 @@
          <xsl:when test="(false() or not(@listID != 'criterion-element-type'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listID != 'criterion-element-type'))">
+                                test="(false() or not(@listID != 'http://publications.europa.eu/resource/authority/language'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -360,7 +360,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listID = criterion-element-type'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listID = http://publications.europa.eu/resource/authority/language'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
