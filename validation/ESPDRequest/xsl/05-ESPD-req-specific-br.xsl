@@ -1,60 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsl:stylesheet xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
-                xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                xmlns:espd="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
                 xmlns:espd-req="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
                 xmlns:espd-resp="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:xhtml="http://www.w3.org/1999/xhtml"
-                xmlns:schold="http://www.ascc.net/xml/schematron"
-                xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-                xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-                xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
-                xmlns:espd="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
+                xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+                xmlns:schold="http://www.ascc.net/xml/schematron"
+                xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="2.0"><!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-<xsl:param name="archiveDirParameter"/>
+   <xsl:param name="archiveDirParameter"/>
    <xsl:param name="archiveNameParameter"/>
    <xsl:param name="fileNameParameter"/>
    <xsl:param name="fileDirParameter"/>
    <xsl:variable name="document-uri">
       <xsl:value-of select="document-uri(/)"/>
    </xsl:variable>
-
    <!--PHASES-->
-
-
-<!--PROLOG-->
-<xsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" method="xml"
+   <!--PROLOG-->
+   <xsl:output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+               method="xml"
                omit-xml-declaration="no"
                standalone="yes"
                indent="yes"/>
-
    <!--XSD TYPES FOR XSLT2-->
-
-
-<!--KEYS AND FUNCTIONS-->
-
-
-<!--DEFAULT RULES-->
-
-
-<!--MODE: SCHEMATRON-SELECT-FULL-PATH-->
-<!--This mode can be used to generate an ugly though full XPath for locators-->
-<xsl:template match="*" mode="schematron-select-full-path">
+   <!--KEYS AND FUNCTIONS-->
+   <!--DEFAULT RULES-->
+   <!--MODE: SCHEMATRON-SELECT-FULL-PATH-->
+   <!--This mode can be used to generate an ugly though full XPath for locators-->
+   <xsl:template match="*" mode="schematron-select-full-path">
       <xsl:apply-templates select="." mode="schematron-get-full-path"/>
    </xsl:template>
-
    <!--MODE: SCHEMATRON-FULL-PATH-->
-<!--This mode can be used to generate an ugly though full XPath for locators-->
-<xsl:template match="*" mode="schematron-get-full-path">
+   <!--This mode can be used to generate an ugly though full XPath for locators-->
+   <xsl:template match="*" mode="schematron-get-full-path">
       <xsl:apply-templates select="parent::*" mode="schematron-get-full-path"/>
       <xsl:text>/</xsl:text>
       <xsl:choose>
          <xsl:when test="namespace-uri()=''">
             <xsl:value-of select="name()"/>
-            <xsl:variable name="p_1" select="1+    count(preceding-sibling::*[name()=name(current())])"/>
+            <xsl:variable name="p_1"
+                          select="1+    count(preceding-sibling::*[name()=name(current())])"/>
             <xsl:if test="$p_1&gt;1 or following-sibling::*[name()=name(current())]">[<xsl:value-of select="$p_1"/>]</xsl:if>
          </xsl:when>
          <xsl:otherwise>
@@ -81,10 +71,9 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-
    <!--MODE: SCHEMATRON-FULL-PATH-2-->
-<!--This mode can be used to generate prefixed XPath for humans-->
-<xsl:template match="node() | @*" mode="schematron-get-full-path-2">
+   <!--This mode can be used to generate prefixed XPath for humans-->
+   <xsl:template match="node() | @*" mode="schematron-get-full-path-2">
       <xsl:for-each select="ancestor-or-self::*">
          <xsl:text>/</xsl:text>
          <xsl:value-of select="name(.)"/>
@@ -99,9 +88,9 @@
       </xsl:if>
    </xsl:template>
    <!--MODE: SCHEMATRON-FULL-PATH-3-->
-<!--This mode can be used to generate prefixed XPath for humans 
+   <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-<xsl:template match="node() | @*" mode="schematron-get-full-path-3">
+   <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
       <xsl:for-each select="ancestor-or-self::*">
          <xsl:text>/</xsl:text>
          <xsl:value-of select="name(.)"/>
@@ -115,9 +104,8 @@
          <xsl:text/>/@<xsl:value-of select="name(.)"/>
       </xsl:if>
    </xsl:template>
-
    <!--MODE: GENERATE-ID-FROM-PATH -->
-<xsl:template match="/" mode="generate-id-from-path"/>
+   <xsl:template match="/" mode="generate-id-from-path"/>
    <xsl:template match="text()" mode="generate-id-from-path">
       <xsl:apply-templates select="parent::*" mode="generate-id-from-path"/>
       <xsl:value-of select="concat('.text-', 1+count(preceding-sibling::text()), '-')"/>
@@ -139,9 +127,8 @@
       <xsl:text>.</xsl:text>
       <xsl:value-of select="concat('.',name(),'-',1+count(preceding-sibling::*[name()=name(current())]),'-')"/>
    </xsl:template>
-
    <!--MODE: GENERATE-ID-2 -->
-<xsl:template match="/" mode="generate-id-2">U</xsl:template>
+   <xsl:template match="/" mode="generate-id-2">U</xsl:template>
    <xsl:template match="*" mode="generate-id-2" priority="2">
       <xsl:text>U</xsl:text>
       <xsl:number level="multiple" count="*"/>
@@ -160,11 +147,12 @@
       <xsl:text>_</xsl:text>
       <xsl:value-of select="translate(name(),':','.')"/>
    </xsl:template>
-   <!--Strip characters--><xsl:template match="text()" priority="-1"/>
-
+   <!--Strip characters-->
+   <xsl:template match="text()" priority="-1"/>
    <!--SCHEMA SETUP-->
-<xsl:template match="/">
-      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="ESPD Request Business Rules"
+   <xsl:template match="/">
+      <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                              title="ESPD Request Business Rules"
                               schemaVersion="">
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
@@ -178,8 +166,6 @@
                                              prefix="cbc"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
                                              prefix="ext"/>
-         <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
-                                             prefix="udt"/>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2"
                                              prefix="espd"/>
          <svrl:ns-prefix-in-attribute-values uri="http://www.w3.org/2005/xpath-functions" prefix="fn"/>
@@ -191,21 +177,19 @@
             <xsl:attribute name="name">BR-REQ-SC</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M7"/>
+         <xsl:apply-templates select="/" mode="M6"/>
       </svrl:schematron-output>
    </xsl:template>
-
    <!--SCHEMATRON PATTERNS-->
-<svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Business Rules</svrl:text>
-
+   <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">ESPD Request Business Rules</svrl:text>
    <!--PATTERN BR-REQ-SC-->
-
-
-	<!--RULE -->
-<xsl:template match="espd:QualificationApplicationRequest" priority="1002" mode="M7">
+   <!--RULE -->
+   <xsl:template match="espd:QualificationApplicationRequest"
+                 priority="1002"
+                 mode="M6">
 
 		<!--ASSERT fatal-->
-<xsl:choose>
+      <xsl:choose>
          <xsl:when test="(cbc:ProcedureCode)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="(cbc:ProcedureCode)">
@@ -219,18 +203,16 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M7"/>
+      <xsl:apply-templates select="*" mode="M6"/>
    </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterion[contains(translate('&#127;crime-org&#127;&#127;corruption&#127;&#127;fraud&#127;&#127;terr-offence&#127;&#127;finan-laund&#127;&#127;human-traffic&#127;&#127;tax-pay&#127;&#127;socsec-pay&#127;&#127;envir-law&#127;&#127;socsec-law&#127;&#127;labour-law&#127;&#127;bankruptcy&#127;&#127;insolvency&#127;&#127;cred-arran&#127;&#127;bankr-nat&#127;&#127;liq-admin&#127;&#127;susp-act&#127;&#127;prof-misconduct&#127;&#127;distorsion&#127;&#127;partic-confl&#127;&#127;prep-confl&#127;&#127;sanction&#127;&#127;misinterpr&#127;&#127;nati-ground&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(cbc:CriterionTypeCode,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;'))]"
+   <!--RULE -->
+   <xsl:template match="cac:TenderingCriterion[contains(translate('&#x7f;crime-org&#x7f;&#x7f;corruption&#x7f;&#x7f;fraud&#x7f;&#x7f;terr-offence&#x7f;&#x7f;finan-laund&#x7f;&#x7f;human-traffic&#x7f;&#x7f;tax-pay&#x7f;&#x7f;socsec-pay&#x7f;&#x7f;envir-law&#x7f;&#x7f;socsec-law&#x7f;&#x7f;labour-law&#x7f;&#x7f;bankruptcy&#x7f;&#x7f;insolvency&#x7f;&#x7f;cred-arran&#x7f;&#x7f;bankr-nat&#x7f;&#x7f;liq-admin&#x7f;&#x7f;susp-act&#x7f;&#x7f;prof-misconduct&#x7f;&#x7f;distorsion&#x7f;&#x7f;partic-confl&#x7f;&#x7f;prep-confl&#x7f;&#x7f;sanction&#x7f;&#x7f;misinterpr&#x7f;&#x7f;nati-ground&#x7f;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#x7f;',translate(cbc:CriterionTypeCode,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#x7f;'))]"
                  priority="1001"
-                 mode="M7">
+                 mode="M6">
       <xsl:variable name="allLots" select="cac:ProcurementProjectLotReference/cbc:ID"/>
       <xsl:variable name="testLots" select="count($allLots) &gt; 0"/>
-
-		    <!--ASSERT fatal-->
-<xsl:choose>
+      <!--ASSERT fatal-->
+      <xsl:choose>
          <xsl:when test="not($testLots)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="not($testLots)">
@@ -243,18 +225,16 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M7"/>
+      <xsl:apply-templates select="*" mode="M6"/>
    </xsl:template>
-
-	  <!--RULE -->
-<xsl:template match="cac:TenderingCriterion[contains(translate('&#127;prof-regist&#127;&#127;trade-regist&#127;&#127;autorisation&#127;&#127;membership&#127;&#127;gen-year-to&#127;&#127;aver-year-to&#127;&#127;spec-aver-to&#127;&#127;spec-year-to&#127;&#127;finan-rat&#127;&#127;indem-insu&#127;&#127;finan-requ&#127;&#127;work-perform&#127;&#127;supply-perform&#127;&#127;service-perform&#127;&#127;qual-cont-tech&#127;&#127;work-tech&#127;&#127;qual-facil&#127;&#127;research-fac&#127;&#127;chain-manage&#127;&#127;qualification&#127;&#127;envir-measure&#127;&#127;tech-equip&#127;&#127;spec-req-check&#127;&#127;manage-staff&#127;&#127;year-manpower&#127;&#127;suncont-port&#127;&#127;wo-autent&#127;&#127;w-autent&#127;&#127;qa-certif-inst&#127;&#127;qu-certif-indep&#127;&#127;envir-certif-indep&#127;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#127;',translate(cbc:CriterionTypeCode,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#127;'))]"
+   <!--RULE -->
+   <xsl:template match="cac:TenderingCriterion[contains(translate('&#x7f;prof-regist&#x7f;&#x7f;trade-regist&#x7f;&#x7f;autorisation&#x7f;&#x7f;membership&#x7f;&#x7f;gen-year-to&#x7f;&#x7f;aver-year-to&#x7f;&#x7f;spec-aver-to&#x7f;&#x7f;spec-year-to&#x7f;&#x7f;finan-rat&#x7f;&#x7f;indem-insu&#x7f;&#x7f;finan-requ&#x7f;&#x7f;work-perform&#x7f;&#x7f;supply-perform&#x7f;&#x7f;service-perform&#x7f;&#x7f;qual-cont-tech&#x7f;&#x7f;work-tech&#x7f;&#x7f;qual-facil&#x7f;&#x7f;research-fac&#x7f;&#x7f;chain-manage&#x7f;&#x7f;qualification&#x7f;&#x7f;envir-measure&#x7f;&#x7f;tech-equip&#x7f;&#x7f;spec-req-check&#x7f;&#x7f;manage-staff&#x7f;&#x7f;year-manpower&#x7f;&#x7f;suncont-port&#x7f;&#x7f;wo-autent&#x7f;&#x7f;w-autent&#x7f;&#x7f;qa-certif-inst&#x7f;&#x7f;qu-certif-indep&#x7f;&#x7f;envir-certif-indep&#x7f;','ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),concat('&#x7f;',translate(cbc:CriterionTypeCode,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'&#x7f;'))]"
                  priority="1000"
-                 mode="M7">
+                 mode="M6">
       <xsl:variable name="allLots" select="cac:ProcurementProjectLotReference/cbc:ID"/>
       <xsl:variable name="testLots" select="count($allLots) &gt; 0"/>
-
-		    <!--ASSERT fatal-->
-<xsl:choose>
+      <!--ASSERT fatal-->
+      <xsl:choose>
          <xsl:when test="$testLots"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="$testLots">
@@ -267,10 +247,10 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*" mode="M7"/>
+      <xsl:apply-templates select="*" mode="M6"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M7"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M7">
-      <xsl:apply-templates select="*" mode="M7"/>
+   <xsl:template match="text()" priority="-1" mode="M6"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M6">
+      <xsl:apply-templates select="*" mode="M6"/>
    </xsl:template>
 </xsl:stylesheet>

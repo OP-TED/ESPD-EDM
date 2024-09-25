@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion constraints ESPD Response
 
     Illustration of procurer constraints - 03-ESPD-resp-criterion-br.sch
-	ESPD Version: 3.1.0
+	ESPD Version: 4.0.0
 -->
 	
 	<xsl:key name="CriterionProperty" match="cac:TenderingCriterionProperty" use="cbc:ID"/>
@@ -24,14 +24,19 @@
     <xsl:key name="EORoleTest" match="cbc:RoleCode" use="." />
 			
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-RESP-CRI">
+		<!-- With the introduction of XML Path like IDs we can have multiple references to the same  /cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID according to cardinality, hence this BR does not apply anymore -->
+
+		<!--
 		<rule context="cac:TenderingCriterionProperty/cbc:ID">
 			<let name="responseIDs" value="key('CriterionResponseType', .)"/>
-			
+		-->	
 			<!-- BR-TCR-01-03: /cac:TenderingCriterionProperty/cbc:ID must have 0 or 1 /cac:TenderingCriterionResponse/cbc:ValidatedCriterionPropertyID -->
-			<assert test="count($responseIDs) &lt;= 1" flag="fatal" id="BR-TCR-01-03">The criterion property ('cac:TenderingCriterionProperty/cbc:ID' = '<value-of select="."/>') has '<value-of select="count($responseIDs)"/>' responses.</assert>
-			
+
+			<!--
+			<assert test="count($responseIDs) &lt;= 1" flag="fatal" id="BR-TCR-01-03">The criterion property ('cac:TenderingCriterionProperty/cbc:ID' = '<value-of select="."/>') has '<value-of select="count($responseIDs)"/>' responses.</assert>	
 		</rule>
-		
+		-->
+
 		<rule context="cac:TenderingCriterionResponse">
 			<let name="currentDataType" value="key('CriterionProperty', cbc:ValidatedCriterionPropertyID)/cbc:ValueDataTypeCode/text()"/>
 						
@@ -110,7 +115,7 @@
 			<let name="parentFalseResponse" value="key('CriterionResponseType', $parentUUID)/cac:ResponseValue/cbc:ResponseIndicator = false()"/>
 			
 			<!-- IF parentResponse=TRUE -> THEN current property must have an answer -->
-			<assert test="not($parentTrueResponse) or ($parentTrueResponse and count(key('CriterionResponseType', cbc:ID)) = 1)" flag="fatal" id="BR-TCR-06-01">As the response '<value-of select="$parentUUID"/>' is TRUE and the property group is codified as ONTRUE, 'cbc:ID = <value-of select='cbc:ID'/>' must be answered as well.</assert>
+			<assert test="not($parentTrueResponse) or ($parentTrueResponse and count(key('CriterionResponseType', cbc:ID)) >= 1)" flag="fatal" id="BR-TCR-06-01">As the response '<value-of select="$parentUUID"/>' is TRUE and the property group is codified as ONTRUE, 'cbc:ID = <value-of select='cbc:ID'/>' must be answered as well.</assert>
 			<!-- IF parentResponse=FALSE -> THEN current property must not have an answer -->
 			<assert test="not($parentFalseResponse) or ($parentFalseResponse and count(key('CriterionResponseType', cbc:ID)) = 0)" flag="fatal" id="BR-TCR-06-02">As the response '<value-of select="$parentUUID"/>' is FALSE but the property group is codified as ONTRUE, 'cbc:ID = <value-of select='cbc:ID'/>' must not be answered.</assert>
 		</rule>

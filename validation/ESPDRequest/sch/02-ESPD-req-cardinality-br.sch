@@ -11,7 +11,7 @@
     Start of synthesis of rules from cardinality constraints ESPD Request.
 
     Illustration of cardinality constraints - 02-ESPD-req-cardinality-br.sch
-	ESPD Version: 3.1.0
+	ESPD Version: 4.0.0
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-CARD">

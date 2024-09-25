@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Library:           OASIS Universal Business Language (UBL) 2.3 CSD03
-                     http://docs.oasis-open.org/ubl/csd03-UBL-2.3/
-  Release Date:      10 April 2020
+  Library:           OASIS Universal Business Language (UBL) 2.3 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.3/
+  Release Date:      15 June 2021
   Module:            xsd/common/UBL-CommonAggregateComponents-2.3.xsd
-  Generated on:      2020-07-29 19:49z
-  Copyright (c) OASIS Open 2020. All Rights Reserved.
+  Generated on:      2021-06-18 19:57z
+  Copyright (c) OASIS Open 2021. All Rights Reserved.
 -->
 <xsd:schema xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
             xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
@@ -51,6 +51,7 @@
    <xsd:element name="AdditionalNoticeLanguage" type="LanguageType"/>
    <xsd:element name="AdditionalPortCallPurpose" type="PortCallPurposeType"/>
    <xsd:element name="AdditionalQualifyingParty" type="QualifyingPartyType"/>
+   <xsd:element name="AdditionalSecurityMeasure" type="SecurityMeasureType"/>
    <xsd:element name="AdditionalTemperature" type="TemperatureType"/>
    <xsd:element name="AdditionalTransportationService" type="TransportationServiceType"/>
    <xsd:element name="AdditionalWebSite" type="WebSiteType"/>
@@ -66,7 +67,6 @@
    <xsd:element name="AlternativeCurrencyPrice" type="PriceType"/>
    <xsd:element name="AlternativeDeliveryLocation" type="LocationType"/>
    <xsd:element name="AlternativeLineItem" type="LineItemType"/>
-   <xsd:element name="AntennaLocation" type="LocationType"/>
    <xsd:element name="AnticipatedMonetaryTotal" type="MonetaryTotalType"/>
    <xsd:element name="AppealInformationParty" type="PartyType"/>
    <xsd:element name="AppealReceiverParty" type="PartyType"/>
@@ -77,12 +77,15 @@
    <xsd:element name="ApplicableTaxCategory" type="TaxCategoryType"/>
    <xsd:element name="ApplicableTerritoryAddress" type="AddressType"/>
    <xsd:element name="ApplicableTransportMeans" type="TransportMeansType"/>
+   <xsd:element name="ApplicantParty" type="PartyType"/>
+   <xsd:element name="AppliedSecurityMeasure" type="SecurityMeasureType"/>
    <xsd:element name="AtLocation" type="LocationType"/>
    <xsd:element name="AttachedTransportEquipment" type="TransportEquipmentType"/>
    <xsd:element name="Attachment" type="AttachmentType"/>
    <xsd:element name="Attestation" type="AttestationType"/>
    <xsd:element name="AttestationLine" type="AttestationLineType"/>
    <xsd:element name="AuctionTerms" type="AuctionTermsType"/>
+   <xsd:element name="AuthorityParty" type="PartyType"/>
    <xsd:element name="Authorization" type="AuthorizationType"/>
    <xsd:element name="AvailabilityTransportEvent" type="TransportEventType"/>
    <xsd:element name="AwardedTenderedProject" type="TenderedProjectType"/>
@@ -97,6 +100,7 @@
    <xsd:element name="BillToParty" type="PartyType"/>
    <xsd:element name="BillingReference" type="BillingReferenceType"/>
    <xsd:element name="BillingReferenceLine" type="BillingReferenceLineType"/>
+   <xsd:element name="BirthplaceLocation" type="LocationType"/>
    <xsd:element name="BonusPaymentTerms" type="PaymentTermsType"/>
    <xsd:element name="Branch" type="BranchType"/>
    <xsd:element name="BrochureDocumentReference" type="DocumentReferenceType"/>
@@ -551,6 +555,7 @@
    <xsd:element name="PortCallPurpose" type="PortCallPurposeType"/>
    <xsd:element name="PortCallRecord" type="PortCallRecordType"/>
    <xsd:element name="PortFacilityLocation" type="LocationType"/>
+   <xsd:element name="PositionOnBoardStowage" type="StowageType"/>
    <xsd:element name="PositioningTransportEvent" type="TransportEventType"/>
    <xsd:element name="PostAwardProcess" type="PostAwardProcessType"/>
    <xsd:element name="PostalAddress" type="AddressType"/>
@@ -631,12 +636,15 @@
    <xsd:element name="ReminderLine" type="ReminderLineType"/>
    <xsd:element name="ReminderPeriod" type="PeriodType"/>
    <xsd:element name="RemittanceAdviceLine" type="RemittanceAdviceLineType"/>
+   <xsd:element name="RemittanceDocumentDistribution" type="DocumentDistributionType"/>
    <xsd:element name="Renewal" type="RenewalType"/>
    <xsd:element name="ReplacedNoticeDocumentReference" type="DocumentReferenceType"/>
    <xsd:element name="ReplacedRelatedItem" type="RelatedItemType"/>
    <xsd:element name="ReplacementRelatedItem" type="RelatedItemType"/>
    <xsd:element name="ReportLocation" type="LocationType"/>
    <xsd:element name="ReportedShipment" type="ShipmentType"/>
+   <xsd:element name="ReporterParty" type="PartyType"/>
+   <xsd:element name="ReportingLocation" type="LocationType"/>
    <xsd:element name="ReportingPerson" type="PersonType"/>
    <xsd:element name="RepresentativeParty" type="PartyType"/>
    <xsd:element name="RequestForQuotationDocumentReference"
@@ -689,6 +697,7 @@
    <xsd:element name="ScheduledServiceFrequency" type="ServiceFrequencyType"/>
    <xsd:element name="SecondaryHazard" type="SecondaryHazardType"/>
    <xsd:element name="SecurityClearanceTerm" type="SecurityClearanceTermType"/>
+   <xsd:element name="SecurityMeasure" type="SecurityMeasureType"/>
    <xsd:element name="SecurityOfficerPerson" type="PersonType"/>
    <xsd:element name="SelfBilledCreditNoteDocumentReference"
                 type="DocumentReferenceType"/>
@@ -700,6 +709,7 @@
    <xsd:element name="SellersItemIdentification" type="ItemIdentificationType"/>
    <xsd:element name="SenderParty" type="PartyType"/>
    <xsd:element name="SendingDigitalService" type="DigitalServiceType"/>
+   <xsd:element name="SendingLogisticsOperatorParty" type="PartyType"/>
    <xsd:element name="ServiceAllowanceCharge" type="AllowanceChargeType"/>
    <xsd:element name="ServiceAvailabilityPeriod" type="PeriodType"/>
    <xsd:element name="ServiceChargePaymentTerms" type="PaymentTermsType"/>
@@ -711,6 +721,7 @@
    <xsd:element name="ServiceStartTimePeriod" type="PeriodType"/>
    <xsd:element name="SettlementPeriod" type="PeriodType"/>
    <xsd:element name="ShareholderParty" type="ShareholderPartyType"/>
+   <xsd:element name="ShipRequirement" type="ShipRequirementType"/>
    <xsd:element name="ShipSanitationControlCertificate" type="CertificateType"/>
    <xsd:element name="ShipSanitationControlExemptionDocumentReference"
                 type="DocumentReferenceType"/>
@@ -2232,14 +2243,14 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cac:IssuerParty" minOccurs="1" maxOccurs="1">
+         <xsd:element ref="cac:IssuerParty" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Attestation. Issuer_ Party. Party</ccts:DictionaryEntryName>
                      <ccts:Definition>The party issuing this attestation</ccts:Definition>
-                     <ccts:Cardinality>1</ccts:Cardinality>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Attestation</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Issuer</ccts:PropertyTermQualifier>
                      <ccts:PropertyTerm>Party</ccts:PropertyTerm>
@@ -2249,14 +2260,14 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cac:AttestationLine" minOccurs="1" maxOccurs="1">
+         <xsd:element ref="cac:AttestationLine" minOccurs="1" maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Attestation. Attestation Line</ccts:DictionaryEntryName>
                      <ccts:Definition>An attestation or statement made and which forms part of this attestation</ccts:Definition>
-                     <ccts:Cardinality>1</ccts:Cardinality>
+                     <ccts:Cardinality>1..n</ccts:Cardinality>
                      <ccts:ObjectClass>Attestation</ccts:ObjectClass>
                      <ccts:PropertyTerm>Attestation Line</ccts:PropertyTerm>
                      <ccts:AssociatedObjectClass>Attestation Line</ccts:AssociatedObjectClass>
@@ -5613,14 +5624,14 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cac:IssuerParty" minOccurs="1" maxOccurs="1">
+         <xsd:element ref="cac:IssuerParty" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
                      <ccts:ComponentType>ASBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Certificate. Issuer_ Party. Party</ccts:DictionaryEntryName>
                      <ccts:Definition>The authorized organization that issued this certificate, the provider of the certificate.</ccts:Definition>
-                     <ccts:Cardinality>1</ccts:Cardinality>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Certificate</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Issuer</ccts:PropertyTermQualifier>
                      <ccts:PropertyTerm>Party</ccts:PropertyTerm>
@@ -20316,6 +20327,23 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cbc:TransitDescription" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Hazardous Goods Transit. Transit Description. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>A textual description of this hazardous goods transit.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Hazardous Goods Transit</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Transit Description</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
+                     <ccts:Examples>Munic via A7</ccts:Examples>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
          <xsd:element ref="cac:MaximumTemperature" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
@@ -20534,6 +20562,25 @@
                      <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
                      <ccts:DataType>Code. Type</ccts:DataType>
                      <ccts:Examples>B1000C</ccts:Examples>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:MaritimePollutantCode" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Hazardous Item. Maritime_ Pollutant Code. Code</ccts:DictionaryEntryName>
+                     <ccts:Definition>A code for specifying the maritime pollutant for this hazardous item.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Hazardous Item</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Maritime</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Pollutant Code</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
+                     <ccts:DataType>Code. Type</ccts:DataType>
+                     <ccts:AlternativeBusinessTerms>IMDG code</ccts:AlternativeBusinessTerms>
+                     <ccts:Examples>PP</ccts:Examples>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -20809,6 +20856,23 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cac:PositionOnBoardStowage" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Hazardous Item. Position On Board_ Stowage. Stowage</ccts:DictionaryEntryName>
+                     <ccts:Definition>A stowage indicating where to find this hazardous item.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Hazardous Item</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Position On Board</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Stowage</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Stowage</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Stowage</ccts:RepresentationTerm>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="ISPSRequirementsType">
@@ -20969,21 +21033,21 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:AdditionalSecurityMeasures"
+         <xsd:element ref="cac:AdditionalSecurityMeasure"
                       minOccurs="0"
                       maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
-                     <ccts:ComponentType>BBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>ISPS Requirements. Additional_ Security Measures. Text</ccts:DictionaryEntryName>
-                     <ccts:Definition>A textual description of any security measures in addition to those in the ship security plan, such as special measures taken in response to unforeseen events.</ccts:Definition>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>ISPS Requirements. Additional_ Security Measure. Security Measure</ccts:DictionaryEntryName>
+                     <ccts:Definition>Security measures for these ISPS requirements in addition to those in the ship security plan, such as special measures taken in response to unforeseen events.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>ISPS Requirements</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Additional</ccts:PropertyTermQualifier>
-                     <ccts:PropertyTerm>Security Measures</ccts:PropertyTerm>
-                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
-                     <ccts:DataType>Text. Type</ccts:DataType>
+                     <ccts:PropertyTerm>Security Measure</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Security Measure</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Security Measure</ccts:RepresentationTerm>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -25842,6 +25906,22 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cbc:AntennaLocus" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Maritime Transport. Antenna Locus. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>The locus or exact location of the antenna on the vessel</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Maritime Transport</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Antenna Locus</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
          <xsd:element ref="cac:RegistryCertificateDocumentReference"
                       minOccurs="0"
                       maxOccurs="1">
@@ -25871,23 +25951,6 @@
                      <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Maritime Transport</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Registry Port</ccts:PropertyTermQualifier>
-                     <ccts:PropertyTerm>Location</ccts:PropertyTerm>
-                     <ccts:AssociatedObjectClass>Location</ccts:AssociatedObjectClass>
-                     <ccts:RepresentationTerm>Location</ccts:RepresentationTerm>
-                  </ccts:Component>
-               </xsd:documentation>
-            </xsd:annotation>
-         </xsd:element>
-         <xsd:element ref="cac:AntennaLocation" minOccurs="0" maxOccurs="1">
-            <xsd:annotation>
-               <xsd:documentation>
-                  <ccts:Component>
-                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>Maritime Transport. Antenna_ Location. Location</ccts:DictionaryEntryName>
-                     <ccts:Definition>The location of the antenna.</ccts:Definition>
-                     <ccts:Cardinality>0..1</ccts:Cardinality>
-                     <ccts:ObjectClass>Maritime Transport</ccts:ObjectClass>
-                     <ccts:PropertyTermQualifier>Antenna</ccts:PropertyTermQualifier>
                      <ccts:PropertyTerm>Location</ccts:PropertyTerm>
                      <ccts:AssociatedObjectClass>Location</ccts:AssociatedObjectClass>
                      <ccts:RepresentationTerm>Location</ccts:RepresentationTerm>
@@ -29296,6 +29359,39 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cbc:ChargeBearerCode" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Payment Means. Charge Bearer Code. Code</ccts:DictionaryEntryName>
+                     <ccts:Definition>A code signifying which party or parties will assume the charges and fees associated with the payment using this payment means.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Payment Means</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Charge Bearer Code</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
+                     <ccts:DataType>Code. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:ServiceLevelCode" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Payment Means. Service Level Code. Code</ccts:DictionaryEntryName>
+                     <ccts:Definition>A code signifying an agreed service level for the type of payment associated with this payment means.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Payment Means</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Service Level Code</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
+                     <ccts:DataType>Code. Type</ccts:DataType>
+                     <ccts:Examples>SEPA, SDVA, URGP, SVDE</ccts:Examples>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
          <xsd:element ref="cac:CardAccount" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
@@ -29390,6 +29486,25 @@
                      <ccts:PropertyTerm>Trade Financing</ccts:PropertyTerm>
                      <ccts:AssociatedObjectClass>Trade Financing</ccts:AssociatedObjectClass>
                      <ccts:RepresentationTerm>Trade Financing</ccts:RepresentationTerm>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cac:RemittanceDocumentDistribution"
+                      minOccurs="0"
+                      maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Payment Means. Remittance_ Document Distribution. Document Distribution</ccts:DictionaryEntryName>
+                     <ccts:Definition>A person or entity who shall receive the remittance advice information about the payment associated with this payment means.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Payment Means</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Remittance</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Document Distribution</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Document Distribution</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Document Distribution</ccts:RepresentationTerm>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -30221,6 +30336,23 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cac:BirthplaceLocation" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Person. Birthplace_ Location. Location</ccts:DictionaryEntryName>
+                     <ccts:Definition>The location where this person was born.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Person</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Birthplace</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Location</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Location</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Location</ccts:RepresentationTerm>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
          <xsd:element ref="cac:CitizenshipCountry" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
@@ -30939,21 +31071,18 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:ShipRequirementsDescription"
-                      minOccurs="0"
-                      maxOccurs="unbounded">
+         <xsd:element ref="cac:ShipRequirement" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
-                     <ccts:ComponentType>BBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>Port Call. Ship_ Requirements Description. Text</ccts:DictionaryEntryName>
-                     <ccts:Definition>Description about the requirements for the ship.</ccts:Definition>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Port Call. Ship Requirement</ccts:DictionaryEntryName>
+                     <ccts:Definition>Ship requirements for this port call.</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Port Call</ccts:ObjectClass>
-                     <ccts:PropertyTermQualifier>Ship</ccts:PropertyTermQualifier>
-                     <ccts:PropertyTerm>Requirements Description</ccts:PropertyTerm>
-                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
-                     <ccts:DataType>Text. Type</ccts:DataType>
+                     <ccts:PropertyTerm>Ship Requirement</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Ship Requirement</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Ship Requirement</ccts:RepresentationTerm>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -31132,18 +31261,18 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:PrimaryPurposeIndicator" minOccurs="0" maxOccurs="1">
+         <xsd:element ref="cac:SecurityMeasure" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
-                     <ccts:ComponentType>BBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>Port Call Record. Primary Purpose Indicator. Indicator</ccts:DictionaryEntryName>
-                     <ccts:Definition>An indicator of whether this port call record describes the primary purpose of the port call (true) or not (false).</ccts:Definition>
-                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Port Call Record. Security Measure</ccts:DictionaryEntryName>
+                     <ccts:Definition>One or more security measures applied to this port call record.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Port Call Record</ccts:ObjectClass>
-                     <ccts:PropertyTerm>Primary Purpose Indicator</ccts:PropertyTerm>
-                     <ccts:RepresentationTerm>Indicator</ccts:RepresentationTerm>
-                     <ccts:DataType>Indicator. Type</ccts:DataType>
+                     <ccts:PropertyTerm>Security Measure</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Security Measure</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Security Measure</ccts:RepresentationTerm>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -36265,6 +36394,57 @@
          </xsd:element>
       </xsd:sequence>
    </xsd:complexType>
+   <xsd:complexType name="SecurityMeasureType">
+      <xsd:annotation>
+         <xsd:documentation>
+            <ccts:Component>
+               <ccts:ComponentType>ABIE</ccts:ComponentType>
+               <ccts:DictionaryEntryName>Security Measure. Details</ccts:DictionaryEntryName>
+               <ccts:Definition>A class to describe a security measure</ccts:Definition>
+               <ccts:ObjectClass>Security Measure</ccts:ObjectClass>
+            </ccts:Component>
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>A container for extensions foreign to the document.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+        <xsd:element ref="cbc:ID" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Security Measure. Identifier</ccts:DictionaryEntryName>
+                     <ccts:Definition>An identifier for this security measure.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Security Measure</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Identifier</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Identifier</ccts:RepresentationTerm>
+                     <ccts:DataType>Identifier. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:Description" minOccurs="1" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Security Measure. Description. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>The description of this security measure</ccts:Definition>
+                     <ccts:Cardinality>1..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Security Measure</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Description</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
    <xsd:complexType name="ServiceFrequencyType">
       <xsd:annotation>
          <xsd:documentation>
@@ -36802,6 +36982,57 @@
          </xsd:element>
       </xsd:sequence>
    </xsd:complexType>
+   <xsd:complexType name="ShipRequirementType">
+      <xsd:annotation>
+         <xsd:documentation>
+            <ccts:Component>
+               <ccts:ComponentType>ABIE</ccts:ComponentType>
+               <ccts:DictionaryEntryName>Ship Requirement. Details</ccts:DictionaryEntryName>
+               <ccts:Definition>A class to describe a requirement for a ship</ccts:Definition>
+               <ccts:ObjectClass>Ship Requirement</ccts:ObjectClass>
+            </ccts:Component>
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element ref="ext:UBLExtensions" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>A container for extensions foreign to the document.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+        <xsd:element ref="cbc:ID" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Ship Requirement. Identifier</ccts:DictionaryEntryName>
+                     <ccts:Definition>An identifier for this ship requirement.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Ship Requirement</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Identifier</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Identifier</ccts:RepresentationTerm>
+                     <ccts:DataType>Identifier. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:Description" minOccurs="1" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Ship Requirement. Description. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>The description of this ship requirement</ccts:Definition>
+                     <ccts:Cardinality>1..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Ship Requirement</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Description</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
    <xsd:complexType name="ShipStoreArticleType">
       <xsd:annotation>
          <xsd:documentation>
@@ -36863,6 +37094,22 @@
                      <ccts:PropertyTerm>Quantity</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Quantity</ccts:RepresentationTerm>
                      <ccts:DataType>Quantity. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:OfficialUse" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Ship Store Article. Official Use. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>A text describing the official use of this ship store article.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Ship Store Article</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Official Use</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -36935,22 +37182,21 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:AppliedSecurityMeasures"
+         <xsd:element ref="cac:AppliedSecurityMeasure"
                       minOccurs="0"
                       maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
-                     <ccts:ComponentType>BBIE</ccts:ComponentType>
-                     <ccts:DictionaryEntryName>Ship To Ship Activity Record. Applied_ Security Measures. Text</ccts:DictionaryEntryName>
-                     <ccts:Definition>A text describing any security measures applied to this ship to ship activity in lieu of those specified in the approved Ship Security Plan (SSP).</ccts:Definition>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Ship To Ship Activity Record. Applied_ Security Measure. Security Measure</ccts:DictionaryEntryName>
+                     <ccts:Definition>Any security measures applied to this ship to ship activity in lieu of those specified in the approved Ship Security Plan (SSP).</ccts:Definition>
                      <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Ship To Ship Activity Record</ccts:ObjectClass>
                      <ccts:PropertyTermQualifier>Applied</ccts:PropertyTermQualifier>
-                     <ccts:PropertyTerm>Security Measures</ccts:PropertyTerm>
-                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
-                     <ccts:DataType>Text. Type</ccts:DataType>
-                     <ccts:AlternativeBusinessTerms>Measures Applied In Lieu</ccts:AlternativeBusinessTerms>
+                     <ccts:PropertyTerm>Security Measure</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Security Measure</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Security Measure</ccts:RepresentationTerm>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -37006,14 +37252,14 @@
                <xsd:documentation>A container for extensions foreign to the document.</xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-        <xsd:element ref="cbc:ID" minOccurs="1" maxOccurs="1">
+        <xsd:element ref="cbc:ID" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Shipment. Identifier</ccts:DictionaryEntryName>
                      <ccts:Definition>An identifier for this shipment.</ccts:Definition>
-                     <ccts:Cardinality>1</ccts:Cardinality>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
                      <ccts:ObjectClass>Shipment</ccts:ObjectClass>
                      <ccts:PropertyTerm>Identifier</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Identifier</ccts:RepresentationTerm>
@@ -37593,6 +37839,39 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
+         <xsd:element ref="cbc:ShipmentStageTypeCode" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Shipment Stage. Shipment Stage Type Code. Code</ccts:DictionaryEntryName>
+                     <ccts:Definition>The type of shipment stage, expressed as a code.</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Shipment Stage</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Shipment Stage Type Code</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Code</ccts:RepresentationTerm>
+                     <ccts:DataType>Code. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:ShipmentStageType" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Shipment Stage. Shipment Stage Type. Text</ccts:DictionaryEntryName>
+                     <ccts:Definition>The type of shipment stage, expressed as text.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Shipment Stage</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Shipment Stage Type</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+                     <ccts:DataType>Text. Type</ccts:DataType>
+                     <ccts:Examples>Intra European, entering Europe, exiting Europe</ccts:Examples>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
          <xsd:element ref="cbc:TransportModeCode" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation>
@@ -37675,6 +37954,41 @@
                      <ccts:RepresentationTerm>Indicator</ccts:RepresentationTerm>
                      <ccts:DataType>Indicator. Type</ccts:DataType>
                      <ccts:Examples>Truck delivery from wharf</ccts:Examples>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:CabotageIndicator" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Shipment Stage. Cabotage_ Indicator. Indicator</ccts:DictionaryEntryName>
+                     <ccts:Definition>An indicator that cabotage applies for this shipment stage (true) or not (false).</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Shipment Stage</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Cabotage</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Indicator</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Indicator</ccts:RepresentationTerm>
+                     <ccts:DataType>Indicator. Type</ccts:DataType>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cbc:HazardousRiskIndicator" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>BBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Shipment Stage. Hazardous Risk_ Indicator. Indicator</ccts:DictionaryEntryName>
+                     <ccts:Definition>An indicator that the transported goods in this shipment stage are subject to an international regulation concerning the carriage of dangerous goods (true) or not (false).</ccts:Definition>
+                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:ObjectClass>Shipment Stage</ccts:ObjectClass>
+                     <ccts:PropertyTermQualifier>Hazardous Risk</ccts:PropertyTermQualifier>
+                     <ccts:PropertyTerm>Indicator</ccts:PropertyTerm>
+                     <ccts:RepresentationTerm>Indicator</ccts:RepresentationTerm>
+                     <ccts:DataType>Indicator. Type</ccts:DataType>
+                     <ccts:AlternativeBusinessTerms>Dangerous Goods RID Indicator</ccts:AlternativeBusinessTerms>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -38642,6 +38956,22 @@
                      <ccts:PropertyTerm>Port Call</ccts:PropertyTerm>
                      <ccts:AssociatedObjectClass>Port Call</ccts:AssociatedObjectClass>
                      <ccts:RepresentationTerm>Port Call</ccts:RepresentationTerm>
+                  </ccts:Component>
+               </xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element ref="cac:ShipStoreArticle" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:documentation>
+                  <ccts:Component>
+                     <ccts:ComponentType>ASBIE</ccts:ComponentType>
+                     <ccts:DictionaryEntryName>Shipment Stage. Ship Store Article</ccts:DictionaryEntryName>
+                     <ccts:Definition>The ship store articles for this shipment stage.</ccts:Definition>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
+                     <ccts:ObjectClass>Shipment Stage</ccts:ObjectClass>
+                     <ccts:PropertyTerm>Ship Store Article</ccts:PropertyTerm>
+                     <ccts:AssociatedObjectClass>Ship Store Article</ccts:AssociatedObjectClass>
+                     <ccts:RepresentationTerm>Ship Store Article</ccts:RepresentationTerm>
                   </ccts:Component>
                </xsd:documentation>
             </xsd:annotation>
@@ -43192,14 +43522,14 @@
                </xsd:documentation>
             </xsd:annotation>
          </xsd:element>
-         <xsd:element ref="cbc:CompanyLegalForm" minOccurs="0" maxOccurs="1">
+         <xsd:element ref="cbc:CompanyLegalForm" minOccurs="0" maxOccurs="unbounded">
             <xsd:annotation>
                <xsd:documentation>
                   <ccts:Component>
                      <ccts:ComponentType>BBIE</ccts:ComponentType>
                      <ccts:DictionaryEntryName>Tenderer Qualification Request. Company Legal Form. Text</ccts:DictionaryEntryName>
                      <ccts:Definition>The legal status requested for potential tenderers, expressed as text</ccts:Definition>
-                     <ccts:Cardinality>0..1</ccts:Cardinality>
+                     <ccts:Cardinality>0..n</ccts:Cardinality>
                      <ccts:ObjectClass>Tenderer Qualification Request</ccts:ObjectClass>
                      <ccts:PropertyTerm>Company Legal Form</ccts:PropertyTerm>
                      <ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
