@@ -14,7 +14,7 @@ var chalk = require('chalk')
 var fs = require("fs")
 const { program } = require("@caporal/core")
 
-var { JSON2file } = require("./modules/espd_utils.cjs");
+var { JSON2file, stringToProperty } = require("./modules/espd_utils.cjs");
 const { cols, tag_map } = require("./modules/espd_constants.cjs")
 
 var in_excel_we_trust = [
@@ -661,16 +661,17 @@ function J2V4ESPD(fragment,
                 case 'CRITERION':
                     last_sel_count = Math.min(last_sel_count, result.sel_count)
                     result.data_part = ''
+                    result.exp = ''
                     //log(last_sel_count)
                     if (fragment[el].tag.endsWith('- SC')) {
-                        result.data_part += `"cb_${el}": window.espd_model['${el}'].selected, \n`
+                        result.exp += `"cb_${el}": window.espd_model['${el}'].selected, \n`
                         result.template =
                             `<div>
-                        <b-form-checkbox id="checkbox-${el}" v-model="cb_${el}" :disabled="window.espd_doc.role === 'eo'" name="checkbox-${el}" value="OK" unchecked-value="KO">
+                        <b-form-checkbox id="checkbox-${el}" v-model="exp['cb_${el}']" :disabled="window.espd_doc.role === 'eo'" name="checkbox-${el}" value="OK" unchecked-value="KO">
                             <strong>${fragment[el].name}</strong>
                             <p>${fragment[el].description}</p>
                         </b-form-checkbox>
-                        <template v-if="cb_${el} ==='OK'">
+                        <template v-if="exp['cb_${el}'] ==='OK'">
                         `
                     } else {
                         result.template =
@@ -679,14 +680,13 @@ function J2V4ESPD(fragment,
                             <p>${fragment[el].description}</p>
                             `
                     }
-
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
-
                     if (fragment[el].tag.endsWith('- SC')) result.template += `</template>`
-
                     result.template += `
                     </div>`
                     //Produce Vue component
+                    // exp: {} - is data that is exchanged at top level
+                    // 
 
                     last_sel_count = Math.max(last_sel_count, result.sel_count)
 
@@ -698,6 +698,9 @@ function J2V4ESPD(fragment,
                             data(){
                                 return {
                                 ${result.data_part}
+                                exp:{
+                                ${result.exp}
+                                }
                                 }
                             },
                             template: \`${result.template}\`
@@ -715,7 +718,7 @@ function J2V4ESPD(fragment,
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                         </template>
                         </b-card>`
                     }
@@ -735,7 +738,7 @@ function J2V4ESPD(fragment,
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                     </template>
                     </b-card>`
                     }
@@ -811,7 +814,7 @@ function J2V4ESPD(fragment,
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                         </template>
                         </b-card>`
                     }
@@ -835,7 +838,7 @@ function J2V4ESPD(fragment,
                                 if (tmp_cmp.type == 'QUESTION') {
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
-                                        result.data_part += `"${tmp_cmp.responsepath}" : false,\n`
+                                        result.exp += `"${stringToProperty(tmp_cmp.responsepath)}" : false,\n`
                                         //result[tmp_cmp.responsepath] = false
                                         result.sel_count++
                                         local_indicator = (result.sel_count + '').padStart(2, '0')
@@ -892,7 +895,7 @@ function J2V4ESPD(fragment,
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                     </template>
                     </b-card>`
                     }
@@ -917,7 +920,7 @@ function J2V4ESPD(fragment,
                                 if (tmp_cmp.type == 'QUESTION') {
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
-                                        result.data_part += `"${tmp_cmp.responsepath}" : false,\n`
+                                        result.exp += `"${stringToProperty(tmp_cmp.responsepath)}" : false,\n`
                                         //result[tmp_cmp.responsepath] = false
                                         result.sel_count++
                                         local_indicator_qsg = (result.sel_count + '').padStart(2, '0')
@@ -974,7 +977,7 @@ function J2V4ESPD(fragment,
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}')"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                     </template>
                     </b-card>`
                     }
@@ -982,22 +985,22 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION':
                     if (fragment[el].propertydatatype != 'INDICATOR') {
-                        result.data_part += `"${fragment[el].responsepath.replaceAll("-", "__").replaceAll('/','$')}" : [],\n`
+                        result.exp += `"${stringToProperty(fragment[el].responsepath)}" : [],\n`
                         //result[fragment[el].responsepath] = true
                         if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                             result.template += `<b-form-group label="[Q] ${fragment[el].description}" 
                                 label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
-                            <b-form-tags v-model="${fragment[el].responsepath.replaceAll("-", "__").replaceAll('/','$')}" placeholder="Add value"></b-form-tags></b-form-group>`
+                            <b-form-tags v-model="exp['${stringToProperty(fragment[el].responsepath)}']" placeholder="Add value"></b-form-tags></b-form-group>`
                         } else {
                             result.template += `
                                 <b-form-group label="[Q] ${fragment[el].description}" 
                                 label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
-                                <b-form-input placeholder="${fragment[el].propertydatatype}" v-model="${fragment[el].responsepath.replaceAll("-", "__").replaceAll('/','$')}[0]"></b-form-input>
+                                <b-form-input placeholder="${fragment[el].propertydatatype}" v-model="exp['${stringToProperty(fragment[el].responsepath)}'][0]"></b-form-input>
                                 </b-form-group>`
                         }
                     } else {
                         //This should be rendered inside the QG/QSG
-                        result.data_part += `"${fragment[el].responsepath}" : true,\n`
+                        result.exp += `"${stringToProperty(fragment[el].responsepath)}" : true,\n`
                         //result[fragment[el].responsepath] = ''
                         result.sel_count++
                         let local_indicator = `${result.sel_count}`.padStart(2, '0')
@@ -1019,7 +1022,7 @@ function J2V4ESPD(fragment,
                     break;
 
                 case 'REQUIREMENT':
-                    result.data_part += `"${fragment[el].responsepath}" : '',\n`
+                    result.exp += `"${stringToProperty(fragment[el].responsepath)}" : '',\n`
                     //result[fragment[el].responsepath] = ''    
                     //LOT management
                     if (fragment[el].propertydatatype == 'LOT_IDENTIFIER') {

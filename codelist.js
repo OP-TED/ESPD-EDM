@@ -17,7 +17,7 @@ const axios = require("axios")
 
 const { program } = require("@caporal/core");
 
-const in_excel_we_trust = [
+var in_excel_we_trust = [
     "ESPD-CodeLists.xlsx",
 ]
 
@@ -37,14 +37,15 @@ program
     .command("process_code_lists", "Process Code Lists")
     .option('--user [user]', 'proxy server user', {default: ''})
     .option('--password [password]', 'proxy server password', {default: ''})
+    .argument('<excelfile>', 'Excel Code List file to be processed')
     .action(({ args, options, logger }) => {
         log(options)
         proxy_user = options.user
         proxy_password = options.password
         // Combine styled and normal strings
-        log(chalk.blue.bold('Process code list'), chalk.red(ESPD_version));
-        log('\n')
-
+        log(chalk.bold(`Processing ${args.excelfile}`), chalk.red(ESPD_version), '\n\n')
+        in_excel_we_trust = [ args.excelfile ]
+        
         in_excel_we_trust.forEach(xcl => {
             var wbk = XLSX.readFile(xcl)
             log(chalk.bold(xcl))

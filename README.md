@@ -1,5 +1,5 @@
 # ESPD-EDM Tools  
-ESPD-EMD branch contains JavaScript tools that process Excel files associated with ESPD-EDM.
+ESPD-EDM branch contains JavaScript tools that process Excel files associated with ESPD-EDM.
 
 [![EUPL Licence](https://img.shields.io/badge/Licence-EUPL%20v1.2-blue.svg)](https://eupl.eu/1.2/en)
 
