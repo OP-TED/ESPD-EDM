@@ -407,7 +407,7 @@ function createContractingAuthority() {
         .ele('@cbc', 'CityName').txt('DV').up()
         .ele('@cbc', 'PostalZone').txt('DV').up()
         .ele('@cac', 'Country')
-        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "ISO", 'listVersionID': "20220928-0" }).txt('BEL').up()
+        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('BEL').up()
         .up()
         .up()
         .ele('@cac', 'Contact')
@@ -434,7 +434,7 @@ function createContractingAuthority() {
         .ele('@cbc', 'CityName').txt('DV').up()
         .ele('@cbc', 'PostalZone').txt('DV').up()
         .ele('@cac', 'Country')
-        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "ISO", 'listVersionID': "20220928-0" }).txt('BEL').up()
+        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('BEL').up()
         .up()
         .up()
         .ele('@cac', 'Contact')
@@ -452,7 +452,7 @@ function createContractingAuthority() {
         .up()
         .ele('@cac', 'Party')
         .ele('@cbc', 'WebsiteURI').txt('https://www.ProcurerWebsite.eu').up()
-        .ele('@cbc', 'IndustryClassificationCode', { 'listID': "http://publications.europa.eu/resource/authority/economic-operator-size", 'listAgencyID': "OP", 'listVersionID': "20220316-0" }).txt('sme').up()
+        .ele('@cbc', 'IndustryClassificationCode', { 'listID': "http://publications.europa.eu/resource/authority/economic-operator-size", 'listAgencyID': "OP", 'listVersionID': "20240612-0" }).txt('sme').up()
         .ele('@cac', 'PartyIdentification')
         .ele('@cbc', 'ID', { 'schemeAgencyID': "OP" }).txt('AD123456789').up()
         .up()
@@ -464,7 +464,7 @@ function createContractingAuthority() {
         .ele('@cbc', 'CityName').txt('__ProcurerCity__').up()
         .ele('@cbc', 'PostalZone').txt('12345').up()
         .ele('@cac', 'Country')
-        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "ISO", 'listName': "country", 'listVersionID': "20220928-0" }).txt('BEL').up()
+        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "OP", 'listName': "country", 'listVersionID': "20240925-0" }).txt('BEL').up()
         .up()
         .up()
         .ele('@cac', 'Contact')
@@ -512,7 +512,7 @@ function createEvidence() {
     evidence_ids.forEach((evid) => {
         espd_response.ele('@cac', 'Evidence')
         .ele('@cbc', 'ID', { 'schemeAgencyID': "XXXAGENCYXXX" }).txt(evid).up()
-        .ele('@cbc', 'ConfidentialityLevelCode', { 'listID': "http://publications.europa.eu/resource/authority/access-right", 'listAgencyID': "OP", 'listVersionID': "20220316-0" }).txt('CONFIDENTIAL').up()
+        .ele('@cbc', 'ConfidentialityLevelCode', { 'listID': "http://publications.europa.eu/resource/authority/access-right", 'listAgencyID': "OP", 'listVersionID': "20240612-0" }).txt('CONFIDENTIAL').up()
         .ele('@cac', 'DocumentReference')
         .ele('@cbc', 'ID', { 'schemeAgencyID': "XXXAGENCYXXX" }).txt('SAT-11121233').up()
         .ele('@cac', 'Attachment')
@@ -547,7 +547,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                     tmp = part.com(` Criterion: ${element.name} `)
                         .ele('@cac', 'TenderingCriterion')
                         .ele('@cbc', 'ID', { 'schemeID': 'Criterion', 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(c_id).up()
-                        .ele('@cbc', 'CriterionTypeCode', { 'listID': "http://publications.europa.eu/resource/authority/criterion", 'listAgencyID': "OP", 'listVersionID': "20230315-0" }).txt(element.elementcode).up()
+                        .ele('@cbc', 'CriterionTypeCode', { 'listID': "http://publications.europa.eu/resource/authority/criterion", 'listAgencyID': "OP", 'listVersionID': "20240612-0" }).txt(element.elementcode).up()
                         .ele('@cbc', 'Name').txt(element.name).up()
                         .ele('@cbc', 'Description').txt(element.description).up()
                         
@@ -582,7 +582,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                         .ele('@cbc', 'Article').txt('[Article, e.g. Article 2.I.a]').up()
                         .ele('@cbc', 'URI').txt('http://eur-lex.europa.eu/').up()
                         .ele('@cac', 'Language')
-                        .ele('@cbc', 'LocaleCode', { 'listID': "http://publications.europa.eu/resource/authority/language", 'listAgencyID': "ISO", 'listVersionID': "20220928-0" }).txt('ENG').up()
+                        .ele('@cbc', 'LocaleCode', { 'listID': "http://publications.europa.eu/resource/authority/language", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('ENG').up()
                         .up()
                         .up()
                     //create the inner elements
@@ -658,7 +658,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                             tmp.ele('@cbc', 'ExpectedCode', { 'listID': 'boolean-gui-control-type', 'listAgencyID': 'OP', 'listVersionID': schemeVersionID }).txt(element.buyervalue).up()
                             break;
                         case 'CODE_COUNTRY':
-                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "ISO", 'listVersionID': "20220928-0" }).txt(element.buyervalue).up()
+                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt(element.buyervalue).up()
                             break;
                         case 'ECONOMIC_OPERATOR_ROLE_CODE':
                             tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt(element.buyervalue).up()
@@ -903,7 +903,7 @@ function render_response(obj, part = espd_response, crt_criterion = 'NONE') {
                         case 'CODE_COUNTRY':
                             tmp.ele('@cac', 'ResponseValue')
                                 .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "XXXESPD-SERVICEXXX", 'schemeVersionID': schemeVersionID }).txt(element.responsecontent3).up()
-                                .ele('@cbc', 'ResponseCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "ISO", 'listVersionID': "20220928-0" }).txt('BEL').up()
+                                .ele('@cbc', 'ResponseCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('BEL').up()
                                 .up()
                             break;
                         case 'CODE':

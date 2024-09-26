@@ -721,6 +721,8 @@ function detect_structure(sph) {
                 parent = path_structure.at(-1)??''
                 if (parent.length > 0 && element_children[parent].indexOf(`${tag}  ${element[cardinality] ? `${element[cardinality]}`.trim() : '?!?'}`) == -1) 
                     element_children[parent].push(`${tag}  ${element[cardinality] ? `${element[cardinality]}`.trim() : '?!?'}`)
+                if(!Object.hasOwn(element_children, '$TERMINAL_NODE$')) element_children['$TERMINAL_NODE$'] = []
+                if(element_children['$TERMINAL_NODE$'].indexOf(tag) == -1) element_children['$TERMINAL_NODE$'].push(tag)
 
                 if (!element[cardinality] || (element[cardinality] && `${element[cardinality]}`.trim() == '')) log(`No cardinality ${parent}:${tag} __ ${typeof element[cardinality]}`)
                 break

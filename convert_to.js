@@ -827,7 +827,7 @@ function J2V4ESPD(fragment,
                     result.data_part += `"${fragment[el].responsepath}" : [],\n`
                     //result[fragment[el].responsepath] = []
                     result.template += `
-                        <div>`
+                        <div v-if="window.espd_doc.role==='eo'">`
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<b-card footer-tag="footer">`
                     }
@@ -910,7 +910,7 @@ function J2V4ESPD(fragment,
                     //result[fragment[el].responsepath] = []
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
-                        result.template += `<b-card footer-tag="footer">`
+                        result.template += `<b-card v-if="window.espd_doc.role==='eo'"  footer-tag="footer">`
                     }
 
                     if (Object.hasOwn(fragment[el], 'components')) {
