@@ -221,10 +221,10 @@
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listVersionID != '20220316-0'))"/>
+         <xsl:when test="(false() or not(@listVersionID != '20240612-0'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listVersionID != '20220316-0'))">
+                                test="(false() or not(@listVersionID != '20240612-0'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -241,10 +241,10 @@
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/access-right/20220316-0/xml/gc/AccessRight.gc'))"/>
+         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/access-right/20240612-0/xml/gc/AccessRight.gc'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/access-right/20220316-0/xml/gc/AccessRight.gc'))">
+                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/access-right/20240612-0/xml/gc/AccessRight.gc'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -255,7 +255,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/access-right/20220316-0/xml/gc/AccessRight.gc'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/access-right/20240612-0/xml/gc/AccessRight.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -349,7 +349,7 @@
          <xsl:when test="(false() or not(@listID != 'criterion-element-type'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listID != 'http://publications.europa.eu/resource/authority/language'))">
+                                test="(false() or not(@listID != 'criterion-element-type'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -360,7 +360,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listID = http://publications.europa.eu/resource/authority/language'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listID = criterion-element-type'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -473,10 +473,10 @@
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listVersionID != '20220928-0'))"/>
+         <xsl:when test="(false() or not(@listVersionID != '20240925-0'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listVersionID != '20220928-0'))">
+                                test="(false() or not(@listVersionID != '20240925-0'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -487,16 +487,16 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20220928-0'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20240925-0'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/country/20220928-0/xml/gc/Country.gc'))"/>
+         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/country/20240925-0/xml/gc/Country.gc'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/country/20220928-0/xml/gc/Country.gc'))">
+                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/country/20240925-0/xml/gc/Country.gc'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -507,7 +507,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/country/20220928-0/xml/gc/Country.gc'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/country/20240925-0/xml/gc/Country.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -578,10 +578,10 @@
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listVersionID != '20220928-0'))"/>
+         <xsl:when test="(false() or not(@listVersionID != '20240925-0'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listVersionID != '20220928-0'))">
+                                test="(false() or not(@listVersionID != '20240925-0'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -592,16 +592,16 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20220928-0'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20240925-0'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/language/20220928-0/xml/gc/Language.gc'))"/>
+         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/language/20240925-0/xml/gc/Language.gc'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/language/20220928-0/xml/gc/Language.gc'))">
+                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/language/20240925-0/xml/gc/Language.gc'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -612,7 +612,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/language/20220928-0/xml/gc/Language.gc'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/language/20240925-0/xml/gc/Language.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -1256,10 +1256,10 @@
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listVersionID != '20230315-0'))"/>
+         <xsl:when test="(false() or not(@listVersionID != '20240612-0'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listVersionID != '20230315-0'))">
+                                test="(false() or not(@listVersionID != '20240612-0'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1270,16 +1270,16 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20230315-0'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listVersionID = 20240612-0'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
-         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/criterion/20230315-0/xml/gc/Criterion.gc'))"/>
+         <xsl:when test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/criterion/20240612-0/xml/gc/Criterion.gc'))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/criterion/20230315-0/xml/gc/Criterion.gc'))">
+                                test="(false() or not(@listSchemeURI != 'http://publications.europa.eu/resource/distribution/criterion/20240612-0/xml/gc/Criterion.gc'))">
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
@@ -1290,7 +1290,7 @@
                   <xsl:value-of select="name(ancestor::*[1])"/>
                   <xsl:text/>/<xsl:text/>
                   <xsl:value-of select="name()"/>
-                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/criterion/20230315-0/xml/gc/Criterion.gc'.</svrl:text>
+                  <xsl:text/>' must have the following attribute and value: 'listSchemeURI = http://publications.europa.eu/resource/distribution/criterion/20240612-0/xml/gc/Criterion.gc'.</svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
