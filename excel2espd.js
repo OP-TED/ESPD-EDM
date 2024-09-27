@@ -12,7 +12,8 @@ const { create } = require('xmlbuilder2')
 const { program } = require("@caporal/core")
 const uuid_v4 = require('crypto')
 
-const {cols, tag_map} = require("./modules/espd_constants.cjs")
+const {cols, tag_map, code_list_version} = require("./modules/espd_constants.cjs")
+const log = console.log;
 
 var counter = {
     'C': 0,
@@ -31,46 +32,17 @@ var counter = {
     'RES': 0,
     'RAP': 0,
 }
-const schemeVersionID = '4.0.0'
+
+var schemeVersionID = '4.0.0'
 
 var in_excel_we_trust = [
     //"ESPD-criterion-request-multiple-C25-C32.xlsx",
     "criterion/ESPD-criterion-response-multiple-C1-C25-C32.xlsx"
 ]
 
-const log = console.log;
+var espd_json = {}, evidence_ids = [], lot_ids = [], espd_request, espd_response
+
 XLSX.set_fs(fs);
-
-var espd_json = {}, evidence_ids = [], lot_ids = []
-
-var espd_request = create({
-    version: '1.0',
-    encoding: 'UTF-8',
-    defaultNamespace: { ele: 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2', att: null },
-    namespaceAlias: { cbc: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cac: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2' }
-})
-    .ele('QualificationApplicationRequest')
-    .att('http://www.w3.org/2001/XMLSchema-instance', 'xsi:schemaLocation', 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2 ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.3.xsd')
-    .att('@xmlns', 'xmlns:fn', 'http://www.w3.org/2005/xpath-functions')
-    .att('@xmlns', 'xmlns:xs', 'http://www.w3.org/2001/XMLSchema')
-    .att('@xmlns', 'xmlns:cac', 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')
-    .att('@xmlns', 'xmlns:cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')
-    .att('@xmlns', 'xmlns:espd', `urn:com:grow:espd:${schemeVersionID}`)
-    ,
-    espd_response = create({
-        version: '1.0',
-        encoding: 'UTF-8',
-        defaultNamespace: { ele: 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2', att: null },
-        namespaceAlias: { cbc: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cac: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2' }
-    })
-        .ele('QualificationApplicationResponse')
-        .att('http://www.w3.org/2001/XMLSchema-instance', 'xsi:schemaLocation', 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2 ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.3.xsd')
-        .att('@xmlns', 'xmlns:fn', 'http://www.w3.org/2005/xpath-functions')
-        .att('@xmlns', 'xmlns:xs', 'http://www.w3.org/2001/XMLSchema')
-        .att('@xmlns', 'xmlns:cac', 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')
-        .att('@xmlns', 'xmlns:cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')
-        .att('@xmlns', 'xmlns:espd', `urn:com:grow:espd:${schemeVersionID}`)
-
 
 program
     .version("1.6.8")
@@ -78,16 +50,46 @@ program
     .description("Tool to generate ESDP XML file from Excel Criterion files")
 
     .command("espd_XML", "Generate ESPD Request and Response XML files")
+    .option('--svid [schemeVersionID]', 'ESPD EDM version', {default: '4.0.0'})
     .argument("<excelfile>", "Excel Criterion file to process")
     .action(({ logger, args, options }) => {
         //log(JSON.stringify(args))
-
+        schemeVersionID = options.svid
         if(args.excelfile.length > 0){
             in_excel_we_trust = [ args.excelfile ]
             log(chalk.bold(`Processing ${args.excelfile}`))
         }
         //log(chalk.blue.bold('Excel to XML transformation'), chalk.red('for ESPD realease v4.0.0.'));
         log('\n\n')
+
+
+        espd_request = create({
+            version: '1.0',
+            encoding: 'UTF-8',
+            defaultNamespace: { ele: 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2', att: null },
+            namespaceAlias: { cbc: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cac: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2' }
+        })
+            .ele('QualificationApplicationRequest')
+            .att('http://www.w3.org/2001/XMLSchema-instance', 'xsi:schemaLocation', 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2 ../xsdrt/maindoc/UBL-QualificationApplicationRequest-2.3.xsd')
+            .att('@xmlns', 'xmlns:fn', 'http://www.w3.org/2005/xpath-functions')
+            .att('@xmlns', 'xmlns:xs', 'http://www.w3.org/2001/XMLSchema')
+            .att('@xmlns', 'xmlns:cac', 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')
+            .att('@xmlns', 'xmlns:cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')
+            .att('@xmlns', 'xmlns:espd', `urn:com:grow:espd:${schemeVersionID}`)
+            ,
+            espd_response = create({
+                version: '1.0',
+                encoding: 'UTF-8',
+                defaultNamespace: { ele: 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2', att: null },
+                namespaceAlias: { cbc: 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2', cac: 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2' }
+            })
+                .ele('QualificationApplicationResponse')
+                .att('http://www.w3.org/2001/XMLSchema-instance', 'xsi:schemaLocation', 'urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2 ../xsdrt/maindoc/UBL-QualificationApplicationResponse-2.3.xsd')
+                .att('@xmlns', 'xmlns:fn', 'http://www.w3.org/2005/xpath-functions')
+                .att('@xmlns', 'xmlns:xs', 'http://www.w3.org/2001/XMLSchema')
+                .att('@xmlns', 'xmlns:cac', 'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2')
+                .att('@xmlns', 'xmlns:cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2')
+                .att('@xmlns', 'xmlns:espd', `urn:com:grow:espd:${schemeVersionID}`)
 
         in_excel_we_trust.forEach(xcl => {
             var wbk = XLSX.readFile(xcl)
@@ -359,7 +361,7 @@ function createRootElements() {
         .com(' The version of the content of this document. If the document is modified the element cbc:PreviousVersionID should be instantiated ')
         .ele('@cbc', 'VersionID', { 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(schemeVersionID).up()
         .com(' The type of the procurement procedure; this information is provided by eForms and the concret notice per procedure. e.g. open = 	In open procedures any interested economic operator may submit a tender in response to a call for competition. ')
-        .ele('@cbc', 'ProcedureCode', { "listID": "Dummy_procurement-procedure-type", "listAgencyID": "OP", "listVersionID": "yyyymmdd-0" }).txt('Open').up()
+        .ele('@cbc', 'ProcedureCode', code_list_version[schemeVersionID].procedure_code).txt('Open').up()
 
 
     espd_response.com(` The ESPD-EDM-V${schemeVersionID} is entirely based on OASIS UBL-2.3 `)
@@ -379,7 +381,7 @@ function createRootElements() {
         .com(' The version of the content of this document. If the document is modified the element cbc:PreviousVersionID should be instantiated ')
         .ele('@cbc', 'VersionID', { 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(schemeVersionID).up()
         .com(' The type of the procurement procedure; this information is provided by eForms and the concret notice per procedure. e.g. open = 	In open procedures any interested economic operator may submit a tender in response to a call for competition. ')
-        .ele('@cbc', 'ProcedureCode', { "listID": "Dummy_procurement-procedure-type", "listAgencyID": "OP", "listVersionID": "yyyymmdd-0" }).txt('Open').up()
+        .ele('@cbc', 'ProcedureCode', code_list_version[schemeVersionID].procedure_code).txt('Open').up()
 
     createContractingAuthority()
 
@@ -407,7 +409,7 @@ function createContractingAuthority() {
         .ele('@cbc', 'CityName').txt('DV').up()
         .ele('@cbc', 'PostalZone').txt('DV').up()
         .ele('@cac', 'Country')
-        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('BEL').up()
+        .ele('@cbc', 'IdentificationCode', code_list_version[schemeVersionID].country).txt('BEL').up()
         .up()
         .up()
         .ele('@cac', 'Contact')
@@ -434,7 +436,7 @@ function createContractingAuthority() {
         .ele('@cbc', 'CityName').txt('DV').up()
         .ele('@cbc', 'PostalZone').txt('DV').up()
         .ele('@cac', 'Country')
-        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('BEL').up()
+        .ele('@cbc', 'IdentificationCode', code_list_version[schemeVersionID].country).txt('BEL').up()
         .up()
         .up()
         .ele('@cac', 'Contact')
@@ -448,11 +450,11 @@ function createContractingAuthority() {
     //add the Economic Operator for the Response
     espd_response.ele('@cac', 'EconomicOperatorParty')
         .ele('@cac', 'EconomicOperatorRole')
-        .ele('@cbc', 'RoleCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt('group-mem').up()
+        .ele('@cbc', 'RoleCode', code_list_version[schemeVersionID].eo_role_type).txt('group-mem').up()
         .up()
         .ele('@cac', 'Party')
         .ele('@cbc', 'WebsiteURI').txt('https://www.ProcurerWebsite.eu').up()
-        .ele('@cbc', 'IndustryClassificationCode', { 'listID': "http://publications.europa.eu/resource/authority/economic-operator-size", 'listAgencyID': "OP", 'listVersionID': "20240612-0" }).txt('sme').up()
+        .ele('@cbc', 'IndustryClassificationCode', code_list_version[schemeVersionID].economic_operator_size).txt('sme').up()
         .ele('@cac', 'PartyIdentification')
         .ele('@cbc', 'ID', { 'schemeAgencyID': "OP" }).txt('AD123456789').up()
         .up()
@@ -464,7 +466,7 @@ function createContractingAuthority() {
         .ele('@cbc', 'CityName').txt('__ProcurerCity__').up()
         .ele('@cbc', 'PostalZone').txt('12345').up()
         .ele('@cac', 'Country')
-        .ele('@cbc', 'IdentificationCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listAgencyID': "OP", 'listName': "country", 'listVersionID': "20240925-0" }).txt('BEL').up()
+        .ele('@cbc', 'IdentificationCode', code_list_version[schemeVersionID].country).txt('BEL').up()
         .up()
         .up()
         .ele('@cac', 'Contact')
@@ -512,7 +514,7 @@ function createEvidence() {
     evidence_ids.forEach((evid) => {
         espd_response.ele('@cac', 'Evidence')
         .ele('@cbc', 'ID', { 'schemeAgencyID': "XXXAGENCYXXX" }).txt(evid).up()
-        .ele('@cbc', 'ConfidentialityLevelCode', { 'listID': "http://publications.europa.eu/resource/authority/access-right", 'listAgencyID': "OP", 'listVersionID': "20240612-0" }).txt('CONFIDENTIAL').up()
+        .ele('@cbc', 'ConfidentialityLevelCode', code_list_version[schemeVersionID].access_right).txt('CONFIDENTIAL').up()
         .ele('@cac', 'DocumentReference')
         .ele('@cbc', 'ID', { 'schemeAgencyID': "XXXAGENCYXXX" }).txt('SAT-11121233').up()
         .ele('@cac', 'Attachment')
@@ -547,7 +549,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                     tmp = part.com(` Criterion: ${element.name} `)
                         .ele('@cac', 'TenderingCriterion')
                         .ele('@cbc', 'ID', { 'schemeID': 'Criterion', 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(c_id).up()
-                        .ele('@cbc', 'CriterionTypeCode', { 'listID': "http://publications.europa.eu/resource/authority/criterion", 'listAgencyID': "OP", 'listVersionID': "20240612-0" }).txt(element.elementcode).up()
+                        .ele('@cbc', 'CriterionTypeCode', code_list_version[schemeVersionID].criterion).txt(element.elementcode).up()
                         .ele('@cbc', 'Name').txt(element.name).up()
                         .ele('@cbc', 'Description').txt(element.description).up()
                         
@@ -582,7 +584,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                         .ele('@cbc', 'Article').txt('[Article, e.g. Article 2.I.a]').up()
                         .ele('@cbc', 'URI').txt('http://eur-lex.europa.eu/').up()
                         .ele('@cac', 'Language')
-                        .ele('@cbc', 'LocaleCode', { 'listID': "http://publications.europa.eu/resource/authority/language", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('ENG').up()
+                        .ele('@cbc', 'LocaleCode', code_list_version[schemeVersionID].language).txt('ENG').up()
                         .up()
                         .up()
                     //create the inner elements
@@ -606,7 +608,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                     }
                     tmp = part.ele('@cac', 'TenderingCriterionPropertyGroup')
                         .ele('@cbc', 'ID', { 'schemeID': 'Criterion', 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(element.requestpath).up()
-                        .ele('@cbc', 'PropertyGroupTypeCode', { 'listID': "property-group-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(element.elementcode).up()
+                        .ele('@cbc', 'PropertyGroupTypeCode', code_list_version[schemeVersionID].property_group_type).txt(element.elementcode).up()
 
                     //create the inner elements
                     if (Object.hasOwn(element, 'components')) render_request(element.components, tmp, EG_FLAG)
@@ -623,7 +625,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                     }
                     tmp = part.ele('@cac', 'SubsidiaryTenderingCriterionPropertyGroup')
                         .ele('@cbc', 'ID', { 'schemeID': 'Criterion', 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(element.requestpath).up()
-                        .ele('@cbc', 'PropertyGroupTypeCode', { 'listID': "property-group-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(element.elementcode).up()
+                        .ele('@cbc', 'PropertyGroupTypeCode', code_list_version[schemeVersionID].property_group_type).txt(element.elementcode).up()
 
                     //create the inner elements
                     if (Object.hasOwn(element, 'components')) render_request(element.components, tmp, EG_FLAG)
@@ -634,8 +636,8 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                         .ele('@cbc', 'ID', { 'schemeID': 'Criterion', 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(element.requestpath).up()
                         .ele('@cbc', 'Name').txt(element.name).up()
                         .ele('@cbc', 'Description').txt(element.description).up()
-                        .ele('@cbc', 'TypeCode', { 'listID': "criterion-element-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(element.type).up()
-                        .ele('@cbc', 'ValueDataTypeCode', { 'listID': "response-data-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(Object.hasOwn(element, 'propertydatatype') ? element.propertydatatype : 'NONE').up()
+                        .ele('@cbc', 'TypeCode', code_list_version[schemeVersionID].criterion_element_type).txt(element.type).up()
+                        .ele('@cbc', 'ValueDataTypeCode', code_list_version[schemeVersionID].response_data_type).txt(Object.hasOwn(element, 'propertydatatype') ? element.propertydatatype : 'NONE').up()
                         .up()
                     break;
                 case "REQUIREMENT":
@@ -643,8 +645,8 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                         .ele('@cbc', 'ID', { 'schemeID': 'Criterion', 'schemeAgencyID': 'OP', 'schemeVersionID': schemeVersionID }).txt(element.requestpath).up()
                         .ele('@cbc', 'Name').txt(element.name).up()
                         .ele('@cbc', 'Description').txt(element.description).up()
-                        .ele('@cbc', 'TypeCode', { 'listID': "criterion-element-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(element.type).up()
-                        .ele('@cbc', 'ValueDataTypeCode', { 'listID': "response-data-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(Object.hasOwn(element, 'propertydatatype') ? element.propertydatatype : 'NONE').up()
+                        .ele('@cbc', 'TypeCode', code_list_version[schemeVersionID].criterion_element_type).txt(element.type).up()
+                        .ele('@cbc', 'ValueDataTypeCode', code_list_version[schemeVersionID].response_data_type).txt(Object.hasOwn(element, 'propertydatatype') ? element.propertydatatype : 'NONE').up()
                         .com(' No answer is expected here from the economic operator, as this is a REQUIREMENT issued by the contracting authority. Hence the element "cbc:ValueDataTypeCode" contains the type of value of the requirement issued by the contracting authority  ')
 
                     switch (element.propertydatatype) {
@@ -655,13 +657,13 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                             tmp.ele('@cbc', 'ExpectedID', { 'schemeAgencyID': 'OP' }).txt(element.buyervalue).up()
                             break;
                         case 'CODE_BOOLEAN':
-                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': 'boolean-gui-control-type', 'listAgencyID': 'OP', 'listVersionID': schemeVersionID }).txt(element.buyervalue).up()
+                            tmp.ele('@cbc', 'ExpectedCode', code_list_version[schemeVersionID].boolean_gui_control_type).txt(element.buyervalue).up()
                             break;
                         case 'CODE_COUNTRY':
-                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt(element.buyervalue).up()
+                            tmp.ele('@cbc', 'ExpectedCode', code_list_version[schemeVersionID].country).txt(element.buyervalue).up()
                             break;
                         case 'ECONOMIC_OPERATOR_ROLE_CODE':
-                            tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt(element.buyervalue).up()
+                            tmp.ele('@cbc', 'ExpectedCode', code_list_version[schemeVersionID].eo_role_type).txt(element.buyervalue).up()
                             break;
                         case 'DESCRIPTION':
                             tmp.ele('@cbc', 'ExpectedDescription').txt(element.buyervalue).up()
@@ -708,9 +710,9 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                             tmp.ele('@cbc', 'ExpectedURI', { 'schemeAgencyID': 'OP' }).txt(element.buyervalue).up()
                             break;
                         case 'CODE':
-                            if (element.codelist == 'Occupation') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/occupation", 'listAgencyID': "EMPL", 'listVersionID': "20221214-0" }).txt(element.buyervalue).up()
-                            if (element.codelist == 'FinancialRatioType') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "financial-ratio-type", 'listAgencyID': "OP", 'listVersionID': schemeVersionID }).txt(element.buyervalue).up()
-                            if (element.codelist == 'EoRoleType') tmp.ele('@cbc', 'ExpectedCode', { 'listID': "http://publications.europa.eu/resource/authority/eo-role-type", 'listAgencyID': "OP", 'listVersionID': "20211208-0" }).txt(element.buyervalue).up()
+                            if (element.codelist == 'Occupation') tmp.ele('@cbc', 'ExpectedCode', code_list_version[schemeVersionID].occupation).txt(element.buyervalue).up()
+                            if (element.codelist == 'FinancialRatioType') tmp.ele('@cbc', 'ExpectedCode', code_list_version[schemeVersionID].financial_ration_type).txt(element.buyervalue).up()
+                            if (element.codelist == 'EoRoleType') tmp.ele('@cbc', 'ExpectedCode', code_list_version[schemeVersionID].eo_role_type).txt(element.buyervalue).up()
                             break;
 
                         default:
@@ -903,24 +905,24 @@ function render_response(obj, part = espd_response, crt_criterion = 'NONE') {
                         case 'CODE_COUNTRY':
                             tmp.ele('@cac', 'ResponseValue')
                                 .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "XXXESPD-SERVICEXXX", 'schemeVersionID': schemeVersionID }).txt(element.responsecontent3).up()
-                                .ele('@cbc', 'ResponseCode', { 'listID': "http://publications.europa.eu/resource/authority/country", 'listName': "country", 'listAgencyID': "OP", 'listVersionID': "20240925-0" }).txt('BEL').up()
+                                .ele('@cbc', 'ResponseCode', code_list_version[schemeVersionID].country).txt('BEL').up()
                                 .up()
                             break;
                         case 'CODE':
                             if (element.codelist == 'Occupation') {
                                 tmp.ele('@cac', 'ResponseValue')
                                     .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "XXXESPD-SERVICEXXX", 'schemeVersionID': schemeVersionID }).txt(element.responsecontent3).up()
-                                    .ele('@cbc', 'ResponseCode', { 'listAgencyID': "EMPL", 'listVersionID': "20221214-0", 'listID': "http://publications.europa.eu/resource/authority/occupation" }).txt('dummy-value').up()
+                                    .ele('@cbc', 'ResponseCode', code_list_version[schemeVersionID].occupation).txt('dummy-value').up()
                                     .up()
                             } else if (element.codelist == 'FinancialRatioType') {
                                 tmp.ele('@cac', 'ResponseValue')
                                     .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "XXXESPD-SERVICEXXX", 'schemeVersionID': schemeVersionID }).txt(element.responsecontent3).up()
-                                    .ele('@cbc', 'ResponseCode', { 'listAgencyID': "OP", 'listVersionID': schemeVersionID, 'listID': "financial-ratio-type" }).txt('dummy-value').up()
+                                    .ele('@cbc', 'ResponseCode', code_list_version[schemeVersionID].financial_ration_type).txt('dummy-value').up()
                                     .up()
                             } else if (element.codelist == 'EoRoleType') {
                                 tmp.ele('@cac', 'ResponseValue')
                                     .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "XXXESPD-SERVICEXXX", 'schemeVersionID': schemeVersionID }).txt(element.responsecontent3).up()
-                                    .ele('@cbc', 'ResponseCode', { 'listAgencyID': "OP", 'listVersionID': "20211208-0", 'listID': "http://publications.europa.eu/resource/authority/eo-role-type" }).txt('dummy-value').up()
+                                    .ele('@cbc', 'ResponseCode', code_list_version[schemeVersionID].eo_role_type).txt('dummy-value').up()
                                     .up()
                             }
 
