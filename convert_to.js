@@ -55,7 +55,7 @@ program
     .argument('<excelfile>', 'Excel Criterion file to be processed')
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
-        log(chalk.bold(`Processing ${args.excelfile}`), '\n\n')
+        log(chalk.bold(`Processing ${args.excelfile}`), '\n')
 
         in_excel_we_trust = [args.excelfile]
 
@@ -64,6 +64,7 @@ program
             log(chalk.bold(xcl))
 
             var sheet_name_list = wbk.SheetNames;
+            name_version = xcl.substring(xcl.indexOf('_v') + 1, xcl.length - ".xlsx".length)
 
             for (const i in sheet_name_list) {
                 //log(''.padStart(80, '_'))
@@ -75,7 +76,6 @@ program
             //espd_json contains all information from Excel in JSON format
             //save the JSON_file
             //log(JSON.stringify(espd_json, null, ' '))
-            name_version = xcl.substring(xcl.indexOf('_v') + 1, xcl.length - ".xlsx".length)
 
             JSON2file(`.\\espd_edm_${name_version}.json`, espd_json)
 
@@ -208,13 +208,13 @@ function excel2bootstrapvue(sph, sheet_name) {
                 col_idx++
                 continue
             }
-            let elm = element[col_idx].toString().trim(), tag = elm.replace('{', '').replace('}', '')
+            let elm = element[col_idx].toString().trim(), tag = elm.replace('{', '').replace('}', ''), theV = name_version.substring(1)
             //start tag
             if (elm.startsWith('{') && !elm.endsWith('}')) {
                 //log(tag)
                 switch (tag) {
                     case 'CRITERION':
-                        c_obj.tag = `C${element[col_idx - 1]} - ${c_type}`
+                        c_obj.tag = theV != '4.0.0' ? `C${element[col_idx - 1]} - ${c_type}` : `${element[col_idx - 1]} - ${c_type}`
                         c_obj.type = tag
                         for (const key in cols) {
                             let clm = cols[key].column
@@ -253,9 +253,13 @@ function excel2bootstrapvue(sph, sheet_name) {
                         if (tmp_elm['cardinality'].indexOf('(') != -1) break
 
                         tmp_elm.components = {}
-                        parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
-                        element_map.push(`${tag_map[tag]}${counter[tag_map[tag]]}`)
-
+                        if (theV != '4.0.0') {
+                            parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
+                            element_map.push(`${tag_map[tag]}${counter[tag_map[tag]]}`)
+                        } else {
+                            parent[`${element[col_idx - 1]}`] = tmp_elm
+                            element_map.push(`${element[col_idx - 1]}`)
+                        }
                         break;
 
                     default:
@@ -293,11 +297,12 @@ function excel2bootstrapvue(sph, sheet_name) {
                         //skip multiple occurences, keep only the 1st occurence
                         tmp_elm['cardinality'] = tmp_elm['cardinality'].replace('(1)', '').trim()
                         if (tmp_elm['cardinality'].indexOf('(') != -1) break
-
-                        parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
+                        if (theV != '4.0.0') {
+                            parent[`${tag_map[tag]}${counter[tag_map[tag]]}`] = tmp_elm
+                        } else {
+                            parent[`${element[col_idx - 1]}`] = tmp_elm
+                        }
                         break;
-
-
                     default:
                         break;
                 }
@@ -391,24 +396,14 @@ function JSON2Vue(fragment,
                                 }
                         }
                     }
-                    //log('\n\n/**')
-                    //log(` * Component - ${fragment[el].tag} - ${fragment[el].name}`)
-                    //log(' */')
-                    //log(`Vue.component("${fragment[el].tag}",
-                    //{ 
-                    //    data(){
-                    //        return ${JSON.stringify(data_part, null, ' ')}
-                    //    },
-                    //    template: \`${result.template}\`
-                    //})`)
-                    //log(result.template)
 
                     last_sel_count = Math.max(last_sel_count, result.sel_count)
 
                     vue_stream.write('\n\n/**\n')
+                    vue_stream.write(` * Version - ${name_version}\n`)
                     vue_stream.write(` * Component - ${fragment[el].tag} - ${fragment[el].name}\n`)
                     vue_stream.write(' */\n')
-                    vue_stream.write(`Vue.component("${fragment[el].tag}",
+                    vue_stream.write(`Vue.component("${name_version} - ${fragment[el].tag}",
                     { 
                         data(){
                             return ${JSON.stringify(data_part, null, ' ')}
@@ -473,10 +468,6 @@ function JSON2Vue(fragment,
                             }
                         }
                     }
-
-
-                    //if (Object.hasOwn(fragment[el], 'components')) result = JSON2Vue(fragment[el].components, result)
-
                     result.template += `</b-card>`
                     break;
 
@@ -712,33 +703,32 @@ function J2V4ESPD(fragment,
                     result.template += `<div>`
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
-                        result.template += `<b-card footer-tag="footer">`
+                        result.data_part += `"html_${stringToProperty(fragment[el].requestpath)}": '', \n`
+                        result.template += `<div v-html="html_${stringToProperty(fragment[el].requestpath)}"></div><b-card footer-tag="footer">`
                     }
 
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                        <b-button variant="success" @click="html_${stringToProperty(fragment[el].requestpath)} = renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                         </template>
                         </b-card>`
                     }
                     result.template += `</div>`
                     break;
-                
-                case 'REQUIREMENT_GROUP':
-                    //result[fragment[el].requestpath] = []
-                    result.data_part += `"${fragment[el].requestpath}" : [],\n`
-                    result.template += `<div>`
 
+                case 'REQUIREMENT_GROUP':
+                    result.template += `<div>`
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
-                        result.template += `<b-card footer-tag="footer">`
+                        result.data_part += `"html_${stringToProperty(fragment[el].requestpath)}": '', \n`
+                        result.template += `<div v-html="html_${stringToProperty(fragment[el].requestpath)}"></div><b-card footer-tag="footer">`
                     }
 
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    <b-button variant="success" @click="html_${stringToProperty(fragment[el].requestpath)} = renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                     </template>
                     </b-card>`
                     }
@@ -747,12 +737,11 @@ function J2V4ESPD(fragment,
                     break;
 
                 case 'REQUIREMENT_SUBGROUP':
-                    //result[fragment[el].requestpath] = []
-                    result.data_part += `"${fragment[el].requestpath}" : [],\n`
                     result.template += `<div>`
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
-                        result.template += `<b-card footer-tag="footer">`
+                        result.data_part += `"html_${stringToProperty(fragment[el].requestpath)}": '', \n`
+                        result.template += `<div v-html="html_${stringToProperty(fragment[el].requestpath)}"></div><b-card footer-tag="footer">`
                     }
 
                     let is_radio_group = false, select_variable = "", option_variable = ""
@@ -760,9 +749,6 @@ function J2V4ESPD(fragment,
                         for (const e in fragment[el].components) {
                             if (Object.hasOwn(fragment[el].components, e)) {
                                 const tmp_cmp = fragment[el].components[e]
-
-                                //log(JSON.stringify(tmp_cmp, null, 2))
-
                                 if (tmp_cmp.type == 'REQUIREMENT') {
                                     if (tmp_cmp.buyervalue == 'RADIO_BUTTON_TRUE') {
                                         //The list of values is in elementcode field
@@ -770,7 +756,7 @@ function J2V4ESPD(fragment,
                                         result.sel_count++
                                         let local_indicator = (result.sel_count + '').padStart(2, '0')
                                         is_radio_group = true
-                                        select_variable = `val_${tmp_cmp.responsepath.replaceAll("-", "__").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
+                                        select_variable = `${stringToProperty(tmp_cmp.responsepath)}`
                                         option_variable = `opt_${tmp_cmp.responsepath.replaceAll("-", "__").substring(0, tmp_cmp.responsepath.indexOf("/"))}`
                                         let tc = 0,
                                             opt_var = tmp_cmp.elementcode.replace("[", "").replace("]", "").split(",").map(x => { return { text: x.trim(), value: tc++ } })
@@ -778,11 +764,11 @@ function J2V4ESPD(fragment,
                                         result.data_part += `"${select_variable}" : ${opt_var[0].value},\n`
 
                                         result[option_variable] = opt_var
-                                        result[select_variable] = result[option_variable][0].value
+                                        result.exp += `"${select_variable}": ${result[option_variable][0].value}, \n`
                                         result.template += `<b-form-group label-class="font-weight-bold"  label="[R] ${tmp_cmp.description}" v-slot="{ ariaDescribedby }">
                                     <b-form-radio-group
                                         id="radio-group-${local_indicator}"
-                                        v-model="${select_variable}"
+                                        v-model="exp.${select_variable}"
                                         :options="${option_variable}"
                                         :aria-describedby="ariaDescribedby"
                                         name="radio-options"
@@ -796,7 +782,7 @@ function J2V4ESPD(fragment,
                                 } else if (tmp_cmp.type == 'REQUIREMENT_SUBGROUP') {
                                     if (is_radio_group) {
                                         //The section is shown depending on the value in elementcode field
-                                        result.template += `<template v-if="${select_variable}===${result[option_variable].find(ae => ae.text == tmp_cmp.elementcode).value}">`
+                                        result.template += `<template v-if="exp.${select_variable}===${result[option_variable].find(ae => ae.text == tmp_cmp.elementcode).value}">`
                                         result = J2V4ESPD({ e: tmp_cmp }, result)
                                         result.template += `</template>`
                                     } else {
@@ -807,14 +793,13 @@ function J2V4ESPD(fragment,
                                     //render normally this element
                                     result = J2V4ESPD({ e: tmp_cmp }, result)
                                 }
-
                             }
                         }
                     }
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                        <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                        <b-button variant="success" @click="html_${stringToProperty(fragment[el].requestpath)} = renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                         </template>
                         </b-card>`
                     }
@@ -824,12 +809,11 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION_GROUP':
                     let local_indicator = ''
-                    result.data_part += `"${fragment[el].responsepath}" : [],\n`
-                    //result[fragment[el].responsepath] = []
                     result.template += `
-                        <div v-if="window.espd_doc.role==='eo'">`
+                        <div>`
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
-                        result.template += `<b-card footer-tag="footer">`
+                        result.data_part += `"html_${stringToProperty(fragment[el].requestpath)}": '', \n`
+                        result.template += `<div v-html="html_${stringToProperty(fragment[el].requestpath)}"></div><b-card footer-tag="footer">`
                     }
                     if (Object.hasOwn(fragment[el], 'components')) {
                         for (const e in fragment[el].components) {
@@ -839,35 +823,24 @@ function J2V4ESPD(fragment,
                                     if (tmp_cmp.propertydatatype == 'INDICATOR') {
                                         //log(e, '\t', tmp_cmp.propertydatatype)
                                         result.exp += `"${stringToProperty(tmp_cmp.responsepath)}" : false,\n`
-                                        //result[tmp_cmp.responsepath] = false
-                                        result.sel_count++
-                                        local_indicator = (result.sel_count + '').padStart(2, '0')
+                                        //result.sel_count++
+                                        //local_indicator = (result.sel_count + '').padStart(2, '0')
+                                        local_indicator = `${stringToProperty(fragment[el].requestpath)}`
                                         result.template += `
-                                            <br/>[Q] ${tmp_cmp.description} <b-form-checkbox v-model="selected${local_indicator}" name="check-button" inline="true" switch>
-                                                     <b>[{{ selected${local_indicator}?'Yes':'No' }}]</b>
+                                            <br/>[Q] ${tmp_cmp.description} <b-form-checkbox v-model="exp['${local_indicator}']" name="check-button" inline="true" switch>
+                                                     <b>[{{ exp['${local_indicator}']?'Yes':'No' }}]</b>
                                             </b-form-checkbox>
                                             `
-                                        result.data_part += `"selected${local_indicator}" : false,\n`
-                                        //result[`selected${local_indicator}`] = false
                                     } else {
                                         //render normally
-                                        result = J2V4ESPD({e: tmp_cmp}, result)
-                                        /*
-                                        result.data_part += `"${tmp_cmp.requestpath}" : '',\n`
-                                        //result[tmp_cmp.responsepath] = ''
-                                        result.template += `
-                                            <b-form-group label="[Q] ${tmp_cmp.description}" 
-                                            label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
-                                            <b-form-input placeholder="${tmp_cmp.propertydatatype}"></b-form-input>
-                                            </b-form-group>`
-                                        */
+                                        result = J2V4ESPD({ e: tmp_cmp }, result)
                                     }
                                 }
 
                                 if (['QUESTION_GROUP', 'QUESTION_SUBGROUP'].indexOf(tmp_cmp.type) != -1) {
                                     if (['ONTRUE', 'ONFALSE'].indexOf(tmp_cmp.elementcode) != -1) {
                                         result.template += `
-                                        <div v-if="${tmp_cmp.elementcode == 'ONTRUE' ? '' : '!'}selected${local_indicator}">
+                                        <div v-if="${tmp_cmp.elementcode == 'ONTRUE' ? '' : '!'}exp['${local_indicator}']">
                                         `
                                         //if (Object.hasOwn(tmp_cmp, 'components')) result = J2V4ESPD(tmp_cmp.components, result)
                                         result = J2V4ESPD({ e: tmp_cmp }, result)
@@ -883,7 +856,7 @@ function J2V4ESPD(fragment,
                                 }
 
                                 if (tmp_cmp.type == 'CAPTION') {
-                                    result.template += `<em>${tmp_cmp.description ? tmp_cmp.description : 'CAPTION'}</em>`
+                                    result.template += `<div>${tmp_cmp.description ?? 'CAPTION'}</div>`
                                 }
 
                                 if (tmp_cmp.type == 'LEGISLATION') {
@@ -895,7 +868,7 @@ function J2V4ESPD(fragment,
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    <b-button variant="success" @click="html_${stringToProperty(fragment[el].requestpath)} = renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                     </template>
                     </b-card>`
                     }
@@ -906,11 +879,9 @@ function J2V4ESPD(fragment,
 
                 case 'QUESTION_SUBGROUP':
                     let local_indicator_qsg = ''
-                    result.data_part += `"${fragment[el].responsepath}" : [],\n`
-                    //result[fragment[el].responsepath] = []
-
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
-                        result.template += `<b-card v-if="window.espd_doc.role==='eo'"  footer-tag="footer">`
+                        result.data_part += `"html_${stringToProperty(fragment[el].responsepath)}": '', \n`
+                        result.template += `<div v-html="html_${stringToProperty(fragment[el].responsepath)}"></div><b-card footer-tag="footer">`
                     }
 
                     if (Object.hasOwn(fragment[el], 'components')) {
@@ -922,50 +893,40 @@ function J2V4ESPD(fragment,
                                         //log(e, '\t', tmp_cmp.propertydatatype)
                                         result.exp += `"${stringToProperty(tmp_cmp.responsepath)}" : false,\n`
                                         //result[tmp_cmp.responsepath] = false
-                                        result.sel_count++
-                                        local_indicator_qsg = (result.sel_count + '').padStart(2, '0')
+                                        //result.sel_count++
+                                        //local_indicator_qsg = (result.sel_count + '').padStart(2, '0')
+                                        local_indicator_qsg = `${stringToProperty(tmp_cmp.responsepath)}`
                                         result.template += `
-                                            <br/>[Q] ${tmp_cmp.description} <b-form-checkbox v-model="selected${local_indicator_qsg}" name="check-button" inline="true" switch>
-                                                     <b>[{{ selected${local_indicator_qsg}?'Yes':'No' }}]</b>
+                                            <br/>[Q] ${tmp_cmp.description} <b-form-checkbox v-model="exp['${local_indicator_qsg}']" name="check-button" inline="true" switch>
+                                                     <b>[{{ exp['${local_indicator_qsg}']?'Yes':'No' }}]</b>
                                             </b-form-checkbox>
                                             `
-                                        result.data_part += `"selected${local_indicator_qsg}" : false,\n`
+                                        //result.data_part += `"selected${local_indicator_qsg}" : false,\n`
                                         //result[`selected${local_indicator_qsg}`] = false
                                     } else {
                                         //render as usual
-                                        result = J2V4ESPD({e: tmp_cmp}, result)
-                                        /*
-                                        result.data_part += `"${tmp_cmp.responsepath}" : '',\n`
-                                        //result[tmp_cmp.responsepath] = ''
-                                        result.template += `
-                                            <b-form-group label="[Q] ${tmp_cmp.description}" 
-                                            label-cols-sm="6" label-cols-lg="8" content-cols-sm content-cols-lg="4">
-                                            <b-form-input placeholder="${tmp_cmp.propertydatatype}"></b-form-input>
-                                            </b-form-group>`
-                                        */
+                                        result = J2V4ESPD({ e: tmp_cmp }, result)
                                     }
                                 }
 
                                 if (['QUESTION_GROUP', 'QUESTION_SUBGROUP'].indexOf(tmp_cmp.type) != -1) {
                                     if (['ONTRUE', 'ONFALSE'].indexOf(tmp_cmp.elementcode) != -1) {
                                         result.template += `
-                                        <div v-if="${tmp_cmp.elementcode == 'ONTRUE' ? '' : '!'}selected${local_indicator_qsg}">
+                                        <div v-if="${tmp_cmp.elementcode == 'ONTRUE' ? '' : '!'}exp['${local_indicator_qsg}']">
                                         `
-                                        //if (Object.hasOwn(tmp_cmp, 'components')) result = J2V4ESPD(tmp_cmp.components, result)
                                         result = J2V4ESPD({ e: tmp_cmp }, result)
                                         result.template += `
                                         </div>`
                                     }
                                     if (tmp_cmp.elementcode == 'ON*') {
                                         result.template += `<div>`
-                                        //if (Object.hasOwn(tmp_cmp, 'components')) result = J2V4ESPD(tmp_cmp.components, result)
                                         result = J2V4ESPD({ e: tmp_cmp }, result)
                                         result.template += '</div>'
                                     }
                                 }
 
                                 if (tmp_cmp.type == 'CAPTION') {
-                                    result.template += `<em>${tmp_cmp.description ? tmp_cmp.description : 'CAPTION'}</em>`
+                                    result.template += `<div>${tmp_cmp.description ?? 'CAPTION'}</div>`
                                 }
 
                                 if (tmp_cmp.type == 'LEGISLATION') {
@@ -977,7 +938,7 @@ function J2V4ESPD(fragment,
 
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
-                    <b-button variant="success" @click="renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
+                    <b-button variant="success" @click="html_${stringToProperty(fragment[el].responsepath)} = renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                     </template>
                     </b-card>`
                     }
@@ -1001,15 +962,14 @@ function J2V4ESPD(fragment,
                     } else {
                         //This should be rendered inside the QG/QSG
                         result.exp += `"${stringToProperty(fragment[el].responsepath)}" : true,\n`
-                        //result[fragment[el].responsepath] = ''
                         result.sel_count++
-                        let local_indicator = `${result.sel_count}`.padStart(2, '0')
+                        //let local_indicator = `${result.sel_count}`.padStart(2, '0')
+                        let tmp_li = `${stringToProperty(fragment[el].responsepath)}`
                         result.template += `
-                        [Q] ${fragment[el].description} <b-form-checkbox v-model="selected${local_indicator}" name="check-button" inline="true" switch>
-                        <b>[{{ selected${local_indicator}?'Yes':'No' }}]</b>
+                        [Q] ${fragment[el].description} <b-form-checkbox v-model="exp['${tmp_li}" name="check-button" inline="true" switch>
+                        <b>[{{ exp['${tmp_li}']?'Yes':'No' }}]</b>
                         </b-form-checkbox>`
-                        result.data_part += `"selected${local_indicator}" : false,\n`
-                        //result[`selected${local_indicator}`] = false
+                        //result.data_part += `"selected${local_indicator}" : false,\n`
                     }
                     break;
 
@@ -1018,7 +978,7 @@ function J2V4ESPD(fragment,
                     break;
 
                 case 'ADDITIONAL_DESCRIPTION_LINE': case 'CAPTION':
-                    result.template += `<em>${fragment[el].description}</em>`
+                    result.template += `<div>${fragment[el].description ?? 'ADDITIONAL CAPTION'}</div>`
                     break;
 
                 case 'REQUIREMENT':
@@ -1026,11 +986,11 @@ function J2V4ESPD(fragment,
                     //result[fragment[el].responsepath] = ''    
                     //LOT management
                     if (fragment[el].propertydatatype == 'LOT_IDENTIFIER') {
-                        result.data_part += `"lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}" : window.espd_model['C${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}'].lots,\n`
-                        //result[`lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}`] = `window.espd_model[C${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}].lots`
+                        result.exp += `"lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}" : window.espd_model['C${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}'].lots,\n`
+
                         result.template += `
                         <b-form-group label-class="font-weight-bold" label="[R] ${fragment[el].description}" label-for="tags-component-select_item">
-                            <b-form-tags id="tags-component-select_item" v-model="lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}"
+                            <b-form-tags id="tags-component-select_item" v-model="exp['lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}']"
                                 size="lg" class="mb-2" add-on-change no-outer-focus>
                                 <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
                                 <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
@@ -1039,8 +999,8 @@ function J2V4ESPD(fragment,
                                     </li>
                                 </ul>
                                 <b-form-select v-bind="inputAttrs" v-on="inputHandlers"
-                                :disabled="disabled || window.espd_doc.options.filter(opt => lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}.indexOf(opt) === -1).length === 0" 
-                                :options="window.espd_doc.options.filter(opt => lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}.indexOf(opt) === -1)">
+                                :disabled="disabled || window.espd_doc.options.filter(opt => exp['lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}'].indexOf(opt) === -1).length === 0" 
+                                :options="window.espd_doc.options.filter(opt => exp['lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}'].indexOf(opt) === -1)">
                                     <template #first>
                                     <!-- This is required to prevent bugs with Safari -->
                                     <option disabled value="">Choose a tag...</option>
