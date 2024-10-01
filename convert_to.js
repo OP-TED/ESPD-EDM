@@ -986,7 +986,7 @@ function J2V4ESPD(fragment,
                     //result[fragment[el].responsepath] = ''    
                     //LOT management
                     if (fragment[el].propertydatatype == 'LOT_IDENTIFIER') {
-                        result.exp += `"lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}" : window.espd_model['C${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}'].lots,\n`
+                        result.exp += `"lotid_${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}" : window.espd_model['${fragment[el].responsepath.substring(0, fragment[el].responsepath.indexOf('_'))}'].lots,\n`
 
                         result.template += `
                         <b-form-group label-class="font-weight-bold" label="[R] ${fragment[el].description}" label-for="tags-component-select_item">
