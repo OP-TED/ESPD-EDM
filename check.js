@@ -10,7 +10,12 @@
  */
 
 var XLSX = require("xlsx")
-var chalk = require('chalk');
+var chalk = require('chalk')
+const axios = require("axios")
+const { HttpsProxyAgent } = require("https-proxy-agent")
+
+var proxy_user = '', proxy_password = '', proxy_server = 'proxy-t2-lu.welcome.ec.europa.eu', proxy_port = '8012';
+
 var fs = require("fs")
 
 const { program } = require("@caporal/core");
@@ -221,9 +226,74 @@ program
         
     })
 
+    .command("eCERTIS_UUIDs", "Check the existence of record in eCERTIS associated with a given UUID")
+    .option('--user [user]', 'proxy server user', {default: ''})
+    .option('--password [password]', 'proxy server password', {default: ''})
+    .argument('<excelfile>', 'Excel file with eCERTIS UUIDs to be processed')
+    .action(({logger, args, options}) =>{
+        log(chalk.bold(`Processing ${args.excelfile}`), '\n\n')
+
+        in_excel_we_trust = [ args.excelfile ]
+        proxy_user = options.user
+        proxy_password = options.password
+
+        in_excel_we_trust.forEach( xcl => {
+            var wbk = XLSX.readFile(xcl)
+            log(chalk.bold(xcl))
+
+            var sheet_name_list = wbk.SheetNames
+            for (const key in sheet_name_list) {
+                if (Object.hasOwn(sheet_name_list, key)) {
+                    fetch_eCERTIS(wbk.Sheets[sheet_name_list[key]])
+                }
+            }
+        })        
+    })
 
 // launch the main loop
 program.run()
+
+/**
+ * Fetch the UUID from eCERTIS in order to check it this exists or not
+ * 
+ * @param {*} sph - spreadsheet Object 
+ */
+function fetch_eCERTIS(sph) {
+    const eCertis_URL="https://ec.europa.eu/growth/tools-databases/ecertisrest/criteria/espd"
+
+    var xlData = XLSX.utils.sheet_to_json(sph)
+    var agent = new HttpsProxyAgent(`http://${proxy_user}:${proxy_password}@${proxy_server}:${proxy_port}`)
+    var unique_UUIDs = xlData.reduce((acc,crtV) => {
+        if(acc.indexOf(crtV.uuid) == -1) acc.push(crtV.uuid) 
+        return acc
+    }, [])
+    
+    log(unique_UUIDs)
+
+
+    async function fetchDataFromUrls(urls, currentIndex = 0) {
+        if (currentIndex >= urls.length) {
+            log('All requests completed!');
+            return;
+        }
+    
+        try {
+            const response = await axios.get(`${eCertis_URL}/${urls[currentIndex]}`, {
+                httpsAgent: agent,
+                timeout: 60000
+            });
+            log(`Data from ${urls[currentIndex]}:`, response.status);
+        } catch (error) {
+            log(`Error fetching data from ${urls[currentIndex]}:`, error.message);
+        }
+    
+        // Make the next request
+        await fetchDataFromUrls(urls, currentIndex + 1);
+    }
+    
+    // Call the function with your array of URLs
+    fetchDataFromUrls(unique_UUIDs);
+}
 
 //check the green label before each element in the Excel file
 //tags are unique per level
