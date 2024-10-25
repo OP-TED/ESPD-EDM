@@ -1137,16 +1137,17 @@ function excel2salt(sph) {
 function excel2treetable(sph) {
     log("@startsalt\n{")
     var xlData = XLSX.utils.sheet_to_json(sph)
-
-    let cardinality = 1
+    //Column names are in row 1 and row 0 is consider to contain header keys
+    let hdr = xlData[0]
+    //Detect the column for each label
+    for (const key in cols) {
+        let lbl = cols[key].label
+        if (Object.values(hdr).indexOf(lbl) != -1) {
+            cols[key].column = Object.keys(hdr)[Object.values(hdr).indexOf(lbl)]
+        }
+    }
 
     xlData.forEach(element => {
-
-        //log(element)
-        if (Object.values(element).indexOf('Cardinality') != -1) {
-            cardinality = Object.keys(element)[Object.values(element).indexOf('Cardinality')]
-            //log(cardinality, element[cardinality])
-        }
 
         //get the tag
         let col_idx = 1
@@ -1168,11 +1169,11 @@ function excel2treetable(sph) {
                 tag = element[col_idx].trim()
                 switch (tag) {
                     case '{CRITERION':
-                        log(`== ${element[18]}\n{T-`)
-                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[19].length > 60 ? element[19].substring(0, 56) + '...' : element[19]}`)
+                        log(`== ${element[cols["name"].column]}\n{T-`)
+                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[cols["description"].column].length > 60 ? element[cols["description"].column].substring(0, 56) + '...' : element[cols["description"].column]}`)
                         break;
                     case '{SUBCRITERION': case "{QUESTION_GROUP": case "{REQUIREMENT_GROUP": case "{QUESTION_SUBGROUP": case "{REQUIREMENT_SUBGROUP":
-                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[19] ? element[19] : '.'}`)
+                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[cols["description"].column] ? element[cols["description"].column] : '.'}`)
                         break;
                     case "CRITERION}":
                         log('}\n==\n')
@@ -1180,10 +1181,10 @@ function excel2treetable(sph) {
                     case 'SUBCRITERION}': case "QUESTION_GROUP}": case "REQUIREMENT_GROUP}": case "QUESTION_SUBGROUP}": case "REQUIREMENT_SUBGROUP}":
                         break;
                     case "{LEGISLATION}":
-                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[19] ? element[19] : '.'}`)
+                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[cols["description"].column] ? element[cols["description"].column] : '.'}`)
                         break;
                     case "{ADDITIONAL_DESCRIPTION_LINE}": case "{CAPTION}": case "{QUESTION}": case "{REQUIREMENT}":
-                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[19]}`)
+                        log(''.padStart(col_idx - 1, '+'), `${element[col_idx - 1]} | ${element[cols["description"].column]}`)
                         break;
                     default:
                         log(''.padStart(col_idx - 1, '+'), tag, 'UNKNOWN')
