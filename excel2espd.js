@@ -148,15 +148,18 @@ function espd_JSON(sph, sheetname) {
         }
     }
 
-    xlData.forEach(element => {
-
+        //Column names are in row 1 and row 0 is consider to contain header keys
+        let hdr = xlData[0]
         //Detect the column for each label
         for (const key in cols) {
             let lbl = cols[key].label
-            if (Object.values(element).indexOf(lbl) != -1) {
-                cols[key].column = Object.keys(element)[Object.values(element).indexOf(lbl)]
+            if (Object.values(hdr).indexOf(lbl) != -1) {
+                cols[key].column = Object.keys(hdr)[Object.values(hdr).indexOf(lbl)]
             }
         }
+    
+
+    xlData.forEach(element => {
 
         //get the tag
         let col_idx = 1, tag = '', tmp_elm = {}, parent = {}

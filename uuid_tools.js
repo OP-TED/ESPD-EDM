@@ -161,17 +161,19 @@ function tag_UUID_catalogue(sph, sheetname) {
 
     let elementcode = ''
 
-    xlData.forEach(element => {
-
+        //Column names are in row 1 and row 0 is consider to contain header keys
+        let hdr = xlData[0]
         //Detect the column for each label
         for (const key in cols) {
             let lbl = cols[key].label
-            if (Object.values(element).indexOf(lbl) != -1) {
-                cols[key].column = Object.keys(element)[Object.values(element).indexOf(lbl)]
-                //log(cols[key].label, cols[key].column)
+            if (Object.values(hdr).indexOf(lbl) != -1) {
+                cols[key].column = Object.keys(hdr)[Object.values(hdr).indexOf(lbl)]
             }
         }
+    
 
+
+    xlData.forEach(element => {
         //get the tag
         let col_idx = 1, tag = ''
 
@@ -238,17 +240,18 @@ function extract_indicator(sph, sheetname) {
 
     let ns = '', level = 1, ontrue = false
 
-    xlData.forEach(element => {
-
-        //Detect the column for each label
-        for (const key in cols) {
-            let lbl = cols[key].label
-            if (Object.values(element).indexOf(lbl) != -1) {
-                cols[key].column = Object.keys(element)[Object.values(element).indexOf(lbl)]
-                //log(cols[key].label, cols[key].column)
-            }
+    //Column names are in row 1 and row 0 is consider to contain header keys
+    let hdr = xlData[0]
+    //Detect the column for each label
+    for (const key in cols) {
+        let lbl = cols[key].label
+        if (Object.values(hdr).indexOf(lbl) != -1) {
+            cols[key].column = Object.keys(hdr)[Object.values(hdr).indexOf(lbl)]
         }
+    }
 
+
+    xlData.forEach(element => {
         //get the tag
         let col_idx = 1, tag = ''
 
@@ -326,17 +329,17 @@ function check_duplicate_UUID_path(sph, sheetname) {
     var xlData = XLSX.utils.sheet_to_json(sph)
 
     let elementcode = ''
+    //Column names are in row 1 and row 0 is consider to contain header keys
+    let hdr = xlData[0]
+    //Detect the column for each label
+    for (const key in cols) {
+        let lbl = cols[key].label
+        if (Object.values(hdr).indexOf(lbl) != -1) {
+            cols[key].column = Object.keys(hdr)[Object.values(hdr).indexOf(lbl)]
+        }
+    }
 
     xlData.forEach(element => {
-
-        //Detect the column for each label
-        for (const key in cols) {
-            let lbl = cols[key].label
-            if (Object.values(element).indexOf(lbl) != -1) {
-                cols[key].column = Object.keys(element)[Object.values(element).indexOf(lbl)]
-                //log(cols[key].label, cols[key].column)
-            }
-        }
 
         //get the tag
         let col_idx = 1

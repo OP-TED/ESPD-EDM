@@ -110,10 +110,11 @@ program
     })
 
     .command("excel2salt", "Transform Excel to PlantUML Salt UI mockups")
+    .argument('<excelfile>', 'Excel Criterion file to be processed')
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
-        log(chalk.blue.bold('UUID checking'), chalk.red('for ESPD realease v4.0.0.'));
-        log('\n\n')
+        log(chalk.bold(`Processing ${args.excelfile}`), '\n')
+        in_excel_we_trust = [args.excelfile]
 
         in_excel_we_trust.forEach(xcl => {
             var wbk = XLSX.readFile(xcl)
@@ -132,10 +133,11 @@ program
     })
 
     .command("excel2treetrable", "Transform Excel to PlantUML tree table diagram")
+    .argument('<excelfile>', 'Excel Criterion file to be processed')
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
-        log(chalk.blue.bold('UUID checking'), chalk.red('for ESPD realease v4.0.0.'));
-        log('\n\n')
+        log(chalk.bold(`Processing ${args.excelfile}`), '\n')
+        in_excel_we_trust = [args.excelfile]
 
         in_excel_we_trust.forEach(xcl => {
             var wbk = XLSX.readFile(xcl)
@@ -184,16 +186,17 @@ function excel2bootstrapvue(sph, sheet_name) {
         }
     }
 
-    xlData.forEach(element => {
-
-        //Detect the column for each label
-        for (const key in cols) {
-            let lbl = cols[key].label
-            if (Object.values(element).indexOf(lbl) != -1) {
-                cols[key].column = Object.keys(element)[Object.values(element).indexOf(lbl)]
-            }
+    //Column names are in row 1 and row 0 is consider to contain header keys
+    let hdr = xlData[0]
+    //Detect the column for each label
+    for (const key in cols) {
+        let lbl = cols[key].label
+        if (Object.values(hdr).indexOf(lbl) != -1) {
+            cols[key].column = Object.keys(hdr)[Object.values(hdr).indexOf(lbl)]
         }
+    }
 
+    xlData.forEach(element => {
         //get the tag
         let col_idx = 1, tag = '', tmp_elm = {}, parent = {}
 
@@ -701,19 +704,21 @@ function J2V4ESPD(fragment,
 
                 case 'SUBCRITERION':
                     result.template += `<div>`
-
+                    /*
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.data_part += `"html_${stringToProperty(fragment[el].requestpath)}": '', \n`
                         result.template += `<div v-html="html_${stringToProperty(fragment[el].requestpath)}"></div><b-card footer-tag="footer">`
                     }
-
+                    */
                     if (Object.hasOwn(fragment[el], 'components')) result = J2V4ESPD(fragment[el].components, result)
+                    /*
                     if (fragment[el].cardinality.toString().trim().endsWith('..n')) {
                         result.template += `<template #footer>
                         <b-button variant="success" @click="html_${stringToProperty(fragment[el].requestpath)} = renderHTML('${fragment[el].requestpath}', exp)"><b-icon icon="plus-square-fill" aria-hidden="true"></b-icon></b-button>
                         </template>
                         </b-card>`
                     }
+                    */
                     result.template += `</div>`
                     break;
 
@@ -1040,44 +1045,17 @@ function excel2salt(sph) {
 
     var xlData = XLSX.utils.sheet_to_json(sph)
 
-    let cols = {
-        cardinality: {
-            label: "Cardinality",
-            column: 1
-        },
-        elementcode: {
-            label: "Element Code",
-            column: 1
-        },
-        name: {
-            label: "Name",
-            column: 1
-        },
-        description: {
-            label: "Description",
-            column: 1
-        },
-        buyervalue: {
-            label: "Buyer Value (example)",
-            column: 1
-        },
-        propertydatatype: {
-            label: "PropertyDataType",
-            column: 1
+    //Column names are in row 1 and row 0 is consider to contain header keys
+    let hdr = xlData[0]
+    //Detect the column for each label
+    for (const key in cols) {
+        let lbl = cols[key].label
+        if (Object.values(hdr).indexOf(lbl) != -1) {
+            cols[key].column = Object.keys(hdr)[Object.values(hdr).indexOf(lbl)]
         }
-    };
+    }
 
     xlData.forEach(element => {
-
-        //log(element)
-        for (const key in cols) {
-            let lbl = cols[key].label
-            if (Object.values(element).indexOf(lbl) != -1) {
-                cols[key].column = Object.keys(element)[Object.values(element).indexOf(lbl)]
-                //log(cols[key].label, cols[key].label)
-            }
-        }
-
         //get the tag
         let col_idx = 1
         let tag = ''
