@@ -856,7 +856,7 @@ function print_structures(sph) {
             "".padStart(col_idx - 2, "\t"),
             chalk.blueBright(tag),
             "\t",
-            element[cols["cardinality"].column] ? element[cardinality] : ""
+            element[cols["cardinality"].column] ? element[cols["cardinality"].column] : ""
         );
     });
 }
