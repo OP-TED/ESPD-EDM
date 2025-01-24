@@ -1,0 +1,35 @@
+{
+    "name": "ea2json",
+    "version": "1.0.0",
+    "description": "ESPD Tool to extract EA data to JSON",
+    "private": false,
+    "main": "ea2json.js",
+    "type": "module",
+    "author": "Dragos-Constantin Stoica",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OP-TED/ESPD-EDM.git"
+    },
+    "license": "EUPL",
+    "engineStrict": true,
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "scripts": {
+        "clean": "rmdir /s /q node_modules"
+    },
+    "overrides": {
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+    },
+    "dependencies": {
+        "@fastify/static": "^6.12.*",
+        "axios": "^1.7.5",
+        "https-proxy-agent": "^7.0.5",
+        "@caporal/core": "^2.0.7",
+        "chalk": "4.1.2",
+        "fastify": "^4.25.2",
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+        "xmlbuilder2": "3.1.1",
+        "mdb-reader": "^3.0.0"
+    }
+}
