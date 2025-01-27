@@ -8,14 +8,15 @@
  * ESPD Demo site
  * ESPD Service implementers 
  *
- * Data will be structured in the same way as in epo-tools
+ * Data will be structured in the same way as in epo-tools see https://github.com/OP-TED/epo-tools
  */
 
-import chalk from "chalk";
-import pkgcc from "@caporal/core";
-import fs from "fs";
-import path from 'path';
+import chalk from "chalk"
+import pkgcc from "@caporal/core"
+import fs from "fs"
+import path from 'path'
 import MDBReader from 'mdb-reader'
+import { dbToJson } from './db-to-json.js'
 
 const { program } = pkgcc
 const log = console.log;
@@ -34,17 +35,17 @@ program
                 console.error("Missing filename");
                 process.exit(1);
             } else {
-                log(chalk.bold(`Processing ${path.resolve(args.eafile)}`), "\n\n");
+                log(chalk.bold(chalk.blueBright(`Processing ${path.resolve(args.eafile)}`)), "\n");
 
                 const buffer = fs.readFileSync(path.resolve(args.eafile));
                 const reader = new MDBReader(buffer)
-                const objects = reader.getTable('t_objectproperties').getData()
+                const objects = reader.getTable('t_object').getData()
                 const objectProperties = reader.getTable('t_objectproperties').getData()
                 const attributes = reader.getTable('t_attribute').getData()
                 const connectors = reader.getTable('t_connector').getData()
 
 
-                console.log(objects, objectProperties, attributes, connectors)
+                console.log(JSON.stringify(dbToJson({objects, objectProperties, attributes, connectors}), null, 2) )
 
             }
 
