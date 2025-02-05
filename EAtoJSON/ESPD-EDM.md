@@ -17,7 +17,7 @@ The full documentation on JSON schema can be found here: https://json-schema.org
 
 ESPD-EDM is represented as a JSON object containing distinct (unique keys) of Exclusion Ground and Selection Criteria objects. This is the deifinition of each object only. For a full structure of the ESPD Document please see (TODO - add reference here). 
 
-```json
+```
 {
     C1 :{ ... },
     C2: { ... },
@@ -73,19 +73,19 @@ Key | Type | Definition
 *requestpath* | string | optional - The XML like path that will be used in ESPD Request document and can be computed as concatenation of **tag**_**code**
 *responsepath* | string | optional - The XML like path that will be used in ESPD Response document and can be computed as concatenation of **tag**_**code** 
 
-```json
-    C1:{
-        tag: "C1_EG",
-        type: "CRITERION",
-        uuid: "[UUID v4 - source eCertis]",
-        code: "[source code list]",
-        cardinality: "1",
-        components: [ ... ],
-        name: "[name from eCertis or code list GC/XML]",
-        description: "[description from eCertis of code list XML]",
-        requestpath: "[tag_code]",
-        responsepath: "[tag_code]"
-    }
+```
+C1:{
+    tag: "C1_EG",
+    type: "CRITERION",
+    uuid: "[UUID v4 - source eCertis]",
+    code: "[source code list]",
+    cardinality: "1",
+    components: [ ... ],
+    name: "[name from eCertis or code list GC/XML]",
+    description: "[description from eCertis of code list XML]",
+    requestpath: "[tag_code]",
+    responsepath: "[tag_code]"
+}
 ```
 
 ### Components object
@@ -107,6 +107,31 @@ Key | Type | Definition
 *requestpath* | string | optional - concatenate the parent path with the key 
 *responsepath* | string | optional - concatenate the parent value with the key, store the **R#** if the cardinality is **1..n** or **0..n**
 *tag* | string | optional - TO BE DEFINED
+
+```
+C1: {
+    tag: "C1_EG",
+    type: "CRITERION",
+    uuid: "[UUID v4 - source eCertis]",
+    code: "[source code list]",
+    cardinality: "1",
+    components: [
+        QG1: {
+            type: "QUESTION_GROUP",
+            code: "ON*",
+            cardinality: "0..n",
+            components: [ ... ],
+            requestpath: "C1_EG_code/QG1",
+            responsepath: "C1_EG_code/QG1"
+        }
+     ],
+    name: "[name from eCertis or code list GC/XML]",
+    description: "[description from eCertis of code list XML]",
+    requestpath: "[tag_code]",
+    responsepath: "[tag_code]"   
+}
+```
+
 
 The keys of the Components of information type (QUESTION, REQUIREMENT, CAPTION, LEGISLATION, ADDITIONAL_DESCRIPTION_LINE):
 
