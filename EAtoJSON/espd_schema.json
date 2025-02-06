@@ -13,7 +13,36 @@
         "uuid": { "type": "string" },
         "code": { "type": "string" },
         "cardinality": { "enum": ["1", "0..n", "1..n"] },
-        "components": { "type": "string" }
+        "components": { 
+          "type": "object",
+          "properties": {
+            "type": { "enum": ["QUESTION_GROUP", "QUESTION_SUBGROUP", "REQUIREMENT_GROUP", "REQUIREMENT_SUBGROUP", "QUESTION", "REQUIREMENT", "CAPTION", "LEGISLATION", "ADDITIONAL_DESCRIPTION_LINE"] },
+            "cardinality": { "enum": ["1", "0..n", "1..n"] },
+            "code": { "type": "string"},
+            "requestpath": { "type":"string" },
+            "responsepath": { "type": "string" },
+            "tag": { "type": "string" }
+          },
+          "required": [ "type", "cardinality" ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "type": { "enum":["QUESTION_GROUP", "QUESTION_SUBGROUP", "REQUIREMENT_GROUP", "REQUIREMENT_SUBGROUP"]}
+                }
+              },
+              "then":{
+                "properties":{
+                  "components": { "type": "string"}
+                }
+              }
+            }
+          ]
+        },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "requestpath": { "type": "string" },
+        "responsepath": { "type": "string" }
       },
       "required": [ "tag", "type", "uuid", "code", "cardinality", "components" ]
     }

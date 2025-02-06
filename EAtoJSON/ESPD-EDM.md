@@ -102,12 +102,12 @@ The keys of the Components of container type (QUESTION_GROUP, QUESTION_SUBGROUP,
 
 | Key             | Type                  | Definition                                                                                                                                                                                                                                     |
 | --------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **type**        | string                | One of: **QUESTION_GROUP**, **QUESTION_SUBGROUP**, **REQUIREMENT_GROUP**. **REQUIREMENT_SUBGROUP**. The type of container.                                                                                                                     |
+| **type**        | string                | One of: **QUESTION_GROUP**, **QUESTION_SUBGROUP**, **REQUIREMENT_GROUP**, **REQUIREMENT_SUBGROUP**. The type of container.                                                                                                                     |
 | **code**        | string                | One of: **ON\***, **ONFALSE**, **ONTRUE** corresponding to the option that was selected in the leading **QUESTION** having _propertydatatype_: **INDICATOR** <br/> or the value from a list of values if the **QUESTION** has multiple values. |
 | **cardinality** | string                | It can be: 1 (mandatory with a single occurence), 0..n (optional with multiple occurence), 1..n (mandatory with multiple occurence). Default value: **1**                                                                                      |
 | **components**  | Collection of Objects | The components of the this container. It might contain othe containers. The order of objects matters!                                                                                                                                          |
-| _requestpath_   | string                | optional - concatenate the parent path with the key                                                                                                                                                                                            |
-| _responsepath_  | string                | optional - concatenate the parent value with the key, store the **R#** if the cardinality is **1..n** or **0..n**                                                                                                                              |
+| _requestpath_   | string                | optional - concatenate the parent path with the key of the element object                                                                                                                                                                                           |
+| _responsepath_  | string                | optional - concatenate the parent value with the key of the element object, store the **R#** if the cardinality is **1..n** or **0..n**                                                                                                                              |
 | _tag_           | string                | optional - TO BE DEFINED                                                                                                                                                                                                                       |
 
 ```
@@ -146,8 +146,8 @@ The keys of the Components of information type (QUESTION, REQUIREMENT, CAPTION, 
 | _codelist_           | string | mandatory only for fileds associated to a code list. The name of the code list used to populate values in this field.                                     |
 | _sellervalue_        | any    | optional - The example value provided by the Economic Operator - for **QUESTION** fields                                                                  |
 | _buyervalue_         | any    | optional - The example value provided by the Contracting Authority - for **REQUIREMENT** fields                                                           |
-| _requestpath_        | string | optional - concatenate the parent path with the key                                                                                                       |
-| _responsepath_       | string | optional - concatenate the parent value with the key and all **R#** from parent path togehter with its own **R#**                                         |
+| _requestpath_        | string | optional - concatenate the parent path with the key of the element object                                                                                                       |
+| _responsepath_       | string | optional - concatenate the parent value with the key of the element object and all **R#** from parent path togehter with its own **R#**                                         |
 | _contentpath_        | string | optional - the _responsepath_ concatenated with the **RV**, **RAP**                                                                                       |
 | _tag_                | string | optional - TO BE DEFINED                                                                                                                                  |
 
@@ -240,6 +240,48 @@ The ESPD is a document based on [Annex II of Regulation (EU)2016/7](https://eur-
 
 ```
 {
+    partI: {
+        A: ["PI-SA"],
+        B: ["PI-SB"],
+        C: ["PI-SC"]
+    },
+    partII: {
+        A: ["PII-SA", "C65", "C57", "C58", "C59"],
+        B: ["PII-SB"],
+        C: ["C60"],
+        D: ["C61"]
+    },
+    partIII: {
+        A: ["C1", "C2", "C3", "C4", "C5", "C6"],
+        B: ["C7", "C8"],
+        C: ["C9", "C10", "C11", "C12", "C13", "C14", 
+            "C15", "C16", "C17", "C18", "C19", "C20", 
+            "C21", "C22", "C23"],
+        D: ["C24"]
+    },
+    partIV: {
+        A: ["C25", "C26", "C27", "C28"],
+        B: ["C29", "C30", "C31", "C32", "C34", "C35", "C36"],
+        C: ["C37","C38", "C39", "C40", "C41", "C42", 
+            "C43", "C44", "C45", "C46", "C47", "C48", 
+            "C49", "C50", "C51", "C52", "C53", "C54"],
+        D: ["C55", "C56"]
+    },
+    partV: {
+        A: ["C63"]
+    }
+}
+```
+
+where:
+- **C#** is the corresponding Critreion from JSON Schema
+- **P#-S@** is the General information section
+
+![ESPD Document](https://img.plantuml.biz/plantuml/svg/RP8zQyCm54Lt_ugWsOMy3wbEfoJkagrGw58o5DgbGrgQRA7_lOgECAaS6zuJr_ZS-nvQ7qzlFwVFuzUXEtVXEvztuM5nxXRv2PjyV0rFkxldJTZtQDj9sqxQE6bZs7U_VGNT81LKd_z8iRHuJnjegvdD3PynBIVbiIhoptTcF4hXQwbMgkD8cCPs9DNG6g-AB4iQJ04gK0Mim9L40oSCAL0KYjPaKDJQoTIl9tkP3QOuAKwAamxjG8gfOMgOMjq7cGsIfNPgoz1SIM-07903Sa1UDmlFuJd9d6GEnQ54A15AX1AXH6zN4UkLILSRcIyasULpVjSVX_VBlVu3)
+
+<!--
+@startjson
+{
     "partI": {
         "A": ["PI-SA"],
         "B": ["PI-SB"],
@@ -267,14 +309,8 @@ The ESPD is a document based on [Annex II of Regulation (EU)2016/7](https://eur-
         "A": ["C63"]
     }
 }
-```
-
-where:
-- **C#** is the corresponding Critreion from JSON Schema
-- **P##-S@** is the General information section
-
-![ESPD Document](https://img.plantuml.biz/plantuml/svg/RP8zQyCm54Lt_ugWsOMy3wbEfoJkagrGw58o5DgbGrgQRA7_lOgECAaS6zuJr_ZS-nvQ7qzlFwVFuzUXEtVXEvztuM5nxXRv2PjyV0rFkxldJTZtQDj9sqxQE6bZs7U_VGNT81LKd_z8iRHuJnjegvdD3PynBIVbiIhoptTcF4hXQwbMgkD8cCPs9DNG6g-AB4iQJ04gK0Mim9L40oSCAL0KYjPaKDJQoTIl9tkP3QOuAKwAamxjG8gfOMgOMjq7cGsIfNPgoz1SIM-07903Sa1UDmlFuJd9d6GEnQ54A15AX1AXH6zN4UkLILSRcIyasULpVjSVX_VBlVu3)
-
+@endjson
+-->
 The ESPD Document structure must be maintained and stored in EA.
 
 
