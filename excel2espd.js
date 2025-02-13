@@ -675,6 +675,15 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                             tmp.ele('@cbc', 'ValueUnitCode').txt('PERCENTAGE').up()
                                 .ele('@cbc', 'ExpectedValueNumeric').txt(element.buyervalue ? element.buyervalue : 0).up()
                             break;
+                        case 'INDICATOR':
+                            //not present in Excel
+                            tmp.ele('@cbc', 'ExpectedIndicator').txt(element.buyervalue ? element.buyervalue : 'false').up()
+                            break;
+                        case 'DATE':
+                            //not present in Excel
+                            tmp.ele('@cbc', 'ValueUnitCode').txt('DATE').up()
+                            .ele('@cbc', 'ExpectedValueNumeric').txt(element.buyervalue ? element.buyervalue : '2000-01-01').up()
+                            break;
                         case 'PERIOD':
                             //in Excel file the value for PERIOD is: 2016-01-01; 2017-01-01
                             //.ele('@cbc', 'StartDate').txt(element.buyervalue ? element.buyervalue.substring(0, element.buyervalue.indexOf(';')).trim() : '2000-01-01').up()
@@ -685,7 +694,8 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                                 .ele('@cbc', 'EndDate').txt('2050-12-31').up()
                                 .up()
                             break;
-                        case 'MINIMUM_QUANTITY_INTEGER': case 'MINIMUM_QUANTITY_YEAR': case 'MINIMUM_QUANTITY':
+                        case 'MINIMUM_QUANTITY_INTEGER': case 'MINIMUM_QUANTITY_YEAR': case 'MINIMUM_QUANTITY': 
+                        case 'QUANTITY_INTEGER': case 'QUANTITY': case 'QUANTITY_YEAR':
                             tmp.ele('@cbc', 'ExpectedValueNumeric').txt(element.buyervalue ? element.buyervalue : 0).up()
                             break;
                         case 'MAXIMUM_AMOUNT':
@@ -698,15 +708,18 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                             tmp.ele('@cbc', 'MaximumValueNumeric').txt(element.buyervalue).up()
                             break;
                         case 'MINIMUM_VALUE_NUMERIC':
-                            tmp.ele('@cbc', 'MinimumValuenumeric').txt(element.buyervalue).up()
+                            tmp.ele('@cbc', 'MinimumValueNumeric').txt(element.buyervalue).up()
                             break;
                         case 'TRANSLATION_TYPE_CODE':
+                            //not used in Excel file
                             tmp.ele('@cbc', 'TranslationTypeCode').txt(element.buyervalue).up()
                             break;
                         case 'COPY_QUALITY_TYPE_CODE':
+                            //not used in Excel file
                             tmp.ele('@cbc', 'CopyQualityTypeCode').txt(element.buyervalue).up()
                             break;
                         case 'CERTIFICATION_LEVEL_DESCRIPTION':
+                            //not used in Excel files
                             tmp.ele('@cbc', 'CertificationLevelDescription').txt(element.buyervalue).up()
                             break;
                         case 'URL':
@@ -719,7 +732,7 @@ function render_request(obj, part = espd_request, EG_FLAG = true) {
                             break;
 
                         default:
-                            tmp.com(' PropertyDataType not defined')
+                            tmp.com(` PropertyDataType: ${element.propertydatatype} not defined `)
                             break;
                     }
 
@@ -839,7 +852,7 @@ function render_response(obj, part = espd_response, crt_criterion = 'NONE') {
                                 .ele('@cbc', 'ResponseIndicator').txt('true').up()
                                 .up()
                             break;
-                        case 'IDENTFIER':
+                        case 'IDENTIFIER':
                             tmp.ele('@cac', 'ResponseValue')
                                 .ele('@cbc', 'ID', { 'schemeID': "Criterion", 'schemeAgencyID': "XXXESPD-SERVICEXXX", 'schemeVersionID': schemeVersionID }).txt(element.responsecontent3).up()
                                 .ele('@cbc', 'ResponseID', { 'schemeAgencyID': 'OP' }).txt(element.sellervalue ? element.sellervalue : 'Dummy ID').up()
