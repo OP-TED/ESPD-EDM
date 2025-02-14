@@ -2,49 +2,66 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/OP-TED/ESPD-EDM/blob/espd-tools/EAtoJSON/espd_schema.json",
   "title": "ESPD_EDM",
-  "description": "ESPD EDM",
+  "description": "ESPD EDM JSON validation schema",
+  "$defs": {
+    "cardinalityType": {
+      "enum" : ["1", "0..n", "1..n"]
+    },
+    "componentType" :{
+      "enum": ["QUESTION_GROUP", "QUESTION_SUBGROUP", "REQUIREMENT_GROUP", "REQUIREMENT_SUBGROUP", "QUESTION", "REQUIREMENT", "CAPTION", "LEGISLATION", "SUBCRITERION", "ADDITIONAL_DESCRIPTION_LINE"]
+    },
+    "components" : {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "#/$defs/componentType" },
+        "cardinality": { "$ref" : "#/$defs/cardinalityType" },
+        "code": { "type": "string"},
+        "codelist": { "type": "string" },
+        "requestpath": { "type":"string" },
+        "responsepath": { "type": "string" },
+        "tag": { "type": "string" },
+        "components" : { "$ref": "#/$defs/components" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "propertydatatype": { "type": "string" },
+        "sellervalue": { "type": "string" },
+        "buyervalue": { "type": "string" }
+      },
+      "required": [ "type", "cardinality" ]
+    }
+  },
   "type": "object",
   "patternProperties": {
     "^C\\d+$": {
       "type": "object",
-      "properties":{
+      "properties": {
         "tag": { "type": "string" },
         "type": { "enum": ["CRITERION"] },
         "uuid": { "type": "string" },
         "code": { "type": "string" },
-        "cardinality": { "enum": ["1", "0..n", "1..n"] },
-        "components": { 
-          "type": "object",
-          "properties": {
-            "type": { "enum": ["QUESTION_GROUP", "QUESTION_SUBGROUP", "REQUIREMENT_GROUP", "REQUIREMENT_SUBGROUP", "QUESTION", "REQUIREMENT", "CAPTION", "LEGISLATION", "ADDITIONAL_DESCRIPTION_LINE"] },
-            "cardinality": { "enum": ["1", "0..n", "1..n"] },
-            "code": { "type": "string"},
-            "requestpath": { "type":"string" },
-            "responsepath": { "type": "string" },
-            "tag": { "type": "string" }
-          },
-          "required": [ "type", "cardinality" ],
-          "allOf": [
-            {
-              "if": {
-                "properties": {
-                  "type": { "enum":["QUESTION_GROUP", "QUESTION_SUBGROUP", "REQUIREMENT_GROUP", "REQUIREMENT_SUBGROUP"]}
-                }
-              },
-              "then":{
-                "properties":{
-                  "components": { "type": "string"}
-                }
-              }
-            }
-          ]
-        },
+        "cardinality": { "$ref" : "#/$defs/cardinalityType"  },
+        "components": {  "$ref": "#/$defs/components"},
         "name": { "type": "string" },
         "description": { "type": "string" },
         "requestpath": { "type": "string" },
         "responsepath": { "type": "string" }
       },
       "required": [ "tag", "type", "uuid", "code", "cardinality", "components" ]
+    },
+    "^AI\\d+$": {
+      "type": "object",
+      "properties": {
+        "tag": { "type": "string" },
+        "type": { "enum": ["ADDITIONAL_INFORMATION"] },
+        "code": { "type": "string" },
+        "cardinality": { "$ref" : "#/$defs/cardinalityType"  },
+        "components": {  "$ref": "#/$defs/components"},
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "requestpath": { "type": "string" },
+        "responsepath": { "type": "string" }
+      },
+      "required": [  "type", "cardinality", "components", "name", "description" ]
     }
   },
   "additionalProperties": false
