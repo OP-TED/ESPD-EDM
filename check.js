@@ -263,6 +263,7 @@ program
             log(chalk.bold(xcl));
 
             var sheet_name_list = wbk.SheetNames;
+
             for (const key in sheet_name_list) {
                 if (Object.hasOwn(sheet_name_list, key)) {
                     fetch_eCERTIS(wbk.Sheets[sheet_name_list[key]]);
@@ -281,6 +282,7 @@ program.run();
  */
 function fetch_eCERTIS(sph) {
     const eCertis_URL =
+    //"https://webgate.acceptance.ec.europa.eu/tools3/ecertis2/criteria";
         "https://ec.europa.eu/growth/tools-databases/ecertisrest/criteria/espd";
 
     var xlData = XLSX.utils.sheet_to_json(sph);

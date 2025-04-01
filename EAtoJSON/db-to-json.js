@@ -26,7 +26,7 @@ function dbToJson ({ objects, objectProperties, attributes, connectors }) {
             return {
               property: x.Property, value: x.Value,
             }
-          }),
+          })
       }
       // Objects might come with a Classifier,
       // i.e. (EU) 2015/1986 instance of at-voc:legal-basis
@@ -53,11 +53,12 @@ function dbToJson ({ objects, objectProperties, attributes, connectors }) {
 }
 
 const toLiteralRelation = nodeIndex => x => {
-  const { Object_ID, Name, Type, LowerBound, UpperBound, Notes, Stereotype } = x
+  const { Object_ID, Name, Type, LowerBound, UpperBound, Notes, Stereotype, Default } = x
 
   const source = nodeIndex[Object_ID]
   const predicate = Name
   const target = Type
+  const default_value = Default
 
   return {
     eaId: Object_ID,
@@ -67,6 +68,7 @@ const toLiteralRelation = nodeIndex => x => {
     target,
     quantifiers: getQuantifierFromBounds({ LowerBound, UpperBound }),
     description: Notes,
+    default_value
   }
 }
 
