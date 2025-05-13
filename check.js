@@ -193,10 +193,7 @@ program
         });
     })
 
-    .command(
-        "extract_codelists",
-        "List elements that have a Code List associated with"
-    )
+    .command("extract_codelists","List elements that have a Code List associated with")
     .argument("<excelfile>", "Excel Criterion file to be processed")
     .action(({ logger, args, options }) => {
         // Combine styled and normal strings
@@ -219,10 +216,7 @@ program
         });
     })
 
-    .command(
-        "extract_pdt",
-        "Extract Property Data Type from Excel Criterion file"
-    )
+    .command("extract_pdt","Extract Property Data Type from Excel Criterion file")
     .argument("<excelfile>", "Excel Criterion file to be processed")
     .action(({ logger, args, options }) => {
         log(chalk.bold(`Processing ${args.excelfile}`), "\n\n");
@@ -244,10 +238,7 @@ program
         log(chalk.blue(pdt_list.sort().join("\n")));
     })
 
-    .command(
-        "eCERTIS_UUIDs",
-        "Check the existence of record in eCERTIS associated with a given UUID"
-    )
+    .command("eCERTIS_UUIDs","Check the existence of record in eCERTIS associated with a given UUID")
     .option("--user [user]", "proxy server user", { default: "" })
     .option("--password [password]", "proxy server password", { default: "" })
     .argument("<excelfile>", "Excel file with eCERTIS UUIDs to be processed")
