@@ -8,26 +8,50 @@
       "enum" : ["1", "0..n", "1..n"]
     },
     "componentType" :{
-      "enum": ["QUESTION_GROUP", "QUESTION_SUBGROUP", "REQUIREMENT_GROUP", "REQUIREMENT_SUBGROUP", "QUESTION", "REQUIREMENT", "CAPTION", "LEGISLATION", "SUBCRITERION", "ADDITIONAL_DESCRIPTION_LINE"]
+      "enum": ["QUESTION_GROUP", "QUESTION_SUBGROUP", "REQUIREMENT_GROUP", "REQUIREMENT_SUBGROUP", "QUESTION", "REQUIREMENT", "CAPTION", "SUBCRITERION", "ADDITIONAL_DESCRIPTION_LINE"]
+    },
+    "legislation" : {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["LEGISLATION"] },
+        "cardinality": { "$ref" : "#/$defs/cardinalityType" },
+        "requestpath": { "type":"string" },
+        "responsepath": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "jurisdictionlevelcode" : { "type": "string" },
+        "article" : { "type": "string" },
+        "uri" : { "type": "string" }
+      },
+      "required": [ "type", "cardinality", "requestpath", "title", "description"  ]
     },
     "components" : {
       "type": "object",
-      "properties": {
-        "type": { "$ref": "#/$defs/componentType" },
-        "cardinality": { "$ref" : "#/$defs/cardinalityType" },
-        "code": { "type": "string"},
-        "codelist": { "type": "string" },
-        "requestpath": { "type":"string" },
-        "responsepath": { "type": "string" },
-        "tag": { "type": "string" },
-        "components" : { "$ref": "#/$defs/components" },
-        "name": { "type": "string" },
-        "description": { "type": "string" },
-        "propertydatatype": { "type": "string" },
-        "sellervalue": { "type": "string" },
-        "buyervalue": { "type": "string" }
-      },
-      "required": [ "type", "cardinality" ]
+
+      "patternProperties":{
+        "^L\\d+$":{
+          "$ref" : "#/$defs/legislation"
+        },
+        "^(?!L\\d)$":{
+          "type": "object",
+          "properties":{
+            "type": { "$ref": "#/$defs/componentType" },
+            "cardinality": { "$ref" : "#/$defs/cardinalityType" },
+            "code": { "type": "string"},
+            "codelist": { "type": "string" },
+            "requestpath": { "type":"string" },
+            "responsepath": { "type": "string" },
+            "tag": { "type": "string" },
+            "components" : { "$ref": "#/$defs/components" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "propertydatatype": { "type": "string" },
+            "sellervalue": { "type": "string" },
+            "buyervalue": { "type": "string" }
+          },
+          "required": [ "type", "cardinality" ]
+        }
+      }
     }
   },
   "type": "object",
@@ -40,7 +64,10 @@
         "uuid": { "type": "string" },
         "code": { "type": "string" },
         "cardinality": { "$ref" : "#/$defs/cardinalityType"  },
-        "components": {  "$ref": "#/$defs/components"},
+        "components": { 
+          "type": "object",  
+          "$ref": "#/$defs/components"
+        },
         "name": { "type": "string" },
         "description": { "type": "string" },
         "requestpath": { "type": "string" },
@@ -55,7 +82,10 @@
         "type": { "enum": ["ADDITIONAL_INFORMATION"] },
         "code": { "type": "string" },
         "cardinality": { "$ref" : "#/$defs/cardinalityType"  },
-        "components": {  "$ref": "#/$defs/components"},
+        "components": {
+          "type": "object",
+          "$ref": "#/$defs/components"
+        },
         "name": { "type": "string" },
         "description": { "type": "string" },
         "requestpath": { "type": "string" },
