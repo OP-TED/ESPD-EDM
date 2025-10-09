@@ -12,7 +12,7 @@
     Start of synthesis of rules from criterion constraints ESPD Request.
 
     Illustration of criterion constraints - 03-ESPD-req-criterion-br.sch
-	ESPD Version: 4.0.0-->
+	ESPD Version: 4.1.0-->
 
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-REQ-CR">
 		<!-- Restrictions regarding the Exclusion criterion contraints -->

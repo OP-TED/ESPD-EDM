@@ -38,7 +38,7 @@
 			<let name="exclusionNotReqResponses" value="$currentExclusion[cac:TenderingCriterionPropertyGroup[cac:TenderingCriterionProperty[cbc:TypeCode='REQUIREMENT'] 
 				and cac:SubsidiaryTenderingCriterionPropertyGroup/cac:TenderingCriterionProperty[not(cbc:ID = $allResponses) and cbc:TypeCode='QUESTION'] ]]/cbc:CriterionTypeCode"/>
 
-			<!-- This BR should be redesigned in the context of v4.0.0 there was a change in the specific criterion concerning registration in a national pre-qualifiication system -->
+			<!-- This BR should be redesigned in the context of v4.1.0 there was a change in the specific criterion concerning registration in a national pre-qualifiication system -->
 			<!--
 			<assert test="($isPQS) or(not($isPQS) and (count($currentExclusion) = (count($exclusionResponses) + count($exclusionReqResponses))) )" flag="fatal" id="BR-RESP-30">Information about compliance of exclusion grounds MUST be provided. The following exclusion criterion are not provided: <value-of select="$exclusionNotResponses"/>, <value-of select="$exclusionNotReqResponses"/></assert>
 		    -->

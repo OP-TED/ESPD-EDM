@@ -12,7 +12,7 @@
     Start of synthesis of rules from cardinality constraints ESPD Request and ESPD Response
 
     Illustration of cardinality constraints - 04-ESPD-common-other-br.sch
-	ESPD Version: 4.0.0
+	ESPD Version: 4.1.0
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-OTH">
@@ -50,7 +50,7 @@
 			<assert test="starts-with(@listVersionID, '4.')" flag="fatal" id="BR-OTH-01-40">List version identifier '<value-of select="name()"/>/listVersionID = <value-of select="@listVersionID"/>' is not correct. ListVersionID should be '4.x.x'.</assert>
 		</rule>
 		
-		<!-- BR-OTH-02: For identifiers, this ESPD V03.1.0 specification requires at least (and always) the mandatory attribute schemeAgencyID. -->
+		<!-- BR-OTH-02: For identifiers, this ESPD V3.1.0 specification requires at least (and always) the mandatory attribute schemeAgencyID. -->
 		<rule context="ext:ExtensionAgencyID | ext:ExtensionVersionID | cbc:AccountID | cbc:AdditionalAccountID | cbc:AgencyID | cbc:AircraftID | cbc:AttributeID | cbc:AwardID | cbc:AwardingCriterionID | cbc:BarcodeSymbologyID | cbc:BrokerAssignedID | cbc:BusinessClassificationEvidenceID | 
 		cbc:BusinessIdentityEvidenceID | cbc:BuyerEventID | cbc:CV2ID | cbc:CarrierAssignedID | cbc:ChipApplicationID | cbc:CompanyID | cbc:ConsigneeAssignedID | cbc:ConsignorAssignedID | cbc:ConsumptionID | cbc:ConsumptionReportID | cbc:ContractFolderID | cbc:ContractedCarrierAssignedID |
 		cbc:CustomerAssignedAccountID | cbc:CustomizationID | cbc:DocumentID | cbc:ExchangeMarketID | cbc:ExpectedID | cbc:ExtendedID | cbc:FormatID | cbc:FreightForwarderAssignedID | cbc:HazardClassID | cbc:ID | cbc:IdentificationID | cbc:ImmobilizationCertificateID |
