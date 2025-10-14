@@ -11,7 +11,7 @@
     Start of synthesis of rules from criterion ('/cac:TenderingCriterion') constraints ESPD Request and ESPD Response
 
     Illustration of criterion constraints - 03-ESPD-common-criterion-br.sch
-	ESPD Version: 4.0.0
+	ESPD Version: 4.1.0
 -->
 	
 	<pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="BR-COM-CR">
