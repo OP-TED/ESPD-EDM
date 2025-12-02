@@ -5,7 +5,7 @@
 ## Introduction
 
 The ESPD-EDM is the technical representation of the legal [European Single Procurement Document - The 2014/24/EC Directive on Public Procurement(Article 59)](https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=celex%3A32014L0024) and [Regulation (EU) 2016/7](https://eur-lex.europa.eu/eli/reg_impl/2016/7/oj). It is used to support interoperability between the ESPD services provided all over Europe. The ESPD document is an **XML** document based on the [OASIS UBL](https://groups.oasis-open.org/communities/tc-community-home2?CommunityKey=556949c8-dac8-40e6-bb16-018dc7ce54d6) standard enhanced with specific ESPD Business Rules and genericode Code Lists. The ESPD documents are:
-- **ESPD Request** created by the Contracting Authority
+- **ESPD Request** created by the Buyer / Contracting Authority
 - **ESPD Response** created by the Economic Operator as a direct response to the ESPD Request.
 
 Any feedback will be higly appreciated and can be submitted via the [GitHub issues](https://github.com/OP-TED/ESPD-EDM/issues/new/choose) tab of this repository. You will need to be a registered GitHub user to create an issue, or to contribute actively to an existing one.
@@ -40,8 +40,6 @@ The following artefacts provided in this repository may be used to design and im
 - UBL distribution files - in the `schemas` folder, 
 - Business Rules files - in the `validation` folder there are specific XSL files that implement ESPD EDM validation rules for the XML document, and
 - Public TED Documentation site - https://docs.ted.europa.eu/ESPD-EDM/latest/index.html
-
-If you want to visualise, validate, and test the ESPD Model or generate more ESPD XML examples please use the [ESPD Demo](https://docs.ted.europa.eu/espd-demo/) site.
 
 You can validate your ESPD documents directly on the [ITB Testbed](https://www.itb.ec.europa.eu/espd/upload).
 
