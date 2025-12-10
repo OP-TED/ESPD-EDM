@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+  <Identification>
+    <ShortName>ResponseDataType</ShortName>
+    <LongName>ResponseDataType</LongName>
+    <LongName Identifier="listId">response-data-type</LongName>
+    <Version>4.1.0</Version>
+    <CanonicalUri>https://github.com/OP-TED/ESPD-EDM</CanonicalUri>
+    <CanonicalVersionUri>https://github.com/OP-TED/ESPD-EDM/tree/v4.1.0/</CanonicalVersionUri>
+    <LocationUri>https://raw.githubusercontent.com/OP-TED/ESPD-EDM/v4.1.0/codelists/gc/ResponseDataType.gc</LocationUri>
+    <Agency>
+      <ShortName>Publications Office</ShortName>
+      <LongName>Publications Office of the European Union</LongName>
+      <Identifier Identifier="TED-OP-ESPD"/>
+    </Agency>
+  </Identification>
+  <ColumnSet>
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="Name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Column Id="status" Use="required">
+      <ShortName>Status</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="name-eng" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>IDENTIFIER</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>identifier</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>identifier</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>URL</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>url</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>url</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>MAXIMUM_AMOUNT</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>maximum amount</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>maximum amount</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>MINIMUM_AMOUNT</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>minimum amount</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>minimum amount</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>MAXIMUM_VALUE_NUMERIC</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>maximum value numeric</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>maximum value numeric</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>MINIMUM_VALUE_NUMERIC</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>minimum value numeric</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>minimum value numeric</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TRANSLATION_TYPE_CODE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>translation type code</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>translation type code</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CERTIFICATION_LEVEL_DESCRIPTION</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>certification level description</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>certification level description</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>COPY_QUALITY_TYPE_CODE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>copy quality type code</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>copy quality type code</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>TIME</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>time</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>time</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CODE_BOOLEAN</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>code boolean</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>code boolean</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>ECONOMIC_OPERATOR_IDENTIFIER</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>economic operator identifier</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>economic operator identifier</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>QUAL_IDENTIFIER</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>qual identifier</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>qual identifier</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CODE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>code</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>code</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CODE_COUNTRY</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>code country</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>code country</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>DESCRIPTION</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>description</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>description</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>PERCENTAGE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>percentage</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>percentage</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>PERIOD</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>period</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>period</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>QUANTITY_INTEGER</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>quantity integer</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>quantity integer</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>QUANTITY_YEAR</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>quantity year</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>quantity year</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>QUANTITY</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>quantity</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>quantity</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>NONE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>none</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>none</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>AMOUNT</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>amount</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>amount</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>DATE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>date</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>date</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>EVIDENCE_IDENTIFIER</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>evidence identifier</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>evidence identifier</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>INDICATOR</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>indicator</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>indicator</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>

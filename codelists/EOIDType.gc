@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+  <Identification>
+    <ShortName>EOIDType</ShortName>
+    <LongName>EOIDType</LongName>
+    <LongName Identifier="listId">e-o-i-d-type</LongName>
+    <Version>4.1.0</Version>
+    <CanonicalUri>https://github.com/OP-TED/ESPD-EDM</CanonicalUri>
+    <CanonicalVersionUri>https://github.com/OP-TED/ESPD-EDM/tree/v4.1.0/</CanonicalVersionUri>
+    <LocationUri>https://raw.githubusercontent.com/OP-TED/ESPD-EDM/v4.1.0/codelists/gc/EOIDType.gc</LocationUri>
+    <Agency>
+      <ShortName>Publications Office</ShortName>
+      <LongName>Publications Office of the European Union</LongName>
+      <Identifier Identifier="TED-OP-ESPD"/>
+    </Agency>
+  </Identification>
+  <ColumnSet>
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="Name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Column Id="status" Use="required">
+      <ShortName>Status</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="name-eng" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>NATIONAL</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>national</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>national</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>LEI</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>lei</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>lei</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>BRIS</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>bris</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>bris</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>DUNS</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>duns</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>duns</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>VAT</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>vat</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>vat</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>

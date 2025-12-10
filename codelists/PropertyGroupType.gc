@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+  <Identification>
+    <ShortName>PropertyGroupType</ShortName>
+    <LongName>PropertyGroupType</LongName>
+    <LongName Identifier="listId">property-group-type</LongName>
+    <Version>4.1.0</Version>
+    <CanonicalUri>https://github.com/OP-TED/ESPD-EDM</CanonicalUri>
+    <CanonicalVersionUri>https://github.com/OP-TED/ESPD-EDM/tree/v4.1.0/</CanonicalVersionUri>
+    <LocationUri>https://raw.githubusercontent.com/OP-TED/ESPD-EDM/v4.1.0/codelists/gc/PropertyGroupType.gc</LocationUri>
+    <Agency>
+      <ShortName>Publications Office</ShortName>
+      <LongName>Publications Office of the European Union</LongName>
+      <Identifier Identifier="TED-OP-ESPD"/>
+    </Agency>
+  </Identification>
+  <ColumnSet>
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="Name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Column Id="status" Use="required">
+      <ShortName>Status</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="name-eng" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>ON*</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>on*</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>on*</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>ONTRUE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>ontrue</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>ontrue</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>ONFALSE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>onfalse</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>onfalse</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>

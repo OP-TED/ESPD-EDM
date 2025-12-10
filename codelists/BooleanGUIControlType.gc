@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/">
+  <Identification>
+    <ShortName>BooleanGUIControlType</ShortName>
+    <LongName>BooleanGUIControlType</LongName>
+    <LongName Identifier="listId">boolean-g-u-i-control-type</LongName>
+    <Version>4.1.0</Version>
+    <CanonicalUri>https://github.com/OP-TED/ESPD-EDM</CanonicalUri>
+    <CanonicalVersionUri>https://github.com/OP-TED/ESPD-EDM/tree/v4.1.0/</CanonicalVersionUri>
+    <LocationUri>https://raw.githubusercontent.com/OP-TED/ESPD-EDM/v4.1.0/codelists/gc/BooleanGUIControlType.gc</LocationUri>
+    <Agency>
+      <ShortName>Publications Office</ShortName>
+      <LongName>Publications Office of the European Union</LongName>
+      <Identifier Identifier="TED-OP-ESPD"/>
+    </Agency>
+  </Identification>
+  <ColumnSet>
+    <Column Id="code" Use="required">
+      <ShortName>Code</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="Name" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Column Id="status" Use="required">
+      <ShortName>Status</ShortName>
+      <Data Type="normalizedString" Lang="eng"/>
+    </Column>
+    <Column Id="name-eng" Use="optional">
+      <ShortName>Name</ShortName>
+      <Data Type="string" Lang="eng"/>
+    </Column>
+    <Key Id="codeKey">
+      <ShortName>CodeKey</ShortName>
+      <ColumnRef Ref="code"/>
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CHECK_BOX_FALSE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>check box false</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>check box false</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CHECK_BOX_TRUE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>check box true</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>check box true</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>CHECK_BOX_UNCHECKED</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>check box unchecked</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>check box unchecked</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>RADIO_BUTTON_FALSE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>radio button false</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>radio button false</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>RADIO_BUTTON_TRUE</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>radio button true</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>radio button true</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="code">
+        <SimpleValue>RADIO_BUTTON_UNSELECTED</SimpleValue>
+      </Value>
+      <Value ColumnRef="Name">
+        <SimpleValue>radio button unselected</SimpleValue>
+      </Value>
+      <Value ColumnRef="status">
+        <SimpleValue>ACTIVE</SimpleValue>
+      </Value>
+      <Value ColumnRef="name-eng">
+        <SimpleValue>radio button unselected</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>
