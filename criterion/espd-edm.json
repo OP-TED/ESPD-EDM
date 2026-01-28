@@ -1,4 +1,71 @@
 {
+  "AI68": {
+    "tag": "AI68",
+    "type": "ADDITIONAL_INFORMATION",
+    "uuid": "35FC61D8-2E03-4e7e-B77E-CC7AA31B1954",
+    "code": "pub-info",
+    "cardinality": "1",
+    "components": {
+      "null": {
+        "type": "CRITERION",
+        "cardinality": "1..n",
+        "requestpath": "AI68_pub-info/null",
+        "description": "AI68_ADR1",
+        "responsepath": "AI68_pub-info/null"
+      }
+    },
+    "name": "AI68_pub-info",
+    "description": "",
+    "requestpath": "AI68_pub-info",
+    "responsepath": "AI68_pub-info"
+  },
+  "AI69": {
+    "tag": "AI69",
+    "type": "ADDITIONAL_INFORMATION",
+    "uuid": "368FF213-B54F-46e1-8093-11404D58CE08",
+    "code": "info-buyer",
+    "cardinality": "1",
+    "components": {
+      "CP1": {
+        "type": "CRITERION",
+        "cardinality": "1",
+        "requestpath": "AI69_info-buyer/CP1",
+        "description": "CP1",
+        "responsepath": "AI69_info-buyer/CP1"
+      }
+    },
+    "name": "AI69_info-buyer",
+    "description": "",
+    "requestpath": "AI69_info-buyer",
+    "responsepath": "AI69_info-buyer"
+  },
+  "AI70": {
+    "tag": "AI70",
+    "type": "ADDITIONAL_INFORMATION",
+    "uuid": "F2486562-9DDF-469f-9F8A-6A551A23AD82",
+    "code": "info-pp",
+    "cardinality": "1",
+    "components": {
+      "PP1": {
+        "type": "CRITERION",
+        "cardinality": "1",
+        "requestpath": "AI70_info-pp/PP1",
+        "description": "PP1",
+        "responsepath": "AI70_info-pp/PP1"
+      },
+      "PPL1": {
+        "type": "CRITERION",
+        "cardinality": "1..n",
+        "requestpath": "AI70_info-pp/PPL1",
+        "description": "PPL1",
+        "responsepath": "AI70_info-pp/PPL1"
+      }
+    },
+    "name": "AI70_info-pp",
+    "description": "",
+    "requestpath": "AI70_info-pp",
+    "responsepath": "AI70_info-pp"
+  },
   "C01": {
     "tag": "C01",
     "type": "CRITERION",
@@ -4331,15 +4398,15 @@
                     "type": "QUESTION_SUBGROUP",
                     "cardinality": "1",
                     "components": {
-                      "Q2": {
+                      "Q1": {
                         "type": "QUESTION",
                         "cardinality": "1",
-                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/Q2",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/Q1",
                         "description": "Is this information available electronically?",
                         "propertydatatype": "INDICATOR",
                         "code": "QUESTION",
-                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/Q2/R1",
-                        "contentpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/Q2/R1/RV"
+                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/Q1/R1",
+                        "contentpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/Q1/R1/RV"
                       },
                       "QSG1": {
                         "type": "QUESTION_SUBGROUP",
