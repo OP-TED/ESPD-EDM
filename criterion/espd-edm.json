@@ -5148,6 +5148,16 @@
             "type": "REQUIREMENT_SUBGROUP",
             "cardinality": "1",
             "components": {
+              "RQ1": {
+                "type": "REQUIREMENT",
+                "cardinality": "1",
+                "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/RQ1",
+                "description": "Number of fiscal years",
+                "propertydatatype": "QUANTITY_YEAR",
+                "code": "REQUIREMENT",
+                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/RQ1/R1",
+                "contentpath": "C32_slc-stand-to-spec/RG1/RSG1/RQ1/R1/RV"
+              },
               "RQ2": {
                 "type": "REQUIREMENT",
                 "cardinality": "1",
@@ -5167,13 +5177,6 @@
                 "code": "REQUIREMENT",
                 "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/RQ3/R1",
                 "contentpath": "C32_slc-stand-to-spec/RG1/RSG1/RQ3/R1/RV"
-              },
-              "RE": {
-                "type": "REQUIREMENT_SUBGROUP",
-                "cardinality": "1",
-                "components": {},
-                "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/RE",
-                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/RE"
               },
               "QSG1": {
                 "type": "QUESTION_SUBGROUP",
@@ -5281,12 +5284,15 @@
                         "type": "QUESTION_SUBGROUP",
                         "cardinality": "1",
                         "components": {
-                          "QU": {
-                            "type": "QUESTION_SUBGROUP",
-                            "cardinality": "1",
-                            "components": {},
-                            "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1/QU",
-                            "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1/QU"
+                          "Q1": {
+                            "type": "QUESTION",
+                            "cardinality": "1..n",
+                            "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1/Q1",
+                            "description": "Evidence Supplied",
+                            "propertydatatype": "EVIDENCE_IDENTIFIER",
+                            "code": "QUESTION",
+                            "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1/Q1/R1",
+                            "contentpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1/Q1/R1/RV"
                           }
                         },
                         "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1",
@@ -5318,12 +5324,15 @@
                     "type": "QUESTION_SUBGROUP",
                     "cardinality": "1",
                     "components": {
-                      "QU": {
-                        "type": "QUESTION_SUBGROUP",
+                      "Q1": {
+                        "type": "QUESTION",
                         "cardinality": "1",
-                        "components": {},
-                        "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/QU",
-                        "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/QU"
+                        "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/Q1",
+                        "description": "Is this information available electronically?",
+                        "propertydatatype": "INDICATOR",
+                        "code": "QUESTION",
+                        "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/Q1/R1",
+                        "contentpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/Q1/R1/RV"
                       }
                     },
                     "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1",
@@ -6687,13 +6696,6 @@
                         "type": "QUESTION_SUBGROUP",
                         "cardinality": "1",
                         "components": {
-                          "QU": {
-                            "type": "QUESTION_SUBGROUP",
-                            "cardinality": "1",
-                            "components": {},
-                            "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QU",
-                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QU"
-                          },
                           "Q1": {
                             "type": "QUESTION",
                             "cardinality": "1",
@@ -6743,6 +6745,16 @@
                             "code": "QUESTION",
                             "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/Q5/R1",
                             "contentpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/Q5/R1/RV"
+                          },
+                          "Q6": {
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/Q6",
+                            "description": "How long with EO",
+                            "propertydatatype": "QUANTITY_YEAR",
+                            "code": "QUESTION",
+                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/Q6/R1",
+                            "contentpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/Q6/R1/RV"
                           },
                           "QSG1": {
                             "type": "QUESTION_SUBGROUP",
@@ -6988,12 +7000,15 @@
                 "type": "REQUIREMENT_SUBGROUP",
                 "cardinality": "1",
                 "components": {
-                  "RE": {
-                    "type": "REQUIREMENT_SUBGROUP",
+                  "RQ1": {
+                    "type": "REQUIREMENT",
                     "cardinality": "1",
-                    "components": {},
-                    "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/RE",
-                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/RE"
+                    "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/RQ1",
+                    "description": "Requirement",
+                    "propertydatatype": "DESCRIPTION",
+                    "code": "REQUIREMENT",
+                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/RQ1/R1",
+                    "contentpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/RQ1/R1/RV"
                   },
                   "QSG1": {
                     "type": "QUESTION_SUBGROUP",
@@ -7077,13 +7092,6 @@
                         "type": "QUESTION_SUBGROUP",
                         "cardinality": "1",
                         "components": {
-                          "QU": {
-                            "type": "QUESTION_SUBGROUP",
-                            "cardinality": "1",
-                            "components": {},
-                            "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QU",
-                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QU"
-                          },
                           "Q1": {
                             "type": "QUESTION",
                             "cardinality": "1",
@@ -7133,6 +7141,16 @@
                             "code": "QUESTION",
                             "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/Q5/R1",
                             "contentpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/Q5/R1/RV"
+                          },
+                          "Q6": {
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/Q6",
+                            "description": "How long with EO",
+                            "propertydatatype": "QUANTITY_YEAR",
+                            "code": "QUESTION",
+                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/Q6/R1",
+                            "contentpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/Q6/R1/RV"
                           },
                           "QSG1": {
                             "type": "QUESTION_SUBGROUP",
@@ -7498,12 +7516,15 @@
                     "type": "QUESTION_SUBGROUP",
                     "cardinality": "1",
                     "components": {
-                      "QSG1": {
-                        "type": "QUESTION_SUBGROUP",
-                        "cardinality": "1",
-                        "components": {},
-                        "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1/QSG1"
+                      "Q1": {
+                        "type": "QUESTION",
+                        "cardinality": "1..n",
+                        "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1/Q1",
+                        "description": "Evidence Supplied",
+                        "propertydatatype": "EVIDENCE_IDENTIFIER",
+                        "code": "QUESTION",
+                        "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1/Q1/R1",
+                        "contentpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1/Q1/R1/RV"
                       }
                     },
                     "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1",
