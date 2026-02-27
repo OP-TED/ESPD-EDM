@@ -1,12 +1,12 @@
 # ESPD-EDM 5.0.0 Release Notes
 
-This release aligns with ePO model and with eFroms from criterion code lists.
+This release aligns with ePO model and with eForms from criterion code lists.
 
-The criterion is migrated from Excel to JSON allowing seeamles integration development tools for ESPD Service implementors.
+The data model is migrated from Excel to JSON allowing seeamles integration development tools for ESPD Service implementors.
 
 Main new features:
-- Enterprise Architect model centered redesign
-- eCertis UUIDs alignment with ESPD
+- Enterprise Architect (EA) model centered redesign
+- Harmonisation with eCertis UUIDs
 
 GitHub issues
 
@@ -33,7 +33,7 @@ GitHub issues
 - Potential cardinality inconsistencies
 - Missing SUBCRITERION block (EG C24 and SC C34)
 - Missing REQUIREMENT_GROUP block (SC C51, C52 and C53)
-- Deprecated EG "authorisation" (C25) and "membership" (C28)
+- Deprecated SC "authorisation" (C27) and "membership" (C28)
 - Added EG "exg-mis-unrel-sec" (C67) and SC "slc-suit-auth-mbrshp" (C66)
 
 ### Code lists
