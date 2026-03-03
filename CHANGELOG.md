@@ -2,7 +2,7 @@
 
 This release aligns with ePO model and with eForms from criterion code lists.
 
-The data model is migrated from Excel to JSON allowing seeamles integration development tools for ESPD Service implementors.
+The data model is migrated from Excel to JSON allowing seamless integration development tools for ESPD Service implementors.
 
 Main new features:
 - Enterprise Architect (EA) model centered redesign
@@ -26,27 +26,27 @@ GitHub issues
    * Investigate the official list and certificate in the ESPD-EDM OTHER-EO-PQS sheet 
 
 ### ESPD-EDM Criterion files - Data Structure 
-- Create JSON schema to validate EA exports
-- eCertis UUIDs alignment with ESPD
-- Update to new version of EG and SC code lists
+- Created JSON schema to validate EA exports
+- eCertis UUIDs harmonisation with ESPD-EDM
+- Update to new version of Exclusion Ground (EG) and Selection Criterion (SC) code lists
 - Uniformity of descriptions for QUESTION objects
-- Potential cardinality inconsistencies
+- Potential cardinality inconsistencies - TO CHECK
 - Missing SUBCRITERION block (EG C24 and SC C34)
 - Missing REQUIREMENT_GROUP block (SC C51, C52 and C53)
 - Deprecated SC "authorisation" (C27) and "membership" (C28)
 - Added EG "exg-mis-unrel-sec" (C67) and SC "slc-suit-auth-mbrshp" (C66)
 
 ### Code lists
-- Replace Criterion code list with Exclusion Ground and Selection Criterion code lists
+- Replaced Criterion code list with Exclusion Ground and Selection Criterion code lists
 - ResponseDataType codelist list of datatypes is incomplete
 - Code list 'docrefcontent-type' - update
 
 ### Validation - Interoperability Testbed
-- Update Schematron Business Rules for ESPD validation
-- Wrong values in //cac:TenderingCriterion/cbc:Name for C41 in XML examples
+- Update Schematron validation to align with code lists changes
+- Update Schematron Business Rules for ESPD validation - ONGOING
 
 ### Online documentation
 - Update business - index.adoc
-- Update ROOT section pages
-- Update technical section
+- Update ROOT section pages - ONGOING
+- Update technical section - ONGOING
 - Replace images with diagram as code
