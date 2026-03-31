@@ -1,4 +1,4 @@
-# ESPD-EDM 5.0.0 Release Notes
+# ESPD-EDM 5.0.0-alpha.2 Release Notes
 
 This release aligns with ePO model and with eForms from criterion code lists.
 
