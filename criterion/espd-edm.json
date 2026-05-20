@@ -1,135 +1,743 @@
 [
   {
-    "tag": "AI68",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "35FC61D8-2E03-4e7e-B77E-CC7AA31B1954",
-    "code": "pub-info",
+    "tag": "OT65",
+    "type": "CRITERION",
+    "uuid": "ede30cb7-70c2-4ead-ba11-22d0cac5ab7a",
+    "code": "OT",
     "cardinality": "1",
-    "components": [],
-    "name": "AI68_pub-info",
-    "description": "",
-    "requestpath": "AI68_pub-info",
-    "responsepath": "AI68_pub-info"
+    "components": [
+      {
+        "tag": "QG1",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT65_OT/QG1/Q1",
+            "description": "Your answer",
+            "propertydatatype": "INDICATOR",
+            "code": "QUESTION",
+            "responsepath": "OT65_OT/QG1/Q1/R1",
+            "contentpath": "OT65_OT/QG1/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT65_OT/QG1/QSG1/Q1",
+                "description": "Number of employees",
+                "propertydatatype": "QUANTITY_INTEGER",
+                "code": "QUESTION",
+                "responsepath": "OT65_OT/QG1/QSG1/Q1/R1",
+                "contentpath": "OT65_OT/QG1/QSG1/Q1/R1/RV"
+              },
+              {
+                "tag": "Q2",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT65_OT/QG1/QSG1/Q2",
+                "description": "Turnover",
+                "propertydatatype": "AMOUNT",
+                "code": "QUESTION",
+                "responsepath": "OT65_OT/QG1/QSG1/Q2/R1",
+                "contentpath": "OT65_OT/QG1/QSG1/Q2/R1/RV"
+              }
+            ],
+            "requestpath": "OT65_OT/QG1/QSG1",
+            "responsepath": "OT65_OT/QG1/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT65_OT/QG1",
+        "responsepath": "OT65_OT/QG1",
+        "code": "ON*"
+      },
+      {
+        "tag": "QG2",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT65_OT/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "propertydatatype": "INDICATOR",
+            "responsepath": "OT65_OT/QG2/Q1/R1",
+            "contentpath": "OT65_OT/QG2/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1..n",
+                "requestpath": "OT65_OT/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "propertydatatype": "EVIDENCE_IDENTIFIER",
+                "responsepath": "OT65_OT/QG2/QSG1/Q1/R1",
+                "contentpath": "OT65_OT/QG2/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT65_OT/QG2/QSG1",
+            "responsepath": "OT65_OT/QG2/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT65_OT/QG2",
+        "responsepath": "OT65_OT/QG2",
+        "code": "ON*"
+      }
+    ],
+    "name": "Economic Operator Micro, Small or Medium-sized Enterprise",
+    "description": "Is the economic operator a Micro, a Small or Medium-sized Enterprise?",
+    "requestpath": "OT65_OT",
+    "responsepath": "OT65_OT"
   },
   {
-    "tag": "AI69",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "368FF213-B54F-46e1-8093-11404D58CE08",
-    "code": "info-buyer",
+    "tag": "OT57",
+    "type": "CRITERION",
+    "uuid": "2043338f-a38a-490b-b3ec-2607cb25a017",
+    "code": "OT",
     "cardinality": "1",
-    "components": [],
-    "name": "AI69_info-buyer",
-    "description": "",
-    "requestpath": "AI69_info-buyer",
-    "responsepath": "AI69_info-buyer"
+    "components": [
+      {
+        "tag": "QG1",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT57_OT/QG1/Q1",
+            "description": "Your answer",
+            "propertydatatype": "INDICATOR",
+            "code": "QUESTION",
+            "responsepath": "OT57_OT/QG1/Q1/R1",
+            "contentpath": "OT57_OT/QG1/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT57_OT/QG1/QSG1/Q1",
+                "description": "What is the corresponding percentage of disabled or disadvantaged workers?",
+                "propertydatatype": "PERCENTAGE",
+                "code": "QUESTION",
+                "responsepath": "OT57_OT/QG1/QSG1/Q1/R1",
+                "contentpath": "OT57_OT/QG1/QSG1/Q1/R1/RV"
+              },
+              {
+                "tag": "Q2",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT57_OT/QG1/QSG1/Q2",
+                "description": "If required, please provide details on whether the employees concerned belong to a specific category of disabled or disadvantaged workers?",
+                "propertydatatype": "DESCRIPTION",
+                "code": "QUESTION",
+                "responsepath": "OT57_OT/QG1/QSG1/Q2/R1",
+                "contentpath": "OT57_OT/QG1/QSG1/Q2/R1/RV"
+              }
+            ],
+            "requestpath": "OT57_OT/QG1/QSG1",
+            "responsepath": "OT57_OT/QG1/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT57_OT/QG1",
+        "responsepath": "OT57_OT/QG1",
+        "code": "ON*"
+      },
+      {
+        "tag": "QG2",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT57_OT/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "propertydatatype": "INDICATOR",
+            "responsepath": "OT57_OT/QG2/Q1/R1",
+            "contentpath": "OT57_OT/QG2/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1..n",
+                "requestpath": "OT57_OT/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "propertydatatype": "EVIDENCE_IDENTIFIER",
+                "responsepath": "OT57_OT/QG2/QSG1/Q1/R1",
+                "contentpath": "OT57_OT/QG2/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT57_OT/QG2/QSG1",
+            "responsepath": "OT57_OT/QG2/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT57_OT/QG2",
+        "responsepath": "OT57_OT/QG2",
+        "code": "ON*"
+      }
+    ],
+    "name": "Economic operator is a sheltered workshop",
+    "description": "Only in case the procurement is reserved: is the economic operator a sheltered workshop, a 'social business' or will it provide for the performance of the contract in the context of sheltered employment programmes?",
+    "requestpath": "OT57_OT",
+    "responsepath": "OT57_OT"
   },
   {
-    "tag": "AI70",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "F2486562-9DDF-469f-9F8A-6A551A23AD82",
-    "code": "info-pp",
+    "tag": "OT58",
+    "type": "CRITERION",
+    "uuid": "9b19e869-6c89-4cc4-bd6c-ac9ca8602165",
+    "code": "OT",
     "cardinality": "1",
-    "components": [],
-    "name": "AI70_info-pp",
-    "description": "",
-    "requestpath": "AI70_info-pp",
-    "responsepath": "AI70_info-pp"
+    "components": [
+      {
+        "tag": "QG1",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT58_OT/QG1/Q1",
+            "description": "Your answer",
+            "propertydatatype": "INDICATOR",
+            "code": "QUESTION",
+            "responsepath": "OT58_OT/QG1/Q1/R1",
+            "contentpath": "OT58_OT/QG1/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT58_OT/QG1/QSG1/Q1",
+                "description": "Is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate?",
+                "propertydatatype": "INDICATOR",
+                "code": "QUESTION",
+                "responsepath": "OT58_OT/QG1/QSG1/Q1/R1",
+                "contentpath": "OT58_OT/QG1/QSG1/Q1/R1/RV"
+              },
+              {
+                "tag": "QSG1",
+                "type": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "components": [
+                  {
+                    "tag": "Q1",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "OT58_OT/QG1/QSG1/QSG1/Q1",
+                    "description": "Please provide the name of the list or certificate and the relevant registration or certification number, if applicable",
+                    "propertydatatype": "DESCRIPTION",
+                    "code": "QUESTION",
+                    "responsepath": "OT58_OT/QG1/QSG1/QSG1/Q1/R1",
+                    "contentpath": "OT58_OT/QG1/QSG1/QSG1/Q1/R1/RV"
+                  },
+                  {
+                    "tag": "Q2",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "OT58_OT/QG1/QSG1/QSG1/Q2",
+                    "description": "If the certificate of registration or certification is available electronically, please state where",
+                    "propertydatatype": "URL",
+                    "code": "QUESTION",
+                    "responsepath": "OT58_OT/QG1/QSG1/QSG1/Q2/R1",
+                    "contentpath": "OT58_OT/QG1/QSG1/QSG1/Q2/R1/RV"
+                  },
+                  {
+                    "tag": "Q3",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "OT58_OT/QG1/QSG1/QSG1/Q3",
+                    "description": "Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list",
+                    "propertydatatype": "DESCRIPTION",
+                    "code": "QUESTION",
+                    "responsepath": "OT58_OT/QG1/QSG1/QSG1/Q3/R1",
+                    "contentpath": "OT58_OT/QG1/QSG1/QSG1/Q3/R1/RV"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "OT58_OT/QG1/QSG1/QSG1/QSG1/Q1",
+                        "description": "Does the registration or certification cover all of the required selection criteria?",
+                        "propertydatatype": "INDICATOR",
+                        "code": "QUESTION",
+                        "responsepath": "OT58_OT/QG1/QSG1/QSG1/QSG1/Q1/R1",
+                        "contentpath": "OT58_OT/QG1/QSG1/QSG1/QSG1/Q1/R1/RV"
+                      }
+                    ],
+                    "requestpath": "OT58_OT/QG1/QSG1/QSG1/QSG1",
+                    "responsepath": "OT58_OT/QG1/QSG1/QSG1/QSG1",
+                    "code": "ON*"
+                  }
+                ],
+                "requestpath": "OT58_OT/QG1/QSG1/QSG1",
+                "responsepath": "OT58_OT/QG1/QSG1/QSG1",
+                "code": "ONTRUE"
+              },
+              {
+                "tag": "QSG2",
+                "type": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "components": [
+                  {
+                    "tag": "Q1",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "OT58_OT/QG1/QSG1/QSG2/Q1",
+                    "description": "Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?",
+                    "propertydatatype": "INDICATOR",
+                    "code": "QUESTION",
+                    "responsepath": "OT58_OT/QG1/QSG1/QSG2/Q1/R1",
+                    "contentpath": "OT58_OT/QG1/QSG1/QSG2/Q1/R1/RV"
+                  }
+                ],
+                "requestpath": "OT58_OT/QG1/QSG1/QSG2",
+                "responsepath": "OT58_OT/QG1/QSG1/QSG2",
+                "code": "ONFALSE"
+              }
+            ],
+            "requestpath": "OT58_OT/QG1/QSG1",
+            "responsepath": "OT58_OT/QG1/QSG1",
+            "code": "ONTRUE"
+          },
+          {
+            "tag": "QSG2",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "CA1",
+                "type": "CAPTION",
+                "cardinality": "1",
+                "requestpath": "OT58_OT/QG1/QSG2/CA1",
+                "description": "The country of the economic operator does not have an official list of approved economic operators or an equivalent certificate (e.g. under a national (pre)qualification system).",
+                "code": "CAPTION",
+                "responsepath": "OT58_OT/QG1/QSG2/CA1"
+              }
+            ],
+            "requestpath": "OT58_OT/QG1/QSG2",
+            "responsepath": "OT58_OT/QG1/QSG2",
+            "code": "ONFALSE"
+          }
+        ],
+        "requestpath": "OT58_OT/QG1",
+        "responsepath": "OT58_OT/QG1",
+        "code": "ON*"
+      },
+      {
+        "tag": "QG2",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT58_OT/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "propertydatatype": "INDICATOR",
+            "responsepath": "OT58_OT/QG2/Q1/R1",
+            "contentpath": "OT58_OT/QG2/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1..n",
+                "requestpath": "OT58_OT/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "propertydatatype": "EVIDENCE_IDENTIFIER",
+                "responsepath": "OT58_OT/QG2/QSG1/Q1/R1",
+                "contentpath": "OT58_OT/QG2/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT58_OT/QG2/QSG1",
+            "responsepath": "OT58_OT/QG2/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT58_OT/QG2",
+        "responsepath": "OT58_OT/QG2",
+        "code": "ON*"
+      }
+    ],
+    "name": "Economic operator registered in a pre qualification system",
+    "description": "Does the country of the economic operator have an official list of approved economic operators or an equivalent certificate (e.g. under a national (pre)qualification system)?",
+    "requestpath": "OT58_OT",
+    "responsepath": "OT58_OT"
   },
   {
-    "tag": "AI71",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "5BBC9BB0-F5A6-46a3-A676-F941683C2634",
-    "code": "info-eo",
+    "tag": "OT59",
+    "type": "CRITERION",
+    "uuid": "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2",
+    "code": "OT",
     "cardinality": "1",
-    "components": [],
-    "name": "AI71_info-eo",
-    "description": "",
-    "requestpath": "AI71_info-eo",
-    "responsepath": "AI71_info-eo"
+    "components": [
+      {
+        "tag": "QG1",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT59_OT/QG1/Q1",
+            "description": "Your answer",
+            "propertydatatype": "INDICATOR",
+            "code": "QUESTION",
+            "responsepath": "OT59_OT/QG1/Q1/R1",
+            "contentpath": "OT59_OT/QG1/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT59_OT/QG1/QSG1/Q1",
+                "description": "Please indicate the role of the economic operator in the group (leader, responsible for specific tasks...)",
+                "propertydatatype": "CODE",
+                "code": "QUESTION",
+                "responsepath": "OT59_OT/QG1/QSG1/Q1/R1",
+                "contentpath": "OT59_OT/QG1/QSG1/Q1/R1/RV"
+              },
+              {
+                "tag": "Q2",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT59_OT/QG1/QSG1/Q2",
+                "description": "Please identify the other economic operators participating in the procurement procedure together",
+                "propertydatatype": "DESCRIPTION",
+                "code": "QUESTION",
+                "responsepath": "OT59_OT/QG1/QSG1/Q2/R1",
+                "contentpath": "OT59_OT/QG1/QSG1/Q2/R1/RV"
+              },
+              {
+                "tag": "Q3",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT59_OT/QG1/QSG1/Q3",
+                "description": "Where applicable, name of the participating group:",
+                "propertydatatype": "DESCRIPTION",
+                "code": "QUESTION",
+                "responsepath": "OT59_OT/QG1/QSG1/Q3/R1",
+                "contentpath": "OT59_OT/QG1/QSG1/Q3/R1/RV"
+              }
+            ],
+            "requestpath": "OT59_OT/QG1/QSG1",
+            "responsepath": "OT59_OT/QG1/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT59_OT/QG1",
+        "responsepath": "OT59_OT/QG1",
+        "code": "ON*"
+      },
+      {
+        "tag": "QG2",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT59_OT/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "propertydatatype": "INDICATOR",
+            "responsepath": "OT59_OT/QG2/Q1/R1",
+            "contentpath": "OT59_OT/QG2/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1..n",
+                "requestpath": "OT59_OT/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "propertydatatype": "EVIDENCE_IDENTIFIER",
+                "responsepath": "OT59_OT/QG2/QSG1/Q1/R1",
+                "contentpath": "OT59_OT/QG2/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT59_OT/QG2/QSG1",
+            "responsepath": "OT59_OT/QG2/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT59_OT/QG2",
+        "responsepath": "OT59_OT/QG2",
+        "code": "ON*"
+      }
+    ],
+    "name": "Economic Operator together with others",
+    "description": "Is the economic operator participating in the procurement procedure together with others?",
+    "requestpath": "OT59_OT",
+    "responsepath": "OT59_OT"
   },
   {
-    "tag": "AI65",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "52A79064-1179-4428-A2B5-F61A98FB34AF",
-    "code": "sme",
+    "tag": "OT60",
+    "type": "CRITERION",
+    "uuid": "0d62c6ed-f074-4fcf-8e9f-f691351d52ad",
+    "code": "OT",
     "cardinality": "1",
-    "components": [],
-    "name": "AI65_sme",
-    "description": "",
-    "requestpath": "AI65_sme",
-    "responsepath": "AI65_sme"
+    "components": [
+      {
+        "tag": "QG1",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT60_OT/QG1/Q1",
+            "description": "Your answer",
+            "propertydatatype": "INDICATOR",
+            "code": "QUESTION",
+            "responsepath": "OT60_OT/QG1/Q1/R1",
+            "contentpath": "OT60_OT/QG1/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT60_OT/QG1/QSG1/Q1",
+                "description": "Name of the entity",
+                "propertydatatype": "DESCRIPTION",
+                "code": "QUESTION",
+                "responsepath": "OT60_OT/QG1/QSG1/Q1/R1",
+                "contentpath": "OT60_OT/QG1/QSG1/Q1/R1/RV"
+              },
+              {
+                "tag": "Q2",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT60_OT/QG1/QSG1/Q2",
+                "description": "ID of the entity",
+                "propertydatatype": "ECONOMIC_OPERATOR_IDENTIFIER",
+                "code": "QUESTION",
+                "responsepath": "OT60_OT/QG1/QSG1/Q2/R1",
+                "contentpath": "OT60_OT/QG1/QSG1/Q2/R1/RV"
+              }
+            ],
+            "requestpath": "OT60_OT/QG1/QSG1",
+            "responsepath": "OT60_OT/QG1/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT60_OT/QG1",
+        "responsepath": "OT60_OT/QG1",
+        "code": "ON*"
+      },
+      {
+        "tag": "QG2",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT60_OT/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "propertydatatype": "INDICATOR",
+            "responsepath": "OT60_OT/QG2/Q1/R1",
+            "contentpath": "OT60_OT/QG2/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1..n",
+                "requestpath": "OT60_OT/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "propertydatatype": "EVIDENCE_IDENTIFIER",
+                "responsepath": "OT60_OT/QG2/QSG1/Q1/R1",
+                "contentpath": "OT60_OT/QG2/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT60_OT/QG2/QSG1",
+            "responsepath": "OT60_OT/QG2/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT60_OT/QG2",
+        "responsepath": "OT60_OT/QG2",
+        "code": "ON*"
+      }
+    ],
+    "name": "Relied on entities",
+    "description": "Does the economic operator rely on the capacities of other entities in order to meet the selection criteria set out under Part IV and the criteria and rules (if any) set out under Part V below?",
+    "requestpath": "OT60_OT",
+    "responsepath": "OT60_OT"
   },
   {
-    "tag": "AI57",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "ACF36984-AC94-4c79-8560-8AA3F49E30B6",
-    "code": "shelt-worksh",
+    "tag": "OT61",
+    "type": "CRITERION",
+    "uuid": "72c0c4b1-ca50-4667-9487-461f3eed4ed7",
+    "code": "OT",
     "cardinality": "1",
-    "components": [],
-    "name": "AI57_shelt-worksh",
-    "description": "",
-    "requestpath": "AI57_shelt-worksh",
-    "responsepath": "AI57_shelt-worksh"
-  },
-  {
-    "tag": "AI58",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "8EE0569E-E252-413b-8E59-7729EF9FB111",
-    "code": "registered",
-    "cardinality": "1",
-    "components": [],
-    "name": "AI58_registered",
-    "description": "",
-    "requestpath": "AI58_registered",
-    "responsepath": "AI58_registered"
-  },
-  {
-    "tag": "AI59",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "7EFB128D-2E01-46e9-92C8-09F59F020EAB",
-    "code": "eo-group",
-    "cardinality": "1",
-    "components": [],
-    "name": "AI59_eo-group",
-    "description": "",
-    "requestpath": "AI59_eo-group",
-    "responsepath": "AI59_eo-group"
-  },
-  {
-    "tag": "AI72",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "EEF8CB9C-1B6E-42dd-BBF9-46AB5E641C1A",
-    "code": "info-poa",
-    "cardinality": "1",
-    "components": [],
-    "name": "AI72_info-poa",
-    "description": "",
-    "requestpath": "AI72_info-poa",
-    "responsepath": "AI72_info-poa"
-  },
-  {
-    "tag": "AI60",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "883AAAB4-0864-48a7-8FA6-405FC83C44A8",
-    "code": "relied",
-    "cardinality": "1",
-    "components": [],
-    "name": "AI60_relied",
-    "description": "",
-    "requestpath": "AI60_relied",
-    "responsepath": "AI60_relied"
-  },
-  {
-    "tag": "AI61",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "6E8AF7E9-A676-4dbe-8EF8-D3CB7A8FB4E2",
-    "code": "subco-ent",
-    "cardinality": "1",
-    "components": [],
-    "name": "AI61_subco-ent",
-    "description": "",
-    "requestpath": "AI61_subco-ent",
-    "responsepath": "AI61_subco-ent"
+    "components": [
+      {
+        "tag": "QG1",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT61_OT/QG1/Q1",
+            "description": "Your answer",
+            "propertydatatype": "INDICATOR",
+            "code": "QUESTION",
+            "responsepath": "OT61_OT/QG1/Q1/R1",
+            "contentpath": "OT61_OT/QG1/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT61_OT/QG1/QSG1/Q1",
+                "description": "Name of the entity",
+                "propertydatatype": "DESCRIPTION",
+                "code": "QUESTION",
+                "responsepath": "OT61_OT/QG1/QSG1/Q1/R1",
+                "contentpath": "OT61_OT/QG1/QSG1/Q1/R1/RV"
+              },
+              {
+                "tag": "Q2",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT61_OT/QG1/QSG1/Q2",
+                "description": "ID of the subcontractor",
+                "propertydatatype": "ECONOMIC_OPERATOR_IDENTIFIER",
+                "code": "QUESTION",
+                "responsepath": "OT61_OT/QG1/QSG1/Q2/R1",
+                "contentpath": "OT61_OT/QG1/QSG1/Q2/R1/RV"
+              }
+            ],
+            "requestpath": "OT61_OT/QG1/QSG1",
+            "responsepath": "OT61_OT/QG1/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT61_OT/QG1",
+        "responsepath": "OT61_OT/QG1",
+        "code": "ON*"
+      },
+      {
+        "tag": "QG2",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT61_OT/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "propertydatatype": "INDICATOR",
+            "responsepath": "OT61_OT/QG2/Q1/R1",
+            "contentpath": "OT61_OT/QG2/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1..n",
+                "requestpath": "OT61_OT/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "propertydatatype": "EVIDENCE_IDENTIFIER",
+                "responsepath": "OT61_OT/QG2/QSG1/Q1/R1",
+                "contentpath": "OT61_OT/QG2/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT61_OT/QG2/QSG1",
+            "responsepath": "OT61_OT/QG2/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT61_OT/QG2",
+        "responsepath": "OT61_OT/QG2",
+        "code": "ON*"
+      }
+    ],
+    "name": "Subcontracted entities",
+    "description": "Does the economic operator intend to subcontract any share of the contract to third parties?",
+    "requestpath": "OT61_OT",
+    "responsepath": "OT61_OT"
   },
   {
     "tag": "C01",
@@ -320,7 +928,7 @@
   {
     "tag": "C02",
     "type": "CRITERION",
-    "uuid": "84d865ab-eb70-4284-803f-757c738e4372",
+    "uuid": "c27b7c4e-c837-4529-b867-ed55ce639db5",
     "code": "exg-crim-corrpt",
     "cardinality": "1",
     "components": [
@@ -440,15 +1048,18 @@
                       }
                     ],
                     "requestpath": "C02_exg-crim-corrpt/QG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C02_exg-crim-corrpt/QG1/QSG1/QSG1/QSG1"
+                    "responsepath": "C02_exg-crim-corrpt/QG1/QSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C02_exg-crim-corrpt/QG1/QSG1/QSG1",
-                "responsepath": "C02_exg-crim-corrpt/QG1/QSG1/QSG1"
+                "responsepath": "C02_exg-crim-corrpt/QG1/QSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C02_exg-crim-corrpt/QG1/QSG1",
-            "responsepath": "C02_exg-crim-corrpt/QG1/QSG1"
+            "responsepath": "C02_exg-crim-corrpt/QG1/QSG1",
+            "code": "ONTRUE"
           }
         ],
         "requestpath": "C02_exg-crim-corrpt/QG1",
@@ -624,15 +1235,18 @@
                       }
                     ],
                     "requestpath": "C03_exg-crim-fraud/QG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C03_exg-crim-fraud/QG1/QSG1/QSG1/QSG1"
+                    "responsepath": "C03_exg-crim-fraud/QG1/QSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C03_exg-crim-fraud/QG1/QSG1/QSG1",
-                "responsepath": "C03_exg-crim-fraud/QG1/QSG1/QSG1"
+                "responsepath": "C03_exg-crim-fraud/QG1/QSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C03_exg-crim-fraud/QG1/QSG1",
-            "responsepath": "C03_exg-crim-fraud/QG1/QSG1"
+            "responsepath": "C03_exg-crim-fraud/QG1/QSG1",
+            "code": "ONTRUE"
           }
         ],
         "requestpath": "C03_exg-crim-fraud/QG1",
@@ -808,15 +1422,18 @@
                       }
                     ],
                     "requestpath": "C04_exg-crim-terror/QG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C04_exg-crim-terror/QG1/QSG1/QSG1/QSG1"
+                    "responsepath": "C04_exg-crim-terror/QG1/QSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C04_exg-crim-terror/QG1/QSG1/QSG1",
-                "responsepath": "C04_exg-crim-terror/QG1/QSG1/QSG1"
+                "responsepath": "C04_exg-crim-terror/QG1/QSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C04_exg-crim-terror/QG1/QSG1",
-            "responsepath": "C04_exg-crim-terror/QG1/QSG1"
+            "responsepath": "C04_exg-crim-terror/QG1/QSG1",
+            "code": "ONTRUE"
           }
         ],
         "requestpath": "C04_exg-crim-terror/QG1",
@@ -992,15 +1609,18 @@
                       }
                     ],
                     "requestpath": "C05_exg-crim-laund/QG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C05_exg-crim-laund/QG1/QSG1/QSG1/QSG1"
+                    "responsepath": "C05_exg-crim-laund/QG1/QSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C05_exg-crim-laund/QG1/QSG1/QSG1",
-                "responsepath": "C05_exg-crim-laund/QG1/QSG1/QSG1"
+                "responsepath": "C05_exg-crim-laund/QG1/QSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C05_exg-crim-laund/QG1/QSG1",
-            "responsepath": "C05_exg-crim-laund/QG1/QSG1"
+            "responsepath": "C05_exg-crim-laund/QG1/QSG1",
+            "code": "ONTRUE"
           }
         ],
         "requestpath": "C05_exg-crim-laund/QG1",
@@ -1176,15 +1796,18 @@
                       }
                     ],
                     "requestpath": "C06_exg-crim-traffick/QG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C06_exg-crim-traffick/QG1/QSG1/QSG1/QSG1"
+                    "responsepath": "C06_exg-crim-traffick/QG1/QSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C06_exg-crim-traffick/QG1/QSG1/QSG1",
-                "responsepath": "C06_exg-crim-traffick/QG1/QSG1/QSG1"
+                "responsepath": "C06_exg-crim-traffick/QG1/QSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C06_exg-crim-traffick/QG1/QSG1",
-            "responsepath": "C06_exg-crim-traffick/QG1/QSG1"
+            "responsepath": "C06_exg-crim-traffick/QG1/QSG1",
+            "code": "ONTRUE"
           }
         ],
         "requestpath": "C06_exg-crim-traffick/QG1",
@@ -1365,7 +1988,8 @@
                           }
                         ],
                         "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       },
                       {
                         "tag": "QSG2",
@@ -1412,11 +2036,13 @@
                               }
                             ],
                             "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG2/QSG1",
-                            "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG2/QSG1"
+                            "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG2/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG2",
-                        "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG2"
+                        "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG2",
+                        "code": "ONFALSE"
                       },
                       {
                         "tag": "QSG3",
@@ -1442,7 +2068,7 @@
                               {
                                 "tag": "Q1",
                                 "type": "QUESTION",
-                                "cardinality": "1..n",
+                                "cardinality": "1",
                                 "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG3/QSG1/Q1",
                                 "description": "Please describe them",
                                 "propertydatatype": "DESCRIPTION",
@@ -1452,23 +2078,28 @@
                               }
                             ],
                             "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG3/QSG1",
-                            "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG3/QSG1"
+                            "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG3/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG3",
-                        "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG3"
+                        "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1/QSG3",
+                        "code": "ON*"
                       }
                     ],
                     "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1"
+                    "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1",
-                "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1"
+                "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1/QSG1",
+                "code": "ONTRUE"
               }
             ],
             "requestpath": "C07_exg-pmt-bre-tax/RG1/QSG1",
-            "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1"
+            "responsepath": "C07_exg-pmt-bre-tax/RG1/QSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C07_exg-pmt-bre-tax/RG1",
@@ -1649,7 +2280,8 @@
                           }
                         ],
                         "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       },
                       {
                         "tag": "QSG2",
@@ -1696,11 +2328,13 @@
                               }
                             ],
                             "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG2/QSG1",
-                            "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG2/QSG1"
+                            "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG2/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG2",
-                        "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG2"
+                        "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG2",
+                        "code": "ONFALSE"
                       },
                       {
                         "tag": "QSG3",
@@ -1726,7 +2360,7 @@
                               {
                                 "tag": "Q1",
                                 "type": "QUESTION",
-                                "cardinality": "1..n",
+                                "cardinality": "1",
                                 "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG3/QSG1/Q1",
                                 "description": "Please describe them",
                                 "propertydatatype": "DESCRIPTION",
@@ -1736,23 +2370,28 @@
                               }
                             ],
                             "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG3/QSG1",
-                            "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG3/QSG1"
+                            "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG3/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG3",
-                        "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG3"
+                        "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1/QSG3",
+                        "code": "ON*"
                       }
                     ],
                     "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1"
+                    "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1",
-                "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1"
+                "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1/QSG1",
+                "code": "ONTRUE"
               }
             ],
             "requestpath": "C08_exg-pmt-bre-ssc/RG1/QSG1",
-            "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1"
+            "responsepath": "C08_exg-pmt-bre-ssc/RG1/QSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C08_exg-pmt-bre-ssc/RG1",
@@ -1808,7 +2447,7 @@
   {
     "tag": "C09",
     "type": "CRITERION",
-    "uuid": "3c568b2c-e202-4ae5-a289-bbf70f5b402a",
+    "uuid": "a80ddb62-d25b-4e4e-ae22-3968460dc0a9",
     "code": "exg-mis-bre-env-law",
     "cardinality": "1",
     "components": [
@@ -1939,7 +2578,7 @@
   {
     "tag": "C10",
     "type": "CRITERION",
-    "uuid": "e04ba507-8ca1-41ab-9091-eaddcd7a591d",
+    "uuid": "a261a395-ed17-4939-9c75-b9ff1109ca6e",
     "code": "exg-mis-bre-soc-law",
     "cardinality": "1",
     "components": [
@@ -2070,7 +2709,7 @@
   {
     "tag": "C11",
     "type": "CRITERION",
-    "uuid": "fd603360-f48a-4c0c-9f8c-e7e8ac77e648",
+    "uuid": "a34b70d6-c43d-4726-9a88-8e2b438424bf",
     "code": "exg-mis-bre-lab-law",
     "cardinality": "1",
     "components": [
@@ -2928,7 +3567,7 @@
     "tag": "C18",
     "type": "CRITERION",
     "uuid": "514d3fde-1e3e-4dcd-b02a-9f984d5bbda3",
-    "code": "exg-mis-misconduct",
+    "code": "exg-mis-exg-mis-misconduct",
     "cardinality": "1",
     "components": [
       {
@@ -2936,17 +3575,17 @@
         "type": "SUBCRITERION",
         "cardinality": "1",
         "components": [],
-        "requestpath": "C18_exg-mis-misconduct/SBC1",
-        "responsepath": "C18_exg-mis-misconduct/SBC1"
+        "requestpath": "C18_exg-mis-exg-mis-misconduct/SBC1",
+        "responsepath": "C18_exg-mis-exg-mis-misconduct/SBC1"
       },
       {
         "tag": "L1",
         "type": "LEGISLATION",
         "cardinality": "0..n",
-        "requestpath": "C18_exg-mis-misconduct/L1",
+        "requestpath": "C18_exg-mis-exg-mis-misconduct/L1",
         "title": "L1",
         "description": "",
-        "responsepath": "C18_exg-mis-misconduct/L1"
+        "responsepath": "C18_exg-mis-exg-mis-misconduct/L1"
       },
       {
         "tag": "QG1",
@@ -2957,12 +3596,12 @@
             "tag": "Q1",
             "type": "QUESTION",
             "cardinality": "1",
-            "requestpath": "C18_exg-mis-misconduct/QG1/Q1",
+            "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1/Q1",
             "description": "Your answer",
             "propertydatatype": "INDICATOR",
             "code": "QUESTION",
-            "responsepath": "C18_exg-mis-misconduct/QG1/Q1/R1",
-            "contentpath": "C18_exg-mis-misconduct/QG1/Q1/R1/RV"
+            "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1/Q1/R1",
+            "contentpath": "C18_exg-mis-exg-mis-misconduct/QG1/Q1/R1/RV"
           },
           {
             "tag": "QSG1",
@@ -2973,11 +3612,11 @@
                 "tag": "Q1",
                 "type": "QUESTION",
                 "cardinality": "1",
-                "requestpath": "C18_exg-mis-misconduct/QG1/QSG1/Q1",
+                "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/Q1",
                 "description": "Please describe them",
                 "propertydatatype": "DESCRIPTION",
-                "responsepath": "C18_exg-mis-misconduct/QG1/QSG1/Q1/R1",
-                "contentpath": "C18_exg-mis-misconduct/QG1/QSG1/Q1/R1/RV"
+                "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/Q1/R1",
+                "contentpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/Q1/R1/RV"
               },
               {
                 "tag": "QSG1",
@@ -2988,11 +3627,11 @@
                     "tag": "Q1",
                     "type": "QUESTION",
                     "cardinality": "1",
-                    "requestpath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/Q1",
+                    "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/Q1",
                     "description": "Have you taken measures to demonstrate your reliability",
                     "propertydatatype": "INDICATOR",
-                    "responsepath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/Q1/R1",
-                    "contentpath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/Q1/R1/RV"
+                    "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/Q1/R1",
+                    "contentpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/Q1/R1/RV"
                   },
                   {
                     "tag": "QSG1",
@@ -3003,30 +3642,30 @@
                         "tag": "Q1",
                         "type": "QUESTION",
                         "cardinality": "1",
-                        "requestpath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/QSG1/Q1",
+                        "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/QSG1/Q1",
                         "description": "Please describe them",
                         "propertydatatype": "DESCRIPTION",
-                        "responsepath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/QSG1/Q1/R1",
-                        "contentpath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/QSG1/Q1/R1/RV"
+                        "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/QSG1/Q1/R1",
+                        "contentpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/QSG1/Q1/R1/RV"
                       }
                     ],
-                    "requestpath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/QSG1",
-                    "responsepath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1/QSG1",
+                    "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/QSG1",
+                    "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1/QSG1",
                     "code": "ONTRUE"
                   }
                 ],
-                "requestpath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1",
-                "responsepath": "C18_exg-mis-misconduct/QG1/QSG1/QSG1",
+                "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1",
+                "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1/QSG1",
                 "code": "ON*"
               }
             ],
-            "requestpath": "C18_exg-mis-misconduct/QG1/QSG1",
-            "responsepath": "C18_exg-mis-misconduct/QG1/QSG1",
+            "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1",
+            "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1/QSG1",
             "code": "ONTRUE"
           }
         ],
-        "requestpath": "C18_exg-mis-misconduct/QG1",
-        "responsepath": "C18_exg-mis-misconduct/QG1",
+        "requestpath": "C18_exg-mis-exg-mis-misconduct/QG1",
+        "responsepath": "C18_exg-mis-exg-mis-misconduct/QG1",
         "code": "ON*"
       },
       {
@@ -3038,11 +3677,11 @@
             "tag": "Q1",
             "type": "QUESTION",
             "cardinality": "1",
-            "requestpath": "C18_exg-mis-misconduct/QG2/Q1",
+            "requestpath": "C18_exg-mis-exg-mis-misconduct/QG2/Q1",
             "description": "Is this information available electronically?",
             "propertydatatype": "INDICATOR",
-            "responsepath": "C18_exg-mis-misconduct/QG2/Q1/R1",
-            "contentpath": "C18_exg-mis-misconduct/QG2/Q1/R1/RV"
+            "responsepath": "C18_exg-mis-exg-mis-misconduct/QG2/Q1/R1",
+            "contentpath": "C18_exg-mis-exg-mis-misconduct/QG2/Q1/R1/RV"
           },
           {
             "tag": "QSG1",
@@ -3053,27 +3692,27 @@
                 "tag": "Q1",
                 "type": "QUESTION",
                 "cardinality": "1..n",
-                "requestpath": "C18_exg-mis-misconduct/QG2/QSG1/Q1",
+                "requestpath": "C18_exg-mis-exg-mis-misconduct/QG2/QSG1/Q1",
                 "description": "Evidence Supplied",
                 "propertydatatype": "EVIDENCE_IDENTIFIER",
-                "responsepath": "C18_exg-mis-misconduct/QG2/QSG1/Q1/R1",
-                "contentpath": "C18_exg-mis-misconduct/QG2/QSG1/Q1/R1/RV"
+                "responsepath": "C18_exg-mis-exg-mis-misconduct/QG2/QSG1/Q1/R1",
+                "contentpath": "C18_exg-mis-exg-mis-misconduct/QG2/QSG1/Q1/R1/RV"
               }
             ],
-            "requestpath": "C18_exg-mis-misconduct/QG2/QSG1",
-            "responsepath": "C18_exg-mis-misconduct/QG2/QSG1",
+            "requestpath": "C18_exg-mis-exg-mis-misconduct/QG2/QSG1",
+            "responsepath": "C18_exg-mis-exg-mis-misconduct/QG2/QSG1",
             "code": "ONTRUE"
           }
         ],
-        "requestpath": "C18_exg-mis-misconduct/QG2",
-        "responsepath": "C18_exg-mis-misconduct/QG2",
+        "requestpath": "C18_exg-mis-exg-mis-misconduct/QG2",
+        "responsepath": "C18_exg-mis-exg-mis-misconduct/QG2",
         "code": "ON*"
       }
     ],
-    "name": "Grave professional misconduct",
-    "description": "The economic operator is guilty of grave professional misconduct. Where applicable, see definitions in national law, the relevant notice, or the procurement documents.",
-    "requestpath": "C18_exg-mis-misconduct",
-    "responsepath": "C18_exg-mis-misconduct"
+    "name": "C18_exg-mis-exg-mis-misconduct_EO",
+    "description": "",
+    "requestpath": "C18_exg-mis-exg-mis-misconduct",
+    "responsepath": "C18_exg-mis-exg-mis-misconduct"
   },
   {
     "tag": "C19",
@@ -4033,15 +4672,18 @@
                           }
                         ],
                         "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1",
-                "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1"
+                "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -4077,7 +4719,8 @@
                       }
                     ],
                     "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2/QSG1",
+                    "code": "ONTRUE"
                   },
                   {
                     "tag": "QSG2",
@@ -4097,11 +4740,13 @@
                       }
                     ],
                     "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2/QSG2",
-                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2/QSG2"
+                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2/QSG2",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2",
-                "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2"
+                "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -4137,15 +4782,18 @@
                       }
                     ],
                     "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG3",
-                "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG3"
+                "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C25_slc-suit-reg-prof/RG1/RSG1",
-            "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1"
+            "responsepath": "C25_slc-suit-reg-prof/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C25_slc-suit-reg-prof/RG1",
@@ -4294,15 +4942,18 @@
                           }
                         ],
                         "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1",
-                "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1"
+                "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -4338,7 +4989,8 @@
                       }
                     ],
                     "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2/QSG1",
+                    "code": "ONTRUE"
                   },
                   {
                     "tag": "QSG2",
@@ -4358,11 +5010,13 @@
                       }
                     ],
                     "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2/QSG2",
-                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2/QSG2"
+                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2/QSG2",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2",
-                "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2"
+                "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -4398,15 +5052,18 @@
                       }
                     ],
                     "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG3",
-                "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG3"
+                "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C26_slc-suit-reg-trade/RG1/RSG1",
-            "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1"
+            "responsepath": "C26_slc-suit-reg-trade/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C26_slc-suit-reg-trade/RG1",
@@ -4555,15 +5212,18 @@
                           }
                         ],
                         "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1",
-                "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1"
+                "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -4599,11 +5259,13 @@
                       }
                     ],
                     "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2",
-                "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2"
+                "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -4639,15 +5301,18 @@
                       }
                     ],
                     "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3",
-                "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3"
+                "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1",
-            "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1"
+            "responsepath": "C66_slc-suit-auth-mbrshp/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C66_slc-suit-auth-mbrshp/RG1",
@@ -4738,7 +5403,7 @@
               {
                 "tag": "RQ3",
                 "type": "REQUIREMENT",
-                "cardinality": "1..n",
+                "cardinality": "1",
                 "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/RQ3",
                 "description": "Minimum amount requirement",
                 "propertydatatype": "MINIMUM_AMOUNT",
@@ -4807,15 +5472,18 @@
                           }
                         ],
                         "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1",
-                "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1"
+                "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -4878,15 +5546,18 @@
                           }
                         ],
                         "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1/QSG1",
-                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1/QSG1"
+                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2",
-                "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2"
+                "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -4938,15 +5609,18 @@
                           }
                         ],
                         "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/QSG1",
-                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/QSG1"
+                        "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3",
-                "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3"
+                "responsepath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3",
+                "code": "ON*"
               },
               {
                 "tag": "QSG4",
@@ -4992,7 +5666,8 @@
               }
             ],
             "requestpath": "C29_slc-stand-to-gen/RG1/RSG1",
-            "responsepath": "C29_slc-stand-to-gen/RG1/RSG1"
+            "responsepath": "C29_slc-stand-to-gen/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C29_slc-stand-to-gen/RG1",
@@ -5141,15 +5816,18 @@
                           }
                         ],
                         "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1",
-                "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1"
+                "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -5212,15 +5890,18 @@
                           }
                         ],
                         "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2/QSG1/QSG1",
-                        "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2/QSG1/QSG1"
+                        "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2",
-                "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2"
+                "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -5272,15 +5953,18 @@
                           }
                         ],
                         "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3/QSG1/QSG1",
-                        "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3/QSG1/QSG1"
+                        "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3",
-                "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3"
+                "responsepath": "C30_slc-stand-to-avg/RG1/RSG1/QSG3",
+                "code": "ON*"
               },
               {
                 "tag": "QSG4",
@@ -5326,7 +6010,8 @@
               }
             ],
             "requestpath": "C30_slc-stand-to-avg/RG1/RSG1",
-            "responsepath": "C30_slc-stand-to-avg/RG1/RSG1"
+            "responsepath": "C30_slc-stand-to-avg/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C30_slc-stand-to-avg/RG1",
@@ -5486,15 +6171,18 @@
                           }
                         ],
                         "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1",
-                "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1"
+                "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -5557,15 +6245,18 @@
                           }
                         ],
                         "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2/QSG1/QSG1",
-                        "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2/QSG1/QSG1"
+                        "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2",
-                "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2"
+                "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -5617,15 +6308,18 @@
                           }
                         ],
                         "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3/QSG1/QSG1",
-                        "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3/QSG1/QSG1"
+                        "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3",
-                "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3"
+                "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1/QSG3",
+                "code": "ON*"
               },
               {
                 "tag": "QSG4",
@@ -5671,7 +6365,8 @@
               }
             ],
             "requestpath": "C31_slc-stand-to-spec-avg/RG1/RSG1",
-            "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1"
+            "responsepath": "C31_slc-stand-to-spec-avg/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C31_slc-stand-to-spec-avg/RG1",
@@ -5831,15 +6526,18 @@
                           }
                         ],
                         "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1",
-                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1"
+                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -5902,15 +6600,18 @@
                           }
                         ],
                         "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1",
-                        "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1"
+                        "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2",
-                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2"
+                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -5946,11 +6647,13 @@
                       }
                     ],
                     "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3",
-                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3"
+                "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3",
+                "code": "ON*"
               },
               {
                 "tag": "QSG4",
@@ -5995,7 +6698,8 @@
               }
             ],
             "requestpath": "C32_slc-stand-to-spec/RG1/RSG1",
-            "responsepath": "C32_slc-stand-to-spec/RG1/RSG1"
+            "responsepath": "C32_slc-stand-to-spec/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C32_slc-stand-to-spec/RG1",
@@ -6112,7 +6816,8 @@
                   }
                 ],
                 "requestpath": "C34_slc-stand-ratio/RG1/RSG1/RSG1",
-                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/RSG1"
+                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/RSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG1",
@@ -6175,15 +6880,18 @@
                           }
                         ],
                         "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1",
-                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG1"
+                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -6203,7 +6911,8 @@
                   }
                 ],
                 "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG2",
-                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG2"
+                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -6239,15 +6948,18 @@
                       }
                     ],
                     "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG3",
-                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG3"
+                "responsepath": "C34_slc-stand-ratio/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C34_slc-stand-ratio/RG1/RSG1",
-            "responsepath": "C34_slc-stand-ratio/RG1/RSG1"
+            "responsepath": "C34_slc-stand-ratio/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C34_slc-stand-ratio/RG1",
@@ -6396,15 +7108,18 @@
                           }
                         ],
                         "requestpath": "C35_slc-stand-ins/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C35_slc-stand-ins/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C35_slc-stand-ins/RG1/RSG1/QSG1",
-                "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG1"
+                "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -6446,7 +7161,8 @@
                   }
                 ],
                 "requestpath": "C35_slc-stand-ins/RG1/RSG1/QSG2",
-                "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG2"
+                "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -6482,15 +7198,18 @@
                       }
                     ],
                     "requestpath": "C35_slc-stand-ins/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C35_slc-stand-ins/RG1/RSG1/QSG3",
-                "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG3"
+                "responsepath": "C35_slc-stand-ins/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C35_slc-stand-ins/RG1/RSG1",
-            "responsepath": "C35_slc-stand-ins/RG1/RSG1"
+            "responsepath": "C35_slc-stand-ins/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C35_slc-stand-ins/RG1",
@@ -6623,11 +7342,13 @@
                       }
                     ],
                     "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1",
-                "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG1"
+                "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG1",
+                "code": "[Economic or Financial]"
               },
               {
                 "tag": "RSG2",
@@ -6674,11 +7395,13 @@
                       }
                     ],
                     "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG2/QSG1",
-                    "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG2/QSG1"
+                    "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG2/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG2",
-                "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG2"
+                "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG2",
+                "code": "[Rating]"
               },
               {
                 "tag": "RSG3",
@@ -6714,11 +7437,13 @@
                       }
                     ],
                     "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG3/QSG1",
-                    "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG3/QSG1"
+                    "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG3/QSG1",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG3",
-                "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG3"
+                "responsepath": "C36_slc-stand-other/RG1/RSG1/RSG3",
+                "code": "[Descriptive]"
               },
               {
                 "tag": "QSG1",
@@ -6754,15 +7479,18 @@
                       }
                     ],
                     "requestpath": "C36_slc-stand-other/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C36_slc-stand-other/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C36_slc-stand-other/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C36_slc-stand-other/RG1/RSG1/QSG1",
-                "responsepath": "C36_slc-stand-other/RG1/RSG1/QSG1"
+                "responsepath": "C36_slc-stand-other/RG1/RSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C36_slc-stand-other/RG1/RSG1",
-            "responsepath": "C36_slc-stand-other/RG1/RSG1"
+            "responsepath": "C36_slc-stand-other/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C36_slc-stand-other/RG1",
@@ -6813,9 +7541,74 @@
             "tag": "QSG1",
             "type": "QUESTION_SUBGROUP",
             "cardinality": "1",
-            "components": [],
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "C37_CAPTION/RSG1/QSG1/Q1",
+                "description": "Does the EO fulfil the criteria by itself?",
+                "propertydatatype": "INDICATOR",
+                "code": "QUESTION",
+                "responsepath": "C37_CAPTION/RSG1/QSG1/Q1/R1",
+                "contentpath": "C37_CAPTION/RSG1/QSG1/Q1/R1/RV"
+              },
+              {
+                "tag": "QSG1",
+                "type": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "components": [
+                  {
+                    "tag": "Q1",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG1/QSG1/Q1",
+                    "description": "In the case of no – Relied upon or not",
+                    "propertydatatype": "INDICATOR",
+                    "code": "QUESTION",
+                    "responsepath": "C37_CAPTION/RSG1/QSG1/QSG1/Q1/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG1/QSG1/Q1/R1/RV"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1/Q1",
+                        "description": "Name of the entity",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1/Q1/R1",
+                        "contentpath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1/Q1/R1/RV"
+                      },
+                      {
+                        "tag": "Q2",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1/Q2",
+                        "description": "ID of the entity",
+                        "propertydatatype": "ECONOMIC_OPERATOR_IDENTIFIER",
+                        "code": "QUESTION",
+                        "responsepath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1/Q2/R1",
+                        "contentpath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1/Q2/R1/RV"
+                      }
+                    ],
+                    "requestpath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1",
+                    "responsepath": "C37_CAPTION/RSG1/QSG1/QSG1/QSG1"
+                  }
+                ],
+                "requestpath": "C37_CAPTION/RSG1/QSG1/QSG1",
+                "responsepath": "C37_CAPTION/RSG1/QSG1/QSG1",
+                "code": "ONFALSE"
+              }
+            ],
             "requestpath": "C37_CAPTION/RSG1/QSG1",
-            "responsepath": "C37_CAPTION/RSG1/QSG1"
+            "responsepath": "C37_CAPTION/RSG1/QSG1",
+            "code": "ON*"
           },
           {
             "tag": "QSG2",
@@ -6823,15 +7616,164 @@
             "cardinality": "1",
             "components": [
               {
+                "tag": "CA1",
+                "type": "CAPTION",
+                "cardinality": "1",
+                "requestpath": "C37_CAPTION/RSG1/QSG2/CA1",
+                "description": "CA1",
+                "code": "CAPTION",
+                "responsepath": "C37_CAPTION/RSG1/QSG2/CA1"
+              },
+              {
+                "tag": "QSG1",
+                "type": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "components": [
+                  {
+                    "tag": "Q1",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q1",
+                    "description": "Reference description",
+                    "propertydatatype": "DESCRIPTION",
+                    "code": "QUESTION",
+                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/Q1/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q1/R1/RV"
+                  },
+                  {
+                    "tag": "Q2",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q2",
+                    "description": "Total amount",
+                    "propertydatatype": "AMOUNT",
+                    "code": "QUESTION",
+                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/Q2/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q2/R1/RV"
+                  },
+                  {
+                    "tag": "Q3",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q3",
+                    "description": "Activity of the economic operator",
+                    "propertydatatype": "DESCRIPTION",
+                    "code": "QUESTION",
+                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/Q3/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q3/R1/RV"
+                  },
+                  {
+                    "tag": "Q4",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q4",
+                    "description": "Specific amount",
+                    "propertydatatype": "AMOUNT",
+                    "code": "QUESTION",
+                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/Q4/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q4/R1/RV"
+                  },
+                  {
+                    "tag": "Q5",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q5",
+                    "description": "Period (Start and End dates)",
+                    "propertydatatype": "PERIOD",
+                    "code": "QUESTION",
+                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/Q5/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q5/R1/RV"
+                  },
+                  {
+                    "tag": "Q6",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q6",
+                    "description": "Confidential",
+                    "propertydatatype": "INDICATOR",
+                    "code": "QUESTION",
+                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/Q6/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q6/R1/RV"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q1",
+                        "description": "Recipient name",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q1/R1",
+                        "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q1/R1/RV"
+                      },
+                      {
+                        "tag": "Q2",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q2",
+                        "description": "Contact person name",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q2/R1",
+                        "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q2/R1/RV"
+                      },
+                      {
+                        "tag": "Q3",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q3",
+                        "description": "Contact email",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q3/R1",
+                        "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q3/R1/RV"
+                      },
+                      {
+                        "tag": "Q4",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q4",
+                        "description": "Contact telephone",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q4/R1",
+                        "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1/Q4/R1/RV"
+                      }
+                    ],
+                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1",
+                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/QSG1",
+                    "code": "ON*"
+                  }
+                ],
+                "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1",
+                "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1",
+                "code": "ON*"
+              }
+            ],
+            "requestpath": "C37_CAPTION/RSG1/QSG2",
+            "responsepath": "C37_CAPTION/RSG1/QSG2",
+            "code": "ON*"
+          },
+          {
+            "tag": "QSG3",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
                 "tag": "Q1",
                 "type": "QUESTION",
                 "cardinality": "1",
-                "requestpath": "C37_CAPTION/RSG1/QSG2/Q1",
+                "requestpath": "C37_CAPTION/RSG1/QSG3/Q1",
                 "description": "Is this information available electronically?",
                 "propertydatatype": "INDICATOR",
                 "code": "QUESTION",
-                "responsepath": "C37_CAPTION/RSG1/QSG2/Q1/R1",
-                "contentpath": "C37_CAPTION/RSG1/QSG2/Q1/R1/RV"
+                "responsepath": "C37_CAPTION/RSG1/QSG3/Q1/R1",
+                "contentpath": "C37_CAPTION/RSG1/QSG3/Q1/R1/RV"
               },
               {
                 "tag": "QSG1",
@@ -6842,24 +7784,27 @@
                     "tag": "Q1",
                     "type": "QUESTION",
                     "cardinality": "1..n",
-                    "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q1",
+                    "requestpath": "C37_CAPTION/RSG1/QSG3/QSG1/Q1",
                     "description": "Evidence Supplied",
                     "propertydatatype": "EVIDENCE_IDENTIFIER",
                     "code": "QUESTION",
-                    "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1/Q1/R1",
-                    "contentpath": "C37_CAPTION/RSG1/QSG2/QSG1/Q1/R1/RV"
+                    "responsepath": "C37_CAPTION/RSG1/QSG3/QSG1/Q1/R1",
+                    "contentpath": "C37_CAPTION/RSG1/QSG3/QSG1/Q1/R1/RV"
                   }
                 ],
-                "requestpath": "C37_CAPTION/RSG1/QSG2/QSG1",
-                "responsepath": "C37_CAPTION/RSG1/QSG2/QSG1"
+                "requestpath": "C37_CAPTION/RSG1/QSG3/QSG1",
+                "responsepath": "C37_CAPTION/RSG1/QSG3/QSG1",
+                "code": "ONTRUE"
               }
             ],
-            "requestpath": "C37_CAPTION/RSG1/QSG2",
-            "responsepath": "C37_CAPTION/RSG1/QSG2"
+            "requestpath": "C37_CAPTION/RSG1/QSG3",
+            "responsepath": "C37_CAPTION/RSG1/QSG3",
+            "code": "ON*"
           }
         ],
         "requestpath": "C37_CAPTION/RSG1",
-        "responsepath": "C37_CAPTION/RSG1"
+        "responsepath": "C37_CAPTION/RSG1",
+        "code": "ON*"
       }
     ],
     "name": "C37_slc-abil-ref-work/RG1/RSG1/RQ1/CA1",
@@ -6946,9 +7891,75 @@
                 "tag": "QSG1",
                 "type": "QUESTION_SUBGROUP",
                 "cardinality": "1",
-                "components": [],
+                "components": [
+                  {
+                    "tag": "Q1",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/Q1",
+                    "description": "Does the EO fulfil the criteria by itself?",
+                    "propertydatatype": "INDICATOR",
+                    "code": "QUESTION",
+                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/Q1/R1",
+                    "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/Q1/R1/RV"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/Q1",
+                        "description": "In the case of no – Relied upon or not",
+                        "propertydatatype": "INDICATOR",
+                        "code": "QUESTION",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/Q1/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/Q1/R1/RV"
+                      },
+                      {
+                        "tag": "QSG1",
+                        "type": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "components": [
+                          {
+                            "tag": "Q1",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1/Q1",
+                            "description": "Name of the entity",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1/Q1/R1",
+                            "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1/Q1/R1/RV"
+                          },
+                          {
+                            "tag": "Q2",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1/Q2",
+                            "description": "ID of the entity",
+                            "propertydatatype": "ECONOMIC_OPERATOR_IDENTIFIER",
+                            "code": "QUESTION",
+                            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1/Q2/R1",
+                            "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1/Q2/R1/RV"
+                          }
+                        ],
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
+                      }
+                    ],
+                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1",
+                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
+                  }
+                ],
                 "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1",
-                "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1"
+                "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -6956,15 +7967,164 @@
                 "cardinality": "1",
                 "components": [
                   {
+                    "tag": "CA1",
+                    "type": "CAPTION",
+                    "cardinality": "1",
+                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/CA1",
+                    "description": "CA1",
+                    "code": "CAPTION",
+                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/CA1"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q1",
+                        "description": "Reference description",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q1/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q1/R1/RV"
+                      },
+                      {
+                        "tag": "Q2",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q2",
+                        "description": "Total amount",
+                        "propertydatatype": "AMOUNT",
+                        "code": "QUESTION",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q2/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q2/R1/RV"
+                      },
+                      {
+                        "tag": "Q3",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q3",
+                        "description": "Activity of the economic operator",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q3/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q3/R1/RV"
+                      },
+                      {
+                        "tag": "Q4",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q4",
+                        "description": "Specific amount",
+                        "propertydatatype": "AMOUNT",
+                        "code": "QUESTION",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q4/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q4/R1/RV"
+                      },
+                      {
+                        "tag": "Q5",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q5",
+                        "description": "Period (Start and End dates)",
+                        "propertydatatype": "PERIOD",
+                        "code": "QUESTION",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q5/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q5/R1/RV"
+                      },
+                      {
+                        "tag": "Q6",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q6",
+                        "description": "Confidential",
+                        "propertydatatype": "INDICATOR",
+                        "code": "QUESTION",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q6/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q6/R1/RV"
+                      },
+                      {
+                        "tag": "QSG1",
+                        "type": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "components": [
+                          {
+                            "tag": "Q1",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q1",
+                            "description": "Recipient name",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q1/R1",
+                            "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q1/R1/RV"
+                          },
+                          {
+                            "tag": "Q2",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q2",
+                            "description": "Contact person name",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q2/R1",
+                            "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q2/R1/RV"
+                          },
+                          {
+                            "tag": "Q3",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q3",
+                            "description": "Contact email",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q3/R1",
+                            "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q3/R1/RV"
+                          },
+                          {
+                            "tag": "Q4",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q4",
+                            "description": "Contact telephone",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q4/R1",
+                            "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1/Q4/R1/RV"
+                          }
+                        ],
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "code": "ON*"
+                      }
+                    ],
+                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1",
+                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1",
+                    "code": "ON*"
+                  }
+                ],
+                "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2",
+                "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2",
+                "code": "ON*"
+              },
+              {
+                "tag": "QSG3",
+                "type": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "components": [
+                  {
                     "tag": "Q1",
                     "type": "QUESTION",
                     "cardinality": "1",
-                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/Q1",
+                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/Q1",
                     "description": "Is this information available electronically?",
                     "propertydatatype": "INDICATOR",
                     "code": "QUESTION",
-                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/Q1/R1",
-                    "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/Q1/R1/RV"
+                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/Q1/R1",
+                    "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/Q1/R1/RV"
                   },
                   {
                     "tag": "QSG1",
@@ -6975,24 +8135,27 @@
                         "tag": "Q1",
                         "type": "QUESTION",
                         "cardinality": "1..n",
-                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q1",
+                        "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/QSG1/Q1",
                         "description": "Evidence Supplied",
                         "propertydatatype": "EVIDENCE_IDENTIFIER",
                         "code": "QUESTION",
-                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q1/R1",
-                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1/Q1/R1/RV"
+                        "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/QSG1/Q1/R1",
+                        "contentpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/QSG1/Q1/R1/RV"
                       }
                     ],
-                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2/QSG1"
+                    "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/QSG1",
+                    "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
-                "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2",
-                "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG2"
+                "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3",
+                "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C38_slc-abil-ref-supply/RG1/RSG1",
-            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1"
+            "responsepath": "C38_slc-abil-ref-supply/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C38_slc-abil-ref-supply/RG1",
@@ -7086,13 +8249,15 @@
                 "cardinality": "1",
                 "components": [
                   {
-                    "tag": "CA1",
-                    "type": "CAPTION",
+                    "tag": "Q1",
+                    "type": "QUESTION",
                     "cardinality": "1",
-                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/CA1",
-                    "description": "CA1",
-                    "code": "CAPTION",
-                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/CA1"
+                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/Q1",
+                    "description": "Does the EO fulfil the criteria by itself?",
+                    "propertydatatype": "INDICATOR",
+                    "code": "QUESTION",
+                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/Q1/R1",
+                    "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/Q1/R1/RV"
                   },
                   {
                     "tag": "QSG1",
@@ -7104,66 +8269,11 @@
                         "type": "QUESTION",
                         "cardinality": "1",
                         "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q1",
-                        "description": "Reference description",
-                        "propertydatatype": "DESCRIPTION",
+                        "description": "In the case of no – Relied upon or not",
+                        "propertydatatype": "INDICATOR",
                         "code": "QUESTION",
                         "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q1/R1",
                         "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q1/R1/RV"
-                      },
-                      {
-                        "tag": "Q2",
-                        "type": "QUESTION",
-                        "cardinality": "1",
-                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q2",
-                        "description": "Total amount",
-                        "propertydatatype": "AMOUNT",
-                        "code": "QUESTION",
-                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q2/R1",
-                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q2/R1/RV"
-                      },
-                      {
-                        "tag": "Q3",
-                        "type": "QUESTION",
-                        "cardinality": "1",
-                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q3",
-                        "description": "Activity of the economic operator",
-                        "propertydatatype": "DESCRIPTION",
-                        "code": "QUESTION",
-                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q3/R1",
-                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q3/R1/RV"
-                      },
-                      {
-                        "tag": "Q4",
-                        "type": "QUESTION",
-                        "cardinality": "1",
-                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q4",
-                        "description": "Specific amount",
-                        "propertydatatype": "AMOUNT",
-                        "code": "QUESTION",
-                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q4/R1",
-                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q4/R1/RV"
-                      },
-                      {
-                        "tag": "Q5",
-                        "type": "QUESTION",
-                        "cardinality": "1",
-                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q5",
-                        "description": "Period (Start and End dates)",
-                        "propertydatatype": "PERIOD",
-                        "code": "QUESTION",
-                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q5/R1",
-                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q5/R1/RV"
-                      },
-                      {
-                        "tag": "Q6",
-                        "type": "QUESTION",
-                        "cardinality": "1",
-                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q6",
-                        "description": "Confidential",
-                        "propertydatatype": "INDICATOR",
-                        "code": "QUESTION",
-                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q6/R1",
-                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/Q6/R1/RV"
                       },
                       {
                         "tag": "QSG1",
@@ -7175,7 +8285,7 @@
                             "type": "QUESTION",
                             "cardinality": "1",
                             "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q1",
-                            "description": "Recipient name",
+                            "description": "Name of the entity",
                             "propertydatatype": "DESCRIPTION",
                             "code": "QUESTION",
                             "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q1/R1",
@@ -7186,45 +8296,26 @@
                             "type": "QUESTION",
                             "cardinality": "1",
                             "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q2",
-                            "description": "Contact person name",
-                            "propertydatatype": "DESCRIPTION",
+                            "description": "ID of the entity",
+                            "propertydatatype": "ECONOMIC_OPERATOR_IDENTIFIER",
                             "code": "QUESTION",
                             "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q2/R1",
                             "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q2/R1/RV"
-                          },
-                          {
-                            "tag": "Q3",
-                            "type": "QUESTION",
-                            "cardinality": "1",
-                            "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q3",
-                            "description": "Contact email",
-                            "propertydatatype": "DESCRIPTION",
-                            "code": "QUESTION",
-                            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q3/R1",
-                            "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q3/R1/RV"
-                          },
-                          {
-                            "tag": "Q4",
-                            "type": "QUESTION",
-                            "cardinality": "1",
-                            "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q4",
-                            "description": "Contact telephone",
-                            "propertydatatype": "DESCRIPTION",
-                            "code": "QUESTION",
-                            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q4/R1",
-                            "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1/Q4/R1/RV"
                           }
                         ],
                         "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1",
-                "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1"
+                "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -7232,15 +8323,164 @@
                 "cardinality": "1",
                 "components": [
                   {
+                    "tag": "CA1",
+                    "type": "CAPTION",
+                    "cardinality": "1",
+                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/CA1",
+                    "description": "CA1",
+                    "code": "CAPTION",
+                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/CA1"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q1",
+                        "description": "Reference description",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q1/R1",
+                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q1/R1/RV"
+                      },
+                      {
+                        "tag": "Q2",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q2",
+                        "description": "Total amount",
+                        "propertydatatype": "AMOUNT",
+                        "code": "QUESTION",
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q2/R1",
+                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q2/R1/RV"
+                      },
+                      {
+                        "tag": "Q3",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q3",
+                        "description": "Activity of the economic operator",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q3/R1",
+                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q3/R1/RV"
+                      },
+                      {
+                        "tag": "Q4",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q4",
+                        "description": "Specific amount",
+                        "propertydatatype": "AMOUNT",
+                        "code": "QUESTION",
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q4/R1",
+                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q4/R1/RV"
+                      },
+                      {
+                        "tag": "Q5",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q5",
+                        "description": "Period (Start and End dates)",
+                        "propertydatatype": "PERIOD",
+                        "code": "QUESTION",
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q5/R1",
+                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q5/R1/RV"
+                      },
+                      {
+                        "tag": "Q6",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q6",
+                        "description": "Confidential",
+                        "propertydatatype": "INDICATOR",
+                        "code": "QUESTION",
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q6/R1",
+                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q6/R1/RV"
+                      },
+                      {
+                        "tag": "QSG1",
+                        "type": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "components": [
+                          {
+                            "tag": "Q1",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q1",
+                            "description": "Recipient name",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q1/R1",
+                            "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q1/R1/RV"
+                          },
+                          {
+                            "tag": "Q2",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q2",
+                            "description": "Contact person name",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q2/R1",
+                            "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q2/R1/RV"
+                          },
+                          {
+                            "tag": "Q3",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q3",
+                            "description": "Contact email",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q3/R1",
+                            "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q3/R1/RV"
+                          },
+                          {
+                            "tag": "Q4",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q4",
+                            "description": "Contact telephone",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q4/R1",
+                            "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1/Q4/R1/RV"
+                          }
+                        ],
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "code": "ON*"
+                      }
+                    ],
+                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1",
+                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1",
+                    "code": "ON*"
+                  }
+                ],
+                "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2",
+                "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2",
+                "code": "ON*"
+              },
+              {
+                "tag": "QSG3",
+                "type": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "components": [
+                  {
                     "tag": "Q1",
                     "type": "QUESTION",
                     "cardinality": "1",
-                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/Q1",
+                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/Q1",
                     "description": "Is this information available electronically?",
                     "propertydatatype": "INDICATOR",
                     "code": "QUESTION",
-                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/Q1/R1",
-                    "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/Q1/R1/RV"
+                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/Q1/R1",
+                    "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/Q1/R1/RV"
                   },
                   {
                     "tag": "QSG1",
@@ -7251,24 +8491,27 @@
                         "tag": "Q1",
                         "type": "QUESTION",
                         "cardinality": "1..n",
-                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q1",
+                        "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/QSG1/Q1",
                         "description": "Evidence Supplied",
                         "propertydatatype": "EVIDENCE_IDENTIFIER",
                         "code": "QUESTION",
-                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q1/R1",
-                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1/Q1/R1/RV"
+                        "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/QSG1/Q1/R1",
+                        "contentpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/QSG1/Q1/R1/RV"
                       }
                     ],
-                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2/QSG1"
+                    "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/QSG1",
+                    "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
-                "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2",
-                "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG2"
+                "requestpath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3",
+                "responsepath": "C39_slc-abil-ref-services/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C39_slc-abil-ref-services/RG1/RSG1",
-            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1"
+            "responsepath": "C39_slc-abil-ref-services/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C39_slc-abil-ref-services/RG1",
@@ -7420,15 +8663,18 @@
                               }
                             ],
                             "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -7549,19 +8795,23 @@
                                   }
                                 ],
                                 "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QSG1/QSG1",
-                                "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QSG1/QSG1"
+                                "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QSG1/QSG1",
+                                "code": "ONTRUE"
                               }
                             ],
                             "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QSG1",
-                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QSG1"
+                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1/QSG1",
+                            "code": "ON*"
                           }
                         ],
                         "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1",
-                        "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1"
+                        "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2/QSG1",
+                        "code": "ON*"
                       }
                     ],
                     "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG3",
@@ -7651,19 +8901,23 @@
                                   }
                                 ],
                                 "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1/QSG1/QSG1",
-                                "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1/QSG1/QSG1"
+                                "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1/QSG1/QSG1",
+                                "code": "ONTRUE"
                               }
                             ],
                             "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1/QSG1",
-                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1/QSG1"
+                            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1/QSG1",
+                            "code": "ON*"
                           }
                         ],
                         "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1",
-                        "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1"
+                        "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3/QSG1",
+                        "code": "ON*"
                       }
                     ],
                     "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3",
-                    "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3"
+                    "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1/QSG3",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG4",
@@ -7709,11 +8963,13 @@
                   }
                 ],
                 "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1",
-                "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1"
+                "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1/RSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1",
-            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1"
+            "responsepath": "C40_slc-abil-staff-tech-ctrl/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C40_slc-abil-staff-tech-ctrl/RG1",
@@ -7856,15 +9112,18 @@
                               }
                             ],
                             "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -7987,19 +9246,23 @@
                                   }
                                 ],
                                 "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QSG1/QSG1",
-                                "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QSG1/QSG1"
+                                "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QSG1/QSG1",
+                                "code": "ONTRUE"
                               }
                             ],
                             "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QSG1",
-                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QSG1"
+                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1/QSG1",
+                            "code": "ON*"
                           }
                         ],
                         "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1",
-                        "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1"
+                        "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2/QSG1",
+                        "code": "ON*"
                       }
                     ],
                     "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG3",
@@ -8087,19 +9350,23 @@
                                   }
                                 ],
                                 "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1/QSG1/QSG1",
-                                "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1/QSG1/QSG1"
+                                "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1/QSG1/QSG1",
+                                "code": "ONTRUE"
                               }
                             ],
                             "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1/QSG1",
-                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1/QSG1"
+                            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1/QSG1",
+                            "code": "ON*"
                           }
                         ],
                         "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1",
-                        "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1"
+                        "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3/QSG1",
+                        "code": "ON*"
                       }
                     ],
                     "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3",
-                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3"
+                    "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1/QSG3",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG4",
@@ -8145,11 +9412,13 @@
                   }
                 ],
                 "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1",
-                "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1"
+                "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1/RSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C41_slc-abil-staff-tech-work/RG1/RSG1",
-            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1"
+            "responsepath": "C41_slc-abil-staff-tech-work/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C41_slc-abil-staff-tech-work/RG1",
@@ -8301,15 +9570,18 @@
                               }
                             ],
                             "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -8329,11 +9601,13 @@
                       }
                     ],
                     "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1",
-                "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1"
+                "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/RSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG1",
@@ -8369,15 +9643,18 @@
                       }
                     ],
                     "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1",
-                "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1"
+                "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C42_slc-abil-mgmt-qual/RG1/RSG1",
-            "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1"
+            "responsepath": "C42_slc-abil-mgmt-qual/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C42_slc-abil-mgmt-qual/RG1",
@@ -8529,15 +9806,18 @@
                               }
                             ],
                             "requestpath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -8557,11 +9837,13 @@
                       }
                     ],
                     "requestpath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1",
-                "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1"
+                "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/RSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG1",
@@ -8597,15 +9879,18 @@
                       }
                     ],
                     "requestpath": "C43_slc-abil-facil-res/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C43_slc-abil-facil-res/RG1/RSG1/QSG1",
-                "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/QSG1"
+                "responsepath": "C43_slc-abil-facil-res/RG1/RSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C43_slc-abil-facil-res/RG1/RSG1",
-            "responsepath": "C43_slc-abil-facil-res/RG1/RSG1"
+            "responsepath": "C43_slc-abil-facil-res/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C43_slc-abil-facil-res/RG1",
@@ -8757,15 +10042,18 @@
                               }
                             ],
                             "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -8785,11 +10073,13 @@
                       }
                     ],
                     "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1",
-                "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1"
+                "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/RSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG1",
@@ -8825,15 +10115,18 @@
                       }
                     ],
                     "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1/QSG1",
-                "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/QSG1"
+                "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C44_slc-abil-mgmt-supply/RG1/RSG1",
-            "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1"
+            "responsepath": "C44_slc-abil-mgmt-supply/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C44_slc-abil-mgmt-supply/RG1",
@@ -8985,15 +10278,18 @@
                               }
                             ],
                             "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -9013,11 +10309,13 @@
                       }
                     ],
                     "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1",
-                "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1"
+                "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/RSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG1",
@@ -9053,15 +10351,18 @@
                       }
                     ],
                     "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1/QSG1",
-                "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/QSG1"
+                "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C45_slc-abil-mgmt-env/RG1/RSG1",
-            "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1"
+            "responsepath": "C45_slc-abil-mgmt-env/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C45_slc-abil-mgmt-env/RG1",
@@ -9213,15 +10514,18 @@
                               }
                             ],
                             "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -9241,11 +10545,13 @@
                       }
                     ],
                     "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1",
-                "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1"
+                "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/RSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG1",
@@ -9281,15 +10587,18 @@
                       }
                     ],
                     "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1/QSG1",
-                "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/QSG1"
+                "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C46_slc-abil-facil-tools/RG1/RSG1",
-            "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1"
+            "responsepath": "C46_slc-abil-facil-tools/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C46_slc-abil-facil-tools/RG1",
@@ -9441,15 +10750,18 @@
                               }
                             ],
                             "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
-                            "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1/QSG1/QSG1"
+                            "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                            "code": "ONTRUE"
                           }
                         ],
                         "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1/QSG1",
-                        "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1/QSG1"
+                        "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1/QSG1",
+                        "code": "ONFALSE"
                       }
                     ],
                     "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1",
-                    "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1"
+                    "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG1",
+                    "code": "ON*"
                   },
                   {
                     "tag": "QSG2",
@@ -9571,15 +10883,18 @@
                           }
                         ],
                         "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG2/QSG1",
-                        "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG2/QSG1"
+                        "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG2/QSG1",
+                        "code": "ON*"
                       }
                     ],
                     "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG2",
-                    "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG2"
+                    "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1/QSG2",
+                    "code": "ON*"
                   }
                 ],
                 "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1",
-                "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1"
+                "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/RSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG1",
@@ -9615,15 +10930,18 @@
                       }
                     ],
                     "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1/QSG1",
-                "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/QSG1"
+                "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1/QSG1",
+                "code": "ON*"
               }
             ],
             "requestpath": "C47_slc-abil-staff-qual/RG1/RSG1",
-            "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1"
+            "responsepath": "C47_slc-abil-staff-qual/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C47_slc-abil-staff-qual/RG1",
@@ -9761,15 +11079,18 @@
                           }
                         ],
                         "requestpath": "C48_slc-abil-check/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C48_slc-abil-check/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C48_slc-abil-check/RG1/RSG1/QSG1",
-                "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG1"
+                "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -9789,7 +11110,8 @@
                   }
                 ],
                 "requestpath": "C48_slc-abil-check/RG1/RSG1/QSG2",
-                "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG2"
+                "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -9825,15 +11147,18 @@
                       }
                     ],
                     "requestpath": "C48_slc-abil-check/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C48_slc-abil-check/RG1/RSG1/QSG3",
-                "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG3"
+                "responsepath": "C48_slc-abil-check/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C48_slc-abil-check/RG1/RSG1",
-            "responsepath": "C48_slc-abil-check/RG1/RSG1"
+            "responsepath": "C48_slc-abil-check/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C48_slc-abil-check/RG1",
@@ -9982,15 +11307,18 @@
                           }
                         ],
                         "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1",
-                "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1"
+                "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -10021,7 +11349,8 @@
                   }
                 ],
                 "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG2",
-                "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG2"
+                "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -10057,15 +11386,18 @@
                       }
                     ],
                     "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG3",
-                "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG3"
+                "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1",
-            "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1"
+            "responsepath": "C49_slc-abil-staff-yrly-no-mgmt/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/RG1",
@@ -10214,15 +11546,18 @@
                           }
                         ],
                         "requestpath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1",
-                "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1"
+                "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -10253,7 +11588,8 @@
                   }
                 ],
                 "requestpath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG2",
-                "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG2"
+                "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -10293,11 +11629,13 @@
                   }
                 ],
                 "requestpath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG3",
-                "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG3"
+                "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1",
-            "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1"
+            "responsepath": "C50_slc-abil-staff-yrly-avg-mp/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C50_slc-abil-staff-yrly-avg-mp/RG1",
@@ -10424,15 +11762,18 @@
                           }
                         ],
                         "requestpath": "C51_slc-abil-subc/RG1/RSG1/QSG1/QSG1/QSG2",
-                        "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG1/QSG1/QSG2"
+                        "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG1/QSG1/QSG2",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C51_slc-abil-subc/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C51_slc-abil-subc/RG1/RSG1/QSG1",
-                "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG1"
+                "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -10452,7 +11793,8 @@
                   }
                 ],
                 "requestpath": "C51_slc-abil-subc/RG1/RSG1/QSG2",
-                "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG2"
+                "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -10488,15 +11830,18 @@
                       }
                     ],
                     "requestpath": "C51_slc-abil-subc/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C51_slc-abil-subc/RG1/RSG1/QSG3",
-                "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG3"
+                "responsepath": "C51_slc-abil-subc/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C51_slc-abil-subc/RG1/RSG1",
-            "responsepath": "C51_slc-abil-subc/RG1/RSG1"
+            "responsepath": "C51_slc-abil-subc/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C51_slc-abil-subc/RG1",
@@ -10580,7 +11925,8 @@
                   }
                 ],
                 "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG2",
-                "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG2"
+                "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -10616,15 +11962,18 @@
                       }
                     ],
                     "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG3",
-                "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG3"
+                "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1",
-            "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1"
+            "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1",
@@ -10751,15 +12100,18 @@
                           }
                         ],
                         "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1",
-                "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1"
+                "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -10779,7 +12131,8 @@
                   }
                 ],
                 "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG2",
-                "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG2"
+                "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -10815,15 +12168,18 @@
                       }
                     ],
                     "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG3",
-                "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG3"
+                "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1",
-            "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1"
+            "responsepath": "C53_slc-abil-qual-smp-w-autent/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C53_slc-abil-qual-smp-w-autent/RG1",
@@ -10961,15 +12317,18 @@
                           }
                         ],
                         "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1",
-                "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1"
+                "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -11005,11 +12364,13 @@
                       }
                     ],
                     "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG2/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG2",
-                "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG2"
+                "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -11045,15 +12406,18 @@
                       }
                     ],
                     "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG3",
-                "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG3"
+                "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C54_slc-abil-qual-inst/RG1/RSG1",
-            "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1"
+            "responsepath": "C54_slc-abil-qual-inst/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C54_slc-abil-qual-inst/RG1",
@@ -11191,15 +12555,18 @@
                           }
                         ],
                         "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1",
-                "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1"
+                "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -11219,7 +12586,8 @@
                   }
                 ],
                 "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2",
-                "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2"
+                "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -11255,15 +12623,18 @@
                       }
                     ],
                     "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG3",
-                "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG3"
+                "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1",
-            "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1"
+            "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C55_slc-sche-qu-cert-indep/RG1",
@@ -11401,15 +12772,18 @@
                           }
                         ],
                         "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1/QSG1/QSG1",
-                        "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1/QSG1/QSG1"
+                        "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1/QSG1",
-                    "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1/QSG1"
+                    "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1",
-                "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1"
+                "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG1",
+                "code": "ON*"
               },
               {
                 "tag": "QSG2",
@@ -11445,11 +12819,13 @@
                       }
                     ],
                     "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG2/QSG1",
-                    "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG2/QSG1"
+                    "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG2/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG2",
-                "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG2"
+                "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG2",
+                "code": "ON*"
               },
               {
                 "tag": "QSG3",
@@ -11485,15 +12861,18 @@
                       }
                     ],
                     "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG3/QSG1",
-                    "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG3/QSG1"
+                    "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG3/QSG1",
+                    "code": "ONTRUE"
                   }
                 ],
                 "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG3",
-                "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG3"
+                "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1/QSG3",
+                "code": "ON*"
               }
             ],
             "requestpath": "C56_slc-sche-env-cert-indep/RG1/RSG1",
-            "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1"
+            "responsepath": "C56_slc-sche-env-cert-indep/RG1/RSG1",
+            "code": "ON*"
           }
         ],
         "requestpath": "C56_slc-sche-env-cert-indep/RG1",
@@ -11507,27 +12886,98 @@
     "responsepath": "C56_slc-sche-env-cert-indep"
   },
   {
-    "tag": "AI63",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "8E8FEC31-A29E-4f9f-8668-3E1B408E5C1D",
-    "code": "staff-red",
+    "tag": "OT63",
+    "type": "CRITERION",
+    "uuid": "51c39ba9-0444-4967-afe9-36f753b30175",
+    "code": "OT",
     "cardinality": "1",
-    "components": [],
-    "name": "AI63_staff-red",
-    "description": "",
-    "requestpath": "AI63_staff-red",
-    "responsepath": "AI63_staff-red"
-  },
-  {
-    "tag": "AI73",
-    "type": "ADDITIONAL_INFORMATION",
-    "uuid": "6375CC35-D491-42aa-8B5E-63FD89BF3E65",
-    "code": "info-signature",
-    "cardinality": "1",
-    "components": [],
-    "name": "AI73_info-signature",
-    "description": "",
-    "requestpath": "AI73_info-signature",
-    "responsepath": "AI73_info-signature"
+    "components": [
+      {
+        "tag": "QG1",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT63_OT/QG1/Q1",
+            "description": "Your answer",
+            "propertydatatype": "INDICATOR",
+            "code": "QUESTION",
+            "responsepath": "OT63_OT/QG1/Q1/R1",
+            "contentpath": "OT63_OT/QG1/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1",
+                "requestpath": "OT63_OT/QG1/QSG1/Q1",
+                "description": "Please describe them",
+                "propertydatatype": "DESCRIPTION",
+                "code": "QUESTION",
+                "responsepath": "OT63_OT/QG1/QSG1/Q1/R1",
+                "contentpath": "OT63_OT/QG1/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT63_OT/QG1/QSG1",
+            "responsepath": "OT63_OT/QG1/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT63_OT/QG1",
+        "responsepath": "OT63_OT/QG1",
+        "code": "ON*"
+      },
+      {
+        "tag": "QG2",
+        "type": "QUESTION_GROUP",
+        "cardinality": "1",
+        "components": [
+          {
+            "tag": "Q1",
+            "type": "QUESTION",
+            "cardinality": "1",
+            "requestpath": "OT63_OT/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "propertydatatype": "INDICATOR",
+            "responsepath": "OT63_OT/QG2/Q1/R1",
+            "contentpath": "OT63_OT/QG2/Q1/R1/RV"
+          },
+          {
+            "tag": "QSG1",
+            "type": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "Q1",
+                "type": "QUESTION",
+                "cardinality": "1..n",
+                "requestpath": "OT63_OT/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "propertydatatype": "EVIDENCE_IDENTIFIER",
+                "responsepath": "OT63_OT/QG2/QSG1/Q1/R1",
+                "contentpath": "OT63_OT/QG2/QSG1/Q1/R1/RV"
+              }
+            ],
+            "requestpath": "OT63_OT/QG2/QSG1",
+            "responsepath": "OT63_OT/QG2/QSG1",
+            "code": "ONTRUE"
+          }
+        ],
+        "requestpath": "OT63_OT/QG2",
+        "responsepath": "OT63_OT/QG2",
+        "code": "ON*"
+      }
+    ],
+    "name": "Reduction of the number of qualified candidates",
+    "description": "The economic operator declares that It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: in case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents.",
+    "requestpath": "OT63_OT",
+    "responsepath": "OT63_OT"
   }
 ]
