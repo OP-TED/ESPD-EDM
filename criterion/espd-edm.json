@@ -6644,6 +6644,27 @@
                         "code": "QUESTION",
                         "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/Q1/R1",
                         "contentpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/Q1/R1/RV"
+                      },
+                      {
+                        "tag": "QSG1",
+                        "type": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "components": [
+                          {
+                            "tag": "Q1",
+                            "type": "QUESTION",
+                            "cardinality": "1..n",
+                            "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/QSG1/Q1",
+                            "description": "Evidence Supplied",
+                            "propertydatatype": "EVIDENCE_IDENTIFIER",
+                            "code": "QUESTION",
+                            "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/QSG1/Q1/R1",
+                            "contentpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/QSG1/Q1/R1/RV"
+                          }
+                        ],
+                        "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/QSG1",
+                        "responsepath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1/QSG1",
+                        "code": "ONTRUE"
                       }
                     ],
                     "requestpath": "C32_slc-stand-to-spec/RG1/RSG1/QSG3/QSG1",
@@ -9004,6 +9025,15 @@
         "components": [],
         "requestpath": "C41_slc-abil-staff-tech-work/SBC1",
         "responsepath": "C41_slc-abil-staff-tech-work/SBC1"
+      },
+      {
+        "tag": "L1",
+        "type": "LEGISLATION",
+        "cardinality": "0..n",
+        "requestpath": "C41_slc-abil-staff-tech-work/L1",
+        "title": "L1",
+        "description": "",
+        "responsepath": "C41_slc-abil-staff-tech-work/L1"
       },
       {
         "tag": "RG1",
@@ -11908,6 +11938,80 @@
             "cardinality": "1",
             "components": [
               {
+                "tag": "QSG1",
+                "type": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "components": [
+                  {
+                    "tag": "Q1",
+                    "type": "QUESTION",
+                    "cardinality": "1",
+                    "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/Q1",
+                    "description": "Does the EO fulfil the criteria by itself?",
+                    "propertydatatype": "INDICATOR",
+                    "code": "QUESTION",
+                    "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/Q1/R1",
+                    "contentpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/Q1/R1/RV"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/Q1",
+                        "description": "In the case of no – Relied upon or not",
+                        "propertydatatype": "INDICATOR",
+                        "code": "QUESTION",
+                        "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/Q1/R1",
+                        "contentpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/Q1/R1/RV"
+                      },
+                      {
+                        "tag": "QSG1",
+                        "type": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "components": [
+                          {
+                            "tag": "Q1",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1/Q1",
+                            "description": "Name of the entity",
+                            "propertydatatype": "DESCRIPTION",
+                            "code": "QUESTION",
+                            "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1/Q1/R1",
+                            "contentpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1/Q1/R1/RV"
+                          },
+                          {
+                            "tag": "Q2",
+                            "type": "QUESTION",
+                            "cardinality": "1",
+                            "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1/Q2",
+                            "description": "ID of the entity",
+                            "propertydatatype": "ECONOMIC_OPERATOR_IDENTIFIER",
+                            "code": "QUESTION",
+                            "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1/Q2/R1",
+                            "contentpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1/Q2/R1/RV"
+                          }
+                        ],
+                        "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "code": "ONTRUE"
+                      }
+                    ],
+                    "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1",
+                    "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1/QSG1",
+                    "code": "ONFALSE"
+                  }
+                ],
+                "requestpath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1",
+                "responsepath": "C52_slc-abil-qual-smp-wo-autent/RG1/RSG1/QSG1",
+                "code": "ON*"
+              },
+              {
                 "tag": "QSG2",
                 "type": "QUESTION_SUBGROUP",
                 "cardinality": "1",
@@ -12583,6 +12687,27 @@
                     "code": "QUESTION",
                     "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2/Q1/R1",
                     "contentpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2/Q1/R1/RV"
+                  },
+                  {
+                    "tag": "QSG1",
+                    "type": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "Q1",
+                        "type": "QUESTION",
+                        "cardinality": "1",
+                        "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2/QSG1/Q1",
+                        "description": "If not, please explain why and state which other means of proof can be provided:",
+                        "propertydatatype": "DESCRIPTION",
+                        "code": "QUESTION",
+                        "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2/QSG1/Q1/R1",
+                        "contentpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2/QSG1/Q1/R1/RV"
+                      }
+                    ],
+                    "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2/QSG1",
+                    "responsepath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2/QSG1",
+                    "code": "ONFALSE"
                   }
                 ],
                 "requestpath": "C55_slc-sche-qu-cert-indep/RG1/RSG1/QSG2",
