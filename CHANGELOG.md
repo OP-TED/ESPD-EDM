@@ -10,6 +10,9 @@ Main new features:
 
 GitHub issues
 
+* **Fix GitHub issue #356** (reopened)
+  * Inconsistency between eCertis and ESPD
+
 * **Fix GitHub issue #423**
   * Mapping the SubContractor to the Tenderer
 
@@ -30,12 +33,14 @@ GitHub issues
 - eCertis UUIDs harmonisation with ESPD-EDM
 - Update to new version of Exclusion Ground (EG) and Selection Criterion (SC) code lists
 - Uniformity of descriptions for QUESTION objects
-- Potential cardinality inconsistencies - TO CHECK
 - Missing SUBCRITERION block (EG C24 and SC C34)
 - Missing REQUIREMENT_GROUP block (SC C51, C52 and C53)
 - Deprecated SC "authorisation" (C27) and "membership" (C28)
 - Added EG "exg-mis-unrel-sec" (C67) and SC "slc-suit-auth-mbrshp" (C66)
 
+### UBL 2.4
+- UBL 2.4 distribution files updated. The folder ubl-2.4 contains the official distribution files from OASIS - UBL Project
+ 
 ### Code lists
 - Replaced Criterion code list with Exclusion Ground and Selection Criterion code lists
 - ResponseDataType codelist list of datatypes is incomplete
