@@ -54,4 +54,4 @@ GitHub issues
 - Update business - index.adoc
 - Update ROOT section pages - ONGOING
 - Update technical section - ONGOING
-- Replace images with diagram as code
+- Replacement of images with diagrams by images created by code and update of the content
