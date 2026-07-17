@@ -54,7 +54,7 @@ GitHub issues
 - Update Schematron Business Rules for ESPD validation - ONGOING
 
 ### Online documentation
-The full documentation for v5.0.0 can be found on the [TED Documentation ESPD V5.0.0 site](https://docs.ted.europa.eu/ESPD-EDM/4.0.0/index.html).
+The full documentation for v5.0.0 can be found on the [TED Documentation ESPD V5.0.0 site](https://docs.ted.europa.eu/ESPD-EDM/5.0.0/index.html).
 - Replaced diagram images with code-generated diagrams and updated their content
 - Updated technical section
 - Update business section

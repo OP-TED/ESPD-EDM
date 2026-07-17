@@ -1,6 +1,7 @@
 # European Single Procurement Document Exchange Data Model - ESPD-EDM
 
 [![EUPL Licence](https://img.shields.io/badge/Licence-EUPL%20v1.2-blue.svg)](https://eupl.eu/1.2/en)
+[![Version](https://img.shields.io/badge/Version-5.0.0--beta-orange.svg)](https://github.com/OP-TED/ESPD-EDM/releases)
 
 ## Introduction
 
@@ -8,7 +9,7 @@ The ESPD-EDM is the technical representation of the legal [European Single Procu
 - **ESPD Request** created by the Buyer / Contracting Authority
 - **ESPD Response** created by the Economic Operator as a direct response to the ESPD Request.
 
-Any feedback will be higly appreciated and can be submitted via the [GitHub issues](https://github.com/OP-TED/ESPD-EDM/issues/new/choose) tab of this repository. You will need to be a registered GitHub user to create an issue, or to contribute actively to an existing one.
+Any feedback will be highly appreciated and can be submitted via the [GitHub issues](https://github.com/OP-TED/ESPD-EDM/issues/new/choose) tab of this repository. You will need to be a registered GitHub user to create an issue, or to contribute actively to an existing one.
 
 
 ## ESPD EDM - Repository structure
@@ -19,7 +20,7 @@ The `main` branch has the following folder structure:
 
 | Folder | Content |
 | --- | --- |
-| **codelists** | The folder contains the defintion of technical code lists managed by ESPD Team as well as references to the EU Vocabularies code lists. <br>The folder contains the **Code List** files in geniricode format. These files are used in conjunction with the UBL XML structure and the ESPD Model to generate and validate ESPD Request and ESPD Response XML files.|
+| **codelists** | The folder contains the definition of technical code lists managed by ESPD Team as well as references to the EU Vocabularies code lists. <br>The folder contains the **Code List** files in genericode format. These files are used in conjunction with the UBL XML structure and the ESPD Model to generate and validate ESPD Request and ESPD Response XML files.<br>The `codelists.json` file provides a machine-readable reference of all code lists used by the ESPD-EDM, including their identifiers, versions, and the agency responsible for their maintenance.|
 | **criterion** | This folder contains the criterion structure definition.<br> The file `espd-edm.json` contains the  data structure of ESPD EDM in JSON format.|
 | **schemas** | This folder contains the **OASIS UBL 2.4** Distribution package. It includes:<ul><li>**common:** contains files that describe and represent the common elements and structures.</li><li>**maindoc:** contains the xsd schemas for the ESPD Request and Response</li></ul>|
 | **validation** | This folder contains the **ESPD EDM** validation files. These files are created following the procedure described in [ESPD Validation Schematron](https://github.com/OP-TED/espd-validation-schematron/blob/main/README.md) repository, and the resulting XSL files are stored in the corresponding folders in this repository.<br>The required business rules validation files for XSL are uploaded to the [ITB Testbed](https://github.com/ISAITB/validator-resources-espd).|
@@ -35,7 +36,7 @@ The `main` branch is the latest release branch and should contain the code with 
 The ESPD Team offers support and answers to your questions via [GitHub issues](https://github.com/OP-TED/ESPD-EDM/issues/new/choose), during [Open User Community Regular Meetings](https://docs.ted.europa.eu/espd-wgm/monthly.html), and [Annual Seminar Meetings](https://docs.ted.europa.eu/espd-wgm/annual.html). Bilateral meetings can be scheduled upon request. We are commited to assisting and supporting you in your journey towards a successful ESPD Service implementation.
 
 The following artefacts provided in this repository may be used to design and implement an ESPD Service:
-- Code Lists - in the `coldelists` folder
+- Code Lists - in the `codelists` folder
 - Criterion JSON file - in the `criterion/espd-edm.json`
 - UBL distribution files - in the `schemas` folder, 
 - Business Rules files - in the `validation` folder there are specific XSL files that implement ESPD EDM validation rules for the XML document, and
