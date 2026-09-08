@@ -157,6 +157,95 @@
         "section": "A",
         "criteria": [
           {
+            "tag": "I71",
+            "type": "INFORMATION",
+            "uuid": "B407E114-C29F-4d84-B331-381F87B6DDC9",
+            "code": "info-eo",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "EOP1",
+                "type": "ECONOMIC_OPERATOR_PARTY",
+                "cardinality": "1..n",
+                "components": [
+                  {
+                    "tag": "QP1",
+                    "type": "QUALIFYING_PARTY",
+                    "cardinality": "0..n",
+                    "components": [
+                      {
+                        "tag": "PAR1",
+                        "type": "PARTY",
+                        "cardinality": "0..1",
+                        "components": [],
+                        "requestpath": "I71_info-eo/EOP1/QP1/PAR1",
+                        "responsepath": "I71_info-eo/EOP1/QP1/PAR1"
+                      }
+                    ],
+                    "requestpath": "I71_info-eo/EOP1/QP1",
+                    "responsepath": "I71_info-eo/EOP1/QP1"
+                  },
+                  {
+                    "tag": "PAR1",
+                    "type": "PARTY",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "PI1",
+                        "type": "PARTY_IDENTIFICATION",
+                        "cardinality": "1",
+                        "requestpath": "I71_info-eo/EOP1/PAR1/PI1",
+                        "description": "PI1",
+                        "responsepath": "I71_info-eo/EOP1/PAR1/PI1"
+                      },
+                      {
+                        "tag": "PN1",
+                        "type": "PARTY_NAME",
+                        "cardinality": "1",
+                        "requestpath": "I71_info-eo/EOP1/PAR1/PN1",
+                        "description": "PN1",
+                        "responsepath": "I71_info-eo/EOP1/PAR1/PN1"
+                      },
+                      {
+                        "tag": "PA1",
+                        "type": "POSTAL_ADDRESS",
+                        "cardinality": "1",
+                        "components": [
+                          {
+                            "tag": "CTR1",
+                            "type": "COUNTRY",
+                            "cardinality": "0..1",
+                            "requestpath": "I71_info-eo/EOP1/PAR1/PA1/CTR1",
+                            "description": "CTR1",
+                            "responsepath": "I71_info-eo/EOP1/PAR1/PA1/CTR1"
+                          }
+                        ],
+                        "requestpath": "I71_info-eo/EOP1/PAR1/PA1",
+                        "responsepath": "I71_info-eo/EOP1/PAR1/PA1"
+                      },
+                      {
+                        "tag": "CTC1",
+                        "type": "CONTACT",
+                        "cardinality": "0..1",
+                        "requestpath": "I71_info-eo/EOP1/PAR1/CTC1",
+                        "description": "CTC1",
+                        "responsepath": "I71_info-eo/EOP1/PAR1/CTC1"
+                      }
+                    ],
+                    "requestpath": "I71_info-eo/EOP1/PAR1",
+                    "responsepath": "I71_info-eo/EOP1/PAR1"
+                  }
+                ],
+                "requestpath": "I71_info-eo/EOP1",
+                "responsepath": "I71_info-eo/EOP1"
+              }
+            ],
+            "name": "I70_info-eo",
+            "description": "",
+            "requestpath": "I71_info-eo",
+            "responsepath": "I71_info-eo"
+          },
+          {
             "tag": "OT65",
             "type": "CRITERION",
             "uuid": "ede30cb7-70c2-4ead-ba11-22d0cac5ab7a",
@@ -691,6 +780,101 @@
             "description": "Is the economic operator participating in the procurement procedure together with others?",
             "requestpath": "OT59_OT",
             "responsepath": "OT59_OT"
+          }
+        ]
+      },
+      {
+        "section": "B",
+        "criteria": [
+          {
+            "tag": "I72",
+            "type": "INFORMATION",
+            "uuid": "2C43D501-F67B-4799-8473-64859207EDC7",
+            "code": "info-poa",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "EOP1",
+                "type": "ECONOMIC_OPERATOR_PARTY",
+                "cardinality": "1..n",
+                "components": [
+                  {
+                    "tag": "PAR1",
+                    "type": "PARTY",
+                    "cardinality": "1",
+                    "components": [
+                      {
+                        "tag": "POA1",
+                        "type": "POWER_OF_ATTORNEY",
+                        "cardinality": "0..n",
+                        "components": [
+                          {
+                            "tag": "PAR1",
+                            "type": "PARTY",
+                            "cardinality": "1",
+                            "components": [
+                              {
+                                "tag": "PI1",
+                                "type": "PARTY_IDENTIFICATION",
+                                "cardinality": "1",
+                                "requestpath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PI1",
+                                "description": "PI1",
+                                "responsepath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PI1"
+                              },
+                              {
+                                "tag": "PN1",
+                                "type": "PARTY_NAME",
+                                "cardinality": "1",
+                                "requestpath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PN1",
+                                "description": "PN1",
+                                "responsepath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PN1"
+                              },
+                              {
+                                "tag": "PA1",
+                                "type": "POSTAL_ADDRESS",
+                                "cardinality": "1..n",
+                                "components": [
+                                  {
+                                    "tag": "CTR1",
+                                    "type": "COUNTRY",
+                                    "cardinality": "1",
+                                    "requestpath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PA1/CTR1",
+                                    "description": "CTR1",
+                                    "responsepath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PA1/CTR1"
+                                  }
+                                ],
+                                "requestpath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PA1",
+                                "responsepath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/PA1"
+                              },
+                              {
+                                "tag": "CTC1",
+                                "type": "CONTACT",
+                                "cardinality": "0..n",
+                                "requestpath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/CTC1",
+                                "description": "CTC1",
+                                "responsepath": "I72_info-poa/EOP1/PAR1/POA1/PAR1/CTC1"
+                              }
+                            ],
+                            "requestpath": "I72_info-poa/EOP1/PAR1/POA1/PAR1",
+                            "responsepath": "I72_info-poa/EOP1/PAR1/POA1/PAR1"
+                          }
+                        ],
+                        "requestpath": "I72_info-poa/EOP1/PAR1/POA1",
+                        "responsepath": "I72_info-poa/EOP1/PAR1/POA1"
+                      }
+                    ],
+                    "requestpath": "I72_info-poa/EOP1/PAR1",
+                    "responsepath": "I72_info-poa/EOP1/PAR1"
+                  }
+                ],
+                "requestpath": "I72_info-poa/EOP1",
+                "responsepath": "I72_info-poa/EOP1"
+              }
+            ],
+            "name": "I72_info-poa",
+            "description": "",
+            "requestpath": "I72_info-poa",
+            "responsepath": "I72_info-poa"
           }
         ]
       },
@@ -4851,7 +5035,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C25_slc-suit-reg-prof/PPLR1",
                 "description": "PPLR1",
@@ -5110,7 +5294,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C26_slc-suit-reg-trade/PPLR1",
                 "description": "PPLR1",
@@ -5380,7 +5564,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C66_slc-suit-auth-mbrshp/PPLR1",
                 "description": "PPLR1",
@@ -5634,7 +5818,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C29_slc-stand-to-gen/PPLR1",
                 "description": "PPLR1",
@@ -5989,7 +6173,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C30_slc-stand-to-avg/PPLR1",
                 "description": "PPLR1",
@@ -6333,7 +6517,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C31_slc-stand-to-spec-avg/PPLR1",
                 "description": "PPLR1",
@@ -6688,7 +6872,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C32_slc-stand-to-spec/PPLR1",
                 "description": "PPLR1",
@@ -7042,7 +7226,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C34_slc-stand-ratio/PPLR1",
                 "description": "PPLR1",
@@ -7302,7 +7486,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C35_slc-stand-ins/PPLR1",
                 "description": "PPLR1",
@@ -7552,7 +7736,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C36_slc-stand-other/PPLR1",
                 "description": "PPLR1",
@@ -7941,7 +8125,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C37_slc-abil-ref-work/PPLR1",
                 "description": "PPLR1",
@@ -8306,7 +8490,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C38_slc-abil-ref-supply/PPLR1",
                 "description": "PPLR1",
@@ -8671,7 +8855,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C39_slc-abil-ref-services/PPLR1",
                 "description": "PPLR1",
@@ -9036,7 +9220,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C40_slc-abil-staff-tech-ctrl/PPLR1",
                 "description": "PPLR1",
@@ -9494,7 +9678,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C41_slc-abil-staff-tech-work/PPLR1",
                 "description": "PPLR1",
@@ -9950,7 +10134,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C42_slc-abil-mgmt-qual/PPLR1",
                 "description": "PPLR1",
@@ -10186,7 +10370,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C43_slc-abil-facil-res/PPLR1",
                 "description": "PPLR1",
@@ -10422,7 +10606,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C44_slc-abil-mgmt-supply/PPLR1",
                 "description": "PPLR1",
@@ -10658,7 +10842,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C45_slc-abil-mgmt-env/PPLR1",
                 "description": "PPLR1",
@@ -10894,7 +11078,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C46_slc-abil-facil-tools/PPLR1",
                 "description": "PPLR1",
@@ -11130,7 +11314,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C47_slc-abil-staff-qual/PPLR1",
                 "description": "PPLR1",
@@ -11473,7 +11657,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C48_slc-abil-check/PPLR1",
                 "description": "PPLR1",
@@ -11690,7 +11874,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C49_slc-abil-staff-yrly-no-mgmt/PPLR1",
                 "description": "PPLR1",
@@ -11929,7 +12113,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C50_slc-abil-staff-yrly-avg-mp/PPLR1",
                 "description": "PPLR1",
@@ -12168,7 +12352,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C51_slc-abil-subc/PPLR1",
                 "description": "PPLR1",
@@ -12374,7 +12558,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C52_slc-abil-qual-smp-wo-autent/PPLR1",
                 "description": "PPLR1",
@@ -12580,7 +12764,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C53_slc-abil-qual-smp-w-autent/PPLR1",
                 "description": "PPLR1",
@@ -12786,7 +12970,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C54_slc-abil-qual-inst/PPLR1",
                 "description": "PPLR1",
@@ -13029,7 +13213,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C55_slc-sche-qu-cert-indep/PPLR1",
                 "description": "PPLR1",
@@ -13267,7 +13451,7 @@
             "components": [
               {
                 "tag": "PPLR1",
-                "type": "CRITERION",
+                "type": "LOT_REFERENCE",
                 "cardinality": "1..n",
                 "requestpath": "C56_slc-sche-env-cert-indep/PPLR1",
                 "description": "PPLR1",
@@ -13602,6 +13786,55 @@
             "description": "The economic operator declares that It meets the objective and non discriminatory criteria or rules to be applied in order to limit the number of candidates in the following way: in case certain certificates or other forms of documentary evidence are required, please indicate for each whether the economic operator has the required documents.",
             "requestpath": "OT63_OT",
             "responsepath": "OT63_OT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "part": "partVI",
+    "sections": [
+      {
+        "section": "A",
+        "criteria": [
+          {
+            "tag": "I73",
+            "type": "INFORMATION",
+            "uuid": "B5597FA8-A5FE-4472-AE85-35360D256DBE",
+            "code": "info-signature",
+            "cardinality": "1",
+            "components": [
+              {
+                "tag": "SIG1",
+                "type": "SIGNATURE",
+                "cardinality": "0..1",
+                "components": [
+                  {
+                    "tag": "SP1",
+                    "type": "SIGNATORY_PARTY",
+                    "cardinality": "0..1",
+                    "components": [
+                      {
+                        "tag": "PL1",
+                        "type": "PHYSICAL_LOCATION",
+                        "cardinality": "0..1",
+                        "requestpath": "I73_info-signature/SIG1/SP1/PL1",
+                        "description": "PL1",
+                        "responsepath": "I73_info-signature/SIG1/SP1/PL1"
+                      }
+                    ],
+                    "requestpath": "I73_info-signature/SIG1/SP1",
+                    "responsepath": "I73_info-signature/SIG1/SP1"
+                  }
+                ],
+                "requestpath": "I73_info-signature/SIG1",
+                "responsepath": "I73_info-signature/SIG1"
+              }
+            ],
+            "name": "I73_info-signature",
+            "description": "",
+            "requestpath": "I73_info-signature",
+            "responsepath": "I73_info-signature"
           }
         ]
       }
