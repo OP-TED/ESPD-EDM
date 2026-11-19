@@ -1,0 +1,36 @@
+name: Checks
+
+# Runs on every commit, on every branch, whoever or whatever made it: the export
+# automation, the validation publication, or a person. Pushes made with the
+# GitHub App token used by the espd-conceptual-model workflows do trigger this;
+# pushes made with a workflow's own GITHUB_TOKEN would not.
+#
+# One job per check. Each check is a self-contained script under
+# .github/scripts that needs nothing but Node, so it can also be run by hand:
+#
+#   node .github/scripts/check-versions.mjs
+#
+# To add a check, add a script and a job alongside "versions".
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  versions:
+    name: Version consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check that every stated version agrees
+        run: node .github/scripts/check-versions.mjs
