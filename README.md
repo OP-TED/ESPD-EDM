@@ -1,7 +1,7 @@
 # European Single Procurement Document Exchange Data Model - ESPD-EDM
 
 [![EUPL Licence](https://img.shields.io/badge/Licence-EUPL%20v1.2-blue.svg)](https://eupl.eu/1.2/en)
-[![Version](https://img.shields.io/badge/Version-5.0.0--beta-orange.svg)](https://github.com/OP-TED/ESPD-EDM/releases)
+[![Version](https://img.shields.io/badge/Version-5.0.0-blue.svg)](https://github.com/OP-TED/ESPD-EDM/releases)
 
 ## Introduction
 
