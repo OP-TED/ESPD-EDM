@@ -1,0 +1,147 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "ot-group-participation",
+  "partId": "II",
+  "criterion": {
+    "code": "eo-group",
+    "uuid": "ee51100f-8e3e-40c9-8f8b-57d5a15be1f2",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "1",
+        "condition": "always",
+        "requestpath": "C59_OT_eo-group/QG1",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C59_OT_eo-group/QG1/Q1",
+            "description": "Your answer?",
+            "id": "group-participation.answer",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "answer"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "condition": "true",
+            "requestpath": "C59_OT_eo-group/QG1/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "CODE",
+                "cardinality": "1",
+                "requestpath": "C59_OT_eo-group/QG1/QSG1/Q1",
+                "description": "Please indicate the role of the economic operator in the group (leader, responsible for specific tasks...)",
+                "id": "group-participation.role",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "role"
+                  ]
+                },
+                "codelist": "eo-role-type"
+              },
+              {
+                "nodeKind": "question",
+                "valueType": "DESCRIPTION",
+                "cardinality": "0..1",
+                "requestpath": "C59_OT_eo-group/QG1/QSG1/Q2",
+                "description": "Please identify the other economic operators participating in the procurement procedure together",
+                "id": "group-participation.other-operators",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "otherOperators"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "question",
+                "valueType": "DESCRIPTION",
+                "cardinality": "0..1",
+                "requestpath": "C59_OT_eo-group/QG1/QSG1/Q3",
+                "description": "Where applicable, name of the participating group:",
+                "id": "group-participation.group-name",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "groupName"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C59_OT_eo-group/QG2",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C59_OT_eo-group/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "id": "group-participation.evidence-available-electronically",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "electronicEvidence",
+                "availableElectronically"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..1",
+            "condition": "true",
+            "requestpath": "C59_OT_eo-group/QG2/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "EVIDENCE_IDENTIFIER",
+                "cardinality": "1..n",
+                "requestpath": "C59_OT_eo-group/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "id": "group-participation.evidence-id",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "electronicEvidence",
+                    "evidence"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "group-participation",
+    "tag": "C59_OT",
+    "instanceModel": {
+      "containerPath": [
+        "partII",
+        "economicOperatorCriteria"
+      ],
+      "key": {
+        "source": "id"
+      }
+    }
+  },
+  "hints": null
+}

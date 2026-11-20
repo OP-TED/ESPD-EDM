@@ -1,0 +1,132 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "ot-sheltered-workshop",
+  "partId": "II",
+  "criterion": {
+    "code": "shelt-worksh",
+    "uuid": "2043338f-a38a-490b-b3ec-2607cb25a017",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "1",
+        "condition": "always",
+        "requestpath": "C57_OT_shelt-worksh/QG1",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C57_OT_shelt-worksh/QG1/Q1",
+            "description": "Your answer?",
+            "id": "sheltered-workshop.answer",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "answer"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "condition": "true",
+            "requestpath": "C57_OT_shelt-worksh/QG1/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "PERCENTAGE",
+                "cardinality": "0..1",
+                "requestpath": "C57_OT_shelt-worksh/QG1/QSG1/Q1",
+                "description": "What is the corresponding percentage of disabled or disadvantaged workers?",
+                "id": "sheltered-workshop.percentage",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "disabledWorkerPercentage"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "question",
+                "valueType": "DESCRIPTION",
+                "cardinality": "0..1",
+                "requestpath": "C57_OT_shelt-worksh/QG1/QSG1/Q2",
+                "description": "If required, please provide details on whether the employees concerned belong to a specific category of disabled or disadvantaged workers?",
+                "id": "sheltered-workshop.details",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "details"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C57_OT_shelt-worksh/QG2",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C57_OT_shelt-worksh/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "id": "sheltered-workshop.evidence-available-electronically",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "electronicEvidence",
+                "availableElectronically"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..1",
+            "condition": "true",
+            "requestpath": "C57_OT_shelt-worksh/QG2/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "EVIDENCE_IDENTIFIER",
+                "cardinality": "1..n",
+                "requestpath": "C57_OT_shelt-worksh/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "id": "sheltered-workshop.evidence-id",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "electronicEvidence",
+                    "evidence"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "sheltered-workshop",
+    "tag": "C57_OT",
+    "instanceModel": {
+      "containerPath": [
+        "partII",
+        "economicOperatorCriteria"
+      ],
+      "key": {
+        "source": "id"
+      }
+    }
+  },
+  "hints": null
+}

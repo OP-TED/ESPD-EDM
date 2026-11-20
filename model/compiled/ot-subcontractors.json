@@ -1,0 +1,150 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "ot-subcontractors",
+  "partId": "II",
+  "criterion": {
+    "code": "subco-ent",
+    "uuid": "72c0c4b1-ca50-4667-9487-461f3eed4ed7",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "1",
+        "condition": "always",
+        "requestpath": "C61_OT_subco-ent/QG1",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C61_OT_subco-ent/QG1/Q1",
+            "description": "Your answer?",
+            "id": "subcontractors.answer",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "answer"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..n",
+            "condition": "true",
+            "requestpath": "C61_OT_subco-ent/QG1/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "DESCRIPTION",
+                "cardinality": "1",
+                "requestpath": "C61_OT_subco-ent/QG1/QSG1/Q1",
+                "description": "Name of the entity",
+                "id": "subcontractors.name",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "subcontractors",
+                    "name"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "question",
+                "valueType": "ECONOMIC_OPERATOR_IDENTIFIER",
+                "cardinality": "1",
+                "requestpath": "C61_OT_subco-ent/QG1/QSG1/Q2",
+                "description": "ID of the subcontractor",
+                "id": "subcontractors.id",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "subcontractors",
+                    "id"
+                  ]
+                }
+              }
+            ],
+            "id": "subcontractors.entities",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "subcontractors"
+              ],
+              "repeatable": true
+            }
+          }
+        ]
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C61_OT_subco-ent/QG2",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C61_OT_subco-ent/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "id": "subcontractors.evidence-available-electronically",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "electronicEvidence",
+                "availableElectronically"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..1",
+            "condition": "true",
+            "requestpath": "C61_OT_subco-ent/QG2/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "EVIDENCE_IDENTIFIER",
+                "cardinality": "1..n",
+                "requestpath": "C61_OT_subco-ent/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "id": "subcontractors.evidence-id",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "electronicEvidence",
+                    "evidence"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "subcontractors",
+    "tag": "C61_OT",
+    "instanceModel": {
+      "containerPath": [
+        "partII",
+        "economicOperatorCriteria"
+      ],
+      "key": {
+        "source": "id"
+      }
+    },
+    "arrayContainers": [
+      {
+        "side": "response",
+        "path": [
+          "subcontractors"
+        ]
+      }
+    ]
+  },
+  "hints": null
+}

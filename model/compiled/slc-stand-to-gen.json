@@ -1,0 +1,434 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "slc-stand-to-gen",
+  "partId": "IV",
+  "criterion": {
+    "code": "slc-stand-to-gen",
+    "uuid": "499efc97-2ac1-4af2-9e84-323c2ca67747",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "structural",
+        "eaType": "LOT_REFERENCE",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C29_slc-stand-to-gen/PPLR1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "SUBCRITERION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C29_slc-stand-to-gen/SBC1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "LEGISLATION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C29_slc-stand-to-gen/L1",
+        "children": []
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "REQUIREMENT_GROUP",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C29_slc-stand-to-gen/RG1",
+        "children": [
+          {
+            "nodeKind": "requirement",
+            "valueType": "LOT_IDENTIFIER",
+            "cardinality": "1..n",
+            "requestpath": "C29_slc-stand-to-gen/RG1/RQ1",
+            "description": "LOT Identifier",
+            "id": "slc-stand-to-gen.lot-identifiers",
+            "instanceBinding": {
+              "side": "requirement",
+              "path": [
+                "lotIdentifiers"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "REQUIREMENT_SUBGROUP",
+            "cardinality": "1..n",
+            "condition": "always",
+            "requestpath": "C29_slc-stand-to-gen/RG1/RSG1",
+            "children": [
+              {
+                "nodeKind": "requirement",
+                "valueType": "QUANTITY_YEAR",
+                "cardinality": "1",
+                "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/RQ1",
+                "description": "Number of fiscal years",
+                "id": "slc-stand-to-gen.number-of-years",
+                "instanceBinding": {
+                  "side": "requirement",
+                  "path": [
+                    "numberOfYears"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "requirement",
+                "valueType": "CODE_BOOLEAN",
+                "cardinality": "1",
+                "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/RQ2",
+                "description": "Threshold per year",
+                "id": "slc-stand-to-gen.threshold-per-year",
+                "instanceBinding": {
+                  "side": "requirement",
+                  "path": [
+                    "thresholdPerYear"
+                  ]
+                },
+                "requestValue": {
+                  "element": "cbc:ExpectedCode",
+                  "valueMap": {
+                    "true": "CHECK_BOX_TRUE",
+                    "false": "CHECK_BOX_FALSE"
+                  },
+                  "attributes": {
+                    "listID": "boolean-gui-control-type"
+                  }
+                }
+              },
+              {
+                "nodeKind": "requirement",
+                "valueType": "MINIMUM_AMOUNT",
+                "cardinality": "1",
+                "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/RQ3",
+                "description": "Minimum amount requirement",
+                "id": "slc-stand-to-gen.minimum-amount",
+                "instanceBinding": {
+                  "side": "requirement",
+                  "path": [
+                    "minimumAmount"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/Q1",
+                    "description": "Does the EO fulfil the criteria by itself?",
+                    "id": "slc-stand-to-gen.fulfilled-by-itself",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "fulfilledByItself"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "condition": "false",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "INDICATOR",
+                        "cardinality": "1",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1/Q1",
+                        "description": "In the case of no – Relied upon or not",
+                        "id": "slc-stand-to-gen.relied-upon",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "reliedUpon"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "condition": "true",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "DESCRIPTION",
+                            "cardinality": "1",
+                            "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1/QSG1/Q1",
+                            "description": "Name of the entity",
+                            "id": "slc-stand-to-gen.relied-upon-entity-name",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "reliedUponEntity",
+                                "name"
+                              ]
+                            }
+                          },
+                          {
+                            "nodeKind": "question",
+                            "valueType": "ECONOMIC_OPERATOR_IDENTIFIER",
+                            "cardinality": "1",
+                            "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG1/QSG1/QSG1/Q2",
+                            "description": "ID of the entity",
+                            "id": "slc-stand-to-gen.relied-upon-entity-id",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "reliedUponEntity",
+                                "id"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1..n",
+                "condition": "always",
+                "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "PERIOD",
+                    "cardinality": "1",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/Q1",
+                    "description": "Start date; End date",
+                    "id": "slc-stand-to-gen.turnover-period",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "turnover",
+                        "period"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "question",
+                    "valueType": "AMOUNT",
+                    "cardinality": "1",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/Q2",
+                    "description": "Amount",
+                    "id": "slc-stand-to-gen.turnover-amount",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "turnover",
+                        "amount"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "1..n",
+                    "condition": "always",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "INDICATOR",
+                        "cardinality": "1",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1/Q1",
+                        "description": "Is this information available electronically?",
+                        "id": "slc-stand-to-gen.turnover-evidence-available-electronically",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "turnover",
+                            "electronicEvidence",
+                            "availableElectronically"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "0..1",
+                        "condition": "true",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "EVIDENCE_IDENTIFIER",
+                            "cardinality": "1..n",
+                            "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG2/QSG1/QSG1/Q1",
+                            "description": "Evidence Supplied",
+                            "id": "slc-stand-to-gen.turnover-evidence-id",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "turnover",
+                                "electronicEvidence",
+                                "evidence"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "DATE",
+                    "cardinality": "1",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/Q1",
+                    "description": "In case the information concerning turnover (general or specific) is not available for the entire period required, please state the date on which the economic operator was set up or started trading:",
+                    "id": "slc-stand-to-gen.trading-start-date",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "startTrading",
+                        "date"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "1..n",
+                    "condition": "always",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "INDICATOR",
+                        "cardinality": "1",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/Q1",
+                        "description": "Is this information available electronically?",
+                        "id": "slc-stand-to-gen.trading-start-evidence-available-electronically",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "startTrading",
+                            "electronicEvidence",
+                            "availableElectronically"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "0..1",
+                        "condition": "true",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "EVIDENCE_IDENTIFIER",
+                            "cardinality": "1..n",
+                            "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG3/QSG1/QSG1/Q1",
+                            "description": "Evidence Supplied",
+                            "id": "slc-stand-to-gen.trading-start-evidence-id",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "startTrading",
+                                "electronicEvidence",
+                                "evidence"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "0..n",
+                "condition": "always",
+                "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG4",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG4/Q1",
+                    "description": "Is this information available electronically?",
+                    "id": "slc-stand-to-gen.additional-evidence-available-electronically",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "electronicEvidence",
+                        "availableElectronically"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "0..1",
+                    "condition": "true",
+                    "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG4/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "EVIDENCE_IDENTIFIER",
+                        "cardinality": "1..n",
+                        "requestpath": "C29_slc-stand-to-gen/RG1/RSG1/QSG4/QSG1/Q1",
+                        "description": "Evidence supplied",
+                        "id": "slc-stand-to-gen.additional-evidence-id",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "electronicEvidence",
+                            "evidence"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "slc-stand-to-gen",
+    "instanceModel": {
+      "containerPath": [
+        "partIV",
+        "selectionCriteria"
+      ],
+      "key": {
+        "source": "code"
+      }
+    }
+  },
+  "hints": {
+    "$comment": "C29 (slc-stand-to-gen) hints. leafShapes REPLACES the value-type instanceShape for the 'threshold per year' leaf: its EA value type CODE_BOOLEAN would derive a string enum of boolean-gui-control-type codes, but semantically it is a buyer yes/no toggle, so the instance stores a boolean. The shared CODE_BOOLEAN value type is left untouched (only this leaf is overridden). Export still emits the BASE code (true -> CHECK_BOX_TRUE) via the request-mapping valueMap override.",
+    "leafShapes": {
+      "slc-stand-to-gen.threshold-per-year": {
+        "type": "boolean"
+      }
+    }
+  }
+}

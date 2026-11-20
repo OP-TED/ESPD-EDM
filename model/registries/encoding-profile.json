@@ -1,0 +1,50 @@
+{
+  "$comment": "Option B XML encoding profile. Conventions keyed by STRUCTURAL KIND (criterion/group/subgroup/leaf), criterion-independent. Child content is resolved by: 'fromCore' (compile-time field of the structural-core node, optionally translated by 'map'); 'codelist' (fixed attribute set stamped from the codelist-attribute profile); or 'valueBinding' (the single runtime value child, resolved from the value-type registry + the leaf instance-binding path). cbc:ID: criterion->uuid, group/leaf->requestpath. Confirmed against espd-validation-schematron/common/xml/ESPD-Request-BASE.xml.",
+  "kinds": {
+    "criterion": {
+      "element": "cac:TenderingCriterion",
+      "children": [
+        { "element": "cbc:ID", "fromCore": "uuid", "codelist": "criterion-id" },
+        { "element": "cbc:CriterionTypeCode", "fromCore": "code", "codelist": "criterion" },
+        { "element": "cbc:Name", "fromCore": "name" },
+        { "element": "cbc:Description", "fromCore": "description" }
+      ]
+    },
+    "group": {
+      "element": "cac:TenderingCriterionPropertyGroup",
+      "children": [
+        { "element": "cbc:ID", "fromCore": "requestpath", "codelist": "criterion-id" },
+        {
+          "element": "cbc:PropertyGroupTypeCode",
+          "fromCore": "condition",
+          "map": { "always": "ON*", "true": "ONTRUE", "false": "ONFALSE" },
+          "codelist": "property-group-type"
+        }
+      ]
+    },
+    "subgroup": {
+      "element": "cac:SubsidiaryTenderingCriterionPropertyGroup",
+      "sameAs": "group"
+    },
+    "leaf": {
+      "element": "cac:TenderingCriterionProperty",
+      "children": [
+        { "element": "cbc:ID", "fromCore": "requestpath", "codelist": "criterion-id" },
+        { "element": "cbc:Name", "fromCore": "name" },
+        { "element": "cbc:Description", "fromCore": "description" },
+        {
+          "element": "cbc:TypeCode",
+          "fromCore": "nodeKind",
+          "map": { "requirement": "REQUIREMENT", "question": "QUESTION" },
+          "codelist": "criterion-element-type"
+        },
+        {
+          "element": "cbc:ValueDataTypeCode",
+          "fromCore": "valueType",
+          "codelist": "response-data-type"
+        },
+        { "valueBinding": "value-type-registry" }
+      ]
+    }
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "ot-registered-official-list",
+  "partId": "II",
+  "criterion": {
+    "code": "registered",
+    "uuid": "9b19e869-6c89-4cc4-bd6c-ac9ca8602165",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "1",
+        "condition": "always",
+        "requestpath": "C58_OT_registered/QG1",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C58_OT_registered/QG1/Q1",
+            "description": "Your answer?",
+            "id": "registered-official-list.answer",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "answer"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "condition": "true",
+            "requestpath": "C58_OT_registered/QG1/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "INDICATOR",
+                "cardinality": "1",
+                "requestpath": "C58_OT_registered/QG1/QSG1/Q1",
+                "description": "Is the economic operator registered on an official list of approved economic operators or does it have an equivalent certificate?",
+                "id": "registered-official-list.is-registered",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "isRegistered"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "true",
+                "requestpath": "C58_OT_registered/QG1/QSG1/QSG1",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "DESCRIPTION",
+                    "cardinality": "1",
+                    "requestpath": "C58_OT_registered/QG1/QSG1/QSG1/Q1",
+                    "description": "Please provide the name of the list or certificate and the relevant registration or certification number, if applicable",
+                    "id": "registered-official-list.list-name",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "registration",
+                        "listName"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "question",
+                    "valueType": "URL",
+                    "cardinality": "0..1",
+                    "requestpath": "C58_OT_registered/QG1/QSG1/QSG1/Q2",
+                    "description": "If the certificate of registration or certification is available electronically, please state where",
+                    "id": "registered-official-list.certificate-url",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "registration",
+                        "certificateUrl"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "question",
+                    "valueType": "DESCRIPTION",
+                    "cardinality": "0..1",
+                    "requestpath": "C58_OT_registered/QG1/QSG1/QSG1/Q3",
+                    "description": "Please state the references on which the registration or certification is based, and, where applicable, the classification obtained in the official list",
+                    "id": "registered-official-list.references",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "registration",
+                        "references"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "condition": "always",
+                    "requestpath": "C58_OT_registered/QG1/QSG1/QSG1/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "INDICATOR",
+                        "cardinality": "1",
+                        "requestpath": "C58_OT_registered/QG1/QSG1/QSG1/QSG1/Q1",
+                        "description": "Does the registration or certification cover all of the required selection criteria?",
+                        "id": "registered-official-list.covers-all-criteria",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "registration",
+                            "coversAllCriteria"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "false",
+                "requestpath": "C58_OT_registered/QG1/QSG1/QSG2",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C58_OT_registered/QG1/QSG1/QSG2/Q1",
+                    "description": "Will the economic operator be able to provide a certificate with regard to the payment of social security contributions and taxes or provide information enabling the contracting authority or contracting entity to obtaining it directly by accessing a national database in any Member State that is available free of charge?",
+                    "id": "registered-official-list.will-provide",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "willProvide"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "1",
+            "condition": "false",
+            "requestpath": "C58_OT_registered/QG1/QSG2",
+            "children": [
+              {
+                "nodeKind": "structural",
+                "eaType": "CAPTION",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C58_OT_registered/QG1/QSG2/CA1",
+                "children": [],
+                "caption": true,
+                "description": "The country of the economic operator does not have an official list of approved economic operators or an equivalent certificate (e.g. under a national (pre)qualification system)."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C58_OT_registered/QG2",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C58_OT_registered/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "id": "registered-official-list.evidence-available-electronically",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "electronicEvidence",
+                "availableElectronically"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..1",
+            "condition": "true",
+            "requestpath": "C58_OT_registered/QG2/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "EVIDENCE_IDENTIFIER",
+                "cardinality": "1..n",
+                "requestpath": "C58_OT_registered/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "id": "registered-official-list.evidence-id",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "electronicEvidence",
+                    "evidence"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "registered-official-list",
+    "tag": "C58_OT",
+    "instanceModel": {
+      "containerPath": [
+        "partII",
+        "economicOperatorCriteria"
+      ],
+      "key": {
+        "source": "id"
+      }
+    }
+  },
+  "hints": null
+}

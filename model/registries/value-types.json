@@ -1,0 +1,231 @@
+{
+  "$comment": "Value-type registry. ESPD-EDM/codelists/ResponseDataType.gc is authoritative for which codes exist, their status and description; this file adds the JSON instanceShape and the request/response UBL value bindings. One entry per ValueDataTypeCode. Leaf VALUE elements and value-bearing attributes (currencyID, unitCode) live here; fixed codelist attributes live in the codelist-attribute profile; kind->element scaffold lives in the encoding profile.",
+  "source": {
+    "path": "../../codelists/ResponseDataType.gc",
+    "shortName": "ResponseDataType",
+    "version": "5.0.0"
+  },
+  "valueTypes": {
+    "LOT_IDENTIFIER": {
+      "$note": "A buyer REQUIREMENT naming the procurement lots a (selection) criterion applies to. The e-Certis criterion definition and the BASE request carry the lot in TWO places, both of which the Schematron checks: (1) as a repeated cac:TenderingCriterionProperty (REQUIREMENT) inside its RG1 group, each with a cbc:ExpectedID — the property-group completeness rule (03-ESPD-common-criterion-br) counts this; and (2) as a repeated cac:ProcurementProjectLotReference directly under cac:TenderingCriterion (after cbc:Description, before the property groups) — BR-LOT-41 requires >=1 of these on every selection criterion and BR-LOT-40 forbids any on exclusion grounds. Both are emitted from the same lotIdentifiers array: `requestXml` drives the property (via the repeatedProperty kind) and `lotReference` drives the criterion-scoped reference node.",
+      "sourceDescription": "Code used to detect an identifier that refers to a Lot",
+      "instanceShape": { "type": "array", "items": { "type": "string" } },
+      "requestXml": {
+        "kind": "repeatedProperty",
+        "element": "cbc:ExpectedID",
+        "attributes": { "schemeAgencyID": { "const": "OP" } }
+      },
+      "lotReference": {
+        "element": "cac:ProcurementProjectLotReference",
+        "idElement": "cbc:ID",
+        "attributes": { "schemeID": { "const": "criterion" } }
+      }
+    },
+    "QUANTITY_YEAR": {
+      "$note": "Used both as a buyer REQUIREMENT (count of fiscal years, e.g. C31 — cbc:ExpectedValueNumeric) and as an EO QUESTION answer (e.g. C50 'Year' — cbc:ResponseQuantity with unitCode=YEAR). Both bindings are registered; the compiler picks the side by leaf kind.",
+      "sourceDescription": "A non-negative integer representing a year. The unit has to be specified as YEAR",
+      "instanceShape": { "type": "integer" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedValueNumeric" },
+      "responseXml": {
+        "kind": "scalar",
+        "element": "cac:ResponseValue/cbc:ResponseQuantity",
+        "attributes": { "unitCode": { "const": "YEAR" } }
+      }
+    },
+    "QUANTITY_INTEGER": {
+      "sourceDescription": "A number representing a quantity in a specific unit of measure. The unit has to be specified (e.g. Kg).",
+      "instanceShape": { "type": "integer" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedValueNumeric" },
+      "responseXml": {
+        "kind": "scalar",
+        "element": "cac:ResponseValue/cbc:ResponseQuantity",
+        "attributes": { "unitCode": { "const": "INTEGER" } }
+      }
+    },
+    "MINIMUM_QUANTITY_YEAR": {
+      "$note": "Buyer-only REQUIREMENT (minimum number of years). cbc:ExpectedValueNumeric per the BASE request document (no dedicated Expected* element exists for the MINIMUM_QUANTITY_* family).",
+      "sourceDescription": "Minimum number of years",
+      "instanceShape": { "type": "integer" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedValueNumeric" }
+    },
+    "MINIMUM_QUANTITY_INTEGER": {
+      "$note": "Buyer-only REQUIREMENT (minimum number of references; Part IV §C Shape 2 — C37/C38/C39). Integer-valued sibling of MINIMUM_QUANTITY_YEAR: cbc:ExpectedValueNumeric per the BASE request document (no dedicated Expected* element exists for the MINIMUM_QUANTITY_* family).",
+      "sourceDescription": "Minimum number of references",
+      "instanceShape": { "type": "integer" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedValueNumeric" }
+    },
+    "CODE_BOOLEAN": {
+      "$note": "Buyer REQUIREMENT selecting a GUI control type (CHECK_BOX_TRUE, RADIO_BUTTON_TRUE, ...). Request-only; carries the boolean-gui-control-type codelist attributes. `codeListFile` opts this shape into enum derivation: the generator inlines the .gc's codes as a JSON Schema enum (6 codes, shipped). A test keeps the inlined enum in sync with the .gc.",
+      "sourceDescription": "Code identifying a type of GUI control element.",
+      "instanceShape": { "type": "string", "codeList": "boolean-gui-control-type", "codeListFile": "BooleanGUIControlType.gc" },
+      "requestXml": {
+        "kind": "scalar",
+        "element": "cbc:ExpectedCode",
+        "codelist": "boolean-gui-control-type"
+      }
+    },
+    "DESCRIPTION": {
+      "sourceDescription": "Textual field",
+      "instanceShape": { "type": "string" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedDescription" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:Description" }
+    },
+    "PERCENTAGE": {
+      "$note": "A decimal percentage (e.g. 0.1). Used by OT57 (sheltered-workshop disabled-worker percentage). Response: cac:ResponseValue/cbc:ResponseNumeric; request: cbc:ExpectedValueNumeric.",
+      "sourceDescription": "A decimal number representing a percent (e.g. 0.1)",
+      "instanceShape": { "type": "number" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedValueNumeric" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseNumeric" }
+    },
+    "URL": {
+      "$note": "A URL answer (OT58 registration-certificate URL). Response-only: cac:ResponseValue/cbc:ResponseURI (UBL ResponseValueType).",
+      "sourceDescription": "A url, including e-mail addresses",
+      "instanceShape": { "type": "string" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseURI" }
+    },
+    "CODE": {
+      "$note": "A generic code requirement whose codelist VARIES by use (financial-ratio-type in C34, occupation in C25, eo-role-type in OT59) — the XSLT branches on a per-property codelist name. So the codelist is NOT intrinsic to the value type: it is declared PER LEAF in the sidecar component entry (`codelist`), attached by the overlay, and the generators read it from the leaf. `codeList` on instanceShape is likewise filled per leaf from the sidecar.",
+      "sourceDescription": "A code for an unespecified concept",
+      "instanceShape": { "type": "string" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedCode", "codelistFromLeaf": true }
+    },
+    "QUANTITY": {
+      "$note": "A generic quantity with no unit (e.g. a financial ratio value). cbc:ResponseQuantity with NO unitCode.",
+      "sourceDescription": "A number representing a generic quantity with no unit specified.",
+      "instanceShape": { "type": "number" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseQuantity" }
+    },
+    "MINIMUM_QUANTITY": {
+      "$note": "Buyer REQUIREMENT: a minimum ratio. cbc:ExpectedValueNumeric per the BASE request.",
+      "sourceDescription": "Minimum ratio requirement",
+      "instanceShape": { "type": "number" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedValueNumeric" }
+    },
+    "CODE_COUNTRY": {
+      "$note": "First code-valued answer (C07). The response is a cbc:ResponseCode carrying the country code-list attributes; those attributes are the dated 'country' set in the codelist-attribute profile, NOT the 5.0.0 response-data-type set — the per-codelist version the C07 probe exists to prove. instanceShape is a scalar string (an ISO 3166-1 alpha-2 code); `codeList` marks it so the form derives the codelist.",
+      "sourceDescription": "Code identifying a country (Compulsory use of ISO 3166-1 alpha 2",
+      "instanceShape": { "type": "string", "codeList": "country" },
+      "responseXml": {
+        "kind": "scalar",
+        "element": "cac:ResponseValue/cbc:ResponseCode",
+        "codelist": "country"
+      }
+    },
+    "MINIMUM_AMOUNT": {
+      "sourceDescription": "The minimum amount the answer must have",
+      "instanceShape": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "number" },
+          "currency": { "type": "string", "codeList": "currency" }
+        },
+        "required": ["value", "currency"]
+      },
+      "requestXml": {
+        "kind": "amount",
+        "element": "cbc:MinimumAmount",
+        "text": { "instancePath": ["value"] },
+        "attributes": { "currencyID": { "instancePath": ["currency"] } }
+      }
+    },
+    "INDICATOR": {
+      "sourceDescription": "'true' or 'false' values representing 'Yes' affirmative or 'No' negative answers",
+      "instanceShape": { "type": "boolean" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedIndicator" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseIndicator" }
+    },
+    "PERIOD": {
+      "sourceDescription": "Period object as defined in UBL-2.1",
+      "instanceShape": {
+        "type": "object",
+        "properties": {
+          "startDate": { "type": "string", "format": "date" },
+          "endDate": { "type": "string", "format": "date" }
+        }
+      },
+      "instanceConstraints": {
+        "$note": "A period must carry at least one of start/end date (hand-authored anyOf).",
+        "anyOf": [{ "required": ["startDate"] }, { "required": ["endDate"] }]
+      },
+      "$note.requestXml": "A buyer REQUIREMENT period (C34 periods[].period, C36 amountRequirements[].period) is a cac:ApplicablePeriod directly under the cac:TenderingCriterionProperty, same object shape as the response side. Before this binding existed, PERIOD requirement leaves were silently dropped from the request mapping (they have no scalar Expected* element); the object kind round-trips start/end dates.",
+      "requestXml": {
+        "kind": "object",
+        "element": "cac:ApplicablePeriod",
+        "fields": {
+          "startDate": "cbc:StartDate",
+          "endDate": "cbc:EndDate"
+        }
+      },
+      "responseXml": {
+        "kind": "object",
+        "element": "cac:ApplicablePeriod",
+        "fields": {
+          "startDate": "cbc:StartDate",
+          "endDate": "cbc:EndDate"
+        }
+      }
+    },
+    "AMOUNT": {
+      "sourceDescription": "An Amount, and currency, as defined in UN/CEFACT's CCTS",
+      "instanceShape": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "number" },
+          "currency": { "type": "string", "codeList": "currency" }
+        },
+        "required": ["value", "currency"]
+      },
+      "requestXml": {
+        "kind": "amount",
+        "element": "cbc:ExpectedAmount",
+        "text": { "instancePath": ["value"] },
+        "attributes": { "currencyID": { "instancePath": ["currency"] } }
+      },
+      "responseXml": {
+        "kind": "amount",
+        "element": "cac:ResponseValue/cbc:ResponseAmount",
+        "text": { "instancePath": ["value"] },
+        "attributes": { "currencyID": { "instancePath": ["currency"] } }
+      }
+    },
+    "DATE": {
+      "sourceDescription": "Date values (format YYYY-MM-DD)",
+      "instanceShape": { "type": "string", "format": "date" },
+      "requestXml": { "kind": "scalar", "element": "cbc:ExpectedDate" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseDate" }
+    },
+    "ECONOMIC_OPERATOR_IDENTIFIER": {
+      "sourceDescription": "Code used to detect an identifier that refers to an Economic Operator",
+      "instanceShape": { "type": "string" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseID" }
+    },
+    "QUAL_IDENTIFIER": {
+      "$note": "A qualification identifier answer (C47 slc-abil-staff-qual 'Qualification number'). Response-only; a scalar identifier string, same UBL binding as ECONOMIC_OPERATOR_IDENTIFIER (cac:ResponseValue/cbc:ResponseID).",
+      "sourceDescription": "Code identifying an educational or professional qualifications held by the service provider or contractor",
+      "instanceShape": { "type": "string" },
+      "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseID" }
+    },
+    "EVIDENCE_IDENTIFIER": {
+      "sourceDescription": "Points at the instance of an evidence",
+      "instanceShape": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "url": { "type": "string" },
+            "identifier": { "type": "string" },
+            "description": { "type": "string" }
+          },
+          "required": ["id", "url"]
+        }
+      },
+      "responseXml": {
+        "kind": "reference",
+        "element": "cac:EvidenceSupplied/cbc:ID",
+        "key": ["id"],
+        "target": "evidence"
+      }
+    }
+  }
+}

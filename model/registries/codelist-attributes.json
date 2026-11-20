@@ -1,0 +1,118 @@
+{
+  "$comment": "Codelist-attribute profile. Fixed attribute sets the Schematron (common/sch/01-ESPD-common-cl-attributes.sch) requires on code elements, defined ONCE per codelist. The compiler stamps these onto any element whose encoding-profile entry names the matching codelist. Values are copied verbatim from the Schematron (several carry dated listVersionIDs). 'criterion-id' is not a Schematron codelist rule but the UBL identifier scheme attributes seen on every cbc:ID in ESPD-Request-BASE.xml; it is included here so the compiler has one place for all fixed attribute sets. TODO: this profile DUPLICATES the Schematron's attribute sets (copied verbatim, so two sources of truth). Generate one from the other (e.g. derive this profile from the Schematron/CVA, or generate the .sch from this profile) so they cannot drift.",
+  "source": {
+    "schematron": "../../validation/common/sch/01-ESPD-common-cl-attributes.sch",
+    "version": "5.0.0"
+  },
+  "codelists": {
+    "criterion-id": {
+      "$note": "UBL identifier scheme on every criterion/group/property cbc:ID (not a Schematron codelist rule; from ESPD-Request-BASE.xml).",
+      "schemeID": "criterion",
+      "schemeAgencyID": "OP",
+      "schemeVersionID": "5.0.0"
+    },
+    "criterion": {
+      "$note": "cbc:CriterionTypeCode",
+      "listName": "Criterion",
+      "listID": "http://publications.europa.eu/resource/authority/criterion",
+      "listVersionID": "20240612-0",
+      "listSchemeURI": "http://publications.europa.eu/resource/distribution/criterion/20240612-0/xml/gc/Criterion.gc",
+      "listURI": "http://publications.europa.eu/resource/dataset/criterion",
+      "listAgencyName": "Publications Office of the European Union",
+      "listAgencyID": "OP"
+    },
+    "criterion-element-type": {
+      "$note": "cbc:TypeCode. listAgencyID required by 04-ESPD-common-other-br.sch (not by 01-cl-attributes).",
+      "listName": "CriterionElementType",
+      "listID": "criterion-element-type",
+      "listAgencyID": "OP",
+      "listVersionID": "5.0.0",
+      "listSchemeURI": "https://raw.githubusercontent.com/OP-TED/ESPD-EDM/v5.0.0/codelists/gc/CriterionElementType.gc",
+      "listURI": "https://github.com/OP-TED/ESPD-EDM"
+    },
+    "response-data-type": {
+      "$note": "cac:TenderingCriterionProperty/cbc:ValueDataTypeCode. listAgencyID required by 04-ESPD-common-other-br.sch.",
+      "listName": "ResponseDataType",
+      "listID": "response-data-type",
+      "listAgencyID": "OP",
+      "listVersionID": "5.0.0",
+      "listSchemeURI": "https://raw.githubusercontent.com/OP-TED/ESPD-EDM/v5.0.0/codelists/gc/ResponseDataType.gc",
+      "listURI": "https://github.com/OP-TED/ESPD-EDM"
+    },
+    "property-group-type": {
+      "$note": "cac:TenderingCriterionPropertyGroup/cbc:PropertyGroupTypeCode. listAgencyID required by 04-ESPD-common-other-br.sch.",
+      "listName": "PropertyGroupType",
+      "listID": "property-group-type",
+      "listAgencyID": "OP",
+      "listVersionID": "5.0.0",
+      "listSchemeURI": "https://raw.githubusercontent.com/OP-TED/ESPD-EDM/v5.0.0/codelists/gc/PropertyGroupType.gc",
+      "listURI": "https://github.com/OP-TED/ESPD-EDM"
+    },
+    "country": {
+      "$note": "cac:Country/cbc:IdentificationCode. Used both inside a criterion (C07's CODE_COUNTRY) and in the document header (Part I buyer / Part II EO postal address). listAgencyID is NOT required by 01-ESPD-common-cl-attributes.sch (its country rule leaves it commented out) but IS required (fatal) by 04-ESPD-common-other-br.sch BR-OTH-01-20 on cbc:IdentificationCode — which only bites once a full document emits the element (the single-criterion splice reuses the BASE's own hand-written address). Value 'OP' matches ESPD-Request/Response-BASE.xml. Dated listVersionID differs from the 5.0.0 lists.",
+      "listName": "country",
+      "listID": "http://publications.europa.eu/resource/authority/country",
+      "listAgencyID": "OP",
+      "listVersionID": "20250618-0",
+      "listSchemeURI": "http://publications.europa.eu/resource/distribution/country/20250618-0/xml/gc/Country.gc",
+      "listURI": "http://publications.europa.eu/resource/dataset/country"
+    },
+    "currency": {
+      "$note": "cbc:ValueCurrencyCode (currency code list).",
+      "listName": "Currency",
+      "listID": "http://publications.europa.eu/resource/authority/currency",
+      "listVersionID": "20250618-0",
+      "listSchemeURI": "http://publications.europa.eu/resource/distribution/currency/20250618-0/xml/gc/Currency.gc",
+      "listURI": "http://publications.europa.eu/resource/dataset/currency"
+    },
+    "boolean-gui-control-type": {
+      "$note": "cbc:ExpectedCode for CODE_BOOLEAN (C29 'Threshold per year'). 01-cl-attributes.sch has no dedicated context for this list, so only the generic listID/listAgencyID/listVersionID (04-common-other-br.sch) apply; values copied from ESPD-Request-BASE.xml.",
+      "listID": "boolean-gui-control-type",
+      "listAgencyID": "OP",
+      "listVersionID": "5.0.0"
+    },
+    "financial-ratio-type": {
+      "$note": "cbc:ExpectedCode for CODE (C34 'Ratio Type'). Generic listID/listAgencyID/listVersionID from ESPD-Request-BASE.xml.",
+      "listID": "financial-ratio-type",
+      "listAgencyID": "OP",
+      "listVersionID": "5.0.0"
+    },
+    "occupation": {
+      "$note": "cbc:ExpectedCode for CODE (C25 'occupation'). A DIFFERENT codelist/agency/version from financial-ratio-type — the per-leaf CODE codelist case. A dated EU authority list; values from the XSLT (listAgencyID=EMPL).",
+      "listID": "http://publications.europa.eu/resource/authority/occupation",
+      "listAgencyID": "EMPL",
+      "listVersionID": "20221214-0"
+    },
+    "eo-role-type": {
+      "$note": "cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode (Part II EO role). Attributes from 01-ESPD-common-cl-attributes.sch (dated listVersionID 20211208-0).",
+      "listName": "EoRoleType",
+      "listID": "http://publications.europa.eu/resource/authority/eo-role-type",
+      "listVersionID": "20211208-0",
+      "listSchemeURI": "http://publications.europa.eu/resource/distribution/eo-role-type/20211208-0/xml/gc/EoRoleType.gc",
+      "listURI": "http://publications.europa.eu/resource/dataset/eo-role-type",
+      "listAgencyName": "Publications Office of the European Union",
+      "listAgencyID": "OP"
+    },
+    "economic-operator-size": {
+      "$note": "cac:EconomicOperatorParty/cac:Party/cbc:IndustryClassificationCode (Part II EO size). Dated listVersionID 20240612-0, from ESPD-Response-BASE.xml.",
+      "listID": "http://publications.europa.eu/resource/authority/economic-operator-size",
+      "listAgencyID": "OP",
+      "listVersionID": "20240612-0"
+    },
+    "procurement-procedure-type": {
+      "$note": "cbc:ProcedureCode (Part I Section C, procedure type). BR-SC-10 makes the ELEMENT mandatory (fatal) and BR-OTH-01-10/20/30 make listID/listAgencyID/listVersionID mandatory (fatal). CAVEAT: no .gc for this list is shipped in ESPD-EDM/codelists, and the CVA has no context for cbc:ProcedureCode — so code VALUES are neither enum-derivable nor validated. Attribute values taken from espd-tools/modules/espd_constants.cjs (versions 4.0.0/4.1.0); the 5.0.0 BASE sample still carries 3.3.0-era dummies ('Dummy_procurement-procedure-type', 'yyyymmdd-0').",
+      "listID": "http://publications.europa.eu/resource/authority/procurement-procedure-type",
+      "listAgencyID": "OP",
+      "listVersionID": "20250924-0"
+    },
+    "docrefcontent-type": {
+      "$note": "cac:AdditionalDocumentReference/cbc:DocumentTypeCode (Part I publication reference type). 01-ESPD-common-cl-attributes.sch (line 74) mandates listName/listID/listVersionID/listSchemeURI/listURI and does NOT require listAgencyID; but 04-ESPD-common-other-br.sch BR-OTH-01-20 (fatal) requires listAgencyID on cbc:DocumentTypeCode once a full document emits it. Value 'OP' per the Publications Office authority list (consistent with the other EU-authority lists here). Other values from the Schematron + DocrefcontentType.gc Identification block.",
+      "listName": "DocrefcontentType",
+      "listID": "http://publications.europa.eu/resource/authority/docrefcontent-type",
+      "listAgencyID": "OP",
+      "listVersionID": "20250319-0",
+      "listSchemeURI": "http://publications.europa.eu/resource/distribution/docrefcontent-type/20250319-0/xml/gc/DocrefcontentType.gc",
+      "listURI": "http://publications.europa.eu/resource/dataset/docrefcontent-type"
+    }
+  }
+}

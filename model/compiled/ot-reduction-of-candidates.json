@@ -1,0 +1,118 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "ot-reduction-of-candidates",
+  "partId": "V",
+  "criterion": {
+    "code": "staff-red",
+    "uuid": "51c39ba9-0444-4967-afe9-36f753b30175",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "1",
+        "condition": "always",
+        "requestpath": "C63_OT_staff-red/QG1",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C63_OT_staff-red/QG1/Q1",
+            "description": "Your answer?",
+            "id": "reduction-of-candidates.answer",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "answer"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..1",
+            "condition": "true",
+            "requestpath": "C63_OT_staff-red/QG1/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "DESCRIPTION",
+                "cardinality": "1",
+                "requestpath": "C63_OT_staff-red/QG1/QSG1/Q1",
+                "description": "Please describe them",
+                "id": "reduction-of-candidates.description",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "description"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C63_OT_staff-red/QG2",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C63_OT_staff-red/QG2/Q1",
+            "description": "Is this information available electronically?",
+            "id": "reduction-of-candidates.evidence-available-electronically",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "electronicEvidence",
+                "availableElectronically"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..1",
+            "condition": "true",
+            "requestpath": "C63_OT_staff-red/QG2/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "EVIDENCE_IDENTIFIER",
+                "cardinality": "1..n",
+                "requestpath": "C63_OT_staff-red/QG2/QSG1/Q1",
+                "description": "Evidence Supplied",
+                "id": "reduction-of-candidates.evidence-id",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "electronicEvidence",
+                    "evidence"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "reduction-of-candidates",
+    "tag": "C63_OT",
+    "instanceModel": {
+      "containerPath": [
+        "partV",
+        "otherCriteria"
+      ],
+      "key": {
+        "source": "id"
+      }
+    }
+  },
+  "hints": null
+}

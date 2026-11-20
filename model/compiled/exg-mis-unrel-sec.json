@@ -1,0 +1,126 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "exg-mis-unrel-sec",
+  "partId": "III",
+  "criterion": {
+    "code": "exg-mis-unrel-sec",
+    "uuid": "43de7a5f-2690-4096-9d42-eccbeed05980",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "structural",
+        "eaType": "SUBCRITERION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C67_exg-mis-unrel-sec/SBC1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "LEGISLATION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C67_exg-mis-unrel-sec/L1",
+        "children": []
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "QUESTION_GROUP",
+        "cardinality": "1",
+        "condition": "always",
+        "requestpath": "C67_exg-mis-unrel-sec/QG1",
+        "children": [
+          {
+            "nodeKind": "question",
+            "valueType": "INDICATOR",
+            "cardinality": "1",
+            "requestpath": "C67_exg-mis-unrel-sec/QG1/Q1",
+            "description": "Your answer?",
+            "id": "exg-mis-unrel-sec.answer",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "answer"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "QUESTION_SUBGROUP",
+            "cardinality": "0..n",
+            "condition": "always",
+            "requestpath": "C67_exg-mis-unrel-sec/QG1/QSG1",
+            "children": [
+              {
+                "nodeKind": "question",
+                "valueType": "INDICATOR",
+                "cardinality": "1",
+                "requestpath": "C67_exg-mis-unrel-sec/QG1/QSG1/Q1",
+                "description": "Is this information available electronically?",
+                "id": "exg-mis-unrel-sec.evidence-available-electronically",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "evidenceBlocks",
+                    "availableElectronically"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "0..1",
+                "condition": "true",
+                "requestpath": "C67_exg-mis-unrel-sec/QG1/QSG1/QSG1",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "EVIDENCE_IDENTIFIER",
+                    "cardinality": "1..n",
+                    "requestpath": "C67_exg-mis-unrel-sec/QG1/QSG1/QSG1/Q1",
+                    "description": "Evidence Supplied",
+                    "id": "exg-mis-unrel-sec.evidence-id",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "evidenceBlocks",
+                        "evidence"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "id": "exg-mis-unrel-sec.evidence-blocks",
+            "instanceBinding": {
+              "side": "response",
+              "path": [
+                "evidenceBlocks"
+              ],
+              "repeatable": true
+            }
+          }
+        ]
+      }
+    ],
+    "id": "exg-mis-unrel-sec",
+    "instanceModel": {
+      "containerPath": [
+        "partIII",
+        "exclusionGrounds"
+      ],
+      "key": {
+        "source": "code"
+      }
+    },
+    "arrayContainers": [
+      {
+        "side": "response",
+        "path": [
+          "evidenceBlocks"
+        ]
+      }
+    ]
+  },
+  "hints": null
+}

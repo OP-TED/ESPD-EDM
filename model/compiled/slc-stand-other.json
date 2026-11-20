@@ -1,0 +1,496 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "slc-stand-other",
+  "partId": "IV",
+  "criterion": {
+    "code": "slc-stand-other",
+    "uuid": "ab0e7f2e-6418-40e2-8870-6713123e41ad",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "structural",
+        "eaType": "LOT_REFERENCE",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C36_slc-stand-other/PPLR1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "SUBCRITERION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C36_slc-stand-other/SBC1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "LEGISLATION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C36_slc-stand-other/L1",
+        "children": []
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "REQUIREMENT_GROUP",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C36_slc-stand-other/RG1",
+        "children": [
+          {
+            "nodeKind": "requirement",
+            "valueType": "LOT_IDENTIFIER",
+            "cardinality": "1..n",
+            "requestpath": "C36_slc-stand-other/RG1/RQ1",
+            "description": "LOT Identifier",
+            "id": "slc-stand-other.lot-identifiers",
+            "instanceBinding": {
+              "side": "requirement",
+              "path": [
+                "lotIdentifiers"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "REQUIREMENT_SUBGROUP",
+            "cardinality": "1..n",
+            "condition": "always",
+            "requestpath": "C36_slc-stand-other/RG1/RSG1",
+            "children": [
+              {
+                "nodeKind": "structural",
+                "eaType": "CAPTION",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C36_slc-stand-other/RG1/RSG1/CA1",
+                "children": [],
+                "caption": true,
+                "description": "CA1"
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "REQUIREMENT_SUBGROUP",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1",
+                "children": [
+                  {
+                    "nodeKind": "requirement",
+                    "valueType": "CODE_BOOLEAN",
+                    "cardinality": "1",
+                    "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RQ1",
+                    "description": "Select the type of requirement (Economic or Financial; Rating; Descriptive)",
+                    "id": "slc-stand-other.requirement-type",
+                    "instanceBinding": {
+                      "side": "requirement",
+                      "path": [
+                        "requirementType"
+                      ]
+                    },
+                    "requestValue": {
+                      "element": "cbc:ExpectedCode",
+                      "const": "RADIO_BUTTON_TRUE",
+                      "attributes": {
+                        "listID": "boolean-gui-control-type"
+                      }
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "REQUIREMENT_SUBGROUP",
+                    "cardinality": "0..n",
+                    "condition": "always",
+                    "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1",
+                    "children": [
+                      {
+                        "nodeKind": "requirement",
+                        "valueType": "DESCRIPTION",
+                        "cardinality": "1",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/RQ1",
+                        "description": "Description of the economic or financial requirement",
+                        "id": "slc-stand-other.amount-description",
+                        "instanceBinding": {
+                          "side": "requirement",
+                          "path": [
+                            "amountRequirements",
+                            "description"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "requirement",
+                        "valueType": "MINIMUM_AMOUNT",
+                        "cardinality": "1",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/RQ2",
+                        "description": "Minimum amount",
+                        "id": "slc-stand-other.amount-minimum",
+                        "instanceBinding": {
+                          "side": "requirement",
+                          "path": [
+                            "amountRequirements",
+                            "minimumAmount"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "requirement",
+                        "valueType": "PERIOD",
+                        "cardinality": "1",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/RQ3",
+                        "description": "Start date; End date",
+                        "id": "slc-stand-other.amount-period",
+                        "instanceBinding": {
+                          "side": "requirement",
+                          "path": [
+                            "amountRequirements",
+                            "period"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "condition": "always",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "AMOUNT",
+                            "cardinality": "1",
+                            "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/QSG1/Q1",
+                            "description": "Amount",
+                            "id": "slc-stand-other.amount-answer",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "amountRequirements",
+                                "amount"
+                              ]
+                            }
+                          },
+                          {
+                            "nodeKind": "group",
+                            "eaType": "QUESTION_SUBGROUP",
+                            "cardinality": "1..n",
+                            "condition": "always",
+                            "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/QSG1/QSG1",
+                            "children": [
+                              {
+                                "nodeKind": "question",
+                                "valueType": "INDICATOR",
+                                "cardinality": "1",
+                                "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/QSG1/QSG1/Q1",
+                                "description": "Is this information available electronically?",
+                                "id": "slc-stand-other.amount-evidence-available-electronically",
+                                "instanceBinding": {
+                                  "side": "response",
+                                  "path": [
+                                    "amountRequirements",
+                                    "evidenceAvailableElectronically"
+                                  ]
+                                }
+                              },
+                              {
+                                "nodeKind": "group",
+                                "eaType": "QUESTION_SUBGROUP",
+                                "cardinality": "0..1",
+                                "condition": "true",
+                                "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/QSG1/QSG1/QSG1",
+                                "children": [
+                                  {
+                                    "nodeKind": "question",
+                                    "valueType": "EVIDENCE_IDENTIFIER",
+                                    "cardinality": "1..n",
+                                    "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG1/QSG1/QSG1/QSG1/Q1",
+                                    "description": "Evidence Supplied",
+                                    "id": "slc-stand-other.amount-evidence-id",
+                                    "instanceBinding": {
+                                      "side": "response",
+                                      "path": [
+                                        "amountRequirements",
+                                        "evidence"
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "id": "slc-stand-other.amount-requirements",
+                    "instanceBinding": {
+                      "side": "requirement",
+                      "path": [
+                        "amountRequirements"
+                      ],
+                      "repeatable": true
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "REQUIREMENT_SUBGROUP",
+                    "cardinality": "0..1",
+                    "condition": "always",
+                    "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2",
+                    "children": [
+                      {
+                        "nodeKind": "requirement",
+                        "valueType": "DESCRIPTION",
+                        "cardinality": "1",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/RQ1",
+                        "description": "Rating scheme description",
+                        "id": "slc-stand-other.rating-description",
+                        "instanceBinding": {
+                          "side": "requirement",
+                          "path": [
+                            "rating",
+                            "description"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "requirement",
+                        "valueType": "MINIMUM_QUANTITY",
+                        "cardinality": "1",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/RQ2",
+                        "description": "Minimum rating",
+                        "id": "slc-stand-other.rating-minimum",
+                        "instanceBinding": {
+                          "side": "requirement",
+                          "path": [
+                            "rating",
+                            "minimumRating"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "condition": "always",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "QUANTITY",
+                            "cardinality": "1",
+                            "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/QSG1/Q1",
+                            "description": "Rating",
+                            "id": "slc-stand-other.rating-answer",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "rating",
+                                "rating"
+                              ]
+                            }
+                          },
+                          {
+                            "nodeKind": "group",
+                            "eaType": "QUESTION_SUBGROUP",
+                            "cardinality": "1..n",
+                            "condition": "always",
+                            "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/QSG1/QSG1",
+                            "children": [
+                              {
+                                "nodeKind": "question",
+                                "valueType": "INDICATOR",
+                                "cardinality": "1",
+                                "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/QSG1/QSG1/Q1",
+                                "description": "Is this information available electronically?",
+                                "id": "slc-stand-other.rating-evidence-available-electronically",
+                                "instanceBinding": {
+                                  "side": "response",
+                                  "path": [
+                                    "rating",
+                                    "evidenceAvailableElectronically"
+                                  ]
+                                }
+                              },
+                              {
+                                "nodeKind": "group",
+                                "eaType": "QUESTION_SUBGROUP",
+                                "cardinality": "0..1",
+                                "condition": "true",
+                                "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/QSG1/QSG1/QSG1",
+                                "children": [
+                                  {
+                                    "nodeKind": "question",
+                                    "valueType": "EVIDENCE_IDENTIFIER",
+                                    "cardinality": "1..n",
+                                    "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG2/QSG1/QSG1/QSG1/Q1",
+                                    "description": "Evidence Supplied",
+                                    "id": "slc-stand-other.rating-evidence-id",
+                                    "instanceBinding": {
+                                      "side": "response",
+                                      "path": [
+                                        "rating",
+                                        "evidence"
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "REQUIREMENT_SUBGROUP",
+                    "cardinality": "0..1",
+                    "condition": "always",
+                    "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3",
+                    "children": [
+                      {
+                        "nodeKind": "requirement",
+                        "valueType": "DESCRIPTION",
+                        "cardinality": "1",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3/RQ1",
+                        "description": "Descriptive requirement",
+                        "id": "slc-stand-other.descriptive-requirement",
+                        "instanceBinding": {
+                          "side": "requirement",
+                          "path": [
+                            "descriptive",
+                            "requirement"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "condition": "always",
+                        "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "DESCRIPTION",
+                            "cardinality": "1",
+                            "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3/QSG1/Q1",
+                            "description": "Provide required descriptive information",
+                            "id": "slc-stand-other.descriptive-answer",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "descriptive",
+                                "answer"
+                              ]
+                            }
+                          },
+                          {
+                            "nodeKind": "group",
+                            "eaType": "QUESTION_SUBGROUP",
+                            "cardinality": "1..n",
+                            "condition": "always",
+                            "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3/QSG1/QSG1",
+                            "children": [
+                              {
+                                "nodeKind": "question",
+                                "valueType": "INDICATOR",
+                                "cardinality": "1",
+                                "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3/QSG1/QSG1/Q1",
+                                "description": "Is this information available electronically?",
+                                "id": "slc-stand-other.descriptive-evidence-available-electronically",
+                                "instanceBinding": {
+                                  "side": "response",
+                                  "path": [
+                                    "descriptive",
+                                    "evidenceAvailableElectronically"
+                                  ]
+                                }
+                              },
+                              {
+                                "nodeKind": "group",
+                                "eaType": "QUESTION_SUBGROUP",
+                                "cardinality": "0..1",
+                                "condition": "true",
+                                "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3/QSG1/QSG1/QSG1",
+                                "children": [
+                                  {
+                                    "nodeKind": "question",
+                                    "valueType": "EVIDENCE_IDENTIFIER",
+                                    "cardinality": "1..n",
+                                    "requestpath": "C36_slc-stand-other/RG1/RSG1/RSG1/RSG3/QSG1/QSG1/QSG1/Q1",
+                                    "description": "Evidence Supplied",
+                                    "id": "slc-stand-other.descriptive-evidence-id",
+                                    "instanceBinding": {
+                                      "side": "response",
+                                      "path": [
+                                        "descriptive",
+                                        "evidence"
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "slc-stand-other",
+    "instanceModel": {
+      "containerPath": [
+        "partIV",
+        "selectionCriteria"
+      ],
+      "key": {
+        "source": "code"
+      }
+    },
+    "branchSelectors": {
+      "$note": "Task 7.x — enum-selector visibleWhen for mutually-exclusive branches. Maps a branch's top instance-path segment to the requirementType value that reveals it. The form generator emits visibleWhen { path: <requirementType dataPath>, equals: <value> } for every field under that branch.",
+      "$TODO.reviewSelectorValues": "The branch values '[Economic or Financial]' / '[Rating]' / '[Descriptive]' are the RAW EA group codes as exported (bracketed), which look like placeholder labels rather than final enum code values. REVIEW whether these are the intended selector values or whether the EA model should carry proper CODE_BOOLEAN enum codes (and whether a dedicated codelist defines them). If the EA codes change, update these values. See tasks.md 'C36 selector values (TODO)'.",
+      "selector": "slc-stand-other.requirement-type",
+      "branches": {
+        "amountRequirements": "[Economic or Financial]",
+        "rating": "[Rating]",
+        "descriptive": "[Descriptive]"
+      }
+    },
+    "arrayContainers": [
+      {
+        "side": "requirement",
+        "path": [
+          "amountRequirements"
+        ]
+      },
+      {
+        "side": "response",
+        "path": [
+          "amountRequirements"
+        ]
+      }
+    ]
+  },
+  "hints": {
+    "$comment": "C36 (slc-stand-other) hints. leafShapes REPLACES the value-type instanceShape for the 'requirement type' leaf: its EA value type CODE_BOOLEAN would derive a boolean-gui-control-type string enum, but it is a 3-way branch discriminator whose valid values are the branchSelectors branch codes. The instance stores one of these; it is a UI-only discriminator (export emits the BASE constant RADIO_BUTTON_TRUE, import infers it from the populated branch). The shared CODE_BOOLEAN value type is untouched.",
+    "leafShapes": {
+      "slc-stand-other.requirement-type": {
+        "type": "string",
+        "enum": [
+          "[Economic or Financial]",
+          "[Rating]",
+          "[Descriptive]"
+        ]
+      }
+    }
+  }
+}
