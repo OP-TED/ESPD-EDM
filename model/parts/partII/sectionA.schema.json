@@ -1,0 +1,69 @@
+{
+  "$id": "partII-sectionA.schema.json",
+  "$comment": "Part II Section A — the economic operator (EO) identity. Hand-authored (administrative, not a criterion). Field set is the Schematron-mandated minimum for the RESPONSE (BR-RESP-10-02..07, all error-level): role, identifier, name, size, country. The EA I71 'info-eo' block also carries optional address/contact/website and a QualifyingParty — deferred (see partII/README.md). NB: Part II Section A ALSO contains four OT* criteria (SME size question, reserved participation, official-list registration, group participation) which are compiler territory, NOT modelled here.",
+  "title": "ESPD Part II Section A — Economic Operator",
+  "type": "object",
+  "properties": {
+    "partII": {
+      "type": "object",
+      "properties": {
+        "economicOperator": { "$ref": "#/$defs/economicOperator" }
+      },
+      "required": ["economicOperator"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["partII"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "economicOperator": {
+      "type": "object",
+      "description": "Identity of the economic operator. Maps to cac:EconomicOperatorParty. The role lives on cac:EconomicOperatorRole; the rest on the nested cac:Party.",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "The EO's function in this bid (sole tenderer, group leader/member, other-entity-relied-on, subcontractor). Mandatory (BR-RESP-10-02/03, error). Maps to cac:EconomicOperatorRole/cbc:RoleCode (eo-role-type).",
+          "$codelist": "eo-role-type",
+          "enum": ["group-mem", "oeron", "subcont", "sole-tenderer", "group-lead"]
+        },
+        "name": {
+          "type": "string",
+          "description": "Official name of the economic operator. Mandatory (BR-RESP-10-05, error). Maps to cac:Party/cac:PartyName/cbc:Name."
+        },
+        "size": {
+          "type": "string",
+          "description": "Size of the economic operator. Mandatory (BR-RESP-10-06, error). Maps to cac:Party/cbc:IndustryClassificationCode (economic-operator-size).",
+          "$codelist": "economic-operator-size",
+          "enum": ["sme", "micro", "small", "medium", "large"]
+        },
+        "country": {
+          "type": "string",
+          "description": "Country of the economic operator, as a Country code. Mandatory (BR-RESP-10-07, error). Maps to cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode.",
+          "$codelist": "country"
+        },
+        "identifier": { "$ref": "#/$defs/eoIdentifier" },
+        "lot": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The single procurement lot this response applies to (a LOT-000n id declared by the buyer in Part I). Mandatory (BR-LOT-10, fatal: a Response specifies EXACTLY ONE lot). Maps to the Response's one cac:ProcurementProjectLot/cbc:ID; the document composer emits exactly this lot."
+        }
+      },
+      "required": ["role", "name", "size", "country", "identifier", "lot"],
+      "additionalProperties": false
+    },
+
+    "eoIdentifier": {
+      "type": "object",
+      "description": "An identifier that identifies the economic operator. Mandatory (BR-RESP-10-04, error). Maps to cac:Party/cac:PartyIdentification/cbc:ID with a mandatory @schemeAgencyID (BR-OTH-02, fatal). The Response sample carries no @schemeID/EOIDType here and there is no scheme to derive an agency from, so @schemeAgencyID is supplied as a constant 'OP' at export, not stored here.",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The identifier value (e.g. 'AD123456789'). Maps to the text of cbc:ID."
+        }
+      },
+      "required": ["value"],
+      "additionalProperties": false
+    }
+  }
+}

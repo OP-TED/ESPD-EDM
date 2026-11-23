@@ -1,0 +1,20 @@
+{
+  "$comment": "Part VI — XML mapping for the signature block, into UBL cac:Signature/cac:SignatoryParty of the RESPONSE document (EA I73 'info-signature'). A single optional field: the signatory party's physical-location name. CAVEAT: no Schematron/sample reference exists for this block (see sectionA.schema.json).",
+
+  "target": {
+    "root": "QualificationApplicationResponse",
+    "namespaces": {
+      "": "urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2",
+      "cac": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+      "cbc": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    }
+  },
+
+  "rules": [
+    {
+      "$comment": "Signatory party physical-location name (EA I73 SIG1/SP1/PL1 -> cbc:Name).",
+      "from": "partVI.signatory.physicalLocationName",
+      "to": "cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cbc:Name"
+    }
+  ]
+}

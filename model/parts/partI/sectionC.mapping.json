@@ -1,0 +1,48 @@
+{
+  "$comment": "Part I Section C — XML mapping for the procurement procedure and project. Note the three different UBL homes: the procedure fields are DOCUMENT-HEADER elements (cbc:ProcedureCode, cbc:ContractFolderID), the project is a cac:ProcurementProject aggregate, and the lots are repeated cac:ProcurementProjectLot wrappers. Attribute sets are Schematron-mandated: BR-OTH-01 (3 code attributes on ProcedureCode), BR-OTH-02 (@schemeAgencyID on ContractFolderID and on each lot cbc:ID).",
+
+  "target": {
+    "root": "QualificationApplicationRequest",
+    "namespaces": {
+      "": "urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2",
+      "cac": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+      "cbc": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    }
+  },
+
+  "rules": [
+    {
+      "$comment": "BR-OTH-02 (fatal) — the buyer's file reference. @schemeAgencyID names the agency owning the reference numbering scheme; the file reference carries no scheme field to derive it from (it is the buyer's own internal reference), so it resolves to the DEFAULT of the 'identifier-scheme-agency' profile (the published scheme-agency-profile registry (model/generated/registries/scheme-agency-profile.json) → 'OP'). Not user-entered; no `path` means the default applies.",
+      "from": "partI.procedure.fileReference.value",
+      "to": "cbc:ContractFolderID",
+      "attributes": {
+        "schemeAgencyID": { "fromMap": { "profile": "identifier-scheme-agency" } }
+      }
+    },
+    {
+      "$comment": "BR-SC-10 (fatal) — the procedure type MUST be present. BR-OTH-01 (fatal) requires listID/listAgencyID/listVersionID, supplied by expanding the procurement-procedure-type shorthand.",
+      "from": "partI.procedure.procedureType",
+      "to": "cbc:ProcedureCode",
+      "attributes": { "listID": "procurement-procedure-type" }
+    },
+    {
+      "$comment": "cac:ProcurementProject — short title.",
+      "from": "partI.project.name",
+      "to": "cac:ProcurementProject/cbc:Name"
+    },
+    {
+      "$comment": "cac:ProcurementProject — description.",
+      "from": "partI.project.description",
+      "to": "cac:ProcurementProject/cbc:Description"
+    },
+    {
+      "$comment": "One repeated cac:ProcurementProjectLot per lot id. The lot cbc:ID carries the criterion identifier scheme ('criterion' shorthand -> schemeID/schemeAgencyID/schemeVersionID), matching ESPD-Request-BASE.xml. Selection criteria reference these ids (BR-LOT-41).",
+      "records": "cac:ProcurementProjectLot",
+      "forEach": "partI.lots",
+      "item": {
+        "path": "cbc:ID",
+        "attributes": { "schemeID": "criterion" }
+      }
+    }
+  ]
+}

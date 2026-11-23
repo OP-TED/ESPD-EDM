@@ -1,0 +1,31 @@
+{
+  "$id": "partVI-sectionA.schema.json",
+  "$comment": "Part VI — Concluding statements / signature (EA I73 'info-signature'). Hand-authored (administrative INFORMATION block, not a criterion). Response-only: it lives under cac:Signature of the QualificationApplicationResponse. CAVEAT: no Schematron rule and no instance in ESPD-Response-BASE.xml constrain or exemplify this block; the shape is derived from the EA I73 model (SIGNATURE 0..1 -> SignatoryParty 0..1 -> PhysicalLocation 0..1, whose only leaf is cbc:Name) and UBL 2.4 SignatureType. The whole block, and every field in it, is OPTIONAL. REVIEW against a real signed instance when one is available (same situation Part I §A / Part II §B were in before samples existed).",
+  "title": "ESPD Part VI — Signature",
+  "type": "object",
+  "properties": {
+    "partVI": {
+      "type": "object",
+      "properties": {
+        "signatory": { "$ref": "#/$defs/signatory" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["partVI"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "signatory": {
+      "type": "object",
+      "description": "The signatory of the ESPD response. Maps to cac:Signature/cac:SignatoryParty (EA I73 SIG1/SP1, both 0..1). The EA model exposes exactly one leaf under it: the signatory party's physical-location name. Modelled as a single optional field; the signatory object itself is optional (an unsigned response is structurally valid).",
+      "properties": {
+        "physicalLocationName": {
+          "type": "string",
+          "description": "Name of the physical location of the signatory party (e.g. the place of signing). Maps to cac:SignatoryParty/cac:PhysicalLocation/cbc:Name (EA I73 SIG1/SP1/PL1)."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -13,21 +13,22 @@
       "sha256": "06a86dfe1899f6844e75f52e9d1cd23e30dfe18d4804271509b709a29854f049"
     },
     "enrichment": {
-      "sha256": "f93592df1a58990bad1de0ae3783e742791f66876f22e4327cd17339c0a6735c",
-      "files": 71
+      "sha256": "da0bc7f78ba85fe235f17e7a85774091bd5183af834292eb65e5bd0603855d8f",
+      "files": 99
     },
     "valueTypeSource": {
       "shortName": "ResponseDataType",
       "version": "5.0.0"
     },
-    "sourceRef": "espd-conceptual-model@09cdb4a espd-tools@0c9b266 (local run; enrichment/tools have uncommitted changes)"
+    "sourceRef": "espd-conceptual-model@81c3529 espd-tools@64b8a8e (local run; enrichment/tools have uncommitted changes)"
   },
   "counts": {
     "criteria": 62,
     "valueTypes": 21,
     "instanceDataFiles": 124,
     "xmlMappingFiles": 124,
-    "compiledFiles": 62
+    "compiledFiles": 62,
+    "partSections": 6
   },
   "criteria": [
     {
@@ -1545,12 +1546,75 @@
       "usedBy": 4
     }
   ],
+  "parts": [
+    {
+      "part": "I",
+      "manifest": "parts/partI/index.json",
+      "sections": [
+        {
+          "id": "A",
+          "schema": "parts/partI/sectionA.schema.json",
+          "example": "parts/partI/sectionA.example.json",
+          "mapping": "parts/partI/sectionA.mapping.json",
+          "form": "parts/partI/sectionA.form.json"
+        },
+        {
+          "id": "B",
+          "schema": "parts/partI/sectionB.schema.json",
+          "example": "parts/partI/sectionB.example.json",
+          "mapping": "parts/partI/sectionB.mapping.json",
+          "form": "parts/partI/sectionB.form.json"
+        },
+        {
+          "id": "C",
+          "schema": "parts/partI/sectionC.schema.json",
+          "example": "parts/partI/sectionC.example.json",
+          "mapping": "parts/partI/sectionC.mapping.json",
+          "form": "parts/partI/sectionC.form.json"
+        }
+      ]
+    },
+    {
+      "part": "II",
+      "manifest": "parts/partII/index.json",
+      "sections": [
+        {
+          "id": "A",
+          "schema": "parts/partII/sectionA.schema.json",
+          "example": "parts/partII/sectionA.example.json",
+          "mapping": "parts/partII/sectionA.mapping.json",
+          "form": "parts/partII/sectionA.form.json"
+        },
+        {
+          "id": "B",
+          "schema": "parts/partII/sectionB.schema.json",
+          "example": "parts/partII/sectionB.example.json",
+          "mapping": "parts/partII/sectionB.mapping.json",
+          "form": "parts/partII/sectionB.form.json"
+        }
+      ]
+    },
+    {
+      "part": "VI",
+      "manifest": "parts/partVI/index.json",
+      "sections": [
+        {
+          "id": "A",
+          "schema": "parts/partVI/sectionA.schema.json",
+          "example": "parts/partVI/sectionA.example.json",
+          "mapping": "parts/partVI/sectionA.mapping.json",
+          "form": "parts/partVI/sectionA.form.json"
+        }
+      ]
+    }
+  ],
   "registries": [
     "registries/codelist-attributes.json",
     "registries/codelist-governance.json",
     "registries/encoding-profile.json",
     "registries/roles.json",
     "registries/scheme-agency-profile.json",
+    "registries/ui-hints.json",
     "registries/value-types.json"
   ]
 }

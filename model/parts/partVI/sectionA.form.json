@@ -1,0 +1,42 @@
+{
+  "$comment": "Part VI — form lens for the signature block. A single optional field, filled by the economic operator in the response. Nothing is Schematron-mandated; the block and its one field are optional.",
+  "part": "VI",
+  "section": "A",
+  "title": "Signature",
+  "titleKey": "section.title.VI.A",
+  "description": "Concluding signature of the economic operator's declaration.",
+  "descriptionKey": "partVI.sectionA.description",
+  "filledBy": "economicOperator",
+
+  "fields": [
+    {
+      "kind": "caption",
+      "dataPath": "partVI.declaration.accuracy",
+      "labelKey": "partVI.declaration.accuracy",
+      "label": "The economic operator formally declares that the information stated under Parts II – V above is accurate and correct and that it has been set out in full awareness of the consequences of serious misrepresentation.",
+      "description": "Concluding declaration (1/3): accuracy of the information. Verbatim from Regulation (EU) 2016/7, Annex 2, Part VI."
+    },
+    {
+      "kind": "caption",
+      "dataPath": "partVI.declaration.evidence",
+      "labelKey": "partVI.declaration.evidence",
+      "label": "The economic operator formally declares to be able, upon request and without delay, to provide the certificates and other forms of documentary evidence referred to, except where: (a) the contracting authority or contracting entity has the possibility of obtaining the supporting documentation concerned directly by accessing a national database in any Member State that is available free of charge (on condition that the economic operator has provided the necessary information (web address, issuing authority or body, precise reference of the documentation) allowing the contracting authority or contracting entity to do so; where required, this must be accompanied by the relevant consent to such access), or (b) as of 18 October 2018 at the latest (depending on the national implementation of the second subparagraph of Article 59(5) of Directive 2014/24/EU), the contracting authority or contracting entity already possesses the documentation concerned.",
+      "description": "Concluding declaration (2/3): ability to provide evidence on request. Verbatim from Regulation (EU) 2016/7, Annex 2, Part VI."
+    },
+    {
+      "kind": "caption",
+      "dataPath": "partVI.declaration.consent",
+      "labelKey": "partVI.declaration.consent",
+      "label": "The economic operator formally consents to the contracting authority or contracting entity as set out in Part I gaining access to documents supporting the information, which has been provided in Part III and Part IV of this European Single Procurement Document, for the purposes of the procurement procedure as set out in Part I.",
+      "description": "Concluding declaration (3/3): consent to document access. Verbatim from Regulation (EU) 2016/7, Annex 2, Part VI."
+    },
+    {
+      "dataPath": "partVI.signatory.physicalLocationName",
+      "labelKey": "partVI.signatory.physicalLocationName",
+      "label": "Place of signing",
+      "uiType": "text",
+      "required": false,
+      "description": "Name of the physical location of the signatory party (e.g. the place of signing). Date, place and, where required, signature per Regulation (EU) 2016/7, Annex 2, Part VI — only the place is modelled for now."
+    }
+  ]
+}

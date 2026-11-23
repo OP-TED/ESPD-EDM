@@ -1,0 +1,62 @@
+{
+  "$id": "partI-sectionB.schema.json",
+  "$comment": "Part I Section B — contracting authority (buyer). The identity of the procurer. Hand-authored (not compiler-generated): Part I is administrative data, not a criterion. The field set matches the Schematron-mandated minimum (BR-REQ-20-02..04): official name (fatal), country (fatal), identifier (warning). Address/contact/URIs are optional in the Schematron and omitted here.",
+  "title": "ESPD Part I Section B — Contracting Authority",
+  "type": "object",
+  "properties": {
+    "partI": {
+      "type": "object",
+      "properties": {
+        "contractingAuthority": {
+          "$ref": "#/$defs/contractingAuthority"
+        }
+      },
+      "required": ["contractingAuthority"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["partI"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "contractingAuthority": {
+      "type": "object",
+      "description": "Identity of the procurer (PI02). Maps to cac:ContractingParty/cac:Party.",
+      "properties": {
+        "officialName": {
+          "type": "string",
+          "description": "Official name of the contracting authority or contracting entity. Mandatory (BR-REQ-20-02, fatal). Maps to cac:PartyName/cbc:Name."
+        },
+        "country": {
+          "type": "string",
+          "description": "Country of the contracting authority, as a Country codelist code. Mandatory (BR-REQ-20-03, fatal). Maps to cac:PostalAddress/cac:Country/cbc:IdentificationCode. The 341 codes from Country.gc are validated by the test (too many to inline as an enum); the CVA validates the value at the XML layer.",
+          "$codelist": "country"
+        },
+        "identifier": {
+          "$ref": "#/$defs/partyIdentifier"
+        }
+      },
+      "required": ["officialName", "country"],
+      "additionalProperties": false
+    },
+
+    "partyIdentifier": {
+      "type": "object",
+      "description": "A structured party identifier carrying both the value and the scheme it belongs to. Maps to cac:PartyIdentification/cbc:ID (value) with @schemeID (scheme). The Schematron recommends at least one identifier (BR-REQ-20-04, warning) but does not make it fatal. The mandatory @schemeAgencyID (BR-OTH-02) is DERIVED from the scheme at export (VAT→VIES, …; OP otherwise), not stored here.",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The identifier value (e.g. 'B82387770'). Maps to the text content of cbc:ID."
+        },
+        "scheme": {
+          "type": "string",
+          "description": "The identifier scheme from EOIDType.gc. Maps to @schemeID on cbc:ID. The CVA (01-ESPD-codelist-values) validates this value against EOIDType.gc (case-insensitive). The export-time @schemeAgencyID is derived from this value.",
+          "$codelist": "EOIDType",
+          "enum": ["NATIONAL", "LEI", "BRIS", "DUNS", "VAT"]
+        }
+      },
+      "required": ["value", "scheme"],
+      "additionalProperties": false
+    }
+  }
+}

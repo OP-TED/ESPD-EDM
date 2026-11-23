@@ -1,0 +1,30 @@
+{
+  "$comment": "UI-hints registry. The allowed vocabulary of declarative presentation affordances a part/section form field may carry in its `uiHints` block, plus the contract for each. These are PRESENTATION hints over the clean instance-data model — they never change the data shape (dataPath/uiType/codelist) and are safe for a renderer to ignore. enrichment/validate.mjs (and the model compiler) validate every field `uiHints` against this registry. Keep this list closed so a typo'd hint fails the build rather than silently doing nothing.",
+
+  "lookups": {
+    "ted-notice": {
+      "$comment": "A 'look up from TED' affordance: the field value (a TED notice number or a notice URL) is used to fetch the published notice and prefill Part I. Replaces a hard-coded lookup that keyed off fixed contentpaths; here it is declared on the model field and the renderer stays generic. Regulation 2016/7 Part I anticipates this auto-retrieval for OJEU-published procedures.",
+      "label": "Look up",
+      "labelKey": "uiHint.lookup.ted-notice.label",
+      "reads": {
+        "$comment": "Which kind of value the field carries, so the client knows how to resolve it against the TED API.",
+        "inputKinds": ["notice-number", "notice-url"]
+      },
+      "prefills": {
+        "$comment": "Instance dataPaths the lookup result may populate on success. The renderer writes resolved values here (leaving them editable). Mirrors the fields a TED notice carries that map onto Part I Sections B and C.",
+        "dataPaths": [
+          "partI.contractingAuthority.officialName",
+          "partI.contractingAuthority.country",
+          "partI.procedure.procedureType",
+          "partI.procedure.fileReference.value",
+          "partI.project.name",
+          "partI.project.description"
+        ]
+      },
+      "failureMode": {
+        "$comment": "When the notice cannot be fetched (offline, unknown number), the prefilled fields MUST remain manually editable — the lookup is a convenience, never a gate.",
+        "fieldsRemainEditable": true
+      }
+    }
+  }
+}

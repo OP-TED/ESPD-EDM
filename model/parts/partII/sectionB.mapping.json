@@ -1,0 +1,46 @@
+{
+  "$comment": "Part II Section B — XML mapping for power(s) of attorney, into UBL cac:PowerOfAttorney under cac:EconomicOperatorParty/cac:Party of the RESPONSE document. One repeated cac:PowerOfAttorney per array item (aggregate-record forEach): Description + the AgentParty (name / identifier / country). Field `to` paths are relative to each PowerOfAttorney record. CAVEAT: no Schematron/sample reference exists for this block (see sectionB.schema.json).",
+
+  "target": {
+    "root": "QualificationApplicationResponse",
+    "namespaces": {
+      "": "urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationResponse-2",
+      "cac": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+      "cbc": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    }
+  },
+
+  "rules": [
+    {
+      "$comment": "One cac:PowerOfAttorney per array item; fields are relative to the item.",
+      "records": "cac:EconomicOperatorParty/cac:Party/cac:PowerOfAttorney",
+      "forEach": "partII.powersOfAttorney",
+      "item": {
+        "fields": [
+          {
+            "$comment": "Optional mandate description.",
+            "from": "description",
+            "to": "cbc:Description"
+          },
+          {
+            "$comment": "Agent (representative) name.",
+            "from": "agent.name",
+            "to": "cac:AgentParty/cac:PartyName/cbc:Name"
+          },
+          {
+            "$comment": "Agent identifier value + mandatory @schemeAgencyID (BR-OTH-02). The agent identifier carries no scheme field to derive the agency from, so @schemeAgencyID resolves to the DEFAULT of the 'identifier-scheme-agency' profile (the published scheme-agency-profile registry (model/generated/registries/scheme-agency-profile.json) → 'OP'). Not user-entered.",
+            "from": "agent.identifier.value",
+            "to": "cac:AgentParty/cac:PartyIdentification/cbc:ID",
+            "attributes": { "schemeAgencyID": { "fromMap": { "profile": "identifier-scheme-agency" } } }
+          },
+          {
+            "$comment": "Agent country (Country codelist).",
+            "from": "agent.country",
+            "to": "cac:AgentParty/cac:PostalAddress/cac:Country/cbc:IdentificationCode",
+            "attributes": { "listID": "country" }
+          }
+        ]
+      }
+    }
+  ]
+}

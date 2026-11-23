@@ -1,0 +1,47 @@
+{
+  "$comment": "Part I Section B — form-structure lens for the contracting authority. Fields follow the Schematron-mandated minimum; `required` reflects the rule severity (fatal -> required, warning -> optional).",
+  "part": "I",
+  "section": "B",
+  "title": "Identity of the procurer",
+  "titleKey": "section.title.I.B",
+  "description": "Identify the contracting authority or contracting entity running this procurement procedure.",
+  "descriptionKey": "partI.sectionB.description",
+  "filledBy": "contractingAuthority",
+
+  "fields": [
+    {
+      "dataPath": "partI.contractingAuthority.officialName",
+      "labelKey": "partI.contractingAuthority.officialName",
+      "label": "Official name",
+      "uiType": "text",
+      "required": true,
+      "description": "Official name of the contracting authority or contracting entity (BR-REQ-20-02, fatal)."
+    },
+    {
+      "dataPath": "partI.contractingAuthority.country",
+      "labelKey": "partI.contractingAuthority.country",
+      "label": "Country",
+      "uiType": "code",
+      "codelist": "country",
+      "required": true,
+      "description": "Country of the contracting authority (BR-REQ-20-03, fatal)."
+    },
+    {
+      "dataPath": "partI.contractingAuthority.identifier.value",
+      "labelKey": "partI.contractingAuthority.identifier.value",
+      "label": "Identifier",
+      "uiType": "text",
+      "required": false,
+      "description": "Party identifier value. Recommended but not fatal (BR-REQ-20-04, warning)."
+    },
+    {
+      "dataPath": "partI.contractingAuthority.identifier.scheme",
+      "labelKey": "partI.contractingAuthority.identifier.scheme",
+      "label": "Identifier type",
+      "uiType": "code",
+      "codelist": "EOIDType",
+      "required": false,
+      "description": "The type of identifier (NATIONAL, LEI, BRIS, DUNS, VAT) — the EOIDType codelist. Shown alongside the identifier so the user can pick the type and enter the value together. The XML @schemeAgencyID (BR-OTH-02) is DERIVED from this type at export (VAT→VIES, …; OP otherwise), so there is no separate scheme-agency field."
+    }
+  ]
+}
