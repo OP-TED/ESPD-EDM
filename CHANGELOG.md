@@ -1,4 +1,4 @@
-# ESPD-EDM 5.0.0-beta Release Notes
+# ESPD-EDM 5.0.0 Release Notes
 
 The release v5.0.0 and its corresponding technical files can be found in [ESPD-EDM](https://github.com/OP-TED/ESPD-EDM).
 
@@ -43,7 +43,7 @@ GitHub issues
 - Added EG "exg-mis-unrel-sec" (C67) and SC "slc-suit-auth-mbrshp" (C66)
 
 ### UBL 2.4
-- UBL 2.4 distribution files updated. The folder ubl-2.4 contains the official distribution files from OASIS - UBL Project
+- UBL 2.4 distribution files updated. The folder schemas contains the official distribution files from OASIS - UBL Project
  
 ### Code lists
 - Replaced Criterion code list with Exclusion Ground and Selection Criterion code lists
