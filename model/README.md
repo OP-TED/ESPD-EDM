@@ -15,16 +15,17 @@ ESPD version 5.0.0, UBL 2.4. 62 criteria, 21 value types, 6 sections of the admi
 This is the first publication of the model, with ESPD-EDM 5.0.0. It is a contract between the
 ESPD-EDM and the implementations that use it: the instance-data schemas fix the JSON shape in which an
 implementation stores an ESPD, and the mapping specs fix how that shape maps to the UBL Request and
-Response. Two things are not settled yet:
+Response. Two things to be aware of:
 
 - **Compatibility policy.** What counts as a breaking change to the instance-data shape or the mappings,
   and how a change is signalled, has not been decided by the ESPD-EDM owners. The format of
   `compiled-model.json` is versioned (`envelopeVersion`, currently 1). Until a policy exists, pin
   the version of ESPD-EDM you build on (a tag or commit) and compare the hashes in `compiled-model.json`
   to see whether the model changed.
-- **Content under review.** The exclusion-ground dispositions per buyer type in `registries/roles.json` are
-  not confirmed with the ESPD profile owners; the default scheme agency used for identifiers that carry
-  no scheme (`registries/scheme-agency-profile.json`) is a pragmatic policy that satisfies BR-OTH-02.
+- **Provisional registries.** A registry carries `status` and `statusNote`. `confirmed` records a decision (for
+  example `registries/roles.json`: the exclusion categories are mandatory for both buyer types). `provisional`
+  means it is still under review and must not be read as normative. These registries are provisional now:
+  - `registries/scheme-agency-profile.json`: Provisional, pending review by the ESPD profile owners: the agency per identifier scheme (VAT to VIES, LEI to GLEIF, DUNS to D&B) and especially the default OP for identifiers without a scheme field are a pragmatic policy that satisfies BR-OTH-02 (the attribute must be present and non-empty). A change affects the values of @schemeAgencyID in generated XML, not the structure of the model. Do not treat these values as normative.
 
 Known limitations of the mapping specs, found by round-tripping every published example through them:
 

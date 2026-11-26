@@ -71,20 +71,20 @@
       "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:Description" }
     },
     "PERCENTAGE": {
-      "$note": "A decimal percentage (e.g. 0.1). Used by OT57 (sheltered-workshop disabled-worker percentage). Response: cac:ResponseValue/cbc:ResponseNumeric; request: cbc:ExpectedValueNumeric.",
+      "$note": "A decimal percentage (e.g. 0.1). Used by C57_OT (sheltered-workshop disabled-worker percentage). Response: cac:ResponseValue/cbc:ResponseNumeric; request: cbc:ExpectedValueNumeric.",
       "sourceDescription": "A decimal number representing a percent (e.g. 0.1)",
       "instanceShape": { "type": "number" },
       "requestXml": { "kind": "scalar", "element": "cbc:ExpectedValueNumeric" },
       "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseNumeric" }
     },
     "URL": {
-      "$note": "A URL answer (OT58 registration-certificate URL). Response-only: cac:ResponseValue/cbc:ResponseURI (UBL ResponseValueType).",
+      "$note": "A URL answer (C58_OT registration-certificate URL). Response-only: cac:ResponseValue/cbc:ResponseURI (UBL ResponseValueType).",
       "sourceDescription": "A url, including e-mail addresses",
       "instanceShape": { "type": "string" },
       "responseXml": { "kind": "scalar", "element": "cac:ResponseValue/cbc:ResponseURI" }
     },
     "CODE": {
-      "$note": "A generic code requirement whose codelist VARIES by use (financial-ratio-type in C34, occupation in C25, eo-role-type in OT59) — the XSLT branches on a per-property codelist name. So the codelist is NOT intrinsic to the value type: it is declared PER LEAF in the sidecar component entry (`codelist`), attached by the overlay, and the generators read it from the leaf. `codeList` on instanceShape is likewise filled per leaf from the sidecar.",
+      "$note": "A generic code requirement whose codelist VARIES by use (financial-ratio-type in C34, occupation in C25, eo-role-type in C59_OT) — the XSLT branches on a per-property codelist name. So the codelist is NOT intrinsic to the value type: it is declared PER LEAF in the sidecar component entry (`codelist`), attached by the overlay, and the generators read it from the leaf. `codeList` on instanceShape is likewise filled per leaf from the sidecar.",
       "sourceDescription": "A code for an unespecified concept",
       "instanceShape": { "type": "string" },
       "requestXml": { "kind": "scalar", "element": "cbc:ExpectedCode", "codelistFromLeaf": true }
