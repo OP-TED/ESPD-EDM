@@ -12,7 +12,6 @@ Main new features:
 - Harmonisation with eCertis UUIDs
 - GitHub restructuring
 - Implementer-neutral model published in `model/` (instance-data JSON Schemas, UBL mapping specs, compiled criteria and registries), generated from the EA model and its enrichment, with a manifest recording the ESPD/UBL versions and the hashes of its inputs
-- Implementer-neutral model published in `model/` (instance-data JSON Schemas, UBL mapping specs, compiled criteria and registries), generated from the EA model and its enrichment, with a manifest recording the ESPD/UBL versions and the hashes of its inputs
 
 GitHub issues
 
