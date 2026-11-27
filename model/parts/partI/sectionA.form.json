@@ -1,0 +1,40 @@
+{
+  "$comment": "Part I Section A — form-structure lens for the publication reference.",
+  "part": "I",
+  "section": "A",
+  "title": "Publication of the procedure",
+  "titleKey": "section.title.I.A",
+  "description": "Reference to the notice or other publication by which this procurement procedure was launched, so it can be unequivocally identified — for example a contract notice in TED or a publication at national/regional level.",
+  "descriptionKey": "partI.sectionA.description",
+  "filledBy": "contractingAuthority",
+
+  "fields": [
+    {
+      "dataPath": "partI.publication.type",
+      "labelKey": "partI.publication.type",
+      "label": "Type of publication",
+      "uiType": "code",
+      "codelist": "docrefcontent-type",
+      "required": true,
+      "description": "The kind of publication and where it was published (e.g. a contract notice in TED, or a notice in a national/regional official journal)."
+    },
+    {
+      "dataPath": "partI.publication.identifier",
+      "labelKey": "partI.publication.identifier",
+      "label": "Publication reference number",
+      "uiType": "text",
+      "required": true,
+      "description": "The identifier/number of the publication (e.g. the OJEU/TED notice number).",
+      "uiHints": { "lookup": { "name": "ted-notice", "inputKind": "notice-number" } }
+    },
+    {
+      "dataPath": "partI.publication.url",
+      "labelKey": "partI.publication.url",
+      "label": "Publication URL",
+      "uiType": "url",
+      "required": false,
+      "description": "Optional URL locating the publication.",
+      "uiHints": { "lookup": { "name": "ted-notice", "inputKind": "notice-url" } }
+    }
+  ]
+}

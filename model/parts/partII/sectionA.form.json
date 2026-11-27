@@ -1,0 +1,64 @@
+{
+  "$comment": "Part II Section A — form lens for the economic operator identity. All five fields are error-level mandatory per BR-RESP-10, so all required. The identifier scheme agency becomes required once a value is entered (BR-OTH-02 is fatal on the emitted element).",
+  "part": "II",
+  "section": "A",
+  "title": "Information about the economic operator",
+  "titleKey": "section.title.II.A",
+  "description": "Identify the economic operator, its role in this bid, and its size.",
+  "descriptionKey": "partII.sectionA.description",
+  "filledBy": "economicOperator",
+
+  "fields": [
+    {
+      "dataPath": "partII.economicOperator.role",
+      "labelKey": "partII.economicOperator.role",
+      "label": "Role in this bid",
+      "uiType": "code",
+      "codelist": "eo-role-type",
+      "required": true,
+      "description": "The economic operator's function in this bid (BR-RESP-10-02/03)."
+    },
+    {
+      "dataPath": "partII.economicOperator.name",
+      "labelKey": "partII.economicOperator.name",
+      "label": "Official name",
+      "uiType": "text",
+      "required": true,
+      "description": "Official name of the economic operator (BR-RESP-10-05)."
+    },
+    {
+      "dataPath": "partII.economicOperator.size",
+      "labelKey": "partII.economicOperator.size",
+      "label": "Size",
+      "uiType": "code",
+      "codelist": "economic-operator-size",
+      "required": true,
+      "description": "Size of the economic operator (BR-RESP-10-06)."
+    },
+    {
+      "dataPath": "partII.economicOperator.country",
+      "labelKey": "partII.economicOperator.country",
+      "label": "Country",
+      "uiType": "code",
+      "codelist": "country",
+      "required": true,
+      "description": "Country of the economic operator (BR-RESP-10-07)."
+    },
+    {
+      "dataPath": "partII.economicOperator.identifier.value",
+      "labelKey": "partII.economicOperator.identifier.value",
+      "label": "Identifier",
+      "uiType": "text",
+      "required": true,
+      "description": "An identifier that identifies the economic operator (BR-RESP-10-04). The XML @schemeAgencyID (BR-OTH-02) is supplied as a constant 'OP' at export, so there is no separate scheme-agency field."
+    },
+    {
+      "dataPath": "partII.economicOperator.lot",
+      "labelKey": "partII.economicOperator.lot",
+      "label": "Lot the economic operator is tendering for",
+      "uiType": "lot-choice",
+      "required": true,
+      "description": "The single procurement lot this response applies to (BR-LOT-10, fatal: a Response specifies exactly one lot). Choose from the lots the buyer declared in Part I; if the procedure has one lot it is selected automatically."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$comment": "Part II Section B — form lens for power(s) of attorney. A repeatable block (0..n). Nothing is Schematron-mandated; `required` reflects UBL/structural minimums only (an agent needs a name; an identifier value needs its scheme agency once given).",
+  "part": "II",
+  "section": "B",
+  "title": "Power of attorney",
+  "titleKey": "section.title.II.B",
+  "description": "Where applicable, the representative(s) authorised to act for the economic operator.",
+  "descriptionKey": "partII.sectionB.description",
+  "filledBy": "economicOperator",
+
+  "fields": [
+    {
+      "dataPath": "partII.powersOfAttorney[].description",
+      "labelKey": "partII.powerOfAttorney.description",
+      "label": "Mandate description",
+      "uiType": "textarea",
+      "repeatable": true,
+      "required": false,
+      "description": "Description of the mandate."
+    },
+    {
+      "dataPath": "partII.powersOfAttorney[].agent.name",
+      "labelKey": "partII.powerOfAttorney.agent.name",
+      "label": "Representative name",
+      "uiType": "text",
+      "repeatable": true,
+      "required": true,
+      "description": "Name of the representative."
+    },
+    {
+      "dataPath": "partII.powersOfAttorney[].agent.identifier.value",
+      "labelKey": "partII.powerOfAttorney.agent.identifier.value",
+      "label": "Representative identifier",
+      "uiType": "text",
+      "repeatable": true,
+      "required": false,
+      "description": "Identifier of the representative. The XML @schemeAgencyID (BR-OTH-02) is supplied as a constant 'OP' at export, so there is no separate scheme-agency field."
+    },
+    {
+      "dataPath": "partII.powersOfAttorney[].agent.country",
+      "labelKey": "partII.powerOfAttorney.agent.country",
+      "label": "Representative country",
+      "uiType": "code",
+      "codelist": "country",
+      "repeatable": true,
+      "required": false,
+      "description": "Country of the representative."
+    }
+  ]
+}

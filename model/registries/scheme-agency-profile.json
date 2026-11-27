@@ -1,0 +1,17 @@
+{
+  "$comment": "Scheme-agency profile. The single source of truth for the UBL @schemeAgencyID attribute on party/reference cbc:ID elements (cac:PartyIdentification/cbc:ID, cbc:ContractFolderID, cac:AgentParty/cbc:ID). @schemeAgencyID names the agency that MAINTAINS the identification scheme the id belongs to; BR-OTH-02 (fatal) makes it mandatory and non-empty on every cbc:ID. It is NOT a user-entered field in this implementation: it is DERIVED at export. A mapping rule references a profile here via { fromMap: { path?, profile } } — `path` (rule-specific) names the instance field whose value is looked up in `map`; when there is no `path` (or the value is unmapped), the profile `default` applies. Resolution happens once at spec-load time (model/mapping-engine/resolve-scheme-agency.mjs), so the mapping engine itself stays data-only. Change the policy HERE, in one place; the four identifier mappings (partI/sectionB, partI/sectionC, partII/sectionA, partII/sectionB) all reference it. The agency choices are provisional: see status and statusNote.",
+  "status": "provisional",
+  "statusNote": "Provisional, pending review by the ESPD profile owners: the agency per identifier scheme (VAT to VIES, LEI to GLEIF, DUNS to D&B) and especially the default OP for identifiers without a scheme field are a pragmatic policy that satisfies BR-OTH-02 (the attribute must be present and non-empty). A change affects the values of @schemeAgencyID in generated XML, not the structure of the model. Do not treat these values as normative.",
+
+  "profiles": {
+    "identifier-scheme-agency": {
+      "$comment": "Agency per identifier scheme (EOIDType.gc codes), with a safe default. VAT→VIES matches ESPD-Request-BASE.xml (the EU VAT Information Exchange System). LEI→GLEIF is the Global Legal Entity Identifier Foundation, the authoritative LEI registry. DUNS→D&B is Dun & Bradstreet, which issues D-U-N-S numbers. BRIS (the EU Business Registers Interconnection System) and NATIONAL (whichever national register, country-dependent) have no single short agency token, so they take the default. The default OP (Publications Office of the European Union) is also used for identifiers that carry NO scheme field to derive from — the buyer's own file reference (cbc:ContractFolderID) and the Part II economic-operator / agent identifiers (the Response model carries no @schemeID on them). OP is the agency used uniformly for the codelist-backed ids across the whole document, so it keeps @schemeAgencyID consistent and BR-OTH-02-valid.",
+      "default": "OP",
+      "map": {
+        "VAT": "VIES",
+        "LEI": "GLEIF",
+        "DUNS": "D&B"
+      }
+    }
+  }
+}

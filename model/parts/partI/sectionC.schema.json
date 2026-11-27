@@ -1,0 +1,74 @@
+{
+  "$id": "partI-sectionC.schema.json",
+  "$comment": "Part I Section C — the procurement procedure and project. Hand-authored (not compiler-generated). Field set grounded in the Schematron: cbc:ProcedureCode is MANDATORY (BR-SC-10, fatal); identifiers carry a mandatory @schemeAgencyID (BR-OTH-02, fatal); the lot list is what selection criteria reference (BR-LOT-41). cac:ProcurementProject name/description and cac:ProcurementProjectLot have no presence rule and are optional here.",
+  "title": "ESPD Part I Section C — Procurement Procedure and Project",
+  "type": "object",
+  "properties": {
+    "partI": {
+      "type": "object",
+      "properties": {
+        "procedure": { "$ref": "#/$defs/procedure" },
+        "project": { "$ref": "#/$defs/project" },
+        "lots": { "$ref": "#/$defs/lots" }
+      },
+      "required": ["procedure"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["partI"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "procedure": {
+      "type": "object",
+      "description": "The procurement procedure itself (PI03). Maps to document-header elements, not to a cac: aggregate.",
+      "properties": {
+        "procedureType": {
+          "type": "string",
+          "description": "Type of procedure as a procurement-procedure-type code (e.g. 'Open'). Maps to cbc:ProcedureCode, which BR-SC-10 makes mandatory. NOTE: no .gc for this list is shipped in ESPD-EDM/codelists and the CVA does not validate cbc:ProcedureCode, so no enum can be derived — unlike Section A's publication type. The value is therefore unconstrained here.",
+          "$codelist": "procurement-procedure-type",
+          "$comment.noEnum": "No DocrefcontentType-style enum: the procurement-procedure-type .gc is not shipped. See codelist-attributes.json 'procurement-procedure-type' $note."
+        },
+        "fileReference": { "$ref": "#/$defs/fileReference" }
+      },
+      "required": ["procedureType"],
+      "additionalProperties": false
+    },
+
+    "fileReference": {
+      "type": "object",
+      "description": "The buyer's own reference number for this procedure. Maps to cbc:ContractFolderID. BR-OTH-02 (fatal) requires a non-empty @schemeAgencyID on the element; it is supplied as a constant 'OP' at export (the file reference is the buyer's own internal reference, with no scheme to derive an agency from), so it is not stored here.",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The file reference number (e.g. 'PP.20170419.1024-9'). Maps to the text of cbc:ContractFolderID."
+        }
+      },
+      "required": ["value"],
+      "additionalProperties": false
+    },
+
+    "project": {
+      "type": "object",
+      "description": "The procurement project (EA I70 'info-pp'). Maps to cac:ProcurementProject. No Schematron rule requires either child; the BASE sample carries only a Description.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Short title of the procurement. Maps to cac:ProcurementProject/cbc:Name."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the procurement. Maps to cac:ProcurementProject/cbc:Description."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "lots": {
+      "type": "array",
+      "description": "The lot identifiers this procedure is divided into (LOT-0000, LOT-0001, …). The UI collects a 'Number of lots' count and generates this array; it is the canonical stored form. Each id maps to one cac:ProcurementProjectLot/cbc:ID carrying the criterion identifier scheme. Lots are a DOCUMENT-level mechanism (one Request per procedure); selection criteria reference these ids via cac:ProcurementProjectLotReference, which BR-LOT-41 makes mandatory for every selection criterion. OPTIONAL overall (a procedure need not be divided into lots), but non-empty WHEN PRESENT — a count of 0/blank stores no `lots` key at all rather than an empty array.",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$comment": "Part I Section A — XML mapping for the publication reference. Maps the instance-data publication fields to UBL cac:AdditionalDocumentReference. The DocumentTypeCode attribute set comes from the ESPD 5.0.0 Schematron (01-ESPD-common-cl-attributes.sch, line 74), validated against DocrefcontentType.gc version 20250319-0.",
+
+  "target": {
+    "root": "QualificationApplicationRequest",
+    "namespaces": {
+      "": "urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2",
+      "cac": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+      "cbc": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    }
+  },
+
+  "rules": [
+    {
+      "$comment": "Notice identifier → AdditionalDocumentReference/ID. @schemeAgencyID is mandatory and non-empty on EVERY cbc:ID (BR-OTH-02, fatal). The publication identifier has no agency field in the instance model, so the maintaining agency is a constant: 'OP' (the EU Publications Office, which assigns TED notice numbers). This mirrors how the other administrative identifiers carry @schemeAgencyID.",
+      "from": "partI.publication.identifier",
+      "to": "cac:AdditionalDocumentReference/cbc:ID",
+      "attributes": { "schemeAgencyID": "OP" }
+    },
+    {
+      "$comment": "Publication type → AdditionalDocumentReference/DocumentTypeCode (DocrefcontentType codelist). The codelist attribute set is expanded by expandCodelistAttributes at validation time.",
+      "from": "partI.publication.type",
+      "to": "cac:AdditionalDocumentReference/cbc:DocumentTypeCode",
+      "attributes": { "listID": "docrefcontent-type" }
+    },
+    {
+      "$comment": "Optional notice URL → Attachment/ExternalReference/URI. Note the ExternalReference nesting — the Slovenian XML confirms this; the EA model's direct Attachment/URI is wrong.",
+      "from": "partI.publication.url",
+      "to": "cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI"
+    }
+  ]
+}

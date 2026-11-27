@@ -1,0 +1,40 @@
+{
+  "$comment": "Part I Section B — XML mapping for the contracting authority (buyer). Maps the instance-data fields to UBL cac:ContractingParty/cac:Party. The field set is the Schematron-mandated minimum (BR-REQ-20-02 name, BR-REQ-20-03 country, BR-REQ-20-04 identifier); address/contact/URIs are unconstrained and not modelled. The identifier scheme maps to @schemeID, whose value the CVA validates against EOIDType.gc (NOT @schemeAgencyID, which no rule constrains).",
+
+  "target": {
+    "root": "QualificationApplicationRequest",
+    "namespaces": {
+      "": "urn:oasis:names:specification:ubl:schema:xsd:QualificationApplicationRequest-2",
+      "cac": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+      "cbc": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    }
+  },
+
+  "rules": [
+    {
+      "$comment": "BR-REQ-20-02 (fatal) — official name of the buyer.",
+      "from": "partI.contractingAuthority.officialName",
+      "to": "cac:ContractingParty/cac:Party/cac:PartyName/cbc:Name"
+    },
+    {
+      "$comment": "BR-REQ-20-03 (fatal) — country of the buyer, as a bare Country code with the country codelist attributes.",
+      "from": "partI.contractingAuthority.country",
+      "to": "cac:ContractingParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode",
+      "attributes": { "listID": "country" }
+    },
+    {
+      "$comment": "BR-REQ-20-04 (warning) — party identifier value, with its scheme on @schemeID (EOIDType, CVA-validated) and its maintaining agency on @schemeAgencyID (BR-OTH-02, fatal: mandatory on every cbc:ID). The value and scheme roundtrip (data-sourced); @schemeAgencyID is DERIVED from the scheme via the 'identifier-scheme-agency' profile in the published scheme-agency-profile registry (model/generated/registries/scheme-agency-profile.json) (the single source of truth: VAT→VIES etc., OP by default). Export-only derivation; it is annotation computed from @schemeID, not independent instance data.",
+      "from": "partI.contractingAuthority.identifier.value",
+      "to": "cac:ContractingParty/cac:Party/cac:PartyIdentification/cbc:ID",
+      "attributes": {
+        "schemeID": { "from": "partI.contractingAuthority.identifier.scheme" },
+        "schemeAgencyID": {
+          "fromMap": {
+            "path": "partI.contractingAuthority.identifier.scheme",
+            "profile": "identifier-scheme-agency"
+          }
+        }
+      }
+    }
+  ]
+}

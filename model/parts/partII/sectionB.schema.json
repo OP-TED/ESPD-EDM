@@ -1,0 +1,67 @@
+{
+  "$id": "partII-sectionB.schema.json",
+  "$comment": "Part II Section B — power(s) of attorney for the economic operator's representative(s). Hand-authored (administrative, not a criterion). CAVEAT: no Schematron rule and no instance in ESPD-Request/Response-BASE.xml constrain or exemplify PowerOfAttorney/AgentParty — this shape is derived from the EA I72 'info-poa' model and the UBL 2.4 PowerOfAttorneyType (Description optional, AgentParty mandatory). Fields are therefore modelled as what UBL allows, all optional except where UBL makes them mandatory. REVIEW against a real instance when one is available (same situation Part I §A was in before a sample was supplied).",
+  "title": "ESPD Part II Section B — Power of Attorney",
+  "type": "object",
+  "properties": {
+    "partII": {
+      "type": "object",
+      "properties": {
+        "powersOfAttorney": {
+          "type": "array",
+          "description": "Zero or more powers of attorney (EA I72 PowerOfAttorney, cardinality 0..n). Each maps to one cac:PowerOfAttorney under cac:EconomicOperatorParty/cac:Party.",
+          "items": { "$ref": "#/$defs/powerOfAttorney" }
+        }
+      },
+      "required": ["powersOfAttorney"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["partII"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "powerOfAttorney": {
+      "type": "object",
+      "description": "One power of attorney. Maps to cac:PowerOfAttorney: an optional Description plus the mandatory AgentParty (the representative).",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Free-text description of the mandate. Maps to cac:PowerOfAttorney/cbc:Description (optional in UBL)."
+        },
+        "agent": { "$ref": "#/$defs/agentParty" }
+      },
+      "required": ["agent"],
+      "additionalProperties": false
+    },
+
+    "agentParty": {
+      "type": "object",
+      "description": "The representative holding the mandate. Maps to cac:PowerOfAttorney/cac:AgentParty (a cac:Party, mandatory in UBL PowerOfAttorneyType). No Schematron rule constrains its contents; name and identifier are modelled as the practical minimum, address/contact as optional. All subfields optional at the schema level since none is mandated.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the representative. Maps to cac:Party/cac:PartyName/cbc:Name."
+        },
+        "identifier": { "$ref": "#/$defs/agentIdentifier" },
+        "country": {
+          "type": "string",
+          "description": "Country of the representative, as a Country code. Maps to cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode.",
+          "$codelist": "country"
+        }
+      },
+      "required": ["name"],
+      "additionalProperties": false
+    },
+
+    "agentIdentifier": {
+      "type": "object",
+      "description": "An identifier for the representative. Maps to cac:Party/cac:PartyIdentification/cbc:ID with a mandatory @schemeAgencyID (BR-OTH-02, fatal, applies to every cbc:ID). There is no scheme to derive an agency from, so @schemeAgencyID is supplied as a constant 'OP' at export, not stored here.",
+      "properties": {
+        "value": { "type": "string", "description": "The identifier value. Maps to the text of cbc:ID." }
+      },
+      "required": ["value"],
+      "additionalProperties": false
+    }
+  }
+}

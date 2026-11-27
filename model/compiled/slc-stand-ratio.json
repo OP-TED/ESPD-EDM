@@ -1,0 +1,360 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "slc-stand-ratio",
+  "partId": "IV",
+  "criterion": {
+    "code": "slc-stand-ratio",
+    "uuid": "e4d37adc-08cd-4f4d-a8d8-32b62b0a1f46",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "structural",
+        "eaType": "LOT_REFERENCE",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C34_slc-stand-ratio/PPLR1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "SUBCRITERION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C34_slc-stand-ratio/SBC1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "LEGISLATION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C34_slc-stand-ratio/L1",
+        "children": []
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "REQUIREMENT_GROUP",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C34_slc-stand-ratio/RG1",
+        "children": [
+          {
+            "nodeKind": "requirement",
+            "valueType": "LOT_IDENTIFIER",
+            "cardinality": "1..n",
+            "requestpath": "C34_slc-stand-ratio/RG1/RQ1",
+            "description": "LOT Identifier",
+            "id": "slc-stand-ratio.lot-identifiers",
+            "instanceBinding": {
+              "side": "requirement",
+              "path": [
+                "lotIdentifiers"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "REQUIREMENT_SUBGROUP",
+            "cardinality": "1..n",
+            "condition": "always",
+            "requestpath": "C34_slc-stand-ratio/RG1/RSG1",
+            "children": [
+              {
+                "nodeKind": "requirement",
+                "valueType": "PERIOD",
+                "cardinality": "1",
+                "requestpath": "C34_slc-stand-ratio/RG1/RSG1/RQ1",
+                "description": "Select the periods applicable for all ratios",
+                "id": "slc-stand-ratio.period",
+                "instanceBinding": {
+                  "side": "requirement",
+                  "path": [
+                    "periods",
+                    "period"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "REQUIREMENT_SUBGROUP",
+                "cardinality": "1..n",
+                "condition": "always",
+                "requestpath": "C34_slc-stand-ratio/RG1/RSG1/RSG1",
+                "children": [
+                  {
+                    "nodeKind": "requirement",
+                    "valueType": "CODE",
+                    "cardinality": "1",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/RSG1/RQ1",
+                    "description": "Ratio Type",
+                    "id": "slc-stand-ratio.ratio-type",
+                    "instanceBinding": {
+                      "side": "requirement",
+                      "path": [
+                        "periods",
+                        "ratios",
+                        "ratioType"
+                      ]
+                    },
+                    "codelist": "financial-ratio-type"
+                  },
+                  {
+                    "nodeKind": "requirement",
+                    "valueType": "DESCRIPTION",
+                    "cardinality": "1",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/RSG1/RQ2",
+                    "description": "Definition",
+                    "id": "slc-stand-ratio.ratio-definition",
+                    "instanceBinding": {
+                      "side": "requirement",
+                      "path": [
+                        "periods",
+                        "ratios",
+                        "definition"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "requirement",
+                    "valueType": "MINIMUM_QUANTITY",
+                    "cardinality": "1",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/RSG1/RQ3",
+                    "description": "Minimum ratio requirement",
+                    "id": "slc-stand-ratio.ratio-minimum",
+                    "instanceBinding": {
+                      "side": "requirement",
+                      "path": [
+                        "periods",
+                        "ratios",
+                        "minimumRatio"
+                      ]
+                    }
+                  }
+                ],
+                "id": "slc-stand-ratio.ratios",
+                "instanceBinding": {
+                  "side": "requirement",
+                  "path": [
+                    "periods",
+                    "ratios"
+                  ],
+                  "repeatable": true
+                }
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/Q1",
+                    "description": "Does the EO fulfil the criteria by itself?",
+                    "id": "slc-stand-ratio.fulfilled-by-itself",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "fulfilledByItself"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "condition": "false",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "INDICATOR",
+                        "cardinality": "1",
+                        "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1/Q1",
+                        "description": "In the case of no – Relied upon or not",
+                        "id": "slc-stand-ratio.relied-upon",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "reliedUpon"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "condition": "true",
+                        "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "DESCRIPTION",
+                            "cardinality": "1",
+                            "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1/QSG1/Q1",
+                            "description": "Name of the entity",
+                            "id": "slc-stand-ratio.relied-upon-entity-name",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "reliedUponEntity",
+                                "name"
+                              ]
+                            }
+                          },
+                          {
+                            "nodeKind": "question",
+                            "valueType": "ECONOMIC_OPERATOR_IDENTIFIER",
+                            "cardinality": "1",
+                            "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG1/QSG1/QSG1/Q2",
+                            "description": "ID of the entity",
+                            "id": "slc-stand-ratio.relied-upon-entity-id",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "reliedUponEntity",
+                                "id"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG2",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "QUANTITY",
+                    "cardinality": "1",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG2/Q1",
+                    "description": "Please provide your ratio",
+                    "id": "slc-stand-ratio.ratio-answer",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "ratioAnswer"
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "0..n",
+                "condition": "always",
+                "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG3",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG3/Q1",
+                    "description": "Is this information available electronically?",
+                    "id": "slc-stand-ratio.evidence-available-electronically",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "evidenceBlocks",
+                        "availableElectronically"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "0..1",
+                    "condition": "true",
+                    "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG3/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "EVIDENCE_IDENTIFIER",
+                        "cardinality": "1..n",
+                        "requestpath": "C34_slc-stand-ratio/RG1/RSG1/QSG3/QSG1/Q1",
+                        "description": "Evidence Supplied",
+                        "id": "slc-stand-ratio.evidence-id",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "evidenceBlocks",
+                            "evidence"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "id": "slc-stand-ratio.evidence-blocks",
+                "instanceBinding": {
+                  "side": "response",
+                  "path": [
+                    "evidenceBlocks"
+                  ],
+                  "repeatable": true
+                }
+              }
+            ],
+            "id": "slc-stand-ratio.periods",
+            "instanceBinding": {
+              "side": "requirement",
+              "path": [
+                "periods"
+              ],
+              "repeatable": true
+            }
+          }
+        ]
+      }
+    ],
+    "id": "slc-stand-ratio",
+    "instanceModel": {
+      "containerPath": [
+        "partIV",
+        "selectionCriteria"
+      ],
+      "key": {
+        "source": "code"
+      }
+    },
+    "arrayContainers": [
+      {
+        "side": "requirement",
+        "path": [
+          "periods"
+        ]
+      },
+      {
+        "side": "response",
+        "path": [
+          "periods"
+        ]
+      },
+      {
+        "side": "requirement",
+        "path": [
+          "periods",
+          "ratios"
+        ]
+      },
+      {
+        "side": "response",
+        "path": [
+          "evidenceBlocks"
+        ]
+      }
+    ]
+  },
+  "hints": null
+}

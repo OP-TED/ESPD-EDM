@@ -1,0 +1,54 @@
+{
+  "$comment": "Part I Section C — form-structure lens for the procurement procedure and project. `required` follows Schematron severity: procedureType is fatal-mandatory (BR-SC-10); the file reference is optional, but its scheme agency becomes required once a value is entered (BR-OTH-02 is fatal on the emitted element).",
+  "part": "I",
+  "section": "C",
+  "title": "Procurement procedure",
+  "titleKey": "section.title.I.C",
+  "description": "Identify the procurement procedure, the project it concerns, and the lots it is divided into.",
+  "descriptionKey": "partI.sectionC.description",
+  "filledBy": "contractingAuthority",
+
+  "fields": [
+    {
+      "dataPath": "partI.procedure.procedureType",
+      "labelKey": "partI.procedure.procedureType",
+      "label": "Type of procedure",
+      "uiType": "code",
+      "codelist": "procurement-procedure-type",
+      "required": true,
+      "description": "Type of procedure (BR-SC-10, fatal). NOTE: the codelist is not shipped as a .gc, so the picker cannot be populated from ESPD-EDM/codelists — the UI must source it from the EU authority list."
+    },
+    {
+      "dataPath": "partI.procedure.fileReference.value",
+      "labelKey": "partI.procedure.fileReference.value",
+      "label": "File reference number",
+      "uiType": "text",
+      "required": false,
+      "description": "The buyer's own file reference number for this procedure. The XML @schemeAgencyID (BR-OTH-02) is supplied as a constant 'OP' at export, so there is no separate scheme-agency field."
+    },
+    {
+      "dataPath": "partI.project.name",
+      "labelKey": "partI.project.name",
+      "label": "Project title",
+      "uiType": "text",
+      "required": false,
+      "description": "Short title of the procurement."
+    },
+    {
+      "dataPath": "partI.project.description",
+      "labelKey": "partI.project.description",
+      "label": "Project description",
+      "uiType": "textarea",
+      "required": false,
+      "description": "Description of the procurement."
+    },
+    {
+      "dataPath": "partI.lots",
+      "labelKey": "partI.lots",
+      "label": "Number of lots",
+      "uiType": "lot-count",
+      "required": false,
+      "description": "The number of lots this procurement is divided into. Leave blank (or 0) if it is not divided into lots. The lot identifiers (LOT-0000, LOT-0001, …) are generated from this count and each selection criterion in Part IV then references the lots it applies to (BR-LOT-41)."
+    }
+  ]
+}

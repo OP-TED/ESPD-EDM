@@ -1,0 +1,309 @@
+{
+  "$comment": "GENERATED. The criterion as compiled from the EA structure plus the enrichment: structure, semantic ids, instance bindings and value types, with the instance-data constraint hints. Lets a consumer derive its own layers (for example a form) from the published model. Do not hand-edit; regenerate.",
+  "key": "slc-suit-auth-mbrshp",
+  "partId": "IV",
+  "criterion": {
+    "code": "slc-suit-auth-mbrshp",
+    "uuid": "f79bb93e-6e4f-4886-82fb-681a3f42ec80",
+    "cardinality": "1",
+    "children": [
+      {
+        "nodeKind": "structural",
+        "eaType": "LOT_REFERENCE",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C66_slc-suit-auth-mbrshp/PPLR1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "SUBCRITERION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C66_slc-suit-auth-mbrshp/SBC1",
+        "children": []
+      },
+      {
+        "nodeKind": "structural",
+        "eaType": "LEGISLATION",
+        "cardinality": "0..n",
+        "condition": "always",
+        "requestpath": "C66_slc-suit-auth-mbrshp/L1",
+        "children": []
+      },
+      {
+        "nodeKind": "group",
+        "eaType": "REQUIREMENT_GROUP",
+        "cardinality": "1..n",
+        "condition": "always",
+        "requestpath": "C66_slc-suit-auth-mbrshp/RG1",
+        "children": [
+          {
+            "nodeKind": "requirement",
+            "valueType": "LOT_IDENTIFIER",
+            "cardinality": "1..n",
+            "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RQ1",
+            "description": "LOT Identifier",
+            "id": "slc-suit-auth-mbrshp.lot-identifiers",
+            "instanceBinding": {
+              "side": "requirement",
+              "path": [
+                "lotIdentifiers"
+              ]
+            }
+          },
+          {
+            "nodeKind": "group",
+            "eaType": "REQUIREMENT_SUBGROUP",
+            "cardinality": "0..n",
+            "condition": "always",
+            "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1",
+            "children": [
+              {
+                "nodeKind": "requirement",
+                "valueType": "DESCRIPTION",
+                "cardinality": "0..1",
+                "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/RQ1",
+                "description": "Register name",
+                "id": "slc-suit-auth-mbrshp.register-name",
+                "instanceBinding": {
+                  "side": "requirement",
+                  "path": [
+                    "registerName"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "requirement",
+                "valueType": "URL",
+                "cardinality": "0..1",
+                "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/RQ2",
+                "description": "URL",
+                "id": "slc-suit-auth-mbrshp.register-url",
+                "instanceBinding": {
+                  "side": "requirement",
+                  "path": [
+                    "registerUrl"
+                  ]
+                }
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/Q1",
+                    "description": "Does the EO fulfil the criteria by itself?",
+                    "id": "slc-suit-auth-mbrshp.fulfilled-by-itself",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "fulfilledByItself"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "1",
+                    "condition": "false",
+                    "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "INDICATOR",
+                        "cardinality": "1",
+                        "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1/Q1",
+                        "description": "In the case of no – Relied upon or not",
+                        "id": "slc-suit-auth-mbrshp.relied-upon",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "reliedUpon"
+                          ]
+                        }
+                      },
+                      {
+                        "nodeKind": "group",
+                        "eaType": "QUESTION_SUBGROUP",
+                        "cardinality": "1",
+                        "condition": "true",
+                        "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1/QSG1",
+                        "children": [
+                          {
+                            "nodeKind": "question",
+                            "valueType": "DESCRIPTION",
+                            "cardinality": "1",
+                            "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1/QSG1/Q1",
+                            "description": "Name of the entity",
+                            "id": "slc-suit-auth-mbrshp.relied-upon-entity-name",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "reliedUponEntity",
+                                "name"
+                              ]
+                            }
+                          },
+                          {
+                            "nodeKind": "question",
+                            "valueType": "ECONOMIC_OPERATOR_IDENTIFIER",
+                            "cardinality": "1",
+                            "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG1/QSG1/QSG1/Q2",
+                            "description": "ID of the entity",
+                            "id": "slc-suit-auth-mbrshp.relied-upon-entity-id",
+                            "instanceBinding": {
+                              "side": "response",
+                              "path": [
+                                "reliedUponEntity",
+                                "id"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "1",
+                "condition": "always",
+                "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/Q1",
+                    "description": "Your answer?",
+                    "id": "slc-suit-auth-mbrshp.registered",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "registered"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "0..1",
+                    "condition": "true",
+                    "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "DESCRIPTION",
+                        "cardinality": "0..1",
+                        "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/QSG1/Q1",
+                        "description": "Registration number",
+                        "id": "slc-suit-auth-mbrshp.registration-number",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "registrationNumber"
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "0..1",
+                    "condition": "false",
+                    "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/QSG2",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "DESCRIPTION",
+                        "cardinality": "1",
+                        "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG2/QSG2/Q1",
+                        "description": "Reasons why your are not registered",
+                        "id": "slc-suit-auth-mbrshp.not-registered-reasons",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "notRegisteredReasons"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeKind": "group",
+                "eaType": "QUESTION_SUBGROUP",
+                "cardinality": "0..n",
+                "condition": "always",
+                "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3",
+                "children": [
+                  {
+                    "nodeKind": "question",
+                    "valueType": "INDICATOR",
+                    "cardinality": "1",
+                    "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3/Q1",
+                    "description": "Is this information available electronically?",
+                    "id": "slc-suit-auth-mbrshp.evidence-available-electronically",
+                    "instanceBinding": {
+                      "side": "response",
+                      "path": [
+                        "electronicEvidence",
+                        "availableElectronically"
+                      ]
+                    }
+                  },
+                  {
+                    "nodeKind": "group",
+                    "eaType": "QUESTION_SUBGROUP",
+                    "cardinality": "0..1",
+                    "condition": "true",
+                    "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3/QSG1",
+                    "children": [
+                      {
+                        "nodeKind": "question",
+                        "valueType": "EVIDENCE_IDENTIFIER",
+                        "cardinality": "1..n",
+                        "requestpath": "C66_slc-suit-auth-mbrshp/RG1/RSG1/QSG3/QSG1/Q1",
+                        "description": "Evidence Supplied",
+                        "id": "slc-suit-auth-mbrshp.evidence-id",
+                        "instanceBinding": {
+                          "side": "response",
+                          "path": [
+                            "electronicEvidence",
+                            "evidence"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "slc-suit-auth-mbrshp",
+    "instanceModel": {
+      "containerPath": [
+        "partIV",
+        "selectionCriteria"
+      ],
+      "key": {
+        "source": "code"
+      }
+    }
+  },
+  "hints": null
+}

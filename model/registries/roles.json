@@ -1,0 +1,125 @@
+{
+  "$comment": "Role registry (implementer-neutral). The ESPD role model: the buyer types that create a Request and the economic-operator roles that create a Response, each with the mandatory/optional disposition of the four exclusion-ground categories, plus the Part III section-code prefix -> exclusion-category map. EO roles additionally carry an `xmlMapping` (cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode = <EoRoleType code>), which the Part II section A mapping serialises. The BUYER types carry NO xmlMapping: in ESPD-EDM 5.0.0 the buyer/EO split is STRUCTURAL (a Request's cac:ContractingParty vs a Response's cac:EconomicOperatorParty), and there is no grounded serialization for the Contracting-Authority vs Contracting-Entity sub-distinction (cbc:PartyTypeCode has no ESPD codelist and no Schematron rule). The two buyer types are kept so the CA/CE regulatory distinction (Directive 2014/24 vs 2014/25) survives in the model. Display text, and which Parts a UI shows or makes editable per role, are presentation: they live in the consuming application (the demo's role-ui.json), keyed by role id. The dispositions below were reviewed (the question was whether Art. 80(1) of Directive 2014/25/EU makes some categories conditional for contracting entities) and confirmed by the ESPD team: see status and statusNote.",
+  "status": "confirmed",
+  "statusNote": "The exclusion-ground dispositions are confirmed by the ESPD team: all four categories are mandatory for both buyer types (contracting authority and contracting entity) and for every economic-operator role.",
+  "parts": [
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI"
+  ],
+  "exclusionCategories": [
+    "criminal",
+    "payment",
+    "misconduct",
+    "national"
+  ],
+  "exclusionDispositions": [
+    "mandatory",
+    "optional"
+  ],
+  "exclusionCategoryMap": {
+    "$comment": "Maps a Part III exclusion-ground section-code PREFIX to its exclusion category. Longest-match-independent: prefixes are mutually exclusive. 'exg-sitn' (conflicts of interest / distortion situations) rolls up to 'misconduct'.",
+    "exg-crim": "criminal",
+    "exg-pmt": "payment",
+    "exg-mis": "misconduct",
+    "exg-sitn": "misconduct",
+    "exg-natl": "national"
+  },
+  "buyerTypes": [
+    {
+      "id": "contracting-authority",
+      "documentType": "request",
+      "exclusionGroundRules": {
+        "criminal": "mandatory",
+        "payment": "mandatory",
+        "misconduct": "mandatory",
+        "national": "mandatory"
+      }
+    },
+    {
+      "id": "contracting-entity",
+      "documentType": "request",
+      "exclusionGroundRules": {
+        "criminal": "mandatory",
+        "payment": "mandatory",
+        "misconduct": "mandatory",
+        "national": "mandatory"
+      }
+    }
+  ],
+  "eoRoles": [
+    {
+      "id": "sole-tenderer",
+      "documentType": "response",
+      "exclusionGroundRules": {
+        "criminal": "mandatory",
+        "payment": "mandatory",
+        "misconduct": "mandatory",
+        "national": "mandatory"
+      },
+      "xmlMapping": {
+        "element": "cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode",
+        "code": "sole-tenderer"
+      }
+    },
+    {
+      "id": "group-lead",
+      "documentType": "response",
+      "exclusionGroundRules": {
+        "criminal": "mandatory",
+        "payment": "mandatory",
+        "misconduct": "mandatory",
+        "national": "mandatory"
+      },
+      "xmlMapping": {
+        "element": "cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode",
+        "code": "group-lead"
+      }
+    },
+    {
+      "id": "group-mem",
+      "documentType": "response",
+      "exclusionGroundRules": {
+        "criminal": "mandatory",
+        "payment": "mandatory",
+        "misconduct": "mandatory",
+        "national": "mandatory"
+      },
+      "xmlMapping": {
+        "element": "cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode",
+        "code": "group-mem"
+      }
+    },
+    {
+      "id": "oeron",
+      "documentType": "response",
+      "exclusionGroundRules": {
+        "criminal": "mandatory",
+        "payment": "mandatory",
+        "misconduct": "mandatory",
+        "national": "mandatory"
+      },
+      "xmlMapping": {
+        "element": "cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode",
+        "code": "oeron"
+      }
+    },
+    {
+      "id": "subcont",
+      "documentType": "response",
+      "exclusionGroundRules": {
+        "criminal": "mandatory",
+        "payment": "mandatory",
+        "misconduct": "mandatory",
+        "national": "mandatory"
+      },
+      "xmlMapping": {
+        "element": "cac:EconomicOperatorParty/cac:EconomicOperatorRole/cbc:RoleCode",
+        "code": "subcont"
+      }
+    }
+  ]
+}

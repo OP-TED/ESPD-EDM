@@ -1,0 +1,70 @@
+{
+  "$id": "partI-sectionA.schema.json",
+  "$comment": "Part I Section A — publication reference. The notice that identifies the procurement procedure. Hand-authored (not compiler-generated): Part I is administrative data, not a criterion. See docs analysis 'Part I Section A — Publication Reference (I68): Encoding Analysis' for the UBL/Schematron grounding.",
+  "title": "ESPD Part I Section A — Publication Reference",
+  "type": "object",
+  "properties": {
+    "partI": {
+      "type": "object",
+      "properties": {
+        "publication": {
+          "$ref": "#/$defs/publicationReference"
+        }
+      },
+      "required": ["publication"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["partI"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "publicationReference": {
+      "type": "object",
+      "description": "A typed reference to the notice identifying the procurement procedure. Maps to one cac:AdditionalDocumentReference in UBL.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "DocrefcontentType code identifying the kind/location of the publication that launched the procedure. The enum is the ESPD-allowed subset: DocrefcontentType.gc codes MINUS the governance exclusions (ESPD_REQUEST, epo-acc-espd-request — an ESPD Request is not a published notice that identifies the procedure). sectionA.test.mjs asserts it stays in sync with '.gc minus the codelist-governance excludedCodes'. Single source: the published codelist-governance registry (ESPD-EDM/model/registries/codelist-governance.json).",
+          "$codelist": "docrefcontent-type",
+          "enum": [
+            "TED_PIN",
+            "LOJPIN",
+            "TED_CN",
+            "ROJCN",
+            "ROJPIN",
+            "NOJCN",
+            "NOJPIN",
+            "LOJCN"
+          ]
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The notice identifier/number. For a TED notice (TED_CN/TED_PIN) it must follow the legacy OJ S scheme 'YYYY/S NNN-NNNNNN' (e.g. '2026/S 142-123456')."
+        },
+        "url": {
+          "type": "string",
+          "description": "Optional URL locating the notice (e.g. 'https://ted.europa.eu/en/notice/-/detail/2026-S-142-123456')."
+        }
+      },
+      "required": ["type", "identifier"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$comment": "ESPD Schematron BR-COM-10-01: when the referenced publication is a TED notice (Contract Notice TED_CN or Prior Information Notice TED_PIN), its identifier must follow the legacy OJ S scheme 'YYYY/S NNN-NNNNNN' (e.g. 2015/S 252-461137; the temporary placeholder 0000/S 000-000000 matches this). The newer eForms/TED publication number 'NNNNNNNN-YYYY' is NOT yet accepted (decision: support the legacy format only for now). Other publication types (national/regional/local journals) have no EU-standard identifier format and are left unconstrained.",
+          "if": {
+            "properties": { "type": { "enum": ["TED_CN", "TED_PIN"] } },
+            "required": ["type"]
+          },
+          "then": {
+            "properties": {
+              "identifier": {
+                "pattern": "^[0-9]{4}/S [0-9]{3}-[0-9]{6}$"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
